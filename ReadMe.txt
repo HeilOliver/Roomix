@@ -4,6 +4,6 @@ Projekt Roomanizer
 
 Team
 - Oliver Heil
-- Moritz Wilfing
+- Moritz Wilfling
 - Robert Schmitzer
 - Stefan Geiger
