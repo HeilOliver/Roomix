@@ -1,0 +1,212 @@
+\documentclass[a4paper,12pt,twoside]{scrreprt}
+% Autor der Vorlage: Klaus Rheinberger, FH Vorarlberg
+% 2017-02-20
+
+
+%% Pakete:
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}    % Silbentrennung bei Sonderzeichen
+\usepackage{graphicx}       % Bilder einbinden
+\usepackage[ngerman]{babel} % Deutsche Sprachanpassungen
+\usepackage{csquotes}       % When using babel or polyglossia with biblatex, loading csquotes is recommended to ensure that quoted texts are typeset according to the rules of your main language.
+\usepackage{acronym}  % für optionales Abkürzungsverzeichnis
+\usepackage{eurosym}  % z. B. \EUR{12345,68}
+\usepackage[linktocpage=true]{hyperref} % Links z. B. \href{https://www.wikibooks.org}{Wikibooks home}
+\usepackage{caption} % Abbildungslegenden
+\usepackage{tabularx}
+\captionsetup{format=hang, justification=raggedright}
+
+
+
+%% Einstellungen:
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}   % Tiefe der Gliederung im In haltsverzeichnis
+
+
+%% ERSETZEN VON ECKIGEN KLAMMERN:
+% Ersetzen Sie den Text in den eckigen Klammern!
+
+\begin{document}
+
+
+
+    % Titelblatt:
+    % \newpage\mbox{}\newpage
+    \cleardoublepage   % force output to a right page
+    \thispagestyle{empty}
+    \begin{titlepage}
+        \begin{flushright}
+            \includegraphics[width=0.4\linewidth]{assets/Logo-A3.jpg}
+        \end{flushright}
+        \begin{flushleft}
+            \section*{Roomanizer}
+            \subsection*{Pflichtenheft}
+            \vspace{1cm}
+
+            Version 1.0\\
+            \vspace{0.5cm}
+
+
+            \vspace{2cm}
+            Fachhochschule Vorarlberg\newline
+            Studiengang Software Engineering
+
+            \vspace{0.5cm}
+
+            Betreut von\newline
+            Wolfgang Auer
+
+            \vspace{0.5cm}
+
+            Vorgelegt von\newline
+            Stefan Geiger\newline
+            Robert Schmitzer\newline
+            Oliver Heil\newline
+            Moritz Wilfling\newline
+            Dornbirn, März 2018
+        \end{flushleft}
+    \end{titlepage}
+
+    % Inhaltsverzeichnis:
+    \cleardoublepage   % force output to a right page
+    \tableofcontents
+
+    \clearpage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+    \listoffigures
+
+    \clearpage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+    \listoftables
+
+    % evtl. Abkürzungsverzeichnis:
+    \clearpage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+    \chapter*{Abkürzungsverzeichnis}
+    \begin{acronym}[SQL]
+        \acro{ETW}{Energietechnik und Energiewirtschaft}
+        \acro{SQL}{Structured Query Language}
+        \acro{Bash}{Bourne-again shell}
+    \end{acronym}
+
+    %% Die Kapitelstruktur ist mit der betreuungsperson abzustimmen!
+
+    \chapter{Einführung}
+    \section{System}
+    \section{Zweck}
+    \section{Umfang}
+    \section{Referenzen}
+    \section{Überblick}
+
+    %\EUR{12345,68}, \href{https://www.wikibooks.org}{Wikibooks home}
+
+    \chapter{Stakeholder- und Benutzerbeschreibungen}
+    \section{Überblick Stakeholder/Benutzer}
+    \begin{center}
+        \begin{tabular}{|l|l|l|}
+            \hline
+            & Rolle/Funktion & Interesse an \\       \hline
+
+            Auftraggeber &
+            Geldgeber, Anforderungen \\
+            & an das System  &
+            Wünscht sich, dass das System
+            \\
+            &  & seine Anforderungen erfüllt und seinen Vorstellungen entspricht.
+            \\       \hline
+            Hotelinhaber &  &                            \\       \hline
+            Front Office &  &                            \\       \hline
+            Back Office  &  &                            \\       \hline
+            Geschäftsleitung &  &                        \\       \hline
+            Reisebüro &  &                               \\       \hline
+            Firma &  &                                   \\       \hline
+            Reinigungspersonal &  &                      \\       \hline
+            Gast &  &                                    \\       \hline
+            Gemeinde &  &                                \\       \hline
+            Küchenpersonal des Hotels &  &               \\       \hline
+            Entwickler &  &                               \\       \hline
+            Administrator &  &                            \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \section{Benutzerumgebung}
+
+
+    \chapter{Produkt Überblick}
+    \section{Zusammenfassung der Produktfähigkeiten/Eigenschaften}
+    \section{Produkt Fähigkeiten/Eigenschaften}
+    \subsection{Eigenschaft/Fähigkeit 1}
+    \subsection{Eigenschaft/Fähigkeit 2}
+
+
+    \section{Annahmen und Abhängigkeiten}
+
+    \chapter{Domänenmodell}
+    \section{Überblick}
+    \section{Detailliertes Modell}
+    \subsection{Klasse 1}
+    \subsection{Klasse 2}
+
+    \section{Einschränkungen}
+
+    \chapter{Dynamisches Modell}
+    \section{Detaillierte Benutzungsfälle (Use Cases)}
+    \subsection{Ein Use Case}
+    \subsubsection{Detaillierte Benutzungsfallbeschreibungen}
+    \subsubsection{Sequenz Diagramme}
+    \subsubsection{Kontrakte}
+
+    \section{Objekt Lifecycles}
+
+    \chapter{Nonfunktionale Anforderungen  }
+    \section{Regeln}
+    \section{Usability}
+    \section{Zuverlässigkeit}
+    \section{Performanz}
+    \section{Unterstützbarkeit}
+    \section{Online Benutzerdokumentation und Help System}
+    \section{zugekaufte Komponenten}
+    \section{Schnittstellen}
+    \subsection{Benutzerschnittstellen}
+    \subsection{Softwareschnittstellen}
+    \subsection{Kommunikationsschnittstellen}
+    \section{zusätzliche Lizenzierungen}
+    \section{Copyright und andere rechtliche Anforderungen}
+    \section{Anzuwendende Standards}
+
+    \chapter{Iterationsplan (Timeboxes)}
+    \section{Überblick}
+    \section{1. Timebox}
+    \subsection{Benutzungsfall/fälle (UseCase(s))  }
+    \subsection{Architektur}
+    \subsection{Deliverables}
+    \subsection{Abhängigkeiten}
+
+    \section{2. Timebox}
+    \subsection{Benutzungsfall/fälle (UseCase(s))  }
+    \subsection{Architektur}
+    \subsection{Deliverables}
+    \subsection{Abhängigkeiten}
+
+    \section{3. Timebox}
+    \subsection{Benutzungsfall/fälle (UseCase(s))  }
+    \subsection{Architektur}
+    \subsection{Deliverables}
+    \subsection{Abhängigkeiten}
+
+    \chapter{Glossar}
+
+
+    \chapter*{Eidesstattliche Erklärung}
+    \addcontentsline{toc}{chapter}{Eidesstattliche Erklärung}
+    Ich erkläre hiermit an Eides statt, dass ich die vorliegende Masterarbeit selbstständig und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe. Die aus fremden Quellen direkt oder indirekt übernommenen Stellen sind als solche kenntlich gemacht. Die Arbeit wurde bisher weder in gleicher noch in ähnlicher Form einer anderen Prüfungsbehörde vorgelegt und auch noch nicht veröffentlicht.
+
+    \vspace{3cm}
+    \noindent
+    Dornbirn, am [Tag. Monat Jahr anführen]\hfill [Vor- und Nachname Verfasser/in]
+
+
+\end{document}
