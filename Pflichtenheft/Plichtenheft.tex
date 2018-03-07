@@ -2,6 +2,11 @@
 % Autor der Vorlage: Klaus Rheinberger, FH Vorarlberg
 % 2017-02-20
 
+%% Hilfe: z.B.
+% empfohlener Einstieg: http://latex.tugraz.at/
+% https://de.wikibooks.org/wiki/LaTeX-Kompendium:_Schnellkurs:_Erste_Schritte
+% https://de.wikibooks.org/wiki/LaTeX-Kompendium:_Schnellkurs
+% https://de.wikibooks.org/wiki/LaTeX-Kompendium
 
 %% Pakete:
 \usepackage[utf8]{inputenc}
@@ -13,6 +18,9 @@
 \usepackage{eurosym}  % z. B. \EUR{12345,68}
 \usepackage[linktocpage=true]{hyperref} % Links z. B. \href{https://www.wikibooks.org}{Wikibooks home}
 \usepackage{caption} % Abbildungslegenden
+\usepackage{longtable}
+\usepackage{ltxtable}
+\usepackage{array}
 \usepackage{tabularx}
 \captionsetup{format=hang, justification=raggedright}
 
@@ -36,7 +44,7 @@
     \thispagestyle{empty}
     \begin{titlepage}
         \begin{flushright}
-            \includegraphics[width=0.4\linewidth]{assets/Logo-A3.jpg}
+            \includegraphics[width=0.4\linewidth]{./assets/Logo-A3}
         \end{flushright}
         \begin{flushleft}
             \section*{Roomanizer}
@@ -105,35 +113,8 @@
 
     \chapter{Stakeholder- und Benutzerbeschreibungen}
     \section{Überblick Stakeholder/Benutzer}
-    \begin{center}
-        \begin{tabular}{|l|l|l|}
-            \hline
-            & Rolle/Funktion & Interesse an \\       \hline
-
-            Auftraggeber &
-            Geldgeber, Anforderungen \\
-            & an das System  &
-            Wünscht sich, dass das System
-            \\
-            &  & seine Anforderungen erfüllt und seinen Vorstellungen entspricht.
-            \\       \hline
-            Hotelinhaber &  &                            \\       \hline
-            Front Office &  &                            \\       \hline
-            Back Office  &  &                            \\       \hline
-            Geschäftsleitung &  &                        \\       \hline
-            Reisebüro &  &                               \\       \hline
-            Firma &  &                                   \\       \hline
-            Reinigungspersonal &  &                      \\       \hline
-            Gast &  &                                    \\       \hline
-            Gemeinde &  &                                \\       \hline
-            Küchenpersonal des Hotels &  &               \\       \hline
-            Entwickler &  &                               \\       \hline
-            Administrator &  &                            \\
-            \hline
-        \end{tabular}
-    \end{center}
+        \LTXtable{\columnwidth}{./content/stakeholder_table}
     \section{Benutzerumgebung}
-
 
     \chapter{Produkt Überblick}
     \section{Zusammenfassung der Produktfähigkeiten/Eigenschaften}
