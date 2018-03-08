@@ -1,0 +1,38 @@
+%%
+%% Author: Oliver Heil
+%% 08.03.2018
+%%
+
+
+\documentclass[./detailed_overview_usecases.tex]{subfiles}
+\begin{document}
+
+    \subsection{Stammdaten Ändern}
+    \textit{Primary Actor:}
+    Hotelmanager
+    \\
+    Stakeholder and Interests:
+    \begin{itemize}
+        \item[-] Der/Die Hotelmanager/In: Möchte änderungen an Stammdaten wie UsID, DVR, usw. an  einem zentralen Punkt ändern.
+    \end{itemize}
+
+    \subsubsection*{Preconditions}
+    -
+    \subsubsection*{Postconditions}
+    Die geänderten Stammdaten sind vom System gespeichert und werden vom System verwendet.
+
+    \subsubsection*{Main Success Scenario}
+    \begin{enumerate}
+        \item Der/Die Anwender/In trägt ändert in einem Formular die nötigen änderungen ein
+        \item Das System speichert die geänderten Stammdaten im System
+    \end{enumerate}
+
+    \subsubsection*{Extensions}
+    \begin{enumerate}
+        \item Die eingegebenen Stammdaten sind nicht gültig beziehungsweise lückenhaft
+        \begin{itemize}
+            \item[a.] Die Daten werden nicht gespeichert
+            \item[b.] Der/Die Anwender/In kann die eingegebenen Daten Korrigieren
+        \end{itemize}
+    \end{enumerate}
+\end{document}
