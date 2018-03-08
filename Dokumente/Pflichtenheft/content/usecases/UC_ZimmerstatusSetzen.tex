@@ -1,0 +1,43 @@
+%%
+%% Author: Oliver Heil
+%% 08.03.2018
+%%
+
+
+\documentclass[./detailed_overview_usecases.tex]{subfiles}
+\begin{document}
+
+    \subsection{Zimmerstatus setzen}
+    \textit{Primary Actor:}
+    \begin{enumerate}
+        Front office Personal
+        Back office Personal
+        Reinigungsfachkraft
+    \end{enumerate}
+    \\
+    Stakeholder and Interests:
+    \begin{itemize}
+        \item[-] Front/Back office Personal: Kann das Zimmer beim Check-In vom Kunden bezogen werden.
+        \item[-] Reinigungsfachkraft: Welche Zimmer gereinigt werden können.
+    \end{itemize}
+
+    \subsubsection*{Preconditions}
+    -
+    \subsubsection*{Postconditions}
+    Der Zimmerstatus wurde auf einen neuen Status gesetzt.
+
+    \subsubsection*{Main Success Scenario}
+    \begin{enumerate}
+        \item Zimmerstatus kann auf folgende Statusse geändert werden
+        \begin{itemize}
+            \item[a.] BESETZT – GEREINIGT
+            \item[b.] BESETZT – UNGEREINIGT
+            \item[c.] FREI – GEREINIGT
+            \item[d.] FREI – UNGEREINIGT
+            \item[f.] OUT OF ORDER
+        \end{itemize}
+    \end{enumerate}
+
+    \subsubsection*{Extensions}
+    -
+\end{document}
