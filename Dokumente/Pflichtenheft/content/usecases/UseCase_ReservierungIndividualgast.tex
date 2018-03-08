@@ -1,0 +1,70 @@
+%%
+%% Author: Moritz
+%% 08.03.2018
+%%
+
+\documentclass[./detailed_overview_usecases.tex]{subfiles}
+\begin{document}
+
+    \subsection{Reservierung Individualgast}
+
+
+    \textit{Primary Actor: Rezeptionist}
+    % describe actor here
+    \newline
+    Stakeholder and Interests:
+    \begin{itemize}
+        \item[-] Rezeptionist: schnelle und fehlerfreie Abwicklung der Reservierung, neuen Kunden anlegen, einfach Handhabung der Software.
+        \item[-] Individualgast: Reservierung eines Zimmers ohne Komplikationen hinsichtlich seines Aufenthaltes, Möglichkeit Zusatzleistungen zu buchen.
+        \item[-] Hotelmanager: Möchte ebenfalls, dass der Rezeptionist im Stande ist Reservierung schnell und fehlerfrei abzuwickeln, sodass der Kunde zufrieden ist.
+    \end{itemize}
+
+    \subsubsection*{Preconditions}
+    Informationen darüber ob der Individualgast bereits Kunde des Hotels war bzw. ob es sich um einen Gast des Hauses handelt.
+
+    \subsubsection*{Postconditions}
+    %post conditions text
+    Zimmer ist für einen bestimmten Zeitraum auf den Individualgast reserviert
+
+    \subsubsection*{Main Success Scenario}
+    \begin{enumerate}
+        \item Der Individualgast nennt den gewünschten Reservierungszeitraum und die Art des Zimmers (Kategorie,WLAN,Haustiere usw.)
+        \item Der Rezeptionist gibt den vom Individualgast erhaltenen Zeitraum und die gewünschten Präferenzen in das System ein.
+        \item Das System liefert dem Rezeptionist die gewünschten Informationen ob und welche Zimmer frei sind.
+        \item Der Individualgast bestätigt, dass er eines dieser Zimmer zum gewünschten Zeitraum belegen möchte.
+        \item Die Zusatzpakete werden gebucht (UseCase_Zusatzpakete bestellen).
+        \item Der Individualgast wird im System angelegt (UseCase_Kunde/Gast anlegen).
+        \item Der Individualgast überprüft die eingegebenen Daten und bestätigt die Reservierung.
+        \item Der Rezeptionist schließt die Reservierung ab.
+    \end{enumerate}
+
+    \subsubsection*{Extensions}
+    \begin{enumerate}
+        \setcounter{enumi}{3}
+        \item Überbuchung: \begin{itemize}
+                       \item[a.] Das System zeigt an, dass kein Zimmer mehr verfügbar ist und der Rezeptionist hat die Berechtigung zu überbuchen.
+                       \begin{itemize}
+                           \item[i.] Die Reservierung wird an dieser Stelle fortgesetzt
+                           \item[ii.] Punkt 9 des Main Success Szenarios wird aufgerufen
+                       \end{itemize}
+                       \item[b.] Das System zeigt an, dass kein Zimmer mehr verfügbar ist und der Rezeptionist hat nicht die Berechtigung zu überbuchen.
+                       \begin{itemize}
+                           \item[i.] Der Individualgast kann einen anderen Zeitraum oder andere Präferenzen auswählen.
+                           \item[ii.] Punkt 2 des Main Success Szenarios wird aufgerufen
+                       \end{itemize}
+                       \item[c.] Das System zeigt an, dass keine Überbuchungen mehr möglich sind.
+                       \begin{itemize}
+                           \item[i.] Der Individualgast kann einen anderen Zeitraum oder andere Präferenzen auswählen.
+                           \item[ii.] Punkt 2 des Main Success Szenarios wird aufgerufen
+                       \end{itemize}
+        \end{itemize}
+        \setcounter{enumi}{7}
+        \item Unvollständige Daten: \begin{itemize}
+                               \item[a.] Der Individualgast bestätigt die vorliegende Reservierung nicht, da bestimmte daten fehlen oder nicht korrekt sind.
+                               \begin{itemize}
+                                   \item[i.] Die Reservierung wird an der Stelle neu gestartet an dieser der Fehler aufgetreten ist.
+                               \end{itemize}
+        \end{itemize}
+    \end{enumerate}
+
+\end{document}
