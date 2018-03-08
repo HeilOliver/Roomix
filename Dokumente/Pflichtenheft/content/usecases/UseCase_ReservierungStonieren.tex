@@ -1,0 +1,44 @@
+%%
+%% Author: Oliver Heil
+%% 08.03.2018
+%%
+
+
+\documentclass[./detailed_overview_usecases.tex]{subfiles}
+\begin{document}
+
+    \subsection{Reservierung Stornieren}
+    \subsubsection{Detaillierte Benutzungsfallbeschreibungen}
+    \textit{Primary Actor:}
+    Front/Back office Personal
+    \\
+    Stakeholder and Interests:
+    \begin{itemize}
+        \item[-] Front/Back office Personal: Nicht mehr gültige Reservierungen müssen gelöscht werden um Ressourcen freizugeben
+        \item[-] Gast/Kunde: Möchte bei Reiseplan änderung von Reservierung zurücktreten
+    \end{itemize}
+
+    \subsubsection*{Preconditions}
+    Eine Person des Front/Back offices die die benötigte Berechtigungsstufe aufweist um eine änderung an einer Reservierung vorzunehmen.
+
+    \subsubsection*{Postconditions}
+    Die Reservierung wurde storniert und belegt keine Hotel ressourcen mehr
+
+    \subsubsection*{Main Success Scenario}
+    \begin{enumerate}
+        \item Der/Die Anwender/In wählt einen stornierung Grund aus.
+        \item Der/Die Anwender/In Bestätigt die stornierung.
+        \item Das System speichert die stornierung und gibt die durch die Reservierung belegten ressourcen frei.
+    \end{enumerate}
+
+    \subsubsection*{Extensions}
+    \begin{enumerate}
+        \item Der Gast möchte nach einer Stornierung die Reservierung trotzdem wahrnehmen
+        \begin{itemize}
+            \item[a.] Es muss eine neue Reservierung erstellt werden.
+        \end{itemize}
+    \end{enumerate}
+
+    \subsubsection{Sequenz Diagramme}
+    \subsubsection{Kontrakte}
+\end{document}
