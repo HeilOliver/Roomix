@@ -22,6 +22,7 @@
 \usepackage{ltxtable}
 \usepackage{array}
 \usepackage{tabularx}
+\usepackage{subfiles}
 \captionsetup{format=hang, justification=raggedright}
 
 
@@ -135,7 +136,9 @@
 
     \chapter{Dynamisches Modell}
     \section{Detaillierte Benutzungsfälle (Use Cases)}
-    \subsection{Ein Use Case}
+        % detailed use cases main file
+        \subfile{./content/usecases/detailed_overview_usecases.tex}
+
     \subsubsection{Detaillierte Benutzungsfallbeschreibungen}
     \subsubsection{Sequenz Diagramme}
     \subsubsection{Kontrakte}
