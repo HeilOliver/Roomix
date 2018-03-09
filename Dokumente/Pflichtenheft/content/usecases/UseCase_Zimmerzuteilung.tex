@@ -1,0 +1,92 @@
+%%
+%% Author: Oliver Heil
+%% 08.03.2018
+%%
+
+
+\documentclass[./detailed_overview_usecases.tex]{subfiles}
+\begin{document}
+
+    \subsection{Zimmerzuteilung}
+    \subsubsection{Detaillierte Benutzungsfallbeschreibungen}
+    \textit{Primary Actor:}
+    \begin{enumerate}
+        Front office Personal
+        Back office Personal
+    \end{enumerate}
+    \\
+    Stakeholder and Interests:
+    \begin{itemize}
+        \item[-] Front/Back office Personal: Kann das Zimmer beim Check-In vom Kunden bezogen werden.
+        \item[-] Reinigungsfachkraft: Welche Zimmer zuerst gereinigt werden müssen.
+        \item[-] Individualgast: Ein Zimmer in der richtigen Kategorie beziehungsweise das explizit gewünschte Zimmer.
+    \end{itemize}
+
+    \subsubsection*{Preconditions}
+    -
+    \subsubsection*{Postconditions}
+    Alle Individualgäste haben ein Zimmer beziehungsweise ihr explizit gewünschtes Zimmer im angegebenen Zeitraum zugeteilt bekommen.
+
+    \subsubsection*{Main Success Scenario}
+    \begin{enumerate}
+        \item Der/Die Anwender/In wählt Zimmerzuteilung mit bestimmten Ankunftstag.
+        \item Das System zeigt alle am ausgewählten Ankunftstag entsprechenden fixen Reservierungen an.
+        \item Der/Die Anwender/In wählt eine Reservierung aus.
+        \item Das System zeigt die reservierten Positionen (Anzahl, Kategorie) der Reservierung an.
+        \item Der/Die Anwender/In wählt eine Position aus.
+        \item Das System zeigt alle Zimmer an welche zuteilbar sind.
+        \item Der/Die Anwender/In weist ein Zimmer zu.
+        \item Das System zeigt die aktualisierte Zimmerzuteilung an.
+        \item Der/Die Anwender/In bestätigt diese Zimmerzuteilung.
+        \item Das System speichert diese Zimmerzuteilung ab.
+        \item Der/Die Anwender/In wiederholt die Schritte 4-10 beziehungsweise 1-10, bis dieser Use-Case beendet ist.
+    \end{enumerate}
+
+    \subsubsection*{Extensions}
+    \item 1-9 \begin{itemize}
+                   \item[a.] Der/Die Anwender/In bricht diesen Use-Case ab.
+    \end{itemize}
+    \item 2 \begin{itemize}
+                \item[a.] Es gibt keine fixen Reservierungen an diesem ausgewählten Ankunftstag.
+                \begin{itemize}
+                    \item[i.] Use-Case beenden
+                \end{itemize}
+    \end{itemize}
+    \item 4 \begin{itemize}
+                \item[a.] Das Zimmer wurde bei der Reservierung bereits zugeteilt.
+    \end{itemize}
+    \item 5 \begin{itemize}
+                \item[a.] Der/Die Anwender/In lässt das System die Zimmer automatisch zuweisen
+                \begin{itemize}
+                    \item[i.] Springe zu Schritt 8
+                \end{itemize}
+    \end{itemize}
+    \item 6 \begin{itemize}
+                \item[a.] Es gibt kein freies Zimmer im gewünschten Zeitraum.
+                \begin{itemize}
+                    \item[i.] Der/Die Anwender/In sucht ein Zimmer mit einem anderen Zeitraum
+                \end{itemize}
+                \item[b.] Es gibt kein freies Zimmer in der gewünschten Kategorie
+                \begin{itemize}
+                    \item[i.] Der/Die Anwender/In wählt ein Zimmer in einer höheren Kategorie.
+                \end{itemize}
+                \item[c.] Es ist kein Zimmer verfügbar.
+                \begin{itemize}
+                    \item[i.] Der/Die Anwender/In versucht eine lösung mit dem Gast zu erzielen.
+                \end{itemize}
+    \end{itemize}
+    \item 8 \begin{itemize}
+                \item[a.] Es sind mehrere Zimmer je Position verbucht.
+                \begin{itemize}
+                    \item[i.] Der Mitarbeiter trägt einen Zimmerwechsel im System ein
+                \end{itemize}
+    \end{itemize}
+    \item 9 \begin{itemize}
+                \item[a.] Der Mitarbeiter möchte die Zimmerzuteilung ändern.
+                \begin{itemize}
+                    \item[i.] Springe zu Schritt 5
+                \end{itemize}
+    \end{itemize}
+    \subsubsection{Sequenz Diagramme}
+    \subsubsection{Kontrakte}
+\end{document}
