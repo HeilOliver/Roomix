@@ -6,13 +6,14 @@
 \documentclass[./detailed_overview_usecases.tex]{subfiles}
 \begin{document}
 
-    \subsection{CheckIn mit vorhergehender Reservierung}
+    \subsection{Check-In mit vorhergehender Reservierung}
     \subsubsection{Detaillierte Benutzungsfallbeschreibungen}
     \textit{Primary Actor: Front-Office Mitarbeiter}
     % describe actor here
     \\
     \textit{Stakeholder and Interests:}
     \begin{itemize}
+        % zu allgemein ! und heißt es jetzt Front-Office Mitarbeiter oder Rezeptionist?
         \item[-] Rezeptionist: schnelle, fehlerfreie und einfache Abwicklung des CheckIns.
         \item[-] Individualgast: möchte eine schnelle Schlüsselübergabe ohne Komplikationen.
     \end{itemize}
@@ -21,7 +22,7 @@
     Der Individualgast hat bereits eine Reservierung getätigt.
     \subsubsection*{Postconditions}
     %post conditions text
-    Schlüsselübergabe
+    Der Individualgast erhält die Schlüssel für sein reserviertes Zimmer
 
     \subsubsection*{Main Success Scenario}
     \begin{enumerate}
@@ -38,8 +39,10 @@
             \item[a.] Der Individualgast möchte nun ein anderes Zimmer belegen (upgrade)
             \begin{itemize}
                 \item[i.] Es wird überprüft ob das gewünschte Zimmer zur Verfügung steht.
-                \item[ii.] Der Individualgast wird auf das neue Zimmer gebucht (UseCase_WalkIn)
+                \item[ii.] Der Individualgast wird auf das neue Zimmer gebucht (UseCase WalkIn)
             \end{itemize}
+            \item[b.] Der Individualgast möchte seinen Aufenthalt verlängern oder verkürzen
+            \item[c.] Der Individualgast möchte Zusatzleistungen buchen
         \end{itemize}
     \end{enumerate}
 
