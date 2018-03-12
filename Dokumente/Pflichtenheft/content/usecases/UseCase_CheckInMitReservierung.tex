@@ -1,0 +1,48 @@
+%%
+%% Author: Robert
+%% 08.03.2018
+%%
+
+\documentclass[./detailed_overview_usecases.tex]{subfiles}
+\begin{document}
+
+    \subsection{CheckIn mit vorhergehender Reservierung}
+    \subsubsection{Detaillierte Benutzungsfallbeschreibungen}
+    \textit{Primary Actor: Front-Office Mitarbeiter}
+    % describe actor here
+    \\
+    \textit{Stakeholder and Interests:}
+    \begin{itemize}
+        \item[-] Rezeptionist: schnelle, fehlerfreie und einfache Abwicklung des CheckIns.
+        \item[-] Individualgast: möchte eine schnelle Schlüsselübergabe ohne Komplikationen.
+    \end{itemize}
+
+    \subsubsection*{Preconditions}
+    Der Individualgast hat bereits eine Reservierung getätigt.
+    \subsubsection*{Postconditions}
+    %post conditions text
+    Schlüsselübergabe
+
+    \subsubsection*{Main Success Scenario}
+    \begin{enumerate}
+        \item Der Individualgast möchte seine Reservierung nun in Anspruch nehmen.
+        \item Der Rezeptionist bestätigt die vorliegende Reservierung.
+        \item Der Individualgast bezahlt die Anzahlung (UseCase_Akonto buchen)
+        \item Der Rezeptionist übergibt den Schlüssel für das passende Zimmer an den Individualgast.
+    \end{enumerate}
+
+    \subsubsection*{Extensions}
+    \begin{enumerate}
+        \item Gast ändert seine Wünsche:
+        \begin{itemize}
+            \item[a.] Der Individualgast möchte nun ein anderes Zimmer belegen (upgrade)
+            \begin{itemize}
+                \item[i.] Es wird überprüft ob das gewünschte Zimmer zur Verfügung steht.
+                \item[ii.] Der Individualgast wird auf das neue Zimmer gebucht (UseCase_WalkIn)
+            \end{itemize}
+        \end{itemize}
+    \end{enumerate}
+
+    \subsubsection{Sequenz Diagramme}
+    \subsubsection{Kontrakte}
+\end{document}
