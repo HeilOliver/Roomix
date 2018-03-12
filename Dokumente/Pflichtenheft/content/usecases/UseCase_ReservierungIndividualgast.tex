@@ -31,8 +31,6 @@
         \item Der Rezeptionist gibt den vom Individualgast erhaltenen Zeitraum und die gewünschten Präferenzen in das System ein.
         \item Das System liefert dem Rezeptionisten die gewünschten Informationen ob und welche Zimmer in welcher Kategorie frei sind.
         \item Der Individualgast bestätigt, dass er eines dieser Zimmer zum gewünschten Zeitraum belegen möchte und keine weiteren Zimmer reservieren möchte.
-        \item Der Front-Office Mitarbeiter gibt den Preis des Zimmers an.
-        \item Das System überprüft den eingegebenen Preis auf die Korrektheit (darf nicht unter dem Standardpreis sein).
         \item Die Zusatzpakete werden gebucht (UseCase: Zusatzpakete bestellen).
         \item Der Individualgast wird im System angelegt (UseCase: Kunde/Gast anlegen).
         \item Der Individualgast überprüft die eingegebenen Daten und bestätigt die Reservierung.
@@ -47,7 +45,7 @@
                        \item[a.] Das System zeigt an, dass kein Zimmer mehr verfügbar ist und der Rezeptionist hat die Berechtigung zu überbuchen.
                             \begin{itemize}
                                 \item[i.] Die Reservierung wird an dieser Stelle fortgesetzt
-                                \item[ii.] Punkt 5 des Main Success Szenarios wird aufgerufen
+                                \item[ii.] Punkt 4 des Main Success Szenarios wird aufgerufen
                             \end{itemize}
                        \item[b.] Das System zeigt an, dass kein Zimmer mehr verfügbar ist und der Rezeptionist hat nicht die Berechtigung zu überbuchen.
                             \begin{itemize}
@@ -66,7 +64,7 @@
                 \item[a.] Der Gast ist Gast des Hauses
                 \begin{itemize}
                     \item[i.] Der Preis wird vom Rezeptionisten auf 0 gesetzt und die Reservierung auf "Gast des Hauses" gesetzt.
-                    \item[ii.] Punkt 6 des Main Success Szenarios wird aufgerufen
+                    \item[ii.] Punkt 5 des Main Success Szenarios wird aufgerufen
                 \end{itemize}
             \end{itemize}
         \item Preis überprüfen
@@ -75,7 +73,7 @@
             \begin{itemize}
                 \item[i.] Das System signalisiert dem Front-Office Mitarbeiter, dass ein Fehler vorliegt und was der Grund dafür ist
                 \item[ii.] Der Front-Office Mitarbeiter gibt den Preis erneut ein bis das System die eingebenen Daten annimmt.
-                \item[iii.] Punkt 7 des Main Success Szenarios wird aufgerufen
+                \item[iii.] Punkt 5 des Main Success Szenarios wird aufgerufen
             \end{itemize}
         \end{itemize}
         \setcounter{enumi}{8}
