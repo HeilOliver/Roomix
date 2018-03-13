@@ -1,0 +1,15 @@
+
+.idea/modules.xml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/Roomanizer.iml
+.idea/vcs.xml
+.idea/workspace.xml
+Pflichtenheft/.idea/workspace.xml
+auxil/Plichtenheft.aux
+*.lof
+auxil/Plichtenheft.log
+auxil/Plichtenheft.lot
+auxil/Plichtenheft.out
+auxil/Plichtenheft.toc
+out/Plichtenheft.pdf
+out/Plichtenheft.synctex.gz
