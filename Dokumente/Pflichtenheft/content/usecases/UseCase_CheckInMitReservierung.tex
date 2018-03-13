@@ -1,0 +1,51 @@
+%%
+%% Author: Robert
+%% 08.03.2018
+%%
+
+\documentclass[./detailed_overview_usecases.tex]{subfiles}
+\begin{document}
+
+    \subsection{Check-In mit vorhergehender Reservierung}
+    \subsubsection{Detaillierte Benutzungsfallbeschreibungen}
+    \textit{Primary Actor: Front-Office Personal}
+    % describe actor here
+    \\
+    \textit{Stakeholder and Interests:}
+    \begin{itemize}
+        % zu allgemein ! und heißt es jetzt Front-Office Mitarbeiter oder Rezeptionist?
+        \item[-] Front-Office Personal: schnelle, fehlerfreie und einfache Abwicklung des CheckIns.
+        \item[-] Individualgast: möchte eine schnelle Schlüsselübergabe ohne Komplikationen.
+    \end{itemize}
+
+    \subsubsection*{Preconditions}
+    Der Individualgast hat bereits eine Reservierung getätigt.
+    \subsubsection*{Postconditions}
+    %post conditions text
+    Der Individualgast erhält die Schlüssel für sein reserviertes Zimmer
+
+    \subsubsection*{Main Success Scenario}
+    \begin{enumerate}
+        \item Der Individualgast möchte seine Reservierung nun in Anspruch nehmen.
+        \item Das Front-Office Personal bestätigt die vorliegende Reservierung.
+        \item Der Individualgast bezahlt die Anzahlung (UseCase_Akonto buchen)
+        \item Das Front-Office Personal übergibt den Schlüssel für das passende Zimmer an den Individualgast.
+    \end{enumerate}
+
+    \subsubsection*{Extensions}
+    \begin{enumerate}
+        \item Gast ändert seine Wünsche:
+        \begin{itemize}
+            \item[a.] Der Individualgast möchte nun ein anderes Zimmer belegen (upgrade)
+            \begin{itemize}
+                \item[i.] Es wird überprüft ob das gewünschte Zimmer zur Verfügung steht.
+                \item[ii.] Der Individualgast wird auf das neue Zimmer gebucht (UseCase WalkIn)
+            \end{itemize}
+            \item[b.] Der Individualgast möchte seinen Aufenthalt verlängern oder verkürzen
+            \item[c.] Der Individualgast möchte Zusatzleistungen buchen
+        \end{itemize}
+    \end{enumerate}
+
+    \subsubsection{Sequenz Diagramme}
+    \subsubsection{Kontrakte}
+\end{document}

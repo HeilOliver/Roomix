@@ -1,5 +1,5 @@
 %%
-%% Author: Moritz
+%% Author: Robert
 %% 08.03.2018
 %%
 
@@ -8,14 +8,14 @@
 
     \subsection{Reservierung Individualgast}
     \subsubsection{Detaillierte Benutzungsfallbeschreibungen}
-    \textit{Primary Actor: Rezeptionist}
+    \textit{Primary Actor: Front/Back-Office Personal}
     % describe actor here
     \\
     \textit{Stakeholder and Interests:}
     \begin{itemize}
-        \item[-] Rezeptionist: schnelle und fehlerfreie Abwicklung der Reservierung, neuen Kunden anlegen, einfach Handhabung der Software.
-        \item[-] Individualgast: Reservierung eines Zimmers ohne Komplikationen hinsichtlich seines Aufenthaltes, Möglichkeit Zusatzleistungen zu buchen.
-        \item[-] Hotelmanager: Möchte ebenfalls, dass der Rezeptionist im Stande ist Reservierung schnell und fehlerfrei abzuwickeln, sodass der Kunde zufrieden ist.
+        \item[-] Front/Back-Office Personal: schnelle, fehlerfreie und einfache Abwicklung der Reservierung, Zimmerzuteilung, Zusatzleistungen buchen, Änderungen an bestehenden Reservierungen vornehmen und Möglichkeit Zwischenrechnung sowie Reservierungsbestätigung zu drucken.
+        \item[-] Individualgast: Reservierung eines Zimmers ohne Komplikationen hinsichtlich seines Aufenthaltes, Möglichkeit Zusatzleistungen zu buchen. Möchte eventuell Zwischenrechnung und Reservierungsbestätigung.
+        \item[-] Hotelmanager: Möchte ebenfalls, dass der Rezeptionist im Stande ist Reservierung schnell und fehlerfrei abzuwickeln, sodass der Kunde zufrieden ist. Möchte alle Statistiken in Zusammenhang mit der Reservierung abrufen.
     \end{itemize}
 
     \subsubsection*{Preconditions}
@@ -23,47 +23,66 @@
 
     \subsubsection*{Postconditions}
     %post conditions text
-    Zimmer ist für einen bestimmten Zeitraum auf den Individualgast reserviert
+    Das Zimmer ist für einen bestimmten Zeitraum auf den Individualgast reserviert
 
     \subsubsection*{Main Success Scenario}
     \begin{enumerate}
         \item Der Individualgast nennt den gewünschten Reservierungszeitraum und die Art des Zimmers (Kategorie, WLAN, Haustiere usw.)
-        \item Der Rezeptionist gibt den vom Individualgast erhaltenen Zeitraum und die gewünschten Präferenzen in das System ein.
-        \item Das System liefert dem Rezeptionisten die gewünschten Informationen ob und welche Zimmer frei sind.
-        \item Der Individualgast bestätigt, dass er eines dieser Zimmer zum gewünschten Zeitraum belegen möchte.
+        \item Das Front/Back-Office Personal gibt den vom Individualgast erhaltenen Zeitraum und die gewünschten Präferenzen in das System ein.
+        \item Das System liefert dem Rezeptionisten die gewünschten Informationen ob und welche Zimmer in welcher Kategorie frei sind.
+        \item Der Individualgast bestätigt, dass er eines dieser Zimmer zum gewünschten Zeitraum belegen möchte und keine weiteren Zimmer reservieren möchte.
         \item Die Zusatzpakete werden gebucht (UseCase: Zusatzpakete bestellen).
-        \item Der Individualgast wird im System angelegt (UseCase_Kunde/Gast anlegen).
+        \item Der Individualgast wird im System angelegt (UseCase: Kunde/Gast anlegen).
         \item Der Individualgast überprüft die eingegebenen Daten und bestätigt die Reservierung.
-        \item Der Rezeptionist schließt die Reservierung ab.
+        \item Das Front/Back-Office Personal schließt die Reservierung ab und druckt eine Reservierungsbestätigung für den Gast.
     \end{enumerate}
 
     \subsubsection*{Extensions}
     \begin{enumerate}
-        \setcounter{enumi}{3}
-        \item Überbuchung: \begin{itemize}
-                       \item[a.] Das System zeigt an, dass kein Zimmer mehr verfügbar ist und der Rezeptionist hat die Berechtigung zu überbuchen.
-                       \begin{itemize}
-                           \item[i.] Die Reservierung wird an dieser Stelle fortgesetzt
-                           \item[ii.] Punkt 9 des Main Success Szenarios wird aufgerufen
-                       \end{itemize}
-                       \item[b.] Das System zeigt an, dass kein Zimmer mehr verfügbar ist und der Rezeptionist hat nicht die Berechtigung zu überbuchen.
-                       \begin{itemize}
-                           \item[i.] Der Individualgast kann einen anderen Zeitraum oder andere Präferenzen auswählen.
-                           \item[ii.] Punkt 2 des Main Success Szenarios wird aufgerufen
-                       \end{itemize}
+        \setcounter{enumi}{2}
+        \item Überbuchung:
+                \begin{itemize}
+                       \item[a.] Das System zeigt an, dass kein Zimmer mehr verfügbar ist und das Front/Back-Office Personal hat die Berechtigung zu überbuchen.
+                            \begin{itemize}
+                                \item[i.] Die Reservierung wird an dieser Stelle fortgesetzt
+                                \item[ii.] Punkt 4 des Main Success Szenarios wird aufgerufen
+                            \end{itemize}
+                       \item[b.] Das System zeigt an, dass kein Zimmer mehr verfügbar ist und das Front/Back-Office Personal hat nicht die Berechtigung zu überbuchen.
+                            \begin{itemize}
+                                \item[i.] Der Individualgast kann einen anderen Zeitraum oder andere Präferenzen auswählen.
+                                \item[ii.] Punkt 2 des Main Success Szenarios wird aufgerufen
+                            \end{itemize}
                        \item[c.] Das System zeigt an, dass keine Überbuchungen mehr möglich sind.
-                       \begin{itemize}
-                           \item[i.] Der Individualgast kann einen anderen Zeitraum oder andere Präferenzen auswählen.
-                           \item[ii.] Punkt 2 des Main Success Szenarios wird aufgerufen
-                       \end{itemize}
+                            \begin{itemize}
+                                \item[i.] Der Individualgast kann einen anderen Zeitraum oder andere Präferenzen auswählen.
+                                \item[ii.] Punkt 2 des Main Success Szenarios wird aufgerufen
+                             \end{itemize}
+                \end{itemize}
+        \setcounter{emuni}{4}
+        \item Preis festlegen
+            \begin{itemize}
+                \item[a.] Der Gast ist Gast des Hauses
+                \begin{itemize}
+                    \item[i.] Der Preis wird vom Front/Back-Office Personal auf 0 gesetzt und die Reservierung auf "Gast des Hauses" gesetzt.
+                    \item[ii.] Punkt 5 des Main Success Szenarios wird aufgerufen
+                \end{itemize}
+            \end{itemize}
+        \item Preis überprüfen
+        \begin{itemize}
+            \item[a.] Der eingebene Preis ist ungültig
+            \begin{itemize}
+                \item[i.] Das System signalisiert dem Front-Office Mitarbeiter, dass ein Fehler vorliegt und was der Grund dafür ist
+                \item[ii.] Das Front/Back-Office Personal gibt den Preis erneut ein bis das System die eingebenen Daten annimmt.
+                \item[iii.] Punkt 5 des Main Success Szenarios wird aufgerufen
+            \end{itemize}
         \end{itemize}
-        \setcounter{enumi}{7}
+        \setcounter{enumi}{8}
         \item Unvollständige Daten: \begin{itemize}
-                               \item[a.] Der Individualgast bestätigt die vorliegende Reservierung nicht, da bestimmte daten fehlen oder nicht korrekt sind.
-                               \begin{itemize}
-                                   \item[i.] Die Reservierung wird an der Stelle neu gestartet an dieser der Fehler aufgetreten ist.
-                               \end{itemize}
-        \end{itemize}
+                                        \item[a.] Der Individualgast bestätigt die vorliegende Reservierung nicht, da bestimmte Daten fehlen oder nicht korrekt sind.
+                                        \begin{itemize}
+                                            \item[i.] Die Reservierung wird an der Stelle neu gestartet an dieser der Fehler aufgetreten ist.
+                                        \end{itemize}
+                                    \end{itemize}
     \end{enumerate}
 
     \subsubsection{Sequenz Diagramme}
