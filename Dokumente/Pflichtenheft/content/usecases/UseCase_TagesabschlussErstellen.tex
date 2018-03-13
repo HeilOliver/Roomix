@@ -1,0 +1,49 @@
+%%
+%% Author: Robert
+%% 08.03.2018
+%%
+
+\documentclass[./detailed_overview_usecases.tex]{subfiles}
+\begin{document}
+
+    \subsection{Tagesabschluss erstellen}
+    \subsubsection{Detaillierte Benutzungsfallbeschreibungen}
+    \textit{Primary Actor: Back-Office Personal}
+    % describe actor here
+    \\
+    \textit{Stakeholder and Interests:}
+    \begin{itemize}
+        \item[-] Back-Office Personal: einfache Abwicklung des Abschlusses und ersichtliche Übersicht des gewünschten Zeitraumes.
+        \item[-] Hotelmanager: ersichtliche Übersicht des gewünschten Zeitraumes.
+        \item[-] Buchaltung: ersichtliche Übersicht des gewünschten Zeitraumes.
+    \end{itemize}
+
+    \subsubsection*{Preconditions}
+    Der Individualgast hat bereits eine Reservierung getätigt, oder ist bereits Gast des Hotels
+    \subsubsection*{Postconditions}
+    %post conditions text
+    Die Extraleistung ist auf das jeweilige Zimmer gebucht.
+
+    \subsubsection*{Main Success Scenario}
+    \begin{enumerate}
+        \item Der Individualgast möchte eine Zusatzleistung auf sein Zimmer buchen.
+        \item Das Front-Office Personal gibt die gewünschten Zusatzleistungen in das System ein.
+        \item Der Individualgast bestätigt die ausgewählten Leistungen.
+        \item Das Front-Office Personal bucht die ausgewählten Zusatzleistungen auf das Zimmer des Kunden.
+    \end{enumerate}
+
+    \subsubsection*{Extensions}
+    \begin{enumerate}
+        \item Keine Reservierung/Check in:
+        \begin{itemize}
+            \item[a.] Der Individualgast hat vorher keine Reservierung getätigt bzw. ist noch kein Gast des Hotels.
+            \begin{itemize}
+                \item[i.] Es muss zuerst eine Reservierung erfolgen.
+                \item[ii.] Es muss zuerst ein Check in erfolgen.
+            \end{itemize}
+        \end{itemize}
+    \end{enumerate}
+
+    \subsubsection{Sequenz Diagramme}
+    \subsubsection{Kontrakte}
+\end{document}
