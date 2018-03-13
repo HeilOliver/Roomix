@@ -15,7 +15,8 @@
     Stakeholder and Interests:
     \begin{itemize}
         \item[-] Back-Office Personal: möchte einen Kassenabschluss
-        machen um den Soll Betrag gegen seine Kasse zu überprüfen.
+        machen um den Soll Betrag gegen seine Kasse zu überprüfen und dei Kasse für
+        die nächste Person vorzubereiten.
         \item[-] Hotelmanager: möchte das die korrekten Bestände in
         den Kassen vorhanden sind und möchte über das vorhandene Barvermögen
         kenntnis haben.
@@ -27,15 +28,19 @@
 
     \subsubsection*{Postconditions}
     Eine Kasse ist geschlossen und der errechnete bestand muss mit dem
-    Barbestand übereinstimmen.
+    Barbestand übereinstimmen. Außerdem werden alle vorhandenen Schecks und
+    Kreditkarten abrechnungen der Buchhaltung übergeben.
+    Die Kasse enthält nur den in den Stamdaten hinterlegten Betrag.
 
     \subsubsection*{Main Success Scenario}
     \begin{enumerate}
         \item Der/Die Anwender/In markiert die Kasse im System als Geschlossen
         \item Das System errechnet soll zustand der Kasse und stellt eine druckbare
-        version davon zu verfügung
+        version davon zu verfügung. Zusätzlich werden Informationen über Schecks und Kreditkarten
+        aufgeführt.
         \item Der/Die Anwender/In vergleicht denn errechneten Soll Betrag mit dem
-        Ist Betrag
+        Ist Betrag. Außerdem werden Schecks und Kredidkarten rechnungen der Buchhaltung übergeben.
+        \item Der/Die Anwender/In füllt oder leert die Kasse auf den in den Stammdaten hinterlegten Betrag.
     \end{enumerate}
 
     \subsubsection*{Extensions}
