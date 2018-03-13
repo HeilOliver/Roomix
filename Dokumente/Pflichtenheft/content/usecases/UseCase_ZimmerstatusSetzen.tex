@@ -18,7 +18,7 @@
     \\
     Stakeholder and Interests:
     \begin{itemize}
-        \item[-] Front/Back-Office Personal: Kann das Zimmer beim Check-In vom Kunden bezogen werden.
+        \item[-] Front/Back-Office Personal: Möchte wissen ob das Zimmer beim Check-In vom Kunden bezogen werden kann.
         \item[-] Reinigungsfachkraft: Welche Zimmer gereinigt werden können.
     \end{itemize}
 
@@ -29,7 +29,8 @@
 
     \subsubsection*{Main Success Scenario}
     \begin{enumerate}
-        \item Zimmerstatus kann auf folgende Statusse geändert werden
+        % ... es heißt wohl immer Status egal ob Singular oder Plural: https://www.duden.de/rechtschreibung/Status
+        \item Zimmerstatus kann auf folgende Status geändert werden
         \begin{itemize}
             \item[a.] BESETZT – GEREINIGT
             \item[b.] BESETZT – UNGEREINIGT
@@ -37,7 +38,7 @@
             \item[d.] FREI – UNGEREINIGT
             \item[f.] OUT OF ORDER
         \end{itemize}
-        \item Der Mitarbeiter bekommt die Information auf welchen Status das Zimmer gesetzt.
+        \item Der Mitarbeiter fragt die Information auf welchen Status das Zimmer gesetzt ist ab. Dazu wird die Zimmernummer eingegeben oder aus einer Liste aller Zimmer gewählt.
         \item Das System zeigt den momentanen Status der Zimmer an.
         \item Der Mitarbeiter trägt den gewünschten Status in das System ein.
         \item Das System setzt den neuen Status.
