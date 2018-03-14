@@ -27,14 +27,14 @@
     \subsubsection*{Main Success Scenario}
     \begin{enumerate}
         \item Das Front-Office Personal teilt dem System den Checkout eines Individualgastes mit.
-        \item Das System erstellt eine Zwischenrechnung (UseCase_ZwischenrechnungErstellen)
+        \item Das System erstellt eine Zwischenrechnung (UseCase: ZwischenrechnungErstellen)
         \item Der Individualgast überprüft die Einzelheiten der Zwischenrechnung.
         \item Das Front-Office Personal teilt dem System mit die Rechnung zu legen.
-        \item Das System legt die Rechnung (UseCase_RechnungLegen).
+        \item Das System legt die Rechnung (UseCase: RechnungLegen).
         \item Der Individualgast bezahlt die Rechnung.
-        \item Das System erstellt die Rechnung (UseCase_RechnungErstellen).
+        \item Das System erstellt die Rechnung (UseCase: RechnungErstellen).
         \item Das Front-Office Personal händigt die Rechnung an den Individualgast aus.
-        \item Der Zimmerstatus wird auf UNGEREINIGT gesetzt (UseCase_ZimmerstatusÄndern).
+        \item Der Zimmerstatus wird auf UNGEREINIGT gesetzt (UseCase: ZimmerstatusÄndern).
     \end{enumerate}
 
     \subsubsection*{Extensions}
@@ -43,7 +43,7 @@
                 \begin{itemize}
                        \item[a.] Der Individualgast möchte seinen Aufenthalt verlängern.
                             \begin{itemize}
-                                \item[i.] Der Aufenthalt wird verlängert (UseCase_AufenthaltVerlängern)
+                                \item[i.] Der Aufenthalt wird verlängert (UseCase: AufenthaltVerlängern)
                             \end{itemize}
                 \end{itemize}
         \setcounter{emuni}{2}
@@ -53,7 +53,7 @@
                 \begin{itemize}
                     \item[i.] Der Fehler wird auf der Zwischenrechnung korrigiert.
                     \item[ii.] Es kann aus der Sicht des Personals kein Fehler festgestellt werden.
-                    \item[iii.] Zwischenrechnung wird erstellt (UseCase_ZwischenrechnungErstellen).
+                    \item[iii.] Zwischenrechnung wird erstellt (UseCase: ZwischenrechnungErstellen).
                     \item[iv.] Der Individualgast überprüft die Zwischenrechnung.
                 \end{itemize}
             \end{itemize}
@@ -69,14 +69,14 @@
         \begin{itemize}
             \item[a.] Dem Individualgast fällt ein Fehler auf der bereits gelegten Rechnung auf.
             \begin{itemize}
-                \item[i.] Die bereits gelegte Rechnung wird storniert (UseCase_RechnungStornieren)
+                \item[i.] Die bereits gelegte Rechnung wird storniert (UseCase: RechnungStornieren)
             \end{itemize}
         \end{itemize}
         \setcounter{enumi}{5}
         \item Bezahlung: \begin{itemize}
                              \item[a.] Der Individualgast möchte, dass ihm die Rechnung zugesendet wird.
                              \begin{itemize}
-                                 \item[i.] Die Rechnung wird geteilt (UseCase_RechnungTeilen)
+                                 \item[i.] Die Rechnung wird geteilt (UseCase: RechnungTeilen)
                                  \item[i.] Die Rechnung wird gesendet.
                              \end{itemize}
         \end{itemize}
