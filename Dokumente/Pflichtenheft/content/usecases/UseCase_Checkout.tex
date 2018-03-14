@@ -13,16 +13,18 @@
     \\
     \textit{Stakeholder and Interests:}
     \begin{itemize}
-        \item[-] Front-Office Personal: Möchte dem Individualgast eine unkomplizierte Abreise ermöglichen.
-        \item[-] Individualgast: Möchte Informationen über seinen Aufenthalt erhalten und anschließend abreisen.
+        \item[-] Front-Office Personal: Möchte dem Individualgast die Abreise ermöglichen und das Zimmer im System freigeben für andere Gäste.
+        \item[-] Individualgast: Möchte Informationen über seinen Aufenthalt erhalten und anschließend abreisen. Gegebenenfalls
+        möchte der Gast noch die Rechnung splitten und eine Zwischenrechnung erhalten.
     \end{itemize}
 
     \subsubsection*{Preconditions}
-    Der Individualgast hatte einen Aufenthalt im Hotel und möchte nun Abreisen.
+    Der Individualgast hatte einen Aufenthalt im Hotel und möchte nun abreisen.
 
     \subsubsection*{Postconditions}
     %post conditions text
-    Die Abreise des Individualgastes wird ermöglicht.
+    Die Abreise des Individualgastes wird ermöglicht und der Zimmerstatus wurde geändert,
+    sodass es im System weiterverwendet werden kann.
 
     \subsubsection*{Main Success Scenario}
     \begin{enumerate}
@@ -31,10 +33,11 @@
         \item Der Individualgast überprüft die Einzelheiten der Zwischenrechnung.
         \item Das Front-Office Personal teilt dem System mit die Rechnung zu legen.
         \item Das System legt die Rechnung (UseCase: RechnungLegen).
-        \item Der Individualgast bezahlt die Rechnung.
+        \item Der Individualgast bestätigt und bezahlt die Rechnung.
         \item Das System erstellt die Rechnung (UseCase: RechnungErstellen).
         \item Das Front-Office Personal händigt die Rechnung an den Individualgast aus.
-        \item Der Zimmerstatus wird auf UNGEREINIGT gesetzt (UseCase: ZimmerstatusÄndern).
+        \item Der Zimmerstatus wird vom System auf UNGEREINIGT gesetzt (UseCase: ZimmerstatusÄndern) und je nach
+        Belegungsplan auf BESETZT oder FREI geändert.
     \end{enumerate}
 
     \subsubsection*{Extensions}
@@ -43,7 +46,7 @@
                 \begin{itemize}
                        \item[a.] Der Individualgast möchte seinen Aufenthalt verlängern.
                             \begin{itemize}
-                                \item[i.] Der Aufenthalt wird verlängert (UseCase: AufenthaltVerlängern)
+                                \item[i.] Der Aufenthalt wird verlängert (UseCase: Aufenthalt verlängern)
                             \end{itemize}
                 \end{itemize}
         \setcounter{emuni}{2}
@@ -53,30 +56,30 @@
                 \begin{itemize}
                     \item[i.] Der Fehler wird auf der Zwischenrechnung korrigiert.
                     \item[ii.] Es kann aus der Sicht des Personals kein Fehler festgestellt werden.
-                    \item[iii.] Zwischenrechnung wird erstellt (UseCase: ZwischenrechnungErstellen).
+                    \item[iii.] Zwischenrechnung wird erstellt (UseCase: Zwischenrechnung erstellen).
                     \item[iv.] Der Individualgast überprüft die Zwischenrechnung.
                 \end{itemize}
             \end{itemize}
         \setcounter{emuni}{2}
-        \item Fehler auf der Zwischenrechnung:
+        \item Rechnung teilen:
         \begin{itemize}
             \item[a.] Der Individualgast möchte die Rechnung teilen.
             \begin{itemize}
-                \item[i.] Die Rechnung wird geteilt (UseCase_RechnungTeilen).
+                \item[i.] Die Rechnung wird geteilt (UseCase: Rechnung teilen).
             \end{itemize}
         \end{itemize}
         \item Fehler auf der Endrechnung:
         \begin{itemize}
-            \item[a.] Dem Individualgast fällt ein Fehler auf der bereits gelegten Rechnung auf.
+            \item[a.] Dem Individualgast fällt ein Fehler auf der bereits erstellten Rechnung auf.
             \begin{itemize}
-                \item[i.] Die bereits gelegte Rechnung wird storniert (UseCase: RechnungStornieren)
+                \item[i.] Die bereits erstellte Rechnung wird storniert (UseCase: Rechnung stornieren)
             \end{itemize}
         \end{itemize}
         \setcounter{enumi}{5}
         \item Bezahlung: \begin{itemize}
                              \item[a.] Der Individualgast möchte, dass ihm die Rechnung zugesendet wird.
                              \begin{itemize}
-                                 \item[i.] Die Rechnung wird geteilt (UseCase: RechnungTeilen)
+                                 \item[i.] Die Rechnung wird geteilt (UseCase: Rechnung teilen)
                                  \item[i.] Die Rechnung wird gesendet.
                              \end{itemize}
         \end{itemize}
