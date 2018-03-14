@@ -1,0 +1,43 @@
+%%
+%% Author: Oliver Heil
+%% 08.03.2018
+%%
+
+\documentclass[./detailed_overview_usecases.tex]{subfiles}
+\begin{document}
+
+    \subsection{Reservierung Ändern}
+    \subsubsection{Detaillierte Benutzungsfallbeschreibungen}
+    \textit{Primary Actor: Front/Back-Office Personal}
+    % describe actor here
+    \\
+    \textit{Stakeholder and Interests:}
+    \begin{itemize}
+        \item[-] Front/Back-Office Personal: möchte für eine bestehende Reservierung abändern
+        \item[-] Individualgast: Möchte seine Reservierungsdetails ändern.
+    \end{itemize}
+
+    \subsubsection*{Preconditions}
+    Es muss eine bestehende offene Reservierung vorhanden sein.
+
+    \subsubsection*{Postconditions}
+    %post conditions text
+    Die Reservierung hat wurde angepasst.
+
+    \subsubsection*{Main Success Scenario}
+    \begin{enumerate}
+        \item Das Front/Back-Office Personal tätigt die gewünschte änderung.
+        \item Das System speichert die änderungen ab.
+    \end{enumerate}
+
+    \subsubsection*{Extensions}
+    \begin{enumerate}
+        \item Die änderung an der Reservierung ist nicht möglich
+        \begin{itemize}
+            \item[a.] Die Änderung wird vom System nicht gespeichert.
+            \item[a.] Das Front/Back-Office Personal muss mit dem Gast eine lösung finden.
+        \end{itemize}
+    \end{enumerate}
+    \subsubsection{Sequenz Diagramme}
+    \subsubsection{Kontrakte}
+\end{document}
