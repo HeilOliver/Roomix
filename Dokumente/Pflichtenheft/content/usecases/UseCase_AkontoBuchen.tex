@@ -19,7 +19,7 @@
     \end{itemize}
 
     \subsubsection*{Preconditions}
-    Der Gast muss bereits ein zugewiesenes Zimmer besitzen auf das die getätigte Zahlung gebucht werden kann.
+    Der Gast muss bereits ein zugewiesenes Zimmer besitzen oder eine Reservierung mit einer Anzahlungs Option auf das die getätigte Zahlung gebucht werden kann.
     Zusätzlich muss ein Betrag für eine AKonto Zahlung bestehen (Vorauszahlung).
 
     \subsubsection*{Postconditions}
@@ -30,8 +30,8 @@
         \item Der/Die Anwender/In verlangt vom Kunden den Betrag.
         \item Der Gast begleicht die ausstehende Summe mit einer oder mehrerer von den verschiedenen verfügbaren Zahlungsarten.
         \item Der/Die Anwender/In bestätigt die Zahlung unter der Eingabe einer
-        Zimmernummer, Zahlungsart und ggf. eine Buchungsnummer.
-        \item Das System bucht den Betrag als Haben auf das gewünschte Zimmer
+        Zimmernummer oder Reservierungsnummer, Zahlungsart und ggf. eine Buchungsnummer.
+        \item Das System bucht den Betrag als Haben auf das gewünschte Zimmer oder die Reservierung und gegebenenfalls wird vom System die Option zu der Reservierung bestätigt
         \item Das System stellt dem Anwender eine druckbare Zahlungsbestätigung zu Verfügung
     \end{enumerate}
 
