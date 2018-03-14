@@ -1,0 +1,48 @@
+%%
+%% Author: Robert
+%% 08.03.2018
+%%
+
+\documentclass[./detailed_overview_usecases.tex]{subfiles}
+\begin{document}
+
+    \subsection{Rechnung erstellen}
+    \subsubsection{Detaillierte Benutzungsfallbeschreibungen}
+    \textit{Primary Actor: Front/Back-Office Personal}
+    % describe actor here
+    \\
+    \textit{Stakeholder and Interests:}
+    \begin{itemize}
+        \item[-] Front/Back-Office Personal: Möchte dem Gast mitteilen was er zu zahlen hat.
+        \item[-] Individualgast: Möchte eine Bestätigung über eine getätigte Zahlung.
+    \end{itemize}
+
+    \subsubsection*{Preconditions}
+    Die Rechnung muss vom Individualgast bestätigt worden sein und vom Personal gelegt. Der Individualgast muss seinen Aufenthalt bezahlt haben.
+
+    \subsubsection*{Postconditions}
+    %post conditions text
+    Der Individualgast hat eine Bestätigung seiner Zahlung.
+
+    \subsubsection*{Main Success Scenario}
+    \begin{enumerate}
+        \item Das Personal teilt dem System mit eine Rechnung zu erstellen.
+        \item Das System überprüft die getätigte Zahlung und liefert die erstellte Rechnung mit den gewünschten Informationen.
+        \item Das Personal händigt dem Individualgast die erstellte Rechnung aus.
+    \end{enumerate}
+
+    \subsubsection*{Extensions}
+    \begin{enumerate}
+        \setcounter{enumi}{1}
+        \item Kredit:
+            \begin{itemize}
+            \item[a.] Das System zeigt an, dass der Gast die Rechnung zugesendet haben möchte.
+            \begin{itemize}
+                \item[i.] Der Rechnungsstatus wird auf Kredit gesetzt.
+                \item[ii.] Die Rechnung wird zugesendet.
+            \end{itemize}
+        \end{itemize}
+    \end{enumerate}
+    \subsubsection{Sequenz Diagramme}
+    \subsubsection{Kontrakte}
+\end{document}
