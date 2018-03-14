@@ -14,13 +14,13 @@
     \\
     Stakeholder and Interests:
     \begin{itemize}
-        \item[-] Front-Office Personal: möchte einen Betrag (z.B. Vorrauskasse) direkt auf ein Zimmer buchen
-        \item[-] Gast: möchte eine Beleg für seine getätigte zahlung erhalten
+        \item[-] Front-Office Personal: möchte einen Betrag (z.B. Vorauskasse) direkt auf ein Zimmer buchen
+        \item[-] Gast: möchte einen Beleg für seine getätigte Zahlung erhalten
     \end{itemize}
 
     \subsubsection*{Preconditions}
     Der Gast muss bereits ein zugewiesenes Zimmer besitzen auf das die getätigte Zahlung gebucht werden kann.
-    Zusätzlich muss ein Betrag für eine AKonto zahlung bestehen (Vorauszahlung).
+    Zusätzlich muss ein Betrag für eine AKonto Zahlung bestehen (Vorauszahlung).
 
     \subsubsection*{Postconditions}
     Ein Haben Betrag wird auf ein Zimmer gebucht.
@@ -28,15 +28,26 @@
     \subsubsection*{Main Success Scenario}
     \begin{enumerate}
         \item Der/Die Anwender/In verlangt vom Kunden den Betrag.
-        \item Der Gast begleicht die ausstehende Summe mit einen von den verschiedenen Zahlungsarten.
-        \item Der/Die Anwender/In bestätigt die Zahlung unter der eingabe einer
+        \item Der Gast begleicht die ausstehende Summe mit einer oder mehrerer von den verschiedenen verfügbaren Zahlungsarten.
+        \item Der/Die Anwender/In bestätigt die Zahlung unter der Eingabe einer
         Zimmernummer, Zahlungsart und ggf. eine Buchungsnummer.
         \item Das System bucht den Betrag als Haben auf das gewünschte Zimmer
-        \item Das System stellt dem Anwender eine druckbare Zahlungsbestätigung zu verfügung
+        \item Das System stellt dem Anwender eine druckbare Zahlungsbestätigung zu Verfügung
     \end{enumerate}
 
     \subsubsection*{Extensions}
-    -
+    \begin{enumerate}
+        \setcounter{enumi}{1}
+        \item \begin{itemize}
+                  \item[a.] Die gewünschte Zahlungsart ist nicht verfügbar.
+                  \begin{itemize}
+                      \item[i.] Der/Die Anwender/In findet eine Alternative Zahlungsmöglichkeit zusammen mit dem Gast.
+                  \end{itemize}
+                  \begin{itemize}
+                      \item \item[i.] Gegebenenfalls muss der UseCase abgebrochen werden, wenn der Gast den Betrag nicht begleichen kann.
+                  \end{itemize}
+        \end{itemize}
+    \end{enumerate}
 
     \subsubsection{Sequenz Diagramme}
     \subsubsection{Kontrakte}
