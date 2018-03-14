@@ -1,0 +1,87 @@
+%%
+%% Author: Robert
+%% 08.03.2018
+%%
+
+\documentclass[./detailed_overview_usecases.tex]{subfiles}
+\begin{document}
+
+    \subsection{Checkout}
+    \subsubsection{Detaillierte Benutzungsfallbeschreibungen}
+    \textit{Primary Actor: Front-Office Personal}
+    % describe actor here
+    \\
+    \textit{Stakeholder and Interests:}
+    \begin{itemize}
+        \item[-] Front-Office Personal: Möchte dem Individualgast eine unkomplizierte Abreise ermöglichen.
+        \item[-] Individualgast: Möchte Informationen über seinen Aufenthalt erhalten und anschließend abreisen.
+    \end{itemize}
+
+    \subsubsection*{Preconditions}
+    Der Individualgast hatte einen Aufenthalt im Hotel und möchte nun Abreisen.
+
+    \subsubsection*{Postconditions}
+    %post conditions text
+    Die Abreise des Individualgastes wird ermöglicht.
+
+    \subsubsection*{Main Success Scenario}
+    \begin{enumerate}
+        \item Das Front-Office Personal teilt dem System den Checkout eines Individualgastes mit.
+        \item Das System erstellt eine Zwischenrechnung (UseCase_ZwischenrechnungErstellen)
+        \item Der Individualgast überprüft die Einzelheiten der Zwischenrechnung.
+        \item Das Front-Office Personal teilt dem System mit die Rechnung zu legen.
+        \item Das System legt die Rechnung (UseCase_RechnungLegen).
+        \item Der Individualgast bezahlt die Rechnung.
+        \item Das System erstellt die Rechnung (UseCase_RechnungErstellen).
+        \item Das Front-Office Personal händigt die Rechnung an den Individualgast aus.
+        \item Der Zimmerstatus wird auf UNGEREINIGT gesetzt (UseCase_ZimmerstatusÄndern).
+    \end{enumerate}
+
+    \subsubsection*{Extensions}
+    \begin{enumerate}
+        \item Verlängerung:
+                \begin{itemize}
+                       \item[a.] Der Individualgast möchte seinen Aufenthalt verlängern.
+                            \begin{itemize}
+                                \item[i.] Der Aufenthalt wird verlängert (UseCase_AufenthaltVerlängern)
+                            \end{itemize}
+                \end{itemize}
+        \setcounter{emuni}{2}
+        \item Fehler auf der Zwischenrechnung:
+            \begin{itemize}
+                \item[a.] Dem Individualgast fällt ein Fehler auf der Zwischenrechnung auf.
+                \begin{itemize}
+                    \item[i.] Der Fehler wird auf der Zwischenrechnung korrigiert.
+                    \item[ii.] Es kann aus der Sicht des Personals kein Fehler festgestellt werden.
+                    \item[iii.] Zwischenrechnung wird erstellt (UseCase_ZwischenrechnungErstellen).
+                    \item[iv.] Der Individualgast überprüft die Zwischenrechnung.
+                \end{itemize}
+            \end{itemize}
+        \setcounter{emuni}{2}
+        \item Fehler auf der Zwischenrechnung:
+        \begin{itemize}
+            \item[a.] Der Individualgast möchte die Rechnung teilen.
+            \begin{itemize}
+                \item[i.] Die Rechnung wird geteilt (UseCase_RechnungTeilen).
+            \end{itemize}
+        \end{itemize}
+        \item Fehler auf der Endrechnung:
+        \begin{itemize}
+            \item[a.] Dem Individualgast fällt ein Fehler auf der bereits gelegten Rechnung auf.
+            \begin{itemize}
+                \item[i.] Die bereits gelegte Rechnung wird storniert (UseCase_RechnungStornieren)
+            \end{itemize}
+        \end{itemize}
+        \setcounter{enumi}{5}
+        \item Bezahlung: \begin{itemize}
+                             \item[a.] Der Individualgast möchte, dass ihm die Rechnung zugesendet wird.
+                             \begin{itemize}
+                                 \item[i.] Die Rechnung wird geteilt (UseCase_RechnungTeilen)
+                                 \item[i.] Die Rechnung wird gesendet.
+                             \end{itemize}
+        \end{itemize}
+    \end{enumerate}
+
+    \subsubsection{Sequenz Diagramme}
+    \subsubsection{Kontrakte}
+\end{document}
