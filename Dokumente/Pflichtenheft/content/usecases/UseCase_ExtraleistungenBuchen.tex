@@ -13,35 +13,29 @@
     \\
     \textit{Stakeholder and Interests:}
     \begin{itemize}
-        \item[-] Front-Office Personal: schnelle, fehlerfreie und einfache Abwicklung der Buchung von Extraleistungen.
-        \item[-] Individualgast: schnelle Buchung von Extraleistungen zu seiner bisherigen Reservierung.
+        \item[-] Front-Office Personal: möchte dem Gast ermöglichen Extraleistungen zu Buchen
+        \item[-] Individualgast: möchte Extraleistungen mit seiner Zimmernummer bezahlen.
     \end{itemize}
 
     \subsubsection*{Preconditions}
-    Der Individualgast hat bereits eine Reservierung getätigt oder ist bereits Gast des Hotels
+    Der Individualgast ist bereits Gast des Hotels.
+
     \subsubsection*{Postconditions}
     %post conditions text
     Die Extraleistung ist auf das jeweilige Zimmer gebucht.
 
     \subsubsection*{Main Success Scenario}
     \begin{enumerate}
-        \item Der Individualgast möchte eine Zusatzleistung auf sein Zimmer buchen.
-        \item Das Front-Office Personal gibt die gewünschten Zusatzleistungen in das System ein.
-        \item Der Individualgast bestätigt die ausgewählten Leistungen.
-        \item Das Front-Office Personal bucht die ausgewählten Zusatzleistungen auf das Zimmer des Kunden.
+        \item Das Front-Office Personal gibt die gewünschten Extraleistungen in das System ein.
+        \item Das System speichert die ausgewählte Extraleistung zu dem ausgewählten Zimmer.
     \end{enumerate}
 
     \subsubsection*{Extensions}
-    \begin{enumerate}
-        \item Keine Reservierung/Check in:
-        \begin{itemize}
-            \item[a.] Der Individualgast hat vorher keine Reservierung getätigt bzw. ist noch kein Gast des Hotels.
-            \begin{itemize}
-                \item[i.] Es muss zuerst eine Reservierung erfolgen.
-                \item[ii.] Es muss zuerst ein Check in erfolgen.
-            \end{itemize}
-        \end{itemize}
-    \end{enumerate}
+    \item Eine Extraleistung ist bei dem ausgewählten Zimmer nicht verfügbar
+    \begin{itemize}
+        \item[a.] Die Extraleistung kann nicht auf das gewählte Zimmer gebucht werden
+    \end{itemize}
+
 
     \subsubsection{Sequenz Diagramme}
     \subsubsection{Kontrakte}
