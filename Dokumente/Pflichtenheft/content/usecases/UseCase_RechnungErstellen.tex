@@ -18,22 +18,22 @@
     \end{itemize}
 
     \subsubsection*{Preconditions}
-    Die Rechnung muss vom Individualgast bestätigt worden sein und vom Personal gelegt. Der Individualgast muss seinen Aufenthalt bezahlt haben.
+	Die Rechnung muss vom Front/Back-Office Personal dem Individualgast vorgelegt werden und von diesem Bestätigt sein.
 
     \subsubsection*{Postconditions}
-    %post conditions text
-    Der Individualgast hat eine Bestätigung seiner Zahlung.
+    Der Individualgast hat eine Bestätigung seiner Zahlung, wenn diese nicht auf Kredit beglichen wurde.
 
     \subsubsection*{Main Success Scenario}
     \begin{enumerate}
-        \item Das Personal teilt dem System mit eine Rechnung zu erstellen.
+        \item Das Front/Back-Office Personal geht mit dem Individualgast die Rechnung durch und tätigt allfällige Änderungen (Anpassung der Anschrift, Individualgastdaten).
+		\item Der Individualgast teilt dem Front/Back-Office Personal seine gewünschte Zahlungsart mit. Das Front/Back-Office Personal trägt die Zahlungsart in das System ein und startet die Zahlung.
         \item Das System überprüft die getätigte Zahlung und liefert die erstellte Rechnung mit den gewünschten Informationen.
-        \item Das Personal händigt dem Individualgast die erstellte Rechnung aus.
+        \item Das Front/Back-Office Personal händigt dem Individualgast die erstellte Rechnung aus.
     \end{enumerate}
 
     \subsubsection*{Extensions}
     \begin{enumerate}
-        \setcounter{enumi}{1}
+        \setcounter{enumi}{2}
         \item Kredit:
             \begin{itemize}
             \item[a.] Das System zeigt an, dass der Gast die Rechnung zugesendet haben möchte.
