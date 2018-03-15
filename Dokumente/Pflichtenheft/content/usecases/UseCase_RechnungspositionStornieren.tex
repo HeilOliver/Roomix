@@ -13,23 +13,19 @@
     \\
     \textit{Stakeholder and Interests:}
     \begin{itemize}
-        \item[-] Front/Back-Office Personal: Möchte in einer gelegten Rechnung eine Position stornieren, da ein Fehler aufgetreten ist, oder die Position nicht mehr relevant ist.
-        \item[-] Buchhaltung: Wird darüber informiert, dass eine Rechnungsposition storniert wird.
+        \item[-] Front/Back-Office Personal: Möchte in einer Rechnung eine Position stornieren, da ein Fehler aufgetreten ist oder die Position nicht mehr relevant ist.
         \item[-] Individualgast: Möchte einen Fehler korrigiert, oder eine Position gestrichen haben.
     \end{itemize}
 
     \subsubsection*{Preconditions}
-    Es muss eine Rechnung gelegt worden sein (UseCase_RechnungLegen)
 
     \subsubsection*{Postconditions}
-    %post conditions text
-    Die Rechnungsposition ist storniert und befindet sich nicht mehr in der gelegten Rechnung.
+    Die Rechnungsposition ist storniert und befindet sich nicht mehr in der Rechnung.
 
     \subsubsection*{Main Success Scenario}
     \begin{enumerate}
-        \item Das Personal oder der Individualgast findet einen Fehler in der Rechnung, bzw. das Personal wird darüber informiert, dass die Rechnung nicht mehr gültig ist.
-        \item Das System storniert die bereits gelegte Rechnungposition..
-        \item Der Buchhaltung wird mitgeteilt , dass diese Rechnungposition nicht mehr gültig ist.
+        \item Das Front/Back-Office Personal oder der Individualgast findet einen Fehler in der Rechnung, beziehungsweise das Front/Back-Office Personal wird darüber informiert, dass die Rechnungsposition nicht mehr gültig ist.
+        \item Das System storniert die bereits gelegte Rechnungposition.
     \end{enumerate}
 
     \subsubsection*{Extensions}
@@ -39,7 +35,7 @@
         \begin{itemize}
             \item[a.] Die Gesamtrechnung ist nicht korrekt.
             \begin{itemize}
-                \item[i.] Es wird die gesamte Rechnung storniert (UseCase_RechnungStornieren)
+                \item[i.] Es wird die gesamte Rechnung storniert (UseCase_RechnungStornieren).
             \end{itemize}
         \end{itemize}
     \end{enumerate}

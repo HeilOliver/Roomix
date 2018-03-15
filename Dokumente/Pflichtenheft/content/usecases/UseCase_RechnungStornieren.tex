@@ -18,17 +18,16 @@
     \end{itemize}
 
     \subsubsection*{Preconditions}
-    Es muss eine Rechnung gelegt worden sein (UseCase_RechnungLegen)
+    Es muss eine Rechnung gelegt worden sein (UseCase_RechnungLegen).
 
     \subsubsection*{Postconditions}
-    %post conditions text
-    Die Rechnung ist storniert und kann neu angelegt werden.
+    Die Rechnung ist storniert und es kann eine neue angelegt werden. Die Nummer der alten Rechnung bleibt bestehen.
 
     \subsubsection*{Main Success Scenario}
     \begin{enumerate}
-        \item Das Personal oder der Individualgast findet einen Fehler in der Rechnung, bzw. das Personal wird darüber informiert, dass die Rechnung nicht mehr gültig ist.
-        \item Das System storniert die bereits gelegte Rechnung.
-        \item Der Buchhaltung wird mitgeteilt , dass diese Rechnung nicht mehr gültig ist.
+        \item Das Front/Back-Office Personal oder der Individualgast finden einen Fehler in der Rechnung, beziehungsweise das Front/Back-Office Personal wird darüber informiert, dass die Rechnung nicht mehr gültig ist.
+        \item Das System storniert die bereits gelegte Rechnung, löscht diese aber nicht.
+        \item Der Buchhaltung wird mitgeteilt, dass diese Rechnung nicht mehr gültig ist.
     \end{enumerate}
 
     \subsubsection*{Extensions}
@@ -38,7 +37,7 @@
         \begin{itemize}
             \item[a.] Auf der Rechnung ist nicht alles falsch.
             \begin{itemize}
-                \item[i.] Es wird ein Teil der Rechnung storniert (UseCase_RechnungpositionStornieren)
+                \item[i.] Es wird ein Teil der Rechnung storniert (UseCase_RechnungpositionStornieren).
             \end{itemize}
         \end{itemize}
     \end{enumerate}
