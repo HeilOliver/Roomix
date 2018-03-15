@@ -14,13 +14,13 @@
     \\
     \textit{Stakeholder and Interests:}
     \begin{itemize}
-        \item[-] Front-Office Personal: Möchte bei Zimmerwechsel, dass der Aufenthalt des Gastes geändert wird und keine Inkonsitenzen in Zusammenhang mit der neuen
+        \item[-] Front-Office Personal: Möchte bei Zimmerwechsel, dass der Aufenthalt des Gastes geändert wird und keine Inkonsistenzen in Zusammenhang mit der neuen
         Zimmernummer und der Rechnung entstehen. Außerdem sollen Sonderfälle vom System automatisch erkannt und bearbeitet werden können.
-        \item[-] Individualgast/Gast: Möchte in ein anderes freies Zimmer mit den gewünschten Zusatzleistungen und evtl. einer anderen Zimmerkategorie wechseln.
+        \item[-] Individualgast/Gast: Möchte in ein anderes freies Zimmer mit den gewünschten Zusatzleistungen und eventuell einer anderen Zimmerkategorie wechseln.
     \end{itemize}
 
     \subsubsection*{Preconditions}
-    Ein Check-In ist bereits erfolgt und der Individualgast hat seinen Aufenthalt begonnen. Es muss freie Zimmer im Hotel geben.
+    Der Check-In ist bereits erfolgt und der Individualgast hat seinen Aufenthalt begonnen. Es müssen freie Zimmer im Hotel vorhanden sein.
 
     \subsubsection*{Postconditions}
     Der Individualgast kann ein neues Zimmer beziehen, wobei alle offenen Beträge mit übernommen werden und der Gast nun mit
@@ -30,7 +30,7 @@
     \begin{enumerate}
         \item Das Front-Office Personal gibt die aktuelle Zimmernummer des Gastes oder die Belegungsnummer ein.
         \item Das System liefert alle Informationen zum aktuellen Aufenthalt (Belegung) des Gastes zur eingegebenen Zimmernummer.
-        \item Das Front-Office Personal nimmt im System eine neue Zimmerzuweisung vor nachdem die zuvor angzeigten Informationen durch den Gast bestätigt wurden.
+        \item Das Front-Office Personal nimmt im System eine neue Zimmerzuweisung vor, nachdem die zuvor angzeigten Informationen durch den Gast bestätigt wurden.
         \item Das System setzt die Belegungsnummer der aktuellen Rechnung für das ursprüngliche Zimmer auf 1 und liefert eine Auswahl freier Zimmer in den Kategorien.
         \item Das Front-Office Personal wählt ein freies Zimmer in der vom Gast gewünschten Kategorie mit den gewünschten möglichen Zusatzleistungen.
         \item Das Front-Office Personal bestätigt die vom System gezeigte Sicherheitsabfrage.
@@ -52,32 +52,32 @@
                         \end{itemize}
             \end{itemize}
         \setcounter{enumi}{2}
-        \item Der Individualgast, der das Zimmer wechseln möchte ist nicht im System unter seinem Namen vermerkt.
+        \item Der Individualgast, welcher das Zimmer wechseln möchte ist nicht im System unter seinem Namen vermerkt.
         \begin{itemize}
-            \item[a.] Der Gast der das Zimmer wechseln möchte, hat das Zimmer nicht gebucht.
+            \item[a.] Der Gast welcher das Zimmer wechseln möchte, hat das Zimmer nicht gebucht.
                 \begin{itemize}
                     \item[i.] Die verantwortliche Person (Gruppenleiter, Unternehmen) muss den Wechsel vornehmen.
                 \end{itemize}
         \end{itemize}
-        \item Das Zimmer bleibt weiterhin belegt mit Mehrfachbelegung
+        \item Das Zimmer bleibt weiterhin belegt mit einer Mehrfachbelegung.
         \begin{itemize}
-            \item[a.] Das ursprüngliche Zimmer bleibt weiterhin belegt, allerdings als Mehrfachbelegung
+            \item[a.] Das ursprüngliche Zimmer bleibt weiterhin belegt, allerdings als Mehrfachbelegung.
                 \begin{itemize}
                         \item[i.] Die Belegungsnummer wird vom System nicht geändert.
                 \end{itemize}
         \end{itemize}
         \setcounter{enumi}{4}
-        \item Es gibt kein freies Zimmer
+        \item Es gibt kein freies Zimmer.
             \begin{itemize}
                 \item[a.] In jeder Kategorie sind alle verfügbaren Zimmer bis zur Überbuchungsgrenze gebucht.
                     \begin{itemize}
                         \item[i.] Der Zimmerwechsel kann nicht vorgenommen werden. Der UseCase wird beendet.
                     \end{itemize}
-                \item[b.] Es gibt keine freien Zimmer mehr, aber Überbuchungen in der Kategorie sind noch möglich
+                \item[b.] Es gibt keine freien Zimmer mehr, aber Überbuchungen in der Kategorie sind noch möglich.
                     \begin{itemize}
                         \item[i.] Das Front-Office Personal nimmt eine Überbuchung vor.
                      \end{itemize}
-                \item[c.] Es gibt keine freien Zimmer mehr mit den gewünschten Zusatzleistungen in der Kategorie
+                \item[c.] Es gibt keine freien Zimmer mehr mit den gewünschten Zusatzleistungen in der Kategorie.
                         \begin{itemize}
                             \item[i.] Das Front-Office Personal findet eine Alternative in einer anderen Zimmerkategorie gemeinsam mit dem Individualgast.
                         \end{itemize}
