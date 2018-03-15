@@ -1,0 +1,47 @@
+%%
+%% Author: Robert
+%% 08.03.2018
+%%
+
+\documentclass[./detailed_overview_usecases.tex]{subfiles}
+\begin{document}
+
+    \subsection{Rechnung stornieren}
+    \subsubsection{Detaillierte Benutzungsfallbeschreibungen}
+    \textit{Primary Actor: Front/Back-Office Personal}
+    % describe actor here
+    \\
+    \textit{Stakeholder and Interests:}
+    \begin{itemize}
+        \item[-] Front/Back-Office Personal: Möchte die gelegte Rechnung stornieren.
+        \item[-] Buchhaltung: Wird darüber informiert, dass eine Rechnung storniert wird.
+    \end{itemize}
+
+    \subsubsection*{Preconditions}
+    Es muss eine Rechnung gelegt worden sein (UseCase_RechnungLegen)
+
+    \subsubsection*{Postconditions}
+    %post conditions text
+    Die Rechnung ist storniert und kann neu angelegt werden.
+
+    \subsubsection*{Main Success Scenario}
+    \begin{enumerate}
+        \item Das Personal oder der Individualgast findet einen Fehler in der Rechnung, bzw. das Personal wird darüber informiert, dass die Rechnung nicht mehr gültig ist.
+        \item Das System storniert die bereits gelegte Rechnung.
+        \item Der Buchhaltung wird mitgeteilt , dass diese Rechnung nicht mehr gültig ist.
+    \end{enumerate}
+
+    \subsubsection*{Extensions}
+    \begin{enumerate}
+        \setcounter{enumi}{3}
+        \item Teilfehler:
+        \begin{itemize}
+            \item[a.] Auf der Rechnung ist nicht alles falsch.
+            \begin{itemize}
+                \item[i.] Es wird ein Teil der Rechnung storniert (UseCase_RechnungpositionStornieren)
+            \end{itemize}
+        \end{itemize}
+    \end{enumerate}
+    \subsubsection{Sequenz Diagramme}
+    \subsubsection{Kontrakte}
+\end{document}

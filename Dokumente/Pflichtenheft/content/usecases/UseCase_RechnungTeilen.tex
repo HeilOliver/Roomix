@@ -1,0 +1,36 @@
+%%
+%% Author: Robert
+%% 08.03.2018
+%%
+
+\documentclass[./detailed_overview_usecases.tex]{subfiles}
+\begin{document}
+
+    \subsection{Rechnung teilen}
+    \subsubsection{Detaillierte Benutzungsfallbeschreibungen}
+    \textit{Primary Actor: Front/Back-Office Personal}
+    % describe actor here
+    \\
+    \textit{Stakeholder and Interests:}
+    \begin{itemize}
+        \item[-] Front/Back-Office Personal: Möchte die Rechnung in mehrere Einzelrechnungen teilen.
+        \item[-] Individualgast: Möchte einzelne Positionen der Rechnung anders begleichen.
+    \end{itemize}
+
+    \subsubsection*{Preconditions}
+    Es muss eine Zwischenrechnung erstellt (UseCase_ZwischenrechnungErstellen) sein.
+
+    \subsubsection*{Postconditions}
+    %post conditions text
+    Die Rechnung des Individualgastes ist aufgeteilt in mehrere Positionen.
+
+    \subsubsection*{Main Success Scenario}
+    \begin{enumerate}
+        \item Das Personal teilt dem System mit die Rechnung aufzuteilen nach bestimmten Vorgaben.
+        \item Das System teilt die vorliegende Rechnung in mehrere Bereiche.
+        \item Der Individualgast überprüft die Teilrechnungen.
+        \item Das Personal bestätigt die Teilung.
+    \end{enumerate}
+    \subsubsection{Sequenz Diagramme}
+    \subsubsection{Kontrakte}
+\end{document}

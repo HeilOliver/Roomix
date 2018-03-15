@@ -1,0 +1,37 @@
+%%
+%% Author: Robert
+%% 08.03.2018
+%%
+
+\documentclass[./detailed_overview_usecases.tex]{subfiles}
+\begin{document}
+
+    \subsection{Rechnung zusammenlegen}
+    \subsubsection{Detaillierte Benutzungsfallbeschreibungen}
+    \textit{Primary Actor: Front/Back-Office Personal}
+    % describe actor here
+    \\
+    \textit{Stakeholder and Interests:}
+    \begin{itemize}
+        \item[-] Front/Back-Office Personal: Möchte Rechnungen von mehreren Individualgästen zusammenlegen.
+        \item[-] Individualgast: Möchte Rechnungen von anderen Individualgästen übernehmen (Gruppe).
+    \end{itemize}
+
+    \subsubsection*{Preconditions}
+    Es müssen mehrere Rechnungen erstellt oder eine Rechnung in Teilpositionen geteilt worden sein.
+
+    \subsubsection*{Postconditions}
+    %post conditions text
+    Die Rechnungen sind zusammengelegt.
+
+    \subsubsection*{Main Success Scenario}
+    \begin{enumerate}
+        \item Das Individualgast teilt mit, dass er mehrere Rechnungen übernehmen möchte.
+        \item Das Personal sucht die gewünschten Rechnungen im System.
+        \item Der Individualgast überprüft die Rechnungen.
+        \item Das Personal bestätigt die Zusammenlegung.
+        \item Das System gibt eine Gesamtrechnung mit den vereinten Positionen aus.
+    \end{enumerate}
+    \subsubsection{Sequenz Diagramme}
+    \subsubsection{Kontrakte}
+\end{document}
