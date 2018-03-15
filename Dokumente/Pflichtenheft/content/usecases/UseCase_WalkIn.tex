@@ -15,23 +15,25 @@
     \\
     \textit{Stakeholder and Interests:}
     \begin{itemize}
-        \item[-] Front-Office Personal:
-        \item[-] Individualgast:
+        \item[-] Front-Office Personal: Möchte eine Reservierung mit anschließendem Check-In durchführen und bereits bestehende Gäste aus der Gästekartei in die Reservierung übernehmen.
+        \item[-] Individualgast: Möchte ein Zimmer reservieren und direkt beziehen.
     \end{itemize}
 
     \subsubsection*{Preconditions}
-
+    Es sind freie Zimmer verfügbar.
 
     \subsubsection*{Postconditions}
-
+    Das Zimmer ist im System belegt und der Gast kann den Aufenthalt direkt wahrnehmen.
 
     \subsubsection*{Main Success Scenario}
     \begin{enumerate}
-        \item
+        \item Der Use Case "Reservierung Individualgast" wird aufgerufen
+        \item Der Use Case "Zimmerzuteilung" wird aufgerufen
+        \item Der Use Case "Check-In mit vorhergehender Reservierung" wird aufgerufen
     \end{enumerate}
 
     \subsubsection*{Extensions}
-
+    Es gelten nur die Extensions der referenzierten Use Cases
 
     \subsubsection{Sequenz Diagramme}
     \subsubsection{Kontrakte}
