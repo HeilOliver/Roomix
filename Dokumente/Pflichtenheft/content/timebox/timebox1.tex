@@ -7,8 +7,38 @@
 \documentclass[../Pflichtenheft.tex]{subfiles}
 \begin{document}
     \subsection{Benutzungsfall/fälle (UseCase(s)) }
-
+        Für die erste Timebox sollen folgende UseCases implementiert:
+        \begin{itemize}
+            \item \textbf{Reservierung Individualgast: } Das gesamte Main Success Scenario ohne Punkt
+            7 (Zusatzpakete) und Punkt 6 (Preis überprüfen) wird umgesetzt. Die Extensions 'Überbuchung'
+            sowie die Reservierung für Vertragspartner sollen nicht berücksichtigt werden.
+            \item \textbf{Individualgast anlegen: } Abhängig vom Use Case 'Reservierung Individualgast' wird
+            auch das Anlegen neuer Gästedaten umgesetzt.
+        \end{itemize}
     \subsection{Architektur}
+    \begin{itemize}
+        \item GUI mit JavaFX
+        \item Vollständige Datenbankmodellierung mit Entity Relationship Modell
+        \item Datenbankanbindung mit Hibernate
+    \end{itemize}
     \subsection{Deliverables}
+    Folgende Dokumente sollen am Ende der Timebox verfügbar sein: \\
+    Code:
+    \begin{itemize}
+        \item Java 9 Source Code
+        \item JavaDoc
+        \item Grundlegende Architektur als Basis für weitere Time Boxes
+    \end{itemize}
+    Unit- und Integrationtests:
+    \begin{itemize}
+        \item JUnit-Tests inklusive der Testdaten
+    \end{itemize}
     \subsection{Abhängigkeiten}
+    Folgende Vorraussetzungen für die Erfüllung der Timebox werden benötigt:
+    \begin{itemize}
+        \item Daten über Gäste, Hotel und Zimmer
+        \item Vollständige Definition aller Use Cases
+        \item Vollständig konfigurierter Datenbankserver
+        \item Technisch stabile und sinnvolle Architektur ist definiert
+    \end{itemize}
 \end{document}
