@@ -24,6 +24,7 @@
 \usepackage{tabularx}
 \usepackage{subfiles}
 \usepackage{lmodern}
+\usepackage{csvsimple}
 \captionsetup{format=hang, justification=raggedright}
 
 
@@ -174,8 +175,53 @@
 
     \chapter{Iterationsplan (Timeboxes)}
     \section{Überblick}
+        Alle zuvor definierten Use Cases wurden von jedem Teammitglied auf einer Skala von 1 bis 10 in 3 Kategorien
+        bewertet. 10 steht für eine hohe Relevanz. Von jeder Kategorie wurde das arithmetische Mittel berechnet
+        und anschließend in der Spalte 'Gesamt' summiert.
+        Die Kategorien haben folgende Bedeutung:
+        \begin{enumerate}
+            \item Risiko: Komplexität des Use Cases, Team Know How, Technologie.
+            \item Architekturrelevanz: Ist der Use Case relevant für die Architektur(-entscheidung)?
+            \item Benutzerrelevanz: Ist der Benutzer an einer frühen Realisierung des Use Cases interessiert?
+        \end{enumerate}
+        \begin{longtable}{|l|l|l|l|l|}
+            \hline
+                                         & Risiko & Architektur & Benutzer & Gesamt \\ \hline
+            Reservierung Individualgast  & 8,25              & 9,75                   & 10                  & 28     \\
+            CheckInMitreservierung       & 7,25              & 9,75                   & 10                  & 27     \\
+            CheckOut                     & 7                 & 8,75                   & 9,5                 & 25,25  \\
+            Walk in                      & 7,75              & 6,5                    & 8,75                & 23     \\
+            Zimmerzuteilung              & 5,75              & 7,5                    & 7,75                & 21     \\
+            Rechnung erstellen           & 4,75              & 8                      & 7,75                & 20,5   \\
+            Rechnung legen               & 5,5               & 6,75                   & 7                   & 19,25  \\
+            Reservierung Unternehmen     & 5,5               & 6,5                    & 7                   & 19     \\
+            Rechnung teilen              & 5,75              & 6,5                    & 5,25                & 17,5   \\
+            Reservierung stornieren      & 4,75              & 6                      & 6,5                 & 17,25  \\
+            Reservierung Optionen        & 4,25              & 5,25                   & 7,5                 & 17     \\
+            Zwischenrechnung erstellen   & 5                 & 6,25                   & 5,75                & 17     \\
+            Rechnung stornieren          & 4,25              & 6                      & 6                   & 16,25  \\
+            Reservierung ändern          & 4,25              & 4,75                   & 7,25                & 16,25  \\
+            Individualgast anlegen       & 3,75              & 5,25                   & 6,75                & 15,75  \\
+            Kassenabschluss              & 4,5               & 5                      & 6                   & 15,5   \\
+            Rechnungsposition stornieren & 4,25              & 5,25                   & 6                   & 15,5   \\
+            Zimmer wechseln              & 4,5               & 4,75                   & 5,75                & 15     \\
+            Extraleistungen buchen       & 4                 & 5,25                   & 5,25                & 14,5   \\
+            Rechnungen zusammenlegen     & 4,5               & 5                      & 4,75                & 14,25  \\
+            Stammdaten ändern            & 4                 & 4,75                   & 4,75                & 13,5   \\
+            Zimmerstatus setzen          & 3,75              & 4,5                    & 5,25                & 13,5   \\
+            Tagesabschluss erstellen     & 3,5               & 3,5                    & 5,5                 & 12,5   \\
+            Aufenthaltsdauer ändern      & 3,25              & 3,75                   & 4,5                 & 11,5   \\
+            Kassastornierung             & 2,75              & 4                      & 4                   & 10,75  \\
+            Akonto buchen                & 3                 & 2,75                   & 4,75                & 10,5   \\
+            Monatsabschluss erstellen    & 3                 & 3,75                   & 3,5                 & 10,25  \\
+            Jahresabschluss erstellen    & 2,5               & 3,25                   & 3                   & 8,75
+            \hline
+        \end{longtable}
+
+
     \section{1. Timebox}
-    \subsection{Benutzungsfall/fälle (UseCase(s))  }
+    \subsection{Benutzungsfall/fälle (UseCase(s)) }
+
     \subsection{Architektur}
     \subsection{Deliverables}
     \subsection{Abhängigkeiten}
