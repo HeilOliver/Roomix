@@ -7,8 +7,35 @@
 \documentclass[../Pflichtenheft.tex]{subfiles}
 \begin{document}
     \subsection{Benutzungsfall/fälle (UseCase(s)) }
-
+    Für die zweite Timebox sollen folgende UseCases implementiert:
+    \begin{itemize}
+        \item \textbf{Check-In:} Alle Punkte des Main Success Scenarios werden umgesetzt. Der UseCase 'Akonto buchen' wird jedoch nicht berücksichtigt.
+        Alle Extensions sollen berücksichtigt werden.
+        \item \textbf{Zimmerstatus ändern: } Alles aus diesem UseCase wird realisiert.
+        \item \textbf{Walk-In: } In Zusammenhang mit der Reservierung und dem Check-In wird dieser Use Case vollständig realisiert.
+        \item \textbf{Zimmerzuteilung: } Der komplette Use Case 'Zimmerzuteilung' soll in Timebox 2 implementiert werden.
+        \item \textbf{Check-Out:} Die verknüpften Use Cases zum Rechnungswesen werden nicht berücksichtigt. Das dient dann als Vorbereitung für die dritte Timebox.
+    \end{itemize}
     \subsection{Architektur}
+    \begin{itemize}
+        \item Erweiterung der JavaFX GUI
+    \end{itemize}
     \subsection{Deliverables}
+    Folgende Dokumente sollen am Ende der Timebox verfügbar sein: \\
+    Code:
+    \begin{itemize}
+        \item Java 9 Source Code
+        \item JavaDoc
+        \item Basis für Timebox 3 (Rechnungswesen)
+    \end{itemize}
+    Unit- und Integrationtests:
+    \begin{itemize}
+        \item JUnit-Tests inklusive der Testdaten
+    \end{itemize}
     \subsection{Abhängigkeiten}
+    Folgende Vorraussetzungen für die Erfüllung der Timebox werden benötigt:
+    \begin{itemize}
+        \item Grundlegende Architektur
+        \item Erfolgreiche Umsetzung der Use Cases aus Timebox 1
+    \end{itemize}
 \end{document}
