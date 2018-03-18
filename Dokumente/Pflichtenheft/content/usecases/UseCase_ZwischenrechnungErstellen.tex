@@ -8,10 +8,12 @@
 
     \subsection{Zwischenrechnung erstellen}
     \subsubsection{Detaillierte Benutzungsfallbeschreibungen}
-    \textit{Primary Actor: Front/Back-Office Personal}
-    % describe actor here
+    \textbf{Primary Actor: }
+    \begin{itemize}
+        \item [-] Front/Back-Office Personal
+    \end{itemize}
     \\
-    \textit{Stakeholder and Interests:}
+    \textbf{Stakeholder and Interests:}
     \begin{itemize}
         \item[-] Front/Back-Office Personal: Möchte eine Zwischenrechnung erstellen um einen Überblick über die Positionen zu erhalten.
         \item[-] Individualgast: Möchte einen Überblick über die zu zahlenden Positionen erhalten.
@@ -29,7 +31,7 @@
         \item Das Personal teilt dem System mit eine Zwischenrechnung zu erstellen mit den gewünschten Informationen.
         \item Das System gibt die Zwischenrechnung aus.
         \item Der Individualgast überprüft die Zwischenrechnung.
-        \item Die Rechnung wird gelegt (UseCase_RechnungLegen).
+        \item Die Rechnung wird gelegt (UseCase: Rechnung legen).
     \end{enumerate}
 
     \subsubsection*{Extensions}
@@ -39,7 +41,7 @@
         \begin{itemize}
             \item[a.] Dem Individualgast fällt ein Fehler auf, oder die Rechnung muss aufgeteilt werden.
             \begin{itemize}
-                \item[i.] Die Zwischenrechnung wird verändert oder geteilt (UseCase_RechnungTeilen).
+                \item[i.] Die Zwischenrechnung wird verändert oder geteilt (UseCase: Rechnung teilen).
                 \item[ii.] Der Individualgast bestätigt die neue Rechnung.
             \end{itemize}
         \end{itemize}

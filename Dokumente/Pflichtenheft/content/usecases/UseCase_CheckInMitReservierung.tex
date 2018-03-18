@@ -8,12 +8,13 @@
 
     \subsection{Check-In mit vorhergehender Reservierung}
     \subsubsection{Detaillierte Benutzungsfallbeschreibungen}
-    \textit{Primary Actor: Front-Office Personal}
-    % describe actor here
-    \\
-    \textit{Stakeholder and Interests:}
+    \textbf{Primary Actor: }
     \begin{itemize}
-        % zu allgemein ! und heißt es jetzt Front-Office Mitarbeiter oder Rezeptionist?
+        \item[-] Front-Office Personal
+    \end{itemize}
+    \\
+    \textbf{Stakeholder and Interests:}
+    \begin{itemize}
         \item[-] Front-Office Personal: möchte anhand von Reservierungsnummer/Name des Gastes ein Check-In mit den gewünschten Reservierungsdetails vornehmen.
         \item[-] Individualgast: möchte seine Reservierung in Form eines Aufenhaltes mit den gewünschten Zusatzleistungen wahrnehmen.
     \end{itemize}
@@ -22,27 +23,27 @@
     Der Individualgast hat bereits eine Reservierung getätigt.
     \subsubsection*{Postconditions}
     %post conditions text
-    Der Individualgast erhält die Schlüssel für sein reserviertes Zimmer
+    Der Individualgast erhält die Schlüssel für sein reserviertes Zimmer.
 
     \subsubsection*{Main Success Scenario}
     \begin{enumerate}
         \item Der Individualgast möchte seine Reservierung nun in Anspruch nehmen.
         \item Das Front-Office Personal bestätigt die vorliegende Reservierung.
-        \item Der Individualgast bezahlt die Anzahlung (UseCase: Akonto buchen)
+        \item Der Individualgast bezahlt die Anzahlung (UseCase: Akonto buchen).
         \item Das Front-Office Personal übergibt den Schlüssel für das passende Zimmer an den Individualgast.
     \end{enumerate}
 
     \subsubsection*{Extensions}
     \begin{enumerate}
-        \item Gast ändert seine Wünsche:
+        \item Der Gast ändert seine Wünsche:
         \begin{itemize}
-            \item[a.] Der Individualgast möchte nun ein anderes Zimmer belegen (upgrade)
+            \item[a.] Der Individualgast möchte nun ein anderes Zimmer belegen (upgrade).
             \begin{itemize}
                 \item[i.] Es wird überprüft ob das gewünschte Zimmer zur Verfügung steht.
-                \item[ii.] Der Individualgast wird auf das neue Zimmer gebucht (UseCase: Walk-In)
+                \item[ii.] Der Individualgast wird auf das neue Zimmer gebucht (UseCase: Walk-In).
             \end{itemize}
-            \item[b.] Der Individualgast möchte seinen Aufenthalt verlängern oder verkürzen
-            \item[c.] Der Individualgast möchte Zusatzleistungen buchen
+            \item[b.] Der Individualgast möchte seinen Aufenthalt verlängern oder verkürzen.
+            \item[c.] Der Individualgast möchte Zusatzleistungen buchen.
         \end{itemize}
     \end{enumerate}
 

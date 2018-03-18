@@ -9,10 +9,13 @@
 
     \subsection{Reservierung stornieren}
     \subsubsection{Detaillierte Benutzungsfallbeschreibungen}
-    \textit{Primary Actor:}
-    Front/Back-Office Personal
+    \textbf{Primary Actor:}
+    \begin{itemize}
+        \item[-]  Front/Back-Office Personal
+    \end{itemize}
+
     \\
-    Stakeholder and Interests:
+    \textbf{Stakeholder and Interests:}
     \begin{itemize}
         \item[-] Front/Back-Office Personal: Stornierte Reservierungen sollen gelöscht werden.
         \item[-] Gast: Möchte bei Reiseplanänderung von einer Reservierung zurücktreten.
@@ -29,19 +32,25 @@
         \item Der Gast wählt einen Stornierungsgrund aus.
         \item Der Gast bestätigt die Stornierung.
         \item Das System speichert die Stornierung.
-        \item Der/Die Anwender/In zahlt bereits getätigte Anzahlungen aus.
+        \item Das Front/Back-Office Personal zahlt bereits getätigte Anzahlungen aus.
     \end{enumerate}
 
     \subsubsection*{Extensions}
     \begin{enumerate}
-        \item Der Gast möchte nach einer Stornierung die Reservierung trotzdem wahrnehmen.
-        \begin{itemize}
-            \item[a.] Das Front/Back-Office Personal muss eine neue Reservierung erstellt werden.
-        \end{itemize}
-        \item Die Reservierung ist außerhalb des Stornierungsfrist.
-        \begin{itemize}
-            \item[a.] Der Gast muss eine Stornierungsgebühr zahlen.
-        \end{itemize}
+        \item
+            \begin{itemize}
+                \item[a.] Der Gast möchte nach einer Stornierung die Reservierung trotzdem wahrnehmen.
+                    \begin{itemize}
+                        \item[i.] Das Front/Back-Office Personal muss eine neue Reservierung erstellen.
+                    \end{itemize}
+            \end{itemize}
+        \item
+            \begin{itemize}
+                \item[a.] Die Reservierung ist außerhalb des Stornierungsfrist.
+                    \begin{itemize}
+                        \item[i.] Der Gast muss eine Stornierungsgebühr bezahlen.
+                    \end{itemize}
+            \end{itemize}
     \end{enumerate}
 
 \end{document}

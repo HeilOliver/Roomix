@@ -8,18 +8,20 @@
 
     \subsection{Reservierung Individualgast}
     \subsubsection{Detaillierte Benutzungsfallbeschreibungen}
-    \textit{Primary Actor: Front/Back-Office Personal}
-    % describe actor here
-    \\
-    \textit{Stakeholder and Interests:}
+    \textbf{Primary Actor: }
     \begin{itemize}
-        \item[-] Front/Back-Office Personal: schnelle, fehlerfreie und einfache Abwicklung der Reservierung, Zimmerzuteilung, Zusatzleistungen buchen, Änderungen an bestehenden Reservierungen vornehmen und Möglichkeit Zwischenrechnung sowie Reservierungsbestätigung zu drucken.
+        \item[-] Front/Back-Office Personal
+    \end{itemize}
+    \\
+    \textbf{Stakeholder and Interests:}
+    \begin{itemize}
+        \item[-] Front/Back-Office Personal: schnelle, fehlerfreie und einfache Abwicklung der Reservierung, Zimmerzuteilung, Zusatzleistungen buchen, Änderungen an bestehenden Reservierungen vornehmen und die Möglichkeit Zwischenrechnungen sowie Reservierungsbestätigungen zu drucken.
         \item[-] Individualgast: Reservierung eines Zimmers ohne Komplikationen hinsichtlich seines Aufenthaltes, Möglichkeit Zusatzleistungen zu buchen. Möchte eventuell Zwischenrechnung und Reservierungsbestätigung.
         \item[-] Hotelmanager: Möchte ebenfalls, dass der Rezeptionist im Stande ist Reservierung schnell und fehlerfrei abzuwickeln, sodass der Kunde zufrieden ist. Möchte alle Statistiken in Zusammenhang mit der Reservierung abrufen.
     \end{itemize}
 
     \subsubsection*{Preconditions}
-    Informationen darüber ob der Individualgast bereits Kunde des Hotels war bzw. ob es sich um einen Gast des Hauses handelt.
+    Informationen darüber ob der Individualgast bereits Kunde des Hotels war beziehungsweise ob es sich um einen Gast des Hauses handelt.
 
     \subsubsection*{Postconditions}
     %post conditions text
@@ -71,10 +73,10 @@
             \end{itemize}
         \item Preis überprüfen
         \begin{itemize}
-            \item[a.] Der eingebene Preis ist ungültig
+            \item[a.] Der eingegebene Preis ist ungültig
             \begin{itemize}
                 \item[i.] Das System signalisiert dem Front-Office Mitarbeiter, dass ein Fehler vorliegt und was der Grund dafür ist
-                \item[ii.] Das Front/Back-Office Personal gibt den Preis erneut ein bis das System die eingebenen Daten annimmt.
+                \item[ii.] Das Front/Back-Office Personal gibt den Preis erneut ein bis das System die eingegebenen Daten annimmt.
                 \item[iii.] Punkt 5 des Main Success Szenarios wird aufgerufen
             \end{itemize}
         \end{itemize}
@@ -83,7 +85,7 @@
         \begin{itemize}
             \item[a.] Der reservierende Gast ist ein Vertragspartner (Reisebüro)
                 \begin{itemize}
-                    \item[i.] Das System stellt eine Liste aller Vertragspartner zu Verfügung.
+                    \item[i.] Das System stellt eine Liste aller Vertragspartner zur Verfügung.
                     \item[ii.] Das Front/Back-Office Personal wählt den korrekten Vertragspartner aus der Liste aus.
                     \item[iii.] Das System lädt die Daten zum gewählten Vertragspartner aus den Stammdaten und verknüpft diese mit der Reservierung. Die Preise werden
                               aus dem Kontingent saisionabhängig abgerufen und mit dem aktuellen Preis der Reservierung überschrieben.
@@ -102,7 +104,7 @@
         \item Unvollständige Daten: \begin{itemize}
                                         \item[a.] Der Individualgast bestätigt die vorliegende Reservierung nicht, da bestimmte Daten fehlen oder nicht korrekt sind.
                                         \begin{itemize}
-                                            \item[i.] Die Reservierung wird an der Stelle neu gestartet an dieser der Fehler aufgetreten ist.
+                                            \item[i.] Die Reservierung wird an der Stelle neugestartet an welcher der Fehler aufgetreten ist.
                                         \end{itemize}
                                     \end{itemize}
     \end{enumerate}

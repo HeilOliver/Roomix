@@ -8,10 +8,12 @@
 
     \subsection{Tagesabschluss erstellen}
     \subsubsection{Detaillierte Benutzungsfallbeschreibungen}
-    \textit{Primary Actor: Back-Office Personal}
-    % describe actor here
+    \textbf{Primary Actor: }
+    \begin{itemize}
+        \item [-] Back-Office Personal
+    \end{itemize}
     \\
-    \textit{Stakeholder and Interests:}
+    \textbf{Stakeholder and Interests:}
     \begin{itemize}
         \item[-] Back-Office Personal: Einfache Abwicklung des Abschlusses und korrekte Übersicht der Daten.
         \item[-] Hotelmanager: Korrekte Übersicht der Daten.
@@ -25,10 +27,10 @@
 
     \subsubsection*{Main Success Scenario}
     \begin{enumerate}
-        \item Das Back-Office Personal möchte einen Tagesabschluss erstellen.
-        \item Das System rechnet die Kassabewegungen ab (UseCase KassaabschlussErstellen).
+        \item Das Back-Office Personal erstellt einen Tagesabschluss.
+        \item Das System rechnet die Kassabewegungen ab (UseCase Kassaabschluss erstellen).
         \item Das System liefert dem Back-Office Personal den gewünschten Bericht.
-        \item Das System ändert den Zimmerstatus der belegten Zimmer auf UNGEREINIGT (UseCase ZimmerstatusÄndern).
+        \item Das System ändert den Zimmerstatus der belegten Zimmer auf UNGEREINIGT (UseCase Zimmerstatus ändern).
         \item Das Back-Office Personal druckt den Bericht aus und übergibt den Bericht an die Buchaltung.
     \end{enumerate}
 

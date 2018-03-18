@@ -9,13 +9,13 @@
 
     \subsection{Zimmerzuteilung}
     \subsubsection{Detaillierte Benutzungsfallbeschreibungen}
-    \textit{Primary Actor:}
-    \begin{enumerate}
-        Front-Office Personal
-        Back-Office Personal
-    \end{enumerate}
+    \textbf{Primary Actor: }
+    \begin{itemize}
+        \item[-] Front-Office Personal
+        \item[-] Back-Office Personal
+    \end{itemize}
     \\
-    Stakeholder and Interests:
+    \textbf{Stakeholder and Interests:}
     \begin{itemize}
         \item[-] Front/Back-Office Personal: Kann das Zimmer beim Check-In vom Kunden bezogen werden.
         \item[-] Reinigungsfachkraft: Welche Zimmer zuerst gereinigt werden müssen.
@@ -29,25 +29,25 @@
 
     \subsubsection*{Main Success Scenario}
     \begin{enumerate}
-        \item Der/Die Anwender/In wählt die Zimmerzuteilung mit bestimmten Ankunftstag.
+        \item Das Front/Back-Office Personal wählt die Zimmerzuteilung mit bestimmten Ankunftstag.
         \item Das System zeigt alle am ausgewählten Ankunftstag entsprechenden fixen Reservierungen an.
-        \item Der/Die Anwender/In wählt eine Reservierung aus.
+        \item Das Front/Back-Office Personal wählt eine Reservierung aus.
         \item Das System zeigt die reservierten Positionen (Anzahl, Kategorie) der Reservierung an.
-        \item Der/Die Anwender/In wählt eine Position aus.
+        \item Das Front/Back-Office Personal wählt eine Position aus.
         \item Das System zeigt alle Zimmer an, welche zuteilbar sind.
-        \item Der/Die Anwender/In weist ein Zimmer zu.
+        \item Das Front/Back-Office Personal weist ein Zimmer zu.
         \item Das System zeigt die aktualisierte Zimmerzuteilung an.
-        \item Der/Die Anwender/In bestätigt diese Zimmerzuteilung.
+        \item Das Front/Back-Office Personal bestätigt diese Zimmerzuteilung.
         \item Das System speichert diese Zimmerzuteilung ab.
-        \item Der/Die Anwender/In wiederholt die Schritte 4-10 beziehungsweise 1-10, bis dieser Use-Case beendet ist.
+        \item Das Front/Back-Office Personal wiederholt die Schritte 4-10 beziehungsweise 1-10, bis dieser Use-Case beendet ist.
     \end{enumerate}
 
     \subsubsection*{Extensions}
     \item 1-9 \begin{itemize}
-                   \item[a.] Der/Die Anwender/In bricht diesen Use-Case ab.
+                   \item[a.] Das Front/Back-Office Personal bricht diesen Use-Case ab.
     \end{itemize}
     \item 2 \begin{itemize}
-                \item[a.] Es gibt keine fixen Reservierungen an diesem ausgewählten Ankunftstag.
+                \item[a.] Es gibt keine fixe Reservierung an diesem ausgewählten Ankunftstag.
                 \begin{itemize}
                     \item[i.] Use-Case beenden
                 \end{itemize}
@@ -56,7 +56,7 @@
                 \item[a.] Das Zimmer wurde bei der Reservierung bereits zugeteilt.
     \end{itemize}
     \item 5 \begin{itemize}
-                \item[a.] Der/Die Anwender/In lässt das System die Zimmer automatisch zuweisen
+                \item[a.] Das Front/Back-Office Personal lässt das System die Zimmer automatisch zuweisen
                 \begin{itemize}
                     \item[i.] Springe zu Schritt 8
                 \end{itemize}
@@ -64,15 +64,15 @@
     \item 6 \begin{itemize}
                 \item[a.] Es gibt kein freies Zimmer im gewünschten Zeitraum.
                 \begin{itemize}
-                    \item[i.] Der/Die Anwender/In sucht ein Zimmer mit einem anderen Zeitraum
+                    \item[i.] Das Front/Back-Office Personal sucht ein Zimmer mit einem anderen Zeitraum
                 \end{itemize}
                 \item[b.] Es gibt kein freies Zimmer in der gewünschten Kategorie
                 \begin{itemize}
-                    \item[i.] Der/Die Anwender/In wählt ein Zimmer in einer höheren Kategorie.
+                    \item[i.] Das Front/Back-Office Personal wählt ein Zimmer in einer höheren Kategorie.
                 \end{itemize}
                 \item[c.] Es ist kein Zimmer verfügbar.
                 \begin{itemize}
-                    \item[i.] Der/Die Anwender/In versucht eine Lösung mit dem Gast zu erzielen.
+                    \item[i.] Das Front/Back-Office Personal versucht eine Lösung mit dem Gast zu erzielen.
                 \end{itemize}
     \end{itemize}
     \item 8 \begin{itemize}
