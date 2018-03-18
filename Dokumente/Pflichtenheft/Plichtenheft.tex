@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt,twoside]{scrreprt}
+\documentclass[a4paper,12pt,oneside]{scrreprt}
 % Autor der Vorlage: Klaus Rheinberger, FH Vorarlberg
 % 2017-02-20
 
@@ -49,15 +49,11 @@
         \begin{flushleft}
             \section*{Roomanizer}
             \subsection*{Pflichtenheft}
-            \vspace{1cm}
-
-            Version 1.0\\
-            \vspace{0.5cm}
-
+            \vspace{1.5cm}
 
             \vspace{2cm}
             Fachhochschule Vorarlberg\newline
-            Studiengang Software Engineering
+            Studiengang Informatik - Software and Information Engineering
 
             \vspace{0.5cm}
 
@@ -71,6 +67,9 @@
             Robert Schmitzer\newline
             Oliver Heil\newline
             Moritz Wilfling\newline
+
+            \vspace{0.5cm}
+
             Dornbirn, März 2018
         \end{flushleft}
     \end{titlepage}
@@ -120,8 +119,22 @@
     \section{Produkt Fähigkeiten/Eigenschaften}
     \subfile{./content/product_overview/SubfileFeatures.tex}
 
-
+    \newpage
     \section{Annahmen und Abhängigkeiten}
+    \subsection{Usability der Benutzeroberfläche}
+    Für den Client wird eine grafische Oberfläche basierend auf JavaFX entwickelt.
+    \subsection{Anwendung}
+    Durch Java wird eine Plattformunabhängigkeit gewährleistet. Zudem wird eine 'Fat-Client' Architektur vewendet.
+    Bei der 'Fat-Client' Architektur liegt die Anwendungslogik auf der Clientseite. Dadurch werden Hardwareanforderungen
+    auf der Serverseite minimiert.
+    \subsection{Datenbank}
+    Als Datenbanksystem wird MySQL verwendet. Diese Datenbank wird in einem Dockers Container auf dem Server ausgeführt.
+    \subsection{Netzwerk}
+    Für die Unterstützung multipler Clients und um den Zugriff auf die Datenbank zu gewährleisten wird ein TCP/IP-basierendes Netzwerk benötigt.
+    Jeder Client muss eine Verbindung zum Server herstellen können.
+    \subsection{Drucker}
+    Für das Ausdrucken von Rechnungen jeder Art, Reports und so weiter wird ein Drucker benötigt. Dieser kann
+    wahlweise per USB oder im Netzwerk eingebunden sein.
 
     \chapter{Domänenmodell}
     \section{Überblick}
@@ -175,7 +188,7 @@
     \section{Objekt Lifecycles}
     \begin{figure}[ht!]
         \begin{center}
-            \rotatebox{-1}{\includegraphics[width=0.8\textheight,angle=-89]{./assets/ObjectLivecycle_Reservierung.png}}
+            \rotatebox{-1}{\includegraphics[width=0.8\textheight,angle=-269]{./assets/ObjectLivecycle_Reservierung.png}}
             \caption{Object Lifecycle der Reservierung}\label{objectlifecycleReservierung}
         \end{center}
     \end{figure}
