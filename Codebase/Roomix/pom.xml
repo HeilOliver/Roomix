@@ -21,6 +21,11 @@
             <name>Robert Schmitzer</name>
             <id>RobertS.</id>
         </developer>
+		<developer>
+            <email>sge5641@students.fhv.at</email>
+            <name>Stefan Geiger</name>
+            <id>StefanG.</id>
+        </developer>
     </developers>
 
     <modules>
