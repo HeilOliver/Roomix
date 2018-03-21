@@ -16,6 +16,7 @@
             <name>Oliver Heil</name>
             <id>OliverH.</id>
         </developer>
+    </developers>
 
     <modules>
         <module>/ui</module>
