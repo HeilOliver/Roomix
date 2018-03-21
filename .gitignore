@@ -36,7 +36,5 @@ target
 *.sha1
 *.repositories
 
-# intelliJ #
-.idea
-*.iml
+
 
