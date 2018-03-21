@@ -16,6 +16,11 @@
             <name>Oliver Heil</name>
             <id>OliverH.</id>
         </developer>
+        <developer>
+            <email>rsc7457@students.fhv.at</email>
+            <name>Robert Schmitzer</name>
+            <id>RobertS.</id>
+        </developer>
     </developers>
 
     <modules>
