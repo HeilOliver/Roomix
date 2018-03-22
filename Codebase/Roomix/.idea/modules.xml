@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/Roomix.iml" filepath="$PROJECT_DIR$/.idea/Roomix.iml" />
       <module fileurl="file://$PROJECT_DIR$/controller/controller.iml" filepath="$PROJECT_DIR$/controller/controller.iml" />
       <module fileurl="file://$PROJECT_DIR$/domain/domain.iml" filepath="$PROJECT_DIR$/domain/domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/domain/guest-domain/guest-domain.iml" filepath="$PROJECT_DIR$/domain/guest-domain/guest-domain.iml" />
       <module fileurl="file://$PROJECT_DIR$/persist/persist.iml" filepath="$PROJECT_DIR$/persist/persist.iml" />
       <module fileurl="file://$PROJECT_DIR$/controller/reservation-controller/reservation-controller.iml" filepath="$PROJECT_DIR$/controller/reservation-controller/reservation-controller.iml" />
       <module fileurl="file://$PROJECT_DIR$/domain/reservation-domain/reservation-domain.iml" filepath="$PROJECT_DIR$/domain/reservation-domain/reservation-domain.iml" />
