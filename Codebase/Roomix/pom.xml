@@ -26,6 +26,11 @@
             <name>Stefan Geiger</name>
             <id>StefanG.</id>
         </developer>
+        <developer>
+            <email>moritz.wilfling@students.fhv.at</email>
+            <name>Moritz Wilfling</name>
+            <id>MoritzW.</id>
+        </developer>
     </developers>
 
     <modules>
