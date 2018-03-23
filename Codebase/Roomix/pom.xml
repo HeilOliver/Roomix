@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>at.fhv.roomix</groupId>
+    <artifactId>roomix</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>RooMix</name>
+    <description>An Application for Hotel Management</description>
+    <developers>
+        <developer>
+            <email>ohe2033@students.fhv.at</email>
+            <name>Oliver Heil</name>
+            <id>OliverH.</id>
+        </developer>
+        <developer>
+            <email>rsc7457@students.fhv.at</email>
+            <name>Robert Schmitzer</name>
+            <id>RobertS.</id>
+        </developer>
+		<developer>
+            <email>sge5641@students.fhv.at</email>
+            <name>Stefan Geiger</name>
+            <id>StefanG.</id>
+        </developer>
+        <developer>
+            <email>moritz.wilfling@students.fhv.at</email>
+            <name>Moritz Wilfling</name>
+            <id>MoritzW.</id>
+        </developer>
+    </developers>
+
+    <modules>
+        <module>/ui</module>
+        <module>/controller</module>
+        <module>/domain</module>
+        <module>/persist</module>
+    </modules>
+
+    <issueManagement>
+        <url>https://github.com/HeilOliver/Roomanizer/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>at.fhv.roomix</groupId>
+                <artifactId>persist</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>at.fhv.roomix.controller</groupId>
+                <artifactId>reservation-controller</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>at.fhv.roomix.domain</groupId>
+                <artifactId>reservation-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+</project>

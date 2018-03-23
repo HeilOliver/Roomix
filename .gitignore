@@ -17,3 +17,24 @@ Dokumente/Pflichtenheft/.idea/modules.xml
 Dokumente/Pflichtenheft/.idea/Pflichtenheft.iml
 Dokumente/Pflichtenheft/.idea/workspace.xml
 .idea/workspace.xml___jb_tmp___
+
+*.class
+target
+*.bak
+
+# eclipse #
+*.prefs
+.classpath
+.project
+.metadata
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.sha1
+*.sha1
+*.repositories
+
+Codebase/Roomix/.idea/
+Codebase/Roomix/.idea/workspace.xml
