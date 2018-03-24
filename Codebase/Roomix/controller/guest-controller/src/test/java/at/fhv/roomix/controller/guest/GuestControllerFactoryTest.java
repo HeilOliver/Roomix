@@ -18,24 +18,24 @@ class GuestControllerFactoryTest {
     void injectInFactory_null() {
         GuestControllerMock guestControllerMock = new GuestControllerMock();
 
-        IGuestController guestController = GuestControllerFactory.GetInstance();
+        IGuestController guestController = GuestControllerFactory.getInstance();
         assertNotEquals(guestController, guestControllerMock);
 
         GuestControllerFactory.InjectDependency(null);
-        IGuestController newGuestController = GuestControllerFactory.GetInstance();
+        IGuestController newGuestController = GuestControllerFactory.getInstance();
         assertNotEquals(guestController, newGuestController);
         assertNotEquals(guestControllerMock, newGuestController);
     }
 
     @Test
     void getInstance_get() {
-        IGuestController guestController = GuestControllerFactory.GetInstance();
+        IGuestController guestController = GuestControllerFactory.getInstance();
         assertNotNull(guestController);
     }
 
     @Test
     void getInstance_type() {
-        IGuestController guestController = GuestControllerFactory.GetInstance();
+        IGuestController guestController = GuestControllerFactory.getInstance();
         assertTrue(guestController instanceof GuestController);
     }
 
@@ -44,7 +44,7 @@ class GuestControllerFactoryTest {
         GuestControllerMock guestControllerMock = new GuestControllerMock();
         GuestControllerFactory.InjectDependency(guestControllerMock);
 
-        IGuestController iGuestController = GuestControllerFactory.GetInstance();
+        IGuestController iGuestController = GuestControllerFactory.getInstance();
 
         assertEquals(iGuestController, guestControllerMock);
     }

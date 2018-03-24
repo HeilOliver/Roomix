@@ -17,7 +17,7 @@ public class GuestControllerFactory {
 
     }
 
-    public static IGuestController GetInstance() {
+    public static IGuestController getInstance() {
         if (instance != null) return instance;
 
         synchronized (lock) {

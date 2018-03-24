@@ -2,10 +2,12 @@ package at.fhv.roomix.persist.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Objects;
 
 @Entity
-@Table(name = "Contact", schema = "Roomix", catalog = "")
+@Table(name = "Contact", schema = "Roomix")
 public class ContactEntity implements Serializable{
     private int contactId;
     private String forename;
@@ -18,9 +20,12 @@ public class ContactEntity implements Serializable{
     private String country;
     private String email;
     private byte active;
+    private Collection<CreditCardEntity> creditCardsByContactId;
+    private Collection<PersonEntity> peopleByContactId;
 
     @Id
     @Column(name = "ContactID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getContactId() {
         return contactId;
     }
@@ -150,5 +155,24 @@ public class ContactEntity implements Serializable{
     @Override
     public int hashCode() {
         return Objects.hash(contactId, forename, surname, companyName, phoneNumber, street, place, postcode, country, email, active);
+    }
+
+    @OneToMany(mappedBy = "contactByContact")
+    public Collection<CreditCardEntity> getCreditCardsByContactId() {
+        return creditCardsByContactId;
+    }
+
+    public void setCreditCardsByContactId(Collection<CreditCardEntity> creditCardsByContactId) {
+        this.creditCardsByContactId = creditCardsByContactId;
+    }
+
+    @OneToMany(mappedBy = "contactByContact")
+    public Collection<PersonEntity> getPeopleByContactId() {
+        if (peopleByContactId == null) peopleByContactId = new HashSet<>();
+        return peopleByContactId;
+    }
+
+    public void setPeopleByContactId(Collection<PersonEntity> peopleByContactId) {
+        this.peopleByContactId = peopleByContactId;
     }
 }

@@ -27,7 +27,7 @@ abstract class AbstractDao<T, PK extends Serializable> {
 
     public void save(Session session, T entity) {
         session.beginTransaction();
-        session.save(entity);
+        session.saveOrUpdate(entity);
         session.getTransaction().commit();
     }
 

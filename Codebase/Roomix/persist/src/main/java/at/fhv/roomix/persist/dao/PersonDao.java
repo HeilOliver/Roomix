@@ -1,6 +1,7 @@
 package at.fhv.roomix.persist.dao;
 
 import at.fhv.roomix.persist.model.PersonEntity;
+import org.hibernate.Session;
 
 /**
  * Roomix
@@ -13,5 +14,15 @@ import at.fhv.roomix.persist.model.PersonEntity;
 public class PersonDao extends AbstractDao<PersonEntity, Integer> {
     public PersonDao() {
         super(PersonEntity.class);
+    }
+
+    @Override
+    public void save(Session session, PersonEntity entity) {
+        session.beginTransaction();
+
+        session.saveOrUpdate(entity.getContactByContact());
+        session.save(entity);
+
+        session.getTransaction().commit();
     }
 }

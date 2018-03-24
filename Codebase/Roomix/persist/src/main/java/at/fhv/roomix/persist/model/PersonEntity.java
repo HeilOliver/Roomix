@@ -13,6 +13,7 @@ public class PersonEntity {
 
     @Id
     @Column(name = "PersonID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getPersonId() {
         return personId;
     }
@@ -57,7 +58,7 @@ public class PersonEntity {
         return Objects.hash(personId, isVip, archive);
     }
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "Contact", referencedColumnName = "ContactID", nullable = false)
     public ContactEntity getContactByContact() {
         return contactByContact;
@@ -65,5 +66,6 @@ public class PersonEntity {
 
     public void setContactByContact(ContactEntity contactByContact) {
         this.contactByContact = contactByContact;
+        contactByContact.getPeopleByContactId().add(this);
     }
 }

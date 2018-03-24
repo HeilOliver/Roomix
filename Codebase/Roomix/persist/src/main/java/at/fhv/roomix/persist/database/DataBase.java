@@ -1,7 +1,9 @@
 package at.fhv.roomix.persist.database;
 
+import at.fhv.roomix.persist.dao.ContactDao;
 import at.fhv.roomix.persist.dao.PersonDao;
 import at.fhv.roomix.persist.exeption.PersistInternalException;
+import at.fhv.roomix.persist.model.ContactEntity;
 import at.fhv.roomix.persist.model.PersonEntity;
 import org.hibernate.Session;
 
@@ -40,8 +42,7 @@ class DataBase implements IDataBase {
     @Override
     public void savePerson(PersonEntity entity) throws PersistInternalException {
         Session session = getSession();
-        PersonDao personDao = new PersonDao();
-        personDao.save(session, entity);
+        new PersonDao().save(session, entity);
         session.close();
     }
 
