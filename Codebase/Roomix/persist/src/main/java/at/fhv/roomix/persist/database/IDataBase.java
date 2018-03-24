@@ -1,5 +1,9 @@
 package at.fhv.roomix.persist.database;
 
+import at.fhv.roomix.persist.model.PersonEntity;
+
+import java.util.List;
+
 /**
  * Roomix
  * at.fhv.roomix.persist.database
@@ -10,6 +14,10 @@ package at.fhv.roomix.persist.database;
  */
 public interface IDataBase {
 
+    List<PersonEntity> getPersonByName(String name);
 
+    void savePerson(PersonEntity entity);
+
+    List<PersonEntity> getAllPersons();
 
 }
