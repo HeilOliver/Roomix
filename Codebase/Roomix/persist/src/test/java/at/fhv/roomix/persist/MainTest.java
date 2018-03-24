@@ -1,7 +1,6 @@
 package at.fhv.roomix.persist;
 
 import at.fhv.roomix.persist.exeption.PersistInternalException;
-import at.fhv.roomix.persist.database.HibernateSessionFactory;
 import org.hibernate.Session;
 import org.junit.jupiter.api.Test;
 
@@ -16,16 +15,5 @@ import org.junit.jupiter.api.Test;
 class MainTest {
 
 
-    @Test
-    void firstTest() throws PersistInternalException {
 
-        final Session session = HibernateSessionFactory.getSession();
-        System.out.println("Start");
-        try {
-
-        } finally {
-            session.close();
-        }
-        System.out.println("Stop");
-    }
 }

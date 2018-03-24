@@ -1,7 +1,9 @@
 package at.fhv.roomix.persist.database;
 
+import at.fhv.roomix.persist.exeption.PersistInternalException;
 import at.fhv.roomix.persist.model.PersonEntity;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -14,10 +16,10 @@ import java.util.List;
  */
 public interface IDataBase {
 
-    List<PersonEntity> getPersonByName(String name);
+    Collection<PersonEntity> getPersonByName(String name)throws PersistInternalException;
 
-    void savePerson(PersonEntity entity);
+    void savePerson(PersonEntity entity)throws PersistInternalException;
 
-    List<PersonEntity> getAllPersons();
+    Collection<PersonEntity> getAllPersons()throws PersistInternalException;
 
 }

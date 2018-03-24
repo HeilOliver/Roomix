@@ -1,5 +1,11 @@
 package at.fhv.roomix.domain.guest;
 
+import at.fhv.roomix.persist.database.IDataBase;
+import at.fhv.roomix.persist.database.PersistFactory;
+import at.fhv.roomix.persist.exeption.PersistInternalException;
+import at.fhv.roomix.persist.model.ContactEntity;
+import at.fhv.roomix.persist.model.PersonEntity;
+
 /**
  * Roomix
  * at.fhv.roomix.domain.guest
@@ -10,6 +16,29 @@ package at.fhv.roomix.domain.guest;
  * */
 class GuestDomain implements IGuestDomain {
 
+    public static void main(String[] args) {
+        IDataBase instance = PersistFactory.getInstance();
 
+        ContactEntity contactEntity = new ContactEntity();
+        contactEntity.setForename("Oliver");
+        contactEntity.setSurname("Heil");
+        contactEntity.setCountry("Germany");
+        contactEntity.setPhoneNumber("+4312132132132");
+        contactEntity.setEmail("Some@some.com");
+        contactEntity.setPlace("Dornbirn");
+        contactEntity.setPostcode("8505");
+        contactEntity.setStreet("SomeStreet 4");
+        contactEntity.setActive((byte) 0);
+
+        PersonEntity personEntity = new PersonEntity();
+        personEntity.setIsVip((byte) 0);
+        personEntity.setContactByContact(contactEntity);
+
+        try {
+            instance.savePerson(personEntity);
+        } catch (PersistInternalException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

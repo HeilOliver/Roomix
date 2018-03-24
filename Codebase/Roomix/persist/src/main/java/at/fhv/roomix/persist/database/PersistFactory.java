@@ -17,7 +17,7 @@ public class PersistFactory {
     private PersistFactory() {
     }
 
-    public IDataBase getInstance() {
+    public static IDataBase getInstance() {
         if (injectDependency != null)
             return injectDependency.injectDependency();
         if (instance != null) return instance;
