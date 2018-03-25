@@ -1,6 +1,10 @@
 package at.fhv.roomix.persist.dao;
 
+import at.fhv.roomix.persist.exeption.PersistInternalException;
+import at.fhv.roomix.persist.exeption.PersistLoadException;
+import at.fhv.roomix.persist.exeption.PersistSaveException;
 import at.fhv.roomix.persist.model.ContactEntity;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -25,24 +29,48 @@ abstract class AbstractDao<T, PK extends Serializable> {
         this.type = type;
     }
 
-    public void save(Session session, T entity) {
-        session.beginTransaction();
-        session.saveOrUpdate(entity);
-        session.getTransaction().commit();
+    public void save(Session session, T entity) throws PersistInternalException, PersistSaveException {
+        if (session == null) throw new PersistInternalException(new IllegalStateException("No Session"));
+        if (entity == null) throw new PersistSaveException("No Entity is provided");
+
+        try {
+            session.beginTransaction();
+            session.saveOrUpdate(entity);
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            throw new PersistInternalException(e.getCause());
+        }
     }
 
-    public T load(Session session, PK id) {
-        return session.get(type, id);
+    public T load(Session session, PK id) throws PersistInternalException, PersistLoadException {
+        if (session == null) throw new PersistInternalException(new IllegalStateException("No Session"));
+        if (id == null) throw new PersistLoadException("No PrimaryKey is provided");
+
+        try {
+            return session.get(type, id);
+        } catch (HibernateException e) {
+            throw new PersistLoadException(e.getCause());
+        }
     }
 
-    public List<T> loadAll(Session session) {
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<T> query = builder.createQuery(type);
+    public List<T> loadAll(Session session) throws PersistInternalException, PersistLoadException {
+        if (session == null) throw new PersistInternalException(new IllegalStateException("No Session"));
 
-        Root<T> from = query.from(type);
-        CriteriaQuery<T> select = query.select(from);
+        try {
+            CriteriaQuery<T> select;
+            try {
+                CriteriaBuilder builder = session.getCriteriaBuilder();
+                CriteriaQuery<T> query = builder.createQuery(type);
 
-        return session.createQuery(select).getResultList();
+                Root<T> from = query.from(type);
+                select = query.select(from);
+            } catch (HibernateException e) {
+                throw new PersistInternalException(e.getCause());
+            }
+            return session.createQuery(select).getResultList();
+        } catch (HibernateException e) {
+            throw new PersistLoadException(e.getCause());
+        }
     }
 
 }

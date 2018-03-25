@@ -3,6 +3,8 @@ package at.fhv.roomix.persist.database;
 import at.fhv.roomix.persist.dao.ContactDao;
 import at.fhv.roomix.persist.dao.PersonDao;
 import at.fhv.roomix.persist.exeption.PersistInternalException;
+import at.fhv.roomix.persist.exeption.PersistLoadException;
+import at.fhv.roomix.persist.exeption.PersistSaveException;
 import at.fhv.roomix.persist.model.ContactEntity;
 import at.fhv.roomix.persist.model.PersonEntity;
 import org.hibernate.Session;
@@ -27,9 +29,9 @@ class DataBase implements IDataBase {
     }
 
     @Override
-    public Collection<PersonEntity> getPersonByName(String name) throws PersistInternalException{
+    public Collection<PersonEntity> getPersonByName(String name) throws PersistInternalException, PersistLoadException {
         Session session = getSession();
-        PersonDao personDao = new PersonDao();
+        PersonDao personDao = PersonDao.getInstance();
         session.close();
         List<PersonEntity> personEntities = personDao.loadAll(session);
 
@@ -40,16 +42,16 @@ class DataBase implements IDataBase {
     }
 
     @Override
-    public void savePerson(PersonEntity entity) throws PersistInternalException {
+    public void savePerson(PersonEntity entity) throws PersistInternalException, PersistSaveException {
         Session session = getSession();
-        new PersonDao().save(session, entity);
+        PersonDao.getInstance().save(session, entity);
         session.close();
     }
 
     @Override
-    public Collection<PersonEntity> getAllPersons() throws PersistInternalException {
+    public Collection<PersonEntity> getAllPersons() throws PersistInternalException, PersistLoadException {
         Session session = getSession();
-        PersonDao personDao = new PersonDao();
+        PersonDao personDao = PersonDao.getInstance();
         List<PersonEntity> personEntities = personDao.loadAll(session);
         session.close();
         return personEntities;

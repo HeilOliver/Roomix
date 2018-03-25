@@ -1,12 +1,10 @@
 package at.fhv.roomix.persist.exeption;
 
-import java.util.List;
-
 public class PersistInternalException extends Exception {
 
-    private Exception innerException;
+    private Throwable innerException;
 
-    public PersistInternalException(Exception innerException) {
+    public PersistInternalException(Throwable innerException) {
         this.innerException = innerException;
     }
 
@@ -15,7 +13,7 @@ public class PersistInternalException extends Exception {
         this.innerException = innerException;
     }
 
-    public Exception getInnerException() {
+    public Throwable getInnerException() {
         return innerException;
     }
 }
