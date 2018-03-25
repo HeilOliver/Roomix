@@ -1,24 +1,26 @@
-package at.fhv.roomix.domain.guest;
+package at.fhv.roomix.persist.dao;
 
-import at.fhv.roomix.persist.database.IDataBase;
-import at.fhv.roomix.persist.database.PersistFactory;
 import at.fhv.roomix.persist.exeption.PersistInternalException;
+import at.fhv.roomix.persist.exeption.PersistSaveException;
 import at.fhv.roomix.persist.model.ContactEntity;
 import at.fhv.roomix.persist.model.PersonEntity;
+import org.hibernate.Session;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Roomix
- * at.fhv.roomix.domain.guest
- * GuestDomain
- * 22/03/2018 Oliver
+ * at.fhv.roomix.persist.dao
+ * PersonDaoTest
+ * 25/03/2018 OliverH
  * <p>
- * The implementation for the Guest Domain itself
- * */
-class GuestDomain implements IGuestDomain {
+ * Enter Description here
+ */
+class PersonDaoTest {
 
-    public static void main(String[] args) {
-        IDataBase instance = PersistFactory.getInstance();
-
+    @Test
+    void Save_WithoutSaveDContact() {
         ContactEntity contactEntity = new ContactEntity();
         contactEntity.setForename("Oliver");
         contactEntity.setSurname("Heil");
@@ -34,11 +36,15 @@ class GuestDomain implements IGuestDomain {
         personEntity.setIsVip((byte) 0);
         personEntity.setContactByContact(contactEntity);
 
+        Session session = DaoSessionFactory.getSession();
+        PersonDao instance = PersonDao.getInstance();
+
         try {
-            instance.savePerson(personEntity);
+            instance.save(session, personEntity);
         } catch (PersistInternalException e) {
-            e.printStackTrace();
+            fail("Exception is thrown @ " + e.getInnerException().getMessage());
+        } catch (PersistSaveException e) {
+            fail("Exception is thrown @ " + e.getMessage());
         }
     }
-
 }
