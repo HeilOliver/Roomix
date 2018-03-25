@@ -17,6 +17,59 @@
             <groupId>at.fhv.roomix.controller</groupId>
             <artifactId>reservation-controller</artifactId>
         </dependency>
+        <dependency>
+            <groupId>at.fhv.roomix.controller</groupId>
+            <artifactId>invoice-controller</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>at.fhv.roomix.controller</groupId>
+            <artifactId>report-controller</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>at.fhv.roomix.controller</groupId>
+            <artifactId>session-controller</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>at.fhv.roomix.controller</groupId>
+            <artifactId>stay-controller</artifactId>
+        </dependency>
+
+        <!-- Binding, Mvvm and more -->
+        <dependency>
+            <groupId>de.saxsys</groupId>
+            <artifactId>mvvmfx</artifactId>
+            <version>1.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>de.saxsys</groupId>
+            <artifactId>mvvmfx-cdi</artifactId>
+            <version>1.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>de.saxsys</groupId>
+            <artifactId>mvvmfx-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>eu.lestard</groupId>
+            <artifactId>advanced-bindings</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+        </dependency>
+
+        <!-- Optic -->
+        <dependency>
+            <groupId>de.jensd</groupId>
+            <artifactId>fontawesomefx</artifactId>
+            <version>8.0.13</version>
+        </dependency>
+        <dependency>
+            <groupId>com.guigarage</groupId>
+            <artifactId>flatter</artifactId>
+            <version>0.7</version>
+        </dependency>
     </dependencies>
 
     <build>

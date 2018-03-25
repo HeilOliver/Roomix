@@ -5,6 +5,7 @@
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -26,6 +27,26 @@
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-ehcache:5.2.15.Final" level="project" />
     <orderEntry type="library" name="Maven: net.sf.ehcache:ehcache:2.10.3" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.7" level="project" />
+    <orderEntry type="library" name="Maven: org.junit.jupiter:junit-jupiter-api:5.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apiguardian:apiguardian-api:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.opentest4j:opentest4j:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.junit.platform:junit-platform-commons:1.0.0" level="project" />
+    <orderEntry type="module" module-name="invoice-controller" />
+    <orderEntry type="module" module-name="report-controller" />
+    <orderEntry type="module" module-name="session-controller" />
+    <orderEntry type="module" module-name="stay-controller" />
+    <orderEntry type="library" name="Maven: de.saxsys:mvvmfx:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.12" level="project" />
+    <orderEntry type="library" name="Maven: net.jodah:typetools:0.4.1" level="project" />
+    <orderEntry type="library" name="Maven: eu.lestard:doc-annotations:0.2" level="project" />
+    <orderEntry type="library" name="Maven: de.saxsys:mvvmfx-cdi:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: javax.enterprise:cdi-api:2.0" level="project" />
+    <orderEntry type="library" name="Maven: javax.el:javax.el-api:3.0.0" level="project" />
+    <orderEntry type="library" name="Maven: javax.interceptor:javax.interceptor-api:1.2" level="project" />
+    <orderEntry type="library" name="Maven: de.saxsys:mvvmfx-validation:unknown" level="project" />
+    <orderEntry type="library" name="Maven: eu.lestard:advanced-bindings:unknown" level="project" />
+    <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
+    <orderEntry type="library" name="Maven: de.jensd:fontawesomefx:8.0.13" level="project" />
+    <orderEntry type="library" name="Maven: com.guigarage:flatter:0.7" level="project" />
   </component>
 </module>

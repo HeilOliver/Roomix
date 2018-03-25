@@ -1,5 +1,7 @@
 package at.fhv.roomix.ui.views;
 
+import de.saxsys.mvvmfx.FxmlView;
+
 /**
  * Roomix
  * at.fhv.roomix.ui.views
@@ -8,5 +10,5 @@ package at.fhv.roomix.ui.views;
  * <p>
  * Enter Description here
  */
-public class MainView {
+public class MainView implements FxmlView<MainViewModel> {
 }

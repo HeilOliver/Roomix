@@ -8,7 +8,7 @@ import at.fhv.roomix.persist.model.PersonEntity;
 
 /**
  * Roomix
- * at.fhv.roomix.domain.guest
+ * at.fhv.roomix.domain.session
  * GuestDomain
  * 22/03/2018 Oliver
  * <p>

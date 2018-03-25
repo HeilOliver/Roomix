@@ -2,7 +2,7 @@ package at.fhv.roomix.domain.guest;
 
 /**
  * Roomix
- * at.fhv.roomix.domain.guest
+ * at.fhv.roomix.domain.session
  * IGuestDomain
  * 22/03/2018 Oliver
  * <p>

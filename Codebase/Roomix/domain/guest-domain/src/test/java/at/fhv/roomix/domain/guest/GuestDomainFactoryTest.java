@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Roomix
- * at.fhv.roomix.domain.guest
+ * at.fhv.roomix.domain.session
  * GuestDomainFactoryTest
  * 22/03/2018 Oliver
  * <p>

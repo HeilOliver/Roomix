@@ -12,9 +12,13 @@
 
     <artifactId>controller</artifactId>
     <packaging>pom</packaging>
+
     <modules>
-        <module>/reservation-controller</module>
-        <module>guest-controller</module>
+        <module>reservation-controller</module>
+        <module>session-controller</module>
+        <module>stay-controller</module>
+        <module>report-controller</module>
+        <module>invoice-controller</module>
     </modules>
 
     <dependencyManagement>
