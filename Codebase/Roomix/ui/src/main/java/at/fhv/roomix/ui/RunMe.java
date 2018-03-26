@@ -8,8 +8,12 @@ import de.saxsys.mvvmfx.MvvmFX;
 import de.saxsys.mvvmfx.ViewTuple;
 import de.saxsys.mvvmfx.cdi.MvvmfxCdiApplication;
 import javafx.application.Platform;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
@@ -18,8 +22,11 @@ import java.util.ResourceBundle;
 
 public class RunMe extends MvvmfxCdiApplication {
 
+    private static final Logger LOG = LoggerFactory.getLogger(RunMe.class);
+
     public static void main(String... args) {
         Locale.setDefault(Locale.ENGLISH);
+        //Font.loadFont(App.class.getResource("/font/fontawesome-webfont.ttf").toExternalForm(), 10);
         launch(args);
     }
 
@@ -33,6 +40,7 @@ public class RunMe extends MvvmfxCdiApplication {
 
     @Override
     public void startMvvmfx(Stage stage) throws Exception {
+        LOG.info("Application Start");
         MvvmFX.setGlobalResourceBundle(resourceBundle);
         stage.setTitle(resourceBundle.getString("window.title"));
 
@@ -42,6 +50,4 @@ public class RunMe extends MvvmfxCdiApplication {
         stage.setScene(rootScene);
         stage.show();
     }
-
-
 }

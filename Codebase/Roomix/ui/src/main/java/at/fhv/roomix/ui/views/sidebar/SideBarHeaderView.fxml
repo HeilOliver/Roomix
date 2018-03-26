@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<HBox xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="at.fhv.roomix.ui.views.sidebar.SideBarHeaderView"
+            prefWidth="600.0">
+    <Button onMouseClicked="#ButtonMenue_Clicked" >
+        <graphic>
+            <FontAwesomeIconView fx:id="icon_menuRotated" glyphName="BARS" size="3em" rotate="90" />
+            <FontAwesomeIconView fx:id="icon_menu" glyphName="BARS" size="3em" />
+        </graphic>
+    </Button>
+    <Label fx:id="lbl_header"/>
+</HBox>

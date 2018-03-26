@@ -8,7 +8,9 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="at.fhv.roomix.ui.views.guest.Guest"
-            prefHeight="400.0" prefWidth="600.0">
-
+            fx:controller="at.fhv.roomix.ui.views.contact.ContactView"
+            >
+    <StackPane>
+        <fx:include source="list/ContactListView.fxml"/>
+    </StackPane>
 </AnchorPane>

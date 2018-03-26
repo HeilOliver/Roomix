@@ -1,5 +1,9 @@
 package at.fhv.roomix.controller.reservation;
 
+import at.fhv.roomix.controller.reservation.model.ContactPojo;
+
+import java.util.Collection;
+
 /**
  * Roomix
  * at.fhv.roomix.controller.session
@@ -10,4 +14,18 @@ package at.fhv.roomix.controller.reservation;
  */
 class ReservationController implements IReservationController {
 
+    @Override
+    public void newContact(ContactPojo contactPojo) {
+
+    }
+
+    @Override
+    public Collection<ContactPojo> getAllContacts() {
+        return null;
+    }
+
+    @Override
+    public void updateContact(ContactPojo contactPojo) {
+
+    }
 }

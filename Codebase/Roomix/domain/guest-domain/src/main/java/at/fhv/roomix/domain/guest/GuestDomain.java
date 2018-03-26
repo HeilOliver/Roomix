@@ -3,6 +3,7 @@ package at.fhv.roomix.domain.guest;
 import at.fhv.roomix.persist.database.IDataBase;
 import at.fhv.roomix.persist.database.PersistFactory;
 import at.fhv.roomix.persist.exeption.PersistInternalException;
+import at.fhv.roomix.persist.exeption.PersistSaveException;
 import at.fhv.roomix.persist.model.ContactEntity;
 import at.fhv.roomix.persist.model.PersonEntity;
 
@@ -38,6 +39,9 @@ class GuestDomain implements IGuestDomain {
             instance.savePerson(personEntity);
         } catch (PersistInternalException e) {
             e.printStackTrace();
+        } catch (PersistSaveException e) {
+
+
         }
     }
 
