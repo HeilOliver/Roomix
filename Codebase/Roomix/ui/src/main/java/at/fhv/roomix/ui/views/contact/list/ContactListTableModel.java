@@ -10,7 +10,7 @@ import at.fhv.roomix.controller.reservation.model.ContactPojo;
  * <p>
  * Enter Description here
  */
-class ContactListTableModel {
+public class ContactListTableModel {
     private String forename;
     private String surname;
     private String companyName;
@@ -21,7 +21,11 @@ class ContactListTableModel {
 
     private ContactPojo pojo;
 
-    ContactListTableModel(ContactPojo pojo) {
+    public ContactPojo getPojo() {
+        return pojo;
+    }
+
+    public ContactListTableModel(ContactPojo pojo) {
         // TODO don´t copy read directly
         this.pojo = pojo;
         forename = pojo.getForename();

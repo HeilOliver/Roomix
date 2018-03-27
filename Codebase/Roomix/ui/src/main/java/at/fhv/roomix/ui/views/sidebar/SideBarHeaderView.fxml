@@ -8,15 +8,35 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<HBox xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="at.fhv.roomix.ui.views.sidebar.SideBarHeaderView"
-            prefWidth="600.0">
-    <Button onMouseClicked="#ButtonMenue_Clicked" >
-        <graphic>
-            <FontAwesomeIconView fx:id="icon_menuRotated" glyphName="BARS" size="3em" rotate="90" />
-            <FontAwesomeIconView fx:id="icon_menu" glyphName="BARS" size="3em" />
-        </graphic>
-    </Button>
-    <Label fx:id="lbl_header"/>
-</HBox>
+<?import javafx.scene.text.Text?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+<GridPane xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="at.fhv.roomix.ui.views.sidebar.SideBarHeaderView"
+      prefWidth="Infinity"
+      stylesheets="@sidebar.css"
+      styleClass="sidebar-header"
+      prefHeight="50">
+    <columnConstraints>
+        <ColumnConstraints prefWidth="60"/>
+        <ColumnConstraints hgrow="ALWAYS"/>
+    </columnConstraints>
+    <StackPane onMouseClicked="#ButtonMenue_Clicked" GridPane.columnIndex="0">
+        <FontAwesomeIconView fx:id="icon_menuRotated" glyphName="BARS" size="3em" rotate="90" />
+        <FontAwesomeIconView fx:id="icon_menu" glyphName="BARS" size="3em" />
+    </StackPane>
+    <VBox GridPane.columnIndex="1">
+        <HBox alignment="CENTER_LEFT">
+            <Text fx:id="lbl_header" fill="dimgray" strokeType="OUTSIDE" strokeWidth="0.0">
+                <font>
+                    <Font size="24.0"/>
+                </font>
+                <HBox.margin>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                </HBox.margin>
+            </Text>
+        </HBox>
+        <Separator/>
+    </VBox>
+</GridPane>

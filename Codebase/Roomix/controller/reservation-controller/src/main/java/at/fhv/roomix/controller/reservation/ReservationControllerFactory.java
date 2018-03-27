@@ -30,14 +30,14 @@ public class ReservationControllerFactory {
         return instance;
     }
 
-    static void InjectDependency(IInjectDependency injectInstance) {
+    public static void InjectDependency(IInjectDependency injectInstance) {
         injectDependency = injectInstance;
     }
 
     /**
      * An interface for injecting dependency
      */
-    interface IInjectDependency {
+    public interface IInjectDependency {
         IReservationController injectDependency();
     }
 }

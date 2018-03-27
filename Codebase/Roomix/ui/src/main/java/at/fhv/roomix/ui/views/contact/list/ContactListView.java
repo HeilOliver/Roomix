@@ -18,12 +18,6 @@ import javafx.scene.control.TableView;
  */
 public class ContactListView implements FxmlView<ContactListViewModel>{
     @FXML
-    private Button but_delete;
-    @FXML
-    private Button but_new;
-    @FXML
-    private Button but_edit;
-    @FXML
     private TableView<ContactListTableModel> tab_contactTable;
 
     @InjectViewModel
@@ -32,23 +26,6 @@ public class ContactListView implements FxmlView<ContactListViewModel>{
     public void initialize(){
        tab_contactTable.setItems(viewModel.getContacts());
        viewModel.selectedTableRowProperty().bind(tab_contactTable.getSelectionModel().selectedItemProperty());
-
-       but_delete.disableProperty().bind(viewModel.contactSelectedProperty().not());
-       but_edit.disableProperty().bind(viewModel.contactSelectedProperty().not());
     }
 
-    @FXML
-    private void buttonEdit_Click(ActionEvent actionEvent) {
-
-    }
-
-    @FXML
-    private void buttonNew_Click(ActionEvent actionEvent) {
-
-    }
-
-    @FXML
-    private void buttonDelete_Click(ActionEvent actionEvent) {
-
-    }
 }

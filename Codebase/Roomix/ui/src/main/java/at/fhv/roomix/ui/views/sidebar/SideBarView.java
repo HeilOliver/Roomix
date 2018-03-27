@@ -32,7 +32,7 @@ public class SideBarView implements FxmlView<SideBarViewModel>{
         ObservableList<SideBarItemViewModel> sideBarItemViewModels = viewModel.itemsProperty();
         viewModel.collapsedProperty().addListener(((observable, oldValue, newValue) -> {
             if (newValue) {
-                sideMenuItems.setMaxWidth(60);
+                sideMenuItems.setMaxWidth(55);
             } else {
                 sideMenuItems.setMaxWidth(300);
             }

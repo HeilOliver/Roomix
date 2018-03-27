@@ -16,6 +16,7 @@
     <modules>
         <module>/reservation-domain</module>
         <module>/guest-domain</module>
+        <module>/session-domain</module>
     </modules>
 
     <dependencyManagement>

@@ -2,6 +2,8 @@ package at.fhv.roomix.ui.views.contact;
 
 import de.saxsys.mvvmfx.ViewModel;
 
+import javax.inject.Singleton;
+
 /**
  * Roomix
  * at.fhv.roomix.ui.views.contact
@@ -10,5 +12,6 @@ import de.saxsys.mvvmfx.ViewModel;
  * <p>
  * Enter Description here
  */
+@Singleton
 public class ContactViewModel implements ViewModel {
 }

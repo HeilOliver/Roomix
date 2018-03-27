@@ -1,6 +1,10 @@
 package at.fhv.roomix.ui;
 
+import at.fhv.roomix.controller.reservation.IReservationController;
+import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
+import at.fhv.roomix.controller.reservation.model.ContactPojo;
 import at.fhv.roomix.ui.connector.ControllerFactory;
+import at.fhv.roomix.ui.mocks.ReservationControllerMock;
 import at.fhv.roomix.ui.views.MainView;
 import at.fhv.roomix.ui.views.MainViewModel;
 import de.saxsys.mvvmfx.FluentViewLoader;
@@ -17,6 +21,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
+import java.util.Collection;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -25,8 +30,10 @@ public class RunMe extends MvvmfxCdiApplication {
     private static final Logger LOG = LoggerFactory.getLogger(RunMe.class);
 
     public static void main(String... args) {
+        // TODO For Testing
+        ReservationControllerFactory.InjectDependency(ReservationControllerMock::getInstance);
+
         Locale.setDefault(Locale.ENGLISH);
-        //Font.loadFont(App.class.getResource("/font/fontawesome-webfont.ttf").toExternalForm(), 10);
         launch(args);
     }
 

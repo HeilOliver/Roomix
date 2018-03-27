@@ -7,6 +7,7 @@ import de.saxsys.mvvmfx.InjectViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 
 /**
  * Roomix
@@ -25,7 +26,7 @@ public class SideBarHeaderView implements FxmlView<SideBarHeaderViewModel> {
     @FXML
     private FontAwesomeIconView icon_menuRotated;
     @FXML
-    private Label lbl_header;
+    private Text lbl_header;
 
     public void initialize(){
         icon_menu.visibleProperty().bind(viewModel.getCollapsedState());

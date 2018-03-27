@@ -1,5 +1,14 @@
 package at.fhv.roomix.controller.reservation.model;
 
+
+
+
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.Objects;
+
 /**
  * Roomix
  * at.fhv.roomix.controller.reservation.model
@@ -10,15 +19,35 @@ package at.fhv.roomix.controller.reservation.model;
  */
 public class ContactPojo {
     private int contactId;
+
+    @NotNull(message = "forename cannot be null")
+    @Size(min = 1, max = 50, message = "forename must be between 1 and 200 characters")
     private String forename;
+
+    @NotNull(message = "surname cannot be null")
+    @Size(min = 1, max = 50, message = "surname must be between 1 and 200 characters")
     private String surname;
+
     private String companyName;
+
+    @NotNull(message = "phoneNumber cannot be null")
     private String phoneNumber;
+
+    @NotNull(message = "street cannot be null")
     private String street;
+
+    @NotNull(message = "place cannot be null")
     private String place;
+
+    @NotNull(message = "postcode cannot be null")
     private String postcode;
+
+    @NotNull(message = "country cannot be null")
     private String country;
+
+    @Email(message = "Email should be valid")
     private String email;
+
     private byte active;
 
     public ContactPojo() {
@@ -110,5 +139,18 @@ public class ContactPojo {
 
     public void setActive(byte active) {
         this.active = active;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ContactPojo that = (ContactPojo) o;
+        return contactId == that.contactId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(contactId);
     }
 }
