@@ -1,8 +1,5 @@
 package at.fhv.roomix.ui.views.sidebar;
 
-import at.fhv.roomix.ui.views.MainView;
-import de.saxsys.mvvmfx.FluentViewLoader;
-import de.saxsys.mvvmfx.ViewTuple;
 import javafx.beans.property.*;
 import javafx.scene.Parent;
 

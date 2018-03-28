@@ -1,16 +1,11 @@
 package at.fhv.roomix.ui.views.sidebar;
 
-import at.fhv.roomix.ui.views.MainViewModel;
-import com.sun.javafx.collections.ImmutableObservableList;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import de.saxsys.mvvmfx.utils.viewlist.CachedViewModelCellFactory;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Roomix
@@ -39,6 +34,6 @@ public class SideBarView implements FxmlView<SideBarViewModel>{
         }));
 
         sideMenuItems.setItems(viewModel.itemsProperty());
-        sideMenuItems.setCellFactory(CachedViewModelCellFactory.createForFxmlView(SideBarItemView.class));
+
     }
 }

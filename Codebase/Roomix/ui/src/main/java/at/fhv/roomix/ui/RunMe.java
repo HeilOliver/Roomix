@@ -1,27 +1,20 @@
 package at.fhv.roomix.ui;
 
-import at.fhv.roomix.controller.reservation.IReservationController;
 import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
-import at.fhv.roomix.controller.reservation.model.ContactPojo;
 import at.fhv.roomix.ui.connector.ControllerFactory;
 import at.fhv.roomix.ui.mocks.ReservationControllerMock;
-import at.fhv.roomix.ui.views.MainView;
-import at.fhv.roomix.ui.views.MainViewModel;
+import at.fhv.roomix.ui.views.main.MainView;
+import at.fhv.roomix.ui.views.main.MainViewModel;
 import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.MvvmFX;
 import de.saxsys.mvvmfx.ViewTuple;
 import de.saxsys.mvvmfx.cdi.MvvmfxCdiApplication;
-import javafx.application.Platform;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.enterprise.event.Observes;
 import javax.inject.Inject;
-import java.util.Collection;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -53,8 +46,9 @@ public class RunMe extends MvvmfxCdiApplication {
 
         ViewTuple<MainView, MainViewModel> main = FluentViewLoader.fxmlView(MainView.class).load();
         Scene rootScene = new Scene(main.getView());
-
         stage.setScene(rootScene);
+        stage.setMinWidth(800);
+        stage.setMinHeight(600);
         stage.show();
     }
 }

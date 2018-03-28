@@ -31,11 +31,7 @@ public class SideBarViewModel implements ViewModel {
         allItems = new ListTransformation<>
                 (SideBareProvider.getInstance().getItems(),
                         (s) -> new SideBarItemViewModel(s, collapsed));
-
         showLevelNone();
-        final NotificationCenter notificationCenter = MvvmFX.getNotificationCenter();
-        notificationCenter.subscribe("userLv-all", (key, payload) -> showLevelAll());
-        notificationCenter.subscribe("userLv-none", (key, payload) -> showLevelNone());
     }
 
     public BooleanProperty collapsedProperty() {
@@ -43,10 +39,6 @@ public class SideBarViewModel implements ViewModel {
     }
 
     private void showLevelNone() {
-        items.set(allItems.getTargetList());
-    }
-
-    private void showLevelAll() {
         items.set(allItems.getTargetList());
     }
 

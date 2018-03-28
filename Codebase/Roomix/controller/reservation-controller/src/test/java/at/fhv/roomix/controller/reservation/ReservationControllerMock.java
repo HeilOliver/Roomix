@@ -1,5 +1,6 @@
 package at.fhv.roomix.controller.reservation;
 
+import at.fhv.roomix.controller.reservation.exeption.FaultException;
 import at.fhv.roomix.controller.reservation.model.ContactPojo;
 
 import java.util.Collection;
@@ -13,18 +14,19 @@ import java.util.Collection;
  * Enter Description here
  */
 public class ReservationControllerMock implements IReservationController {
+
     @Override
-    public void newContact(ContactPojo contactPojo) {
+    public void newContact(long sessionId, ContactPojo contactPojo) throws FaultException {
 
     }
 
     @Override
-    public Collection<ContactPojo> getAllContacts() {
+    public Collection<ContactPojo> getAllContacts(long sessionId) throws FaultException {
         return null;
     }
 
     @Override
-    public void updateContact(ContactPojo contactPojo) {
+    public void updateContact(long sessionId, ContactPojo contactPojo) throws FaultException {
 
     }
 }

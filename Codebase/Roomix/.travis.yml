@@ -1,3 +1,7 @@
+script:
+  - cd <sub directory>
+  - <build command>
+
 language: java
 jdk:
   - oraclejdk8

@@ -21,6 +21,10 @@ public class SideBarItemViewModel implements ViewModel {
     private final StringProperty glyph = new SimpleStringProperty();
     private SideBarItem sideBarItem;
 
+    public <SourceType> SideBarItemViewModel(SourceType s, BooleanProperty collapsed) {
+
+    }
+
 
     public StringProperty glyphProperty() {
         return glyph;

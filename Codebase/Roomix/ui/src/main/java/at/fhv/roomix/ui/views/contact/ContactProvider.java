@@ -2,6 +2,7 @@ package at.fhv.roomix.ui.views.contact;
 
 import at.fhv.roomix.controller.reservation.IReservationController;
 import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
+import at.fhv.roomix.controller.reservation.exeption.FaultException;
 import at.fhv.roomix.controller.reservation.model.ContactPojo;
 import at.fhv.roomix.ui.views.contact.list.ContactListTableModel;
 import javafx.beans.property.ObjectProperty;
@@ -47,7 +48,12 @@ public class ContactProvider {
 
     private void refreshData() {
         IReservationController instance = ReservationControllerFactory.getInstance();
-        Collection<ContactPojo> allContacts = instance.getAllContacts();
+        Collection<ContactPojo> allContacts = null;
+        try {
+            allContacts = instance.getAllContacts(122);
+        } catch (FaultException e) {
+            e.printStackTrace();
+        }
         contacts.addAll(allContacts);
     }
 

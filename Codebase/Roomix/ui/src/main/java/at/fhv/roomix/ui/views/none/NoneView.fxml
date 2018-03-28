@@ -13,7 +13,7 @@
             prefHeight="400.0" prefWidth="600.0">
     <center>
         <VBox>
-            <FontAwesomeIconView glyphName="FROWN" size="10em"/>
+            <FontAwesomeIconView glyphName="CROS" size="10em"/>
             <Label text="%noneView.nothingSelected"/>
         </VBox>
     </center>
