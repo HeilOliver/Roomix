@@ -12,11 +12,12 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Separator?>
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhv.roomix.ui.views.contact.list.ContactListView">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="at.fhv.roomix.ui.views.contact.list.ContactListView">
     <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-          AnchorPane.topAnchor="0.0">
+          AnchorPane.topAnchor="0.0" >
         <Separator/>
-        <TableView fx:id="tab_contactTable" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0">
+        <TableView fx:id="tab_contactTable" VBox.vgrow="ALWAYS">
             <columns>
                 <TableColumn prefWidth="75.0" text="%contact.table.firstname">
                     <cellValueFactory>
@@ -54,6 +55,5 @@
             </columnResizePolicy>
         </TableView>
         <Separator/>
-
     </VBox>
 </AnchorPane>

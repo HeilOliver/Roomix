@@ -9,13 +9,13 @@
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="at.fhv.roomix.ui.views.contact.list.ContactDataView">
-    <SplitPane dividerPositions="0.7" >
-        <AnchorPane>
+    <SplitPane dividerPositions="0.7" VBox.vgrow="ALWAYS">
+        <AnchorPane VBox.vgrow="ALWAYS">
             <fx:include source="ContactListView.fxml" AnchorPane.bottomAnchor="0.0"
                         AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                         AnchorPane.topAnchor="0.0"/>
         </AnchorPane>
-        <AnchorPane>
+        <AnchorPane VBox.vgrow="ALWAYS">
             <fx:include source="ContactDetailView.fxml" AnchorPane.bottomAnchor="0.0"
                         AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                         AnchorPane.topAnchor="0.0"/>

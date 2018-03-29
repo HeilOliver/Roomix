@@ -26,7 +26,7 @@ public class RunMe extends MvvmfxCdiApplication {
         // TODO For Testing
         ReservationControllerFactory.InjectDependency(ReservationControllerMock::getInstance);
 
-        Locale.setDefault(Locale.ENGLISH);
+        Locale.setDefault(Locale.GERMAN);
         launch(args);
     }
 

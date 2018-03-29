@@ -1,6 +1,7 @@
 package at.fhv.roomix.ui.views.main.menuitem;
 
 import at.fhv.roomix.ui.views.main.MainViewModel;
+import de.jensd.fx.glyphs.*;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;

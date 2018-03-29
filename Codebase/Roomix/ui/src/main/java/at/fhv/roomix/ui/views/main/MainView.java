@@ -2,8 +2,6 @@ package at.fhv.roomix.ui.views.main;
 
 import at.fhv.roomix.ui.views.main.menuitem.SideBarMenuItem;
 import at.fhv.roomix.ui.views.main.menuitem.SideBarMenuItemVM;
-import at.fhv.roomix.ui.views.sidebar.SideBarItemView;
-import at.fhv.roomix.ui.views.sidebar.SideBarItemViewModel;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import de.saxsys.mvvmfx.utils.viewlist.CachedViewModelCellFactory;
@@ -12,8 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 

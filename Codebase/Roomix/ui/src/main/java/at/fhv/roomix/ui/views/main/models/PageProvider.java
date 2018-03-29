@@ -1,16 +1,16 @@
 package at.fhv.roomix.ui.views.main.models;
 
 import at.fhv.roomix.ui.views.contact.ContactView;
-import at.fhv.roomix.ui.views.sidebar.SideBarItem;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.saxsys.mvvmfx.FluentViewLoader;
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import javax.inject.Inject;
+import java.util.*;
+import org.apache.log4j.Logger;
 
 /**
  * Roomix
@@ -24,17 +24,28 @@ public class PageProvider {
     private static final ObservableList<SwitchablePage> topItem;
     private static final ObservableList<SwitchablePage> bottomItem;
 
+    private static String getLocalizedString(String resourceName) {
+        final ResourceBundle bundle = ResourceBundle.getBundle("default");
+        try {
+            return bundle.getString(resourceName);
+        } catch (MissingResourceException e) {
+            Logger logger = Logger.getLogger(PageProvider.class);
+            logger.error("Missing Resource - " + resourceName, e.getCause());
+            return resourceName;
+        }
+    }
+
     static {
 
 
         topItem = FXCollections.observableArrayList(
-                new SwitchablePage("Sample", "BOOK", FluentViewLoader.fxmlView(ContactView.class).load().getView()),
-                new SwitchablePage("HALLO", "BOOK", null),
-                new SwitchablePage("TESTTEST", "BOOK", null)
+                new SwitchablePage(getLocalizedString("main.contact"),
+                        "BOOK", FluentViewLoader.fxmlView(ContactView.class).load().getView())
+
         );
         bottomItem = FXCollections.observableArrayList(
-                new SwitchablePage("Login", "BOOK", null),
-                new SwitchablePage("About", "BOOK", null)
+                new SwitchablePage(getLocalizedString("main.login"), "USER", null),
+                new SwitchablePage(getLocalizedString("main.about"), "INFO_CIRCLE", null)
         );
     }
 

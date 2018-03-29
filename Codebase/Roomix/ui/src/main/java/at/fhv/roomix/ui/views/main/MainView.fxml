@@ -1,62 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.Rectangle?>
-
-
-<?import javafx.scene.image.ImageView?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<AnchorPane
-            xmlns="http://javafx.com/javafx/8.0.121"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="at.fhv.roomix.ui.views.main.MainView"
-            stylesheets="@mainView.css"
-            minWidth="800" minHeight="800">
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane minHeight="800" minWidth="800" stylesheets="@mainView.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhv.roomix.ui.views.main.MainView">
     <GridPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
         <columnConstraints>
-            <ColumnConstraints />
+            <ColumnConstraints minWidth="45" />
             <ColumnConstraints />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints prefHeight="45"/>
+            <RowConstraints maxHeight="45" minHeight="45" prefHeight="45" />
             <RowConstraints />
         </rowConstraints>
-        <AnchorPane GridPane.valignment="TOP" GridPane.halignment="LEFT" styleClass="menuOpenPane"
-                    onMouseClicked="#onMenuButton_Click">
-            <FontAwesomeIconView glyphName="BARS" size="2em"
-                                 AnchorPane.leftAnchor="15" AnchorPane.topAnchor="12" styleClass="menuOpenIcon"/>
+        <AnchorPane onMouseClicked="#onMenuButton_Click" styleClass="menuOpenPane" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+            <FontAwesomeIconView glyphName="BARS" size="2em" styleClass="menuOpenIcon" AnchorPane.leftAnchor="15" AnchorPane.topAnchor="12" />
         </AnchorPane>
 
-        <GridPane GridPane.columnIndex="0" GridPane.fillHeight="true"
-                  GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS"
-                  GridPane.hgrow="SOMETIMES" style="-fx-background-color: #3a3633">
+        <GridPane style="-fx-background-color: #3a3633" GridPane.columnIndex="0" GridPane.fillHeight="true"
+                  GridPane.halignment="LEFT" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
             <rowConstraints>
-                <RowConstraints prefHeight="10"/>
-                <RowConstraints percentHeight="70" />
-                <RowConstraints percentHeight="30" />
-                <RowConstraints prefHeight="20"/>
+                <RowConstraints minHeight="10" />
+                <RowConstraints percentHeight="80"/>
+                <RowConstraints percentHeight="15"/>
+                <RowConstraints minHeight="10" />
             </rowConstraints>
             <columnConstraints>
                 <ColumnConstraints />
             </columnConstraints>
-            <VBox fx:id="topBox" GridPane.hgrow="ALWAYS" GridPane.fillWidth="true" GridPane.rowIndex="1" spacing="8">
+            <VBox fx:id="topBox" spacing="8" GridPane.fillWidth="true" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
             </VBox>
-            <VBox fx:id="bottomBox" alignment="BOTTOM_LEFT" GridPane.hgrow="ALWAYS" spacing="8"
-                  GridPane.fillWidth="true" GridPane.rowIndex="2">
+            <VBox fx:id="bottomBox" alignment="BOTTOM_LEFT" spacing="8" GridPane.fillWidth="true"
+                  GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
             </VBox>
         </GridPane>
-        <AnchorPane fx:id="contentPane" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS"
-              GridPane.fillWidth="true" GridPane.fillHeight="true" GridPane.rowIndex="1"
-                    GridPane.columnIndex="1"/>
+        <AnchorPane fx:id="contentPane" GridPane.columnIndex="1" GridPane.fillHeight="true" GridPane.fillWidth="true" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
 
-        <AnchorPane GridPane.columnIndex="1" GridPane.fillHeight="true"
-                    GridPane.rowIndex="0" GridPane.fillWidth="true" style="-fx-background-color: #3a3633">
-            <Label fx:id="lbl_header" text="Sample" AnchorPane.leftAnchor="0" styleClass="header"/>
-            <ImageView AnchorPane.rightAnchor="10"/>
+        <AnchorPane style="-fx-background-color: #3a3633" GridPane.columnIndex="1" GridPane.fillHeight="true" GridPane.fillWidth="true" GridPane.rowIndex="0">
+            <Label fx:id="lbl_header" styleClass="header" text="Sample" AnchorPane.leftAnchor="0" />
+            <ImageView fitHeight="60" fitWidth="150" preserveRatio="true" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5">
+                <!-- The Path is correct. Look at the target folder.-->
+                <Image backgroundLoading="true" url="@../../../../../../assets/roomix_logoWhite.png" />
+            </ImageView>
         </AnchorPane>
     </GridPane>
 </AnchorPane>

@@ -3,6 +3,10 @@ package at.fhv.roomix.ui.views.main.models;
 import javafx.beans.property.*;
 import javafx.scene.Parent;
 
+import javax.inject.Inject;
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 /**
  * Roomix
  * at.fhv.roomix.ui.views.main

@@ -1,6 +1,5 @@
 package at.fhv.roomix.ui.views.contact.list;
 
-import at.fhv.roomix.ui.views.sidebar.SideBarHeaderViewModel;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import javafx.event.ActionEvent;

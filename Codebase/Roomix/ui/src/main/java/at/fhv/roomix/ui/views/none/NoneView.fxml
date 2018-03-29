@@ -7,14 +7,15 @@
 <?import javafx.scene.layout.*?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<BorderPane xmlns="http://javafx.com/javafx"
+<AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="at.fhv.roomix.ui.views.none.NoneView"
-            prefHeight="400.0" prefWidth="600.0">
-    <center>
-        <VBox>
-            <FontAwesomeIconView glyphName="CROS" size="10em"/>
-            <Label text="%noneView.nothingSelected"/>
-        </VBox>
-    </center>
-</BorderPane>
+           >
+    <VBox AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
+          AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0" alignment="CENTER">
+        <FontAwesomeIconView glyphName="CROSS" size="10em" />
+        <Label text="%noneView.nothingSelected"/>
+    </VBox>
+
+
+</AnchorPane>
