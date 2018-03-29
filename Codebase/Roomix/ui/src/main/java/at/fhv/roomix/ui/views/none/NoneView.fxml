@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="at.fhv.roomix.ui.views.none.NoneView"
+           >
+    <VBox AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
+          AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0" alignment="CENTER">
+        <FontAwesomeIconView glyphName="CROSS" size="10em" />
+        <Label text="%noneView.nothingSelected"/>
+    </VBox>
+
+
+</AnchorPane>

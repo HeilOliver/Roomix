@@ -9,6 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>RooMix</name>
+
     <description>An Application for Hotel Management</description>
     <developers>
         <developer>
@@ -41,7 +42,7 @@
     </modules>
 
     <issueManagement>
-        <url>https://github.com/HeilOliver/Roomanizer/issues</url>
+        <url>https://github.com/HeilOliver/Roomix/issues</url>
         <system>GitHub Issues</system>
     </issueManagement>
 
@@ -68,6 +69,30 @@
             <dependency>
                 <groupId>at.fhv.roomix.domain</groupId>
                 <artifactId>reservation-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>at.fhv.roomix.controller</groupId>
+                <artifactId>invoice-controller</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>at.fhv.roomix.controller</groupId>
+                <artifactId>report-controller</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>at.fhv.roomix.controller</groupId>
+                <artifactId>session-controller</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>at.fhv.roomix.controller</groupId>
+                <artifactId>stay-controller</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
