@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>roomix</artifactId>
+        <groupId>at.fhv.roomix</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>ui</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>at.fhv.roomix.controller</groupId>
+            <artifactId>reservation-controller</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>at.fhv.roomix.controller</groupId>
+            <artifactId>invoice-controller</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>at.fhv.roomix.controller</groupId>
+            <artifactId>report-controller</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>at.fhv.roomix.controller</groupId>
+            <artifactId>session-controller</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>at.fhv.roomix.controller</groupId>
+            <artifactId>stay-controller</artifactId>
+        </dependency>
+
+        <!-- Binding, Mvvm and more -->
+        <dependency>
+            <groupId>de.saxsys</groupId>
+            <artifactId>mvvmfx</artifactId>
+            <version>1.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>de.saxsys</groupId>
+            <artifactId>mvvmfx-cdi</artifactId>
+            <version>1.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>de.saxsys</groupId>
+            <artifactId>mvvmfx-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.weld.se</groupId>
+            <artifactId>weld-se-core</artifactId>
+            <version>3.0.3.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+
+        <!-- Optic -->
+        <dependency>
+            <groupId>de.jensd</groupId>
+            <artifactId>fontawesomefx</artifactId>
+            <version>8.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>8.40.14</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.zenjava</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>8.1.2</version>
+                <configuration>
+                    <mainClass>at.fhv.roomix.ui.RunMe</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+    </build>
+
+</project>

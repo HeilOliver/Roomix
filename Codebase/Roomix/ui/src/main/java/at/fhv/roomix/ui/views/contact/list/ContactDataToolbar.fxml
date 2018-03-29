@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="at.fhv.roomix.ui.views.contact.list.ContactDataToolbar"
+            >
+    <HBox AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0">
+        <Button fx:id="but_archive" onAction="#buttonDelete_Click" text="%main.delete">
+            <graphic>
+                <FontAwesomeIconView glyphName="TRASH" size="2em" />
+            </graphic>
+        </Button>
+        <Button fx:id="but_new" onAction="#buttonNew_Click" text="%main.new">
+            <graphic>
+                <FontAwesomeIconView glyphName="PLUS" size="2em" />
+            </graphic>
+        </Button>
+        <Button fx:id="but_edit" onAction="#buttonEdit_Click" text="%main.edit">
+            <graphic>
+                <FontAwesomeIconView glyphName="EDIT" size="2em" />
+            </graphic>
+        </Button>
+    </HBox>
+</AnchorPane>

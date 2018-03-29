@@ -1,19 +1,31 @@
 
-.idea/modules.xml
-.idea/inspectionProfiles/Project_Default.xml
-.idea/Roomanizer.iml
-.idea/vcs.xml
-.idea/workspace.xml
-Pflichtenheft/.idea/workspace.xml
-auxil/Plichtenheft.aux
+.idea/
+Pflichtenheft/.idea/
+
 *.lof
 auxil/Plichtenheft.log
-auxil/Plichtenheft.lot
-auxil/Plichtenheft.out
-auxil/Plichtenheft.toc
 out/Plichtenheft.pdf
 out/Plichtenheft.synctex.gz
-Dokumente/Pflichtenheft/.idea/modules.xml
-Dokumente/Pflichtenheft/.idea/Pflichtenheft.iml
-Dokumente/Pflichtenheft/.idea/workspace.xml
-.idea/workspace.xml___jb_tmp___
+Dokumente/Pflichtenheft/.idea/
+Dokumente/Pflichtenheft/.idea/
+Dokumente/Pflichtenheft/.idea/
+
+*.class
+target
+*.bak
+
+# eclipse #
+*.prefs
+.classpath
+.project
+.metadata
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.sha1
+*.sha1
+*.repositories
+
+Codebase/Roomix/.idea/
