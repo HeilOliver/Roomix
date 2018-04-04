@@ -1,36 +1,40 @@
-package at.fhv.roomix.persist.database;
+package at.fhv.roomix.persist;
 
-import at.fhv.roomix.persist.exeption.PersistInternalException;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 class HibernateSessionFactory {
-    private static org.hibernate.SessionFactory ourSessionFactory;
+    private static SessionFactory ourSessionFactory;
+    private static boolean initTry = false;
+    private static Logger logger = Logger.getLogger(HibernateSessionFactory.class);
+
 
     private HibernateSessionFactory() {
     }
 
-    static void init() {
+    private static void init() {
+        initTry = true;
         try {
             Configuration configuration = new Configuration();
             configuration.configure();
 
             ourSessionFactory = configuration.buildSessionFactory();
         } catch (Throwable ex) {
-            Logger logger = Logger.getLogger(HibernateSessionFactory.class);
             logger.fatal(ex.getMessage());
         }
     }
 
-    static Session getSession() throws PersistInternalException {
-        if (ourSessionFactory == null)
-            throw new PersistInternalException(new IllegalStateException("No SessionFactory"));
+    static Session getSession() throws IllegalStateException{
+        if (!initTry) init();
+        if (ourSessionFactory == null) return null;
         try {
             return ourSessionFactory.openSession();
         } catch (HibernateException e) {
-            throw new PersistInternalException(e);
+            logger.fatal(e.getMessage());
+            return null;
         }
     }
 }
