@@ -13,7 +13,7 @@ import java.util.Objects;
  * Enter Description here
  */
 @Entity
-@Table(name = "CreditCard", schema = "Roomix", catalog = "")
+@Table(name = "CreditCard", schema = "Roomix")
 public class CreditCardEntity {
     private int creditCardId;
     private String number;
