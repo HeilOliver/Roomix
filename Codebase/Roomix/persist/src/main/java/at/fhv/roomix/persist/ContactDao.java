@@ -16,7 +16,7 @@ public class ContactDao extends AbstractDao<ContactEntity, Integer> {
     }
 
 
-    public ContactDao getInstance() {
+    public static ContactDao getInstance() {
         return new ContactDao();
     }
 
