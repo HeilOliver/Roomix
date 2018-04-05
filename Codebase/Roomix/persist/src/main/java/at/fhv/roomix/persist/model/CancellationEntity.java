@@ -1,18 +1,22 @@
 package at.fhv.roomix.persist.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@javax.persistence.Table(name = "cancellation", schema = "roomix")
+@Table(name = "cancellation", schema = "roomix", catalog = "")
 public class CancellationEntity {
     private int cancellationId;
+    private int cancellationCondition;
+    private Timestamp date;
+    private String description;
+    private CancellationconditionEntity cancellationconditionByCancellationCondition;
+    private Collection<ReservationunitEntity> reservationunitsByCancellationId;
 
     @Id
-    @javax.persistence.Column(name = "CancellationID")
+    @Column(name = "CancellationID")
     public int getCancellationId() {
         return cancellationId;
     }
@@ -21,10 +25,8 @@ public class CancellationEntity {
         this.cancellationId = cancellationId;
     }
 
-    private int cancellationCondition;
-
     @Basic
-    @javax.persistence.Column(name = "CancellationCondition")
+    @Column(name = "CancellationCondition")
     public int getCancellationCondition() {
         return cancellationCondition;
     }
@@ -33,10 +35,8 @@ public class CancellationEntity {
         this.cancellationCondition = cancellationCondition;
     }
 
-    private Timestamp date;
-
     @Basic
-    @javax.persistence.Column(name = "Date")
+    @Column(name = "Date")
     public Timestamp getDate() {
         return date;
     }
@@ -45,10 +45,8 @@ public class CancellationEntity {
         this.date = date;
     }
 
-    private String description;
-
     @Basic
-    @javax.persistence.Column(name = "Description")
+    @Column(name = "Description")
     public String getDescription() {
         return description;
     }
@@ -72,5 +70,24 @@ public class CancellationEntity {
     public int hashCode() {
 
         return Objects.hash(cancellationId, cancellationCondition, date, description);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "CancellationCondition", referencedColumnName = "CancellationConditionID", nullable = false)
+    public CancellationconditionEntity getCancellationconditionByCancellationCondition() {
+        return cancellationconditionByCancellationCondition;
+    }
+
+    public void setCancellationconditionByCancellationCondition(CancellationconditionEntity cancellationconditionByCancellationCondition) {
+        this.cancellationconditionByCancellationCondition = cancellationconditionByCancellationCondition;
+    }
+
+    @OneToMany(mappedBy = "cancellationByCancelation")
+    public Collection<ReservationunitEntity> getReservationunitsByCancellationId() {
+        return reservationunitsByCancellationId;
+    }
+
+    public void setReservationunitsByCancellationId(Collection<ReservationunitEntity> reservationunitsByCancellationId) {
+        this.reservationunitsByCancellationId = reservationunitsByCancellationId;
     }
 }

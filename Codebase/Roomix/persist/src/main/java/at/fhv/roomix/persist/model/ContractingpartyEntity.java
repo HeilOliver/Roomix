@@ -1,17 +1,21 @@
 package at.fhv.roomix.persist.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@javax.persistence.Table(name = "contractingparty", schema = "roomix")
+@Table(name = "contractingparty", schema = "roomix", catalog = "")
 public class ContractingpartyEntity {
     private int contractingPartyId;
+    private String contractingPartyType;
+    private int contact;
+    private ContactEntity contactByContact;
+    private Collection<PartneragreementEntity> partneragreementsByContractingPartyId;
+    private Collection<ReservationEntity> reservationsByContractingPartyId;
 
     @Id
-    @javax.persistence.Column(name = "ContractingPartyID")
+    @Column(name = "ContractingPartyID")
     public int getContractingPartyId() {
         return contractingPartyId;
     }
@@ -20,10 +24,8 @@ public class ContractingpartyEntity {
         this.contractingPartyId = contractingPartyId;
     }
 
-    private String contractingPartyType;
-
     @Basic
-    @javax.persistence.Column(name = "ContractingPartyType")
+    @Column(name = "ContractingPartyType")
     public String getContractingPartyType() {
         return contractingPartyType;
     }
@@ -32,10 +34,8 @@ public class ContractingpartyEntity {
         this.contractingPartyType = contractingPartyType;
     }
 
-    private int contact;
-
     @Basic
-    @javax.persistence.Column(name = "Contact")
+    @Column(name = "Contact")
     public int getContact() {
         return contact;
     }
@@ -58,5 +58,33 @@ public class ContractingpartyEntity {
     public int hashCode() {
 
         return Objects.hash(contractingPartyId, contractingPartyType, contact);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "Contact", referencedColumnName = "ContactID", nullable = false)
+    public ContactEntity getContactByContact() {
+        return contactByContact;
+    }
+
+    public void setContactByContact(ContactEntity contactByContact) {
+        this.contactByContact = contactByContact;
+    }
+
+    @OneToMany(mappedBy = "contractingpartyByContractingParty")
+    public Collection<PartneragreementEntity> getPartneragreementsByContractingPartyId() {
+        return partneragreementsByContractingPartyId;
+    }
+
+    public void setPartneragreementsByContractingPartyId(Collection<PartneragreementEntity> partneragreementsByContractingPartyId) {
+        this.partneragreementsByContractingPartyId = partneragreementsByContractingPartyId;
+    }
+
+    @OneToMany(mappedBy = "contractingpartyByContractingParty")
+    public Collection<ReservationEntity> getReservationsByContractingPartyId() {
+        return reservationsByContractingPartyId;
+    }
+
+    public void setReservationsByContractingPartyId(Collection<ReservationEntity> reservationsByContractingPartyId) {
+        this.reservationsByContractingPartyId = reservationsByContractingPartyId;
     }
 }
