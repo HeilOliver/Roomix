@@ -1,8 +1,5 @@
 package at.fhv.roomix.domain.guest;
 
-import at.fhv.roomix.persist.model.ContactEntity;
-import at.fhv.roomix.persist.model.PersonEntity;
-
 /**
  * Roomix
  * at.fhv.roomix.domain.session

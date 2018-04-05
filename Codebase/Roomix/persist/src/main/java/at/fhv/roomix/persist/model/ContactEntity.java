@@ -1,31 +1,31 @@
 package at.fhv.roomix.persist.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Objects;
 
 @Entity
-@Table(name = "contact", schema = "roomix")
-public class ContactEntity implements Serializable{
+@Table(name = "contact", schema = "roomix", catalog = "")
+public class ContactEntity {
     private int contactId;
-    private String forename;
-    private String surname;
+    private String fname;
+    private String lname;
     private String companyName;
     private String phoneNumber;
     private String street;
+    private Integer houseNumber;
     private String place;
     private String postcode;
     private String country;
     private String email;
     private byte active;
-    private Collection<CreditCardEntity> creditCardsByContactId;
+    private Collection<ContactnoteEntity> contactnotesByContactId;
+    private Collection<ContractingpartyEntity> contractingpartiesByContactId;
+    private Collection<CreditcardEntity> creditcardsByContactId;
     private Collection<PersonEntity> peopleByContactId;
 
     @Id
     @Column(name = "ContactID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getContactId() {
         return contactId;
     }
@@ -35,23 +35,23 @@ public class ContactEntity implements Serializable{
     }
 
     @Basic
-    @Column(name = "Forename")
-    public String getForename() {
-        return forename;
+    @Column(name = "Fname")
+    public String getFname() {
+        return fname;
     }
 
-    public void setForename(String forename) {
-        this.forename = forename;
+    public void setFname(String fname) {
+        this.fname = fname;
     }
 
     @Basic
-    @Column(name = "Surname")
-    public String getSurname() {
-        return surname;
+    @Column(name = "Lname")
+    public String getLname() {
+        return lname;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setLname(String lname) {
+        this.lname = lname;
     }
 
     @Basic
@@ -82,6 +82,16 @@ public class ContactEntity implements Serializable{
 
     public void setStreet(String street) {
         this.street = street;
+    }
+
+    @Basic
+    @Column(name = "HouseNumber")
+    public Integer getHouseNumber() {
+        return houseNumber;
+    }
+
+    public void setHouseNumber(Integer houseNumber) {
+        this.houseNumber = houseNumber;
     }
 
     @Basic
@@ -141,11 +151,12 @@ public class ContactEntity implements Serializable{
         ContactEntity that = (ContactEntity) o;
         return contactId == that.contactId &&
                 active == that.active &&
-                Objects.equals(forename, that.forename) &&
-                Objects.equals(surname, that.surname) &&
+                Objects.equals(fname, that.fname) &&
+                Objects.equals(lname, that.lname) &&
                 Objects.equals(companyName, that.companyName) &&
                 Objects.equals(phoneNumber, that.phoneNumber) &&
                 Objects.equals(street, that.street) &&
+                Objects.equals(houseNumber, that.houseNumber) &&
                 Objects.equals(place, that.place) &&
                 Objects.equals(postcode, that.postcode) &&
                 Objects.equals(country, that.country) &&
@@ -154,61 +165,43 @@ public class ContactEntity implements Serializable{
 
     @Override
     public int hashCode() {
-        return Objects.hash(contactId, forename, surname, companyName, phoneNumber, street, place, postcode, country, email, active);
+
+        return Objects.hash(contactId, fname, lname, companyName, phoneNumber, street, houseNumber, place, postcode, country, email, active);
     }
 
     @OneToMany(mappedBy = "contactByContact")
-    public Collection<CreditCardEntity> getCreditCardsByContactId() {
-        return creditCardsByContactId;
+    public Collection<ContactnoteEntity> getContactnotesByContactId() {
+        return contactnotesByContactId;
     }
 
-    public void setCreditCardsByContactId(Collection<CreditCardEntity> creditCardsByContactId) {
-        this.creditCardsByContactId = creditCardsByContactId;
+    public void setContactnotesByContactId(Collection<ContactnoteEntity> contactnotesByContactId) {
+        this.contactnotesByContactId = contactnotesByContactId;
+    }
+
+    @OneToMany(mappedBy = "contactByContact")
+    public Collection<ContractingpartyEntity> getContractingpartiesByContactId() {
+        return contractingpartiesByContactId;
+    }
+
+    public void setContractingpartiesByContactId(Collection<ContractingpartyEntity> contractingpartiesByContactId) {
+        this.contractingpartiesByContactId = contractingpartiesByContactId;
+    }
+
+    @OneToMany(mappedBy = "contactByContact")
+    public Collection<CreditcardEntity> getCreditcardsByContactId() {
+        return creditcardsByContactId;
+    }
+
+    public void setCreditcardsByContactId(Collection<CreditcardEntity> creditcardsByContactId) {
+        this.creditcardsByContactId = creditcardsByContactId;
     }
 
     @OneToMany(mappedBy = "contactByContact")
     public Collection<PersonEntity> getPeopleByContactId() {
-        if (peopleByContactId == null) peopleByContactId = new HashSet<>();
         return peopleByContactId;
     }
 
     public void setPeopleByContactId(Collection<PersonEntity> peopleByContactId) {
         this.peopleByContactId = peopleByContactId;
-    }
-
-    private String fname;
-
-    @Basic
-    @Column(name = "Fname")
-    public String getFname() {
-        return fname;
-    }
-
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
-
-    private String lname;
-
-    @Basic
-    @Column(name = "Lname")
-    public String getLname() {
-        return lname;
-    }
-
-    public void setLname(String lname) {
-        this.lname = lname;
-    }
-
-    private Integer houseNumber;
-
-    @Basic
-    @Column(name = "HouseNumber")
-    public Integer getHouseNumber() {
-        return houseNumber;
-    }
-
-    public void setHouseNumber(Integer houseNumber) {
-        this.houseNumber = houseNumber;
     }
 }

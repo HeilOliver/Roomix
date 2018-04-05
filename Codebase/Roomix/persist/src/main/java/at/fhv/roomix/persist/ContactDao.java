@@ -1,7 +1,5 @@
 package at.fhv.roomix.persist;
 
-import at.fhv.roomix.persist.model.ContactEntity;
-
 /**
  * Roomix
  * at.fhv.roomix.persist.dao

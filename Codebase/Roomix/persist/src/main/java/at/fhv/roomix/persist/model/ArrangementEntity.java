@@ -1,17 +1,19 @@
 package at.fhv.roomix.persist.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@javax.persistence.Table(name = "arrangement", schema = "roomix")
+@Table(name = "arrangement", schema = "roomix", catalog = "")
 public class ArrangementEntity {
     private int arrangementId;
+    private int article;
+    private ArticleEntity articleByArticle;
+    private Collection<ReservationunitEntity> reservationunitsByArrangementId;
 
     @Id
-    @javax.persistence.Column(name = "ArrangementID")
+    @Column(name = "ArrangementID")
     public int getArrangementId() {
         return arrangementId;
     }
@@ -20,10 +22,8 @@ public class ArrangementEntity {
         this.arrangementId = arrangementId;
     }
 
-    private int article;
-
     @Basic
-    @javax.persistence.Column(name = "Article")
+    @Column(name = "Article")
     public int getArticle() {
         return article;
     }
@@ -45,5 +45,24 @@ public class ArrangementEntity {
     public int hashCode() {
 
         return Objects.hash(arrangementId, article);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "Article", referencedColumnName = "ArticleID", nullable = false)
+    public ArticleEntity getArticleByArticle() {
+        return articleByArticle;
+    }
+
+    public void setArticleByArticle(ArticleEntity articleByArticle) {
+        this.articleByArticle = articleByArticle;
+    }
+
+    @OneToMany(mappedBy = "arrangementByArrangement")
+    public Collection<ReservationunitEntity> getReservationunitsByArrangementId() {
+        return reservationunitsByArrangementId;
+    }
+
+    public void setReservationunitsByArrangementId(Collection<ReservationunitEntity> reservationunitsByArrangementId) {
+        this.reservationunitsByArrangementId = reservationunitsByArrangementId;
     }
 }

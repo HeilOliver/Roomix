@@ -1,9 +1,6 @@
 package at.fhv.roomix.persist;
 
-import at.fhv.roomix.persist.model.ContactEntity;
-import at.fhv.roomix.persist.model.PersonEntity;
 import org.hibernate.HibernateException;
-import org.hibernate.Session;
 
 /**
  * Roomix

@@ -1,17 +1,18 @@
 package at.fhv.roomix.persist.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@javax.persistence.Table(name = "contactnote", schema = "roomix")
+@Table(name = "contactnote", schema = "roomix", catalog = "")
 public class ContactnoteEntity {
     private int contactNoteId;
+    private int contact;
+    private String noteContent;
+    private ContactEntity contactByContact;
 
     @Id
-    @javax.persistence.Column(name = "ContactNoteID")
+    @Column(name = "ContactNoteID")
     public int getContactNoteId() {
         return contactNoteId;
     }
@@ -20,10 +21,8 @@ public class ContactnoteEntity {
         this.contactNoteId = contactNoteId;
     }
 
-    private int contact;
-
     @Basic
-    @javax.persistence.Column(name = "Contact")
+    @Column(name = "Contact")
     public int getContact() {
         return contact;
     }
@@ -32,10 +31,8 @@ public class ContactnoteEntity {
         this.contact = contact;
     }
 
-    private String noteContent;
-
     @Basic
-    @javax.persistence.Column(name = "NoteContent")
+    @Column(name = "NoteContent")
     public String getNoteContent() {
         return noteContent;
     }
@@ -58,5 +55,15 @@ public class ContactnoteEntity {
     public int hashCode() {
 
         return Objects.hash(contactNoteId, contact, noteContent);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "Contact", referencedColumnName = "ContactID", nullable = false)
+    public ContactEntity getContactByContact() {
+        return contactByContact;
+    }
+
+    public void setContactByContact(ContactEntity contactByContact) {
+        this.contactByContact = contactByContact;
     }
 }
