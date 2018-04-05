@@ -2,6 +2,7 @@ package at.fhv.roomix.domain.guest.model;
 
 
 import java.util.Collection;
+import java.util.LinkedList;
 
 /**
  * Roomix
@@ -25,6 +26,16 @@ public class GuestDomain {
     private String country;
     private String email;
     private byte active;
+
+    private Collection<ContactNoteDomain> contactNote;
+
+    public Collection<ContactNoteDomain> getContactNote() {
+        return contactNote;
+    }
+
+    public void setContactNote(Collection<ContactNoteDomain> contactNote) {
+        this.contactNote = contactNote;
+    }
 
     public int getContactId() {
         return contactId;

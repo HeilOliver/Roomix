@@ -48,7 +48,7 @@ public class PersonEntity {
     }
 
     @Basic
-    @Column(name = "Contact")
+    @Column(name = "Contact", insertable=false, updatable=false)
     public int getContact() {
         return contact;
     }

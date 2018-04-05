@@ -23,7 +23,7 @@ public class TourgroupmemberEntity {
     }
 
     @Basic
-    @Column(name = "TourGroupID")
+    @Column(name = "TourGroupID", insertable=false, updatable=false)
     public Integer getTourGroupId() {
         return tourGroupId;
     }
@@ -33,7 +33,7 @@ public class TourgroupmemberEntity {
     }
 
     @Basic
-    @Column(name = "TourGroupMember")
+    @Column(name = "TourGroupMember", insertable=false, updatable=false)
     public int getTourGroupMember() {
         return tourGroupMember;
     }

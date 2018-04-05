@@ -66,7 +66,7 @@ public class CreditcardEntity {
     }
 
     @Basic
-    @Column(name = "Contact")
+    @Column(name = "Contact", insertable=false, updatable=false)
     public Integer getContact() {
         return contact;
     }

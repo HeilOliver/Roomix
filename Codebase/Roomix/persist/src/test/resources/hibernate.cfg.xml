@@ -52,6 +52,7 @@
         <mapping class="at.fhv.roomix.persist.model.RoomEntity"/>
         <mapping class="at.fhv.roomix.persist.model.TourgroupEntity"/>
         <mapping class="at.fhv.roomix.persist.model.RoomcategoryEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.ReservationunitEntity"/>
 
 
     </session-factory>
