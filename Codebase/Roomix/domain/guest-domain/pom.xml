@@ -10,7 +10,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>at.fhv.roomix.domain</groupId>
+    <!--<groupId>at.fhv.roomix.domain</groupId> -->
     <artifactId>guest-domain</artifactId>
 
     <dependencies>

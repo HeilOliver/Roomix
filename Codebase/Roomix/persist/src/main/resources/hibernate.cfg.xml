@@ -20,7 +20,31 @@
 
         <mapping class="at.fhv.roomix.persist.model.ContactEntity"/>
         <mapping class="at.fhv.roomix.persist.model.PersonEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.CreditCardEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.CreditcardEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.ArrangementEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.ArticleEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.CancellationconditionEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.ContactnoteEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.CancellationEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.FacilityEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.HotelserviceEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.ContractingpartyEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.InvoiceEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.InvoicepositionEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.PartneragreementEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.PaymentEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.PaymenttypeEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.PersonroomassignmentEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.RoomassignmentEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.ReservationEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.TourgroupmemberEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.SeasonEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.RoomfacilityEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.RoomcategorypriceEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.ReservationoptionEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.RoomEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.TourgroupEntity"/>
+        <mapping class="at.fhv.roomix.persist.model.RoomcategoryEntity"/>
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->

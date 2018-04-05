@@ -35,7 +35,7 @@ public abstract class AbstractDao<T, PK extends Serializable> {
     }
 
     public final void save(T entity) throws IllegalArgumentException, IllegalStateException, PersistSaveException {
-        if (session == null) throw new IllegalStateException("No Session");
+        if (session == null) throw new IllegalStateException("No Session (null)");
         if (entity == null) throw new IllegalArgumentException("No Entity is provided");
 
         try {
@@ -52,7 +52,7 @@ public abstract class AbstractDao<T, PK extends Serializable> {
     }
 
     public final T load(PK id) throws IllegalArgumentException, IllegalStateException, PersistLoadException {
-        if (session == null) throw new IllegalStateException("No Session");
+        if (session == null) throw new IllegalStateException("No Session (null)");
         if (id == null) throw new IllegalArgumentException("No Id is provided");
 
         try {
