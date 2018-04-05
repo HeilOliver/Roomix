@@ -61,6 +61,24 @@
             </dependency>
 
             <dependency>
+                <groupId>at.fhv.roomix</groupId>
+                <artifactId>domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>at.fhv.roomix.domain</groupId>
+                <artifactId>guest-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>at.fhv.roomix.domain</groupId>
+                <artifactId>session-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>at.fhv.roomix.controller</groupId>
                 <artifactId>reservation-controller</artifactId>
                 <version>${project.version}</version>

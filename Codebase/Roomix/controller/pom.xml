@@ -23,11 +23,7 @@
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>at.fhv.roomix.domain</groupId>
-                <artifactId>reservation-domain</artifactId>
-                <version>${project.version}</version>
-            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
