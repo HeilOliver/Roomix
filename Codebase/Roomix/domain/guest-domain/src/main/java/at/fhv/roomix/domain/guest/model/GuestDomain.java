@@ -1,6 +1,5 @@
 package at.fhv.roomix.domain.guest.model;
 
-import at.fhv.roomix.persist.model.ContactEntity;
 
 /**
  * Roomix
@@ -11,12 +10,5 @@ import at.fhv.roomix.persist.model.ContactEntity;
  * Enter Description here
  */
 public class GuestDomain {
-
-    private ContactEntity contactEntity;
-
-    public GuestDomain(ContactEntity contactEntity){
-        this.contactEntity = contactEntity;
-    }
-
 
 }
