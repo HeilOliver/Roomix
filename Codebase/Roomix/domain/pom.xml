@@ -21,11 +21,7 @@
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>at.fhv.roomix</groupId>
-                <artifactId>persist</artifactId>
-                <version>${project.version}</version>
-            </dependency>
+            
         </dependencies>
     </dependencyManagement>
 </project>

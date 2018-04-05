@@ -14,9 +14,6 @@
     <artifactId>session-domain</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>at.fhv.roomix</groupId>
-            <artifactId>persist</artifactId>
-        </dependency>
+        
     </dependencies>
 </project>

@@ -14,11 +14,7 @@
     <artifactId>guest-domain</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>at.fhv.roomix</groupId>
-            <artifactId>persist</artifactId>
-        </dependency>
-
+        
         <!-- Test dependency-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
