@@ -1,4 +1,4 @@
-package at.fhv.roomix.persist.dao;
+package at.fhv.roomix.persist;
 
 import at.fhv.roomix.persist.model.ContactEntity;
 
@@ -11,7 +11,13 @@ import at.fhv.roomix.persist.model.ContactEntity;
  * Enter Description here
  */
 public class ContactDao extends AbstractDao<ContactEntity, Integer> {
-    public ContactDao() {
+    private ContactDao() {
         super(ContactEntity.class);
     }
+
+
+    public ContactDao getInstance() {
+        return new ContactDao();
+    }
+
 }
