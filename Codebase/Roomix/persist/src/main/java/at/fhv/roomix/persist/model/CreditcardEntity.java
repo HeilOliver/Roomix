@@ -4,22 +4,15 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.util.Objects;
 
-/**
- * Roomix
- * at.fhv.roomix.persist.model
- * CreditCardEntity
- * 24/03/2018 Oliver
- * <p>
- * Enter Description here
- */
 @Entity
-@Table(name = "CreditCard", schema = "Roomix")
-public class CreditCardEntity {
+@Table(name = "creditcard", schema = "roomix", catalog = "")
+public class CreditcardEntity {
     private int creditCardId;
     private String number;
     private String owner;
     private String type;
     private Date validDate;
+    private Integer contact;
     private ContactEntity contactByContact;
 
     @Id
@@ -72,22 +65,33 @@ public class CreditCardEntity {
         this.validDate = validDate;
     }
 
+    @Basic
+    @Column(name = "Contact")
+    public Integer getContact() {
+        return contact;
+    }
+
+    public void setContact(Integer contact) {
+        this.contact = contact;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CreditCardEntity that = (CreditCardEntity) o;
+        CreditcardEntity that = (CreditcardEntity) o;
         return creditCardId == that.creditCardId &&
                 Objects.equals(number, that.number) &&
                 Objects.equals(owner, that.owner) &&
                 Objects.equals(type, that.type) &&
-                Objects.equals(validDate, that.validDate);
+                Objects.equals(validDate, that.validDate) &&
+                Objects.equals(contact, that.contact);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(creditCardId, number, owner, type, validDate);
+        return Objects.hash(creditCardId, number, owner, type, validDate, contact);
     }
 
     @ManyToOne

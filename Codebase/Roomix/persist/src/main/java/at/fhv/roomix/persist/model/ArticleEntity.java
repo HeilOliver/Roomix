@@ -1,17 +1,19 @@
 package at.fhv.roomix.persist.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@javax.persistence.Table(name = "article", schema = "roomix")
+@Table(name = "article", schema = "roomix", catalog = "")
 public class ArticleEntity {
     private int articleId;
+    private String articleDescription;
+    private Collection<ArrangementEntity> arrangementsByArticleId;
+    private Collection<HotelserviceEntity> hotelservicesByArticleId;
 
     @Id
-    @javax.persistence.Column(name = "ArticleID")
+    @Column(name = "ArticleID")
     public int getArticleId() {
         return articleId;
     }
@@ -20,10 +22,8 @@ public class ArticleEntity {
         this.articleId = articleId;
     }
 
-    private String articleDescription;
-
     @Basic
-    @javax.persistence.Column(name = "ArticleDescription")
+    @Column(name = "ArticleDescription")
     public String getArticleDescription() {
         return articleDescription;
     }
@@ -45,5 +45,23 @@ public class ArticleEntity {
     public int hashCode() {
 
         return Objects.hash(articleId, articleDescription);
+    }
+
+    @OneToMany(mappedBy = "articleByArticle")
+    public Collection<ArrangementEntity> getArrangementsByArticleId() {
+        return arrangementsByArticleId;
+    }
+
+    public void setArrangementsByArticleId(Collection<ArrangementEntity> arrangementsByArticleId) {
+        this.arrangementsByArticleId = arrangementsByArticleId;
+    }
+
+    @OneToMany(mappedBy = "articleByArticle")
+    public Collection<HotelserviceEntity> getHotelservicesByArticleId() {
+        return hotelservicesByArticleId;
+    }
+
+    public void setHotelservicesByArticleId(Collection<HotelserviceEntity> hotelservicesByArticleId) {
+        this.hotelservicesByArticleId = hotelservicesByArticleId;
     }
 }
