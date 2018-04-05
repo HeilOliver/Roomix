@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Objects;
 
 @Entity
-@Table(name = "Contact", schema = "Roomix")
+@Table(name = "contact", schema = "roomix")
 public class ContactEntity implements Serializable{
     private int contactId;
     private String forename;
@@ -174,5 +174,41 @@ public class ContactEntity implements Serializable{
 
     public void setPeopleByContactId(Collection<PersonEntity> peopleByContactId) {
         this.peopleByContactId = peopleByContactId;
+    }
+
+    private String fname;
+
+    @Basic
+    @Column(name = "Fname")
+    public String getFname() {
+        return fname;
+    }
+
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    private String lname;
+
+    @Basic
+    @Column(name = "Lname")
+    public String getLname() {
+        return lname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
+
+    private Integer houseNumber;
+
+    @Basic
+    @Column(name = "HouseNumber")
+    public Integer getHouseNumber() {
+        return houseNumber;
+    }
+
+    public void setHouseNumber(Integer houseNumber) {
+        this.houseNumber = houseNumber;
     }
 }
