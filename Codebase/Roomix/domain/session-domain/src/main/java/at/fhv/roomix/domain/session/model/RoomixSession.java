@@ -31,4 +31,8 @@ public class RoomixSession {
     public boolean isValid() {
         return valid;
     }
+
+    public void setInValid() {
+        valid = false;
+    }
 }

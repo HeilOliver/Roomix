@@ -14,7 +14,6 @@ public class SessionFactory {
     private static ISessionDomain instance;
 
     private SessionFactory() {
-
     }
 
     public static ISessionDomain getInstance() {
@@ -25,6 +24,10 @@ public class SessionFactory {
             }
         }
         return instance;
+    }
+
+    static void inject(ISessionDomain sessionDomain) {
+        instance = sessionDomain;
     }
 
 
