@@ -20,31 +20,40 @@ public class ContactDetailView implements FxmlView<ContactDetailViewModel> {
     @InjectViewModel
     private ContactDetailViewModel viewModel;
     @FXML
-    private Text tex_firstname;
+    private Text txtFirstname;
     @FXML
-    private Text tex_lastname;
+    private Text txtLastname;
     @FXML
-    private Text tex_companyname;
+    private Text txtCompanyname;
     @FXML
-    private Text tex_street;
+    private Text txtPhonenumber;
     @FXML
-    private Text tex_city;
+    private Text txtStreet;
     @FXML
-    private Text tex_postalcode;
+    private Text txtCity;
     @FXML
-    private GridPane pane_content;
+    private Text txtPostalcode;
     @FXML
-    private VBox pane_nothing;
+    private Text txtCountry;
+    @FXML
+    private Text txtEmail;
+    @FXML
+    private GridPane pnlContent;
+    @FXML
+    private VBox pnlNothing;
 
-    public void initialize(){
-        tex_firstname.textProperty().bind(viewModel.firstnameProperty());
-        tex_lastname.textProperty().bind(viewModel.lastnameProperty());
-        tex_companyname.textProperty().bind(viewModel.companynameProperty());
-        tex_street.textProperty().bind(viewModel.streetProperty());
-        tex_city.textProperty().bind(viewModel.placeProperty());
-        tex_postalcode.textProperty().bind(viewModel.postcodeProperty());
+    public void initialize() {
+        txtFirstname.textProperty().bind(viewModel.firstnameProperty());
+        txtLastname.textProperty().bind(viewModel.lastnameProperty());
+        txtCompanyname.textProperty().bind(viewModel.companynameProperty());
+        txtPhonenumber.textProperty().bind(viewModel.phonenumberProperty());
+        txtStreet.textProperty().bind(viewModel.streetProperty());
+        txtCity.textProperty().bind(viewModel.placeProperty());
+        txtPostalcode.textProperty().bind(viewModel.postcodeProperty());
+        txtCountry.textProperty().bind(viewModel.countryProperty());
+        txtEmail.textProperty().bind(viewModel.emailProperty());
 
-        pane_content.visibleProperty().bind(viewModel.detailAvailableProperty());
-        pane_nothing.visibleProperty().bind(viewModel.detailAvailableProperty().not());
+        pnlContent.visibleProperty().bind(viewModel.detailAvailableProperty());
+        pnlNothing.visibleProperty().bind(viewModel.detailAvailableProperty().not());
     }
 }

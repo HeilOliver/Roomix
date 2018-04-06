@@ -47,12 +47,12 @@
             </GridPane>
         <Separator />
             <HBox AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0">
-                <Button fx:id="Save" onAction="#buttonSave_Click" text="%main.save">
+                <Button fx:id="btnSave" onAction="#buttonSave_Click" text="%main.save">
                     <graphic>
                         <FontAwesomeIconView glyphName="SAVE" size="2em" />
                     </graphic>
                 </Button>
-                <Button fx:id="Cancel" onAction="#buttonCancel_Click" text="%main.cancel">
+                <Button fx:id="btnCancel" onAction="#buttonCancel_Click" text="%main.cancel">
                     <graphic>
                         <FontAwesomeIconView glyphName="BAN" size="2em" />
                     </graphic>

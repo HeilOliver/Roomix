@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "Contact", schema = "Roomix")
-public class ContactEntity implements Serializable{
+public class ContactEntity implements Serializable {
     private int contactId;
     private String forename;
     private String surname;

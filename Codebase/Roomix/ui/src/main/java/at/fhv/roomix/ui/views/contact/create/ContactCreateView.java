@@ -1,4 +1,4 @@
-package at.fhv.roomix.ui.views.contact.edit;
+package at.fhv.roomix.ui.views.contact.create;
 
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
@@ -6,16 +6,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-
 /**
  * Roomix
- * at.fhv.roomix.ui.views.contact.edit
- * ContactEditView
- * 26/03/2018 OliverH
+ * at.fhv.roomix.ui.views.contact.create
+ * ContactCreateView
+ * 06.04.2018 sge
  * <p>
  * Enter Description here
  */
-public class ContactEditView implements FxmlView<ContactEditViewModel>{
+public class ContactCreateView implements FxmlView<ContactCreateViewModel> {
 
     @FXML
     private Button btnCancel;
@@ -23,7 +22,7 @@ public class ContactEditView implements FxmlView<ContactEditViewModel>{
     private Button btnSave;
 
     @InjectViewModel
-    private ContactEditViewModel viewModel;
+    private ContactCreateViewModel viewModel;
     @FXML
     private TextField firstnameInput;
     @FXML
@@ -42,6 +41,8 @@ public class ContactEditView implements FxmlView<ContactEditViewModel>{
     private TextField countryInput;
     @FXML
     private TextField emailInput;
+
+
 
 
     public void initialize() {

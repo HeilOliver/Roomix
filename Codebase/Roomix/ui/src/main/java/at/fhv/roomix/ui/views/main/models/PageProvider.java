@@ -1,16 +1,15 @@
 package at.fhv.roomix.ui.views.main.models;
 
 import at.fhv.roomix.ui.views.contact.ContactView;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import at.fhv.roomix.ui.views.contact.create.ContactCreateView;
+import at.fhv.roomix.ui.views.contact.edit.ContactEditView;
 import de.saxsys.mvvmfx.FluentViewLoader;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-import javax.inject.Inject;
-import java.util.*;
 import org.apache.log4j.Logger;
+
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 
 /**
  * Roomix
@@ -36,11 +35,13 @@ public class PageProvider {
     }
 
     static {
-
-
         topItem = FXCollections.observableArrayList(
                 new SwitchablePage(getLocalizedString("main.contact"),
-                        "BOOK", FluentViewLoader.fxmlView(ContactView.class).load().getView())
+                        "BOOK", FluentViewLoader.fxmlView(ContactView.class).load().getView()),
+                new SwitchablePage(getLocalizedString("main.contactEdit"),
+                        "EDIT", FluentViewLoader.fxmlView(ContactEditView.class).load().getView()),
+                new SwitchablePage(getLocalizedString("main.contactCreate"),
+                        "CREATE", FluentViewLoader.fxmlView(ContactCreateView.class).load().getView())
 
         );
         bottomItem = FXCollections.observableArrayList(
