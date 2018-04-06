@@ -12,11 +12,6 @@
             fx:controller="at.fhv.roomix.ui.views.contact.list.ContactDataToolbar"
             >
     <HBox AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0">
-        <Button fx:id="btnArchive" onAction="#buttonDelete_Click" text="%main.delete">
-            <graphic>
-                <FontAwesomeIconView glyphName="TRASH" size="2em" />
-            </graphic>
-        </Button>
         <Button fx:id="btnNew" onAction="#buttonNew_Click" text="%main.new">
             <graphic>
                 <FontAwesomeIconView glyphName="PLUS" size="2em" />
@@ -25,6 +20,11 @@
         <Button fx:id="btnEdit" onAction="#buttonEdit_Click" text="%main.edit">
             <graphic>
                 <FontAwesomeIconView glyphName="EDIT" size="2em" />
+            </graphic>
+        </Button>
+        <Button fx:id="btnArchive" onAction="#buttonDelete_Click" text="%main.delete">
+            <graphic>
+                <FontAwesomeIconView glyphName="TRASH" size="2em" />
             </graphic>
         </Button>
     </HBox>

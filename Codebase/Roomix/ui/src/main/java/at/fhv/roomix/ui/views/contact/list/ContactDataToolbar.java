@@ -28,6 +28,7 @@ public class ContactDataToolbar implements FxmlView<ContactDataToolbarViewModel>
     public void initialize() {
         btnArchive.disableProperty().bind(viewModel.contactSelectedProperty().not());
         btnEdit.disableProperty().bind(viewModel.contactSelectedProperty().not());
+        // TODO: btnNew.disabledProperty().bind(viewModel.contactSelectedProperty().not());
     }
 
     @FXML

@@ -18,6 +18,10 @@
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -26,27 +30,31 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
-        <Label text="%contact.table.firstname" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-        <Label text="%contact.table.lastname" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <Label text="%contact.table.companyname" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-        <Text fx:id="txtFirstname" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-        <Text fx:id="txtLastname" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-        <Text fx:id="txtCompanyname" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+        <Label text="%contact.table.firstname" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Label text="%contact.table.lastname" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Label text="%contact.table.companyname" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Text fx:id="txtFirstname" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+        <Text fx:id="txtLastname" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+        <Text fx:id="txtCompanyname" GridPane.columnIndex="2" GridPane.rowIndex="3" />
 
-        <Label text="%contact.table.street" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-        <Label text="%contact.table.city" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-        <Label text="%contact.table.postalcode" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-        <Text fx:id="txtStreet" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-        <Text fx:id="txtCity" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-        <Text fx:id="txtPostalcode" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+        <Label text="%contact.table.street" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+        <Label text="%contact.table.city" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+        <Label text="%contact.table.postalcode" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+        <Label text="%contact.table.country" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+        <Text fx:id="txtStreet" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+        <Text fx:id="txtCity" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+        <Text fx:id="txtPostalcode" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+        <Text fx:id="txtCountry" GridPane.columnIndex="2" GridPane.rowIndex="8" />
 
-        <Label text="%contact.table.phonenumber" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-        <Label text="%contact.table.country" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-        <Label text="%contact.table.email" GridPane.columnIndex="4" GridPane.rowIndex="8" />
-        <Text fx:id="txtPhonenumber" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-        <Text fx:id="txtCountry" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-        <Text fx:id="txtEmail" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+        <Label text="%contact.table.phonenumber" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+        <Label text="%contact.table.email" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+        <Text fx:id="txtPhonenumber" GridPane.columnIndex="2" GridPane.rowIndex="11" />
+        <Text fx:id="txtEmail" GridPane.columnIndex="2" GridPane.rowIndex="12" />
 
     </GridPane>
     <VBox fx:id="pnlNothing">

@@ -46,6 +46,16 @@ public class ContactEditView implements FxmlView<ContactEditViewModel>{
 
     public void initialize() {
         btnSave.disableProperty().bind(viewModel.isValidProperty().not());
+
+        firstnameInput.textProperty().bindBidirectional(viewModel.firstnameProperty());
+        lastnameInput.textProperty().bindBidirectional(viewModel.lastnameProperty());
+        companynameInput.textProperty().bindBidirectional(viewModel.companynameProperty());
+        phoneNumberInput.textProperty().bindBidirectional(viewModel.phonenumberProperty());
+        streetInput.textProperty().bindBidirectional(viewModel.streetProperty());
+        placeInput.textProperty().bindBidirectional(viewModel.placeProperty());
+        postcodeInput.textProperty().bindBidirectional(viewModel.postcodeProperty());
+        countryInput.textProperty().bindBidirectional(viewModel.countryProperty());
+        emailInput.textProperty().bindBidirectional(viewModel.emailProperty());
     }
 
     @FXML

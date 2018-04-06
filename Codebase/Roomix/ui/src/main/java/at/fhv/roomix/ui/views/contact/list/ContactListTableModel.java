@@ -31,8 +31,8 @@ public class ContactListTableModel {
     public ContactListTableModel(ContactPojo pojo) {
         // TODO don´t copy read directly
         this.pojo = pojo;
-        firstname = pojo.getForename();
-        lastname = pojo.getSurname();
+        firstname = pojo.getFirstname();
+        lastname = pojo.getLastname();
         companyName = pojo.getCompanyName();
         phonenumber = pojo.getPhoneNumber();
         street = pojo.getStreet();

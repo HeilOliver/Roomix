@@ -1,8 +1,8 @@
 package at.fhv.roomix.ui.views.main.models;
 
 import at.fhv.roomix.ui.views.contact.ContactView;
-import at.fhv.roomix.ui.views.contact.create.ContactCreateView;
 import at.fhv.roomix.ui.views.contact.edit.ContactEditView;
+import at.fhv.roomix.ui.views.contact.create.ContactCreateView;
 import de.saxsys.mvvmfx.FluentViewLoader;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -38,11 +38,10 @@ public class PageProvider {
         topItem = FXCollections.observableArrayList(
                 new SwitchablePage(getLocalizedString("main.contact"),
                         "BOOK", FluentViewLoader.fxmlView(ContactView.class).load().getView()),
-                new SwitchablePage(getLocalizedString("main.contactEdit"),
+                new SwitchablePage(getLocalizedString("main.edit"),
                         "EDIT", FluentViewLoader.fxmlView(ContactEditView.class).load().getView()),
-                new SwitchablePage(getLocalizedString("main.contactCreate"),
-                        "CREATE", FluentViewLoader.fxmlView(ContactCreateView.class).load().getView())
-
+                new SwitchablePage(getLocalizedString("main.new"),
+                    "CREATE", FluentViewLoader.fxmlView(ContactCreateView.class).load().getView())
         );
         bottomItem = FXCollections.observableArrayList(
                 new SwitchablePage(getLocalizedString("main.login"), "USER", null),
