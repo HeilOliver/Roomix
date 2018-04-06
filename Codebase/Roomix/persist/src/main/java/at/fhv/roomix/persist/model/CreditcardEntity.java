@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "creditcard", schema = "roomix", catalog = "")
+@Table(name = "CreditCard", schema = "roomix", catalog = "")
 public class CreditcardEntity {
     private int creditCardId;
     private String number;

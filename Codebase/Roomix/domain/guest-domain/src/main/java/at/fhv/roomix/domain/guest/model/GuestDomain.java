@@ -2,7 +2,6 @@ package at.fhv.roomix.domain.guest.model;
 
 
 import java.util.Collection;
-import java.util.LinkedList;
 
 /**
  * Roomix
@@ -27,14 +26,44 @@ public class GuestDomain {
     private String email;
     private byte active;
 
-    private Collection<ContactNoteDomain> contactNote;
+    private Collection<ContactNoteDomain> contactNotes;
+    private Collection<CreditCardDomain> creditCards;
+    private Collection<ContractingPartyDomain> contractingPartys;
+    private Collection<PersonDomain> personDomains;
 
-    public Collection<ContactNoteDomain> getContactNote() {
-        return contactNote;
+
+    public Collection<PersonDomain> getPersonDomains() {
+        return personDomains;
     }
 
-    public void setContactNote(Collection<ContactNoteDomain> contactNote) {
-        this.contactNote = contactNote;
+    public void setPersonDomains(Collection<PersonDomain> personDomains) {
+        this.personDomains = personDomains;
+    }
+
+
+    public Collection<ContractingPartyDomain> getContractingPartys() {
+        return contractingPartys;
+    }
+
+    public void setContractingPartys(Collection<ContractingPartyDomain> contractingPartys) {
+        this.contractingPartys = contractingPartys;
+    }
+
+
+    public Collection<CreditCardDomain> getCreditCards() {
+        return creditCards;
+    }
+
+    public void setCreditCards(Collection<CreditCardDomain> creditCards) {
+        this.creditCards = creditCards;
+    }
+
+    public Collection<ContactNoteDomain> getContactNotes() {
+        return contactNotes;
+    }
+
+    public void setContactNotes(Collection<ContactNoteDomain> contactNotes) {
+        this.contactNotes = contactNotes;
     }
 
     public int getContactId() {

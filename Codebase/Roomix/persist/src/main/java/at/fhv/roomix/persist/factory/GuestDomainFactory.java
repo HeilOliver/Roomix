@@ -1,7 +1,6 @@
 package at.fhv.roomix.persist.factory;
 
-import at.fhv.roomix.domain.guest.model.ContactNoteDomain;
-import at.fhv.roomix.domain.guest.model.GuestDomain;
+import at.fhv.roomix.domain.guest.model.*;
 import at.fhv.roomix.persist.ContactDao;
 import at.fhv.roomix.persist.PersistLoadException;
 import at.fhv.roomix.persist.model.ContactEntity;
@@ -9,9 +8,7 @@ import at.fhv.roomix.persist.model.ContactnoteEntity;
 import org.apache.log4j.Logger;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
-import org.modelmapper.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -26,7 +23,7 @@ public class GuestDomainFactory {
 
     public static void main(String[] args){
         GuestDomain gd = GuestDomainFactory.getInstanceByID(1);
-        gd.getContactNote().forEach(contactNoteDomain -> System.out.println(contactNoteDomain.getNoteContent()));
+        gd.getPersonDomains().forEach(contactNoteDomain -> System.out.println(contactNoteDomain.getIsVip()));
     }
 
     public static GuestDomain getInstanceByID(int id){
@@ -41,20 +38,10 @@ public class GuestDomainFactory {
         }
 
         /* Mapping from Entity to Domain Objects */
-        ModelMapper modelMapper = new ModelMapper();
         GuestDomain guestDomain = null;
         if (contactEntity != null) {
-
-            ModelMapper contactNoteMapper = new ModelMapper();
-            Collection<ContactnoteEntity> contactNoteEntites = contactEntity.getContactnotesByContactId();
-            Collection<ContactNoteDomain> contactNoteDomains = new LinkedList<>();
-            for(ContactnoteEntity contactNote : contactNoteEntites){
-                ContactNoteDomain contactNoteDomain = contactNoteMapper.map(contactNote, ContactNoteDomain.class);
-                contactNoteDomains.add(contactNoteDomain);
-            }
-
-            guestDomain = modelMapper.map(contactEntity, GuestDomain.class);
-            guestDomain.setContactNote(contactNoteDomains);
+            /* Basic variable mapping without referenced entities */
+            guestDomain = mapEntityToDomain(contactEntity);
 
         } else {
             logger.warn("Null Entity fetched from DAO.");
@@ -63,11 +50,65 @@ public class GuestDomainFactory {
     }
 
     public static List<GuestDomain> searchAll(){
-        return null;
+        ContactDao contactDao = ContactDao.getInstance();
+        List<ContactEntity> contactEntities = null;
+        try {
+            contactEntities = contactDao.loadAll();
+        } catch (PersistLoadException e) {
+            logger.info(e.getMessage());
+        }
+        List<GuestDomain> guestDomains = new LinkedList<>();
+        for(ContactEntity contactEntity : contactEntities){
+            guestDomains.add(mapEntityToDomain(contactEntity));
+        }
+        return guestDomains;
     }
 
     public static void saveOrUpdateInstance(GuestDomain guestDomain){
 
+    }
+
+    /**
+     *
+     * @param contactEntity
+     * @return
+     */
+    private static GuestDomain mapEntityToDomain(ContactEntity contactEntity){
+        ModelMapper modelMapper = new ModelMapper();
+        GuestDomain guestDomain = modelMapper.map(contactEntity, GuestDomain.class);
+            /* Mapping of all collection entities to domain objects */
+        Collection<ContactNoteDomain> contactNoteDomains =
+                mapCollection(contactEntity.getContactnotesByContactId(), ContactNoteDomain.class);
+        Collection<CreditCardDomain> creditCardDomains =
+                mapCollection(contactEntity.getCreditcardsByContactId(), CreditCardDomain.class);
+        Collection<ContractingPartyDomain> contractingPartyDomains =
+                mapCollection(contactEntity.getContractingpartiesByContactId(), ContractingPartyDomain.class);
+        Collection<PersonDomain> personDomains =
+                mapCollection(contactEntity.getPeopleByContactId(), PersonDomain.class);
+
+        guestDomain.setContractingPartys(contractingPartyDomains);
+        guestDomain.setCreditCards(creditCardDomains);
+        guestDomain.setContactNotes(contactNoteDomains);
+        guestDomain.setPersonDomains(personDomains);
+        return guestDomain;
+    }
+
+    /**
+     * Map Collections to collection with different types
+     * @param sourceModels Source Collection Model
+     * @param destinationType Destination Collection Type
+     * @param <S> Source Type
+     * @param <D> Destination Type
+     * @return
+     */
+    private  static <S, D> Collection<D> mapCollection(Collection<S> sourceModels, Class<D> destinationType){
+        ModelMapper singleModelMapper = new ModelMapper();
+        Collection<D> destinationCollection = new LinkedList<>();
+        for(S sourceModel : sourceModels){
+            D destinationModel = singleModelMapper.map(sourceModel, destinationType);
+            destinationCollection.add(destinationModel);
+        }
+        return destinationCollection;
     }
 
 }
