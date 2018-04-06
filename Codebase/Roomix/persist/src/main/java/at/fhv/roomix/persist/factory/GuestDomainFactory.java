@@ -13,7 +13,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-public class GuestDomainFactory {
+public class GuestDomainFactory extends AbstractFactory{
 
     private static Logger logger = Logger.getLogger(Logger.class);
 
@@ -91,24 +91,6 @@ public class GuestDomainFactory {
         guestDomain.setContactNotes(contactNoteDomains);
         guestDomain.setPersonDomains(personDomains);
         return guestDomain;
-    }
-
-    /**
-     * Map Collections to collection with different types
-     * @param sourceModels Source Collection Model
-     * @param destinationType Destination Collection Type
-     * @param <S> Source Type
-     * @param <D> Destination Type
-     * @return
-     */
-    private  static <S, D> Collection<D> mapCollection(Collection<S> sourceModels, Class<D> destinationType){
-        ModelMapper singleModelMapper = new ModelMapper();
-        Collection<D> destinationCollection = new LinkedList<>();
-        for(S sourceModel : sourceModels){
-            D destinationModel = singleModelMapper.map(sourceModel, destinationType);
-            destinationCollection.add(destinationModel);
-        }
-        return destinationCollection;
     }
 
 }
