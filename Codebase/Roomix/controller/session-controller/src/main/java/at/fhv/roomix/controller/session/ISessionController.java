@@ -1,5 +1,7 @@
 package at.fhv.roomix.controller.session;
 
+import at.fhv.roomix.controller.session.model.SessionPojo;
+
 /**
  * Roomix
  * at.fhv.roomix.controller.session
@@ -9,5 +11,9 @@ package at.fhv.roomix.controller.session;
  * The Interface for the SessionController
  */
 public interface ISessionController {
+
+    SessionPojo getSession(String username, String password);
+
+    void closeSession(long SessionId);
 
 }

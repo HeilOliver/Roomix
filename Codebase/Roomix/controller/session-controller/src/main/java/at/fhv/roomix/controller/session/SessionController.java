@@ -1,5 +1,7 @@
 package at.fhv.roomix.controller.session;
 
+import at.fhv.roomix.controller.session.model.SessionPojo;
+
 /**
  * Roomix
  * at.fhv.roomix.controller.session
@@ -11,4 +13,16 @@ package at.fhv.roomix.controller.session;
 class SessionController implements ISessionController {
 
 
+    @Override
+    public SessionPojo getSession(String username, String password) {
+        SessionPojo pojo = new SessionPojo();
+        pojo.setName("Max");
+        pojo.setSessionId(9090910293091301L);
+        return pojo;
+    }
+
+    @Override
+    public void closeSession(long SessionId) {
+
+    }
 }
