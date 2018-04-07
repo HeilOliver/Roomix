@@ -7,6 +7,8 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.util.Objects;
+
 
 /**
  * Roomix
@@ -18,27 +20,27 @@ import javafx.beans.property.StringProperty;
  */
 public class LoginViewModel implements ViewModel {
 
-    private BooleanProperty loggedIn = new SimpleBooleanProperty();
+    private final CompositeValidator formValidator = new CompositeValidator();
+    private BooleanProperty logInPossible = new SimpleBooleanProperty();
+    private BooleanProperty logOutPossible = new SimpleBooleanProperty();
     private StringProperty username = new SimpleStringProperty();
     private StringProperty password = new SimpleStringProperty();
     private Validator usernameValidator;
     private Validator passwordValidator;
-
-    private final CompositeValidator formValidator = new CompositeValidator();
-
-    BooleanProperty loggedInProperty() {
-        return loggedIn;
-    }
+    private BooleanProperty inErrorState;
 
     public LoginViewModel() {
         LoginProvider.getInstance().currentSessionProperty()
                 .addListener(((observable, oldValue, newValue) -> {
                     if (newValue == null) {
-                        loggedIn.setValue(false);
+                        logOutPossible.setValue(false);
                     } else {
-                        loggedIn.setValue(true);
+                        logOutPossible.setValue(true);
                     }
                 }));
+
+        inErrorState = LoginProvider.getInstance()
+                .inErrorStateProperty();
 
         usernameValidator = new FunctionBasedValidator<>(
                 username,
@@ -50,10 +52,47 @@ public class LoginViewModel implements ViewModel {
                 password -> password != null && !password.trim().isEmpty(),
                 ValidationMessage.error("Password may not be empty"));
 
+        // Validation False when error state == true
+        Validator errorStateValidator = new FunctionBasedValidator<>(
+                inErrorState,
+                errorState -> !errorState,
+                ValidationMessage.error(""));
+
+        // Validation False when user is logged in
+        Validator loggedInValidator = new FunctionBasedValidator<>(
+                LoginProvider.getInstance().currentSessionProperty(),
+                Objects::isNull,
+                ValidationMessage.error(""));
+
         formValidator.addValidators(
                 usernameValidator,
-                passwordValidator
+                passwordValidator,
+                errorStateValidator,
+                loggedInValidator
         );
+        // Reset Error state when username or password change
+        username.addListener(observable -> {
+            setProperty();
+        });
+
+        password.addListener(observable -> {
+            setProperty();
+        });
+
+        logInPossible.bind(formValidator.getValidationStatus().validProperty());
+    }
+
+    private void setProperty() {
+        if (inErrorState.get())
+            inErrorState.setValue(false);
+    }
+
+    BooleanProperty inErrorStateProperty() {
+        return inErrorState;
+    }
+
+    BooleanProperty logInPossibleProperty() {
+        return logInPossible;
     }
 
     ValidationStatus usernameValidation() {
@@ -84,5 +123,9 @@ public class LoginViewModel implements ViewModel {
 
     StringProperty passwordProperty() {
         return password;
+    }
+
+    BooleanProperty logOutPossibleProperty() {
+        return logOutPossible;
     }
 }

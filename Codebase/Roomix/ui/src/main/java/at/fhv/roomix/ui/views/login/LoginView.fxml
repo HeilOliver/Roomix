@@ -10,6 +10,7 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             xmlns="http://javafx.com/javafx"
             fx:controller="at.fhv.roomix.ui.views.login.LoginView"
+            fx:id="mainPane"
 >
     <StackPane AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
                AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0">
@@ -28,6 +29,7 @@
                     <ColumnConstraints prefWidth="115"/>
                     <ColumnConstraints prefWidth="10"/>
                     <ColumnConstraints prefWidth="115"/>
+                    <ColumnConstraints prefWidth="20"/>
                 </columnConstraints>
 
                 <FontAwesomeIconView glyphName="USER" size="10em"
@@ -48,18 +50,11 @@
                         text="%login.logIn" GridPane.columnIndex="2"
                         GridPane.rowIndex="6"
                         maxWidth="Infinity" maxHeight="Infinity"/>
+
+                <ProgressIndicator fx:id="progressIndicator"
+                                   GridPane.columnIndex="3"
+                                   GridPane.rowIndex="6"/>
             </GridPane>
         </VBox>
-        <BorderPane maxHeight="Infinity" maxWidth="Infinity" fx:id="panLoggingIn">
-            <center>
-                <StackPane>
-                    <Pane style="-fx-background-color: #e7e7e7; -fx-opacity: 0.8"/>
-                    <VBox alignment="CENTER">
-                        <ProgressIndicator maxWidth="90" maxHeight="90"/>
-                        <Label text="%login.loggingIn"/>
-                    </VBox>
-                </StackPane>
-            </center>
-        </BorderPane>
     </StackPane>
 </AnchorPane>

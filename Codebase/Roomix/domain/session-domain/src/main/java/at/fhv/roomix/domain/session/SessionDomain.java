@@ -43,7 +43,16 @@ class SessionDomain implements ISessionDomain {
 
     @Override
     public RoomixSession getSession(String username, String password) throws InvalidUserPasswordCombination  {
+        // TODO For Integration Testing
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException ignore) {
+        }
+
         if (username == null || password == null)
+            throw new InvalidUserPasswordCombination();
+
+        if (!password.equals("0000"))
             throw new InvalidUserPasswordCombination();
 
         long sessionId = generateSessionId();

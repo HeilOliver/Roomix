@@ -9,6 +9,8 @@ import at.fhv.roomix.ui.views.main.models.SwitchablePage;
 import de.saxsys.mvvmfx.FluentViewLoader;
 import javafx.application.Platform;
 import javafx.beans.property.*;
+import javafx.geometry.Pos;
+import org.controlsfx.control.Notifications;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -79,14 +81,19 @@ public class LoginProvider {
                 Platform.runLater(() -> {
                     currentSession.setValue(session);
                     currentUser.setValue(session.getName());
-                    inProcess.setValue(false);
                 });
             } catch (AuthenticationFaultException e) {
-                e.printStackTrace();
+                Platform.runLater(() -> isErrorOccurred.setValue(true));
+            } finally {
+                Platform.runLater(() -> inProcess.setValue(false));
             }
-
-
         });
+    }
+
+    private BooleanProperty isErrorOccurred = new SimpleBooleanProperty();
+
+    public BooleanProperty inErrorStateProperty() {
+        return isErrorOccurred;
     }
 
     BooleanProperty inProcessProperty() {

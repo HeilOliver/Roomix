@@ -1,17 +1,22 @@
 package at.fhv.roomix.ui.views.login;
 
-import at.fhv.roomix.ui.views.main.MainViewModel;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import de.saxsys.mvvmfx.utils.validation.visualization.ControlsFxVisualizer;
 import de.saxsys.mvvmfx.utils.validation.visualization.ValidationVisualizer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import org.controlsfx.control.Notifications;
+
+import javax.inject.Inject;
+import java.util.ResourceBundle;
 
 /**
  * Roomix
@@ -36,15 +41,23 @@ public class LoginView implements FxmlView<LoginViewModel> {
     private Button btnLogIn;
 
     private ValidationVisualizer validationVisualizer = new ControlsFxVisualizer();
+
+    @Inject
+    private ResourceBundle resourceBundle;
+
     @FXML
-    private BorderPane panLoggingIn;
+    private AnchorPane mainPane;
+    @FXML
+    private ProgressIndicator progressIndicator;
 
     public void initialize(){
-        btnLogIn.disableProperty().bind(viewModel.loggedInProperty());
-        txtUsername.disableProperty().bind(viewModel.loggedInProperty());
-        txtPassword.disableProperty().bind(viewModel.loggedInProperty());
-        btnLogOut.disableProperty().bind(viewModel.loggedInProperty().not());
-        panLoggingIn.visibleProperty().bind(viewModel.inProcessProperty());
+        btnLogIn.disableProperty().bind(viewModel.logInPossibleProperty().not());
+        btnLogOut.disableProperty().bind(viewModel.logOutPossibleProperty().not());
+
+        txtUsername.disableProperty().bind(viewModel.logOutPossibleProperty());
+        txtPassword.disableProperty().bind(viewModel.logOutPossibleProperty());
+
+        progressIndicator.visibleProperty().bind(viewModel.inProcessProperty());
 
         txtPassword.textProperty().bindBidirectional(
                 viewModel.passwordProperty()
@@ -56,6 +69,18 @@ public class LoginView implements FxmlView<LoginViewModel> {
 
         validationVisualizer.initVisualization(viewModel.passwordValidation(), txtPassword);
         validationVisualizer.initVisualization(viewModel.usernameValidation(), txtUsername);
+
+        viewModel.inErrorStateProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) return;
+
+            Notifications.create()
+                    .title("Title Text")
+                    .text("Hello World 0!")
+                    .position(Pos.BOTTOM_RIGHT)
+                    .hideCloseButton()
+                    .owner(mainPane)
+                    .showError();
+        });
     }
 
     @FXML
