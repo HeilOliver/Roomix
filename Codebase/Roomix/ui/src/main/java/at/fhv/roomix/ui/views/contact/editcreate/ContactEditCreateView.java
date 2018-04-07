@@ -1,4 +1,4 @@
-package at.fhv.roomix.ui.views.contact.create;
+package at.fhv.roomix.ui.views.contact.editcreate;
 
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
@@ -6,15 +6,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+
 /**
  * Roomix
- * at.fhv.roomix.ui.views.contact.create
- * ContactCreateView
- * 06.04.2018 sge
+ * at.fhv.roomix.ui.views.contact.editcreate
+ * ContactEditCreateView
+ * 26/03/2018 OliverH
  * <p>
  * Enter Description here
  */
-public class ContactCreateView implements FxmlView<ContactCreateViewModel> {
+public class ContactEditCreateView implements FxmlView<ContactEditCreateViewModel>{
 
     @FXML
     private Button btnCancel;
@@ -22,7 +23,7 @@ public class ContactCreateView implements FxmlView<ContactCreateViewModel> {
     private Button btnSave;
 
     @InjectViewModel
-    private ContactCreateViewModel viewModel;
+    private ContactEditCreateViewModel viewModel;
     @FXML
     private TextField firstnameInput;
     @FXML
@@ -46,8 +47,7 @@ public class ContactCreateView implements FxmlView<ContactCreateViewModel> {
     public void initialize() {
         btnSave.disableProperty().bind(viewModel.isValidProperty().not());
 
-        // TODO
-/*        firstnameInput.textProperty().bindBidirectional(viewModel.firstnameProperty());
+        firstnameInput.textProperty().bindBidirectional(viewModel.firstnameProperty());
         lastnameInput.textProperty().bindBidirectional(viewModel.lastnameProperty());
         companynameInput.textProperty().bindBidirectional(viewModel.companynameProperty());
         phoneNumberInput.textProperty().bindBidirectional(viewModel.phonenumberProperty());
@@ -56,16 +56,13 @@ public class ContactCreateView implements FxmlView<ContactCreateViewModel> {
         postcodeInput.textProperty().bindBidirectional(viewModel.postcodeProperty());
         countryInput.textProperty().bindBidirectional(viewModel.countryProperty());
         emailInput.textProperty().bindBidirectional(viewModel.emailProperty());
-*/
     }
 
     @FXML
     private void buttonSave_Click(ActionEvent actionEvent) {
-
     }
 
     @FXML
     private void buttonCancel_Click(ActionEvent actionEvent) {
-
     }
 }
