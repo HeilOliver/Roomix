@@ -1,5 +1,6 @@
 package at.fhv.roomix.controller.session;
 
+import at.fhv.roomix.controller.session.exception.AuthenticationFaultException;
 import at.fhv.roomix.controller.session.model.SessionPojo;
 
 /**
@@ -12,7 +13,7 @@ import at.fhv.roomix.controller.session.model.SessionPojo;
  */
 public interface ISessionController {
 
-    SessionPojo getSession(String username, String password);
+    SessionPojo getSession(String username, String password) throws AuthenticationFaultException;
 
     void closeSession(long SessionId);
 

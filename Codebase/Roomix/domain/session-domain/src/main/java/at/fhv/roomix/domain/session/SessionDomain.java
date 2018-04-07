@@ -1,9 +1,6 @@
 package at.fhv.roomix.domain.session;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import at.fhv.roomix.domain.session.model.RoomixSession;
@@ -20,9 +17,10 @@ import at.fhv.roomix.domain.session.roll.IRoomixRoll;
  */
 class SessionDomain implements ISessionDomain {
     private Random random = new Random();
-    private Map<RoomixUser, RoomixSession> knownSession = new HashMap<>();
+    private Map<Long, RoomixSession> knownSession = new HashMap<>();
 
     private long generateSessionId() {
+        // TODO Refactor to new HashMap (Session Id is now Key)
         AtomicBoolean found = new AtomicBoolean(false);
         long nextId = 0;
         while (!found.get()) {
@@ -44,31 +42,23 @@ class SessionDomain implements ISessionDomain {
     private static final RoomixUser dummyUser = new RoomixUser();
 
     @Override
-    public RoomixSession getSession(String username, String password) {
-        if (username == null || password == null) {
-            return new RoomixSession(0, "None", false);
-        }
+    public RoomixSession getSession(String username, String password) throws InvalidUserPasswordCombination  {
+        if (username == null || password == null)
+            throw new InvalidUserPasswordCombination();
 
         long sessionId = generateSessionId();
-        RoomixSession session = new RoomixSession(sessionId, username, true);
+        RoomixSession session = new RoomixSession(sessionId, username, dummyUser);
 
-        if (knownSession.containsKey(dummyUser))
-            knownSession.get(dummyUser).setInValid();
-
-        knownSession.put(dummyUser, session);
+        knownSession.put(sessionId, session);
         return session;
     }
 
     @Override
     public boolean isValid(long sessionId) {
-        Collection<RoomixSession> values = knownSession.values();
+        if (!knownSession.containsKey(sessionId))
+            return false;
 
-        for (RoomixSession value : values) {
-            if (value.getSessionId() != sessionId) continue;
-
-            return value.isValid();
-        }
-        return false;
+        return knownSession.get(sessionId).isValid();
     }
 
     @Override
@@ -76,5 +66,10 @@ class SessionDomain implements ISessionDomain {
         if (!isValid(sessionId)) return false;
         // More Logic here
         return true;
+    }
+
+    @Override
+    public void closeSession(long sessionId) {
+        knownSession.remove(sessionId);
     }
 }

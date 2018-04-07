@@ -26,4 +26,9 @@ public class SessionDomainMock implements ISessionDomain {
     public boolean isValidFor(long sessionId, IRoomixRoll roll) {
         return false;
     }
+
+    @Override
+    public void closeSession(long sessionId) {
+
+    }
 }

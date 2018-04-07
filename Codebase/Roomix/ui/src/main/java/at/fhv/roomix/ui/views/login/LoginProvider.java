@@ -2,6 +2,7 @@ package at.fhv.roomix.ui.views.login;
 
 import at.fhv.roomix.controller.session.ISessionController;
 import at.fhv.roomix.controller.session.SessionControllerFactory;
+import at.fhv.roomix.controller.session.exception.AuthenticationFaultException;
 import at.fhv.roomix.controller.session.model.SessionPojo;
 import at.fhv.roomix.ui.config.ResourceHandler;
 import at.fhv.roomix.ui.views.main.models.SwitchablePage;
@@ -73,13 +74,18 @@ public class LoginProvider {
         inProcess.setValue(true);
         executor.submit(() -> {
             ISessionController instance = SessionControllerFactory.getInstance();
-            SessionPojo session = instance.getSession(username, password);
+            try {
+                SessionPojo session = instance.getSession(username, password);
+                Platform.runLater(() -> {
+                    currentSession.setValue(session);
+                    currentUser.setValue(session.getName());
+                    inProcess.setValue(false);
+                });
+            } catch (AuthenticationFaultException e) {
+                e.printStackTrace();
+            }
 
-            Platform.runLater(() -> {
-                currentSession.setValue(session);
-                currentUser.setValue(session.getName());
-                inProcess.setValue(false);
-            });
+
         });
     }
 

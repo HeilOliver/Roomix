@@ -26,7 +26,7 @@ public class SessionFactory {
         return instance;
     }
 
-    static void inject(ISessionDomain sessionDomain) {
+    public static void inject(ISessionDomain sessionDomain) {
         instance = sessionDomain;
     }
 
