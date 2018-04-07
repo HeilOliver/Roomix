@@ -26,7 +26,7 @@
                 </TableColumn>
                 <TableColumn prefWidth="75.0" text="%contact.table.lastname">
                     <cellValueFactory>
-                        <PropertyValueFactory property="surname" />
+                        <PropertyValueFactory property="lastName" />
                     </cellValueFactory>
                 </TableColumn>
                 <TableColumn prefWidth="75.0" text="%contact.table.companyname">
@@ -64,7 +64,6 @@
                         <PropertyValueFactory property="email" />
                     </cellValueFactory>
                 </TableColumn>
-
             </columns>
             <columnResizePolicy>
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>

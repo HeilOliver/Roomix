@@ -8,7 +8,7 @@ import java.util.Collection;
 /**
  * Roomix
  * at.fhv.roomix.controller.reservation
- * ReservationControllerMock
+ * ReservationMock
  * 25/03/2018 OliverH
  * <p>
  * Enter Description here

@@ -1,5 +1,6 @@
 package at.fhv.roomix.persist;
 
+import at.fhv.roomix.persist.model.PersonEntity;
 import org.hibernate.HibernateException;
 
 /**

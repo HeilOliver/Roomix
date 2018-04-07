@@ -48,11 +48,11 @@ public class ContactListViewModel implements ViewModel {
     }
 
 
-    public ObservableList<ContactListTableModel> getContacts() {
+    ObservableList<ContactListTableModel> getContacts() {
         return contacts;
     }
 
-    public ObjectProperty<ContactListTableModel> selectedTableRowProperty() {
+    ObjectProperty<ContactListTableModel> selectedTableRowProperty() {
         return selectedTableRow;
     }
 }
