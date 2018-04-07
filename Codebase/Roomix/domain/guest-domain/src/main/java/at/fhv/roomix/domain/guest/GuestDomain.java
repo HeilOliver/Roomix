@@ -1,7 +1,5 @@
 package at.fhv.roomix.domain.guest;
 
-
-
 /**
  * Roomix
  * at.fhv.roomix.domain.session
