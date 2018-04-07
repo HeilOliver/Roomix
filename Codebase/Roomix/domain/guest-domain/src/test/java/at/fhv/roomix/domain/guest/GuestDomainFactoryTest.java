@@ -1,6 +1,5 @@
 package at.fhv.roomix.domain.guest;
 
-import org.hibernate.annotations.Check;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

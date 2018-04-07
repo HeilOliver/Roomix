@@ -1,5 +1,7 @@
 package at.fhv.roomix.controller.session;
 
+import at.fhv.roomix.controller.session.model.SessionPojo;
+
 /**
  * Roomix
  * at.fhv.roomix.controller.session
@@ -11,4 +13,13 @@ package at.fhv.roomix.controller.session;
 public class SessionControllerMock implements ISessionController {
 
 
+    @Override
+    public SessionPojo getSession(String username, String password) {
+        return null;
+    }
+
+    @Override
+    public void closeSession(long SessionId) {
+
+    }
 }

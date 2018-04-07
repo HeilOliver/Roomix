@@ -47,7 +47,7 @@
     <orderEntry type="library" name="Maven: javax.el:javax.el-api:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: javax.interceptor:javax.interceptor-api:1.2" level="project" />
     <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
-    <orderEntry type="library" name="Maven: de.saxsys:mvvmfx-validation:unknown" level="project" />
+    <orderEntry type="library" name="Maven: de.saxsys:mvvmfx-validation:1.7.0" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.weld.se:weld-se-core:3.0.3.Final" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.weld.environment:weld-environment-common:3.0.3.Final" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.weld:weld-core-impl:3.0.3.Final" level="project" />
