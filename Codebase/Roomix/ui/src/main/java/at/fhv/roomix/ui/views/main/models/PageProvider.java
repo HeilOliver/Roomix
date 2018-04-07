@@ -1,6 +1,7 @@
 package at.fhv.roomix.ui.views.main.models;
 
 import at.fhv.roomix.ui.config.ResourceHandler;
+import at.fhv.roomix.ui.views.about.AboutView;
 import at.fhv.roomix.ui.views.contact.ContactView;
 import at.fhv.roomix.ui.views.login.LoginProvider;
 import at.fhv.roomix.ui.views.login.LoginView;
@@ -44,7 +45,7 @@ public class PageProvider {
 
         bottomItem = FXCollections.observableArrayList(
                 user,
-                new SwitchablePage(getLocalizedString("main.about"), "INFO_CIRCLE", null)
+                new SwitchablePage(getLocalizedString("main.about"), "INFO_CIRCLE", FluentViewLoader.fxmlView(AboutView.class).load().getView())
         );
     }
 
