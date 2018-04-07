@@ -1,19 +1,24 @@
 package at.fhv.roomix.persist.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "Person", schema = "Roomix")
+@Table(name = "person", schema = "roomix", catalog = "")
 public class PersonEntity {
     private int personId;
     private byte isVip;
     private byte archive;
+    private int contact;
     private ContactEntity contactByContact;
+    private Collection<PersonroomassignmentEntity> personroomassignmentsByPersonId;
+    private Collection<ReservationEntity> reservationsByPersonId;
+    private Collection<TourgroupEntity> tourgroupsByPersonId;
+    private Collection<TourgroupmemberEntity> tourgroupmembersByPersonId;
 
     @Id
     @Column(name = "PersonID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getPersonId() {
         return personId;
     }
@@ -42,6 +47,16 @@ public class PersonEntity {
         this.archive = archive;
     }
 
+    @Basic
+    @Column(name = "Contact")
+    public int getContact() {
+        return contact;
+    }
+
+    public void setContact(int contact) {
+        this.contact = contact;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -49,16 +64,17 @@ public class PersonEntity {
         PersonEntity that = (PersonEntity) o;
         return personId == that.personId &&
                 isVip == that.isVip &&
-                archive == that.archive;
+                archive == that.archive &&
+                contact == that.contact;
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(personId, isVip, archive);
+        return Objects.hash(personId, isVip, archive, contact);
     }
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "Contact", referencedColumnName = "ContactID", nullable = false)
     public ContactEntity getContactByContact() {
         return contactByContact;
@@ -66,6 +82,41 @@ public class PersonEntity {
 
     public void setContactByContact(ContactEntity contactByContact) {
         this.contactByContact = contactByContact;
-        contactByContact.getPeopleByContactId().add(this);
+    }
+
+    @OneToMany(mappedBy = "personByPerson")
+    public Collection<PersonroomassignmentEntity> getPersonroomassignmentsByPersonId() {
+        return personroomassignmentsByPersonId;
+    }
+
+    public void setPersonroomassignmentsByPersonId(Collection<PersonroomassignmentEntity> personroomassignmentsByPersonId) {
+        this.personroomassignmentsByPersonId = personroomassignmentsByPersonId;
+    }
+
+    @OneToMany(mappedBy = "personByPerson")
+    public Collection<ReservationEntity> getReservationsByPersonId() {
+        return reservationsByPersonId;
+    }
+
+    public void setReservationsByPersonId(Collection<ReservationEntity> reservationsByPersonId) {
+        this.reservationsByPersonId = reservationsByPersonId;
+    }
+
+    @OneToMany(mappedBy = "personByTourGroupLeader")
+    public Collection<TourgroupEntity> getTourgroupsByPersonId() {
+        return tourgroupsByPersonId;
+    }
+
+    public void setTourgroupsByPersonId(Collection<TourgroupEntity> tourgroupsByPersonId) {
+        this.tourgroupsByPersonId = tourgroupsByPersonId;
+    }
+
+    @OneToMany(mappedBy = "personByTourGroupMember")
+    public Collection<TourgroupmemberEntity> getTourgroupmembersByPersonId() {
+        return tourgroupmembersByPersonId;
+    }
+
+    public void setTourgroupmembersByPersonId(Collection<TourgroupmemberEntity> tourgroupmembersByPersonId) {
+        this.tourgroupmembersByPersonId = tourgroupmembersByPersonId;
     }
 }

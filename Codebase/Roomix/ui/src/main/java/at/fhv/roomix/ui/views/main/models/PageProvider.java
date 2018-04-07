@@ -1,7 +1,12 @@
 package at.fhv.roomix.ui.views.main.models;
 
+import at.fhv.roomix.ui.config.ResourceHandler;
+import at.fhv.roomix.ui.views.about.AboutView;
 import at.fhv.roomix.ui.views.contact.ContactView;
-import at.fhv.roomix.ui.views.contact.editcreate.ContactEditCreateView;
+
+import at.fhv.roomix.ui.views.login.LoginProvider;
+import at.fhv.roomix.ui.views.login.LoginView;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.saxsys.mvvmfx.FluentViewLoader;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,26 +28,23 @@ public class PageProvider {
     private static final ObservableList<SwitchablePage> bottomItem;
 
     private static String getLocalizedString(String resourceName) {
-        final ResourceBundle bundle = ResourceBundle.getBundle("default");
-        try {
-            return bundle.getString(resourceName);
-        } catch (MissingResourceException e) {
-            Logger logger = Logger.getLogger(PageProvider.class);
-            logger.error("Missing Resource - " + resourceName, e.getCause());
-            return resourceName;
-        }
+        return ResourceHandler.getLocalizedString(resourceName);
     }
 
     static {
         topItem = FXCollections.observableArrayList(
                 new SwitchablePage(getLocalizedString("main.contact"),
-                        "BOOK", FluentViewLoader.fxmlView(ContactView.class).load().getView()),
-                new SwitchablePage(getLocalizedString("main.edit"),
-                        "EDIT", FluentViewLoader.fxmlView(ContactEditCreateView.class).load().getView())
+                        "BOOK", FluentViewLoader.fxmlView(ContactView.class).load().getView())
         );
+
+        LoginProvider.getInstance();
+        SwitchablePage user = new SwitchablePage("",
+                "USER", FluentViewLoader.fxmlView(LoginView.class).load().getView());
+        user.tagProperty().bindBidirectional(LoginProvider.getInstance().currentUserProperty());
+
         bottomItem = FXCollections.observableArrayList(
-                new SwitchablePage(getLocalizedString("main.login"), "USER", null),
-                new SwitchablePage(getLocalizedString("main.about"), "INFO_CIRCLE", null)
+                user,
+                new SwitchablePage(getLocalizedString("main.about"), "INFO_CIRCLE", FluentViewLoader.fxmlView(AboutView.class).load().getView())
         );
     }
 

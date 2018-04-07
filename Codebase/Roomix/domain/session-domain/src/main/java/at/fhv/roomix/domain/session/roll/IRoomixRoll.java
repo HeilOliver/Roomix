@@ -9,4 +9,5 @@ package at.fhv.roomix.domain.session.roll;
  * Enter Description here
  */
 public interface IRoomixRoll {
+
 }

@@ -9,8 +9,11 @@ import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.MvvmFX;
 import de.saxsys.mvvmfx.ViewTuple;
 import de.saxsys.mvvmfx.cdi.MvvmfxCdiApplication;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.controlsfx.control.Notifications;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,6 +43,7 @@ public class RunMe extends MvvmfxCdiApplication {
 
     @Override
     public void startMvvmfx(Stage stage) throws Exception {
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/assets/roomix_icon.png")));
         LOG.info("Application Start");
         MvvmFX.setGlobalResourceBundle(resourceBundle);
         stage.setTitle(resourceBundle.getString("window.title"));

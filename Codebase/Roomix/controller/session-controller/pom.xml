@@ -17,8 +17,18 @@
     <dependencies>
         <dependency>
             <groupId>at.fhv.roomix.domain</groupId>
-            <artifactId>reservation-domain</artifactId>
+            <artifactId>session-domain</artifactId>
             <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>at.fhv.roomix</groupId>
+            <artifactId>persist</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
         </dependency>
 
         <dependency>

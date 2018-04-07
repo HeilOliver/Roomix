@@ -13,6 +13,27 @@
     <artifactId>persist</artifactId>
 
     <dependencies>
+        <!-- Internal Dependency's-->
+        <dependency>
+            <groupId>at.fhv.roomix</groupId>
+            <artifactId>domain</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>at.fhv.roomix.domain</groupId>
+            <artifactId>guest-domain</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>at.fhv.roomix.domain</groupId>
+            <artifactId>reservation-domain</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>at.fhv.roomix.domain</groupId>
+            <artifactId>session-domain</artifactId>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -42,7 +63,6 @@
             <version>1.2.17</version>
         </dependency>
 
-
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-ehcache</artifactId>
@@ -55,5 +75,6 @@
             <version>5.0.0</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 </project>
