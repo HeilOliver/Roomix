@@ -5,8 +5,8 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "contact", schema = "roomix", catalog = "")
-public class ContactEntity {
+@Table(name = "Contact", schema = "Roomix")
+public class ContactEntity implements Serializable {
     private int contactId;
     private String fname;
     private String lname;

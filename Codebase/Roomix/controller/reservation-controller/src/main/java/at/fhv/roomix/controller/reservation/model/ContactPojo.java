@@ -61,7 +61,7 @@ public class ContactPojo {
         return contactId;
     }
 
-    public String getForename() {
+    public String getFirstname() {
         return forename;
     }
 
@@ -69,7 +69,7 @@ public class ContactPojo {
         this.forename = forename;
     }
 
-    public String getSurname() {
+    public String getLastname() {
         return surname;
     }
 

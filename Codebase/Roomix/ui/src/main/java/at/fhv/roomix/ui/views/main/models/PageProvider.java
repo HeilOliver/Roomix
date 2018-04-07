@@ -3,18 +3,17 @@ package at.fhv.roomix.ui.views.main.models;
 import at.fhv.roomix.ui.config.ResourceHandler;
 import at.fhv.roomix.ui.views.about.AboutView;
 import at.fhv.roomix.ui.views.contact.ContactView;
+
 import at.fhv.roomix.ui.views.login.LoginProvider;
 import at.fhv.roomix.ui.views.login.LoginView;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.saxsys.mvvmfx.FluentViewLoader;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-import javax.inject.Inject;
-import java.util.*;
 import org.apache.log4j.Logger;
+
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 
 /**
  * Roomix

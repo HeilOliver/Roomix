@@ -34,6 +34,11 @@
                         <PropertyValueFactory property="companyName" />
                     </cellValueFactory>
                 </TableColumn>
+                <TableColumn prefWidth="75.0" text="%contact.table.phonenumber">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="phonenumber" />
+                    </cellValueFactory>
+                </TableColumn>
                 <TableColumn prefWidth="75.0" text="%contact.table.city">
                     <cellValueFactory>
                         <PropertyValueFactory property="place" />
@@ -49,6 +54,17 @@
                         <PropertyValueFactory property="street" />
                     </cellValueFactory>
                 </TableColumn>
+                <TableColumn prefWidth="75.0" text="%contact.table.country">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="country" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="%contact.table.email">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="email" />
+                    </cellValueFactory>
+                </TableColumn>
+
             </columns>
             <columnResizePolicy>
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>

@@ -16,18 +16,19 @@ import javafx.scene.control.Button;
  */
 public class ContactDataToolbar implements FxmlView<ContactDataToolbarViewModel> {
     @FXML
-    private Button but_archive;
+    private Button btnArchive;
     @FXML
-    private Button but_new;
+    private Button btnNew;
     @FXML
-    private Button but_edit;
+    private Button btnEdit;
 
     @InjectViewModel
     private ContactDataToolbarViewModel viewModel;
 
-    public void initialize(){
-        but_archive.disableProperty().bind(viewModel.contactSelectedProperty().not());
-        but_edit.disableProperty().bind(viewModel.contactSelectedProperty().not());
+    public void initialize() {
+        btnArchive.disableProperty().bind(viewModel.contactSelectedProperty().not());
+        btnEdit.disableProperty().bind(viewModel.contactSelectedProperty().not());
+        // TODO: btnNew.disabledProperty().bind(viewModel.contactSelectedProperty().not());
     }
 
     @FXML
