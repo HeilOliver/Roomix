@@ -18,6 +18,12 @@ class SessionController implements ISessionController {
         SessionPojo pojo = new SessionPojo();
         pojo.setName("Max");
         pojo.setSessionId(9090910293091301L);
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return pojo;
     }
 
