@@ -4,7 +4,11 @@ import at.fhv.roomix.domain.guest.model.*;
 import at.fhv.roomix.persist.AbstractDao;
 import at.fhv.roomix.persist.ContactDao;
 import at.fhv.roomix.persist.PersistLoadException;
+import at.fhv.roomix.persist.PersistSaveException;
 import at.fhv.roomix.persist.model.ContactEntity;
+import at.fhv.roomix.persist.model.ContractingpartyEntity;
+import at.fhv.roomix.persist.model.CreditcardEntity;
+import at.fhv.roomix.persist.model.PersonEntity;
 import org.apache.log4j.Logger;
 import org.modelmapper.ModelMapper;
 
@@ -13,61 +17,11 @@ import java.util.concurrent.Callable;
 
 public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, ContactEntity> {
 
-
-
     private GuestDomainBuilder(ICallable registerAtDAO){
         registerAtDAO.call();
     }
 
     public GuestDomainBuilder(){
-
-    }
-
-    public static void main(String[] args){
-        GuestDomain gd = new GuestDomainBuilder(ContactDao::registerAtDao).get(1);
-        System.out.println(gd.getFname());
-    }
-
-    // TODO: remove
-    public GuestDomain getInstanceByID(int id){
-        /* Get contact Entity via Data Access Object */
-        ContactDao contactDao = ContactDao.getInstance();
-        ContactEntity contactEntity = null;
-        try {
-            contactEntity = contactDao.load(id);
-        } catch (PersistLoadException e) {
-            logger.info(e.getMessage());
-        }
-
-        /* Mapping from Entity to Domain Objects */
-        GuestDomain guestDomain = null;
-        if (contactEntity != null) {
-            /* Basic variable mapping without referenced entities */
-            guestDomain = mapEntityToDomain(contactEntity);
-
-        } else {
-            logger.warn("Null Entity fetched from DAO.");
-        }
-        return guestDomain;
-    }
-
-    // TODO: implement in AbstractDomainBuilder
-    public List<GuestDomain> searchAll(){
-        ContactDao contactDao = ContactDao.getInstance();
-        List<ContactEntity> contactEntities = null;
-        try {
-            contactEntities = contactDao.loadAll();
-        } catch (PersistLoadException e) {
-            logger.info(e.getMessage());
-        }
-        List<GuestDomain> guestDomains = new LinkedList<>();
-        for(ContactEntity contactEntity : contactEntities){
-            guestDomains.add(mapEntityToDomain(contactEntity));
-        }
-        return guestDomains;
-    }
-
-    public static void saveOrUpdateInstance(GuestDomain guestDomain){
 
     }
 
@@ -96,18 +50,38 @@ public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, Conta
     }
 
     @Override
+    protected ContactEntity mapDomainToEntity(GuestDomain domain) {
+
+        ModelMapper modelMapper = new ModelMapper();
+        ContactEntity contactEntity = modelMapper.map(domain, ContactEntity.class);
+
+        LinkedHashMap<ISourceMapper<Collection>,
+                Map.Entry<Class, IDestinationMapper<Collection>>> mapping =  new LinkedHashMap<>();
+
+        put(ContactEntity.class, domain::getContactNotes, contactEntity::setContactnotesByContactId, mapping);
+        put(CreditcardEntity.class, domain::getCreditCards, contactEntity::setCreditcardsByContactId, mapping);
+        put(ContractingpartyEntity.class, domain::getContractingPartys,
+                contactEntity::setContractingpartiesByContactId, mapping);
+        put(PersonEntity.class, domain::getPersonDomains, contactEntity::setPeopleByContactId, mapping);
+
+        mapAllCollections(mapping);
+
+        return contactEntity;
+    }
+
+    @Override
     protected GuestDomain get(int id) {
         return new GuestDomainBuilder(ContactDao::registerAtDao).getById(id, ContactEntity.class);
     }
 
     @Override
     protected List<GuestDomain> getAll() {
-        return null;
+        return new GuestDomainBuilder(ContactDao::registerAtDao).loadAll(ContactEntity.class);
     }
 
     @Override
     protected void set(GuestDomain domainObject) {
-
+        new GuestDomainBuilder(ContactDao::registerAtDao).save(ContactEntity.class, domainObject);
     }
 
 }
