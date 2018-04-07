@@ -11,6 +11,11 @@ import at.fhv.roomix.persist.model.ContactEntity;
  * Enter Description here
  */
 public class ContactDao extends AbstractDao<ContactEntity, Integer> {
+
+    static {
+        AbstractDao.addDao(ContactEntity.class, ContactDao::new);
+    }
+
     private ContactDao() {
         super(ContactEntity.class);
     }
@@ -20,4 +25,7 @@ public class ContactDao extends AbstractDao<ContactEntity, Integer> {
         return new ContactDao();
     }
 
+    public static void registerAtDao(){
+        daoLogger.info("Registered at Contact DAO");
+    }
 }
