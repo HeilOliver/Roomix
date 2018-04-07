@@ -29,7 +29,8 @@
                     <ColumnConstraints prefWidth="115"/>
                     <ColumnConstraints prefWidth="10"/>
                     <ColumnConstraints prefWidth="115"/>
-                    <ColumnConstraints prefWidth="20"/>
+                    <ColumnConstraints prefWidth="4"/>
+                    <ColumnConstraints prefWidth="30"/>
                 </columnConstraints>
 
                 <FontAwesomeIconView glyphName="USER" size="10em"
@@ -52,7 +53,7 @@
                         maxWidth="Infinity" maxHeight="Infinity"/>
 
                 <ProgressIndicator fx:id="progressIndicator"
-                                   GridPane.columnIndex="3"
+                                   GridPane.columnIndex="4"
                                    GridPane.rowIndex="6"/>
             </GridPane>
         </VBox>

@@ -74,8 +74,8 @@ public class LoginView implements FxmlView<LoginViewModel> {
             if (!newValue) return;
 
             Notifications.create()
-                    .title("Title Text")
-                    .text("Hello World 0!")
+                    .title(resourceBundle.getString("login.notification.title"))
+                    .text(resourceBundle.getString("login.notification.loginFail"))
                     .position(Pos.BOTTOM_RIGHT)
                     .hideCloseButton()
                     .owner(mainPane)
