@@ -8,19 +8,30 @@ import at.fhv.roomix.persist.model.CreditcardEntity;
 import at.fhv.roomix.persist.model.PersonEntity;
 import org.modelmapper.ModelMapper;
 
+import java.util.*;
+import java.util.function.Supplier;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, ContactEntity> {
-
+public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, ContactEntity>
+             implements IAbstractDomainBuilder<GuestDomain, ContactEntity>{
+    /* Constructor */
     private GuestDomainBuilder(ICallable registerAtDAO){
         registerAtDAO.call();
     }
+    private GuestDomainBuilder(){}
 
-    public GuestDomainBuilder(){
+    /* Dependency Injection */
+    private static Supplier<IAbstractDomainBuilder<GuestDomain, ContactEntity>> supplier;
 
+    public static IAbstractDomainBuilder<GuestDomain, ContactEntity> getInstance(){
+        if (supplier == null) return new GuestDomainBuilder(ContactDao::registerAtDao);
+        return supplier.get();
+    }
+    public static void injectDependency(Supplier<IAbstractDomainBuilder<GuestDomain, ContactEntity>> builderSupplier){
+        supplier = builderSupplier;
     }
 
 
@@ -81,5 +92,4 @@ public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, Conta
     public void set(GuestDomain domainObject) {
         new GuestDomainBuilder(ContactDao::registerAtDao).save(ContactEntity.class, domainObject);
     }
-
 }
