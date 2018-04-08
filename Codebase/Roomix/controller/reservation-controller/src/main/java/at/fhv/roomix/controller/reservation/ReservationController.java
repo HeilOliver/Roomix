@@ -67,7 +67,7 @@ class ReservationController implements IReservationController {
         HashSet<GuestDomain> guestDomainSet = new HashSet<>(guestBuilder.getAll());
         HashSet<ContactPojo> contactPojoSet = new HashSet<>();
 
-        guestDomainSet.forEach(contact -> contactPojoSet.add(modelMapper.map(guestBuilder, ContactPojo.class)));
+        guestDomainSet.forEach(contact -> contactPojoSet.add(modelMapper.map(contact, ContactPojo.class)));
 
         return contactPojoSet;
     }

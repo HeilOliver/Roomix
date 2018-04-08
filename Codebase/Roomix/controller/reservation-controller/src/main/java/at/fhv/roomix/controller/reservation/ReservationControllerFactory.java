@@ -24,7 +24,7 @@ public class ReservationControllerFactory {
 
         synchronized (lock) {
             if (instance == null) {
-                instance = new ReservationMock();
+                instance = new ReservationController();
             }
         }
         return instance;
