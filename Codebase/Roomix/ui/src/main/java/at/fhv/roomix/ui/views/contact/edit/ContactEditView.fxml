@@ -29,6 +29,7 @@ fx:id="mainPane">
                 <FontAwesomeIconView glyphName="CLOSE" size="2em"/>
             </graphic>
         </Button>
+        <Label fx:id="debugID"/>
     </HBox>
 
     <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"

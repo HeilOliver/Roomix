@@ -47,7 +47,7 @@ class SessionDomain implements ISessionDomain {
     public RoomixSession getSession(String username, String password) throws InvalidUserPasswordCombination  {
         // TODO For Integration Testing
         try {
-            Thread.sleep(1500);
+            Thread.sleep(500);
         } catch (InterruptedException ignore) {
         }
 

@@ -146,6 +146,11 @@ public class ContactEditViewModel implements ViewModel {
         return houseNumberValidator.getValidationStatus();
     }
 
+    IntegerProperty idProperty() {
+        return contactWrapper.field("id",
+                ContactPojo::getContactId, ContactPojo::setContactId);
+    }
+
     StringProperty firstNameProperty() {
         return contactWrapper.field("firstName",
                 ContactPojo::getFname, ContactPojo::setFname);

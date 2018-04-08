@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -65,8 +66,12 @@ public class ContactEditView implements FxmlView<ContactEditViewModel>{
     private Button btnReset;
     @FXML
     private TextField houseNumberInput;
+    @FXML
+    private Label debugID;
 
     public void initialize() {
+        debugID.textProperty().bind(viewModel.idProperty().asString());
+
         firstnameInput.textProperty()
                 .bindBidirectional(viewModel.firstNameProperty());
         lastnameInput.textProperty()
