@@ -24,7 +24,6 @@ public class GuestDomain {
     private String postcode;
     private String country;
     private String email;
-    private byte active;
 
     private Collection<ContactNoteDomain> contactNotes;
     private Collection<CreditCardDomain> creditCards;
@@ -152,14 +151,6 @@ public class GuestDomain {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public byte getActive() {
-        return active;
-    }
-
-    public void setActive(byte active) {
-        this.active = active;
     }
 
 }

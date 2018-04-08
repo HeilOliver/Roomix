@@ -18,7 +18,6 @@ public class ContactEntity {
     private String postcode;
     private String country;
     private String email;
-    private byte active;
     private Collection<ContactnoteEntity> contactnotesByContactId;
     private Collection<ContractingpartyEntity> contractingpartiesByContactId;
     private Collection<CreditcardEntity> creditcardsByContactId;
@@ -134,15 +133,6 @@ public class ContactEntity {
         this.email = email;
     }
 
-    @Basic
-    @Column(name = "Active")
-    public byte getActive() {
-        return active;
-    }
-
-    public void setActive(byte active) {
-        this.active = active;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -150,7 +140,6 @@ public class ContactEntity {
         if (o == null || getClass() != o.getClass()) return false;
         ContactEntity that = (ContactEntity) o;
         return contactId == that.contactId &&
-                active == that.active &&
                 Objects.equals(fname, that.fname) &&
                 Objects.equals(lname, that.lname) &&
                 Objects.equals(companyName, that.companyName) &&
