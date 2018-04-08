@@ -1,6 +1,6 @@
 package at.fhv.roomix.controller.reservation;
 
-import at.fhv.roomix.controller.reservation.exeption.FaultException;
+import at.fhv.roomix.controller.reservation.exeption.ArgumentFaultException;
 import at.fhv.roomix.controller.reservation.exeption.SessionFaultException;
 import at.fhv.roomix.controller.reservation.exeption.ValidationFault;
 import at.fhv.roomix.controller.reservation.model.ContactPojo;
@@ -8,6 +8,7 @@ import at.fhv.roomix.domain.guest.model.GuestDomain;
 import at.fhv.roomix.domain.session.ISessionDomain;
 import at.fhv.roomix.domain.session.SessionFactory;
 import at.fhv.roomix.persist.factory.GuestDomainBuilder;
+import at.fhv.roomix.persist.factory.IAbstractDomainBuilder;
 import org.modelmapper.ModelMapper;
 
 import javax.validation.ConstraintViolation;
@@ -27,10 +28,10 @@ import java.util.Set;
  * The Implementation for the ReservationController itself
  */
 class ReservationController implements IReservationController {
-    private static ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
-    private static final ISessionDomain sessionHandler = SessionFactory.getInstance();
+    private ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
+    private final ISessionDomain sessionHandler = SessionFactory.getInstance();
 
-    private <T> void validate(T object) throws FaultException {
+    private <T> void validate(T object) throws ValidationFault {
         Validator validator = validatorFactory.getValidator();
         Set<ConstraintViolation<T>> violations = validator.validate(object);
 
@@ -42,11 +43,13 @@ class ReservationController implements IReservationController {
     }
 
     @Override
-    public void newContact(long sessionId, ContactPojo contactPojo) throws FaultException {
+    public void newContact(long sessionId, ContactPojo contactPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException {
+
+        if (contactPojo == null)  throw new ArgumentFaultException();
         validate(contactPojo);
         if (!sessionHandler.isValidFor(sessionId, null))  throw new SessionFaultException();
 
-        GuestDomainBuilder guestBuilder = new GuestDomainBuilder();
+        IAbstractDomainBuilder guestBuilder = GuestDomainBuilder.getInstance();
         ModelMapper modelMapper = new ModelMapper();
 
         GuestDomain guestDomain = modelMapper.map(contactPojo, GuestDomain.class);
@@ -55,21 +58,24 @@ class ReservationController implements IReservationController {
     }
 
     @Override
-    public Collection<ContactPojo> getAllContacts(long sessionId) throws FaultException {
+    public Collection<ContactPojo> getAllContacts(long sessionId) throws SessionFaultException {
+
         if (!sessionHandler.isValidFor(sessionId, null))  throw new SessionFaultException();
 
-        GuestDomainBuilder guestBuilder = new GuestDomainBuilder();
+        IAbstractDomainBuilder guestBuilder = GuestDomainBuilder.getInstance();
         ModelMapper modelMapper = new ModelMapper();
         HashSet<GuestDomain> guestDomainSet = new HashSet<>(guestBuilder.getAll());
         HashSet<ContactPojo> contactPojoSet = new HashSet<>();
 
-        guestDomainSet.forEach(contact -> contactPojoSet.add(modelMapper.map(guestBuilder,ContactPojo.class)));
+        guestDomainSet.forEach(contact -> contactPojoSet.add(modelMapper.map(guestBuilder, ContactPojo.class)));
 
         return contactPojoSet;
     }
 
     @Override
-    public void updateContact(long sessionId, ContactPojo contactPojo) throws FaultException {
+    public void updateContact(long sessionId, ContactPojo contactPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException {
+
+        if (contactPojo == null)  throw new ArgumentFaultException();
         validate(contactPojo);
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
 
