@@ -25,7 +25,7 @@ public class ReservationoptionEntity {
     }
 
     @Basic
-    @Column(name = "Reservation")
+    @Column(name = "Reservation", insertable=false, updatable=false)
     public int getReservation() {
         return reservation;
     }

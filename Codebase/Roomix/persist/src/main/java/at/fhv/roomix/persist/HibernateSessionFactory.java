@@ -23,6 +23,7 @@ class HibernateSessionFactory {
 
             ourSessionFactory = configuration.buildSessionFactory();
         } catch (Throwable ex) {
+            ex.printStackTrace();
             logger.fatal(ex.getMessage());
         }
     }

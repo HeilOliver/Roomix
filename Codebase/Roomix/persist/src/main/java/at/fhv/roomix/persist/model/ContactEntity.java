@@ -1,13 +1,12 @@
 package at.fhv.roomix.persist.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "Contact", schema = "Roomix")
-public class ContactEntity implements Serializable {
+@Table(name = "Contact", schema = "roomix", catalog = "")
+public class ContactEntity {
     private int contactId;
     private String fname;
     private String lname;

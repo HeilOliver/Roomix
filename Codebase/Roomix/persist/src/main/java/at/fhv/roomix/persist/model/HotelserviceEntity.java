@@ -21,7 +21,7 @@ public class HotelserviceEntity {
     }
 
     @Basic
-    @Column(name = "Article")
+    @Column(name = "Article", insertable=false, updatable=false)
     public int getArticle() {
         return article;
     }

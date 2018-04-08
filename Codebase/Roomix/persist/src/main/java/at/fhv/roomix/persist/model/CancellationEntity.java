@@ -26,7 +26,7 @@ public class CancellationEntity {
     }
 
     @Basic
-    @Column(name = "CancellationCondition")
+    @Column(name = "CancellationCondition", insertable=false, updatable=false)
     public int getCancellationCondition() {
         return cancellationCondition;
     }
