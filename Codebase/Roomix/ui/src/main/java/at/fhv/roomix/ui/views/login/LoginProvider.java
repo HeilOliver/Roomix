@@ -73,7 +73,7 @@ public class LoginProvider {
         return currentSession;
     }
 
-    void logIn(String username, String password) {
+    public void logIn(String username, String password) {
         inProcess.setValue(true);
         executor.submit(() -> {
             ISessionController instance = SessionControllerFactory.getInstance();
