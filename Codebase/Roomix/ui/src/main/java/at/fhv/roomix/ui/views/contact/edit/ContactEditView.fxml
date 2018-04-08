@@ -86,6 +86,8 @@ fx:id="mainPane">
                        GridPane.rowIndex="1"/>
             <TextField fx:id="emailInput" promptText="%contact.edit.email.prompt" GridPane.columnIndex="3"
                        GridPane.rowIndex="2"/>
+            <TextField fx:id="houseNumberInput" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+
         </GridPane>
     </VBox>
 </AnchorPane>

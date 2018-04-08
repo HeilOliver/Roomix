@@ -76,7 +76,6 @@ public class ContactDataToolbar implements FxmlView<ContactDataToolbarViewModel>
                         .text(resourceBundle.getString("contact.notification.saveFail"))
                         .position(Pos.BOTTOM_RIGHT)
                         .hideCloseButton()
-                        .owner(primaryStage)
                         .showError());
     }
 }

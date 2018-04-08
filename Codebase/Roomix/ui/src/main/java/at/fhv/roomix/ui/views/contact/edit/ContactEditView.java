@@ -1,6 +1,5 @@
 package at.fhv.roomix.ui.views.contact.edit;
 
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import de.saxsys.mvvmfx.utils.validation.visualization.ControlsFxVisualizer;
@@ -64,7 +63,8 @@ public class ContactEditView implements FxmlView<ContactEditViewModel>{
     private ProgressIndicator icoSaveProcess;
     @FXML
     private Button btnReset;
-
+    @FXML
+    private TextField houseNumberInput;
 
     public void initialize() {
         firstnameInput.textProperty()
@@ -85,6 +85,8 @@ public class ContactEditView implements FxmlView<ContactEditViewModel>{
                 .bindBidirectional(viewModel.countryProperty());
         emailInput.textProperty()
                 .bindBidirectional(viewModel.emailProperty());
+        houseNumberInput.textProperty()
+                .bindBidirectional(viewModel.houseNumberProperty());
 
         validationVisualizer.initVisualization(
                 viewModel.getFirstNameValidator(), firstnameInput);
@@ -109,6 +111,9 @@ public class ContactEditView implements FxmlView<ContactEditViewModel>{
 
         validationVisualizer.initVisualization(
                 viewModel.getEmailValidator(), emailInput);
+
+        validationVisualizer.initVisualization(
+                viewModel.getHouseNumberValidator(), houseNumberInput);
 
         icoSaveProcess.visibleProperty().bind(viewModel.inProgressProperty());
         btnSave.disableProperty().bind(viewModel.savePossibleProperty().not());
