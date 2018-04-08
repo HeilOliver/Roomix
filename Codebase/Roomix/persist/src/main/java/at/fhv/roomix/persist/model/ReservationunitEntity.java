@@ -33,7 +33,7 @@ public class ReservationunitEntity {
     }
 
     @Basic
-    @Column(name = "Reservation")
+    @Column(name = "Reservation", insertable=false, updatable=false)
     public int getReservation() {
         return reservation;
     }
@@ -43,7 +43,7 @@ public class ReservationunitEntity {
     }
 
     @Basic
-    @Column(name = "RoomCategory")
+    @Column(name = "RoomCategory", insertable=false, updatable=false)
     public int getRoomCategory() {
         return roomCategory;
     }
@@ -53,7 +53,7 @@ public class ReservationunitEntity {
     }
 
     @Basic
-    @Column(name = "Cancelation")
+    @Column(name = "Cancelation", insertable=false, updatable=false)
     public Integer getCancelation() {
         return cancelation;
     }
@@ -63,7 +63,7 @@ public class ReservationunitEntity {
     }
 
     @Basic
-    @Column(name = "Arrangement")
+    @Column(name = "Arrangement", insertable=false, updatable=false)
     public Integer getArrangement() {
         return arrangement;
     }

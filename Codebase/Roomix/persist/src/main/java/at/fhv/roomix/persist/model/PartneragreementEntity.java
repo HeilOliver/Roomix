@@ -27,7 +27,7 @@ public class PartneragreementEntity {
     }
 
     @Basic
-    @Column(name = "ContractingParty")
+    @Column(name = "ContractingParty", insertable=false, updatable=false)
     public int getContractingParty() {
         return contractingParty;
     }
@@ -37,7 +37,7 @@ public class PartneragreementEntity {
     }
 
     @Basic
-    @Column(name = "CancellationCondition")
+    @Column(name = "CancellationCondition", insertable=false, updatable=false)
     public int getCancellationCondition() {
         return cancellationCondition;
     }
