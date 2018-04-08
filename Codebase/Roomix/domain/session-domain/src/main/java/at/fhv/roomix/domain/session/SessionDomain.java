@@ -1,11 +1,13 @@
 package at.fhv.roomix.domain.session;
 
-import java.util.*;
-import java.util.concurrent.atomic.AtomicBoolean;
-
 import at.fhv.roomix.domain.session.model.RoomixSession;
 import at.fhv.roomix.domain.session.model.RoomixUser;
 import at.fhv.roomix.domain.session.roll.IRoomixRoll;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Roomix
