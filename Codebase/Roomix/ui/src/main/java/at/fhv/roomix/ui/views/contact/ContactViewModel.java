@@ -1,5 +1,7 @@
 package at.fhv.roomix.ui.views.contact;
 
+import at.fhv.roomix.controller.reservation.model.ContactPojo;
+import at.fhv.roomix.ui.views.contact.scope.ContactMasterDetailScope;
 import at.fhv.roomix.ui.views.contact.scope.ContactViewScope;
 import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ScopeProvider;
@@ -35,7 +37,17 @@ public class ContactViewModel implements ViewModel {
         contactViewScope.subscribe(
                 ContactViewScope.NEW, (s, objects) -> newCall());
         contactViewScope.subscribe(
-                ContactViewScope.DISCARD, (s, objects) -> discardCall());
+                ContactViewScope.EDIT, (s, objects) -> editCall());
+        contactViewScope.subscribe(
+                ContactViewScope.CLOSE, (s, objects) -> closeCall());
+
+    }
+
+    private void editCall() {
+        ContactPojo contact = contactViewScope.getSelectedContact();
+        if (contact == null) return;
+        contactViewScope.inEditProperty().setValue(contact);
+        newCall();
     }
 
     private void newCall() {
@@ -43,9 +55,10 @@ public class ContactViewModel implements ViewModel {
         editViewEnabled.setValue(true);
     }
 
-    private void discardCall() {
+    private void closeCall() {
         listViewEnabled.setValue(true);
         editViewEnabled.setValue(false);
+        contactViewScope.inEditProperty().setValue(null);
     }
 
     BooleanProperty listViewEnabledProperty() {

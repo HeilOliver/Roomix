@@ -14,11 +14,12 @@
     <HBox AnchorPane.topAnchor="12" AnchorPane.leftAnchor="0" alignment="CENTER_LEFT">
         <TextField promptText="Enter Search" prefWidth="300" minWidth="120"/>
         <Region prefWidth="5"/>
-        <Button text="Search" maxWidth="150" minWidth="40">
+        <Button text="Search" fx:id="btnSearch" onAction="#buttonSearch_Click" maxWidth="150" minWidth="40">
             <graphic>
                 <FontAwesomeIconView glyphName="SEARCH" size="2em" />
             </graphic>
         </Button>
+        <ProgressIndicator fx:id="icoLoadProcess" maxHeight="30" maxWidth="30"/>
     </HBox>
     <HBox AnchorPane.topAnchor="12" AnchorPane.rightAnchor="0">
         <Button fx:id="btnNew" onAction="#buttonNew_Click" text="%main.new">

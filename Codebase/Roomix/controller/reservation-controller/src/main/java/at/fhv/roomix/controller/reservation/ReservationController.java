@@ -48,7 +48,7 @@ class ReservationController implements IReservationController {
     @Override
     public Collection<ContactPojo> getAllContacts(long sessionId) throws FaultException {
         if (!sessionHandler.isValidFor(sessionId, null))  throw new SessionFaultException();
-        return null;
+        return new HashSet<>();
     }
 
     @Override

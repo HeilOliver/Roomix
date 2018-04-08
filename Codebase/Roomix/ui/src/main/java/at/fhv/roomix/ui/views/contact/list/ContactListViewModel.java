@@ -3,6 +3,7 @@ package at.fhv.roomix.ui.views.contact.list;
 import at.fhv.roomix.controller.reservation.model.ContactPojo;
 import at.fhv.roomix.ui.views.contact.ContactProvider;
 import at.fhv.roomix.ui.views.contact.scope.ContactMasterDetailScope;
+import at.fhv.roomix.ui.views.contact.scope.ContactViewScope;
 import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.ObjectProperty;
@@ -33,12 +34,17 @@ public class ContactListViewModel implements ViewModel {
     @InjectScope
     private ContactMasterDetailScope mdScope;
 
+    @InjectScope
+    private ContactViewScope viewScope;
+
     public ContactListViewModel() {
         selectedTableRow.addListener(((observable, oldValue, newValue) -> {
             if (newValue == null) {
                 mdScope.selectedContactProperty().setValue(null);
+                viewScope.selectedContactProperty().setValue(null);
             } else {
                 mdScope.selectedContactProperty().setValue(newValue.getPojo());
+                viewScope.selectedContactProperty().setValue(newValue.getPojo());
             }
         }));
 

@@ -62,16 +62,58 @@ public class ContactEditView implements FxmlView<ContactEditViewModel>{
 
     @FXML
     private ProgressIndicator icoSaveProcess;
+    @FXML
+    private Button btnReset;
 
 
     public void initialize() {
-        firstnameInput.textProperty().bindBidirectional(viewModel.firstNameProperty());
+        firstnameInput.textProperty()
+                .bindBidirectional(viewModel.firstNameProperty());
+        lastnameInput.textProperty()
+                .bindBidirectional(viewModel.lastNameProperty());
+        companynameInput.textProperty()
+                .bindBidirectional(viewModel.companyNameProperty());
+        phoneNumberInput.textProperty()
+                .bindBidirectional(viewModel.phoneNumberProperty());
+        streetInput.textProperty()
+                .bindBidirectional(viewModel.streetProperty());
+        placeInput.textProperty()
+                .bindBidirectional(viewModel.placeProperty());
+        postcodeInput.textProperty()
+                .bindBidirectional(viewModel.postcodeProperty());
+        countryInput.textProperty()
+                .bindBidirectional(viewModel.countryProperty());
+        emailInput.textProperty()
+                .bindBidirectional(viewModel.emailProperty());
 
-        validationVisualizer.initVisualization(viewModel.getFirstNameValidator(), firstnameInput);
+        validationVisualizer.initVisualization(
+                viewModel.getFirstNameValidator(), firstnameInput);
+
+        validationVisualizer.initVisualization(
+                viewModel.getLastNameValidator(), lastnameInput);
+
+        validationVisualizer.initVisualization(
+                viewModel.getPhoneNumberValidator(), phoneNumberInput);
+
+        validationVisualizer.initVisualization(
+                viewModel.getStreetValidator(), streetInput);
+
+        validationVisualizer.initVisualization(
+                viewModel.getPlaceValidator(), placeInput);
+
+        validationVisualizer.initVisualization(
+                viewModel.getPostcodeValidator(), postcodeInput);
+
+        validationVisualizer.initVisualization(
+                viewModel.getCountryValidator(), countryInput);
+
+        validationVisualizer.initVisualization(
+                viewModel.getEmailValidator(), emailInput);
+
         icoSaveProcess.visibleProperty().bind(viewModel.inProgressProperty());
-
-        btnSave.disableProperty().bind(viewModel.inProgressProperty());
+        btnSave.disableProperty().bind(viewModel.savePossibleProperty().not());
         btnCancel.disableProperty().bind(viewModel.inProgressProperty());
+        btnReset.disableProperty().bind(viewModel.inProgressProperty());
     }
 
     @FXML
@@ -89,5 +131,10 @@ public class ContactEditView implements FxmlView<ContactEditViewModel>{
     @FXML
     private void buttonCancel_Click(ActionEvent actionEvent) {
         viewModel.discard();
+    }
+
+    @FXML
+    private void buttonReset_Click(ActionEvent actionEvent) {
+        viewModel.resetForm();
     }
 }

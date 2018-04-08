@@ -23,6 +23,14 @@ fx:id="mainPane">
         </Button>
     </HBox>
 
+    <HBox AnchorPane.topAnchor="12" AnchorPane.leftAnchor="0" alignment="CENTER_LEFT">
+        <Button fx:id="btnReset" onAction="#buttonReset_Click" text="%main.delete">
+            <graphic>
+                <FontAwesomeIconView glyphName="CLOSE" size="2em"/>
+            </graphic>
+        </Button>
+    </HBox>
+
     <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
           AnchorPane.topAnchor="60">
         <Separator/>

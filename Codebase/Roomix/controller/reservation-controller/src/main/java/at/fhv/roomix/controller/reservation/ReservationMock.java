@@ -57,6 +57,11 @@ public class ReservationMock implements IReservationController {
     @Override
     public void newContact(long sessionId, ContactPojo contactPojo) throws FaultException {
         contactPojos.add(contactPojo);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -66,6 +71,6 @@ public class ReservationMock implements IReservationController {
 
     @Override
     public void updateContact(long sessionId, ContactPojo contactPojo) throws FaultException {
-        contactPojos.add(contactPojo);
+        newContact(sessionId, contactPojo);
     }
 }

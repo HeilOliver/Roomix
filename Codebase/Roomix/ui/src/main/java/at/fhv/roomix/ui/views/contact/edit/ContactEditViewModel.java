@@ -1,16 +1,15 @@
 package at.fhv.roomix.ui.views.contact.edit;
 
 import at.fhv.roomix.controller.reservation.model.ContactPojo;
+import at.fhv.roomix.ui.validators.EmailValidator;
+import at.fhv.roomix.ui.validators.PhoneValidator;
 import at.fhv.roomix.ui.views.contact.ContactProvider;
 import at.fhv.roomix.ui.views.contact.scope.ContactViewScope;
 import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ViewModel;
 import de.saxsys.mvvmfx.utils.mapping.ModelWrapper;
 import de.saxsys.mvvmfx.utils.validation.*;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.ReadOnlyBooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -30,6 +29,13 @@ public class ContactEditViewModel implements ViewModel {
     private final BooleanProperty inProgress;
     private final ModelWrapper<ContactPojo> contactWrapper = new ModelWrapper<>();
     private final CompositeValidator formValidator = new CompositeValidator();
+    private final Validator lastNameValidator;
+    private final Validator phoneNumberValidator;
+    private final Validator streetValidator;
+    private final Validator emailValidator;
+    private final Validator countryValidator;
+    private final Validator postcodeValidator;
+    private final Validator placeValidator;
 
     @Inject
     private ResourceBundle resourceBundle;
@@ -43,60 +49,164 @@ public class ContactEditViewModel implements ViewModel {
                 inProcess -> !inProcess,
                 ValidationMessage.error(""));
 
-        firstNameValidator = new FunctionBasedValidator<>(
-                firstNameProperty(),
-                firstName -> firstName != null && !firstName.trim().isEmpty(),
-                ValidationMessage.error("Firstname may not be empty"));
+        firstNameValidator
+                = validatorBuilder(firstNameProperty(), "");
+
+        lastNameValidator
+                = validatorBuilder(lastNameProperty(), "");
+
+        phoneNumberValidator
+                = new PhoneValidator(phoneNumberProperty(), "");
+
+        streetValidator = validatorBuilder(streetProperty(), "");
+
+        placeValidator = validatorBuilder(placeProperty(), "");
+
+        postcodeValidator = validatorBuilder(postcodeProperty(), "");
+
+        countryValidator = validatorBuilder(countryProperty(), "");
+
+        emailValidator = new EmailValidator(emailProperty());
 
         formValidator.addValidators(
                 firstNameValidator,
+                lastNameValidator,
+                phoneNumberValidator,
+                streetValidator,
+                placeValidator,
+                postcodeValidator,
+                countryValidator,
+                emailValidator,
                 inProcessValidator
         );
     }
 
-    public void initialize() {
-        scope.subscribe(ContactViewScope.EDIT_SELECTED, (s, objects) -> {
-
-        });
+    private Validator validatorBuilder(StringProperty property, String resourcePath) {
+        //String localizedMessage = resourceBundle.getString(resourcePath);
+        return new FunctionBasedValidator<>(
+                property,
+                string -> string != null && !string.trim().isEmpty(),
+                ValidationMessage.error(resourcePath));
     }
 
-    private void resetForm() {
+    public void initialize() {
+        contactWrapper.modelProperty().bind(
+                scope.inEditProperty());
+    }
+
+    void resetForm() {
         contactWrapper.reset();
     }
 
-    private void initWithContact(ContactPojo contact) {
-        this.contactWrapper.set(contact);
-        this.contactWrapper.reload();
-    }
-
     private void commitChanges() {
-        if (contactWrapper.get() == null) {
-            contactWrapper.set(new ContactPojo());
-        }
-        contactWrapper.commit();
+//        if (contactWrapper.get() == null) {
+//            contactWrapper.set(new ContactPojo());
+//        }
+//        contactWrapper.commit();
+
+        scope.publish(ContactViewScope.CLOSE);
     }
 
     ValidationStatus getFirstNameValidator() {
         return firstNameValidator.getValidationStatus();
     }
 
+    ValidationStatus getLastNameValidator() {
+        return lastNameValidator.getValidationStatus();
+    }
+
+    ValidationStatus getPhoneNumberValidator() {
+        return phoneNumberValidator.getValidationStatus();
+    }
+
+    ValidationStatus getStreetValidator() {
+        return streetValidator.getValidationStatus();
+    }
+
+    ValidationStatus getEmailValidator() {
+        return emailValidator.getValidationStatus();
+    }
+
+    ValidationStatus getCountryValidator() {
+        return countryValidator.getValidationStatus();
+    }
+
+    ValidationStatus getPostcodeValidator() {
+        return postcodeValidator.getValidationStatus();
+    }
+
+    ValidationStatus getPlaceValidator() {
+        return placeValidator.getValidationStatus();
+    }
+
     StringProperty firstNameProperty() {
-        return contactWrapper.field("firstName", ContactPojo::getFirstName, ContactPojo::setFirstName);
+        return contactWrapper.field("firstName",
+                ContactPojo::getFirstName, ContactPojo::setFirstName);
+    }
+
+    StringProperty lastNameProperty() {
+        return contactWrapper.field(
+                "lastName", ContactPojo::getLastName,
+                ContactPojo::setLastName);
+    }
+
+    StringProperty companyNameProperty() {
+        return contactWrapper.field(
+                "companyname", ContactPojo::getCompanyName,
+                ContactPojo::setCompanyName);
+    }
+
+    StringProperty phoneNumberProperty() {
+        return contactWrapper.field(
+                "phoneNumber", ContactPojo::getPhoneNumber,
+                ContactPojo::setPhoneNumber);
+    }
+
+    StringProperty streetProperty() {
+        return contactWrapper.field(
+                "street", ContactPojo::getStreet,
+                ContactPojo::setStreet);
+    }
+
+    StringProperty placeProperty() {
+        return contactWrapper.field(
+                "place", ContactPojo::getPlace,
+                ContactPojo::setPlace);
+    }
+
+    StringProperty postcodeProperty() {
+        return contactWrapper.field(
+                "postcode", ContactPojo::getPostcode,
+                ContactPojo::setPostcode);
+    }
+
+    StringProperty countryProperty() {
+        return contactWrapper.field(
+                "country", ContactPojo::getCountry,
+                ContactPojo::setCountry);
+    }
+
+    StringProperty emailProperty() {
+        return contactWrapper.field(
+                "email", ContactPojo::getEmail,
+                ContactPojo::setEmail);
     }
 
     void discard() {
         resetForm();
-        scope.publish(ContactViewScope.DISCARD);
+        scope.publish(ContactViewScope.CLOSE);
     }
 
     void save(ICallable errorCallback) {
         if (!formValidator.getValidationStatus().isValid()) {
             return;
         }
+        ContactPojo tempContactPojo = new ContactPojo();
+        contactWrapper.copyValuesTo(tempContactPojo);
 
-
-        if (errorCallback == null) return;
-        errorCallback.call();
+        ContactProvider instance = ContactProvider.getInstance();
+        instance.saveOrUpdate(tempContactPojo,
+                this::commitChanges, errorCallback);
     }
 
     BooleanProperty inProgressProperty() {
@@ -107,7 +217,7 @@ public class ContactEditViewModel implements ViewModel {
         return formValidator.getValidationStatus().validProperty();
     }
 
-    interface ICallable {
+    public interface ICallable {
         void call();
     }
 

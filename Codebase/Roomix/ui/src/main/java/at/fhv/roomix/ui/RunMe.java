@@ -24,10 +24,7 @@ public class RunMe extends MvvmfxCdiApplication {
     private static final Logger LOG = LoggerFactory.getLogger(RunMe.class);
 
     public static void main(String... args) {
-        // TODO For Testing
-        ReservationControllerFactory.InjectDependency(ReservationMock::getInstance);
-
-        Locale.setDefault(Locale.GERMAN);
+        Locale.setDefault(Locale.GERMANY);
         launch(args);
     }
 
