@@ -13,7 +13,7 @@ public class ContactEntity {
     private String companyName;
     private String phoneNumber;
     private String street;
-    private Integer houseNumber;
+    private String houseNumber;
     private String place;
     private String postcode;
     private String country;
@@ -86,11 +86,11 @@ public class ContactEntity {
 
     @Basic
     @Column(name = "HouseNumber")
-    public Integer getHouseNumber() {
+    public String getHouseNumber() {
         return houseNumber;
     }
 
-    public void setHouseNumber(Integer houseNumber) {
+    public void setHouseNumber(String houseNumber) {
         this.houseNumber = houseNumber;
     }
 
