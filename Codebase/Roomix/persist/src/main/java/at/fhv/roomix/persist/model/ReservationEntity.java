@@ -28,7 +28,7 @@ public class ReservationEntity {
     }
 
     @Basic
-    @Column(name = "ContractingParty")
+    @Column(name = "ContractingParty", insertable=false, updatable=false)
     public int getContractingParty() {
         return contractingParty;
     }
@@ -38,7 +38,7 @@ public class ReservationEntity {
     }
 
     @Basic
-    @Column(name = "Person")
+    @Column(name = "Person", insertable=false, updatable=false)
     public int getPerson() {
         return person;
     }

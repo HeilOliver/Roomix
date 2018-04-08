@@ -25,7 +25,7 @@ public class RoomEntity {
     }
 
     @Basic
-    @Column(name = "RoomCategory")
+    @Column(name = "RoomCategory", insertable=false, updatable=false)
     public int getRoomCategory() {
         return roomCategory;
     }

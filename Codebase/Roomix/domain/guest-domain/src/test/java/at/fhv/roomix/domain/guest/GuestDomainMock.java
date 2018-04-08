@@ -8,5 +8,5 @@ package at.fhv.roomix.domain.guest;
  * <p>
  * Mock for IGuestDomain
  */
-public class GuestDomainMock implements IGuestDomain {
+public class GuestDomainMock {
 }

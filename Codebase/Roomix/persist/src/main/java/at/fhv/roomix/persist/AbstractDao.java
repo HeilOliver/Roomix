@@ -1,5 +1,6 @@
 package at.fhv.roomix.persist;
 
+import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
@@ -7,8 +8,9 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.function.Supplier;
 
 /**
  * Roomix
@@ -20,6 +22,10 @@ import java.util.List;
  */
 public abstract class AbstractDao<T, PK extends Serializable> {
     private Class<T> type;
+
+    private static HashMap<Class, Supplier<AbstractDao>> supplierHashMap = new HashMap<>();
+    protected static Logger daoLogger = Logger.getLogger(Logger.class);
+
     protected Session session;
 
     AbstractDao(Class<T> type) {
@@ -35,7 +41,7 @@ public abstract class AbstractDao<T, PK extends Serializable> {
     }
 
     public final void save(T entity) throws IllegalArgumentException, IllegalStateException, PersistSaveException {
-        if (session == null) throw new IllegalStateException("No Session");
+        if (session == null) throw new IllegalStateException("No Session (null)");
         if (entity == null) throw new IllegalArgumentException("No Entity is provided");
 
         try {
@@ -52,7 +58,7 @@ public abstract class AbstractDao<T, PK extends Serializable> {
     }
 
     public final T load(PK id) throws IllegalArgumentException, IllegalStateException, PersistLoadException {
-        if (session == null) throw new IllegalStateException("No Session");
+        if (session == null) throw new IllegalStateException("No Session (null)");
         if (id == null) throw new IllegalArgumentException("No Id is provided");
 
         try {
@@ -84,5 +90,19 @@ public abstract class AbstractDao<T, PK extends Serializable> {
         CriteriaQuery<T> select = query.select(from);
 
         return session.createQuery(select).getResultList();
+    }
+
+    // TODO: nicht verzagen - Wolfgang fragen
+    public static void addDao(Class contactEntityClass, Supplier<AbstractDao> supplier) {
+        supplierHashMap.put(contactEntityClass, supplier);
+    }
+
+    public static <T extends AbstractDao> Supplier<AbstractDao> getDaoInstanceByEntityClass(Class type){
+        if(supplierHashMap.containsKey(type)) {
+            return supplierHashMap.get(type);
+        } else{
+            daoLogger.info("No DAO Instance found for given key (Class type)");
+            return null;
+        }
     }
 }

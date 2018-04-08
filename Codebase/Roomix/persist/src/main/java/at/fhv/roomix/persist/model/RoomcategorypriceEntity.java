@@ -27,7 +27,7 @@ public class RoomcategorypriceEntity {
     }
 
     @Basic
-    @Column(name = "RoomCategory")
+    @Column(name = "RoomCategory", insertable=false, updatable=false)
     public int getRoomCategory() {
         return roomCategory;
     }
@@ -37,7 +37,7 @@ public class RoomcategorypriceEntity {
     }
 
     @Basic
-    @Column(name = "Season")
+    @Column(name = "Season", insertable=false, updatable=false)
     public int getSeason() {
         return season;
     }
