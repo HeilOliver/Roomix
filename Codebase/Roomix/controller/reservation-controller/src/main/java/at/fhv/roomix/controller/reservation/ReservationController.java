@@ -4,8 +4,11 @@ import at.fhv.roomix.controller.reservation.exeption.FaultException;
 import at.fhv.roomix.controller.reservation.exeption.SessionFaultException;
 import at.fhv.roomix.controller.reservation.exeption.ValidationFault;
 import at.fhv.roomix.controller.reservation.model.ContactPojo;
+import at.fhv.roomix.domain.guest.model.GuestDomain;
 import at.fhv.roomix.domain.session.ISessionDomain;
 import at.fhv.roomix.domain.session.SessionFactory;
+import at.fhv.roomix.persist.factory.GuestDomainBuilder;
+import org.modelmapper.ModelMapper;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -43,12 +46,26 @@ class ReservationController implements IReservationController {
         validate(contactPojo);
         if (!sessionHandler.isValidFor(sessionId, null))  throw new SessionFaultException();
 
+        GuestDomainBuilder guestBuilder = new GuestDomainBuilder();
+        ModelMapper modelMapper = new ModelMapper();
+
+        GuestDomain guestDomain = modelMapper.map(contactPojo, GuestDomain.class);
+
+        guestBuilder.set(guestDomain);
     }
 
     @Override
     public Collection<ContactPojo> getAllContacts(long sessionId) throws FaultException {
         if (!sessionHandler.isValidFor(sessionId, null))  throw new SessionFaultException();
-        return null;
+
+        GuestDomainBuilder guestBuilder = new GuestDomainBuilder();
+        ModelMapper modelMapper = new ModelMapper();
+        HashSet<GuestDomain> guestDomainSet = new HashSet<>(guestBuilder.getAll());
+        HashSet<ContactPojo> contactPojoSet = new HashSet<>();
+
+        guestDomainSet.forEach(contact -> contactPojoSet.add(modelMapper.map(guestBuilder,ContactPojo.class)));
+
+        return contactPojoSet;
     }
 
     @Override
@@ -56,5 +73,6 @@ class ReservationController implements IReservationController {
         validate(contactPojo);
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
 
+        newContact(sessionId, contactPojo);
     }
 }
