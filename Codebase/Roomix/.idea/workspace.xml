@@ -1,28 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationController.java" line="73" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="7142792d-a4a4-4bf1-a7e0-db6e38fc4180" name="Default" comment="">
+    <list default="true" id="fc88055d-1879-4edc-9f9a-3902eec78626" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/exeption/ArgumentFaultException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/GuestDomainBuilderMock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/SessionDomainMock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/domain/guest-domain/src/main/java/at/fhv/roomix/domain/guest/model/InvoicePositionDomain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/domain/guest-domain/src/main/java/at/fhv/roomix/domain/guest/model/ReservationDomain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/domain/guest-domain/src/main/java/at/fhv/roomix/domain/guest/model/ReservationOptionDomain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/domain/guest-domain/src/main/java/at/fhv/roomix/domain/guest/model/ReservationUnitDomain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/factory/IAbstractDomainBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/factory/ReservationDomainBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/persist/src/test/java/at/fhv/roomix/persist/factory/AbstractDomainBuilderMock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/persist/src/test/java/at/fhv/roomix/persist/factory/DomainBuilderTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/persist/src/test/java/at/fhv/roomix/persist/factory/model/DeepTestDomain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/persist/src/test/java/at/fhv/roomix/persist/factory/model/DeepTestEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/persist/src/test/java/at/fhv/roomix/persist/factory/model/TestDomain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/persist/src/test/java/at/fhv/roomix/persist/factory/model/TestEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/invoice-controller/invoice-controller.iml" beforeDir="false" afterPath="$PROJECT_DIR$/controller/invoice-controller/invoice-controller.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/report-controller/report-controller.iml" beforeDir="false" afterPath="$PROJECT_DIR$/controller/report-controller/report-controller.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/reservation-controller/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/controller/reservation-controller/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/reservation-controller/reservation-controller.iml" beforeDir="false" afterPath="$PROJECT_DIR$/controller/reservation-controller/reservation-controller.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/IReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/IReservationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/GuestDomainBuilderMock.java" beforeDir="false" afterPath="$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/GuestDomainBuilderMock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationMock.java" beforeDir="false" afterPath="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationMock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/model/ContactPojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/model/ContactPojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerMock.java" beforeDir="false" afterPath="$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerMock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/session-controller/session-controller.iml" beforeDir="false" afterPath="$PROJECT_DIR$/controller/session-controller/session-controller.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/stay-controller/stay-controller.iml" beforeDir="false" afterPath="$PROJECT_DIR$/controller/stay-controller/stay-controller.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/session-domain/src/main/java/at/fhv/roomix/domain/session/SessionDomain.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/session-domain/src/main/java/at/fhv/roomix/domain/session/SessionDomain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persist/database/test.h2.db" beforeDir="false" afterPath="$PROJECT_DIR$/persist/database/test.h2.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persist/database/test.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/persist/database/test.trace.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persist/persist.iml" beforeDir="false" afterPath="$PROJECT_DIR$/persist/persist.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/ContractingPartyDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/ContractingPartyDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/ReservationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/ReservationDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/factory/AbstractDomainBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/factory/AbstractDomainBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/factory/GuestDomainBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/factory/GuestDomainBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/model/ArrangementEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/model/ArrangementEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/model/InvoiceEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/model/InvoiceEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/model/InvoicepositionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/model/InvoicepositionEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/model/ReservationEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/model/ReservationEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/model/ReservationunitEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/model/ReservationunitEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persist/src/test/java/at/fhv/roomix/persist/factory/GuestDomainFactoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactListTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactListTableModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactListView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactListView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/ui.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/controller/target/" />
-    <ignored path="$PROJECT_DIR$/domain/target/" />
-    <ignored path="$PROJECT_DIR$/persist/target/" />
-    <ignored path="$PROJECT_DIR$/controller/report-controller/target/" />
-    <ignored path="$PROJECT_DIR$/controller/reservation-controller/target/" />
     <ignored path="$PROJECT_DIR$/domain/reservation-domain/target/" />
-    <ignored path="$PROJECT_DIR$/domain/guest-domain/target/" />
+    <ignored path="$PROJECT_DIR$/domain/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/controller/report-controller/target/" />
+    <ignored path="$PROJECT_DIR$/controller/invoice-controller/target/" />
+    <ignored path="$PROJECT_DIR$/domain/guest-domain/target/" />
+    <ignored path="$PROJECT_DIR$/ui/target/" />
+    <ignored path="$PROJECT_DIR$/domain/session-domain/target/" />
+    <ignored path="$PROJECT_DIR$/controller/reservation-controller/target/" />
+    <ignored path="$PROJECT_DIR$/controller/stay-controller/target/" />
     <ignored path="$PROJECT_DIR$/controller/guest-controller/target/" />
     <ignored path="$PROJECT_DIR$/controller/session-controller/target/" />
-    <ignored path="$PROJECT_DIR$/domain/session-domain/target/" />
-    <ignored path="$PROJECT_DIR$/controller/invoice-controller/target/" />
-    <ignored path="$PROJECT_DIR$/ui/target/" />
-    <ignored path="$PROJECT_DIR$/controller/stay-controller/target/" />
+    <ignored path="$PROJECT_DIR$/persist/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,80 +70,72 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="ReservationController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationController.java">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ContactEditViewModel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/edit/ContactEditViewModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="67" column="62" lean-forward="true" selection-start-line="67" selection-start-column="62" selection-end-line="67" selection-end-column="62" />
+            <state relative-caret-position="-84">
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ContactEditView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/edit/ContactEditView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="9">
+              <caret line="38" column="26" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#4594#4595#0" expanded="true" />
+                <element signature="e#4631#4632#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReservationControllerMock.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerMock.java">
+      <file leaf-file-name="ContactEditView.fxml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/edit/ContactEditView.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="248">
+              <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReservationControllerFactoryTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerFactoryTest.java">
+      <file leaf-file-name="ContactViewModel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/ContactViewModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="48" selection-start-line="48" selection-end-line="48" selection-end-column="60" />
+            <state relative-caret-position="516">
+              <caret line="67" column="43" selection-start-line="67" selection-start-column="43" selection-end-line="67" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReservationControllerTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerTest.java">
+      <file leaf-file-name="ContactProvider.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/ContactProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="67" column="39" lean-forward="true" selection-start-line="67" selection-start-column="39" selection-end-line="67" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="430">
+              <caret line="98" column="11" selection-start-line="98" selection-start-column="11" selection-end-line="98" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GuestDomainBuilderMock.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/GuestDomainBuilderMock.java">
+      <file leaf-file-name="NoneView.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/none/NoneView.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#555#556#0" expanded="true" />
-                <element signature="e#595#596#0" expanded="true" />
-                <element signature="e#742#743#0" expanded="true" />
-                <element signature="e#769#770#0" expanded="true" />
-                <element signature="e#800#801#0" expanded="true" />
-                <element signature="e#827#828#0" expanded="true" />
-                <element signature="e#977#978#0" expanded="true" />
-                <element signature="e#1009#1010#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="279">
+              <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SessionDomainMock.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/SessionDomainMock.java">
+      <file leaf-file-name="ContactDataToolbar.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactDataToolbar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-              <folding>
-                <element signature="e#566#567#0" expanded="true" />
-                <element signature="e#593#594#0" expanded="true" />
-                <element signature="e#674#675#0" expanded="true" />
-                <element signature="e#701#702#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="452">
+              <caret line="78" column="43" selection-start-line="78" selection-start-column="43" selection-end-line="78" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -118,30 +149,33 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>modelMapper</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/factory/GuestDomainBuilder.java" />
-        <option value="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/model/ContactPojo.java" />
-        <option value="$PROJECT_DIR$/persist/src/test/java/at/fhv/roomix/persist/factory/GuestDomainFactoryTest.java" />
-        <option value="$PROJECT_DIR$/controller/reservation-controller/pom.xml" />
-        <option value="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/IReservationController.java" />
-        <option value="$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerMock.java" />
-        <option value="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationMock.java" />
-        <option value="$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/SessionDomainMock.java" />
-        <option value="$PROJECT_DIR$/domain/session-domain/src/main/java/at/fhv/roomix/domain/session/SessionDomain.java" />
-        <option value="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/exeption/ArgumentFaultException.java" />
-        <option value="$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerTest.java" />
-        <option value="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationController.java" />
-        <option value="$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/GuestDomainBuilderMock.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactDataView.fxml" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/scope/ContactViewScope.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/scope/ContactMasterDetailScope.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactDataViewModel.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/ContactViewModel.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/ContactView.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactListViewModel.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactDetailView.fxml" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactDataView.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactDetailViewModel.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactDataToolbar.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactDataToolbarViewModel.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactDataView.fxml" />
+        <option value="$PROJECT_DIR$/ui/src/main/resources/log4j.properties" />
+        <option value="$PROJECT_DIR$/ui/src/main/resources/default_de.properties" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactDataToolbar.fxml" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/ContactView.fxml" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/edit/ContactEditView.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/edit/ContactEditView.fxml" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/ContactProvider.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/edit/ContactEditViewModel.java" />
       </list>
     </option>
   </component>
@@ -151,14 +185,12 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="2578" />
-    <option name="height" value="1059" />
-  </component>
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -175,34 +207,25 @@
             <path>
               <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
               <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
               <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="reservation-controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="reservation-controller" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
               <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="reservation-controller" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
               <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="reservation-controller" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -210,76 +233,193 @@
             <path>
               <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
               <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="reservation-controller" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="reservation" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
               <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="reservation-controller" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="reservation" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
               <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="reservation-controller" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="reservation-controller" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="contact" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
               <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="reservation-controller" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="reservation" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="contact" type="462c0819:PsiDirectoryNode" />
+              <item name="edit" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
               <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="contact" type="462c0819:PsiDirectoryNode" />
+              <item name="list" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="contact" type="462c0819:PsiDirectoryNode" />
+              <item name="list" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="contact" type="462c0819:PsiDirectoryNode" />
+              <item name="scope" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="none" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
+              <item name="reservation-controller" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
+              <item name="reservation-controller" type="616d4139:PackageViewModuleNode" />
+              <item name="at.fhv.roomix.controller.reservation" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
+              <item name="reservation-controller" type="616d4139:PackageViewModuleNode" />
+              <item name="at.fhv.roomix.controller.reservation" type="1f31426a:PackageElementNode" />
+              <item name="model" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ui" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ui" type="616d4139:PackageViewModuleNode" />
+              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ui" type="616d4139:PackageViewModuleNode" />
+              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
+              <item name="validators" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ui" type="616d4139:PackageViewModuleNode" />
+              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
+              <item name="views" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ui" type="616d4139:PackageViewModuleNode" />
+              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
+              <item name="views" type="1f31426a:PackageElementNode" />
+              <item name="contact" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ui" type="616d4139:PackageViewModuleNode" />
+              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
+              <item name="views" type="1f31426a:PackageElementNode" />
+              <item name="contact" type="1f31426a:PackageElementNode" />
+              <item name="edit" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ui" type="616d4139:PackageViewModuleNode" />
+              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
+              <item name="views" type="1f31426a:PackageElementNode" />
+              <item name="contact" type="1f31426a:PackageElementNode" />
+              <item name="list" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ui" type="616d4139:PackageViewModuleNode" />
+              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
+              <item name="views" type="1f31426a:PackageElementNode" />
+              <item name="contact" type="1f31426a:PackageElementNode" />
+              <item name="list" type="1f31426a:PackageElementNode" />
+              <item name="views" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ui" type="616d4139:PackageViewModuleNode" />
+              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
+              <item name="views" type="1f31426a:PackageElementNode" />
+              <item name="contact" type="1f31426a:PackageElementNode" />
+              <item name="scope" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ui" type="616d4139:PackageViewModuleNode" />
+              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
+              <item name="views" type="1f31426a:PackageElementNode" />
+              <item name="login" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
-  <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
-  </component>
   <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="at.fhv.roomix.controller.reservation" />
-    </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="at.fhv.roomix.controller.reservation.exeption" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Oliver\Documents\GitHub\Roomanizer\Codebase\Roomix\ui\src\main\java\at\fhv\roomix\ui\views\contact\list\views" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -294,124 +434,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ReservationControllerTest">
+  <component name="RunManager">
+    <configuration name="RunMe" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="at.fhv.roomix.ui.RunMe" />
+      <module name="ui" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="at.fhv.roomix.ui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-    </configuration>
-    <configuration name="GuestDomainFactoryTest.testGetInstanceById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="persist" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="at.fhv.roomix.persist.factory.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="at.fhv.roomix.persist.factory" />
-      <option name="MAIN_CLASS_NAME" value="at.fhv.roomix.persist.factory.GuestDomainFactoryTest" />
-      <option name="METHOD_NAME" value="testGetInstanceById" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="ReservationControllerFactoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="reservation-controller" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="at.fhv.roomix.controller.reservation.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="at.fhv.roomix.controller.reservation" />
-      <option name="MAIN_CLASS_NAME" value="at.fhv.roomix.controller.reservation.ReservationControllerFactoryTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="ReservationControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="reservation-controller" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="at.fhv.roomix.controller.reservation.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="at.fhv.roomix.controller.reservation" />
-      <option name="MAIN_CLASS_NAME" value="at.fhv.roomix.controller.reservation.ReservationControllerTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="ReservationControllerTest.getAllContactsValid" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="reservation-controller" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="at.fhv.roomix.controller.reservation.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="at.fhv.roomix.controller.reservation" />
-      <option name="MAIN_CLASS_NAME" value="at.fhv.roomix.controller.reservation.ReservationControllerTest" />
-      <option name="METHOD_NAME" value="getAllContactsValid" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="ReservationControllerTest.newContact" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="reservation-controller" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="at.fhv.roomix.controller.reservation.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="at.fhv.roomix.controller.reservation" />
-      <option name="MAIN_CLASS_NAME" value="at.fhv.roomix.controller.reservation.ReservationControllerTest" />
-      <option name="METHOD_NAME" value="newContact" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -451,524 +487,488 @@
       <properties />
       <listeners />
     </configuration>
-    <list>
-      <item itemvalue="JUnit.GuestDomainFactoryTest.testGetInstanceById" />
-      <item itemvalue="JUnit.ReservationControllerFactoryTest" />
-      <item itemvalue="JUnit.ReservationControllerTest.newContact" />
-      <item itemvalue="JUnit.ReservationControllerTest" />
-      <item itemvalue="JUnit.ReservationControllerTest.getAllContactsValid" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ReservationControllerTest" />
-        <item itemvalue="JUnit.ReservationControllerTest.getAllContactsValid" />
-        <item itemvalue="JUnit.ReservationControllerTest.newContact" />
-        <item itemvalue="JUnit.ReservationControllerFactoryTest" />
-        <item itemvalue="JUnit.GuestDomainFactoryTest.testGetInstanceById" />
+        <item itemvalue="Application.RunMe" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7142792d-a4a4-4bf1-a7e0-db6e38fc4180" name="Default" comment="" />
-      <created>1523181791241</created>
+      <changelist id="fc88055d-1879-4edc-9f9a-3902eec78626" name="Default" comment="" />
+      <created>1523175408361</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1523181791241</updated>
-      <workItem from="1523181792656" duration="24541000" />
+      <updated>1523175408361</updated>
+      <workItem from="1523175409904" duration="15521000" />
     </task>
     <servers />
   </component>
-  <component name="TestHistory">
-    <history-entry file="ReservationControllerTest_newContact - 2018.04.08 at 19h 49m 04s.xml">
-      <configuration name="ReservationControllerTest.newContact" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ReservationControllerTest_newContact - 2018.04.08 at 19h 50m 15s.xml">
-      <configuration name="ReservationControllerTest.newContact" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ReservationControllerTest_newContact - 2018.04.08 at 19h 51m 39s.xml">
-      <configuration name="ReservationControllerTest.newContact" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ReservationControllerTest - 2018.04.08 at 19h 54m 46s.xml">
-      <configuration name="ReservationControllerTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ReservationControllerTest - 2018.04.08 at 20h 04m 49s.xml">
-      <configuration name="ReservationControllerTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ReservationControllerTest - 2018.04.08 at 20h 06m 10s.xml">
-      <configuration name="ReservationControllerTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ReservationControllerTest - 2018.04.08 at 20h 09m 40s.xml">
-      <configuration name="ReservationControllerTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ReservationControllerTest_getAllContactsValid - 2018.04.08 at 20h 59m 27s.xml">
-      <configuration name="ReservationControllerTest.getAllContactsValid" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ReservationControllerTest_getAllContactsValid - 2018.04.08 at 21h 02m 00s.xml">
-      <configuration name="ReservationControllerTest.getAllContactsValid" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ReservationControllerTest - 2018.04.08 at 21h 07m 02s.xml">
-      <configuration name="ReservationControllerTest" configurationId="JUnit" />
-    </history-entry>
-  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25420000" />
+    <option name="totallyTimeSpent" value="9784000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-6" y="-6" width="1719" height="932" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="right" id="PlantUML" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" weight="0.32965517" />
-      <window_info anchor="right" id="Maven Projects" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="right" id="CDI" />
-      <window_info id="Capture Tool" />
-      <window_info id="Designer" />
-      <window_info anchor="bottom" id="Statistic" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.329602" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="bottom" id="Java Enterprise" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50030065" side_tool="true" weight="0.329602" />
+      <window_info anchor="right" id="Maven Projects" order="3" weight="0.32952496" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="right" id="CDI" order="3" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.329602" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49969932" weight="0.20895523" />
+      <window_info anchor="bottom" id="Sequence" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Persistence" order="2" side_tool="true" />
+      <window_info id="Designer" order="2" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2892363" />
+      <window_info anchor="right" id="Bean Validation" order="5" />
+      <window_info anchor="bottom" id="Statistic" order="7" />
+      <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.34206897" />
-      <window_info anchor="right" id="Code Iris" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" weight="0.32965517" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info id="Image Layers" />
-      <window_info anchor="bottom" id="Java Enterprise" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32965517" />
-      <window_info anchor="bottom" id="Sequence" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info id="Persistence" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21679688" />
-      <window_info anchor="right" id="Bean Validation" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32965517" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info id="UI Designer" order="2" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39925373" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49969932" visible="true" weight="0.16666667" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50030065" side_tool="true" weight="0.329602" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20324714" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Java Enterprise" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="5" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Sequence" order="9" />
+      <window_info id="Persistence" order="4" side_tool="true" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.329602" />
+      <window_info anchor="right" id="CDI" order="5" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.329602" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="UI Designer" order="4" />
+      <window_info anchor="bottom" id="Statistic" order="9" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39925373" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.329602" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info id="Designer" order="4" />
     </layout>
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/SessionDomainMock.java</url>
-          <line>22</line>
-          <properties />
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/SessionDomainMock.java</url>
-          <line>27</line>
-          <properties />
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="8" />
+      <option name="time" value="3" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerFactoryTest.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/src.zip!/java/lang/Class.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="48" selection-start-line="48" selection-end-line="48" selection-end-column="60" />
+        <state relative-caret-position="10493">
+          <caret line="441" selection-start-line="441" selection-end-line="441" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerTest.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/de/saxsys/mvvmfx/1.7.0/mvvmfx-1.7.0.jar!/de/saxsys/mvvmfx/ScopeProvider.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="325">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/persist/src/test/java/at/fhv/roomix/persist/factory/GuestDomainFactoryTest.java">
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/scope/ContactViewScope.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
+        <state relative-caret-position="240">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/domain/session-domain/src/test/java/at/fhv/roomix/domain/session/RollMock.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/de/saxsys/mvvmfx/1.7.0/mvvmfx-1.7.0.jar!/de/saxsys/mvvmfx/internal/viewloader/ViewLoaderReflectionUtils.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        <state relative-caret-position="170">
+          <caret line="198" selection-start-line="198" selection-end-line="198" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/domain/session-domain/src/test/java/at/fhv/roomix/domain/session/SessionFactoryTest.java">
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/main/models/PageProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/session-domain/src/test/java/at/fhv/roomix/domain/session/SessionDomainMock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/factory/GuestDomainBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/persist/src/test/java/at/fhv/roomix/persist/AbstractDaoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.0.0/junit-platform-commons-1.0.0.jar!/org/junit/platform/commons/util/ReflectionUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="136" selection-start-line="136" selection-end-line="136" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/validation/validation-api/2.0.0.Final/validation-api-2.0.0.Final.jar!/javax/validation/Validation.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="79" selection-start-line="79" selection-end-line="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-18" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="55" column="21" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/junit/jupiter/junit-jupiter-api/5.0.0/junit-jupiter-api-5.0.0-sources.jar!/org/junit/jupiter/api/function/Executable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="45" column="9" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/jre/lib/rt.jar!/sun/reflect/NativeMethodAccessorImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.0.0/junit-platform-commons-1.0.0-sources.jar!/org/junit/platform/commons/util/ReflectionUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="388" selection-start-line="388" selection-end-line="388" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/util/Spliterators.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="1800" selection-start-line="1800" selection-end-line="1800" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/util/stream/AbstractPipeline.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="233" selection-start-line="233" selection-end-line="233" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/util/stream/ForEachOps.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="183" selection-start-line="183" selection-end-line="183" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/util/stream/ReferencePipeline.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="174" selection-start-line="174" selection-end-line="174" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/src.zip!/java/util/Iterator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="115" selection-start-line="115" selection-end-line="115" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/junit/jupiter/junit-jupiter-api/5.0.0/junit-jupiter-api-5.0.0-sources.jar!/org/junit/jupiter/api/Assertions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="1107" selection-start-line="1107" selection-end-line="1107" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/junit/jupiter/junit-jupiter-api/5.0.0/junit-jupiter-api-5.0.0-sources.jar!/org/junit/jupiter/api/AssertThrows.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
+        <state relative-caret-position="411">
           <caret line="49" selection-start-line="49" selection-end-line="49" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/validator/hibernate-validator/6.0.9.Final/hibernate-validator-6.0.9.Final-sources.jar!/org/hibernate/validator/internal/engine/constraintvalidation/ConstraintValidatorManager.java">
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/ContactView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="211" selection-start-line="211" selection-end-line="211" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final-sources.jar!/org/jboss/logging/Logger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="2542" selection-start-line="2542" selection-end-line="2542" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/validator/hibernate-validator/6.0.9.Final/hibernate-validator-6.0.9.Final-sources.jar!/org/hibernate/validator/internal/util/logging/LoggerFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/validator/hibernate-validator/6.0.9.Final/hibernate-validator-6.0.9.Final-sources.jar!/org/hibernate/validator/internal/metadata/provider/ProgrammaticMetaDataProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/validator/hibernate-validator/6.0.9.Final/hibernate-validator-6.0.9.Final-sources.jar!/org/hibernate/validator/internal/engine/ValidatorFactoryImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="372" selection-start-line="372" selection-end-line="372" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final-sources.jar!/org/jboss/logging/LoggingLocale.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/validator/hibernate-validator/6.0.9.Final/hibernate-validator-6.0.9.Final-sources.jar!/org/hibernate/validator/internal/util/CollectionHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="71" selection-start-line="71" selection-end-line="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/validator/hibernate-validator/6.0.9.Final/hibernate-validator-6.0.9.Final-sources.jar!/org/hibernate/validator/internal/engine/valueextraction/ValueExtractorManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="160" selection-start-line="160" selection-end-line="160" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/validator/hibernate-validator/6.0.9.Final/hibernate-validator-6.0.9.Final-sources.jar!/org/hibernate/validator/internal/engine/valueextraction/ValueExtractorDescriptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="211" selection-start-line="211" selection-end-line="211" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/validator/hibernate-validator/6.0.9.Final/hibernate-validator-6.0.9.Final-sources.jar!/org/hibernate/validator/internal/util/ExecutableParameterNameProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="57" selection-start-line="57" selection-end-line="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/validator/hibernate-validator/6.0.9.Final/hibernate-validator-6.0.9.Final-sources.jar!/org/hibernate/validator/internal/engine/MethodValidationConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="120" selection-start-line="120" selection-end-line="120" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/session-domain/src/test/java/at/fhv/roomix/domain/session/SessionDomainTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-157">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/IReservationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="20" column="81" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationMock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-251">
-          <caret line="32" column="20" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/model/ContactPojo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-550">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        <state relative-caret-position="216">
+          <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/domain/session-domain/src/main/java/at/fhv/roomix/domain/session/ISessionDomain.java">
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/scope/ContactMasterDetailScope.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/session-domain/src/main/java/at/fhv/roomix/domain/session/SessionFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/domain/session-domain/src/main/java/at/fhv/roomix/domain/session/SessionDomain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="79" column="5" lean-forward="true" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
+        <state relative-caret-position="350">
+          <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationControllerFactory.java">
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactDetailView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state relative-caret-position="-372">
+          <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerMock.java">
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactListView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="367">
+          <caret line="24" column="26" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/exeption/SessionFaultException.java">
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactListTableModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/exeption/ValidationFault.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
+        <state relative-caret-position="372">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/exeption/ArgumentFaultException.java">
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactListViewModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="1325">
+          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+          <folding>
+            <element signature="e#1845#1846#0" expanded="true" />
+            <element signature="e#1876#1877#0" expanded="true" />
+            <element signature="e#1955#1956#0" expanded="true" />
+            <element signature="e#1994#1995#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/exeption/FaultException.java">
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactDetailViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="34" column="26" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/ContactViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="774">
+          <caret line="50" column="24" lean-forward="true" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/resources/log4j.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31">
+          <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactDataView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactDataToolbar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="45" column="35" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactDataViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactDataToolbarViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/login/LoginProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="86" column="23" selection-start-line="86" selection-start-column="23" selection-end-line="86" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/src.zip!/java/util/function/Function.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="48" column="6" selection-start-line="48" selection-start-column="6" selection-end-line="48" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/login/LoginView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="44" column="4" selection-start-line="44" selection-start-column="4" selection-end-line="45" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/login/LoginViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="55" column="8" selection-start-line="55" selection-start-column="8" selection-end-line="58" selection-end-column="45" />
+          <folding>
+            <element signature="e#3390#3391#0" expanded="true" />
+            <element signature="e#3452#3453#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/ContactProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/edit/ContactEditView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-786">
+          <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+          <folding>
+            <element signature="e#4594#4595#0" expanded="true" />
+            <element signature="e#4631#4632#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/edit/ContactEditViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="39" column="71" selection-start-line="39" selection-start-column="71" selection-end-line="39" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/RunMe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/src.zip!/java/lang/Class.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10493">
+          <caret line="441" selection-start-line="441" selection-end-line="441" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/de/saxsys/mvvmfx/1.7.0/mvvmfx-1.7.0.jar!/de/saxsys/mvvmfx/ScopeProvider.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/scope/ContactViewScope.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="19" selection-end-column="1" />
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/SessionDomainMock.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/de/saxsys/mvvmfx/1.7.0/mvvmfx-1.7.0.jar!/de/saxsys/mvvmfx/internal/viewloader/ViewLoaderReflectionUtils.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="e#566#567#0" expanded="true" />
-            <element signature="e#593#594#0" expanded="true" />
-            <element signature="e#674#675#0" expanded="true" />
-            <element signature="e#701#702#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="170">
+          <caret line="198" selection-start-line="198" selection-end-line="198" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerFactoryTest.java">
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/main/models/PageProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="48" selection-start-line="48" selection-end-line="48" selection-end-column="60" />
+        <state relative-caret-position="411">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationController.java">
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/ContactView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="67" column="62" lean-forward="true" selection-start-line="67" selection-start-column="62" selection-end-line="67" selection-end-column="62" />
+        <state relative-caret-position="216">
+          <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/GuestDomainBuilderMock.java">
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/scope/ContactMasterDetailScope.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+        <state relative-caret-position="350">
+          <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#595#596#0" expanded="true" />
-            <element signature="e#742#743#0" expanded="true" />
-            <element signature="e#769#770#0" expanded="true" />
-            <element signature="e#800#801#0" expanded="true" />
-            <element signature="e#827#828#0" expanded="true" />
-            <element signature="e#977#978#0" expanded="true" />
-            <element signature="e#1009#1010#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerTest.java">
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactDetailView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="67" column="39" lean-forward="true" selection-start-line="67" selection-start-column="39" selection-end-line="67" selection-end-column="39" />
+        <state relative-caret-position="-372">
+          <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactListView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="24" column="26" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactListTableModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactListViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1325">
+          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1845#1846#0" expanded="true" />
+            <element signature="e#1876#1877#0" expanded="true" />
+            <element signature="e#1955#1956#0" expanded="true" />
+            <element signature="e#1994#1995#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactDetailViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="34" column="26" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/ContactViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="516">
+          <caret line="67" column="43" selection-start-line="67" selection-start-column="43" selection-end-line="67" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/resources/log4j.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31">
+          <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactDataView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactDataToolbar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="78" column="43" selection-start-line="78" selection-start-column="43" selection-end-line="78" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactDataViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactDataToolbarViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/login/LoginProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="86" column="23" selection-start-line="86" selection-start-column="23" selection-end-line="86" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/src.zip!/java/util/function/Function.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="48" column="6" selection-start-line="48" selection-start-column="6" selection-end-line="48" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/login/LoginView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="44" column="4" selection-start-line="44" selection-start-column="4" selection-end-line="45" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/login/LoginViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="55" column="8" selection-start-line="55" selection-start-column="8" selection-end-line="58" selection-end-column="45" />
+          <folding>
+            <element signature="e#3390#3391#0" expanded="true" />
+            <element signature="e#3452#3453#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/ContactProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="98" column="11" selection-start-line="98" selection-start-column="11" selection-end-line="98" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/edit/ContactEditView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9">
+          <caret line="38" column="26" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
+          <folding>
+            <element signature="e#4594#4595#0" expanded="true" />
+            <element signature="e#4631#4632#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/edit/ContactEditViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-84">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
         </state>
       </provider>
     </entry>

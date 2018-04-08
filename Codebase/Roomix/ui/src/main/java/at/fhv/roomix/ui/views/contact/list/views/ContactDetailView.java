@@ -1,5 +1,6 @@
-package at.fhv.roomix.ui.views.contact.list;
+package at.fhv.roomix.ui.views.contact.list.views;
 
+import at.fhv.roomix.ui.views.contact.list.ContactDetailViewModel;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import javafx.fxml.FXML;
