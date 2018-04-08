@@ -11,52 +11,47 @@ import at.fhv.roomix.controller.reservation.model.ContactPojo;
  * Enter Description here
  */
 public class ContactListTableModel {
-    private String forename;
-    private String surname;
-    private String companyName;
-
-    private String street;
-    private String place;
-    private String postcode;
-
     private ContactPojo pojo;
 
-    public ContactPojo getPojo() {
+    ContactPojo getPojo() {
         return pojo;
     }
 
     public ContactListTableModel(ContactPojo pojo) {
-        // TODO don´t copy read directly
         this.pojo = pojo;
-        forename = pojo.getForename();
-        surname = pojo.getSurname();
-        companyName = pojo.getCompanyName();
-        street = pojo.getStreet();
-        place = pojo.getPlace();
-        postcode = pojo.getPostcode();
     }
 
-    public String getForename() {
-        return forename;
+    public String getFirstname() {
+        return pojo.getFirstName();
     }
 
-    public String getSurname() {
-        return surname;
+    public String getLastname() {
+        return pojo.getLastName();
     }
 
     public String getCompanyName() {
-        return companyName;
+        return pojo.getCompanyName();
     }
 
+    public String getPhonenumber() { return pojo.getPhoneNumber(); }
+
     public String getStreet() {
-        return street;
+        return pojo.getStreet();
     }
 
     public String getPlace() {
-        return place;
+        return pojo.getPlace();
     }
 
     public String getPostcode() {
-        return postcode;
+        return pojo.getPostcode();
+    }
+
+    public String getCountry() {
+        return pojo.getCountry();
+    }
+
+    public String getEmail() {
+        return pojo.getEmail();
     }
 }

@@ -4,7 +4,6 @@ import at.fhv.roomix.controller.reservation.IReservationController;
 import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
 import at.fhv.roomix.controller.reservation.exeption.FaultException;
 import at.fhv.roomix.controller.reservation.model.ContactPojo;
-import at.fhv.roomix.ui.views.contact.list.ContactListTableModel;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
@@ -26,7 +25,7 @@ public class ContactProvider {
     private static final Object lock = new Object();
     private static ContactProvider instance;
 
-    private ContactProvider() {
+    public ContactProvider() {
         refreshData();
     }
 

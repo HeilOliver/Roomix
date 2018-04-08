@@ -1,6 +1,5 @@
 package at.fhv.roomix.ui.views.contact.edit;
 
-import at.fhv.roomix.ui.views.contact.list.ContactListViewModel;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import javafx.event.ActionEvent;
@@ -19,9 +18,9 @@ import javafx.scene.control.TextField;
 public class ContactEditView implements FxmlView<ContactEditViewModel>{
 
     @FXML
-    private Button Cancel;
+    private Button btnCancel;
     @FXML
-    private Button Save;
+    private Button btnSave;
 
     @InjectViewModel
     private ContactEditViewModel viewModel;
@@ -31,9 +30,23 @@ public class ContactEditView implements FxmlView<ContactEditViewModel>{
     private TextField lastnameInput;
     @FXML
     private TextField companynameInput;
+    @FXML
+    private TextField phoneNumberInput;
+    @FXML
+    private TextField streetInput;
+    @FXML
+    private TextField placeInput;
+    @FXML
+    private TextField postcodeInput;
+    @FXML
+    private TextField countryInput;
+    @FXML
+    private TextField emailInput;
 
-    public void initialize(){
-        Save.disableProperty().bind(viewModel.isValidProperty().not());
+
+    public void initialize() {
+        firstnameInput.textProperty().bindBidirectional(viewModel.firstNameProperty());
+
     }
 
     @FXML

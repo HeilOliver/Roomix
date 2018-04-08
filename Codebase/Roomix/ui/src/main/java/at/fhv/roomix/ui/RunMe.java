@@ -2,7 +2,7 @@ package at.fhv.roomix.ui;
 
 import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
 import at.fhv.roomix.ui.connector.ControllerFactory;
-import at.fhv.roomix.ui.mocks.ReservationControllerMock;
+import at.fhv.roomix.controller.reservation.ReservationMock;
 import at.fhv.roomix.ui.views.main.MainView;
 import at.fhv.roomix.ui.views.main.MainViewModel;
 import de.saxsys.mvvmfx.FluentViewLoader;
@@ -10,6 +10,7 @@ import de.saxsys.mvvmfx.MvvmFX;
 import de.saxsys.mvvmfx.ViewTuple;
 import de.saxsys.mvvmfx.cdi.MvvmfxCdiApplication;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +25,7 @@ public class RunMe extends MvvmfxCdiApplication {
 
     public static void main(String... args) {
         // TODO For Testing
-        ReservationControllerFactory.InjectDependency(ReservationControllerMock::getInstance);
+        ReservationControllerFactory.InjectDependency(ReservationMock::getInstance);
 
         Locale.setDefault(Locale.GERMAN);
         launch(args);
@@ -40,6 +41,7 @@ public class RunMe extends MvvmfxCdiApplication {
 
     @Override
     public void startMvvmfx(Stage stage) throws Exception {
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/assets/roomix_icon.png")));
         LOG.info("Application Start");
         MvvmFX.setGlobalResourceBundle(resourceBundle);
         stage.setTitle(resourceBundle.getString("window.title"));
