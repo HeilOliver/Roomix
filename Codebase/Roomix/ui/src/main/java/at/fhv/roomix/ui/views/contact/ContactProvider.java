@@ -4,13 +4,21 @@ import at.fhv.roomix.controller.reservation.IReservationController;
 import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
 import at.fhv.roomix.controller.reservation.exeption.FaultException;
 import at.fhv.roomix.controller.reservation.model.ContactPojo;
-import at.fhv.roomix.ui.views.contact.list.ContactListTableModel;
+import at.fhv.roomix.ui.config.SessionProvider;
+import at.fhv.roomix.ui.views.contact.edit.ContactEditViewModel;
+import at.fhv.roomix.ui.views.contact.edit.ContactEditViewModel.ICallable;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import javafx.application.Platform;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.Collection;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Roomix
@@ -22,12 +30,12 @@ import java.util.Collection;
  */
 public class ContactProvider {
     private final ObservableList<ContactPojo> contacts = FXCollections.observableArrayList();
-
+    private ExecutorService executor = Executors.newSingleThreadExecutor();
     private static final Object lock = new Object();
     private static ContactProvider instance;
 
     private ContactProvider() {
-        refreshData();
+        get(() -> {}, ()-> {});
     }
 
     public static ContactProvider getInstance() {
@@ -40,32 +48,55 @@ public class ContactProvider {
         return instance;
     }
 
-    private ObjectProperty<ContactPojo> selectedContact = new SimpleObjectProperty<>();
-
-    public ObjectProperty<ContactPojo> selectedContactProperty() {
-        return selectedContact;
-    }
-
-    private void refreshData() {
+    public void get(ICallable successCallback,
+                    ICallable errorCallback) {
         IReservationController instance = ReservationControllerFactory.getInstance();
-        Collection<ContactPojo> allContacts = null;
-        try {
-            allContacts = instance.getAllContacts(122);
-        } catch (FaultException e) {
-            e.printStackTrace();
-        }
-        contacts.addAll(allContacts);
+        executor.submit(() -> {
+            Platform.runLater(()-> inProcess.setValue(true));
+            try {
+                Collection<ContactPojo> loadedContacts
+                        = instance.getAllContacts(SessionProvider.getSessionId());
+                Platform.runLater(() -> {
+                    contacts.clear();
+                    contacts.addAll(loadedContacts);
+                });
+                if (successCallback != null)
+                    Platform.runLater(successCallback::call);
+            } catch (FaultException e) {
+                if (successCallback != null)
+                    Platform.runLater(errorCallback::call);
+            } finally {
+                Platform.runLater(()-> inProcess.setValue(false));
+            }
+        });
     }
 
-    public void newContact() {
+    private BooleanProperty inProcess = new SimpleBooleanProperty();
 
-    }
-
-    public void editContact() {
-
+    public BooleanProperty inProcessProperty() {
+        return inProcess;
     }
 
     public ObservableList<ContactPojo> getContacts() {
         return contacts;
+    }
+
+    public void saveOrUpdate(ContactPojo tempContactPojo,
+                             ICallable successCallback,
+                             ICallable errorCallback) {
+        IReservationController instance = ReservationControllerFactory.getInstance();
+        executor.submit(() -> {
+            Platform.runLater(()-> inProcess.setValue(true));
+            try {
+                instance.updateContact(SessionProvider.getSessionId(), tempContactPojo);
+                if (successCallback != null)
+                    Platform.runLater(successCallback::call);
+            } catch (FaultException e) {
+                if (successCallback != null)
+                    Platform.runLater(errorCallback::call);
+            } finally {
+                Platform.runLater(()-> inProcess.setValue(false));
+            }
+        });
     }
 }

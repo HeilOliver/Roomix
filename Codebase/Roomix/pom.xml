@@ -28,7 +28,7 @@
             <id>StefanG.</id>
         </developer>
         <developer>
-            <email>moritz.wilfling@students.fhv.at</email>
+            <email>mwi4339@students.fhv.at</email>
             <name>Moritz Wilfling</name>
             <id>MoritzW.</id>
         </developer>
@@ -57,6 +57,24 @@
             <dependency>
                 <groupId>at.fhv.roomix</groupId>
                 <artifactId>persist</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>at.fhv.roomix</groupId>
+                <artifactId>domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>at.fhv.roomix.domain</groupId>
+                <artifactId>guest-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>at.fhv.roomix.domain</groupId>
+                <artifactId>session-domain</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

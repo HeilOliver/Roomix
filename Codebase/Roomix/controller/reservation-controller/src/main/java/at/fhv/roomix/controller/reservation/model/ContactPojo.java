@@ -1,9 +1,5 @@
 package at.fhv.roomix.controller.reservation.model;
 
-
-
-
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -20,14 +16,15 @@ import java.util.Objects;
 public class ContactPojo {
     private int contactId;
 
-    @NotNull(message = "forename cannot be null")
-    @Size(min = 1, max = 50, message = "forename must be between 1 and 200 characters")
-    private String forename;
+    @NotNull(message = "fname cannot be null")
+    @Size(min = 1, max = 50, message = "fname must be between 1 and 200 characters")
+    private String fname;
 
-    @NotNull(message = "surname cannot be null")
-    @Size(min = 1, max = 50, message = "surname must be between 1 and 200 characters")
-    private String surname;
+    @NotNull(message = "lname cannot be null")
+    @Size(min = 1, max = 50, message = "lname must be between 1 and 200 characters")
+    private String lname;
 
+    @Size(max = 50, message = "companyName must be between 1 and 200 characters")
     private String companyName;
 
     @NotNull(message = "phoneNumber cannot be null")
@@ -35,6 +32,9 @@ public class ContactPojo {
 
     @NotNull(message = "street cannot be null")
     private String street;
+
+    @NotNull(message = "houseNumber cannot be null")
+    private String houseNumber;
 
     @NotNull(message = "place cannot be null")
     private String place;
@@ -48,33 +48,31 @@ public class ContactPojo {
     @Email(message = "Email should be valid")
     private String email;
 
-    private byte active;
-
     public ContactPojo() {
-    }
-
-    public ContactPojo(int contactId) {
-        this.contactId = contactId;
     }
 
     public int getContactId() {
         return contactId;
     }
 
-    public String getForename() {
-        return forename;
+    public void setContactId(int contactId) {
+        this.contactId = contactId;
     }
 
-    public void setForename(String forename) {
-        this.forename = forename;
+    public String getFname() {
+        return fname;
     }
 
-    public String getSurname() {
-        return surname;
+    public void setFname(String fname) {
+        this.fname = fname;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public String getLname() {
+        return lname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
     }
 
     public String getCompanyName() {
@@ -91,6 +89,14 @@ public class ContactPojo {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getHouseNumber() {
+        return houseNumber;
+    }
+
+    public void setHouseNumber(String houseNumber) {
+        this.houseNumber = houseNumber;
     }
 
     public String getStreet() {
@@ -133,24 +139,27 @@ public class ContactPojo {
         this.email = email;
     }
 
-    public byte getActive() {
-        return active;
-    }
-
-    public void setActive(byte active) {
-        this.active = active;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ContactPojo that = (ContactPojo) o;
-        return contactId == that.contactId;
+        return contactId == that.contactId &&
+                Objects.equals(fname, that.fname) &&
+                Objects.equals(lname, that.lname) &&
+                Objects.equals(companyName, that.companyName) &&
+                Objects.equals(phoneNumber, that.phoneNumber) &&
+                Objects.equals(street, that.street) &&
+                Objects.equals(houseNumber, that.houseNumber) &&
+                Objects.equals(place, that.place) &&
+                Objects.equals(postcode, that.postcode) &&
+                Objects.equals(country, that.country) &&
+                Objects.equals(email, that.email)&&
+                Objects.equals(houseNumber, that.houseNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(contactId);
+        return Objects.hash(contactId, fname, lname, companyName, phoneNumber, street, houseNumber, place, postcode, country, email);
     }
 }

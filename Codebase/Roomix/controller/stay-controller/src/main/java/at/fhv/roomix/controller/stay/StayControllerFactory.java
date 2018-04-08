@@ -1,8 +1,6 @@
 package at.fhv.roomix.controller.stay;
 
 
-import at.fhv.roomix.persist.database.IDataBase;
-
 /**
  * Roomix
  * at.fhv.roomix.controller.session

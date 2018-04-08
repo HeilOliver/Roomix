@@ -10,14 +10,16 @@ package at.fhv.roomix.domain.session.model;
  */
 public class RoomixSession {
     private long sessionId;
-
     private String username;
     private boolean valid;
+    private RoomixUser user;
 
-    public RoomixSession(long sessionId, String username, boolean valid) {
+
+    public RoomixSession(long sessionId, String username, RoomixUser user) {
         this.sessionId = sessionId;
         this.username = username;
-        this.valid = valid;
+        this.valid = true;
+        this.user = user;
     }
 
     public long getSessionId() {
@@ -30,5 +32,13 @@ public class RoomixSession {
 
     public boolean isValid() {
         return valid;
+    }
+
+    public void setInValid() {
+        valid = false;
+    }
+
+    public RoomixUser getUser() {
+        return user;
     }
 }
