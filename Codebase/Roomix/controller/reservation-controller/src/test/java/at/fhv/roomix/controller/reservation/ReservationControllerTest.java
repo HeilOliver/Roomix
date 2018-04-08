@@ -9,6 +9,9 @@ import at.fhv.roomix.persist.factory.GuestDomainBuilder;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collection;
+import java.util.HashSet;
+
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -52,15 +55,17 @@ public class ReservationControllerTest {
        pojo.setHouseNumber("123");
 
        controller.newContact(110L,pojo);
-       assertTrue(mock.getTest());
+       assertTrue(mock.getNewContactBool());
 
    }
 
    @Test
-    void getAllContactsValid() {
+    void getAllContactsValid() throws SessionFaultException {
+       ReservationController controller = new ReservationController();
 
-
-
+       Collection gettAllTest = new HashSet();
+       gettAllTest = controller.getAllContacts(123L);
+       assertTrue(mock.isGetAllBool());
    }
 
 }

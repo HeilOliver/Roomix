@@ -5,21 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7142792d-a4a4-4bf1-a7e0-db6e38fc4180" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/exeption/ArgumentFaultException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/GuestDomainBuilderMock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/SessionDomainMock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/reservation-controller/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/controller/reservation-controller/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/reservation-controller/reservation-controller.iml" beforeDir="false" afterPath="$PROJECT_DIR$/controller/reservation-controller/reservation-controller.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/IReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/IReservationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationMock.java" beforeDir="false" afterPath="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationMock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerMock.java" beforeDir="false" afterPath="$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerMock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/GuestDomainBuilderMock.java" beforeDir="false" afterPath="$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/GuestDomainBuilderMock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/session-domain/src/main/java/at/fhv/roomix/domain/session/SessionDomain.java" beforeDir="false" afterPath="$PROJECT_DIR$/domain/session-domain/src/main/java/at/fhv/roomix/domain/session/SessionDomain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/factory/GuestDomainBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/factory/GuestDomainBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/ui.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/controller/target/" />
     <ignored path="$PROJECT_DIR$/domain/target/" />
@@ -47,8 +35,8 @@
       <file leaf-file-name="ReservationController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="678">
-              <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+            <state relative-caret-position="277">
+              <caret line="67" column="62" lean-forward="true" selection-start-line="67" selection-start-column="62" selection-end-line="67" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -77,8 +65,8 @@
       <file leaf-file-name="ReservationControllerTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+            <state relative-caret-position="311">
+              <caret line="67" column="39" lean-forward="true" selection-start-line="67" selection-start-column="39" selection-end-line="67" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -90,11 +78,32 @@
         <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/GuestDomainBuilderMock.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
+              <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#520#521#0" expanded="true" />
-                <element signature="e#560#561#0" expanded="true" />
+                <element signature="e#555#556#0" expanded="true" />
+                <element signature="e#595#596#0" expanded="true" />
+                <element signature="e#742#743#0" expanded="true" />
+                <element signature="e#769#770#0" expanded="true" />
+                <element signature="e#800#801#0" expanded="true" />
+                <element signature="e#827#828#0" expanded="true" />
+                <element signature="e#977#978#0" expanded="true" />
+                <element signature="e#1009#1010#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SessionDomainMock.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/SessionDomainMock.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+              <folding>
+                <element signature="e#566#567#0" expanded="true" />
+                <element signature="e#593#594#0" expanded="true" />
+                <element signature="e#674#675#0" expanded="true" />
+                <element signature="e#701#702#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -129,10 +138,10 @@
         <option value="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationMock.java" />
         <option value="$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/SessionDomainMock.java" />
         <option value="$PROJECT_DIR$/domain/session-domain/src/main/java/at/fhv/roomix/domain/session/SessionDomain.java" />
-        <option value="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationController.java" />
-        <option value="$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/GuestDomainBuilderMock.java" />
         <option value="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/exeption/ArgumentFaultException.java" />
         <option value="$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerTest.java" />
+        <option value="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationController.java" />
+        <option value="$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/GuestDomainBuilderMock.java" />
       </list>
     </option>
   </component>
@@ -142,7 +151,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-10" />
     <option name="y" value="-10" />
     <option name="width" value="2578" />
@@ -217,17 +226,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="reservation" type="462c0819:PsiDirectoryNode" />
-              <item name="exeption" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="reservation-controller" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="reservation" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -261,187 +259,6 @@
               <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
               <item name="Roomix" type="462c0819:PsiDirectoryNode" />
               <item name="domain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="guest-domain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="guest-domain" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="session-domain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="session-domain" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="session-domain" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="session-domain" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="session-domain" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="session" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="session-domain" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="session" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="session-domain" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="session" type="462c0819:PsiDirectoryNode" />
-              <item name="roll" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="session-domain" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="session-domain" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="session-domain" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="session" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="persist" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="persist" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="persist" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="persist" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="persist" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="persist" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="persist" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="persist" type="462c0819:PsiDirectoryNode" />
-              <item name="factory" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="persist" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="persist" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="persist" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="persist" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="persist" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="persist" type="462c0819:PsiDirectoryNode" />
-              <item name="factory" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -550,6 +367,29 @@
       </option>
       <patterns />
     </configuration>
+    <configuration name="ReservationControllerTest.getAllContactsValid" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="reservation-controller" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="at.fhv.roomix.controller.reservation.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="at.fhv.roomix.controller.reservation" />
+      <option name="MAIN_CLASS_NAME" value="at.fhv.roomix.controller.reservation.ReservationControllerTest" />
+      <option name="METHOD_NAME" value="getAllContactsValid" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
     <configuration name="ReservationControllerTest.newContact" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="reservation-controller" />
       <extension name="coverage">
@@ -616,10 +456,12 @@
       <item itemvalue="JUnit.ReservationControllerFactoryTest" />
       <item itemvalue="JUnit.ReservationControllerTest.newContact" />
       <item itemvalue="JUnit.ReservationControllerTest" />
+      <item itemvalue="JUnit.ReservationControllerTest.getAllContactsValid" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.ReservationControllerTest" />
+        <item itemvalue="JUnit.ReservationControllerTest.getAllContactsValid" />
         <item itemvalue="JUnit.ReservationControllerTest.newContact" />
         <item itemvalue="JUnit.ReservationControllerFactoryTest" />
         <item itemvalue="JUnit.GuestDomainFactoryTest.testGetInstanceById" />
@@ -641,15 +483,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ReservationControllerTest_newContact - 2018.04.08 at 19h 45m 24s.xml">
-      <configuration name="ReservationControllerTest.newContact" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ReservationControllerTest_newContact - 2018.04.08 at 19h 46m 06s.xml">
-      <configuration name="ReservationControllerTest.newContact" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ReservationControllerTest_newContact - 2018.04.08 at 19h 47m 14s.xml">
-      <configuration name="ReservationControllerTest.newContact" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ReservationControllerTest_newContact - 2018.04.08 at 19h 49m 04s.xml">
       <configuration name="ReservationControllerTest.newContact" configurationId="JUnit" />
     </history-entry>
@@ -671,9 +504,18 @@
     <history-entry file="ReservationControllerTest - 2018.04.08 at 20h 09m 40s.xml">
       <configuration name="ReservationControllerTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="ReservationControllerTest_getAllContactsValid - 2018.04.08 at 20h 59m 27s.xml">
+      <configuration name="ReservationControllerTest.getAllContactsValid" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ReservationControllerTest_getAllContactsValid - 2018.04.08 at 21h 02m 00s.xml">
+      <configuration name="ReservationControllerTest.getAllContactsValid" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ReservationControllerTest - 2018.04.08 at 21h 07m 02s.xml">
+      <configuration name="ReservationControllerTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24541000" />
+    <option name="totallyTimeSpent" value="25420000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -743,6 +585,23 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerFactoryTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="48" selection-start-line="48" selection-end-line="48" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/persist/src/test/java/at/fhv/roomix/persist/factory/GuestDomainFactoryTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -804,12 +663,6 @@
         <state relative-caret-position="-18" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/domain/session-domain/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/persist/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/controller/reservation-controller/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
@@ -856,9 +709,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="129">
           <caret line="183" selection-start-line="183" selection-end-line="183" />
-          <folding>
-            <element signature="e#6103#6104#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -866,10 +716,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="129">
           <caret line="174" selection-start-line="174" selection-end-line="174" />
-          <folding>
-            <element signature="e#15146#15147#0" expanded="true" />
-            <element signature="e#15205#15206#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -898,9 +744,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="211" selection-start-line="211" selection-end-line="211" />
-          <folding>
-            <element signature="e#10423#10424#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -908,10 +751,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="2542" selection-start-line="2542" selection-end-line="2542" />
-          <folding>
-            <element signature="e#89186#92001#0" expanded="true" />
-            <element signature="e#92000#92001#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -933,12 +772,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
           <caret line="372" selection-start-line="372" selection-end-line="372" />
-          <folding>
-            <element signature="e#27171#27172#0" expanded="true" />
-            <element signature="e#27195#27196#0" expanded="true" />
-            <element signature="e#31742#31743#0" expanded="true" />
-            <element signature="e#31784#31785#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -946,9 +779,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="49" selection-start-line="49" selection-end-line="49" />
-          <folding>
-            <element signature="e#1862#1863#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -956,9 +786,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="71" selection-start-line="71" selection-end-line="71" />
-          <folding>
-            <element signature="e#1902#1903#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -973,9 +800,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="211" selection-start-line="211" selection-end-line="211" />
-          <folding>
-            <element signature="e#8153#8154#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -997,9 +821,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-157">
           <caret line="35" selection-start-line="35" selection-end-line="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1051,19 +872,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/SessionDomainMock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="e#566#567#0" expanded="true" />
-            <element signature="e#593#594#0" expanded="true" />
-            <element signature="e#674#675#0" expanded="true" />
-            <element signature="e#701#702#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationControllerFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="71">
@@ -1075,35 +883,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="317">
           <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerFactoryTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="48" selection-start-line="48" selection-end-line="48" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="678">
-          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/GuestDomainBuilderMock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#520#521#0" expanded="true" />
-            <element signature="e#560#561#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1135,10 +914,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/SessionDomainMock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="e#566#567#0" expanded="true" />
+            <element signature="e#593#594#0" expanded="true" />
+            <element signature="e#674#675#0" expanded="true" />
+            <element signature="e#701#702#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerFactoryTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="48" selection-start-line="48" selection-end-line="48" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="67" column="62" lean-forward="true" selection-start-line="67" selection-start-column="62" selection-end-line="67" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/GuestDomainBuilderMock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#555#556#0" expanded="true" />
+            <element signature="e#595#596#0" expanded="true" />
+            <element signature="e#742#743#0" expanded="true" />
+            <element signature="e#769#770#0" expanded="true" />
+            <element signature="e#800#801#0" expanded="true" />
+            <element signature="e#827#828#0" expanded="true" />
+            <element signature="e#977#978#0" expanded="true" />
+            <element signature="e#1009#1010#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/test/java/at/fhv/roomix/controller/reservation/ReservationControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+        <state relative-caret-position="311">
+          <caret line="67" column="39" lean-forward="true" selection-start-line="67" selection-start-column="39" selection-end-line="67" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

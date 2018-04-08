@@ -4,6 +4,7 @@ import at.fhv.roomix.domain.guest.model.GuestDomain;
 import at.fhv.roomix.persist.factory.IAbstractDomainBuilder;
 import at.fhv.roomix.persist.model.ContactEntity;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -15,7 +16,8 @@ import java.util.List;
  * Enter Description here
  */
 public class GuestDomainBuilderMock implements IAbstractDomainBuilder<GuestDomain, ContactEntity> {
-    private boolean test = false;
+    private boolean newContactBool = false;
+    private boolean getAllBool = false;
 
     @Override
     public GuestDomain get(int id) {
@@ -25,20 +27,25 @@ public class GuestDomainBuilderMock implements IAbstractDomainBuilder<GuestDomai
     @Override
     public List<GuestDomain> getAll() {
 
-
-        return null;
+        getAllBool = true;
+        return new LinkedList<>();
     }
 
     @Override
     public void set(GuestDomain domainObject) {
-        test = true;
+        newContactBool = true;
     }
 
-    public boolean getTest(){
-        return test;
+    public boolean getNewContactBool(){
+        return newContactBool;
+    }
+
+    public boolean isGetAllBool(){
+        return getAllBool;
     }
 
     public void clearTest(){
-        test = false;
+        newContactBool = false;
+        getAllBool = false;
     }
 }
