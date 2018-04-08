@@ -11,11 +11,12 @@ public class ReservationEntity {
     private int contractingParty;
     private int person;
     private String reservationStatus;
+
     private Collection<InvoicepositionEntity> invoicepositionsByReservationId;
-    private ContractingpartyEntity contractingpartyByContractingParty;
-    private PersonEntity personByPerson;
     private Collection<ReservationoptionEntity> reservationoptionsByReservationId;
     private Collection<ReservationunitEntity> reservationunitsByReservationId;
+    private ContractingpartyEntity contractingpartyByContractingParty;
+    private PersonEntity personByPerson;
 
     @Id
     @Column(name = "ReservationID")

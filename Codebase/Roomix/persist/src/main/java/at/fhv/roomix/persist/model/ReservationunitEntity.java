@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "reservationunit", schema = "roomix", catalog = "")
+@Table(name = "ReservationUnit", schema = "roomix", catalog = "")
 public class ReservationunitEntity {
     private int reservationUnitId;
     private int reservation;
@@ -15,7 +15,9 @@ public class ReservationunitEntity {
     private Integer arrangement;
     private Date startDate;
     private Date endDate;
+
     private Collection<InvoicepositionEntity> invoicepositionsByReservationUnitId;
+
     private ReservationEntity reservationByReservation;
     private RoomcategoryEntity roomcategoryByRoomCategory;
     private CancellationEntity cancellationByCancelation;

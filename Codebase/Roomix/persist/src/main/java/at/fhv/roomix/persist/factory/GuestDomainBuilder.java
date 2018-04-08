@@ -1,28 +1,33 @@
 package at.fhv.roomix.persist.factory;
 
 import at.fhv.roomix.domain.guest.model.*;
-import at.fhv.roomix.persist.AbstractDao;
 import at.fhv.roomix.persist.ContactDao;
-import at.fhv.roomix.persist.PersistLoadException;
-import at.fhv.roomix.persist.PersistSaveException;
 import at.fhv.roomix.persist.model.ContactEntity;
 import at.fhv.roomix.persist.model.ContractingpartyEntity;
 import at.fhv.roomix.persist.model.CreditcardEntity;
 import at.fhv.roomix.persist.model.PersonEntity;
-import org.apache.log4j.Logger;
 import org.modelmapper.ModelMapper;
 
 import java.util.*;
-import java.util.concurrent.Callable;
+import java.util.function.Supplier;
 
-public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, ContactEntity> {
-
+public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, ContactEntity>
+             implements IAbstractDomainBuilder<GuestDomain, ContactEntity>{
+    /* Constructor */
     private GuestDomainBuilder(ICallable registerAtDAO){
         registerAtDAO.call();
     }
+    private GuestDomainBuilder(){}
 
-    public GuestDomainBuilder(){
+    /* Dependency Injection */
+    private static Supplier<IAbstractDomainBuilder<GuestDomain, ContactEntity>> supplier;
 
+    public static IAbstractDomainBuilder<GuestDomain, ContactEntity> getInstance(){
+        if (supplier == null) return new GuestDomainBuilder(ContactDao::registerAtDao);
+        return supplier.get();
+    }
+    public static void injectDependency(Supplier<IAbstractDomainBuilder<GuestDomain, ContactEntity>> builderSupplier){
+        supplier = builderSupplier;
     }
 
 
@@ -83,5 +88,4 @@ public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, Conta
     public void set(GuestDomain domainObject) {
         new GuestDomainBuilder(ContactDao::registerAtDao).save(ContactEntity.class, domainObject);
     }
-
 }
