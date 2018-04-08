@@ -16,13 +16,13 @@ import java.util.Objects;
 public class ContactPojo {
     private int contactId;
 
-    @NotNull(message = "firstName cannot be null")
-    @Size(min = 1, max = 50, message = "firstName must be between 1 and 200 characters")
-    private String firstName;
+    @NotNull(message = "fname cannot be null")
+    @Size(min = 1, max = 50, message = "fname must be between 1 and 200 characters")
+    private String fname;
 
-    @NotNull(message = "lastName cannot be null")
-    @Size(min = 1, max = 50, message = "lastName must be between 1 and 200 characters")
-    private String lastName;
+    @NotNull(message = "lname cannot be null")
+    @Size(min = 1, max = 50, message = "lname must be between 1 and 200 characters")
+    private String lname;
 
     @Size(max = 50, message = "companyName must be between 1 and 200 characters")
     private String companyName;
@@ -32,6 +32,9 @@ public class ContactPojo {
 
     @NotNull(message = "street cannot be null")
     private String street;
+
+    @NotNull(message = "houseNumber cannot be null")
+    private String houseNumber;
 
     @NotNull(message = "place cannot be null")
     private String place;
@@ -56,20 +59,20 @@ public class ContactPojo {
         this.contactId = contactId;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFname() {
+        return fname;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFname(String fname) {
+        this.fname = fname;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLname() {
+        return lname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLname(String lname) {
+        this.lname = lname;
     }
 
     public String getCompanyName() {
@@ -86,6 +89,14 @@ public class ContactPojo {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getHouseNumber() {
+        return houseNumber;
+    }
+
+    public void setHouseNumber(String houseNumber) {
+        this.houseNumber = houseNumber;
     }
 
     public String getStreet() {
@@ -134,19 +145,21 @@ public class ContactPojo {
         if (o == null || getClass() != o.getClass()) return false;
         ContactPojo that = (ContactPojo) o;
         return contactId == that.contactId &&
-                Objects.equals(firstName, that.firstName) &&
-                Objects.equals(lastName, that.lastName) &&
+                Objects.equals(fname, that.fname) &&
+                Objects.equals(lname, that.lname) &&
                 Objects.equals(companyName, that.companyName) &&
                 Objects.equals(phoneNumber, that.phoneNumber) &&
                 Objects.equals(street, that.street) &&
+                Objects.equals(houseNumber, that.houseNumber) &&
                 Objects.equals(place, that.place) &&
                 Objects.equals(postcode, that.postcode) &&
                 Objects.equals(country, that.country) &&
-                Objects.equals(email, that.email);
+                Objects.equals(email, that.email)&&
+                Objects.equals(houseNumber, that.houseNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(contactId, firstName, lastName, companyName, phoneNumber, street, place, postcode, country, email);
+        return Objects.hash(contactId, fname, lname, companyName, phoneNumber, street, houseNumber, place, postcode, country, email);
     }
 }

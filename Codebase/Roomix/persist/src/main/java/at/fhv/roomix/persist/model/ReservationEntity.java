@@ -5,17 +5,18 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "reservation", schema = "roomix", catalog = "")
+@Table(name = "Reservation", schema = "roomix", catalog = "")
 public class ReservationEntity {
     private int reservationId;
     private int contractingParty;
     private int person;
     private String reservationStatus;
+
     private Collection<InvoicepositionEntity> invoicepositionsByReservationId;
-    private ContractingpartyEntity contractingpartyByContractingParty;
-    private PersonEntity personByPerson;
     private Collection<ReservationoptionEntity> reservationoptionsByReservationId;
     private Collection<ReservationunitEntity> reservationunitsByReservationId;
+    private ContractingpartyEntity contractingpartyByContractingParty;
+    private PersonEntity personByPerson;
 
     @Id
     @Column(name = "ReservationID")

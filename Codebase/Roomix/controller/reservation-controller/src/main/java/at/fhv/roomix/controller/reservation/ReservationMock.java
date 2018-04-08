@@ -1,6 +1,9 @@
 package at.fhv.roomix.controller.reservation;
 
+import at.fhv.roomix.controller.reservation.exeption.ArgumentFaultException;
 import at.fhv.roomix.controller.reservation.exeption.FaultException;
+import at.fhv.roomix.controller.reservation.exeption.SessionFaultException;
+import at.fhv.roomix.controller.reservation.exeption.ValidationFault;
 import at.fhv.roomix.controller.reservation.model.ContactPojo;
 
 import java.util.Collection;
@@ -20,8 +23,8 @@ public class ReservationMock implements IReservationController {
 
     ReservationMock() {
         ContactPojo pojo = new ContactPojo();
-        pojo.setFirstName("Oliver");
-        pojo.setLastName("Heil");
+        pojo.setFname("Oliver");
+        pojo.setLname("Heil");
         pojo.setCountry("Germany");
         pojo.setPhoneNumber("+4312132132132");
         pojo.setEmail("Some@some.com");
@@ -31,8 +34,8 @@ public class ReservationMock implements IReservationController {
         contactPojos.add(pojo);
 
         pojo = new ContactPojo();
-        pojo.setFirstName("Max");
-        pojo.setLastName("Mustermann");
+        pojo.setFname("Max");
+        pojo.setLname("Mustermann");
         pojo.setCountry("Germany");
         pojo.setPhoneNumber("+4312132132132");
         pojo.setEmail("Some@some.com");
@@ -55,7 +58,8 @@ public class ReservationMock implements IReservationController {
     private Collection<ContactPojo> contactPojos = new HashSet<>();
 
     @Override
-    public void newContact(long sessionId, ContactPojo contactPojo) throws FaultException {
+    public void newContact(long sessionId, ContactPojo contactPojo)
+            throws SessionFaultException, ValidationFault, ArgumentFaultException {
         contactPojos.add(contactPojo);
         try {
             Thread.sleep(2000);
@@ -65,12 +69,13 @@ public class ReservationMock implements IReservationController {
     }
 
     @Override
-    public Collection<ContactPojo> getAllContacts(long sessionId) throws FaultException {
+    public Collection<ContactPojo> getAllContacts(long sessionId) throws SessionFaultException {
         return new HashSet<>(contactPojos);
     }
 
     @Override
-    public void updateContact(long sessionId, ContactPojo contactPojo) throws FaultException {
-        newContact(sessionId, contactPojo);
+    public void updateContact(long sessionId, ContactPojo contactPojo)
+            throws SessionFaultException, ValidationFault, ArgumentFaultException {
+        contactPojos.add(contactPojo);
     }
 }

@@ -141,13 +141,13 @@ public class ContactEditViewModel implements ViewModel {
 
     StringProperty firstNameProperty() {
         return contactWrapper.field("firstName",
-                ContactPojo::getFirstName, ContactPojo::setFirstName);
+                ContactPojo::getFname, ContactPojo::setFname);
     }
 
     StringProperty lastNameProperty() {
         return contactWrapper.field(
-                "lastName", ContactPojo::getLastName,
-                ContactPojo::setLastName);
+                "lastName", ContactPojo::getLname,
+                ContactPojo::setLname);
     }
 
     StringProperty companyNameProperty() {
