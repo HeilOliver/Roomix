@@ -4,6 +4,7 @@ import at.fhv.roomix.controller.reservation.IReservationController;
 import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
 import at.fhv.roomix.controller.reservation.exeption.FaultException;
 import at.fhv.roomix.controller.reservation.model.ContactPojo;
+import at.fhv.roomix.ui.config.SessionProvider;
 import at.fhv.roomix.ui.views.contact.edit.ContactEditViewModel;
 import at.fhv.roomix.ui.views.contact.edit.ContactEditViewModel.ICallable;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -54,16 +55,16 @@ public class ContactProvider {
             Platform.runLater(()-> inProcess.setValue(true));
             try {
                 Collection<ContactPojo> loadedContacts
-                        = instance.getAllContacts(123L);
+                        = instance.getAllContacts(SessionProvider.getSessionId());
                 Platform.runLater(() -> {
                     contacts.clear();
                     contacts.addAll(loadedContacts);
                 });
                 if (successCallback != null)
-                    successCallback.call();
+                    Platform.runLater(successCallback::call);
             } catch (FaultException e) {
                 if (successCallback != null)
-                    errorCallback.call();
+                    Platform.runLater(errorCallback::call);
             } finally {
                 Platform.runLater(()-> inProcess.setValue(false));
             }
@@ -87,12 +88,12 @@ public class ContactProvider {
         executor.submit(() -> {
             Platform.runLater(()-> inProcess.setValue(true));
             try {
-                instance.updateContact(122, tempContactPojo);
+                instance.updateContact(SessionProvider.getSessionId(), tempContactPojo);
                 if (successCallback != null)
-                    successCallback.call();
+                    Platform.runLater(successCallback::call);
             } catch (FaultException e) {
                 if (successCallback != null)
-                    errorCallback.call();
+                    Platform.runLater(errorCallback::call);
             } finally {
                 Platform.runLater(()-> inProcess.setValue(false));
             }

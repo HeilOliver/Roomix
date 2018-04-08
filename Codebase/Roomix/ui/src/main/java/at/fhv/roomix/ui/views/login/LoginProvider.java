@@ -5,6 +5,7 @@ import at.fhv.roomix.controller.session.SessionControllerFactory;
 import at.fhv.roomix.controller.session.exception.AuthenticationFaultException;
 import at.fhv.roomix.controller.session.model.SessionPojo;
 import at.fhv.roomix.ui.config.ResourceHandler;
+import at.fhv.roomix.ui.config.SessionProvider;
 import at.fhv.roomix.ui.views.main.models.SwitchablePage;
 import de.saxsys.mvvmfx.FluentViewLoader;
 import javafx.application.Platform;
@@ -81,6 +82,7 @@ public class LoginProvider {
                 Platform.runLater(() -> {
                     currentSession.setValue(session);
                     currentUser.setValue(session.getName());
+                    SessionProvider.setSessionId(session.getSessionId());
                 });
             } catch (AuthenticationFaultException e) {
                 Platform.runLater(() -> isErrorOccurred.setValue(true));
