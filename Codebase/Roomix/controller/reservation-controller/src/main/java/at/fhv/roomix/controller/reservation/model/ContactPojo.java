@@ -30,9 +30,6 @@ public class ContactPojo {
     @NotNull(message = "phoneNumber cannot be null")
     private String phoneNumber;
 
-    @NotNull(message = "housenumber cannot be null")
-    private int houseNumber;
-
     @NotNull(message = "street cannot be null")
     private String street;
 
@@ -88,14 +85,6 @@ public class ContactPojo {
 
     public String getPhoneNumber() {
         return phoneNumber;
-    }
-
-    public int getHouseNumber() {
-        return houseNumber;
-    }
-
-    public void setHouseNumber(int houseNumber) {
-        this.houseNumber = houseNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
@@ -171,10 +160,6 @@ public class ContactPojo {
 
     @Override
     public int hashCode() {
-<<<<<<< HEAD
         return Objects.hash(contactId, fname, lname, companyName, phoneNumber, street, houseNumber, place, postcode, country, email);
-=======
-        return Objects.hash(contactId, firstName, lastName, companyName,houseNumber, phoneNumber, street, place, postcode, country, email);
->>>>>>> c32c09adf744a334e41b222cb00296d647cffb47
     }
 }
