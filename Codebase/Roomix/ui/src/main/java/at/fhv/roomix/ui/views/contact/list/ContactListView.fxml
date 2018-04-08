@@ -26,7 +26,7 @@
                 </TableColumn>
                 <TableColumn prefWidth="75.0" text="%contact.table.lastname">
                     <cellValueFactory>
-                        <PropertyValueFactory property="lastName" />
+                        <PropertyValueFactory property="lname" />
                     </cellValueFactory>
                 </TableColumn>
                 <TableColumn prefWidth="75.0" text="%contact.table.companyname">

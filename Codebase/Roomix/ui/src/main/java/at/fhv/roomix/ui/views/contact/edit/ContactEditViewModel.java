@@ -59,7 +59,7 @@ public class ContactEditViewModel implements ViewModel {
     }
 
     StringProperty firstNameProperty() {
-        return contactWrapper.field("firstName", ContactPojo::getFirstName, ContactPojo::setFirstName);
+        return contactWrapper.field("firstName", ContactPojo::getFname, ContactPojo::setFname);
     }
 
 
