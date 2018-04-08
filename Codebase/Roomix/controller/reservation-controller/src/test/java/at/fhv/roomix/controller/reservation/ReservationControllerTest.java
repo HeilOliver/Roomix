@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Roomix
@@ -49,6 +50,9 @@ public class ReservationControllerTest {
 
        assertThrows(ValidationFault.class, () -> controller.newContact(123L, pojo));
        pojo.setHouseNumber("123");
+
+       controller.newContact(110L,pojo);
+       assertTrue(mock.getTest());
 
    }
 

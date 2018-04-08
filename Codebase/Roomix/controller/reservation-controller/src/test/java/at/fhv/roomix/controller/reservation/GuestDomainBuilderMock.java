@@ -15,6 +15,7 @@ import java.util.List;
  * Enter Description here
  */
 public class GuestDomainBuilderMock implements IAbstractDomainBuilder<GuestDomain, ContactEntity> {
+    private boolean test = false;
 
     @Override
     public GuestDomain get(int id) {
@@ -30,6 +31,14 @@ public class GuestDomainBuilderMock implements IAbstractDomainBuilder<GuestDomai
 
     @Override
     public void set(GuestDomain domainObject) {
+        test = true;
+    }
 
+    public boolean getTest(){
+        return test;
+    }
+
+    public void clearTest(){
+        test = false;
     }
 }
