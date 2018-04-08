@@ -5,6 +5,10 @@ import org.hibernate.HibernateException;
 
 public class ReservationDao extends AbstractDao<ReservationEntity, Integer>{
 
+    static {
+        AbstractDao.addDao(ReservationEntity.class, ReservationDao::new);
+    }
+
     ReservationDao(){
         super(ReservationEntity.class);
     }
@@ -25,5 +29,8 @@ public class ReservationDao extends AbstractDao<ReservationEntity, Integer>{
         session.getTransaction().commit();
     }
 
+    public static void registerAtDao(){
+        daoLogger.info("Registered at Reservation DAO");
+    }
 
 }
