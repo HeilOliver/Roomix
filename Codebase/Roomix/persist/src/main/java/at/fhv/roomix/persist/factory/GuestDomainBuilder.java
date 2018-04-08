@@ -70,17 +70,17 @@ public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, Conta
     }
 
     @Override
-    protected GuestDomain get(int id) {
+    public GuestDomain get(int id) {
         return new GuestDomainBuilder(ContactDao::registerAtDao).getById(id, ContactEntity.class);
     }
 
     @Override
-    protected List<GuestDomain> getAll() {
+    public List<GuestDomain> getAll() {
         return new GuestDomainBuilder(ContactDao::registerAtDao).loadAll(ContactEntity.class);
     }
 
     @Override
-    protected void set(GuestDomain domainObject) {
+    public void set(GuestDomain domainObject) {
         new GuestDomainBuilder(ContactDao::registerAtDao).save(ContactEntity.class, domainObject);
     }
 

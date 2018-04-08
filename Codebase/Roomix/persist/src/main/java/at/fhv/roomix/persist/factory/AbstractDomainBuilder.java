@@ -160,18 +160,18 @@ abstract class AbstractDomainBuilder <DM, EN>{
      * @param id Integer ID primary key
      * @return Domain Model by ID
      */
-    protected abstract DM get(int id);
+    public abstract DM get(int id);
 
     /**
      * Wrapper for "loadAll"
      * @return List of all Domain models from the database
      */
-    protected abstract List<DM> getAll();
+    public abstract List<DM> getAll();
 
     /**
      * Wrapper for "save"
      * @param domainObject Domain object to save
      */
-    protected abstract void set(DM domainObject);
+    public abstract void set(DM domainObject);
 
 }

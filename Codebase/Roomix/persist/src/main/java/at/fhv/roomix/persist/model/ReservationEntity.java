@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "reservation", schema = "roomix", catalog = "")
+@Table(name = "Reservation", schema = "roomix", catalog = "")
 public class ReservationEntity {
     private int reservationId;
     private int contractingParty;
