@@ -54,12 +54,9 @@
             <artifactId>javax.el</artifactId>
             <version>3.0.1-b09</version>
         </dependency>
-
-
         <dependency>
             <groupId>at.fhv.roomix.domain</groupId>
             <artifactId>session-domain</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

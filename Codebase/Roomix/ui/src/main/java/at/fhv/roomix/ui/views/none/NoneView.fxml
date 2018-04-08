@@ -13,7 +13,7 @@
            >
     <VBox AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
           AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0" alignment="CENTER">
-        <FontAwesomeIconView glyphName="CROSS" size="10em" />
+        <FontAwesomeIconView glyphName="SHIELD" size="10em" />
         <Label text="%noneView.nothingSelected"/>
     </VBox>
 

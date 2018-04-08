@@ -1,10 +1,10 @@
-package at.fhv.roomix.ui.views.contact.list;
+package at.fhv.roomix.ui.views.contact.list.views;
 
+import at.fhv.roomix.ui.views.contact.list.ContactListTableModel;
+import at.fhv.roomix.ui.views.contact.list.ContactListViewModel;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 
 /**

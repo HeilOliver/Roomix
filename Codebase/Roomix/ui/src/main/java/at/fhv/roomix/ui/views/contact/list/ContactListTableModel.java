@@ -13,7 +13,7 @@ import at.fhv.roomix.controller.reservation.model.ContactPojo;
 public class ContactListTableModel {
     private ContactPojo pojo;
 
-    ContactPojo getPojo() {
+    public ContactPojo getPojo() {
         return pojo;
     }
 

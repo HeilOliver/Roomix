@@ -1,6 +1,9 @@
 package at.fhv.roomix.ui.views.contact.scope;
 
+import at.fhv.roomix.controller.reservation.model.ContactPojo;
 import de.saxsys.mvvmfx.Scope;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 
 /**
  * Roomix
@@ -11,10 +14,26 @@ import de.saxsys.mvvmfx.Scope;
  * Enter Description here
  */
 public class ContactViewScope implements Scope {
-    public static final String EDIT_SELECTED = "contact_edit_selected";
-    public static final String DELETE_SELECTED = "contact_delete_selected";
     public static final String NEW = "contact_new";
-    public static final String SAVE = "contact_save";
-    public static final String DISCARD = "contact_discard";
+    public static final String EDIT = "contact_edit";
+    public static final String CLOSE = "contact_edit_close";
+    public static final String ARCHIVE = "contact_archive";
 
+    private final ObjectProperty<ContactPojo> inEdit
+            = new SimpleObjectProperty<>();
+
+    public ObjectProperty<ContactPojo> inEditProperty() {
+        return inEdit;
+    }
+
+    private final ObjectProperty<ContactPojo> selectedContact =
+            new SimpleObjectProperty<>();
+
+    public ContactPojo getSelectedContact() {
+        return selectedContact.get();
+    }
+
+    public ObjectProperty<ContactPojo> selectedContactProperty() {
+        return selectedContact;
+    }
 }

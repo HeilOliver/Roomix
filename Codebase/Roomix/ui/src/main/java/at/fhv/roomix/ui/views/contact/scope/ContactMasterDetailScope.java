@@ -1,6 +1,7 @@
 package at.fhv.roomix.ui.views.contact.scope;
 
 import at.fhv.roomix.controller.reservation.model.ContactPojo;
+import de.saxsys.mvvmfx.Scope;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 
@@ -12,7 +13,7 @@ import javafx.beans.property.SimpleObjectProperty;
  * <p>
  * Enter Description here
  */
-public class ContactMasterDetailScope {
+public class ContactMasterDetailScope implements Scope {
 
     private final ObjectProperty<ContactPojo> selectedContact =
             new SimpleObjectProperty<>();
