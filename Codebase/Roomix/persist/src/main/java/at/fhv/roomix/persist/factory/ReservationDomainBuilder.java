@@ -42,7 +42,6 @@ public class ReservationDomainBuilder extends AbstractDomainBuilder<ReservationD
         ModelMapper modelMapper = new ModelMapper();
         ReservationDomain reservationDomain = modelMapper.map(entity, ReservationDomain.class);
 
-
         LinkedHashMap<ISourceMapper<Collection>,
                 Map.Entry<Class, IDestinationMapper<Collection>>> mapping =  new LinkedHashMap<>();
 
