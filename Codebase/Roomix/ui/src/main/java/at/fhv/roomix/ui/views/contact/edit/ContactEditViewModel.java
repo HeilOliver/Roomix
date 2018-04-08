@@ -36,6 +36,7 @@ public class ContactEditViewModel implements ViewModel {
     private final Validator countryValidator;
     private final Validator postcodeValidator;
     private final Validator placeValidator;
+    private final Validator houseNumberValidator;
 
     @Inject
     private ResourceBundle resourceBundle;
@@ -65,6 +66,8 @@ public class ContactEditViewModel implements ViewModel {
         postcodeValidator = validatorBuilder(postcodeProperty(), "");
 
         countryValidator = validatorBuilder(countryProperty(), "");
+
+        houseNumberValidator = validatorBuilder(houseNumberProperty(), "");
 
         emailValidator = new EmailValidator(emailProperty());
 
@@ -139,6 +142,15 @@ public class ContactEditViewModel implements ViewModel {
         return placeValidator.getValidationStatus();
     }
 
+    ValidationStatus getHouseNumberValidator() {
+        return houseNumberValidator.getValidationStatus();
+    }
+
+    IntegerProperty idProperty() {
+        return contactWrapper.field("id",
+                ContactPojo::getContactId, ContactPojo::setContactId);
+    }
+
     StringProperty firstNameProperty() {
         return contactWrapper.field("firstName",
                 ContactPojo::getFname, ContactPojo::setFname);
@@ -190,6 +202,12 @@ public class ContactEditViewModel implements ViewModel {
         return contactWrapper.field(
                 "email", ContactPojo::getEmail,
                 ContactPojo::setEmail);
+    }
+
+    StringProperty houseNumberProperty() {
+        return contactWrapper.field(
+                "houseNumber", ContactPojo::getHouseNumber,
+                ContactPojo::setHouseNumber);
     }
 
     void discard() {

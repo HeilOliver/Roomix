@@ -1,6 +1,5 @@
 package at.fhv.roomix.ui.views.contact.edit;
 
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import de.saxsys.mvvmfx.utils.validation.visualization.ControlsFxVisualizer;
@@ -9,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -64,9 +64,14 @@ public class ContactEditView implements FxmlView<ContactEditViewModel>{
     private ProgressIndicator icoSaveProcess;
     @FXML
     private Button btnReset;
-
+    @FXML
+    private TextField houseNumberInput;
+    @FXML
+    private Label debugID;
 
     public void initialize() {
+        debugID.textProperty().bind(viewModel.idProperty().asString());
+
         firstnameInput.textProperty()
                 .bindBidirectional(viewModel.firstNameProperty());
         lastnameInput.textProperty()
@@ -85,6 +90,8 @@ public class ContactEditView implements FxmlView<ContactEditViewModel>{
                 .bindBidirectional(viewModel.countryProperty());
         emailInput.textProperty()
                 .bindBidirectional(viewModel.emailProperty());
+        houseNumberInput.textProperty()
+                .bindBidirectional(viewModel.houseNumberProperty());
 
         validationVisualizer.initVisualization(
                 viewModel.getFirstNameValidator(), firstnameInput);
@@ -109,6 +116,9 @@ public class ContactEditView implements FxmlView<ContactEditViewModel>{
 
         validationVisualizer.initVisualization(
                 viewModel.getEmailValidator(), emailInput);
+
+        validationVisualizer.initVisualization(
+                viewModel.getHouseNumberValidator(), houseNumberInput);
 
         icoSaveProcess.visibleProperty().bind(viewModel.inProgressProperty());
         btnSave.disableProperty().bind(viewModel.savePossibleProperty().not());
