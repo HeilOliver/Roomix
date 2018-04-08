@@ -28,6 +28,7 @@ public class ContactDetailViewModel implements ViewModel {
     private BooleanProperty detailAvailable = new SimpleBooleanProperty();
 
     public ContactDetailViewModel() {
+        // TODO To Wrapper
         ContactProvider.getInstance().selectedContactProperty()
                 .addListener(((observable, oldValue, newValue) -> {
             detailAvailable.setValue(newValue != null);

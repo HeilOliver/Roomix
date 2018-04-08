@@ -12,7 +12,11 @@
             >
     <StackPane AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
                AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0">
-        <fx:include source="list/ContactDataView.fxml" StackPane.alignment="CENTER"/>
-        <!--<fx:include source="editcreate/ContactEditCreateView.fxml"/>-->
+        <Pane fx:id="listView">
+            <fx:include  source="list/ContactDataView.fxml" StackPane.alignment="CENTER"/>
+        </Pane>
+        <Pane fx:id="editView" >
+            <fx:include source="edit/ContactEditView.fxml" StackPane.alignment="CENTER"/>
+        </Pane>
     </StackPane>
 </AnchorPane>

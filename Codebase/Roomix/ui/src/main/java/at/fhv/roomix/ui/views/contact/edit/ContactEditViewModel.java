@@ -1,4 +1,4 @@
-package at.fhv.roomix.ui.views.contact.editcreate;
+package at.fhv.roomix.ui.views.contact.edit;
 
 import at.fhv.roomix.controller.reservation.model.ContactPojo;
 import de.saxsys.mvvmfx.ViewModel;
@@ -15,14 +15,14 @@ import java.util.ResourceBundle;
 
 /**
  * Roomix
- * at.fhv.roomix.ui.views.contact.editcreate
- * ContactEditCreateViewModel
+ * at.fhv.roomix.ui.views.contact.edit
+ * ContactEditViewModel
  * 26/03/2018 OliverH
  * <p>
  * Enter Description here
  */
 @Singleton
-public class ContactEditCreateViewModel implements ViewModel {
+public class ContactEditViewModel implements ViewModel {
     private final Validator firstNameValidator;
 
     @Inject
@@ -31,7 +31,7 @@ public class ContactEditCreateViewModel implements ViewModel {
     private final ModelWrapper<ContactPojo> contactWrapper = new ModelWrapper<>();
     private final CompositeValidator formValidator = new CompositeValidator();
 
-    public ContactEditCreateViewModel() {
+    public ContactEditViewModel() {
         firstNameValidator = new FunctionBasedValidator<>(
                 firstNameProperty(),
                 firstName -> firstName != null && !firstName.trim().isEmpty(),

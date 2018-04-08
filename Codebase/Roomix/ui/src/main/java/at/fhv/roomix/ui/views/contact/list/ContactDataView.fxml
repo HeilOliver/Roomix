@@ -9,6 +9,7 @@
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="at.fhv.roomix.ui.views.contact.list.ContactDataView">
+    <fx:include source="ContactDataToolbar.fxml"/>
     <SplitPane dividerPositions="0.7" VBox.vgrow="ALWAYS">
         <AnchorPane VBox.vgrow="ALWAYS">
             <fx:include source="ContactListView.fxml" AnchorPane.bottomAnchor="0.0"
@@ -21,5 +22,4 @@
                         AnchorPane.topAnchor="0.0"/>
         </AnchorPane>
     </SplitPane>
-    <fx:include source="ContactDataToolbar.fxml"/>
 </VBox>
