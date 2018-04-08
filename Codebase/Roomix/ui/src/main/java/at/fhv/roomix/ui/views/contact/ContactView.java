@@ -25,10 +25,10 @@ public class ContactView implements FxmlView<ContactViewModel>{
     private ContactViewModel viewModel;
 
     public void initialize() {
-        editView.disableProperty()
+        editView.visibleProperty()
                 .bind(viewModel.listViewEnabledProperty().not());
 
-        listView.disableProperty()
+        listView.visibleProperty()
                 .bind(viewModel.editViewEnabledProperty().not());
     }
 }

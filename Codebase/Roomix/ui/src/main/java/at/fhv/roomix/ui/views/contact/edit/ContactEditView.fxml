@@ -3,10 +3,28 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="at.fhv.roomix.ui.views.contact.edit.ContactEditView">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.121"
+            fx:controller="at.fhv.roomix.ui.views.contact.edit.ContactEditView"
+fx:id="mainPane">
+
+    <HBox AnchorPane.topAnchor="12" AnchorPane.rightAnchor="0" alignment="CENTER_RIGHT">
+        <ProgressIndicator fx:id="icoSaveProcess" maxHeight="30" maxWidth="30"/>
+        <Region prefWidth="5"/>
+        <Button fx:id="btnSave" onAction="#buttonSave_Click" text="%main.save">
+            <graphic>
+                <FontAwesomeIconView  glyphName="SAVE" size="2em"/>
+            </graphic>
+        </Button>
+        <Region prefWidth="5"/>
+        <Button fx:id="btnCancel" onAction="#buttonCancel_Click" text="%main.delete">
+            <graphic>
+                <FontAwesomeIconView glyphName="BAN" size="2em"/>
+            </graphic>
+        </Button>
+    </HBox>
+
     <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-          AnchorPane.topAnchor="0.0">
+          AnchorPane.topAnchor="60">
         <Separator/>
         <GridPane>
             <columnConstraints>
@@ -61,18 +79,5 @@
             <TextField fx:id="emailInput" promptText="%contact.edit.email.prompt" GridPane.columnIndex="3"
                        GridPane.rowIndex="2"/>
         </GridPane>
-        <Separator/>
-        <HBox AnchorPane.bottomAnchor="2" AnchorPane.leftAnchor="2">
-            <Button fx:id="btnSave" onAction="#buttonSave_Click" text="%main.save">
-                <graphic>
-                    <FontAwesomeIconView glyphName="SAVE" size="2em"/>
-                </graphic>
-            </Button>
-            <Button fx:id="btnCancel" onAction="#buttonCancel_Click" text="%main.cancel">
-                <graphic>
-                    <FontAwesomeIconView glyphName="BAN" size="2em"/>
-                </graphic>
-            </Button>
-        </HBox>
     </VBox>
 </AnchorPane>

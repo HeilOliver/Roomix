@@ -1,5 +1,6 @@
-package at.fhv.roomix.ui.views.contact.list;
+package at.fhv.roomix.ui.views.contact.list.views;
 
+import at.fhv.roomix.ui.views.contact.list.ContactDataToolbarViewModel;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import javafx.event.ActionEvent;
@@ -28,21 +29,20 @@ public class ContactDataToolbar implements FxmlView<ContactDataToolbarViewModel>
     public void initialize() {
         btnArchive.disableProperty().bind(viewModel.contactSelectedProperty().not());
         btnEdit.disableProperty().bind(viewModel.contactSelectedProperty().not());
-        // TODO: btnNew.disabledProperty().bind(viewModel.contactSelectedProperty().not());
     }
 
     @FXML
     private void buttonEdit_Click(ActionEvent actionEvent) {
-
+        viewModel.editContact();
     }
 
     @FXML
     private void buttonNew_Click(ActionEvent actionEvent) {
-
+        viewModel.newContact();
     }
 
     @FXML
-    private void buttonDelete_Click(ActionEvent actionEvent) {
-
+    private void buttonArchive_Click(ActionEvent actionEvent) {
+        viewModel.archiveContact();
     }
 }

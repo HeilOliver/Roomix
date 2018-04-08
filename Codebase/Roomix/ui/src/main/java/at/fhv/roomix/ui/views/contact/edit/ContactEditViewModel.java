@@ -1,12 +1,15 @@
 package at.fhv.roomix.ui.views.contact.edit;
 
 import at.fhv.roomix.controller.reservation.model.ContactPojo;
+import at.fhv.roomix.ui.views.contact.ContactProvider;
+import at.fhv.roomix.ui.views.contact.scope.ContactViewScope;
+import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ViewModel;
 import de.saxsys.mvvmfx.utils.mapping.ModelWrapper;
-import de.saxsys.mvvmfx.utils.validation.CompositeValidator;
-import de.saxsys.mvvmfx.utils.validation.FunctionBasedValidator;
-import de.saxsys.mvvmfx.utils.validation.ValidationMessage;
-import de.saxsys.mvvmfx.utils.validation.Validator;
+import de.saxsys.mvvmfx.utils.validation.*;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ReadOnlyBooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.StringProperty;
 
 import javax.inject.Inject;
@@ -24,18 +27,37 @@ import java.util.ResourceBundle;
 @Singleton
 public class ContactEditViewModel implements ViewModel {
     private final Validator firstNameValidator;
-
-    @Inject
-    private ResourceBundle resourceBundle;
-
+    private final BooleanProperty inProgress;
     private final ModelWrapper<ContactPojo> contactWrapper = new ModelWrapper<>();
     private final CompositeValidator formValidator = new CompositeValidator();
 
+    @Inject
+    private ResourceBundle resourceBundle;
+    @InjectScope
+    private ContactViewScope scope;
+
     public ContactEditViewModel() {
+        inProgress = ContactProvider.getInstance().inProcessProperty();
+        Validator inProcessValidator = new FunctionBasedValidator<>(
+                inProgress,
+                inProcess -> !inProcess,
+                ValidationMessage.error(""));
+
         firstNameValidator = new FunctionBasedValidator<>(
                 firstNameProperty(),
                 firstName -> firstName != null && !firstName.trim().isEmpty(),
                 ValidationMessage.error("Firstname may not be empty"));
+
+        formValidator.addValidators(
+                firstNameValidator,
+                inProcessValidator
+        );
+    }
+
+    public void initialize() {
+        scope.subscribe(ContactViewScope.EDIT_SELECTED, (s, objects) -> {
+
+        });
     }
 
     private void resetForm() {
@@ -54,15 +76,39 @@ public class ContactEditViewModel implements ViewModel {
         contactWrapper.commit();
     }
 
-    Validator getFirstNameValidator() {
-        return firstNameValidator;
+    ValidationStatus getFirstNameValidator() {
+        return firstNameValidator.getValidationStatus();
     }
 
     StringProperty firstNameProperty() {
         return contactWrapper.field("firstName", ContactPojo::getFirstName, ContactPojo::setFirstName);
     }
 
+    void discard() {
+        resetForm();
+        scope.publish(ContactViewScope.DISCARD);
+    }
+
+    void save(ICallable errorCallback) {
+        if (!formValidator.getValidationStatus().isValid()) {
+            return;
+        }
 
 
+        if (errorCallback == null) return;
+        errorCallback.call();
+    }
+
+    BooleanProperty inProgressProperty() {
+        return inProgress;
+    }
+
+    ReadOnlyBooleanProperty savePossibleProperty() {
+        return formValidator.getValidationStatus().validProperty();
+    }
+
+    interface ICallable {
+        void call();
+    }
 
 }

@@ -4,7 +4,9 @@ import at.fhv.roomix.controller.reservation.IReservationController;
 import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
 import at.fhv.roomix.controller.reservation.exeption.FaultException;
 import at.fhv.roomix.controller.reservation.model.ContactPojo;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -39,12 +41,6 @@ public class ContactProvider {
         return instance;
     }
 
-    private ObjectProperty<ContactPojo> selectedContact = new SimpleObjectProperty<>();
-
-    public ObjectProperty<ContactPojo> selectedContactProperty() {
-        return selectedContact;
-    }
-
     private void refreshData() {
         IReservationController instance = ReservationControllerFactory.getInstance();
         Collection<ContactPojo> allContacts = null;
@@ -62,6 +58,12 @@ public class ContactProvider {
 
     public void editContact() {
 
+    }
+
+    private BooleanProperty inProcess = new SimpleBooleanProperty();
+
+    public BooleanProperty inProcessProperty() {
+        return inProcess;
     }
 
     public ObservableList<ContactPojo> getContacts() {

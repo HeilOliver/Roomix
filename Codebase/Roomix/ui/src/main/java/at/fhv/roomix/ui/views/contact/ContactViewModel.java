@@ -2,6 +2,7 @@ package at.fhv.roomix.ui.views.contact;
 
 import at.fhv.roomix.ui.views.contact.scope.ContactViewScope;
 import de.saxsys.mvvmfx.InjectScope;
+import de.saxsys.mvvmfx.ScopeProvider;
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -17,20 +18,24 @@ import javax.inject.Singleton;
  * Enter Description here
  */
 @Singleton
+@ScopeProvider(scopes = ContactViewScope.class)
 public class ContactViewModel implements ViewModel {
     private BooleanProperty listViewEnabled = new SimpleBooleanProperty();
     private BooleanProperty editViewEnabled = new SimpleBooleanProperty();
 
-//    @InjectScope
-//    private ContactViewScope contactViewScope;
+    @InjectScope
+    private ContactViewScope contactViewScope;
 
     public ContactViewModel() {
+    }
+
+    public void initialize() {
         listViewEnabled.setValue(true);
 
-//        contactViewScope.subscribe(
-//                ContactViewScope.NEW, (s, objects) -> newCall());
-//        contactViewScope.subscribe(
-//                ContactViewScope.DISCARD, (s, objects) -> discardCall());
+        contactViewScope.subscribe(
+                ContactViewScope.NEW, (s, objects) -> newCall());
+        contactViewScope.subscribe(
+                ContactViewScope.DISCARD, (s, objects) -> discardCall());
     }
 
     private void newCall() {

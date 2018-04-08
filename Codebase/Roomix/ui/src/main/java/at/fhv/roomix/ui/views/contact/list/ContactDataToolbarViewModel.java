@@ -1,14 +1,11 @@
 package at.fhv.roomix.ui.views.contact.list;
 
-import at.fhv.roomix.ui.views.contact.ContactProvider;
 import at.fhv.roomix.ui.views.contact.scope.ContactMasterDetailScope;
+import at.fhv.roomix.ui.views.contact.scope.ContactViewScope;
 import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 
 /**
  * Roomix
@@ -21,13 +18,28 @@ import javafx.scene.control.Button;
 public class ContactDataToolbarViewModel implements ViewModel {
     private final BooleanProperty contactSelected = new SimpleBooleanProperty();
 
-//    @InjectScope
-//    private ContactMasterDetailScope scope;
+    @InjectScope
+    private ContactMasterDetailScope mdScope;
 
-    public ContactDataToolbarViewModel() {
-//        scope.selectedContactProperty().addListener((observable, oldValue, newValue) -> {
-//            contactSelected.setValue(newValue != null);
-//        });
+    @InjectScope
+    private ContactViewScope viewScope;
+
+    public void initialize() {
+        mdScope.selectedContactProperty().addListener((observable, oldValue, newValue) -> {
+            contactSelected.setValue(newValue != null);
+        });
+    }
+
+    public void newContact(){
+        viewScope.publish(ContactViewScope.NEW);
+    }
+
+    public void editContact(){
+
+    }
+
+    public void archiveContact(){
+
     }
 
     public BooleanProperty contactSelectedProperty() {
