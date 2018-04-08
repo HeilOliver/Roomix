@@ -46,10 +46,10 @@ class ReservationControllerFactoryTest {
         assertTrue(instance instanceof ReservationController);
 
         // With Injection
-        IReservationController mock = new ReservationControllerMock();
+        IReservationController mock = new ReservationMock();
         ReservationControllerFactory.InjectDependency(() -> mock);
         instance = ReservationControllerFactory.getInstance();
-        assertTrue(instance instanceof ReservationControllerMock);
+        assertTrue(instance instanceof ReservationMock);
 
         // Without Injection
         ReservationControllerFactory.InjectDependency(null);
@@ -61,7 +61,7 @@ class ReservationControllerFactoryTest {
     void injectInFactory_Ok() {
         IReservationController instance;
 
-        IReservationController mock = new ReservationControllerMock();
+        IReservationController mock = new ReservationMock();
         ReservationControllerFactory.InjectDependency(() -> mock);
 
         instance = ReservationControllerFactory.getInstance();

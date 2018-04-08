@@ -20,14 +20,15 @@ import java.util.Objects;
 public class ContactPojo {
     private int contactId;
 
-    @NotNull(message = "forename cannot be null")
-    @Size(min = 1, max = 50, message = "forename must be between 1 and 200 characters")
-    private String forename;
+    @NotNull(message = "firstName cannot be null")
+    @Size(min = 1, max = 50, message = "firstName must be between 1 and 200 characters")
+    private String firstName;
 
-    @NotNull(message = "surname cannot be null")
-    @Size(min = 1, max = 50, message = "surname must be between 1 and 200 characters")
-    private String surname;
+    @NotNull(message = "lastName cannot be null")
+    @Size(min = 1, max = 50, message = "lastName must be between 1 and 200 characters")
+    private String lastName;
 
+    @Size(max = 50, message = "companyName must be between 1 and 200 characters")
     private String companyName;
 
     @NotNull(message = "phoneNumber cannot be null")
@@ -48,33 +49,31 @@ public class ContactPojo {
     @Email(message = "Email should be valid")
     private String email;
 
-    private byte active;
-
     public ContactPojo() {
-    }
-
-    public ContactPojo(int contactId) {
-        this.contactId = contactId;
     }
 
     public int getContactId() {
         return contactId;
     }
 
-    public String getForename() {
-        return forename;
+    public void setContactId(int contactId) {
+        this.contactId = contactId;
     }
 
-    public void setForename(String forename) {
-        this.forename = forename;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getSurname() {
-        return surname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getCompanyName() {
@@ -133,24 +132,25 @@ public class ContactPojo {
         this.email = email;
     }
 
-    public byte getActive() {
-        return active;
-    }
-
-    public void setActive(byte active) {
-        this.active = active;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ContactPojo that = (ContactPojo) o;
-        return contactId == that.contactId;
+        return contactId == that.contactId &&
+                Objects.equals(firstName, that.firstName) &&
+                Objects.equals(lastName, that.lastName) &&
+                Objects.equals(companyName, that.companyName) &&
+                Objects.equals(phoneNumber, that.phoneNumber) &&
+                Objects.equals(street, that.street) &&
+                Objects.equals(place, that.place) &&
+                Objects.equals(postcode, that.postcode) &&
+                Objects.equals(country, that.country) &&
+                Objects.equals(email, that.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(contactId);
+        return Objects.hash(contactId, firstName, lastName, companyName, phoneNumber, street, place, postcode, country, email);
     }
 }

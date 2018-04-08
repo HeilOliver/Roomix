@@ -26,12 +26,17 @@
                 </TableColumn>
                 <TableColumn prefWidth="75.0" text="%contact.table.lastname">
                     <cellValueFactory>
-                        <PropertyValueFactory property="surname" />
+                        <PropertyValueFactory property="lastName" />
                     </cellValueFactory>
                 </TableColumn>
                 <TableColumn prefWidth="75.0" text="%contact.table.companyname">
                     <cellValueFactory>
                         <PropertyValueFactory property="companyName" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="%contact.table.phonenumber">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="phonenumber" />
                     </cellValueFactory>
                 </TableColumn>
                 <TableColumn prefWidth="75.0" text="%contact.table.city">
@@ -47,6 +52,16 @@
                 <TableColumn prefWidth="75.0" text="%contact.table.street">
                     <cellValueFactory>
                         <PropertyValueFactory property="street" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="%contact.table.country">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="country" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="%contact.table.email">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="email" />
                     </cellValueFactory>
                 </TableColumn>
             </columns>
