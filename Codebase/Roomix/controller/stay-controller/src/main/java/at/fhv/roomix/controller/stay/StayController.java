@@ -5,8 +5,6 @@ package at.fhv.roomix.controller.stay;
  * at.fhv.roomix.controller.session
  * StayController
  * 22.03.2018 OliverH
- *
- *
  */
 class StayController implements IStayController {
 

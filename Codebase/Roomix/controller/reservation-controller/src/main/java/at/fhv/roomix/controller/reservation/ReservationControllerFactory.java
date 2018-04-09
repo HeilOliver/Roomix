@@ -5,14 +5,14 @@ package at.fhv.roomix.controller.reservation;
  * at.fhv.roomix.controller.session
  * SessionControllerFactory
  * 22.03.2018 sge
- *
+ * <p>
  * The Factory for the ReservationController
  */
 public class ReservationControllerFactory {
 
+    private static final Object lock = new Object();
     private static IReservationController instance;
     private static IInjectDependency injectDependency;
-    private static final Object lock = new Object();
 
     private ReservationControllerFactory() {
     }

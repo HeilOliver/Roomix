@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import org.controlsfx.control.MasterDetailPane?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      xmlns="http://javafx.com/javafx"
+      fx:controller="at.fhv.roomix.ui.views.contact.list.views.ContactDataView">
+    <fx:include source="ContactDataToolbar.fxml"/>
+    <MasterDetailPane VBox.vgrow="ALWAYS" fx:id="mdPane" dividerPosition="0.75">
+        <masterNode>
+            <fx:include source="ContactListView.fxml"/>
+        </masterNode>
+        <detailNode>
+            <fx:include source="ContactDetailView.fxml"/>
+        </detailNode>
+    </MasterDetailPane>
+</VBox>

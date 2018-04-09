@@ -1,6 +1,7 @@
 package at.fhv.roomix.controller.reservation;
 
-import at.fhv.roomix.controller.reservation.exeption.FaultException;
+import at.fhv.roomix.controller.reservation.exeption.ArgumentFaultException;
+import at.fhv.roomix.controller.reservation.exeption.SessionFaultException;
 import at.fhv.roomix.controller.reservation.exeption.ValidationFault;
 import at.fhv.roomix.controller.reservation.model.ContactPojo;
 
@@ -16,9 +17,10 @@ import java.util.Collection;
  */
 public interface IReservationController {
 
-    void newContact(long sessionId, ContactPojo contactPojo) throws FaultException;
+    void newContact(long sessionId, ContactPojo contactPojo)
+            throws SessionFaultException, ValidationFault, ArgumentFaultException;
 
-    Collection<ContactPojo> getAllContacts(long sessionId) throws FaultException;
+    Collection<ContactPojo> getAllContacts(long sessionId) throws SessionFaultException;
 
-    void updateContact(long sessionId, ContactPojo contactPojo) throws FaultException;
+    void updateContact(long sessionId, ContactPojo contactPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException;
 }

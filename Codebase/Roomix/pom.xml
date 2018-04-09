@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -22,13 +22,13 @@
             <name>Robert Schmitzer</name>
             <id>RobertS.</id>
         </developer>
-		<developer>
+        <developer>
             <email>sge5641@students.fhv.at</email>
             <name>Stefan Geiger</name>
             <id>StefanG.</id>
         </developer>
         <developer>
-            <email>moritz.wilfling@students.fhv.at</email>
+            <email>mwi4339@students.fhv.at</email>
             <name>Moritz Wilfling</name>
             <id>MoritzW.</id>
         </developer>
@@ -57,6 +57,24 @@
             <dependency>
                 <groupId>at.fhv.roomix</groupId>
                 <artifactId>persist</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>at.fhv.roomix</groupId>
+                <artifactId>domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>at.fhv.roomix.domain</groupId>
+                <artifactId>guest-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>at.fhv.roomix.domain</groupId>
+                <artifactId>session-domain</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            xmlns="http://javafx.com/javafx"
+            fx:controller="at.fhv.roomix.ui.views.about.AboutView"
+>
+    <Label>Ein Programm erstellt bei:Robert Schmitzer, Oliver Heil, Stefan Geiger, Moritz Wilfling</Label>
+</AnchorPane>

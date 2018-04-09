@@ -13,10 +13,12 @@ import at.fhv.roomix.domain.session.roll.IRoomixRoll;
  */
 public interface ISessionDomain {
 
-    RoomixSession getSession(String username, String password);
+    RoomixSession getSession(String username, String password) throws InvalidUserPasswordCombination;
 
     boolean isValid(long sessionId);
 
     boolean isValidFor(long sessionId, IRoomixRoll roll);
+
+    void closeSession(long sessionId);
 
 }

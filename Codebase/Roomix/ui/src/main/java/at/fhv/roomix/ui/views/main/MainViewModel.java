@@ -1,11 +1,9 @@
 package at.fhv.roomix.ui.views.main;
 
-import at.fhv.roomix.ui.views.contact.ContactView;
 import at.fhv.roomix.ui.views.main.menuitem.SideBarMenuItemVM;
 import at.fhv.roomix.ui.views.main.models.PageProvider;
 import at.fhv.roomix.ui.views.main.models.SwitchablePage;
 import at.fhv.roomix.ui.views.none.NoneView;
-import at.fhv.roomix.ui.views.none.NoneViewModel;
 import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.ViewModel;
 import de.saxsys.mvvmfx.utils.itemlist.ListTransformation;

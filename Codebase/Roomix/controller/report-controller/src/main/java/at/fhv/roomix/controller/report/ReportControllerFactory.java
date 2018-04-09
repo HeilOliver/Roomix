@@ -5,14 +5,14 @@ package at.fhv.roomix.controller.report;
  * at.fhv.roomix.controller.session
  * SessionControllerFactory
  * 22.03.2018 sge
- *
+ * <p>
  * The Factory for the ReportController
  */
 public class ReportControllerFactory {
 
+    private static final Object lock = new Object();
     private static IReportController instance;
     private static IInjectDependency injectDependency;
-    private static final Object lock = new Object();
 
     private ReportControllerFactory() {
     }
