@@ -18,6 +18,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * Enter Description here
  */
 class SessionDomain implements ISessionDomain {
+    private static final RoomixUser dummyUser = new RoomixUser();
     private Random random = new Random();
     private Map<Long, RoomixSession> knownSession = new HashMap<>();
 
@@ -41,10 +42,8 @@ class SessionDomain implements ISessionDomain {
         return nextId;
     }
 
-    private static final RoomixUser dummyUser = new RoomixUser();
-
     @Override
-    public RoomixSession getSession(String username, String password) throws InvalidUserPasswordCombination  {
+    public RoomixSession getSession(String username, String password) throws InvalidUserPasswordCombination {
         // TODO For Integration Testing
         try {
             Thread.sleep(500);

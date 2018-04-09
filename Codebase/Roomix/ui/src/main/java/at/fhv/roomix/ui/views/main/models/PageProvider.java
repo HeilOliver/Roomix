@@ -3,17 +3,11 @@ package at.fhv.roomix.ui.views.main.models;
 import at.fhv.roomix.ui.config.ResourceHandler;
 import at.fhv.roomix.ui.views.about.AboutView;
 import at.fhv.roomix.ui.views.contact.ContactView;
-
 import at.fhv.roomix.ui.views.login.LoginProvider;
 import at.fhv.roomix.ui.views.login.LoginView;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.saxsys.mvvmfx.FluentViewLoader;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.apache.log4j.Logger;
-
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
 
 /**
  * Roomix
@@ -26,10 +20,6 @@ import java.util.ResourceBundle;
 public class PageProvider {
     private static final ObservableList<SwitchablePage> topItem;
     private static final ObservableList<SwitchablePage> bottomItem;
-
-    private static String getLocalizedString(String resourceName) {
-        return ResourceHandler.getLocalizedString(resourceName);
-    }
 
     static {
         topItem = FXCollections.observableArrayList(
@@ -46,6 +36,10 @@ public class PageProvider {
                 user,
                 new SwitchablePage(getLocalizedString("main.about"), "INFO_CIRCLE", FluentViewLoader.fxmlView(AboutView.class).load().getView())
         );
+    }
+
+    private static String getLocalizedString(String resourceName) {
+        return ResourceHandler.getLocalizedString(resourceName);
     }
 
     public static ObservableList<SwitchablePage> getTopItem() {

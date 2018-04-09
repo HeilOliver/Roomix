@@ -6,14 +6,14 @@ package at.fhv.roomix.controller.stay;
  * at.fhv.roomix.controller.session
  * StayControllerFactory
  * 22.03.2018 OliverH
- *
+ * <p>
  * The Factory for the StayController
  */
 public class StayControllerFactory {
 
+    private static final Object lock = new Object();
     private static IStayController instance;
     private static IInjectDependency injectDependency;
-    private static final Object lock = new Object();
 
     private StayControllerFactory() {
     }

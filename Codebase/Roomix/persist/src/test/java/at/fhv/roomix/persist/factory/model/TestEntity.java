@@ -1,13 +1,18 @@
 package at.fhv.roomix.persist.factory.model;
 
-import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.concurrent.Callable;
-import java.util.stream.Stream;
 
 public class TestEntity {
+
+    /* Static vars */
+    private static int staticInteger;
+
+    static {
+        staticInteger = Integer.MAX_VALUE;
+    }
 
     /* primitive datatypes */
     private int primitiveInteger = Integer.MAX_VALUE;
@@ -17,37 +22,35 @@ public class TestEntity {
     private double primitiveDouble = Double.MAX_VALUE;
     private long primitveLong = Long.MAX_VALUE;
     private String string = "Slim Shady";
-
     /* complex datatypes */
     private Collection<DeepTestEntity> collection = new LinkedList<>();
-
     /*  */
     private Callable<TestEntity> callable;
-
     /* multidimensional datatypes */
     private char[][] charMap = new char[][]{
             {'a', 'a'},
             {'a'}
     };
-
-    /* Static vars */
-    private static int staticInteger;
-
-    static {
-        staticInteger = Integer.MAX_VALUE;
-    }
-
     /* Invalid vars */
     private int invalidInteger;
 
-    public TestEntity(){
+    public TestEntity() {
         DeepTestEntity deepEntity = new DeepTestEntity();
         deepEntity.setDeepID(Integer.MAX_VALUE);
         collection.add(deepEntity);
         callable = TestEntity::new;
     }
 
-    public void testMethod(){}
+    public static int getStaticInteger() {
+        return staticInteger;
+    }
+
+    public static void setStaticInteger(int staticInteger) {
+        TestEntity.staticInteger = staticInteger;
+    }
+
+    public void testMethod() {
+    }
 
     /* Getters/Setters */
     public int getPrimitiveInteger() {
@@ -120,14 +123,6 @@ public class TestEntity {
 
     public void setCallable(Callable<TestEntity> callable) {
         this.callable = callable;
-    }
-
-    public static int getStaticInteger() {
-        return staticInteger;
-    }
-
-    public static void setStaticInteger(int staticInteger) {
-        TestEntity.staticInteger = staticInteger;
     }
 
     public char[][] getCharMap() {

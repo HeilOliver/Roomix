@@ -1,14 +1,11 @@
 package at.fhv.roomix.ui.views.main.menuitem;
 
-import at.fhv.roomix.ui.views.main.MainViewModel;
-import de.jensd.fx.glyphs.*;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 
 /**
  * Roomix
@@ -18,7 +15,7 @@ import javafx.scene.layout.HBox;
  * <p>
  * Enter Description here
  */
-public class SideBarMenuItem implements FxmlView<SideBarMenuItemVM>{
+public class SideBarMenuItem implements FxmlView<SideBarMenuItemVM> {
 
     @InjectViewModel
     private SideBarMenuItemVM viewModel;
@@ -29,7 +26,7 @@ public class SideBarMenuItem implements FxmlView<SideBarMenuItemVM>{
     @FXML
     private Label lbl_tag;
 
-    public void initialize(){
+    public void initialize() {
         lbl_tag.textProperty().bind(viewModel.tagProperty());
         icon.glyphNameProperty().bind(viewModel.glyphProperty());
         lbl_tag.visibleProperty().bind(viewModel.collapsedProperty().not());

@@ -1,8 +1,7 @@
 package at.fhv.roomix.ui;
 
-import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
 import at.fhv.roomix.ui.connector.ControllerFactory;
-import at.fhv.roomix.controller.reservation.ReservationMock;
+import at.fhv.roomix.ui.views.login.LoginProvider;
 import at.fhv.roomix.ui.views.main.MainView;
 import at.fhv.roomix.ui.views.main.MainViewModel;
 import de.saxsys.mvvmfx.FluentViewLoader;
@@ -20,16 +19,16 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class RunMe extends MvvmfxCdiApplication {
+    private static final boolean DEBUG_INIT = true;
 
     private static final Logger LOG = LoggerFactory.getLogger(RunMe.class);
+    @Inject
+    private ResourceBundle resourceBundle;
 
     public static void main(String... args) {
         Locale.setDefault(Locale.GERMANY);
         launch(args);
     }
-
-    @Inject
-    private ResourceBundle resourceBundle;
 
     @Override
     public void initMvvmfx() throws Exception {
@@ -49,5 +48,9 @@ public class RunMe extends MvvmfxCdiApplication {
         stage.setMinWidth(800);
         stage.setMinHeight(600);
         stage.show();
+
+        if (!DEBUG_INIT) return;
+        LoginProvider.getInstance()
+                .logIn("Sample", "0000");
     }
 }

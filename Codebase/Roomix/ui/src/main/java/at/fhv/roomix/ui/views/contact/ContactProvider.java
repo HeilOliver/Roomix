@@ -5,20 +5,18 @@ import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
 import at.fhv.roomix.controller.reservation.exeption.FaultException;
 import at.fhv.roomix.controller.reservation.model.ContactPojo;
 import at.fhv.roomix.ui.config.SessionProvider;
-import at.fhv.roomix.ui.views.contact.edit.ContactEditViewModel;
 import at.fhv.roomix.ui.views.contact.edit.ContactEditViewModel.ICallable;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
 
 /**
  * Roomix
@@ -29,13 +27,16 @@ import java.util.concurrent.Executors;
  * Enter Description here
  */
 public class ContactProvider {
-    private final ObservableList<ContactPojo> contacts = FXCollections.observableArrayList();
-    private ExecutorService executor = Executors.newSingleThreadExecutor();
     private static final Object lock = new Object();
     private static ContactProvider instance;
+    private final ObservableList<ContactPojo> contacts = FXCollections.observableArrayList();
+    private ExecutorService executor = Executors.newSingleThreadExecutor();
+    private BooleanProperty inProcess = new SimpleBooleanProperty();
 
     private ContactProvider() {
-        get(() -> {}, ()-> {});
+        get(() -> {
+        }, () -> {
+        }, "");
     }
 
     public static ContactProvider getInstance() {
@@ -49,16 +50,24 @@ public class ContactProvider {
     }
 
     public void get(ICallable successCallback,
-                    ICallable errorCallback) {
+                    ICallable errorCallback, String query) {
+
         IReservationController instance = ReservationControllerFactory.getInstance();
         executor.submit(() -> {
-            Platform.runLater(()-> inProcess.setValue(true));
+            Platform.runLater(() -> inProcess.setValue(true));
             try {
                 Collection<ContactPojo> loadedContacts
                         = instance.getAllContacts(SessionProvider.getSessionId());
+                List<ContactPojo> filteredPojo = loadedContacts.stream()
+                        .filter(c -> c.getFname().contains(query) ||
+                                c.getLname().contains(query) ||
+                                c.getStreet().contains(query) ||
+                                c.getPostcode().contains(query) ||
+                                c.getPlace().contains(query))
+                        .collect(Collectors.toList());
                 Platform.runLater(() -> {
                     contacts.clear();
-                    contacts.addAll(loadedContacts);
+                    contacts.addAll(filteredPojo);
                 });
                 if (successCallback != null)
                     Platform.runLater(successCallback::call);
@@ -66,12 +75,10 @@ public class ContactProvider {
                 if (successCallback != null)
                     Platform.runLater(errorCallback::call);
             } finally {
-                Platform.runLater(()-> inProcess.setValue(false));
+                Platform.runLater(() -> inProcess.setValue(false));
             }
         });
     }
-
-    private BooleanProperty inProcess = new SimpleBooleanProperty();
 
     public BooleanProperty inProcessProperty() {
         return inProcess;
@@ -86,7 +93,7 @@ public class ContactProvider {
                              ICallable errorCallback) {
         IReservationController instance = ReservationControllerFactory.getInstance();
         executor.submit(() -> {
-            Platform.runLater(()-> inProcess.setValue(true));
+            Platform.runLater(() -> inProcess.setValue(true));
             try {
                 instance.updateContact(SessionProvider.getSessionId(), tempContactPojo);
                 if (successCallback != null)
@@ -95,7 +102,7 @@ public class ContactProvider {
                 if (successCallback != null)
                     Platform.runLater(errorCallback::call);
             } finally {
-                Platform.runLater(()-> inProcess.setValue(false));
+                Platform.runLater(() -> inProcess.setValue(false));
             }
         });
     }

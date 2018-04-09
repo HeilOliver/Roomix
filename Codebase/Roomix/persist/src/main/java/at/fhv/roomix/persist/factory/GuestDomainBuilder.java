@@ -15,43 +15,46 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, ContactEntity>
-             implements IAbstractDomainBuilder<GuestDomain, ContactEntity>{
-    /* Constructor */
-    private GuestDomainBuilder(ICallable registerAtDAO){
-        registerAtDAO.call();
-    }
-    GuestDomainBuilder(){}
-
+        implements IAbstractDomainBuilder<GuestDomain, ContactEntity> {
     /* Dependency Injection */
     private static Supplier<IAbstractDomainBuilder<GuestDomain, ContactEntity>> supplier;
 
-    public static IAbstractDomainBuilder<GuestDomain, ContactEntity> getInstance(){
+    /* Constructor */
+    private GuestDomainBuilder(ICallable registerAtDAO) {
+        registerAtDAO.call();
+    }
+
+    GuestDomainBuilder() {
+    }
+
+    public static IAbstractDomainBuilder<GuestDomain, ContactEntity> getInstance() {
         if (supplier == null) return new GuestDomainBuilder(ContactDao::registerAtDao);
         return supplier.get();
     }
-    public static void injectDependency(Supplier<IAbstractDomainBuilder<GuestDomain, ContactEntity>> builderSupplier){
+
+    public static void injectDependency(Supplier<IAbstractDomainBuilder<GuestDomain, ContactEntity>> builderSupplier) {
         supplier = builderSupplier;
     }
 
 
     @Override
-    protected GuestDomain mapEntityToDomain(ContactEntity contactEntity){
+    protected GuestDomain mapEntityToDomain(ContactEntity contactEntity) {
 
         ModelMapper modelMapper = new ModelMapper();
         GuestDomain guestDomain = modelMapper.map(contactEntity, GuestDomain.class);
 
         /* Mapping of all collection entities to domain objects */
         LinkedHashMap<ISourceMapper<Collection>,
-                Map.Entry<Class, IDestinationMapper<Collection>>> mapping =  new LinkedHashMap<>();
+                Map.Entry<Class, IDestinationMapper<Collection>>> mapping = new LinkedHashMap<>();
 
         put(ContactNoteDomain.class, contactEntity::getContactnotesByContactId,
-                                     guestDomain::setContactNotes, mapping);
+                guestDomain::setContactNotes, mapping);
         put(CreditCardDomain.class, contactEntity::getCreditcardsByContactId,
-                                     guestDomain::setCreditCards, mapping);
+                guestDomain::setCreditCards, mapping);
         put(ContractingPartyDomain.class, contactEntity::getContractingpartiesByContactId,
-                                     guestDomain::setContractingPartys, mapping);
+                guestDomain::setContractingPartys, mapping);
         put(PersonDomain.class, contactEntity::getPeopleByContactId,
-                                     guestDomain::setPersonDomains, mapping);
+                guestDomain::setPersonDomains, mapping);
 
         mapAllCollections(mapping);
         return guestDomain;
@@ -64,7 +67,7 @@ public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, Conta
         ContactEntity contactEntity = modelMapper.map(domain, ContactEntity.class);
 
         LinkedHashMap<ISourceMapper<Collection>,
-                Map.Entry<Class, IDestinationMapper<Collection>>> mapping =  new LinkedHashMap<>();
+                Map.Entry<Class, IDestinationMapper<Collection>>> mapping = new LinkedHashMap<>();
 
         put(ContactEntity.class, domain::getContactNotes, contactEntity::setContactnotesByContactId, mapping);
         put(CreditcardEntity.class, domain::getCreditCards, contactEntity::setCreditcardsByContactId, mapping);

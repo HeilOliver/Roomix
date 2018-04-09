@@ -1,7 +1,6 @@
 package at.fhv.roomix.controller.reservation;
 
 import at.fhv.roomix.controller.reservation.exeption.ArgumentFaultException;
-import at.fhv.roomix.controller.reservation.exeption.FaultException;
 import at.fhv.roomix.controller.reservation.exeption.SessionFaultException;
 import at.fhv.roomix.controller.reservation.exeption.ValidationFault;
 import at.fhv.roomix.controller.reservation.model.ContactPojo;
@@ -20,6 +19,7 @@ import java.util.HashSet;
 public class ReservationMock implements IReservationController {
     private static final Object lock = new Object();
     private static ReservationMock instance;
+    private Collection<ContactPojo> contactPojos = new HashSet<>();
 
     ReservationMock() {
         ContactPojo pojo = new ContactPojo();
@@ -54,8 +54,6 @@ public class ReservationMock implements IReservationController {
         }
         return instance;
     }
-
-    private Collection<ContactPojo> contactPojos = new HashSet<>();
 
     @Override
     public void newContact(long sessionId, ContactPojo contactPojo)

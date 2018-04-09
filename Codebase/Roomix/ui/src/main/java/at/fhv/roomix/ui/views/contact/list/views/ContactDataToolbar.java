@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.controlsfx.control.Notifications;
 
@@ -43,6 +44,8 @@ public class ContactDataToolbar implements FxmlView<ContactDataToolbarViewModel>
     private ProgressIndicator icoLoadProcess;
     @FXML
     private Button btnSearch;
+    @FXML
+    private TextField searchInput;
 
     public void initialize() {
         btnArchive.disableProperty().bind(viewModel.contactSelectedProperty().not());
@@ -50,6 +53,8 @@ public class ContactDataToolbar implements FxmlView<ContactDataToolbarViewModel>
 
         btnSearch.disableProperty().bind(viewModel.inProcessProperty());
         icoLoadProcess.visibleProperty().bind(viewModel.inProcessProperty());
+
+        searchInput.textProperty().bindBidirectional(viewModel.searchQueryProperty());
     }
 
     @FXML

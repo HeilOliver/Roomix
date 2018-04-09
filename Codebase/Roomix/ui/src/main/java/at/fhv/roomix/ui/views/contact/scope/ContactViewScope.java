@@ -21,13 +21,12 @@ public class ContactViewScope implements Scope {
 
     private final ObjectProperty<ContactPojo> inEdit
             = new SimpleObjectProperty<>();
+    private final ObjectProperty<ContactPojo> selectedContact =
+            new SimpleObjectProperty<>();
 
     public ObjectProperty<ContactPojo> inEditProperty() {
         return inEdit;
     }
-
-    private final ObjectProperty<ContactPojo> selectedContact =
-            new SimpleObjectProperty<>();
 
     public ContactPojo getSelectedContact() {
         return selectedContact.get();

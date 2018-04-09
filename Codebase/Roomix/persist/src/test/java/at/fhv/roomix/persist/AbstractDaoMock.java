@@ -1,6 +1,5 @@
 package at.fhv.roomix.persist;
 
-import at.fhv.roomix.persist.AbstractDao;
 import org.hibernate.Session;
 
 /**
@@ -13,7 +12,7 @@ import org.hibernate.Session;
  */
 public class AbstractDaoMock extends AbstractDao<Object, Integer> {
 
-    private AbstractDaoMock(){
+    private AbstractDaoMock() {
         super(Object.class);
     }
 
@@ -22,5 +21,6 @@ public class AbstractDaoMock extends AbstractDao<Object, Integer> {
     }
 
     public Session getSession() {
-        return session;    }
+        return session;
+    }
 }

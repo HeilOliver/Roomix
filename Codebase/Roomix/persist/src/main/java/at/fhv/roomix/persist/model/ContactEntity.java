@@ -154,8 +154,7 @@ public class ContactEntity {
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(contactId, fname, lname, companyName, phoneNumber, street, houseNumber, place, postcode, country, email, active);
+        return Objects.hash(contactId, fname, lname, companyName, phoneNumber, street, houseNumber, place, postcode, country, email);
     }
 
     @OneToMany(mappedBy = "contactByContact")

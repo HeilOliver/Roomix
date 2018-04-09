@@ -1,7 +1,6 @@
 package at.fhv.roomix.ui.views.contact.list;
 
 import at.fhv.roomix.ui.views.contact.ContactProvider;
-import at.fhv.roomix.ui.views.contact.edit.ContactEditViewModel;
 import at.fhv.roomix.ui.views.contact.edit.ContactEditViewModel.ICallable;
 import at.fhv.roomix.ui.views.contact.scope.ContactMasterDetailScope;
 import at.fhv.roomix.ui.views.contact.scope.ContactViewScope;
@@ -9,6 +8,8 @@ import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 /**
  * Roomix
@@ -20,6 +21,7 @@ import javafx.beans.property.SimpleBooleanProperty;
  */
 public class ContactDataToolbarViewModel implements ViewModel {
     private final BooleanProperty contactSelected = new SimpleBooleanProperty();
+    private final StringProperty searchQuery = new SimpleStringProperty();
     private BooleanProperty inProcess;
 
     @InjectScope
@@ -29,7 +31,7 @@ public class ContactDataToolbarViewModel implements ViewModel {
     private ContactViewScope viewScope;
 
     public ContactDataToolbarViewModel() {
-        inProcess =  ContactProvider.getInstance().inProcessProperty();
+        inProcess = ContactProvider.getInstance().inProcessProperty();
     }
 
     public void initialize() {
@@ -38,15 +40,19 @@ public class ContactDataToolbarViewModel implements ViewModel {
         });
     }
 
-    public void newContact(){
+    public StringProperty searchQueryProperty() {
+        return searchQuery;
+    }
+
+    public void newContact() {
         viewScope.publish(ContactViewScope.NEW);
     }
 
-    public void editContact(){
+    public void editContact() {
         viewScope.publish(ContactViewScope.EDIT);
     }
 
-    public void archiveContact(){
+    public void archiveContact() {
         viewScope.publish(ContactViewScope.ARCHIVE);
     }
 
@@ -59,6 +65,8 @@ public class ContactDataToolbarViewModel implements ViewModel {
     }
 
     public void search(ICallable errorCallback) {
-        ContactProvider.getInstance().get(null, errorCallback);
+        String query = searchQuery.get();
+        if (query == null) query = "";
+        ContactProvider.getInstance().get(null, errorCallback, query);
     }
 }

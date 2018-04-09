@@ -5,11 +5,11 @@ import org.hibernate.HibernateException;
 
 public class ContractingPartyDao extends AbstractDao<ContractingpartyEntity, Integer> {
 
-    ContractingPartyDao(){
+    ContractingPartyDao() {
         super(ContractingpartyEntity.class);
     }
 
-    public ContractingPartyDao getInstance(){
+    public ContractingPartyDao getInstance() {
         return new ContractingPartyDao();
     }
 

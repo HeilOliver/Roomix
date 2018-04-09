@@ -13,12 +13,12 @@ import at.fhv.roomix.controller.reservation.model.ContactPojo;
 public class ContactListTableModel {
     private ContactPojo pojo;
 
-    public ContactPojo getPojo() {
-        return pojo;
-    }
-
     public ContactListTableModel(ContactPojo pojo) {
         this.pojo = pojo;
+    }
+
+    public ContactPojo getPojo() {
+        return pojo;
     }
 
     public String getFname() {
@@ -29,13 +29,17 @@ public class ContactListTableModel {
         return pojo.getLname();
     }
 
-    public String getHouseNumber() {return pojo.getHouseNumber();}
+    public String getHouseNumber() {
+        return pojo.getHouseNumber();
+    }
 
     public String getCompanyName() {
         return pojo.getCompanyName();
     }
 
-    public String getPhonenumber() { return pojo.getPhoneNumber(); }
+    public String getPhonenumber() {
+        return pojo.getPhoneNumber();
+    }
 
     public String getStreet() {
         return pojo.getStreet();

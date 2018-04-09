@@ -28,7 +28,7 @@ class HibernateSessionFactory {
         }
     }
 
-    static Session getSession() throws IllegalStateException{
+    static Session getSession() throws IllegalStateException {
         if (!initTry) init();
         if (ourSessionFactory == null) return null;
         try {

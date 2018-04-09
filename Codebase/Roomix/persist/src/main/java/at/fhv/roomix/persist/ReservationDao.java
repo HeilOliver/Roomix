@@ -3,17 +3,21 @@ package at.fhv.roomix.persist;
 import at.fhv.roomix.persist.model.ReservationEntity;
 import org.hibernate.HibernateException;
 
-public class ReservationDao extends AbstractDao<ReservationEntity, Integer>{
+public class ReservationDao extends AbstractDao<ReservationEntity, Integer> {
 
     static {
         AbstractDao.addDao(ReservationEntity.class, ReservationDao::new);
     }
 
-    ReservationDao(){
+    ReservationDao() {
         super(ReservationEntity.class);
     }
 
-    public ReservationDao getInstance(){
+    public static void registerAtDao() {
+        daoLogger.info("Registered at Reservation DAO");
+    }
+
+    public ReservationDao getInstance() {
         return new ReservationDao();
     }
 
@@ -27,10 +31,6 @@ public class ReservationDao extends AbstractDao<ReservationEntity, Integer>{
         session.saveOrUpdate(entity.getReservationunitsByReservationId());
         session.save(entity);
         session.getTransaction().commit();
-    }
-
-    public static void registerAtDao(){
-        daoLogger.info("Registered at Reservation DAO");
     }
 
 }

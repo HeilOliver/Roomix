@@ -25,7 +25,7 @@ public class ContactDao extends AbstractDao<ContactEntity, Integer> {
         return new ContactDao();
     }
 
-    public static void registerAtDao(){
+    public static void registerAtDao() {
         daoLogger.info("Registered at Contact DAO");
     }
 }

@@ -24,12 +24,12 @@ import java.util.Set;
  * at.fhv.roomix.controller.session
  * ReservationController
  * 22.03.2018 sge
- *
+ * <p>
  * The Implementation for the ReservationController itself
  */
 class ReservationController implements IReservationController {
-    private ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
     private final ISessionDomain sessionHandler = SessionFactory.getInstance();
+    private ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
 
     private <T> void validate(T object) throws ValidationFault {
         Validator validator = validatorFactory.getValidator();
@@ -45,9 +45,9 @@ class ReservationController implements IReservationController {
     @Override
     public void newContact(long sessionId, ContactPojo contactPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException {
 
-        if (contactPojo == null)  throw new ArgumentFaultException();
+        if (contactPojo == null) throw new ArgumentFaultException();
         validate(contactPojo);
-        if (!sessionHandler.isValidFor(sessionId, null))  throw new SessionFaultException();
+        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
 
         IAbstractDomainBuilder guestBuilder = GuestDomainBuilder.getInstance();
         ModelMapper modelMapper = new ModelMapper();
@@ -60,7 +60,7 @@ class ReservationController implements IReservationController {
     @Override
     public Collection<ContactPojo> getAllContacts(long sessionId) throws SessionFaultException {
 
-        if (!sessionHandler.isValidFor(sessionId, null))  throw new SessionFaultException();
+        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
 
         IAbstractDomainBuilder guestBuilder = GuestDomainBuilder.getInstance();
         ModelMapper modelMapper = new ModelMapper();
@@ -75,7 +75,7 @@ class ReservationController implements IReservationController {
     @Override
     public void updateContact(long sessionId, ContactPojo contactPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException {
 
-        if (contactPojo == null)  throw new ArgumentFaultException();
+        if (contactPojo == null) throw new ArgumentFaultException();
         validate(contactPojo);
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
 

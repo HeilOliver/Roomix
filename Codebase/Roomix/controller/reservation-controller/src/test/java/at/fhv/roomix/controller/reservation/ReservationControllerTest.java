@@ -35,37 +35,37 @@ public class ReservationControllerTest {
         SessionFactory.inject(sessionDomain);
     }
 
-   @Test
-   void newContact() throws SessionFaultException, ArgumentFaultException, ValidationFault {
-       ReservationController controller = new ReservationController();
+    @Test
+    void newContact() throws SessionFaultException, ArgumentFaultException, ValidationFault {
+        ReservationController controller = new ReservationController();
 
-       assertThrows(ArgumentFaultException.class, () -> controller.newContact(123L, null));
+        assertThrows(ArgumentFaultException.class, () -> controller.newContact(123L, null));
 
-       ContactPojo pojo = new ContactPojo();
-       pojo.setFname("Max");
-       pojo.setLname("Mustermann");
-       pojo.setCountry("Germany");
-       pojo.setPhoneNumber("+4312132132132");
-       pojo.setEmail("Some@some.com");
-       pojo.setPlace("Dornbirn");
-       pojo.setPostcode("6850");
-       pojo.setStreet("SomeStreet 4");
+        ContactPojo pojo = new ContactPojo();
+        pojo.setFname("Max");
+        pojo.setLname("Mustermann");
+        pojo.setCountry("Germany");
+        pojo.setPhoneNumber("+4312132132132");
+        pojo.setEmail("Some@some.com");
+        pojo.setPlace("Dornbirn");
+        pojo.setPostcode("6850");
+        pojo.setStreet("SomeStreet 4");
 
-       assertThrows(ValidationFault.class, () -> controller.newContact(123L, pojo));
-       pojo.setHouseNumber("123");
+        assertThrows(ValidationFault.class, () -> controller.newContact(123L, pojo));
+        pojo.setHouseNumber("123");
 
-       controller.newContact(110L,pojo);
-       assertTrue(mock.getNewContactBool());
+        controller.newContact(110L, pojo);
+        assertTrue(mock.getNewContactBool());
 
-   }
+    }
 
-   @Test
+    @Test
     void getAllContactsValid() throws SessionFaultException {
-       ReservationController controller = new ReservationController();
+        ReservationController controller = new ReservationController();
 
-       Collection gettAllTest = new HashSet();
-       gettAllTest = controller.getAllContacts(123L);
-       assertTrue(mock.isGetAllBool());
-   }
+        Collection gettAllTest = new HashSet();
+        gettAllTest = controller.getAllContacts(123L);
+        assertTrue(mock.isGetAllBool());
+    }
 
 }

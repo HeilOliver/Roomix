@@ -21,12 +21,10 @@ import java.util.function.Supplier;
  * Enter Description here
  */
 public abstract class AbstractDao<T, PK extends Serializable> {
-    private Class<T> type;
-
-    private static HashMap<Class, Supplier<AbstractDao>> supplierHashMap = new HashMap<>();
     protected static Logger daoLogger = Logger.getLogger(Logger.class);
-
+    private static HashMap<Class, Supplier<AbstractDao>> supplierHashMap = new HashMap<>();
     protected Session session;
+    private Class<T> type;
 
     AbstractDao(Class<T> type) {
         this.type = type;
@@ -34,6 +32,20 @@ public abstract class AbstractDao<T, PK extends Serializable> {
     }
 
     //public static AbstractDao<T, PK> getInstance();
+
+    // TODO: nicht verzagen - Wolfgang fragen
+    public static void addDao(Class contactEntityClass, Supplier<AbstractDao> supplier) {
+        supplierHashMap.put(contactEntityClass, supplier);
+    }
+
+    public static <T extends AbstractDao> Supplier<AbstractDao> getDaoInstanceByEntityClass(Class type) {
+        if (supplierHashMap.containsKey(type)) {
+            return supplierHashMap.get(type);
+        } else {
+            daoLogger.info("No DAO Instance found for given key (Class type)");
+            return null;
+        }
+    }
 
     public void dispose() {
         session.close();
@@ -90,19 +102,5 @@ public abstract class AbstractDao<T, PK extends Serializable> {
         CriteriaQuery<T> select = query.select(from);
 
         return session.createQuery(select).getResultList();
-    }
-
-    // TODO: nicht verzagen - Wolfgang fragen
-    public static void addDao(Class contactEntityClass, Supplier<AbstractDao> supplier) {
-        supplierHashMap.put(contactEntityClass, supplier);
-    }
-
-    public static <T extends AbstractDao> Supplier<AbstractDao> getDaoInstanceByEntityClass(Class type){
-        if(supplierHashMap.containsKey(type)) {
-            return supplierHashMap.get(type);
-        } else{
-            daoLogger.info("No DAO Instance found for given key (Class type)");
-            return null;
-        }
     }
 }

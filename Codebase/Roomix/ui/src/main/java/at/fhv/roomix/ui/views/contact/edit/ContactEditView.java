@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
  * <p>
  * Enter Description here
  */
-public class ContactEditView implements FxmlView<ContactEditViewModel>{
+public class ContactEditView implements FxmlView<ContactEditViewModel> {
 
     @FXML
     private Button btnCancel;

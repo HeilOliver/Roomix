@@ -2,10 +2,8 @@ package at.fhv.roomix.controller.session;
 
 import at.fhv.roomix.controller.session.exception.AuthenticationFaultException;
 import at.fhv.roomix.controller.session.model.SessionPojo;
-import at.fhv.roomix.domain.session.ISessionDomain;
 import at.fhv.roomix.domain.session.SessionFactory;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -32,27 +30,27 @@ class SessionControllerTest {
     @Test
     void getSession_invalidUserPassword() {
         assertThrows(AuthenticationFaultException.class,
-                ()-> controller.getSession("Test", "Test")
-        , "Invalid User and Password");
-
-        assertThrows(AuthenticationFaultException.class,
-                ()-> controller.getSession("Test", "")
-        , "Invalid Password");
-
-        assertThrows(AuthenticationFaultException.class,
-                ()-> controller.getSession("", "Test")
-        , "Invalid User");
-
-        assertThrows(AuthenticationFaultException.class,
-                ()-> controller.getSession(null, null)
+                () -> controller.getSession("Test", "Test")
                 , "Invalid User and Password");
 
         assertThrows(AuthenticationFaultException.class,
-                ()-> controller.getSession("Test", null)
+                () -> controller.getSession("Test", "")
                 , "Invalid Password");
 
         assertThrows(AuthenticationFaultException.class,
-                ()-> controller.getSession(null, "Test")
+                () -> controller.getSession("", "Test")
+                , "Invalid User");
+
+        assertThrows(AuthenticationFaultException.class,
+                () -> controller.getSession(null, null)
+                , "Invalid User and Password");
+
+        assertThrows(AuthenticationFaultException.class,
+                () -> controller.getSession("Test", null)
+                , "Invalid Password");
+
+        assertThrows(AuthenticationFaultException.class,
+                () -> controller.getSession(null, "Test")
                 , "Invalid User");
     }
 

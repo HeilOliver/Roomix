@@ -23,7 +23,7 @@ public class ArrangementEntity {
     }
 
     @Basic
-    @Column(name = "Article", insertable=false, updatable=false)
+    @Column(name = "Article", insertable = false, updatable = false)
     public int getArticle() {
         return article;
     }

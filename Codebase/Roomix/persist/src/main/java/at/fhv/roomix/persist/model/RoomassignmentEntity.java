@@ -48,7 +48,7 @@ public class RoomassignmentEntity {
     }
 
     @Basic
-    @Column(name = "Room", insertable=false, updatable=false)
+    @Column(name = "Room", insertable = false, updatable = false)
     public int getRoom() {
         return room;
     }
@@ -58,7 +58,7 @@ public class RoomassignmentEntity {
     }
 
     @Basic
-    @Column(name = "ReservationUnit", insertable=false, updatable=false)
+    @Column(name = "ReservationUnit", insertable = false, updatable = false)
     public int getReservationUnit() {
         return reservationUnit;
     }

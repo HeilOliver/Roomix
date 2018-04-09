@@ -1,6 +1,5 @@
 package at.fhv.roomix.ui.views.contact.list;
 
-import at.fhv.roomix.ui.views.contact.ContactProvider;
 import at.fhv.roomix.ui.views.contact.scope.ContactMasterDetailScope;
 import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ViewModel;
@@ -65,7 +64,9 @@ public class ContactDetailViewModel implements ViewModel {
         return companyname;
     }
 
-    public StringProperty phonenumberProperty() { return phonenumber; }
+    public StringProperty phonenumberProperty() {
+        return phonenumber;
+    }
 
     public StringProperty streetProperty() {
         return street;

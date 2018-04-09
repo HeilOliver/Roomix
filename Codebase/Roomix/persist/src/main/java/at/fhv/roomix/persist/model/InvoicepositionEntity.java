@@ -31,7 +31,7 @@ public class InvoicepositionEntity {
     }
 
     @Basic
-    @Column(name = "Reservation", insertable=false, updatable=false)
+    @Column(name = "Reservation", insertable = false, updatable = false)
     public int getReservation() {
         return reservation;
     }
@@ -41,7 +41,7 @@ public class InvoicepositionEntity {
     }
 
     @Basic
-    @Column(name = "ReservationUnit", insertable=false, updatable=false)
+    @Column(name = "ReservationUnit", insertable = false, updatable = false)
     public int getReservationUnit() {
         return reservationUnit;
     }
@@ -51,7 +51,7 @@ public class InvoicepositionEntity {
     }
 
     @Basic
-    @Column(name = "Invoice", insertable=false, updatable=false)
+    @Column(name = "Invoice", insertable = false, updatable = false)
     public Integer getInvoice() {
         return invoice;
     }

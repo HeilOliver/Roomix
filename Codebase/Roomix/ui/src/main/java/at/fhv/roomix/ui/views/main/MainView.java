@@ -47,7 +47,7 @@ public class MainView implements FxmlView<MainViewModel> {
         contentPane.getChildren().add(parent);
     }
 
-    public void initialize(){
+    public void initialize() {
         cellFactory = CachedViewModelCellFactory.createForFxmlView(SideBarMenuItem.class);
 
         viewModel.currentViewProperty().addListener(((observable, oldValue, newValue) -> {
