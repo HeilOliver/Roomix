@@ -11,7 +11,7 @@
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="at.fhv.roomix.ui.views.contact.list.views.ContactDataView">
     <fx:include source="ContactDataToolbar.fxml" />
-    <MasterDetailPane VBox.vgrow="ALWAYS">
+    <MasterDetailPane VBox.vgrow="ALWAYS" fx:id="mdPane" dividerPosition="0.75">
         <masterNode>
             <fx:include source="ContactListView.fxml"/>
         </masterNode>

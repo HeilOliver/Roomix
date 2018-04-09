@@ -9,6 +9,8 @@ import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 /**
  * Roomix
@@ -20,6 +22,7 @@ import javafx.beans.property.SimpleBooleanProperty;
  */
 public class ContactDataToolbarViewModel implements ViewModel {
     private final BooleanProperty contactSelected = new SimpleBooleanProperty();
+    private final StringProperty searchQuery = new SimpleStringProperty();
     private BooleanProperty inProcess;
 
     @InjectScope
@@ -36,6 +39,10 @@ public class ContactDataToolbarViewModel implements ViewModel {
         mdScope.selectedContactProperty().addListener((observable, oldValue, newValue) -> {
             contactSelected.setValue(newValue != null);
         });
+    }
+
+    public StringProperty searchQueryProperty() {
+        return searchQuery;
     }
 
     public void newContact(){
@@ -59,6 +66,8 @@ public class ContactDataToolbarViewModel implements ViewModel {
     }
 
     public void search(ICallable errorCallback) {
-        ContactProvider.getInstance().get(null, errorCallback);
+        String query = searchQuery.get();
+        if (query == null) query = "";
+        ContactProvider.getInstance().get(null, errorCallback, query);
     }
 }

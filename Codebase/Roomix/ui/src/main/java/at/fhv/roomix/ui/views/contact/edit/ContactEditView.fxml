@@ -69,6 +69,8 @@ fx:id="mainPane">
                    GridPane.rowIndex="1"/>
             <Label text="%contact.edit.email" GridPane.columnIndex="2" GridPane.halignment="RIGHT"
                    GridPane.rowIndex="2"/>
+            <Label text="%contact.edit.houseNumber" GridPane.columnIndex="2" GridPane.halignment="RIGHT"
+                   GridPane.rowIndex="3"/>
             <TextField fx:id="firstnameInput" promptText="%contact.edit.firstname.prompt" GridPane.columnIndex="1"
                        GridPane.rowIndex="0"/>
             <TextField fx:id="lastnameInput" promptText="%contact.edit.lastname.prompt" GridPane.columnIndex="1"
@@ -87,7 +89,7 @@ fx:id="mainPane">
                        GridPane.rowIndex="1"/>
             <TextField fx:id="emailInput" promptText="%contact.edit.email.prompt" GridPane.columnIndex="3"
                        GridPane.rowIndex="2"/>
-            <TextField fx:id="houseNumberInput" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+            <TextField fx:id="houseNumberInput" promptText="%contact.edit.houseNumber.prompt" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
 
         </GridPane>
     </VBox>

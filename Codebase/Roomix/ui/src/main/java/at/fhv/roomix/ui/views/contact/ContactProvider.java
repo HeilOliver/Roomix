@@ -17,8 +17,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
 
 /**
  * Roomix
@@ -35,7 +38,7 @@ public class ContactProvider {
     private static ContactProvider instance;
 
     private ContactProvider() {
-        get(() -> {}, ()-> {});
+        get(() -> {}, ()-> {}, "");
     }
 
     public static ContactProvider getInstance() {
@@ -49,16 +52,24 @@ public class ContactProvider {
     }
 
     public void get(ICallable successCallback,
-                    ICallable errorCallback) {
+                    ICallable errorCallback, String query) {
+
         IReservationController instance = ReservationControllerFactory.getInstance();
         executor.submit(() -> {
             Platform.runLater(()-> inProcess.setValue(true));
             try {
                 Collection<ContactPojo> loadedContacts
                         = instance.getAllContacts(SessionProvider.getSessionId());
+                List<ContactPojo> filteredPojo = loadedContacts.stream()
+                        .filter(c -> c.getFname().contains(query) ||
+                                c.getLname().contains(query) ||
+                                c.getStreet().contains(query) ||
+                                c.getPostcode().contains(query) ||
+                                c.getPlace().contains(query))
+                        .collect(Collectors.toList());
                 Platform.runLater(() -> {
                     contacts.clear();
-                    contacts.addAll(loadedContacts);
+                    contacts.addAll(filteredPojo);
                 });
                 if (successCallback != null)
                     Platform.runLater(successCallback::call);
