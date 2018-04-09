@@ -35,7 +35,7 @@ public class ReservationunitEntity {
     }
 
     @Basic
-    @Column(name = "Reservation", insertable=false, updatable=false)
+    @Column(name = "Reservation", insertable = false, updatable = false)
     public int getReservation() {
         return reservation;
     }
@@ -45,7 +45,7 @@ public class ReservationunitEntity {
     }
 
     @Basic
-    @Column(name = "RoomCategory", insertable=false, updatable=false)
+    @Column(name = "RoomCategory", insertable = false, updatable = false)
     public int getRoomCategory() {
         return roomCategory;
     }
@@ -55,7 +55,7 @@ public class ReservationunitEntity {
     }
 
     @Basic
-    @Column(name = "Cancelation", insertable=false, updatable=false)
+    @Column(name = "Cancelation", insertable = false, updatable = false)
     public Integer getCancelation() {
         return cancelation;
     }
@@ -65,7 +65,7 @@ public class ReservationunitEntity {
     }
 
     @Basic
-    @Column(name = "Arrangement", insertable=false, updatable=false)
+    @Column(name = "Arrangement", insertable = false, updatable = false)
     public Integer getArrangement() {
         return arrangement;
     }

@@ -13,5 +13,5 @@ import javax.inject.Singleton;
  * Enter Description here
  */
 @Singleton
-public class NoneViewModel implements ViewModel{
+public class NoneViewModel implements ViewModel {
 }

@@ -22,14 +22,13 @@ public class RunMe extends MvvmfxCdiApplication {
     private static final boolean DEBUG_INIT = true;
 
     private static final Logger LOG = LoggerFactory.getLogger(RunMe.class);
+    @Inject
+    private ResourceBundle resourceBundle;
 
     public static void main(String... args) {
         Locale.setDefault(Locale.GERMANY);
         launch(args);
     }
-
-    @Inject
-    private ResourceBundle resourceBundle;
 
     @Override
     public void initMvvmfx() throws Exception {

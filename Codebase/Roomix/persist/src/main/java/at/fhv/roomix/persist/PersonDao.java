@@ -13,7 +13,7 @@ import org.hibernate.HibernateException;
  */
 public class PersonDao extends AbstractDao<PersonEntity, Integer> {
 
-    private PersonDao(){
+    private PersonDao() {
         super(PersonEntity.class);
     }
 

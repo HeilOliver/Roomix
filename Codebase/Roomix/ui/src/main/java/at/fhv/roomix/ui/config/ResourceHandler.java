@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
  */
 public class ResourceHandler {
 
-    private ResourceHandler(){
+    private ResourceHandler() {
     }
 
     public static String getLocalizedString(String resourceName) {

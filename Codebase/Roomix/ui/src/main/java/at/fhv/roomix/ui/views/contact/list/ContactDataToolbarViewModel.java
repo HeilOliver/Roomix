@@ -1,7 +1,6 @@
 package at.fhv.roomix.ui.views.contact.list;
 
 import at.fhv.roomix.ui.views.contact.ContactProvider;
-import at.fhv.roomix.ui.views.contact.edit.ContactEditViewModel;
 import at.fhv.roomix.ui.views.contact.edit.ContactEditViewModel.ICallable;
 import at.fhv.roomix.ui.views.contact.scope.ContactMasterDetailScope;
 import at.fhv.roomix.ui.views.contact.scope.ContactViewScope;
@@ -32,7 +31,7 @@ public class ContactDataToolbarViewModel implements ViewModel {
     private ContactViewScope viewScope;
 
     public ContactDataToolbarViewModel() {
-        inProcess =  ContactProvider.getInstance().inProcessProperty();
+        inProcess = ContactProvider.getInstance().inProcessProperty();
     }
 
     public void initialize() {
@@ -45,15 +44,15 @@ public class ContactDataToolbarViewModel implements ViewModel {
         return searchQuery;
     }
 
-    public void newContact(){
+    public void newContact() {
         viewScope.publish(ContactViewScope.NEW);
     }
 
-    public void editContact(){
+    public void editContact() {
         viewScope.publish(ContactViewScope.EDIT);
     }
 
-    public void archiveContact(){
+    public void archiveContact() {
         viewScope.publish(ContactViewScope.ARCHIVE);
     }
 

@@ -15,16 +15,16 @@ import javafx.scene.control.TableView;
  * <p>
  * Enter Description here
  */
-public class ContactListView implements FxmlView<ContactListViewModel>{
+public class ContactListView implements FxmlView<ContactListViewModel> {
     @FXML
     private TableView<ContactListTableModel> tab_contactTable;
 
     @InjectViewModel
     private ContactListViewModel viewModel;
 
-    public void initialize(){
-       tab_contactTable.setItems(viewModel.getContacts());
-       viewModel.selectedTableRowProperty().bind(tab_contactTable.getSelectionModel().selectedItemProperty());
+    public void initialize() {
+        tab_contactTable.setItems(viewModel.getContacts());
+        viewModel.selectedTableRowProperty().bind(tab_contactTable.getSelectionModel().selectedItemProperty());
     }
 
 }

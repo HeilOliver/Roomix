@@ -8,7 +8,7 @@ import at.fhv.roomix.controller.session.model.SessionPojo;
  * at.fhv.roomix.controller.session
  * ISessionController
  * 22.03.2018 sge
- *
+ * <p>
  * The Interface for the SessionController
  */
 public interface ISessionController {

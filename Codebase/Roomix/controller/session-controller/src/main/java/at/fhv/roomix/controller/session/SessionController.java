@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
  * at.fhv.roomix.controller.session
  * SessionController
  * 22.03.2018 sge
- *
+ * <p>
  * The Implementation for the SessionController itself
  */
 class SessionController implements ISessionController {

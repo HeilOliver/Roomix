@@ -36,15 +36,15 @@ public class GuestDomainBuilderMock implements IAbstractDomainBuilder<GuestDomai
         newContactBool = true;
     }
 
-    public boolean getNewContactBool(){
+    public boolean getNewContactBool() {
         return newContactBool;
     }
 
-    public boolean isGetAllBool(){
+    public boolean isGetAllBool() {
         return getAllBool;
     }
 
-    public void clearTest(){
+    public void clearTest() {
         newContactBool = false;
         getAllBool = false;
     }

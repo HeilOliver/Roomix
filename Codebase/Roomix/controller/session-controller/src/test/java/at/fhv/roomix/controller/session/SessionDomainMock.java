@@ -15,9 +15,11 @@ import at.fhv.roomix.domain.session.roll.IRoomixRoll;
  */
 public class SessionDomainMock implements ISessionDomain {
 
+    boolean isSessionClosed;
+
     @Override
     public RoomixSession getSession(String username, String password) throws InvalidUserPasswordCombination {
-        if (username == null || password== null)
+        if (username == null || password == null)
             throw new InvalidUserPasswordCombination();
 
         if (!username.equals("OK") || !password.equals("OK"))
@@ -40,8 +42,6 @@ public class SessionDomainMock implements ISessionDomain {
     public void closeSession(long sessionId) {
         isSessionClosed = true;
     }
-
-    boolean isSessionClosed;
 
     void clear() {
         isSessionClosed = false;

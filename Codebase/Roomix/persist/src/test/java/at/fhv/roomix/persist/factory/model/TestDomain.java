@@ -3,10 +3,10 @@ package at.fhv.roomix.persist.factory.model;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.Callable;
-import java.util.stream.Stream;
 
 public class TestDomain {
 
+    private static int staticInteger;
     /* primitive datatypes */
     private int primitiveInteger;
     private boolean primitiveBoolean;
@@ -15,19 +15,23 @@ public class TestDomain {
     private double primitiveDouble;
     private long primitveLong;
     private String string;
-
     /* complex datatypes */
     private Collection<DeepTestDomain> collection;
-
     /*  */
     private Callable<TestDomain> callable;
-    private static int staticInteger;
-
     /* multidimensional datatypes */
     private char[][] charMap;
 
     /* Invalid vars */
     private int invalidInteger;
+
+    public static int getStaticInteger() {
+        return staticInteger;
+    }
+
+    public static void setStaticInteger(int staticInteger) {
+        TestDomain.staticInteger = staticInteger;
+    }
 
     public int getPrimitiveInteger() {
         return primitiveInteger;
@@ -101,14 +105,6 @@ public class TestDomain {
         this.callable = callable;
     }
 
-    public static int getStaticInteger() {
-        return staticInteger;
-    }
-
-    public static void setStaticInteger(int staticInteger) {
-        TestDomain.staticInteger = staticInteger;
-    }
-
     public char[][] getCharMap() {
         return charMap;
     }
@@ -116,6 +112,7 @@ public class TestDomain {
     public void setCharMap(char[][] charMap) {
         this.charMap = charMap;
     }
+
     public int getInvalidInteger() {
         return invalidInteger;
     }

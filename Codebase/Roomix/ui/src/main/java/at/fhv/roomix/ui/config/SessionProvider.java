@@ -12,8 +12,9 @@ public class SessionProvider {
 
     private static final Object lock = new Object();
     private static SessionProvider instance;
+    private static long sessionId;
 
-        private SessionProvider() {
+    private SessionProvider() {
 
     }
 
@@ -26,8 +27,6 @@ public class SessionProvider {
         }
         return instance;
     }
-
-    private static long sessionId;
 
     public static long getSessionId() {
         return sessionId;

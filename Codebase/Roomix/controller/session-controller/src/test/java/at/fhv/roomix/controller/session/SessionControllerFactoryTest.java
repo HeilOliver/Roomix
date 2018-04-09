@@ -10,8 +10,6 @@ import static org.junit.jupiter.api.Assertions.*;
  * at.fhv.roomix.controller.session
  * SessionControllerFactoryTest
  * 22.03.2018 sge
- *
- *
  */
 class SessionControllerFactoryTest {
 
@@ -69,5 +67,5 @@ class SessionControllerFactoryTest {
 
         assertEquals(mock, instance);
     }
-    
+
 }

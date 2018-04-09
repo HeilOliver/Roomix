@@ -23,7 +23,7 @@ public class RoomfacilityEntity {
     }
 
     @Basic
-    @Column(name = "Room", insertable=false, updatable=false)
+    @Column(name = "Room", insertable = false, updatable = false)
     public int getRoom() {
         return room;
     }
@@ -33,7 +33,7 @@ public class RoomfacilityEntity {
     }
 
     @Basic
-    @Column(name = "Facility", insertable=false, updatable=false)
+    @Column(name = "Facility", insertable = false, updatable = false)
     public int getFacility() {
         return facility;
     }

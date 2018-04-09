@@ -7,7 +7,7 @@ import at.fhv.roomix.controller.session.model.SessionPojo;
  * at.fhv.roomix.controller.session
  * SessionControllerMock
  * 22.03.2018 sge
- *
+ * <p>
  * Mock fpr ISessionController
  */
 public class SessionControllerMock implements ISessionController {

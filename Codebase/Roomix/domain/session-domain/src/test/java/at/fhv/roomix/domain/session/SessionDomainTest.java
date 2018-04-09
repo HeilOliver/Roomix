@@ -16,9 +16,9 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class SessionDomainTest {
 
-    private static SessionDomain sessionDomain;
     private static final String username = "Max";
     private static final String password = "MaxsPassword";
+    private static SessionDomain sessionDomain;
 
     @BeforeEach
     void init() {
@@ -41,7 +41,7 @@ class SessionDomainTest {
         RoomixSession session1
                 = sessionDomain.getSession(username, password);
 
-        assertNotEquals(session0,session1);
+        assertNotEquals(session0, session1);
         assertFalse(session0.isValid());
         assertTrue(session1.isValid());
 

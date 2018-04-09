@@ -17,7 +17,6 @@
         <property name="net.sf.ehcache.configurationResourceName">/cacheConfig.xml</property>  -->
 
 
-
         <mapping class="at.fhv.roomix.persist.model.ContactEntity"/>
         <mapping class="at.fhv.roomix.persist.model.PersonEntity"/>
         <mapping class="at.fhv.roomix.persist.model.CreditcardEntity"/>

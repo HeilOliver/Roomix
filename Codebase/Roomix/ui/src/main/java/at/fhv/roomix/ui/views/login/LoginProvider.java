@@ -6,12 +6,8 @@ import at.fhv.roomix.controller.session.exception.AuthenticationFaultException;
 import at.fhv.roomix.controller.session.model.SessionPojo;
 import at.fhv.roomix.ui.config.ResourceHandler;
 import at.fhv.roomix.ui.config.SessionProvider;
-import at.fhv.roomix.ui.views.main.models.SwitchablePage;
-import de.saxsys.mvvmfx.FluentViewLoader;
 import javafx.application.Platform;
 import javafx.beans.property.*;
-import javafx.geometry.Pos;
-import org.controlsfx.control.Notifications;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -32,6 +28,7 @@ public class LoginProvider {
     private ExecutorService executor = Executors.newSingleThreadExecutor();
     private BooleanProperty inProcess = new SimpleBooleanProperty();
     private StringProperty currentUser = new SimpleStringProperty();
+    private BooleanProperty isErrorOccurred = new SimpleBooleanProperty();
 
     public static LoginProvider getInstance() {
         if (instance != null) return instance;
@@ -91,8 +88,6 @@ public class LoginProvider {
             }
         });
     }
-
-    private BooleanProperty isErrorOccurred = new SimpleBooleanProperty();
 
     public BooleanProperty inErrorStateProperty() {
         return isErrorOccurred;

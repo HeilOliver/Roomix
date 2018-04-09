@@ -9,6 +9,7 @@ public class ReservationUnitDomain {
     private Integer cancelation;
     private Integer arrangement;
     private Date startDate;
+    private Date endDate;
 
     public int getReservationUnitId() {
         return reservationUnitId;
@@ -65,8 +66,6 @@ public class ReservationUnitDomain {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
-
-    private Date endDate;
 
 
 }

@@ -29,7 +29,7 @@ public class PaymentEntity {
     }
 
     @Basic
-    @Column(name = "Invoice", insertable=false, updatable=false)
+    @Column(name = "Invoice", insertable = false, updatable = false)
     public int getInvoice() {
         return invoice;
     }
@@ -39,7 +39,7 @@ public class PaymentEntity {
     }
 
     @Basic
-    @Column(name = "PaymentType", insertable=false, updatable=false)
+    @Column(name = "PaymentType", insertable = false, updatable = false)
     public int getPaymentType() {
         return paymentType;
     }

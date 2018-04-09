@@ -15,14 +15,16 @@ public class AbstractDomainBuilderMock extends AbstractDomainBuilder<TestDomain,
 
     private static AbstractDomainBuilderMock instance;
 
-    public static AbstractDomainBuilderMock getInstance(){
-        if(instance == null){ return (instance = new AbstractDomainBuilderMock()); }
-        else{
+    private AbstractDomainBuilderMock() {
+    }
+
+    public static AbstractDomainBuilderMock getInstance() {
+        if (instance == null) {
+            return (instance = new AbstractDomainBuilderMock());
+        } else {
             return instance;
         }
     }
-
-    private AbstractDomainBuilderMock(){}
 
     @Override
     protected TestDomain mapEntityToDomain(TestEntity entity) {
@@ -30,7 +32,7 @@ public class AbstractDomainBuilderMock extends AbstractDomainBuilder<TestDomain,
         TestDomain testDomain = modelMapper.map(entity, TestDomain.class);
 
         LinkedHashMap<ISourceMapper<Collection>,
-                Map.Entry<Class, IDestinationMapper<Collection>>> mapping =  new LinkedHashMap<>();
+                Map.Entry<Class, IDestinationMapper<Collection>>> mapping = new LinkedHashMap<>();
         put(DeepTestDomain.class, entity::getCollection, testDomain::setCollection, mapping);
         mapAllCollections(mapping);
 
@@ -43,7 +45,7 @@ public class AbstractDomainBuilderMock extends AbstractDomainBuilder<TestDomain,
         TestEntity testEntity = modelMapper.map(domain, TestEntity.class);
 
         LinkedHashMap<ISourceMapper<Collection>,
-                Map.Entry<Class, IDestinationMapper<Collection>>> mapping =  new LinkedHashMap<>();
+                Map.Entry<Class, IDestinationMapper<Collection>>> mapping = new LinkedHashMap<>();
         put(DeepTestEntity.class, domain::getCollection, testEntity::setCollection, mapping);
         mapAllCollections(mapping);
 
@@ -51,11 +53,11 @@ public class AbstractDomainBuilderMock extends AbstractDomainBuilder<TestDomain,
     }
 
 
-    public TestEntity injectDomain(TestDomain domain){
+    public TestEntity injectDomain(TestDomain domain) {
         return mapDomainToEntity(domain);
     }
 
-    public TestDomain injectEntity(TestEntity entity){
+    public TestDomain injectEntity(TestEntity entity) {
         return mapEntityToDomain(entity);
     }
 

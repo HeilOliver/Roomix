@@ -18,22 +18,25 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class ReservationDomainBuilder extends AbstractDomainBuilder<ReservationDomain, ReservationEntity>
-             implements IAbstractDomainBuilder<ReservationDomain, ReservationEntity>{
-
-    /* Constructor */
-    private ReservationDomainBuilder(ICallable registerAtDAO){
-        registerAtDAO.call();
-    }
-    private ReservationDomainBuilder(){}
+        implements IAbstractDomainBuilder<ReservationDomain, ReservationEntity> {
 
     /* Dependency Injection */
     private static Supplier<IAbstractDomainBuilder<ReservationDomain, ReservationEntity>> supplier;
 
-    public static IAbstractDomainBuilder<ReservationDomain, ReservationEntity> getInstance(){
+    /* Constructor */
+    private ReservationDomainBuilder(ICallable registerAtDAO) {
+        registerAtDAO.call();
+    }
+
+    private ReservationDomainBuilder() {
+    }
+
+    public static IAbstractDomainBuilder<ReservationDomain, ReservationEntity> getInstance() {
         if (supplier == null) return new ReservationDomainBuilder(ReservationDao::registerAtDao);
         return supplier.get();
     }
-    public static void injectDependency(Supplier<IAbstractDomainBuilder<ReservationDomain, ReservationEntity>> builderSupplier){
+
+    public static void injectDependency(Supplier<IAbstractDomainBuilder<ReservationDomain, ReservationEntity>> builderSupplier) {
         supplier = builderSupplier;
     }
 
@@ -43,7 +46,7 @@ public class ReservationDomainBuilder extends AbstractDomainBuilder<ReservationD
         ReservationDomain reservationDomain = modelMapper.map(entity, ReservationDomain.class);
 
         LinkedHashMap<ISourceMapper<Collection>,
-                Map.Entry<Class, IDestinationMapper<Collection>>> mapping =  new LinkedHashMap<>();
+                Map.Entry<Class, IDestinationMapper<Collection>>> mapping = new LinkedHashMap<>();
 
         put(InvoicePositionDomain.class, entity::getInvoicepositionsByReservationId,
                 reservationDomain::setInvoicePositions, mapping);
@@ -62,7 +65,7 @@ public class ReservationDomainBuilder extends AbstractDomainBuilder<ReservationD
         ReservationEntity reservationEntity = modelMapper.map(domain, ReservationEntity.class);
 
         LinkedHashMap<ISourceMapper<Collection>,
-                Map.Entry<Class, IDestinationMapper<Collection>>> mapping =  new LinkedHashMap<>();
+                Map.Entry<Class, IDestinationMapper<Collection>>> mapping = new LinkedHashMap<>();
 
         put(InvoicepositionEntity.class, domain::getInvoicePositions,
                 reservationEntity::setInvoicepositionsByReservationId, mapping);

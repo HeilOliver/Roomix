@@ -1,6 +1,5 @@
 package at.fhv.roomix.ui.views.contact;
 
-import at.fhv.roomix.ui.views.contact.edit.ContactEditViewModel;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import javafx.fxml.FXML;
@@ -14,7 +13,7 @@ import javafx.scene.layout.Pane;
  * <p>
  * Enter Description here
  */
-public class ContactView implements FxmlView<ContactViewModel>{
+public class ContactView implements FxmlView<ContactViewModel> {
 
     @FXML
     private Pane editView;

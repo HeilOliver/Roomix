@@ -12,7 +12,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import org.controlsfx.control.Notifications;
 
 import javax.inject.Inject;
@@ -50,7 +49,7 @@ public class LoginView implements FxmlView<LoginViewModel> {
     @FXML
     private ProgressIndicator progressIndicator;
 
-    public void initialize(){
+    public void initialize() {
         btnLogIn.disableProperty().bind(viewModel.logInPossibleProperty().not());
         btnLogOut.disableProperty().bind(viewModel.logOutPossibleProperty().not());
 

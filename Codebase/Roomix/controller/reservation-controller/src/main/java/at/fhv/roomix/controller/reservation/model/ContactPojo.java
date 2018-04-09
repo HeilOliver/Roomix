@@ -154,7 +154,7 @@ public class ContactPojo {
                 Objects.equals(place, that.place) &&
                 Objects.equals(postcode, that.postcode) &&
                 Objects.equals(country, that.country) &&
-                Objects.equals(email, that.email)&&
+                Objects.equals(email, that.email) &&
                 Objects.equals(houseNumber, that.houseNumber);
     }
 
