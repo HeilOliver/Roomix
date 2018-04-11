@@ -19,9 +19,10 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class RunMe extends MvvmfxCdiApplication {
-    private static final boolean DEBUG_INIT = true;
+    private static final boolean DEBUG_INIT = false;
 
     private static final Logger LOG = LoggerFactory.getLogger(RunMe.class);
+
     @Inject
     private ResourceBundle resourceBundle;
 
@@ -29,6 +30,8 @@ public class RunMe extends MvvmfxCdiApplication {
         Locale.setDefault(Locale.GERMANY);
         launch(args);
     }
+
+
 
     @Override
     public void initMvvmfx() throws Exception {
@@ -47,6 +50,7 @@ public class RunMe extends MvvmfxCdiApplication {
         stage.setScene(rootScene);
         stage.setMinWidth(800);
         stage.setMinHeight(600);
+        stage.setOnCloseRequest((s) -> LOG.debug("Close Event Fired"));
         stage.show();
 
         if (!DEBUG_INIT) return;
