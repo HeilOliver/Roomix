@@ -1,12 +1,16 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "season", schema = "roomix", catalog = "")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Table(name = "Season", schema = "roomix", catalog = "")
 public class SeasonEntity {
     private int seasonId;
     private String description;
@@ -83,6 +87,7 @@ public class SeasonEntity {
         return Objects.hash(seasonId, description, additionalCharge, startDate, endDate);
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "seasonBySeason")
     public Collection<RoomcategorypriceEntity> getRoomcategorypricesBySeasonId() {
         return roomcategorypricesBySeasonId;

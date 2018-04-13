@@ -1,12 +1,16 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "payment", schema = "roomix", catalog = "")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Table(name = "Payment", schema = "roomix", catalog = "")
 public class PaymentEntity {
     private int paymentId;
     private int invoice;
@@ -108,6 +112,7 @@ public class PaymentEntity {
         return Objects.hash(paymentId, invoice, paymentType, amount, dateOfIssue, dueDate, paidDate);
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "Invoice", referencedColumnName = "InvoiceID", nullable = false)
     public InvoiceEntity getInvoiceByInvoice() {
@@ -118,6 +123,7 @@ public class PaymentEntity {
         this.invoiceByInvoice = invoiceByInvoice;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "PaymentType", referencedColumnName = "PaymentTypeID", nullable = false)
     public PaymenttypeEntity getPaymenttypeByPaymentType() {

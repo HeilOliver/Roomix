@@ -1,11 +1,15 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Table(name = "Invoice", schema = "roomix", catalog = "")
 public class InvoiceEntity {
     private int invoiceId;
@@ -120,6 +124,7 @@ public class InvoiceEntity {
         return Objects.hash(invoiceId, name, street, place, postcode, country, dateOfIssue, status);
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "invoiceByInvoice")
     public Collection<InvoicepositionEntity> getInvoicepositionsByInvoiceId() {
         return invoicepositionsByInvoiceId;
@@ -129,6 +134,7 @@ public class InvoiceEntity {
         this.invoicepositionsByInvoiceId = invoicepositionsByInvoiceId;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "invoiceByInvoice")
     public Collection<PaymentEntity> getPaymentsByInvoiceId() {
         return paymentsByInvoiceId;

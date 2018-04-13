@@ -1,11 +1,15 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "roomcategory", schema = "roomix", catalog = "")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Table(name = "RoomCategory", schema = "roomix", catalog = "")
 public class RoomcategoryEntity {
     private int roomCategoryId;
     private String categoryDescription;
@@ -48,6 +52,7 @@ public class RoomcategoryEntity {
         return Objects.hash(roomCategoryId, categoryDescription);
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "roomcategoryByRoomCategory")
     public Collection<ReservationunitEntity> getReservationunitsByRoomCategoryId() {
         return reservationunitsByRoomCategoryId;
@@ -57,6 +62,7 @@ public class RoomcategoryEntity {
         this.reservationunitsByRoomCategoryId = reservationunitsByRoomCategoryId;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "roomcategoryByRoomCategory")
     public Collection<RoomEntity> getRoomsByRoomCategoryId() {
         return roomsByRoomCategoryId;
@@ -66,6 +72,7 @@ public class RoomcategoryEntity {
         this.roomsByRoomCategoryId = roomsByRoomCategoryId;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "roomcategoryByRoomCategory")
     public Collection<RoomcategorypriceEntity> getRoomcategorypricesByRoomCategoryId() {
         return roomcategorypricesByRoomCategoryId;

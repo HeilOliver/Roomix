@@ -1,9 +1,13 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Table(name = "ContactNote", schema = "roomix", catalog = "")
 public class ContactnoteEntity {
     private int contactNoteId;
@@ -57,6 +61,7 @@ public class ContactnoteEntity {
         return Objects.hash(contactNoteId, contact, noteContent);
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "Contact", referencedColumnName = "ContactID", nullable = false)
     public ContactEntity getContactByContact() {

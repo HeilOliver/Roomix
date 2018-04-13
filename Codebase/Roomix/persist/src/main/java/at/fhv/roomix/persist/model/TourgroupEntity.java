@@ -1,11 +1,15 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tourgroup", schema = "roomix", catalog = "")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Table(name = "TourGroup", schema = "roomix", catalog = "")
 public class TourgroupEntity {
     private int tourGroupId;
     private String tourGroupName;
@@ -59,6 +63,7 @@ public class TourgroupEntity {
         return Objects.hash(tourGroupId, tourGroupName, tourGroupLeader);
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "TourGroupLeader", referencedColumnName = "PersonID", nullable = false)
     public PersonEntity getPersonByTourGroupLeader() {
@@ -69,6 +74,7 @@ public class TourgroupEntity {
         this.personByTourGroupLeader = personByTourGroupLeader;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "tourgroupByTourGroupId")
     public Collection<TourgroupmemberEntity> getTourgroupmembersByTourGroupId() {
         return tourgroupmembersByTourGroupId;
