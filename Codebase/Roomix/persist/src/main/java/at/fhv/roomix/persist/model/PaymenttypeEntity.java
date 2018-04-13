@@ -1,11 +1,15 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "paymenttype", schema = "roomix", catalog = "")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Table(name = "PaymentType", schema = "roomix", catalog = "")
 public class PaymenttypeEntity {
     private int paymentTypeId;
     private String paymentTypeDescription;
@@ -46,6 +50,7 @@ public class PaymenttypeEntity {
         return Objects.hash(paymentTypeId, paymentTypeDescription);
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "paymenttypeByPaymentType")
     public Collection<PaymentEntity> getPaymentsByPaymentTypeId() {
         return paymentsByPaymentTypeId;

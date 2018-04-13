@@ -1,10 +1,14 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "hotelservice", schema = "roomix", catalog = "")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Table(name = "HotelService", schema = "roomix", catalog = "")
 public class HotelserviceEntity {
     private int hotelServiceId;
     private int article;
@@ -45,6 +49,7 @@ public class HotelserviceEntity {
         return Objects.hash(hotelServiceId, article);
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "Article", referencedColumnName = "ArticleID", nullable = false)
     public ArticleEntity getArticleByArticle() {

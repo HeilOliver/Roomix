@@ -1,11 +1,15 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "partneragreement", schema = "roomix", catalog = "")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Table(name = "PartnerAgreement", schema = "roomix", catalog = "")
 public class PartneragreementEntity {
     private int agreementId;
     private int contractingParty;
@@ -95,6 +99,7 @@ public class PartneragreementEntity {
         return Objects.hash(agreementId, contractingParty, cancellationCondition, startDate, expiringDate, discount);
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "ContractingParty", referencedColumnName = "ContractingPartyID", nullable = false)
     public ContractingpartyEntity getContractingpartyByContractingParty() {
@@ -105,6 +110,7 @@ public class PartneragreementEntity {
         this.contractingpartyByContractingParty = contractingpartyByContractingParty;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "CancellationCondition", referencedColumnName = "CancellationConditionID", nullable = false)
     public CancellationconditionEntity getCancellationconditionByCancellationCondition() {

@@ -1,10 +1,14 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Table(name = "Contact", schema = "roomix", catalog = "")
 public class ContactEntity {
     private int contactId;
@@ -157,6 +161,7 @@ public class ContactEntity {
         return Objects.hash(contactId, fname, lname, companyName, phoneNumber, street, houseNumber, place, postcode, country, email);
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "contactByContact")
     public Collection<ContactnoteEntity> getContactnotesByContactId() {
         return contactnotesByContactId;
@@ -166,6 +171,7 @@ public class ContactEntity {
         this.contactnotesByContactId = contactnotesByContactId;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "contactByContact")
     public Collection<ContractingpartyEntity> getContractingpartiesByContactId() {
         return contractingpartiesByContactId;
@@ -175,6 +181,7 @@ public class ContactEntity {
         this.contractingpartiesByContactId = contractingpartiesByContactId;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "contactByContact")
     public Collection<CreditcardEntity> getCreditcardsByContactId() {
         return creditcardsByContactId;
@@ -184,6 +191,7 @@ public class ContactEntity {
         this.creditcardsByContactId = creditcardsByContactId;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "contactByContact")
     public Collection<PersonEntity> getPeopleByContactId() {
         return peopleByContactId;

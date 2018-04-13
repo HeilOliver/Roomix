@@ -1,10 +1,14 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Table(name = "Reservation", schema = "roomix", catalog = "")
 public class ReservationEntity {
     private int reservationId;
@@ -75,6 +79,7 @@ public class ReservationEntity {
         return Objects.hash(reservationId, contractingParty, person, reservationStatus);
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "reservationByReservation")
     public Collection<InvoicepositionEntity> getInvoicepositionsByReservationId() {
         return invoicepositionsByReservationId;
@@ -84,6 +89,7 @@ public class ReservationEntity {
         this.invoicepositionsByReservationId = invoicepositionsByReservationId;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "ContractingParty", referencedColumnName = "ContractingPartyID", nullable = false)
     public ContractingpartyEntity getContractingpartyByContractingParty() {
@@ -94,6 +100,7 @@ public class ReservationEntity {
         this.contractingpartyByContractingParty = contractingpartyByContractingParty;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "Person", referencedColumnName = "PersonID", nullable = false)
     public PersonEntity getPersonByPerson() {
@@ -104,6 +111,7 @@ public class ReservationEntity {
         this.personByPerson = personByPerson;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "reservationByReservation")
     public Collection<ReservationoptionEntity> getReservationoptionsByReservationId() {
         return reservationoptionsByReservationId;
@@ -113,6 +121,7 @@ public class ReservationEntity {
         this.reservationoptionsByReservationId = reservationoptionsByReservationId;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "reservationByReservation")
     public Collection<ReservationunitEntity> getReservationunitsByReservationId() {
         return reservationunitsByReservationId;

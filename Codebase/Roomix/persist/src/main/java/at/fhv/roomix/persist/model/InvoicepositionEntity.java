@@ -1,10 +1,14 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Table(name = "InvoicePosition", schema = "roomix", catalog = "")
 public class InvoicepositionEntity {
     private int invoicePositionId;
@@ -132,6 +136,7 @@ public class InvoicepositionEntity {
         return Objects.hash(invoicePositionId, reservation, reservationUnit, invoice, roomAssignment, hotelService, amount, dateOfIssue, count);
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "Reservation", referencedColumnName = "ReservationID", nullable = false)
     public ReservationEntity getReservationByReservation() {
@@ -142,6 +147,7 @@ public class InvoicepositionEntity {
         this.reservationByReservation = reservationByReservation;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "ReservationUnit", referencedColumnName = "ReservationUnitID", nullable = false)
     public ReservationunitEntity getReservationunitByReservationUnit() {
@@ -152,6 +158,7 @@ public class InvoicepositionEntity {
         this.reservationunitByReservationUnit = reservationunitByReservationUnit;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "Invoice", referencedColumnName = "InvoiceID")
     public InvoiceEntity getInvoiceByInvoice() {

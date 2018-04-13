@@ -1,10 +1,14 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Table(name = "ContractingParty", schema = "roomix", catalog = "")
 public class ContractingpartyEntity {
     private int contractingPartyId;
@@ -60,6 +64,7 @@ public class ContractingpartyEntity {
         return Objects.hash(contractingPartyId, contractingPartyType, contact);
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "Contact", referencedColumnName = "ContactID", nullable = false)
     public ContactEntity getContactByContact() {
@@ -70,6 +75,7 @@ public class ContractingpartyEntity {
         this.contactByContact = contactByContact;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "contractingpartyByContractingParty")
     public Collection<PartneragreementEntity> getPartneragreementsByContractingPartyId() {
         return partneragreementsByContractingPartyId;
@@ -79,6 +85,7 @@ public class ContractingpartyEntity {
         this.partneragreementsByContractingPartyId = partneragreementsByContractingPartyId;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "contractingpartyByContractingParty")
     public Collection<ReservationEntity> getReservationsByContractingPartyId() {
         return reservationsByContractingPartyId;

@@ -1,10 +1,14 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Objects;
 
 @Entity
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Table(name = "CreditCard", schema = "roomix", catalog = "")
 public class CreditcardEntity {
     private int creditCardId;
@@ -94,6 +98,7 @@ public class CreditcardEntity {
         return Objects.hash(creditCardId, number, owner, type, validDate, contact);
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "Contact", referencedColumnName = "ContactID")
     public ContactEntity getContactByContact() {
