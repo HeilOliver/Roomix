@@ -5,6 +5,7 @@ import at.fhv.roomix.controller.reservation.exeption.SessionFaultException;
 import at.fhv.roomix.controller.reservation.exeption.ValidationFault;
 import at.fhv.roomix.controller.reservation.model.ContactPojo;
 import at.fhv.roomix.domain.guest.model.GuestDomain;
+import at.fhv.roomix.persist.model.ContactEntity;
 import at.fhv.roomix.domain.session.ISessionDomain;
 import at.fhv.roomix.domain.session.SessionFactory;
 import at.fhv.roomix.persist.factory.GuestDomainBuilder;
@@ -49,7 +50,7 @@ class ReservationController implements IReservationController {
         validate(contactPojo);
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
 
-        IAbstractDomainBuilder guestBuilder = GuestDomainBuilder.getInstance();
+        IAbstractDomainBuilder<GuestDomain, ContactEntity> guestBuilder = GuestDomainBuilder.getInstance();
         ModelMapper modelMapper = new ModelMapper();
 
         GuestDomain guestDomain = modelMapper.map(contactPojo, GuestDomain.class);
@@ -62,9 +63,9 @@ class ReservationController implements IReservationController {
 
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
 
-        IAbstractDomainBuilder guestBuilder = GuestDomainBuilder.getInstance();
+        IAbstractDomainBuilder<GuestDomain, at.fhv.roomix.persist.model.ContactEntity> guestBuilder = GuestDomainBuilder.getInstance();
         ModelMapper modelMapper = new ModelMapper();
-        HashSet<GuestDomain> guestDomainSet = new HashSet<>(guestBuilder.getAll());
+        HashSet<GuestDomain> guestDomainSet = new HashSet<GuestDomain>(guestBuilder.getAll());
         HashSet<ContactPojo> contactPojoSet = new HashSet<>();
 
         guestDomainSet.forEach(contact -> contactPojoSet.add(modelMapper.map(contact, ContactPojo.class)));
