@@ -1,6 +1,5 @@
 package at.fhv.roomix.ui;
 
-import at.fhv.roomix.ui.connector.ControllerFactory;
 import at.fhv.roomix.ui.views.login.LoginProvider;
 import at.fhv.roomix.ui.views.main.MainView;
 import at.fhv.roomix.ui.views.main.MainViewModel;
@@ -34,9 +33,7 @@ public class RunMe extends MvvmfxCdiApplication {
 
 
     @Override
-    public void initMvvmfx() throws Exception {
-        ControllerFactory.init();
-    }
+    public void initMvvmfx() throws Exception {    }
 
     @Override
     public void startMvvmfx(Stage stage) throws Exception {
