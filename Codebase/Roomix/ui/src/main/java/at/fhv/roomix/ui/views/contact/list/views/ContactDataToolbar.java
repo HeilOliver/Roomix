@@ -75,7 +75,7 @@ public class ContactDataToolbar implements FxmlView<ContactDataToolbarViewModel>
     @FXML
     private void buttonSearch_Click(ActionEvent actionEvent) {
         // TODO resource adden
-        viewModel.search(() ->
+        viewModel.setErrorCall(() ->
                 Notifications.create()
                         .title(resourceBundle.getString("contact.notification.title"))
                         .text(resourceBundle.getString("contact.notification.saveFail"))

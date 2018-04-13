@@ -29,7 +29,7 @@ import java.util.ResourceBundle;
 @Singleton
 public class ContactEditViewModel implements ViewModel {
     private final Validator firstNameValidator;
-    private final BooleanProperty inProgress;
+    private final ReadOnlyBooleanProperty inProgress;
     private final ModelWrapper<ContactPojo> contactWrapper = new ModelWrapper<>();
     private final CompositeValidator formValidator = new CompositeValidator();
     private final Validator lastNameValidator;
@@ -230,7 +230,7 @@ public class ContactEditViewModel implements ViewModel {
                 this::commitChanges, errorCallback);
     }
 
-    BooleanProperty inProgressProperty() {
+    ReadOnlyBooleanProperty inProgressProperty() {
         return inProgress;
     }
 

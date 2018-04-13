@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
  * <p>
  * A singleton Contexts and Dependency Injection provider
  * that is used to load the resource bundle and provide
- * it for the Contexts and Dependency Injection injection.
+ * it for the Contexts and Dependency injection.
  */
 @Singleton
 public class ResourceProvider {

@@ -6,10 +6,7 @@ import at.fhv.roomix.ui.views.contact.scope.ContactMasterDetailScope;
 import at.fhv.roomix.ui.views.contact.scope.ContactViewScope;
 import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ViewModel;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 
 /**
  * Roomix
@@ -21,18 +18,12 @@ import javafx.beans.property.StringProperty;
  */
 public class ContactDataToolbarViewModel implements ViewModel {
     private final BooleanProperty contactSelected = new SimpleBooleanProperty();
-    private final StringProperty searchQuery = new SimpleStringProperty();
-    private BooleanProperty inProcess;
 
     @InjectScope
     private ContactMasterDetailScope mdScope;
 
     @InjectScope
     private ContactViewScope viewScope;
-
-    public ContactDataToolbarViewModel() {
-        inProcess = ContactProvider.getInstance().inProcessProperty();
-    }
 
     public void initialize() {
         mdScope.selectedContactProperty().addListener((observable, oldValue, newValue) -> {
@@ -41,7 +32,7 @@ public class ContactDataToolbarViewModel implements ViewModel {
     }
 
     public StringProperty searchQueryProperty() {
-        return searchQuery;
+        return ContactProvider.getInstance().searchQuery();
     }
 
     public void newContact() {
@@ -56,17 +47,15 @@ public class ContactDataToolbarViewModel implements ViewModel {
         viewScope.publish(ContactViewScope.ARCHIVE);
     }
 
-    public BooleanProperty inProcessProperty() {
-        return inProcess;
+    public ReadOnlyBooleanProperty inProcessProperty() {
+        return ContactProvider.getInstance().inProcessProperty();
     }
 
     public BooleanProperty contactSelectedProperty() {
         return contactSelected;
     }
 
-    public void search(ICallable errorCallback) {
-        String query = searchQuery.get();
-        if (query == null) query = "";
-        ContactProvider.getInstance().get(null, errorCallback, query);
+    public void setErrorCall(ICallable onError) {
+        ContactProvider.getInstance().setErrorCallback(onError);
     }
 }
