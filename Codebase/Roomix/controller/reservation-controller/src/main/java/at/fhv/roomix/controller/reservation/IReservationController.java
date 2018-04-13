@@ -22,5 +22,7 @@ public interface IReservationController {
 
     Collection<ContactPojo> getAllContacts(long sessionId) throws SessionFaultException;
 
+    Collection<ContactPojo> getSearchedContacts(long sessionId, String query) throws SessionFaultException;
+
     void updateContact(long sessionId, ContactPojo contactPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException;
 }

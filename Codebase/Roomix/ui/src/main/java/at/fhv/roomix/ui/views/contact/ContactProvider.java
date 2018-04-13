@@ -39,7 +39,7 @@ public class ContactProvider {
     private ContactProvider() {
         search = new Search<>(search ->
                 ReservationControllerFactory.getInstance()
-                        .getAllContacts(SessionProvider.getSessionId())
+                        .getSearchedContacts(SessionProvider.getSessionId(), search)
                 , this::onError);
         inProcess.or(search.getInProcessProperty());
         contacts = search.getQueryResultSet();

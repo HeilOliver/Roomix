@@ -43,6 +43,7 @@ public class ContactEditViewModel implements ViewModel {
 
     @Inject
     private ResourceBundle resourceBundle;
+
     @InjectScope
     private ContactViewScope scope;
 

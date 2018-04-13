@@ -91,18 +91,19 @@ class ReservationController implements IReservationController {
 
         Collection<ContactPojo> contactPojoSet = getAllContacts(sessionId);
 
-        HashSet<ContactPojo> filteredPojoSet = new HashSet<>();
+        String[] split = query.toLowerCase().split(" ");
 
-        List<ContactPojo> filteredPojo = contactPojoSet.stream()
-                .filter(c -> c.getFname().contains(query) ||
-                        c.getLname().contains(query) ||
-                        c.getStreet().contains(query) ||
-                        c.getPostcode().contains(query) ||
-                        c.getPlace().contains(query))
-                .collect(Collectors.toList());
-        filteredPojoSet.clear();
-        filteredPojoSet.addAll(filteredPojo);
+        Set<ContactPojo> resultSet = new HashSet<>(contactPojoSet);
+        for (String splitedQuery : split) {
+            resultSet = resultSet.stream()
+                    .filter(c -> c.getFname().toLowerCase().contains(splitedQuery) ||
+                            c.getLname().toLowerCase().contains(splitedQuery) ||
+                            c.getStreet().toLowerCase().contains(splitedQuery) ||
+                            c.getPostcode().toLowerCase().contains(splitedQuery) ||
+                            c.getPlace().toLowerCase().contains(splitedQuery))
+                    .collect(Collectors.toSet());
+        }
 
-        return filteredPojoSet;
+        return resultSet;
     }
 }

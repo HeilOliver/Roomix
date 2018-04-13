@@ -70,7 +70,7 @@ public class Search<T> {
         if (toQuery == null)
             toQuery = "";
         try {
-            Thread.sleep(500);
+            Thread.sleep(150);
             synchronized (lock) {
                 nextQuery = toQuery;
             }

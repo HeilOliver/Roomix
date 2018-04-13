@@ -29,6 +29,11 @@ public class ReservationControllerMock implements IReservationController {
     }
 
     @Override
+    public Collection<ContactPojo> getSearchedContacts(long sessionId, String query) throws SessionFaultException {
+        return null;
+    }
+
+    @Override
     public void updateContact(long sessionId, ContactPojo contactPojo)
             throws SessionFaultException, ValidationFault, ArgumentFaultException {
 
