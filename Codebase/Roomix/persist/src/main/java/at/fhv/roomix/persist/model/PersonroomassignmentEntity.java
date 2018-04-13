@@ -1,10 +1,14 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "personroomassignment", schema = "roomix", catalog = "")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Table(name = "PersonRoomAssignment", schema = "roomix", catalog = "")
 public class PersonroomassignmentEntity {
     private int personRoomAssignmentId;
     private int roomAssignment;
@@ -58,6 +62,7 @@ public class PersonroomassignmentEntity {
         return Objects.hash(personRoomAssignmentId, roomAssignment, person);
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "RoomAssignment", referencedColumnName = "RoomAssignmentID", nullable = false)
     public RoomassignmentEntity getRoomassignmentByRoomAssignment() {
@@ -68,6 +73,7 @@ public class PersonroomassignmentEntity {
         this.roomassignmentByRoomAssignment = roomassignmentByRoomAssignment;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "Person", referencedColumnName = "PersonID", nullable = false)
     public PersonEntity getPersonByPerson() {

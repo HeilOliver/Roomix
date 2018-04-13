@@ -1,12 +1,16 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "cancellation", schema = "roomix", catalog = "")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Table(name = "Cancellation", schema = "roomix", catalog = "")
 public class CancellationEntity {
     private int cancellationId;
     private int cancellationCondition;
@@ -72,6 +76,7 @@ public class CancellationEntity {
         return Objects.hash(cancellationId, cancellationCondition, date, description);
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "CancellationCondition", referencedColumnName = "CancellationConditionID", nullable = false)
     public CancellationconditionEntity getCancellationconditionByCancellationCondition() {
@@ -82,6 +87,7 @@ public class CancellationEntity {
         this.cancellationconditionByCancellationCondition = cancellationconditionByCancellationCondition;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "cancellationByCancelation")
     public Collection<ReservationunitEntity> getReservationunitsByCancellationId() {
         return reservationunitsByCancellationId;

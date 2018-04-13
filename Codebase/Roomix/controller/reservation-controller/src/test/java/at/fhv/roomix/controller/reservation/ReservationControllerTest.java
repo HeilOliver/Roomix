@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * Enter Description here
  */
 public class ReservationControllerTest {
-    static GuestDomainBuilderMock mock;
+    private static GuestDomainBuilderMock mock;
 
     @BeforeAll
     static void init() {
@@ -65,6 +65,15 @@ public class ReservationControllerTest {
 
         Collection gettAllTest = new HashSet();
         gettAllTest = controller.getAllContacts(123L);
+        assertTrue(mock.isGetAllBool());
+    }
+
+    @Test
+    void getSearchedContactsValid() throws SessionFaultException {
+        ReservationController controller = new ReservationController();
+
+        Collection gettAllTest = new HashSet();
+        gettAllTest = controller.getSearchedContacts(123L, "test");
         assertTrue(mock.isGetAllBool());
     }
 

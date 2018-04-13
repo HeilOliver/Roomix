@@ -1,11 +1,15 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "facility", schema = "roomix", catalog = "")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Table(name = "Facility", schema = "roomix", catalog = "")
 public class FacilityEntity {
     private int facilityId;
     private String description;
@@ -58,6 +62,7 @@ public class FacilityEntity {
         return Objects.hash(facilityId, description, additionalCharge);
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "facilityByFacility")
     public Collection<RoomfacilityEntity> getRoomfacilitiesByFacilityId() {
         return roomfacilitiesByFacilityId;

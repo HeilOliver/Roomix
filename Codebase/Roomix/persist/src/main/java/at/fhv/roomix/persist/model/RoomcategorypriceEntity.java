@@ -1,10 +1,14 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "roomcategoryprice", schema = "roomix", catalog = "")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Table(name = "RoomCategoryPrice", schema = "roomix", catalog = "")
 public class RoomcategorypriceEntity {
     private int roomCategoryPriceId;
     private int roomCategory;
@@ -106,6 +110,7 @@ public class RoomcategorypriceEntity {
         return Objects.hash(roomCategoryPriceId, roomCategory, season, listPrice, acquisitionPrice, minimumPrice, dayPrice);
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "RoomCategory", referencedColumnName = "RoomCategoryID", nullable = false)
     public RoomcategoryEntity getRoomcategoryByRoomCategory() {
@@ -116,6 +121,7 @@ public class RoomcategorypriceEntity {
         this.roomcategoryByRoomCategory = roomcategoryByRoomCategory;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "Season", referencedColumnName = "SeasonID", nullable = false)
     public SeasonEntity getSeasonBySeason() {

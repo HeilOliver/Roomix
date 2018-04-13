@@ -1,12 +1,16 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "roomassignment", schema = "roomix", catalog = "")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Table(name = "RoomAssignment", schema = "roomix", catalog = "")
 public class RoomassignmentEntity {
     private int roomAssignmentId;
     private Date arrivalDate;
@@ -85,6 +89,7 @@ public class RoomassignmentEntity {
         return Objects.hash(roomAssignmentId, arrivalDate, departureDate, room, reservationUnit);
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "roomassignmentByRoomAssignment")
     public Collection<PersonroomassignmentEntity> getPersonroomassignmentsByRoomAssignmentId() {
         return personroomassignmentsByRoomAssignmentId;
@@ -94,6 +99,7 @@ public class RoomassignmentEntity {
         this.personroomassignmentsByRoomAssignmentId = personroomassignmentsByRoomAssignmentId;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "Room", referencedColumnName = "RoomID", nullable = false)
     public RoomEntity getRoomByRoom() {
@@ -104,6 +110,7 @@ public class RoomassignmentEntity {
         this.roomByRoom = roomByRoom;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "ReservationUnit", referencedColumnName = "ReservationUnitID", nullable = false)
     public ReservationunitEntity getReservationunitByReservationUnit() {

@@ -1,10 +1,14 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Table(name = "Person", schema = "roomix", catalog = "")
 public class PersonEntity {
     private int personId;
@@ -74,6 +78,7 @@ public class PersonEntity {
         return Objects.hash(personId, isVip, archive, contact);
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "Contact", referencedColumnName = "ContactID", nullable = false)
     public ContactEntity getContactByContact() {
@@ -84,6 +89,7 @@ public class PersonEntity {
         this.contactByContact = contactByContact;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "personByPerson")
     public Collection<PersonroomassignmentEntity> getPersonroomassignmentsByPersonId() {
         return personroomassignmentsByPersonId;
@@ -93,6 +99,7 @@ public class PersonEntity {
         this.personroomassignmentsByPersonId = personroomassignmentsByPersonId;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "personByPerson")
     public Collection<ReservationEntity> getReservationsByPersonId() {
         return reservationsByPersonId;
@@ -102,6 +109,7 @@ public class PersonEntity {
         this.reservationsByPersonId = reservationsByPersonId;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "personByTourGroupLeader")
     public Collection<TourgroupEntity> getTourgroupsByPersonId() {
         return tourgroupsByPersonId;
@@ -111,6 +119,7 @@ public class PersonEntity {
         this.tourgroupsByPersonId = tourgroupsByPersonId;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "personByTourGroupMember")
     public Collection<TourgroupmemberEntity> getTourgroupmembersByPersonId() {
         return tourgroupmembersByPersonId;
