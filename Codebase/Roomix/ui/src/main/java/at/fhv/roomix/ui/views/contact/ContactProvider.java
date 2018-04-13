@@ -4,19 +4,18 @@ import at.fhv.roomix.controller.reservation.IReservationController;
 import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
 import at.fhv.roomix.controller.reservation.exeption.FaultException;
 import at.fhv.roomix.controller.reservation.model.ContactPojo;
+import at.fhv.roomix.ui.common.Search;
 import at.fhv.roomix.ui.config.SessionProvider;
 import at.fhv.roomix.ui.views.contact.edit.ContactEditViewModel.ICallable;
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.beans.property.StringProperty;
+import javafx.collections.ObservableSet;
 
-import java.util.Collection;
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.stream.Collectors;
 
 /**
  * Roomix
@@ -29,14 +28,21 @@ import java.util.stream.Collectors;
 public class ContactProvider {
     private static final Object lock = new Object();
     private static ContactProvider instance;
-    private final ObservableList<ContactPojo> contacts = FXCollections.observableArrayList();
+
+    private final ObservableSet<ContactPojo> contacts;
     private ExecutorService executor = Executors.newSingleThreadExecutor();
+
     private BooleanProperty inProcess = new SimpleBooleanProperty();
+    private Search<ContactPojo> search;
+    private ICallable onError;
 
     private ContactProvider() {
-        get(() -> {
-        }, () -> {
-        }, "");
+        search = new Search<>(search ->
+                ReservationControllerFactory.getInstance()
+                        .getAllContacts(SessionProvider.getSessionId())
+                , this::onError);
+        inProcess.or(search.getInProcessProperty());
+        contacts = search.getQueryResultSet();
     }
 
     public static ContactProvider getInstance() {
@@ -49,42 +55,24 @@ public class ContactProvider {
         return instance;
     }
 
-    public void get(ICallable successCallback,
-                    ICallable errorCallback, String query) {
-
-        IReservationController instance = ReservationControllerFactory.getInstance();
-        executor.submit(() -> {
-            Platform.runLater(() -> inProcess.setValue(true));
-            try {
-                Collection<ContactPojo> loadedContacts
-                        = instance.getAllContacts(SessionProvider.getSessionId());
-                List<ContactPojo> filteredPojo = loadedContacts.stream()
-                        .filter(c -> c.getFname().contains(query) ||
-                                c.getLname().contains(query) ||
-                                c.getStreet().contains(query) ||
-                                c.getPostcode().contains(query) ||
-                                c.getPlace().contains(query))
-                        .collect(Collectors.toList());
-                Platform.runLater(() -> {
-                    contacts.clear();
-                    contacts.addAll(filteredPojo);
-                });
-                if (successCallback != null)
-                    Platform.runLater(successCallback::call);
-            } catch (FaultException e) {
-                if (successCallback != null)
-                    Platform.runLater(errorCallback::call);
-            } finally {
-                Platform.runLater(() -> inProcess.setValue(false));
-            }
-        });
+    private void onError() {
+        if (onError == null) return;
+        onError.call();
     }
 
-    public BooleanProperty inProcessProperty() {
+    public void setErrorCallback(ICallable onError) {
+        this.onError = onError;
+    }
+
+    public StringProperty searchQuery() {
+        return search.currentQueryProperty();
+    }
+
+    public ReadOnlyBooleanProperty inProcessProperty() {
         return inProcess;
     }
 
-    public ObservableList<ContactPojo> getContacts() {
+    public ObservableSet<ContactPojo> getContacts() {
         return contacts;
     }
 

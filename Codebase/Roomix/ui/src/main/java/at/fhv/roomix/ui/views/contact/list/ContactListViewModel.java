@@ -11,6 +11,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.collections.SetChangeListener;
 
 import javax.inject.Singleton;
 
@@ -49,7 +50,7 @@ public class ContactListViewModel implements ViewModel {
         }));
 
         ContactProvider.getInstance().getContacts().addListener(
-                (ListChangeListener<ContactPojo>) c -> loadData());
+                (SetChangeListener<ContactPojo>) c -> loadData());
 
         loadData();
     }
@@ -57,7 +58,9 @@ public class ContactListViewModel implements ViewModel {
     private void loadData() {
         contacts.clear();
         ContactProvider.getInstance().getContacts()
-                .forEach(contactPojo -> contacts.add(new ContactListTableModel(contactPojo)));
+                .forEach(contactPojo
+                        -> contacts.add(new ContactListTableModel(
+                                contactPojo)));
     }
 
     public ObservableList<ContactListTableModel> getContacts() {
