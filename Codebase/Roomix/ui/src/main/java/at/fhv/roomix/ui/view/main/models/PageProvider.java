@@ -2,6 +2,8 @@ package at.fhv.roomix.ui.view.main.models;
 
 
 import at.fhv.roomix.ui.dataprovider.LoginProvider;
+import at.fhv.roomix.ui.view.about.AboutPage;
+import at.fhv.roomix.ui.view.dashboard.DashBoardPage;
 import at.fhv.roomix.ui.view.login.LoginPage;
 import at.fhv.roomix.ui.view.login.LoginView;
 import de.saxsys.mvvmfx.FluentViewLoader;
@@ -21,10 +23,13 @@ public class PageProvider {
     private static final ObservableList<SwitchablePage> bottomItem;
 
     static {
-        topItem = FXCollections.observableArrayList();
+        topItem = FXCollections.observableArrayList(
+                new DashBoardPage().getPage()
+        );
 
         bottomItem = FXCollections.observableArrayList(
-                new LoginPage().getPage()
+                new LoginPage().getPage(),
+                new AboutPage().getPage()
         );
     }
 

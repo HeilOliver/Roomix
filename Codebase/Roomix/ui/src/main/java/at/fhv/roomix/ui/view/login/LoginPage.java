@@ -1,5 +1,6 @@
 package at.fhv.roomix.ui.view.login;
 
+import at.fhv.roomix.ui.common.AbstractPage;
 import at.fhv.roomix.ui.dataprovider.LoginProvider;
 import at.fhv.roomix.ui.view.main.models.SwitchablePage;
 
@@ -11,13 +12,12 @@ import at.fhv.roomix.ui.view.main.models.SwitchablePage;
  * <p>
  * Enter Description here
  */
-public class LoginPage {
+public class LoginPage extends AbstractPage {
     private static final String DEFAULT_TAG = "Anmelden";
-    private static final String DEFAULT_HEADER = "Anmelden";
-    private final SwitchablePage page;
+    private static final String DEFAULT_GLYPH = "USER";
 
     public LoginPage() {
-        page = new SwitchablePage(DEFAULT_TAG, "USER", LoginView.class);
+        super(new SwitchablePage(DEFAULT_TAG, DEFAULT_GLYPH, LoginView.class));
 
         LoginProvider.currentSessionProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue == null) {
@@ -28,7 +28,4 @@ public class LoginPage {
         });
     }
 
-    public SwitchablePage getPage() {
-        return page;
-    }
 }
