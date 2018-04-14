@@ -2,6 +2,7 @@ package at.fhv.roomix.ui.view.main.models;
 
 
 import at.fhv.roomix.ui.dataprovider.LoginProvider;
+import at.fhv.roomix.ui.view.login.LoginPage;
 import at.fhv.roomix.ui.view.login.LoginView;
 import de.saxsys.mvvmfx.FluentViewLoader;
 import javafx.collections.FXCollections;
@@ -23,7 +24,7 @@ public class PageProvider {
         topItem = FXCollections.observableArrayList();
 
         bottomItem = FXCollections.observableArrayList(
-                new SwitchablePage("sdas", "dsds", LoginView.class)
+                new LoginPage().getPage()
         );
     }
 

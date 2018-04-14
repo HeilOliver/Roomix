@@ -9,7 +9,8 @@
             xmlns="http://javafx.com/javafx/8.0.121" fx:controller="at.fhv.roomix.ui.view.main.MainView">
     <GridPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
         <columnConstraints>
-            <ColumnConstraints minWidth="45"/>
+            <ColumnConstraints minWidth="45" maxWidth="45"/>
+            <ColumnConstraints minWidth="0"/>
             <ColumnConstraints/>
         </columnConstraints>
         <rowConstraints>
@@ -22,7 +23,7 @@
                                  AnchorPane.topAnchor="12"/>
         </AnchorPane>
 
-        <GridPane style="-fx-background-color: #3a3633" GridPane.columnIndex="0" GridPane.fillHeight="true"
+        <GridPane style="-fx-background-color: #3a3633" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.fillHeight="true"
                   GridPane.halignment="LEFT" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
             <rowConstraints>
                 <RowConstraints minHeight="10"/>
@@ -39,12 +40,14 @@
                   GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
             </VBox>
         </GridPane>
-        <AnchorPane fx:id="contentPane" GridPane.columnIndex="1" GridPane.fillHeight="true" GridPane.fillWidth="true"
+        <AnchorPane fx:id="contentPane" GridPane.columnIndex="2" GridPane.fillHeight="true" GridPane.fillWidth="true"
                     GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS"/>
 
-        <AnchorPane style="-fx-background-color: #3a3633" GridPane.columnIndex="1" GridPane.fillHeight="true"
+        <AnchorPane style="-fx-background-color: #3a3633" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.fillHeight="true"
                     GridPane.fillWidth="true" GridPane.rowIndex="0">
-            <Label fx:id="lbl_header" styleClass="header" text="Sample" AnchorPane.leftAnchor="0"/>
+            <Label fx:id="lbl_header" styleClass="header" text="Sample"
+                   AnchorPane.leftAnchor="5" AnchorPane.bottomAnchor="0" AnchorPane.topAnchor="0"/>
+
             <ImageView fitHeight="60" fitWidth="150" preserveRatio="true" AnchorPane.rightAnchor="10.0"
                        AnchorPane.topAnchor="5">
                 <Image backgroundLoading="true" url="/assets/roomix_logoWhite.png"/>
