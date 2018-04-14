@@ -1,0 +1,53 @@
+.header {
+    -fx-text-fill: white;
+    -fx-font-size: 24;
+    -fx-font-family: 'Helvetica', Arial, sans-serif;
+}
+
+.itemTag {
+    -fx-text-fill: white;
+    -fx-font-size: 19;
+    -fx-font-family: 'Helvetica', Arial, sans-serif;
+}
+
+.itemGlyph {
+    -fx-text-fill: -icons-color;
+    -icons-color: white;
+    -fx-fill: white;
+}
+
+.menuOpenIcon {
+    -fx-text-fill: -icons-color;
+    -icons-color: white;
+    -fx-fill: white;
+}
+
+.menuItem:hover {
+    -fx-background-color: #8e6016;
+    -fx-scale-y: 1.1;
+}
+
+.sideBarSelected {
+    -fx-stroke-width: 1;
+    -fx-background-color: #e29d30;
+}
+
+.menuItem:pressed {
+    -fx-scale-y: 0.9;
+    -fx-scale-x: 0.9;
+}
+
+
+.menuOpenPane {
+    -fx-background-color: #3a3633;
+}
+
+.menuOpenPane:hover {
+    -fx-background-color: #2e2a27;
+    -fx-scale-y: 1.1;
+}
+
+.menuOpenPane:pressed {
+    -fx-scale-y: 0.9;
+    -fx-scale-x: 0.9;
+}
