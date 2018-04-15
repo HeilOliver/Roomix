@@ -9,20 +9,25 @@ import java.util.Objects;
 @Entity
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@Table(name = "InvoicePosition", schema = "roomix", catalog = "")
-public class InvoicepositionEntity {
+@Table(name = "InvoicePosition", schema = "Roomix", catalog = "")
+public class InvoicePositionEntity {
     private int invoicePositionId;
     private int reservation;
     private int reservationUnit;
     private Integer invoice;
     private Integer roomAssignment;
-    private Integer hotelService;
+    private Integer article;
+    private Integer arrangement;
+    private String freePosition;
     private int amount;
-    private Timestamp dateOfIssue;
+    private Timestamp determinationDate;
     private int count;
     private ReservationEntity reservationByReservation;
-    private ReservationunitEntity reservationunitByReservationUnit;
+    private ReservationUnitEntity reservationUnitByReservationUnit;
     private InvoiceEntity invoiceByInvoice;
+    private RoomAssignmentEntity roomAssignmentByRoomAssignment;
+    private ArticleEntity articleByArticle;
+    private ArrangementEntity arrangementByArrangement;
 
     @Id
     @Column(name = "InvoicePositionID")
@@ -65,7 +70,7 @@ public class InvoicepositionEntity {
     }
 
     @Basic
-    @Column(name = "RoomAssignment")
+    @Column(name = "RoomAssignment", insertable = false, updatable = false)
     public Integer getRoomAssignment() {
         return roomAssignment;
     }
@@ -75,13 +80,33 @@ public class InvoicepositionEntity {
     }
 
     @Basic
-    @Column(name = "HotelService")
-    public Integer getHotelService() {
-        return hotelService;
+    @Column(name = "Article", insertable = false, updatable = false)
+    public Integer getArticle() {
+        return article;
     }
 
-    public void setHotelService(Integer hotelService) {
-        this.hotelService = hotelService;
+    public void setArticle(Integer article) {
+        this.article = article;
+    }
+
+    @Basic
+    @Column(name = "Arrangement", insertable = false, updatable = false)
+    public Integer getArrangement() {
+        return arrangement;
+    }
+
+    public void setArrangement(Integer arrangement) {
+        this.arrangement = arrangement;
+    }
+
+    @Basic
+    @Column(name = "FreePosition")
+    public String getFreePosition() {
+        return freePosition;
+    }
+
+    public void setFreePosition(String freePosition) {
+        this.freePosition = freePosition;
     }
 
     @Basic
@@ -95,13 +120,13 @@ public class InvoicepositionEntity {
     }
 
     @Basic
-    @Column(name = "DateOfIssue")
-    public Timestamp getDateOfIssue() {
-        return dateOfIssue;
+    @Column(name = "DeterminationDate")
+    public Timestamp getDeterminationDate() {
+        return determinationDate;
     }
 
-    public void setDateOfIssue(Timestamp dateOfIssue) {
-        this.dateOfIssue = dateOfIssue;
+    public void setDeterminationDate(Timestamp determinationDate) {
+        this.determinationDate = determinationDate;
     }
 
     @Basic
@@ -118,7 +143,7 @@ public class InvoicepositionEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        InvoicepositionEntity that = (InvoicepositionEntity) o;
+        InvoicePositionEntity that = (InvoicePositionEntity) o;
         return invoicePositionId == that.invoicePositionId &&
                 reservation == that.reservation &&
                 reservationUnit == that.reservationUnit &&
@@ -126,17 +151,18 @@ public class InvoicepositionEntity {
                 count == that.count &&
                 Objects.equals(invoice, that.invoice) &&
                 Objects.equals(roomAssignment, that.roomAssignment) &&
-                Objects.equals(hotelService, that.hotelService) &&
-                Objects.equals(dateOfIssue, that.dateOfIssue);
+                Objects.equals(article, that.article) &&
+                Objects.equals(arrangement, that.arrangement) &&
+                Objects.equals(freePosition, that.freePosition) &&
+                Objects.equals(determinationDate, that.determinationDate);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(invoicePositionId, reservation, reservationUnit, invoice, roomAssignment, hotelService, amount, dateOfIssue, count);
+        return Objects.hash(invoicePositionId, reservation, reservationUnit, invoice, roomAssignment, article, arrangement, freePosition, amount, determinationDate, count);
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "Reservation", referencedColumnName = "ReservationID", nullable = false)
     public ReservationEntity getReservationByReservation() {
@@ -147,18 +173,16 @@ public class InvoicepositionEntity {
         this.reservationByReservation = reservationByReservation;
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "ReservationUnit", referencedColumnName = "ReservationUnitID", nullable = false)
-    public ReservationunitEntity getReservationunitByReservationUnit() {
-        return reservationunitByReservationUnit;
+    public ReservationUnitEntity getReservationUnitByReservationUnit() {
+        return reservationUnitByReservationUnit;
     }
 
-    public void setReservationunitByReservationUnit(ReservationunitEntity reservationunitByReservationUnit) {
-        this.reservationunitByReservationUnit = reservationunitByReservationUnit;
+    public void setReservationUnitByReservationUnit(ReservationUnitEntity reservationUnitByReservationUnit) {
+        this.reservationUnitByReservationUnit = reservationUnitByReservationUnit;
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "Invoice", referencedColumnName = "InvoiceID")
     public InvoiceEntity getInvoiceByInvoice() {
@@ -167,5 +191,35 @@ public class InvoicepositionEntity {
 
     public void setInvoiceByInvoice(InvoiceEntity invoiceByInvoice) {
         this.invoiceByInvoice = invoiceByInvoice;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "RoomAssignment", referencedColumnName = "RoomAssignmentID")
+    public RoomAssignmentEntity getRoomAssignmentByRoomAssignment() {
+        return roomAssignmentByRoomAssignment;
+    }
+
+    public void setRoomAssignmentByRoomAssignment(RoomAssignmentEntity roomAssignmentByRoomAssignment) {
+        this.roomAssignmentByRoomAssignment = roomAssignmentByRoomAssignment;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "Article", referencedColumnName = "ArticleID")
+    public ArticleEntity getArticleByArticle() {
+        return articleByArticle;
+    }
+
+    public void setArticleByArticle(ArticleEntity articleByArticle) {
+        this.articleByArticle = articleByArticle;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "Arrangement", referencedColumnName = "ArrangementID")
+    public ArrangementEntity getArrangementByArrangement() {
+        return arrangementByArrangement;
+    }
+
+    public void setArrangementByArrangement(ArrangementEntity arrangementByArrangement) {
+        this.arrangementByArrangement = arrangementByArrangement;
     }
 }

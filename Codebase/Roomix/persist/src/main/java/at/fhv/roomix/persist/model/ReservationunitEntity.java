@@ -4,29 +4,30 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Time;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@Table(name = "ReservationUnit", schema = "roomix", catalog = "")
-public class ReservationunitEntity {
+@Table(name = "ReservationUnit", schema = "Roomix", catalog = "")
+public class ReservationUnitEntity {
     private int reservationUnitId;
     private int reservation;
     private int roomCategory;
-    private Integer cancelation;
-    private Integer arrangement;
+    private Integer reservationOption;
+    private Integer amountOfRooms;
+    private Integer cancellation;
+    private Time arrivalTime;
     private Date startDate;
     private Date endDate;
-
-    private Collection<InvoicepositionEntity> invoicepositionsByReservationUnitId;
-
+    private Collection<InvoicePositionEntity> invoicePositionsByReservationUnitId;
     private ReservationEntity reservationByReservation;
-    private RoomcategoryEntity roomcategoryByRoomCategory;
-    private CancellationEntity cancellationByCancelation;
-    private ArrangementEntity arrangementByArrangement;
-    private Collection<RoomassignmentEntity> roomassignmentsByReservationUnitId;
+    private RoomCategoryEntity roomCategoryByRoomCategory;
+    private ReservationOptionEntity reservationOptionByReservationOption;
+    private CancellationEntity cancellationByCancellation;
+    private Collection<RoomAssignmentEntity> roomAssignmentsByReservationUnitId;
 
     @Id
     @Column(name = "ReservationUnitID")
@@ -59,23 +60,43 @@ public class ReservationunitEntity {
     }
 
     @Basic
-    @Column(name = "Cancelation", insertable = false, updatable = false)
-    public Integer getCancelation() {
-        return cancelation;
+    @Column(name = "ReservationOption", insertable = false, updatable = false)
+    public Integer getReservationOption() {
+        return reservationOption;
     }
 
-    public void setCancelation(Integer cancelation) {
-        this.cancelation = cancelation;
+    public void setReservationOption(Integer reservationOption) {
+        this.reservationOption = reservationOption;
     }
 
     @Basic
-    @Column(name = "Arrangement", insertable = false, updatable = false)
-    public Integer getArrangement() {
-        return arrangement;
+    @Column(name = "AmountOfRooms")
+    public Integer getAmountOfRooms() {
+        return amountOfRooms;
     }
 
-    public void setArrangement(Integer arrangement) {
-        this.arrangement = arrangement;
+    public void setAmountOfRooms(Integer amountOfRooms) {
+        this.amountOfRooms = amountOfRooms;
+    }
+
+    @Basic
+    @Column(name = "Cancellation", insertable = false, updatable = false)
+    public Integer getCancellation() {
+        return cancellation;
+    }
+
+    public void setCancellation(Integer cancellation) {
+        this.cancellation = cancellation;
+    }
+
+    @Basic
+    @Column(name = "ArrivalTime")
+    public Time getArrivalTime() {
+        return arrivalTime;
+    }
+
+    public void setArrivalTime(Time arrivalTime) {
+        this.arrivalTime = arrivalTime;
     }
 
     @Basic
@@ -102,12 +123,14 @@ public class ReservationunitEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ReservationunitEntity that = (ReservationunitEntity) o;
+        ReservationUnitEntity that = (ReservationUnitEntity) o;
         return reservationUnitId == that.reservationUnitId &&
                 reservation == that.reservation &&
                 roomCategory == that.roomCategory &&
-                Objects.equals(cancelation, that.cancelation) &&
-                Objects.equals(arrangement, that.arrangement) &&
+                Objects.equals(reservationOption, that.reservationOption) &&
+                Objects.equals(amountOfRooms, that.amountOfRooms) &&
+                Objects.equals(cancellation, that.cancellation) &&
+                Objects.equals(arrivalTime, that.arrivalTime) &&
                 Objects.equals(startDate, that.startDate) &&
                 Objects.equals(endDate, that.endDate);
     }
@@ -115,20 +138,19 @@ public class ReservationunitEntity {
     @Override
     public int hashCode() {
 
-        return Objects.hash(reservationUnitId, reservation, roomCategory, cancelation, arrangement, startDate, endDate);
+        return Objects.hash(reservationUnitId, reservation, roomCategory, reservationOption, amountOfRooms, cancellation, arrivalTime, startDate, endDate);
     }
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @OneToMany(mappedBy = "reservationunitByReservationUnit")
-    public Collection<InvoicepositionEntity> getInvoicepositionsByReservationUnitId() {
-        return invoicepositionsByReservationUnitId;
+    @OneToMany(mappedBy = "reservationUnitByReservationUnit")
+    public Collection<InvoicePositionEntity> getInvoicePositionsByReservationUnitId() {
+        return invoicePositionsByReservationUnitId;
     }
 
-    public void setInvoicepositionsByReservationUnitId(Collection<InvoicepositionEntity> invoicepositionsByReservationUnitId) {
-        this.invoicepositionsByReservationUnitId = invoicepositionsByReservationUnitId;
+    public void setInvoicePositionsByReservationUnitId(Collection<InvoicePositionEntity> invoicePositionsByReservationUnitId) {
+        this.invoicePositionsByReservationUnitId = invoicePositionsByReservationUnitId;
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "Reservation", referencedColumnName = "ReservationID", nullable = false)
     public ReservationEntity getReservationByReservation() {
@@ -139,46 +161,43 @@ public class ReservationunitEntity {
         this.reservationByReservation = reservationByReservation;
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "RoomCategory", referencedColumnName = "RoomCategoryID", nullable = false)
-    public RoomcategoryEntity getRoomcategoryByRoomCategory() {
-        return roomcategoryByRoomCategory;
+    public RoomCategoryEntity getRoomCategoryByRoomCategory() {
+        return roomCategoryByRoomCategory;
     }
 
-    public void setRoomcategoryByRoomCategory(RoomcategoryEntity roomcategoryByRoomCategory) {
-        this.roomcategoryByRoomCategory = roomcategoryByRoomCategory;
+    public void setRoomCategoryByRoomCategory(RoomCategoryEntity roomCategoryByRoomCategory) {
+        this.roomCategoryByRoomCategory = roomCategoryByRoomCategory;
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
-    @JoinColumn(name = "Cancelation", referencedColumnName = "CancellationID")
-    public CancellationEntity getCancellationByCancelation() {
-        return cancellationByCancelation;
+    @JoinColumn(name = "ReservationOption", referencedColumnName = "OptionID")
+    public ReservationOptionEntity getReservationOptionByReservationOption() {
+        return reservationOptionByReservationOption;
     }
 
-    public void setCancellationByCancelation(CancellationEntity cancellationByCancelation) {
-        this.cancellationByCancelation = cancellationByCancelation;
+    public void setReservationOptionByReservationOption(ReservationOptionEntity reservationOptionByReservationOption) {
+        this.reservationOptionByReservationOption = reservationOptionByReservationOption;
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
-    @JoinColumn(name = "Arrangement", referencedColumnName = "ArrangementID")
-    public ArrangementEntity getArrangementByArrangement() {
-        return arrangementByArrangement;
+    @JoinColumn(name = "Cancellation", referencedColumnName = "CancellationID")
+    public CancellationEntity getCancellationByCancellation() {
+        return cancellationByCancellation;
     }
 
-    public void setArrangementByArrangement(ArrangementEntity arrangementByArrangement) {
-        this.arrangementByArrangement = arrangementByArrangement;
+    public void setCancellationByCancellation(CancellationEntity cancellationByCancellation) {
+        this.cancellationByCancellation = cancellationByCancellation;
     }
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @OneToMany(mappedBy = "reservationunitByReservationUnit")
-    public Collection<RoomassignmentEntity> getRoomassignmentsByReservationUnitId() {
-        return roomassignmentsByReservationUnitId;
+    @OneToMany(mappedBy = "reservationUnitByReservationUnit")
+    public Collection<RoomAssignmentEntity> getRoomAssignmentsByReservationUnitId() {
+        return roomAssignmentsByReservationUnitId;
     }
 
-    public void setRoomassignmentsByReservationUnitId(Collection<RoomassignmentEntity> roomassignmentsByReservationUnitId) {
-        this.roomassignmentsByReservationUnitId = roomassignmentsByReservationUnitId;
+    public void setRoomAssignmentsByReservationUnitId(Collection<RoomAssignmentEntity> roomAssignmentsByReservationUnitId) {
+        this.roomAssignmentsByReservationUnitId = roomAssignmentsByReservationUnitId;
     }
 }

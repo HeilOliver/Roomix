@@ -9,13 +9,14 @@ import java.util.Objects;
 @Entity
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@Table(name = "RoomCategory", schema = "roomix", catalog = "")
-public class RoomcategoryEntity {
+@Table(name = "RoomCategory", schema = "Roomix", catalog = "")
+public class RoomCategoryEntity {
     private int roomCategoryId;
     private String categoryDescription;
-    private Collection<ReservationunitEntity> reservationunitsByRoomCategoryId;
+    private Collection<PartnerAgreementEntity> partnerAgreementsByRoomCategoryId;
+    private Collection<ReservationUnitEntity> reservationUnitsByRoomCategoryId;
     private Collection<RoomEntity> roomsByRoomCategoryId;
-    private Collection<RoomcategorypriceEntity> roomcategorypricesByRoomCategoryId;
+    private Collection<RoomCategoryPriceEntity> roomCategoryPricesByRoomCategoryId;
 
     @Id
     @Column(name = "RoomCategoryID")
@@ -41,7 +42,7 @@ public class RoomcategoryEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RoomcategoryEntity that = (RoomcategoryEntity) o;
+        RoomCategoryEntity that = (RoomCategoryEntity) o;
         return roomCategoryId == that.roomCategoryId &&
                 Objects.equals(categoryDescription, that.categoryDescription);
     }
@@ -53,17 +54,27 @@ public class RoomcategoryEntity {
     }
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @OneToMany(mappedBy = "roomcategoryByRoomCategory")
-    public Collection<ReservationunitEntity> getReservationunitsByRoomCategoryId() {
-        return reservationunitsByRoomCategoryId;
+    @OneToMany(mappedBy = "roomCategoryByRoomCategory")
+    public Collection<PartnerAgreementEntity> getPartnerAgreementsByRoomCategoryId() {
+        return partnerAgreementsByRoomCategoryId;
     }
 
-    public void setReservationunitsByRoomCategoryId(Collection<ReservationunitEntity> reservationunitsByRoomCategoryId) {
-        this.reservationunitsByRoomCategoryId = reservationunitsByRoomCategoryId;
+    public void setPartnerAgreementsByRoomCategoryId(Collection<PartnerAgreementEntity> partnerAgreementsByRoomCategoryId) {
+        this.partnerAgreementsByRoomCategoryId = partnerAgreementsByRoomCategoryId;
     }
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @OneToMany(mappedBy = "roomcategoryByRoomCategory")
+    @OneToMany(mappedBy = "roomCategoryByRoomCategory")
+    public Collection<ReservationUnitEntity> getReservationUnitsByRoomCategoryId() {
+        return reservationUnitsByRoomCategoryId;
+    }
+
+    public void setReservationUnitsByRoomCategoryId(Collection<ReservationUnitEntity> reservationUnitsByRoomCategoryId) {
+        this.reservationUnitsByRoomCategoryId = reservationUnitsByRoomCategoryId;
+    }
+
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @OneToMany(mappedBy = "roomCategoryByRoomCategory")
     public Collection<RoomEntity> getRoomsByRoomCategoryId() {
         return roomsByRoomCategoryId;
     }
@@ -73,12 +84,12 @@ public class RoomcategoryEntity {
     }
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @OneToMany(mappedBy = "roomcategoryByRoomCategory")
-    public Collection<RoomcategorypriceEntity> getRoomcategorypricesByRoomCategoryId() {
-        return roomcategorypricesByRoomCategoryId;
+    @OneToMany(mappedBy = "roomCategoryByRoomCategory")
+    public Collection<RoomCategoryPriceEntity> getRoomCategoryPricesByRoomCategoryId() {
+        return roomCategoryPricesByRoomCategoryId;
     }
 
-    public void setRoomcategorypricesByRoomCategoryId(Collection<RoomcategorypriceEntity> roomcategorypricesByRoomCategoryId) {
-        this.roomcategorypricesByRoomCategoryId = roomcategorypricesByRoomCategoryId;
+    public void setRoomCategoryPricesByRoomCategoryId(Collection<RoomCategoryPriceEntity> roomCategoryPricesByRoomCategoryId) {
+        this.roomCategoryPricesByRoomCategoryId = roomCategoryPricesByRoomCategoryId;
     }
 }

@@ -4,7 +4,6 @@ import java.sql.Date;
 
 public class ReservationOptionDomain {
     private int optionId;
-    private int reservation;
     private Date optionDueDate;
     private String optionDescription;
     private byte optionStatus;
@@ -15,14 +14,6 @@ public class ReservationOptionDomain {
 
     public void setOptionId(int optionId) {
         this.optionId = optionId;
-    }
-
-    public int getReservation() {
-        return reservation;
-    }
-
-    public void setReservation(int reservation) {
-        this.reservation = reservation;
     }
 
     public Date getOptionDueDate() {

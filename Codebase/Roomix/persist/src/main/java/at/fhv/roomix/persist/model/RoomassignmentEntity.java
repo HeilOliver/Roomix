@@ -10,16 +10,17 @@ import java.util.Objects;
 @Entity
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@Table(name = "RoomAssignment", schema = "roomix", catalog = "")
-public class RoomassignmentEntity {
+@Table(name = "RoomAssignment", schema = "Roomix", catalog = "")
+public class RoomAssignmentEntity {
     private int roomAssignmentId;
     private Date arrivalDate;
     private Date departureDate;
     private int room;
     private int reservationUnit;
-    private Collection<PersonroomassignmentEntity> personroomassignmentsByRoomAssignmentId;
+    private Collection<InvoicePositionEntity> invoicePositionsByRoomAssignmentId;
+    private Collection<PersonRoomAssignmentEntity> personRoomAssignmentsByRoomAssignmentId;
     private RoomEntity roomByRoom;
-    private ReservationunitEntity reservationunitByReservationUnit;
+    private ReservationUnitEntity reservationUnitByReservationUnit;
 
     @Id
     @Column(name = "RoomAssignmentID")
@@ -75,7 +76,7 @@ public class RoomassignmentEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RoomassignmentEntity that = (RoomassignmentEntity) o;
+        RoomAssignmentEntity that = (RoomAssignmentEntity) o;
         return roomAssignmentId == that.roomAssignmentId &&
                 room == that.room &&
                 reservationUnit == that.reservationUnit &&
@@ -90,16 +91,25 @@ public class RoomassignmentEntity {
     }
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @OneToMany(mappedBy = "roomassignmentByRoomAssignment")
-    public Collection<PersonroomassignmentEntity> getPersonroomassignmentsByRoomAssignmentId() {
-        return personroomassignmentsByRoomAssignmentId;
+    @OneToMany(mappedBy = "roomAssignmentByRoomAssignment")
+    public Collection<InvoicePositionEntity> getInvoicePositionsByRoomAssignmentId() {
+        return invoicePositionsByRoomAssignmentId;
     }
 
-    public void setPersonroomassignmentsByRoomAssignmentId(Collection<PersonroomassignmentEntity> personroomassignmentsByRoomAssignmentId) {
-        this.personroomassignmentsByRoomAssignmentId = personroomassignmentsByRoomAssignmentId;
+    public void setInvoicePositionsByRoomAssignmentId(Collection<InvoicePositionEntity> invoicePositionsByRoomAssignmentId) {
+        this.invoicePositionsByRoomAssignmentId = invoicePositionsByRoomAssignmentId;
     }
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @OneToMany(mappedBy = "roomAssignmentByRoomAssignment")
+    public Collection<PersonRoomAssignmentEntity> getPersonRoomAssignmentsByRoomAssignmentId() {
+        return personRoomAssignmentsByRoomAssignmentId;
+    }
+
+    public void setPersonRoomAssignmentsByRoomAssignmentId(Collection<PersonRoomAssignmentEntity> personRoomAssignmentsByRoomAssignmentId) {
+        this.personRoomAssignmentsByRoomAssignmentId = personRoomAssignmentsByRoomAssignmentId;
+    }
+
     @ManyToOne
     @JoinColumn(name = "Room", referencedColumnName = "RoomID", nullable = false)
     public RoomEntity getRoomByRoom() {
@@ -110,14 +120,13 @@ public class RoomassignmentEntity {
         this.roomByRoom = roomByRoom;
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "ReservationUnit", referencedColumnName = "ReservationUnitID", nullable = false)
-    public ReservationunitEntity getReservationunitByReservationUnit() {
-        return reservationunitByReservationUnit;
+    public ReservationUnitEntity getReservationUnitByReservationUnit() {
+        return reservationUnitByReservationUnit;
     }
 
-    public void setReservationunitByReservationUnit(ReservationunitEntity reservationunitByReservationUnit) {
-        this.reservationunitByReservationUnit = reservationunitByReservationUnit;
+    public void setReservationUnitByReservationUnit(ReservationUnitEntity reservationUnitByReservationUnit) {
+        this.reservationUnitByReservationUnit = reservationUnitByReservationUnit;
     }
 }

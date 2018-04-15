@@ -9,12 +9,12 @@ import java.util.Objects;
 @Entity
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@Table(name = "Facility", schema = "roomix", catalog = "")
+@Table(name = "Facility", schema = "Roomix", catalog = "")
 public class FacilityEntity {
     private int facilityId;
     private String description;
     private int additionalCharge;
-    private Collection<RoomfacilityEntity> roomfacilitiesByFacilityId;
+    private Collection<RoomFacilityEntity> roomFacilitiesByFacilityId;
 
     @Id
     @Column(name = "FacilityID")
@@ -64,11 +64,11 @@ public class FacilityEntity {
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "facilityByFacility")
-    public Collection<RoomfacilityEntity> getRoomfacilitiesByFacilityId() {
-        return roomfacilitiesByFacilityId;
+    public Collection<RoomFacilityEntity> getRoomFacilitiesByFacilityId() {
+        return roomFacilitiesByFacilityId;
     }
 
-    public void setRoomfacilitiesByFacilityId(Collection<RoomfacilityEntity> roomfacilitiesByFacilityId) {
-        this.roomfacilitiesByFacilityId = roomfacilitiesByFacilityId;
+    public void setRoomFacilitiesByFacilityId(Collection<RoomFacilityEntity> roomFacilitiesByFacilityId) {
+        this.roomFacilitiesByFacilityId = roomFacilitiesByFacilityId;
     }
 }

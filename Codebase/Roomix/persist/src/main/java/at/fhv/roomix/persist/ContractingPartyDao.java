@@ -1,12 +1,12 @@
 package at.fhv.roomix.persist;
 
-import at.fhv.roomix.persist.model.ContractingpartyEntity;
+import at.fhv.roomix.persist.model.ContractingPartyEntity;
 import org.hibernate.HibernateException;
 
-public class ContractingPartyDao extends AbstractDao<ContractingpartyEntity, Integer> {
+public class ContractingPartyDao extends AbstractDao<ContractingPartyEntity, Integer> {
 
     ContractingPartyDao() {
-        super(ContractingpartyEntity.class);
+        super(ContractingPartyEntity.class);
     }
 
     public ContractingPartyDao getInstance() {
@@ -14,10 +14,10 @@ public class ContractingPartyDao extends AbstractDao<ContractingpartyEntity, Int
     }
 
     @Override
-    protected void internalSave(ContractingpartyEntity entity) throws HibernateException {
+    protected void internalSave(ContractingPartyEntity entity) throws HibernateException {
         session.beginTransaction();
         session.saveOrUpdate(entity.getContactByContact());
-        session.saveOrUpdate(entity.getPartneragreementsByContractingPartyId());
+        session.saveOrUpdate(entity.getPartnerAgreementsByContractingPartyId());
         session.saveOrUpdate(entity.getReservationsByContractingPartyId());
         session.save(entity);
         session.getTransaction().commit();

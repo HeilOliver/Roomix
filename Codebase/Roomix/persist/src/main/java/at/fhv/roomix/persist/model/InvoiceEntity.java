@@ -10,17 +10,14 @@ import java.util.Objects;
 @Entity
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@Table(name = "Invoice", schema = "roomix", catalog = "")
+@Table(name = "Invoice", schema = "Roomix", catalog = "")
 public class InvoiceEntity {
     private int invoiceId;
-    private String name;
-    private String street;
-    private String place;
-    private String postcode;
-    private String country;
-    private Timestamp dateOfIssue;
+    private int contact;
+    private Timestamp determinationDate;
     private String status;
-    private Collection<InvoicepositionEntity> invoicepositionsByInvoiceId;
+    private ContactEntity contactByContact;
+    private Collection<InvoicePositionEntity> invoicePositionsByInvoiceId;
     private Collection<PaymentEntity> paymentsByInvoiceId;
 
     @Id
@@ -34,63 +31,23 @@ public class InvoiceEntity {
     }
 
     @Basic
-    @Column(name = "Name")
-    public String getName() {
-        return name;
+    @Column(name = "Contact", insertable = false, updatable = false)
+    public int getContact() {
+        return contact;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Basic
-    @Column(name = "Street")
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
+    public void setContact(int contact) {
+        this.contact = contact;
     }
 
     @Basic
-    @Column(name = "Place")
-    public String getPlace() {
-        return place;
+    @Column(name = "DeterminationDate")
+    public Timestamp getDeterminationDate() {
+        return determinationDate;
     }
 
-    public void setPlace(String place) {
-        this.place = place;
-    }
-
-    @Basic
-    @Column(name = "Postcode")
-    public String getPostcode() {
-        return postcode;
-    }
-
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
-    }
-
-    @Basic
-    @Column(name = "Country")
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    @Basic
-    @Column(name = "DateOfIssue")
-    public Timestamp getDateOfIssue() {
-        return dateOfIssue;
-    }
-
-    public void setDateOfIssue(Timestamp dateOfIssue) {
-        this.dateOfIssue = dateOfIssue;
+    public void setDeterminationDate(Timestamp determinationDate) {
+        this.determinationDate = determinationDate;
     }
 
     @Basic
@@ -109,29 +66,35 @@ public class InvoiceEntity {
         if (o == null || getClass() != o.getClass()) return false;
         InvoiceEntity that = (InvoiceEntity) o;
         return invoiceId == that.invoiceId &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(street, that.street) &&
-                Objects.equals(place, that.place) &&
-                Objects.equals(postcode, that.postcode) &&
-                Objects.equals(country, that.country) &&
-                Objects.equals(dateOfIssue, that.dateOfIssue) &&
+                contact == that.contact &&
+                Objects.equals(determinationDate, that.determinationDate) &&
                 Objects.equals(status, that.status);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(invoiceId, name, street, place, postcode, country, dateOfIssue, status);
+        return Objects.hash(invoiceId, contact, determinationDate, status);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "Contact", referencedColumnName = "ContactID", nullable = false)
+    public ContactEntity getContactByContact() {
+        return contactByContact;
+    }
+
+    public void setContactByContact(ContactEntity contactByContact) {
+        this.contactByContact = contactByContact;
     }
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "invoiceByInvoice")
-    public Collection<InvoicepositionEntity> getInvoicepositionsByInvoiceId() {
-        return invoicepositionsByInvoiceId;
+    public Collection<InvoicePositionEntity> getInvoicePositionsByInvoiceId() {
+        return invoicePositionsByInvoiceId;
     }
 
-    public void setInvoicepositionsByInvoiceId(Collection<InvoicepositionEntity> invoicepositionsByInvoiceId) {
-        this.invoicepositionsByInvoiceId = invoicepositionsByInvoiceId;
+    public void setInvoicePositionsByInvoiceId(Collection<InvoicePositionEntity> invoicePositionsByInvoiceId) {
+        this.invoicePositionsByInvoiceId = invoicePositionsByInvoiceId;
     }
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)

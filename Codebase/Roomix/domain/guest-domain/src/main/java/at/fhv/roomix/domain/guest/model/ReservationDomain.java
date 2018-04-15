@@ -3,57 +3,18 @@ package at.fhv.roomix.domain.guest.model;
 import java.util.Collection;
 
 public class ReservationDomain {
+
     private int reservationId;
     private int contractingParty;
-    private int person;
+    private int paymentType;
     private String reservationStatus;
+    private String reservationComment;
 
-    private Collection<InvoicePositionDomain> invoicePositions;
-    private Collection<ReservationOptionDomain> reservationOptions;
-    private Collection<ReservationUnitDomain> reservationUnits;
-
-    private PersonDomain referencedPerson;
-    private ContractingPartyDomain referencedContractingParty;
-
-    public PersonDomain getReferencedPerson() {
-        return referencedPerson;
-    }
-
-    public void setReferencedPerson(PersonDomain referencedPerson) {
-        this.referencedPerson = referencedPerson;
-    }
-
-    public ContractingPartyDomain getReferencedContractingParty() {
-        return referencedContractingParty;
-    }
-
-    public void setReferencedContractingParty(ContractingPartyDomain referencedContractingParty) {
-        this.referencedContractingParty = referencedContractingParty;
-    }
-
-    public Collection<InvoicePositionDomain> getInvoicePositions() {
-        return invoicePositions;
-    }
-
-    public void setInvoicePositions(Collection<InvoicePositionDomain> invoicePositions) {
-        this.invoicePositions = invoicePositions;
-    }
-
-    public Collection<ReservationOptionDomain> getReservationOptions() {
-        return reservationOptions;
-    }
-
-    public void setReservationOptions(Collection<ReservationOptionDomain> reservationOptions) {
-        this.reservationOptions = reservationOptions;
-    }
-
-    public Collection<ReservationUnitDomain> getReservationUnits() {
-        return reservationUnits;
-    }
-
-    public void setReservationUnits(Collection<ReservationUnitDomain> reservationUnits) {
-        this.reservationUnits = reservationUnits;
-    }
+    private Collection<InvoicePositionDomain> invoicePositionsByReservationId;
+    private Collection<PersonReservationDomain> personReservationsByReservationId;
+    private ContractingPartyDomain contractingPartyByContractingParty;
+    private PaymentTypeDomain paymentTypeByPaymentType;
+    private Collection<ReservationUnitDomain> reservationUnitsByReservationId;
 
     public int getReservationId() {
         return reservationId;
@@ -71,12 +32,12 @@ public class ReservationDomain {
         this.contractingParty = contractingParty;
     }
 
-    public int getPerson() {
-        return person;
+    public int getPaymentType() {
+        return paymentType;
     }
 
-    public void setPerson(int person) {
-        this.person = person;
+    public void setPaymentType(int paymentType) {
+        this.paymentType = paymentType;
     }
 
     public String getReservationStatus() {
@@ -85,5 +46,53 @@ public class ReservationDomain {
 
     public void setReservationStatus(String reservationStatus) {
         this.reservationStatus = reservationStatus;
+    }
+
+    public String getReservationComment() {
+        return reservationComment;
+    }
+
+    public void setReservationComment(String reservationComment) {
+        this.reservationComment = reservationComment;
+    }
+
+    public Collection<InvoicePositionDomain> getInvoicePositionsByReservationId() {
+        return invoicePositionsByReservationId;
+    }
+
+    public void setInvoicePositionsByReservationId(Collection<InvoicePositionDomain> invoicePositionsByReservationId) {
+        this.invoicePositionsByReservationId = invoicePositionsByReservationId;
+    }
+
+    public Collection<PersonReservationDomain> getPersonReservationsByReservationId() {
+        return personReservationsByReservationId;
+    }
+
+    public void setPersonReservationsByReservationId(Collection<PersonReservationDomain> personReservationsByReservationId) {
+        this.personReservationsByReservationId = personReservationsByReservationId;
+    }
+
+    public ContractingPartyDomain getContractingPartyByContractingParty() {
+        return contractingPartyByContractingParty;
+    }
+
+    public void setContractingPartyByContractingParty(ContractingPartyDomain contractingPartyByContractingParty) {
+        this.contractingPartyByContractingParty = contractingPartyByContractingParty;
+    }
+
+    public PaymentTypeDomain getPaymentTypeByPaymentType() {
+        return paymentTypeByPaymentType;
+    }
+
+    public void setPaymentTypeByPaymentType(PaymentTypeDomain paymentTypeByPaymentType) {
+        this.paymentTypeByPaymentType = paymentTypeByPaymentType;
+    }
+
+    public Collection<ReservationUnitDomain> getReservationUnitsByReservationId() {
+        return reservationUnitsByReservationId;
+    }
+
+    public void setReservationUnitsByReservationId(Collection<ReservationUnitDomain> reservationUnitsByReservationId) {
+        this.reservationUnitsByReservationId = reservationUnitsByReservationId;
     }
 }
