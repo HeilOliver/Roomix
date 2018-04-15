@@ -18,12 +18,6 @@ import org.slf4j.LoggerFactory;
  * Enter Description here
  */
 public class ContactViewScope implements Scope {
-    private static final Logger LOG = LoggerFactory.getLogger(ContactViewScope.class);
-    private ObjectProperty<ContactPojo> selectedPojo = new SimpleObjectProperty<>();
-    private ObjectProperty<ContactPojo> inEditPojo = new SimpleObjectProperty<>();
-    private BooleanProperty inEditPropertyValid = new SimpleBooleanProperty();
-    private final ContactProvider provider;
-
     public static final String commandSave = "ContactCommand_SAVE";
     public static final String commandCancel = "ContactCommand_CLOSE";
     public static final String commandEdit = "ContactCommand_EDIT";
@@ -31,7 +25,13 @@ public class ContactViewScope implements Scope {
     public static final String commandEditView = "ContactCommand_EditView";
     public static final String commandContentView = "ContactCommand_ContentView";
     public static final String commandCommitEdit = "ContactCommand_CommitEdit";
-
+    private static final Logger LOG = LoggerFactory.getLogger(ContactViewScope.class);
+    private final ContactProvider provider;
+    private ObjectProperty<ContactPojo> selectedPojo = new SimpleObjectProperty<>();
+    private ObjectProperty<ContactPojo> inEditPojo = new SimpleObjectProperty<>();
+    private BooleanProperty inEditPropertyValid = new SimpleBooleanProperty();
+    private IErrorCall onSaveUpdateError;
+    private IErrorCall onSearchError;
     public ContactViewScope() {
         provider = new ContactProvider(onSearchError);
         subscribe(ContactViewScope.commandCancel, (key, payload) -> closeCommand());
@@ -39,9 +39,6 @@ public class ContactViewScope implements Scope {
         subscribe(ContactViewScope.commandEdit, (key, payload) -> editCommand());
         subscribe(ContactViewScope.commandNew, (key, payload) -> newCommand());
     }
-
-    private IErrorCall onSaveUpdateError;
-    private IErrorCall onSearchError;
 
     private void closeCommand() {
         inEditPojo.setValue(null);

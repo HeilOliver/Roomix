@@ -22,7 +22,6 @@ import javafx.beans.property.StringProperty;
 public class ContactEditViewModel implements ViewModel {
     private final Validator firstNameValidator;
     private final ModelWrapper<ContactPojo> contactWrapper = new ModelWrapper<>();
-    private CompositeValidator formValidator = new CompositeValidator();
     private final Validator lastNameValidator;
     private final Validator phoneNumberValidator;
     private final Validator streetValidator;
@@ -31,7 +30,7 @@ public class ContactEditViewModel implements ViewModel {
     private final Validator postcodeValidator;
     private final Validator placeValidator;
     private final Validator houseNumberValidator;
-
+    private CompositeValidator formValidator = new CompositeValidator();
     @InjectScope
     private ContactViewScope viewScope;
 

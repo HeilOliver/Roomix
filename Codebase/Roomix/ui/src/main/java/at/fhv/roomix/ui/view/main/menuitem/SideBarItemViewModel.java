@@ -2,10 +2,8 @@ package at.fhv.roomix.ui.view.main.menuitem;
 
 import at.fhv.roomix.ui.view.main.models.SwitchablePage;
 import de.saxsys.mvvmfx.ViewModel;
-import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.beans.property.ReadOnlyStringProperty;
-import javafx.beans.property.StringProperty;
 
 /**
  * Roomix

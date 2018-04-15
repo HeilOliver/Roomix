@@ -7,7 +7,6 @@ import at.fhv.roomix.controller.reservation.exeption.ValidationFault;
 import at.fhv.roomix.controller.reservation.model.ContactPojo;
 import at.fhv.roomix.ui.common.ICallable;
 import at.fhv.roomix.ui.common.IErrorCall;
-import at.fhv.roomix.ui.common.ISearchAble;
 import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyBooleanProperty;
 
@@ -23,7 +22,7 @@ public class ContactProvider extends SearchProvider<ContactPojo> {
 
     public ContactProvider(IErrorCall onSearchError) {
         super(query -> ReservationControllerFactory.getInstance()
-                .getSearchedContacts(LoginProvider.getSessionID(), query),
+                        .getSearchedContacts(LoginProvider.getSessionID(), query),
                 onSearchError);
     }
 
@@ -36,7 +35,7 @@ public class ContactProvider extends SearchProvider<ContactPojo> {
                 reSearch();
                 Platform.runLater(onSuccess::call);
             } catch (SessionFaultException | ArgumentFaultException | ValidationFault e) {
-                Platform.runLater(() ->onError.errorOccurred(new Error(e.getMessage())));
+                Platform.runLater(() -> onError.errorOccurred(new Error(e.getMessage())));
             }
         });
     }

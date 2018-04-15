@@ -2,7 +2,6 @@ package at.fhv.roomix.ui.view.dashboard;
 
 import at.fhv.roomix.ui.common.AbstractPage;
 import at.fhv.roomix.ui.view.main.models.SwitchablePage;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 
 /**
  * Roomix

@@ -1,21 +1,11 @@
 package at.fhv.roomix.ui.view.main.models;
 
-import at.fhv.roomix.ui.common.ResourceProvider;
-import at.fhv.roomix.ui.dataprovider.LoginProvider;
-import at.fhv.roomix.ui.view.main.MainView;
-import at.fhv.roomix.ui.view.main.MainViewModel;
 import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.Scope;
 import de.saxsys.mvvmfx.ViewModel;
-import de.saxsys.mvvmfx.internal.viewloader.FxmlViewLoader;
 import javafx.beans.property.*;
 import javafx.scene.Parent;
-
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 /**
  * Roomix
@@ -40,7 +30,7 @@ public class SwitchablePage implements Scope {
     private final Parent pane;
 
     public <ViewType extends FxmlView<? extends ViewModelType>, ViewModelType extends ViewModel>
-                SwitchablePage(String menuEntryTag, String glyphName, Class<? extends ViewType> viewType ) {
+    SwitchablePage(String menuEntryTag, String glyphName, Class<? extends ViewType> viewType) {
 
         tag.setValue(menuEntryTag);
         header.setValue(menuEntryTag);

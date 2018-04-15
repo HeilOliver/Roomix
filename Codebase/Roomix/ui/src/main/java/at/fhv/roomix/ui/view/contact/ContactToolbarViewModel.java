@@ -81,6 +81,6 @@ public class ContactToolbarViewModel implements ViewModel {
     }
 
     ReadOnlyBooleanProperty getInProcessProperty() {
-       return viewScope.inProcess();
+        return viewScope.inProcess();
     }
 }

@@ -3,8 +3,6 @@ package at.fhv.roomix.ui.view.dashboard;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 
-import javax.inject.Inject;
-
 /**
  * Roomix
  * at.fhv.roomix.ui.view.dashboard

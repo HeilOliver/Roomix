@@ -53,39 +53,39 @@ public class ContactDetailViewModel implements ViewModel {
         return detailAvailable;
     }
 
-     StringProperty firstnameProperty() {
+    StringProperty firstnameProperty() {
         return firstname;
     }
 
-     StringProperty lastnameProperty() {
+    StringProperty lastnameProperty() {
         return lastname;
     }
 
-     StringProperty companynameProperty() {
+    StringProperty companynameProperty() {
         return companyname;
     }
 
-     StringProperty phonenumberProperty() {
+    StringProperty phonenumberProperty() {
         return phonenumber;
     }
 
-     StringProperty streetProperty() {
+    StringProperty streetProperty() {
         return street;
     }
 
-     StringProperty placeProperty() {
+    StringProperty placeProperty() {
         return place;
     }
 
-     StringProperty postcodeProperty() {
+    StringProperty postcodeProperty() {
         return postcode;
     }
 
-     StringProperty countryProperty() {
+    StringProperty countryProperty() {
         return country;
     }
 
-     StringProperty emailProperty() {
+    StringProperty emailProperty() {
         return email;
     }
 }

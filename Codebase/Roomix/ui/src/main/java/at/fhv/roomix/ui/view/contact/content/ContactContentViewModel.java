@@ -2,12 +2,10 @@ package at.fhv.roomix.ui.view.contact.content;
 
 import at.fhv.roomix.ui.view.contact.scopes.ContactViewScope;
 import de.saxsys.mvvmfx.InjectScope;
-import de.saxsys.mvvmfx.ScopeProvider;
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.value.ObservableValue;
 
 /**
  * Roomix

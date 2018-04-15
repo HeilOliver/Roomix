@@ -3,7 +3,6 @@ package at.fhv.roomix.ui.view.main;
 import at.fhv.roomix.ui.view.main.menuitem.SideBarItemViewModel;
 import at.fhv.roomix.ui.view.main.models.PageProvider;
 import at.fhv.roomix.ui.view.main.models.SwitchablePage;
-import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.ViewModel;
 import de.saxsys.mvvmfx.utils.itemlist.ListTransformation;
 import javafx.beans.property.*;

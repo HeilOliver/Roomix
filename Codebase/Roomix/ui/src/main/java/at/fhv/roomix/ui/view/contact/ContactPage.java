@@ -1,7 +1,6 @@
 package at.fhv.roomix.ui.view.contact;
 
 import at.fhv.roomix.ui.common.AbstractPage;
-import at.fhv.roomix.ui.view.dashboard.DashBoardView;
 import at.fhv.roomix.ui.view.main.models.SwitchablePage;
 
 /**

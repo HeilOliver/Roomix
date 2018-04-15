@@ -4,52 +4,56 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-
-<AnchorPane stylesheets="@mainView.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhv.roomix.ui.view.main.MainView">
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" stylesheets="@mainView.css" xmlns="http://javafx.com/javafx/8.0.121"
+            fx:controller="at.fhv.roomix.ui.view.main.MainView">
     <GridPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
         <columnConstraints>
-            <ColumnConstraints maxWidth="45" minWidth="45" />
-            <ColumnConstraints minWidth="0" />
-            <ColumnConstraints />
+            <ColumnConstraints maxWidth="45" minWidth="45"/>
+            <ColumnConstraints minWidth="0"/>
+            <ColumnConstraints/>
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints maxHeight="45" minHeight="45" prefHeight="45" />
-            <RowConstraints />
+            <RowConstraints maxHeight="45" minHeight="45" prefHeight="45"/>
+            <RowConstraints/>
         </rowConstraints>
 
-        <AnchorPane onMouseClicked="#onMenuButton_Click" styleClass="menuOpenPane" GridPane.halignment="LEFT" GridPane.valignment="TOP">
-            <FontAwesomeIconView glyphName="NAVICON" size="2em" styleClass="menuOpenIcon" AnchorPane.leftAnchor="15" AnchorPane.topAnchor="12" />
+        <AnchorPane onMouseClicked="#onMenuButton_Click" styleClass="menuOpenPane" GridPane.halignment="LEFT"
+                    GridPane.valignment="TOP">
+            <FontAwesomeIconView glyphName="NAVICON" size="2em" styleClass="menuOpenIcon" AnchorPane.leftAnchor="15"
+                                 AnchorPane.topAnchor="12"/>
         </AnchorPane>
 
-        <GridPane style="-fx-background-color: #3a3633" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.fillHeight="true" GridPane.halignment="LEFT" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+        <GridPane style="-fx-background-color: #3a3633" GridPane.columnIndex="0" GridPane.columnSpan="2"
+                  GridPane.fillHeight="true" GridPane.halignment="LEFT" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1"
+                  GridPane.vgrow="ALWAYS">
             <rowConstraints>
-                <RowConstraints minHeight="10" />
-                <RowConstraints percentHeight="80" />
-                <RowConstraints percentHeight="15" />
-                <RowConstraints minHeight="10" />
+                <RowConstraints minHeight="10"/>
+                <RowConstraints percentHeight="80"/>
+                <RowConstraints percentHeight="15"/>
+                <RowConstraints minHeight="10"/>
             </rowConstraints>
             <columnConstraints>
-                <ColumnConstraints />
+                <ColumnConstraints/>
             </columnConstraints>
             <VBox fx:id="topBox" spacing="8" GridPane.fillWidth="true" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
             </VBox>
-            <VBox fx:id="bottomBox" alignment="BOTTOM_LEFT" spacing="8" GridPane.fillWidth="true" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
+            <VBox fx:id="bottomBox" alignment="BOTTOM_LEFT" spacing="8" GridPane.fillWidth="true"
+                  GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
             </VBox>
         </GridPane>
 
         <AnchorPane fx:id="contentPane" GridPane.columnIndex="2" GridPane.fillHeight="true" GridPane.fillWidth="true"
-                    GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
+                    GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS"/>
 
-        <AnchorPane style="-fx-background-color: #3a3633" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="0">
-            <Label fx:id="lbl_header" styleClass="header" text="Sample" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="5" AnchorPane.topAnchor="0" />
+        <AnchorPane style="-fx-background-color: #3a3633" GridPane.columnIndex="1" GridPane.columnSpan="2"
+                    GridPane.rowIndex="0">
+            <Label fx:id="lbl_header" styleClass="header" text="Sample" AnchorPane.bottomAnchor="0"
+                   AnchorPane.leftAnchor="5" AnchorPane.topAnchor="0"/>
 
-            <ImageView fitHeight="60" fitWidth="150" preserveRatio="true" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5">
-                <Image backgroundLoading="true" url="/assets/roomix_logoWhite.png" />
+            <ImageView fitHeight="60" fitWidth="150" preserveRatio="true" AnchorPane.rightAnchor="10.0"
+                       AnchorPane.topAnchor="5">
+                <Image backgroundLoading="true" url="/assets/roomix_logoWhite.png"/>
             </ImageView>
         </AnchorPane>
     </GridPane>

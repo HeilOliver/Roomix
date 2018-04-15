@@ -1,7 +1,5 @@
 package at.fhv.roomix.ui.common;
 
-import at.fhv.roomix.ui.dataprovider.LoginProvider;
-import at.fhv.roomix.ui.view.login.LoginView;
 import at.fhv.roomix.ui.view.main.models.SwitchablePage;
 
 /**

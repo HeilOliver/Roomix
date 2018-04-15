@@ -4,7 +4,6 @@ import at.fhv.roomix.controller.session.ISessionController;
 import at.fhv.roomix.controller.session.SessionControllerFactory;
 import at.fhv.roomix.controller.session.exception.AuthenticationFaultException;
 import at.fhv.roomix.controller.session.model.SessionPojo;
-import at.fhv.roomix.ui.common.ICallable;
 import at.fhv.roomix.ui.common.IErrorCall;
 import javafx.application.Platform;
 import javafx.beans.property.*;
@@ -18,7 +17,7 @@ import javafx.beans.property.*;
  * The Provider class for login purpose. It holds the current logged in User
  * and his SessionId
  */
-public class LoginProvider extends AbstractProvider{
+public class LoginProvider extends AbstractProvider {
     private static ObjectProperty<SessionPojo> currentSession = new SimpleObjectProperty<>();
     private static BooleanProperty isLoggedIn = new SimpleBooleanProperty();
 
@@ -28,7 +27,7 @@ public class LoginProvider extends AbstractProvider{
         }));
     }
 
-    private LoginProvider(){
+    private LoginProvider() {
     }
 
     public static void logIn(String username, String password, IErrorCall onError) {

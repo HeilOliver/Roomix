@@ -1,6 +1,5 @@
 package at.fhv.roomix.ui.view.about;
 
-import at.fhv.roomix.ui.common.ResourceProvider;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 
@@ -22,7 +21,6 @@ public class AboutView implements FxmlView<AboutViewModel> {
 
     @Inject
     private ResourceBundle resourceBundle;
-
 
 
 }

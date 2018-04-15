@@ -13,5 +13,4 @@ import de.saxsys.mvvmfx.ViewModel;
 public class DashBoardViewModel implements ViewModel {
 
 
-
 }

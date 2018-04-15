@@ -24,12 +24,12 @@ import java.util.concurrent.atomic.AtomicReference;
  * {@code ISearchAble} provider.
  */
 public abstract class SearchProvider<T> extends AbstractProvider {
+    private final AtomicReference<String> nextQuery;
     private StringProperty currentQuery = new SimpleStringProperty();
     private ObservableSet<T> queryResultList = FXCollections.synchronizedObservableSet(
             FXCollections.observableSet(new HashSet<>()));
     private ISearchAble<T> searchProvider;
     private String lastQuery;
-    private final AtomicReference<String> nextQuery;
     private boolean inRun;
     private IErrorCall onError;
     private Thread addToSearchQuery;
@@ -106,10 +106,11 @@ public abstract class SearchProvider<T> extends AbstractProvider {
                         return;
                     }
                     queryResultList.clear();
-                    Object[] objects = queryResultList.toArray();
-                    for (Object object : objects) {
-                        queryResultList.remove(object);
-                    }
+                    // TODO Remove here
+//                    Object[] objects = queryResultList.toArray();
+//                    for (Object object : objects) {
+//                        queryResultList.remove(object);
+//                    }
                     queryResultList.addAll(collection);
                 });
             } catch (InterruptedException | ExecutionException e) {

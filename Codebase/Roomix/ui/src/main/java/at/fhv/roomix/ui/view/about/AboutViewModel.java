@@ -13,6 +13,4 @@ import de.saxsys.mvvmfx.ViewModel;
 public class AboutViewModel implements ViewModel {
 
 
-
-
 }

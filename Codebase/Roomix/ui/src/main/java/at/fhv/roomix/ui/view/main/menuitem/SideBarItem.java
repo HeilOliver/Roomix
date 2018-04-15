@@ -25,7 +25,6 @@ public class SideBarItem implements FxmlView<SideBarItemViewModel> {
     private FontAwesomeIconView icon;
 
 
-
     @FXML
     private Label lbl_tag;
     @FXML
