@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="at.fhv.roomix.ui.view.contact.content.ContactTableView"
+            >
+    <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+          AnchorPane.topAnchor="0.0">
+        <Separator/>
+        <TableView fx:id="tabContactTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn prefWidth="75.0" text="%contact.table.firstname">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="fname"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="%contact.table.lastname">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="lname"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="%contact.table.companyname">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="companyName"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="%contact.table.phonenumber">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="phonenumber"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="%contact.table.city">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="place"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="%contact.table.postalcode">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="postcode"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="%contact.table.street">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="street"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="%contact.table.country">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="country"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="%contact.table.email">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="email"/>
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+        </TableView>
+        <Separator/>
+    </VBox>
+</AnchorPane>

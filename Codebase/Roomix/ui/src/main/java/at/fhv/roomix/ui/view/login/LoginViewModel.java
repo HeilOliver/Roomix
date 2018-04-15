@@ -118,7 +118,7 @@ public class LoginViewModel implements ViewModel {
     }
 
     ReadOnlyBooleanProperty inProcessProperty() {
-        return LoginProvider.inProcess();
+        return LoginProvider.getInProcessProperty();
     }
 
     StringProperty passwordProperty() {

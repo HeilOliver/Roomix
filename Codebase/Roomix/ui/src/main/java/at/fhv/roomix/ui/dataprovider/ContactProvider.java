@@ -5,9 +5,11 @@ import at.fhv.roomix.controller.reservation.exeption.ArgumentFaultException;
 import at.fhv.roomix.controller.reservation.exeption.SessionFaultException;
 import at.fhv.roomix.controller.reservation.exeption.ValidationFault;
 import at.fhv.roomix.controller.reservation.model.ContactPojo;
+import at.fhv.roomix.ui.common.ICallable;
 import at.fhv.roomix.ui.common.IErrorCall;
 import at.fhv.roomix.ui.common.ISearchAble;
 import javafx.application.Platform;
+import javafx.beans.property.ReadOnlyBooleanProperty;
 
 /**
  * Roomix
@@ -25,15 +27,21 @@ public class ContactProvider extends SearchProvider<ContactPojo> {
                 onSearchError);
     }
 
-    public void saveOrUpdate(ContactPojo pojo, IErrorCall onError) {
+    public void saveOrUpdate(ContactPojo pojo, IErrorCall onError, ICallable onSuccess) {
         submit(() -> {
             try {
                 ReservationControllerFactory
                         .getInstance()
                         .updateContact(LoginProvider.getSessionID(), pojo);
+                reSearch();
+                Platform.runLater(onSuccess::call);
             } catch (SessionFaultException | ArgumentFaultException | ValidationFault e) {
                 Platform.runLater(() ->onError.errorOccurred(new Error(e.getMessage())));
             }
         });
+    }
+
+    public ReadOnlyBooleanProperty getInProcessProperty() {
+        return inProcess();
     }
 }

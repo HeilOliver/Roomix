@@ -10,5 +10,21 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="at.fhv.roomix.ui.view.contact.ContactView"
             >
+    <fx:include source="ContactToolbar.fxml" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
+                AnchorPane.rightAnchor="0"/>
+    <StackPane AnchorPane.topAnchor="50" AnchorPane.leftAnchor="0"
+               AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0">
 
+        <AnchorPane fx:id="contentView" AnchorPane.topAnchor="50" AnchorPane.leftAnchor="0"
+                    AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0">
+            <fx:include source="content/ContactContentView.fxml" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
+                        AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0"/>
+        </AnchorPane>
+
+        <AnchorPane fx:id="editView" AnchorPane.topAnchor="50" AnchorPane.leftAnchor="0"
+                    AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0">
+            <fx:include source="edit/ContactEditView.fxml" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
+                        AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0"/>
+        </AnchorPane>
+    </StackPane>
 </AnchorPane>

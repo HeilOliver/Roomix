@@ -3,6 +3,7 @@ package at.fhv.roomix.ui.view.main.models;
 
 import at.fhv.roomix.ui.dataprovider.LoginProvider;
 import at.fhv.roomix.ui.view.about.AboutPage;
+import at.fhv.roomix.ui.view.contact.ContactPage;
 import at.fhv.roomix.ui.view.dashboard.DashBoardPage;
 import at.fhv.roomix.ui.view.login.LoginPage;
 import at.fhv.roomix.ui.view.login.LoginView;
@@ -24,7 +25,8 @@ public class PageProvider {
 
     static {
         topItem = FXCollections.observableArrayList(
-                new DashBoardPage().getPage()
+                new DashBoardPage().getPage(),
+                new ContactPage().getPage()
         );
 
         bottomItem = FXCollections.observableArrayList(

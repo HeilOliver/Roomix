@@ -9,5 +9,5 @@ package at.fhv.roomix.ui.common;
  * A simple callback interface.
  */
 public interface ICallable {
-    void call() throws Exception;
+    void call();
 }

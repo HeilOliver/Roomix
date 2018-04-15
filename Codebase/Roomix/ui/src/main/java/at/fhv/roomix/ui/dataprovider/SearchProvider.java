@@ -9,8 +9,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableSet;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Roomix
@@ -22,20 +24,21 @@ import java.util.concurrent.Future;
  * {@code ISearchAble} provider.
  */
 public abstract class SearchProvider<T> extends AbstractProvider {
-    private final Object lock = new Object();
     private StringProperty currentQuery = new SimpleStringProperty();
-    private ObservableSet<T> queryResultList = FXCollections.observableSet();
+    private ObservableSet<T> queryResultList = FXCollections.synchronizedObservableSet(
+            FXCollections.observableSet(new HashSet<>()));
     private ISearchAble<T> searchProvider;
-    private String nextQuery;
+    private String lastQuery;
+    private final AtomicReference<String> nextQuery;
     private boolean inRun;
     private IErrorCall onError;
     private Thread addToSearchQuery;
 
-    public SearchProvider(ISearchAble<T> searchProvider, IErrorCall onError) {
+    SearchProvider(ISearchAble<T> searchProvider, IErrorCall onError) {
         inRun = true;
         this.searchProvider = searchProvider;
         this.onError = onError;
-        nextQuery = "";
+        nextQuery = new AtomicReference<>("");
 
         onShutdown(() -> inRun = false);
 
@@ -56,11 +59,17 @@ public abstract class SearchProvider<T> extends AbstractProvider {
             toQuery = "";
         try {
             Thread.sleep(150);
-            synchronized (lock) {
-                nextQuery = toQuery;
+            synchronized (nextQuery) {
+                nextQuery.set(toQuery);
             }
         } catch (InterruptedException ie) {
             Thread.currentThread().interrupt();
+        }
+    }
+
+    protected void reSearch() {
+        synchronized (nextQuery) {
+            nextQuery.set(lastQuery);
         }
     }
 
@@ -70,23 +79,42 @@ public abstract class SearchProvider<T> extends AbstractProvider {
                 Thread.sleep(200);
             } catch (InterruptedException ignore) {
             }
-            if (nextQuery == null)
+            if (nextQuery.get() == null)
                 continue;
 
-            String nextQuery = this.nextQuery;
-            this.nextQuery = null;
-            Future<Collection<T>> future = submit(
-                    () -> searchProvider.search(nextQuery));
+            Future<Collection<T>> future;
+            synchronized (nextQuery) {
+                String localQuery = nextQuery.get();
+                nextQuery.set(null);
+                lastQuery = localQuery;
+                future = submit(
+                        () -> searchProvider.search(localQuery));
+            }
+
+            if (future == null) {
+                Platform.runLater(
+                        () -> onError.errorOccurred(
+                                new Error("Internal Error")));
+                continue;
+            }
 
             try {
                 Collection<T> collection = future.get();
                 Platform.runLater(() -> {
+                    if (collection == null) {
+                        LOG.debug("Future returned empty collection");
+                        return;
+                    }
                     queryResultList.clear();
+                    Object[] objects = queryResultList.toArray();
+                    for (Object object : objects) {
+                        queryResultList.remove(object);
+                    }
                     queryResultList.addAll(collection);
                 });
             } catch (InterruptedException | ExecutionException e) {
                 Platform.runLater(
-                        () -> onError.errorOccurred(new Error(e)));
+                        () -> onError.errorOccurred(new Error(e.getMessage())));
             }
         }
     }

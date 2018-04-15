@@ -65,4 +65,8 @@ public class LoginProvider extends AbstractProvider{
         SessionPojo session = currentSessionProperty().get();
         return session.getSessionId();
     }
+
+    public static ReadOnlyBooleanProperty getInProcessProperty() {
+        return inProcess();
+    }
 }

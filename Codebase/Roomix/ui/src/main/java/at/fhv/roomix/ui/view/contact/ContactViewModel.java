@@ -1,8 +1,11 @@
 package at.fhv.roomix.ui.view.contact;
 
 import at.fhv.roomix.ui.view.contact.scopes.ContactViewScope;
+import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ScopeProvider;
 import de.saxsys.mvvmfx.ViewModel;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 
 /**
  * Roomix
@@ -14,4 +17,33 @@ import de.saxsys.mvvmfx.ViewModel;
  */
 @ScopeProvider(scopes = ContactViewScope.class)
 public class ContactViewModel implements ViewModel {
+    private BooleanProperty contentViewVisible = new SimpleBooleanProperty();
+    private BooleanProperty editViewVisible = new SimpleBooleanProperty();
+
+    @InjectScope
+    private ContactViewScope viewScope;
+
+    public void initialize() {
+        viewScope.subscribe(ContactViewScope.commandContentView, (key, payload) -> showContent());
+        viewScope.subscribe(ContactViewScope.commandEditView, (key, payload) -> showEdit());
+        showContent();
+    }
+
+    private void showContent() {
+        contentViewVisible.setValue(true);
+        editViewVisible.setValue(false);
+    }
+
+    private void showEdit() {
+        contentViewVisible.setValue(false);
+        editViewVisible.setValue(true);
+    }
+
+    public BooleanProperty contentViewVisibleProperty() {
+        return contentViewVisible;
+    }
+
+    public BooleanProperty editViewVisibleProperty() {
+        return editViewVisible;
+    }
 }

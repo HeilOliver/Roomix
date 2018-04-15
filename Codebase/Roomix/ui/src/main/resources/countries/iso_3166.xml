@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <!--
-This file gives a list of all countries in the ISO 3166
+This file gives a content of all countries in the ISO 3166
 standard, and is used to provide translations via gettext
 
 Copyright (C) 2002, 2004, 2006 Alastair McKinstry <mckinstry@computer.org>

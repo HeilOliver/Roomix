@@ -14,7 +14,7 @@ import at.fhv.roomix.ui.view.main.models.SwitchablePage;
  */
 public class ContactPage extends AbstractPage {
     private static final String DEFAULT_TAG = "Contact";
-    private static final String DEFAULT_GLYPH = "HOME";
+    private static final String DEFAULT_GLYPH = "GROUP";
 
     public ContactPage() {
         super(new SwitchablePage(DEFAULT_TAG, DEFAULT_GLYPH, ContactView.class));
