@@ -32,6 +32,7 @@ public class ContactViewScope implements Scope {
     private BooleanProperty inEditPropertyValid = new SimpleBooleanProperty();
     private IErrorCall onSaveUpdateError;
     private IErrorCall onSearchError;
+
     public ContactViewScope() {
         provider = new ContactProvider(onSearchError);
         subscribe(ContactViewScope.commandCancel, (key, payload) -> closeCommand());

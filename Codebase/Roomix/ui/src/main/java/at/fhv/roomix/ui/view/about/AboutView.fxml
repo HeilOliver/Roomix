@@ -29,9 +29,8 @@
         </ImageView>
         <Label GridPane.rowIndex="2" GridPane.columnIndex="1">Copyright by Team F</Label>
 
-        <Label GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
-            This Software is licenced under the MIT licence.
-            Contributes: Oliver Heil, Moritz Wilfling, Stefan Geiger, Robert Schmitzerli
+        <Label GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS" GridPane.hgrow="ALWAYS">
+            Contributors: Oliver Heil, Moritz Wilfling, Stefan Geiger, Robert Schmitzerli
         </Label>
 
     </GridPane>
