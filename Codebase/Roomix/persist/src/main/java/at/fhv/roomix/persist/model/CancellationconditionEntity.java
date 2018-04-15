@@ -9,13 +9,13 @@ import java.util.Objects;
 @Entity
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@Table(name = "CancellationCondition", schema = "roomix", catalog = "")
-public class CancellationconditionEntity {
+@Table(name = "CancellationCondition", schema = "Roomix", catalog = "")
+public class CancellationConditionEntity {
     private int cancellationConditionId;
     private int cancellationFee;
     private int daysBeforeArrival;
     private Collection<CancellationEntity> cancellationsByCancellationConditionId;
-    private Collection<PartneragreementEntity> partneragreementsByCancellationConditionId;
+    private Collection<PartnerAgreementEntity> partnerAgreementsByCancellationConditionId;
 
     @Id
     @Column(name = "CancellationConditionID")
@@ -51,7 +51,7 @@ public class CancellationconditionEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CancellationconditionEntity that = (CancellationconditionEntity) o;
+        CancellationConditionEntity that = (CancellationConditionEntity) o;
         return cancellationConditionId == that.cancellationConditionId &&
                 cancellationFee == that.cancellationFee &&
                 daysBeforeArrival == that.daysBeforeArrival;
@@ -63,8 +63,8 @@ public class CancellationconditionEntity {
         return Objects.hash(cancellationConditionId, cancellationFee, daysBeforeArrival);
     }
 
+    @OneToMany(mappedBy = "cancellationConditionByCancellationCondition")
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @OneToMany(mappedBy = "cancellationconditionByCancellationCondition")
     public Collection<CancellationEntity> getCancellationsByCancellationConditionId() {
         return cancellationsByCancellationConditionId;
     }
@@ -73,13 +73,13 @@ public class CancellationconditionEntity {
         this.cancellationsByCancellationConditionId = cancellationsByCancellationConditionId;
     }
 
+    @OneToMany(mappedBy = "cancellationConditionByCancellationCondition")
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @OneToMany(mappedBy = "cancellationconditionByCancellationCondition")
-    public Collection<PartneragreementEntity> getPartneragreementsByCancellationConditionId() {
-        return partneragreementsByCancellationConditionId;
+    public Collection<PartnerAgreementEntity> getPartnerAgreementsByCancellationConditionId() {
+        return partnerAgreementsByCancellationConditionId;
     }
 
-    public void setPartneragreementsByCancellationConditionId(Collection<PartneragreementEntity> partneragreementsByCancellationConditionId) {
-        this.partneragreementsByCancellationConditionId = partneragreementsByCancellationConditionId;
+    public void setPartnerAgreementsByCancellationConditionId(Collection<PartnerAgreementEntity> partnerAgreementsByCancellationConditionId) {
+        this.partnerAgreementsByCancellationConditionId = partnerAgreementsByCancellationConditionId;
     }
 }

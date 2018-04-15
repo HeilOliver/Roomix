@@ -9,13 +9,13 @@ import java.util.Objects;
 @Entity
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@Table(name = "TourGroup", schema = "roomix", catalog = "")
-public class TourgroupEntity {
+@Table(name = "TourGroup", schema = "Roomix", catalog = "")
+public class TourGroupEntity {
     private int tourGroupId;
     private String tourGroupName;
     private int tourGroupLeader;
     private PersonEntity personByTourGroupLeader;
-    private Collection<TourgroupmemberEntity> tourgroupmembersByTourGroupId;
+    private Collection<TourGroupMemberEntity> tourGroupMembersByTourGroupId;
 
     @Id
     @Column(name = "TourGroupID")
@@ -38,7 +38,7 @@ public class TourgroupEntity {
     }
 
     @Basic
-    @Column(name = "TourGroupLeader", insertable = false, updatable = false)
+    @Column(name = "TourGroupLeader")
     public int getTourGroupLeader() {
         return tourGroupLeader;
     }
@@ -51,7 +51,7 @@ public class TourgroupEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TourgroupEntity that = (TourgroupEntity) o;
+        TourGroupEntity that = (TourGroupEntity) o;
         return tourGroupId == that.tourGroupId &&
                 tourGroupLeader == that.tourGroupLeader &&
                 Objects.equals(tourGroupName, that.tourGroupName);
@@ -63,7 +63,6 @@ public class TourgroupEntity {
         return Objects.hash(tourGroupId, tourGroupName, tourGroupLeader);
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "TourGroupLeader", referencedColumnName = "PersonID", nullable = false)
     public PersonEntity getPersonByTourGroupLeader() {
@@ -75,12 +74,12 @@ public class TourgroupEntity {
     }
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @OneToMany(mappedBy = "tourgroupByTourGroupId")
-    public Collection<TourgroupmemberEntity> getTourgroupmembersByTourGroupId() {
-        return tourgroupmembersByTourGroupId;
+    @OneToMany(mappedBy = "tourGroupByTourGroupId")
+    public Collection<TourGroupMemberEntity> getTourGroupMembersByTourGroupId() {
+        return tourGroupMembersByTourGroupId;
     }
 
-    public void setTourgroupmembersByTourGroupId(Collection<TourgroupmemberEntity> tourgroupmembersByTourGroupId) {
-        this.tourgroupmembersByTourGroupId = tourgroupmembersByTourGroupId;
+    public void setTourGroupMembersByTourGroupId(Collection<TourGroupMemberEntity> tourGroupMembersByTourGroupId) {
+        this.tourGroupMembersByTourGroupId = tourGroupMembersByTourGroupId;
     }
 }

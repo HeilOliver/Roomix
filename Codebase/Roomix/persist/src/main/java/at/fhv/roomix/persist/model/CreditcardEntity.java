@@ -9,12 +9,12 @@ import java.util.Objects;
 @Entity
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@Table(name = "CreditCard", schema = "roomix", catalog = "")
-public class CreditcardEntity {
+@Table(name = "CreditCard", schema = "Roomix", catalog = "")
+public class CreditCardEntity {
     private int creditCardId;
-    private String number;
-    private String owner;
-    private String type;
+    private String cardNumber;
+    private String cardOwner;
+    private String cardType;
     private Date validDate;
     private Integer contact;
     private ContactEntity contactByContact;
@@ -30,33 +30,33 @@ public class CreditcardEntity {
     }
 
     @Basic
-    @Column(name = "Number")
-    public String getNumber() {
-        return number;
+    @Column(name = "CardNumber")
+    public String getCardNumber() {
+        return cardNumber;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    @Basic
-    @Column(name = "Owner")
-    public String getOwner() {
-        return owner;
-    }
-
-    public void setOwner(String owner) {
-        this.owner = owner;
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
     }
 
     @Basic
-    @Column(name = "Type")
-    public String getType() {
-        return type;
+    @Column(name = "CardOwner")
+    public String getCardOwner() {
+        return cardOwner;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setCardOwner(String cardOwner) {
+        this.cardOwner = cardOwner;
+    }
+
+    @Basic
+    @Column(name = "CardType")
+    public String getCardType() {
+        return cardType;
+    }
+
+    public void setCardType(String cardType) {
+        this.cardType = cardType;
     }
 
     @Basic
@@ -83,11 +83,11 @@ public class CreditcardEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CreditcardEntity that = (CreditcardEntity) o;
+        CreditCardEntity that = (CreditCardEntity) o;
         return creditCardId == that.creditCardId &&
-                Objects.equals(number, that.number) &&
-                Objects.equals(owner, that.owner) &&
-                Objects.equals(type, that.type) &&
+                Objects.equals(cardNumber, that.cardNumber) &&
+                Objects.equals(cardOwner, that.cardOwner) &&
+                Objects.equals(cardType, that.cardType) &&
                 Objects.equals(validDate, that.validDate) &&
                 Objects.equals(contact, that.contact);
     }
@@ -95,10 +95,9 @@ public class CreditcardEntity {
     @Override
     public int hashCode() {
 
-        return Objects.hash(creditCardId, number, owner, type, validDate, contact);
+        return Objects.hash(creditCardId, cardNumber, cardOwner, cardType, validDate, contact);
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "Contact", referencedColumnName = "ContactID")
     public ContactEntity getContactByContact() {

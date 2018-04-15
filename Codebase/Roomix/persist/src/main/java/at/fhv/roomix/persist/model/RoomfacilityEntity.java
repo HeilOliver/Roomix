@@ -8,25 +8,16 @@ import java.util.Objects;
 @Entity
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@Table(name = "RoomFacility", schema = "roomix", catalog = "")
-public class RoomfacilityEntity {
-    private int roomFacilityId;
+@Table(name = "RoomFacility", schema = "Roomix", catalog = "")
+@IdClass(RoomFacilityEntityPK.class)
+public class RoomFacilityEntity {
     private int room;
     private int facility;
+    private int amount;
     private RoomEntity roomByRoom;
     private FacilityEntity facilityByFacility;
 
     @Id
-    @Column(name = "RoomFacilityID")
-    public int getRoomFacilityId() {
-        return roomFacilityId;
-    }
-
-    public void setRoomFacilityId(int roomFacilityId) {
-        this.roomFacilityId = roomFacilityId;
-    }
-
-    @Basic
     @Column(name = "Room", insertable = false, updatable = false)
     public int getRoom() {
         return room;
@@ -36,7 +27,7 @@ public class RoomfacilityEntity {
         this.room = room;
     }
 
-    @Basic
+    @Id
     @Column(name = "Facility", insertable = false, updatable = false)
     public int getFacility() {
         return facility;
@@ -46,23 +37,32 @@ public class RoomfacilityEntity {
         this.facility = facility;
     }
 
+    @Basic
+    @Column(name = "Amount")
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RoomfacilityEntity that = (RoomfacilityEntity) o;
-        return roomFacilityId == that.roomFacilityId &&
-                room == that.room &&
-                facility == that.facility;
+        RoomFacilityEntity that = (RoomFacilityEntity) o;
+        return room == that.room &&
+                facility == that.facility &&
+                amount == that.amount;
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(roomFacilityId, room, facility);
+        return Objects.hash(room, facility, amount);
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "Room", referencedColumnName = "RoomID", nullable = false)
     public RoomEntity getRoomByRoom() {
@@ -73,7 +73,6 @@ public class RoomfacilityEntity {
         this.roomByRoom = roomByRoom;
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "Facility", referencedColumnName = "FacilityID", nullable = false)
     public FacilityEntity getFacilityByFacility() {

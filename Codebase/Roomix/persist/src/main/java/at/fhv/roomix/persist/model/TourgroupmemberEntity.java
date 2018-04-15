@@ -8,36 +8,26 @@ import java.util.Objects;
 @Entity
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@Table(name = "TourGroupMember", schema = "roomix", catalog = "")
-public class TourgroupmemberEntity {
-    private int tourGroupMemberId;
-    private Integer tourGroupId;
+@Table(name = "TourGroupMember", schema = "Roomix", catalog = "")
+@IdClass(TourGroupMemberEntityPK.class)
+public class TourGroupMemberEntity {
+    private int tourGroupId;
     private int tourGroupMember;
-    private TourgroupEntity tourgroupByTourGroupId;
+    private TourGroupEntity tourGroupByTourGroupId;
     private PersonEntity personByTourGroupMember;
 
     @Id
-    @Column(name = "TourGroupMemberID")
-    public int getTourGroupMemberId() {
-        return tourGroupMemberId;
-    }
-
-    public void setTourGroupMemberId(int tourGroupMemberId) {
-        this.tourGroupMemberId = tourGroupMemberId;
-    }
-
-    @Basic
-    @Column(name = "TourGroupID", insertable = false, updatable = false)
-    public Integer getTourGroupId() {
+    @Column(name = "TourGroupID")
+    public int getTourGroupId() {
         return tourGroupId;
     }
 
-    public void setTourGroupId(Integer tourGroupId) {
+    public void setTourGroupId(int tourGroupId) {
         this.tourGroupId = tourGroupId;
     }
 
-    @Basic
-    @Column(name = "TourGroupMember", insertable = false, updatable = false)
+    @Id
+    @Column(name = "TourGroupMember")
     public int getTourGroupMember() {
         return tourGroupMember;
     }
@@ -50,30 +40,27 @@ public class TourgroupmemberEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TourgroupmemberEntity that = (TourgroupmemberEntity) o;
-        return tourGroupMemberId == that.tourGroupMemberId &&
-                tourGroupMember == that.tourGroupMember &&
-                Objects.equals(tourGroupId, that.tourGroupId);
+        TourGroupMemberEntity that = (TourGroupMemberEntity) o;
+        return tourGroupId == that.tourGroupId &&
+                tourGroupMember == that.tourGroupMember;
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(tourGroupMemberId, tourGroupId, tourGroupMember);
+        return Objects.hash(tourGroupId, tourGroupMember);
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
-    @JoinColumn(name = "TourGroupID", referencedColumnName = "TourGroupID")
-    public TourgroupEntity getTourgroupByTourGroupId() {
-        return tourgroupByTourGroupId;
+    @JoinColumn(name = "TourGroupID", referencedColumnName = "TourGroupID", nullable = false)
+    public TourGroupEntity getTourGroupByTourGroupId() {
+        return tourGroupByTourGroupId;
     }
 
-    public void setTourgroupByTourGroupId(TourgroupEntity tourgroupByTourGroupId) {
-        this.tourgroupByTourGroupId = tourgroupByTourGroupId;
+    public void setTourGroupByTourGroupId(TourGroupEntity tourGroupByTourGroupId) {
+        this.tourGroupByTourGroupId = tourGroupByTourGroupId;
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "TourGroupMember", referencedColumnName = "PersonID", nullable = false)
     public PersonEntity getPersonByTourGroupMember() {

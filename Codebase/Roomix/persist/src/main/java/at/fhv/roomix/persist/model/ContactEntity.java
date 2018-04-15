@@ -1,19 +1,15 @@
 package at.fhv.roomix.persist.model;
 
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@Table(name = "Contact", schema = "roomix", catalog = "")
+@Table(name = "Contact", schema = "Roomix", catalog = "")
 public class ContactEntity {
     private int contactId;
-    private String fname;
-    private String lname;
+    private String firstName;
+    private String lastName;
     private String companyName;
     private String phoneNumber;
     private String street;
@@ -22,9 +18,11 @@ public class ContactEntity {
     private String postcode;
     private String country;
     private String email;
-    private Collection<ContactnoteEntity> contactnotesByContactId;
-    private Collection<ContractingpartyEntity> contractingpartiesByContactId;
-    private Collection<CreditcardEntity> creditcardsByContactId;
+    private byte active;
+    private Collection<ContactNoteEntity> contactNotesByContactId;
+    private Collection<ContractingPartyEntity> contractingPartiesByContactId;
+    private Collection<CreditCardEntity> creditCardsByContactId;
+    private Collection<InvoiceEntity> invoicesByContactId;
     private Collection<PersonEntity> peopleByContactId;
 
     @Id
@@ -38,23 +36,23 @@ public class ContactEntity {
     }
 
     @Basic
-    @Column(name = "Fname")
-    public String getFname() {
-        return fname;
+    @Column(name = "FirstName")
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFname(String fname) {
-        this.fname = fname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     @Basic
-    @Column(name = "Lname")
-    public String getLname() {
-        return lname;
+    @Column(name = "LastName")
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLname(String lname) {
-        this.lname = lname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     @Basic
@@ -137,6 +135,15 @@ public class ContactEntity {
         this.email = email;
     }
 
+    @Basic
+    @Column(name = "Active")
+    public byte getActive() {
+        return active;
+    }
+
+    public void setActive(byte active) {
+        this.active = active;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -144,8 +151,9 @@ public class ContactEntity {
         if (o == null || getClass() != o.getClass()) return false;
         ContactEntity that = (ContactEntity) o;
         return contactId == that.contactId &&
-                Objects.equals(fname, that.fname) &&
-                Objects.equals(lname, that.lname) &&
+                active == that.active &&
+                Objects.equals(firstName, that.firstName) &&
+                Objects.equals(lastName, that.lastName) &&
                 Objects.equals(companyName, that.companyName) &&
                 Objects.equals(phoneNumber, that.phoneNumber) &&
                 Objects.equals(street, that.street) &&
@@ -158,40 +166,46 @@ public class ContactEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(contactId, fname, lname, companyName, phoneNumber, street, houseNumber, place, postcode, country, email);
+
+        return Objects.hash(contactId, firstName, lastName, companyName, phoneNumber, street, houseNumber, place, postcode, country, email, active);
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "contactByContact")
-    public Collection<ContactnoteEntity> getContactnotesByContactId() {
-        return contactnotesByContactId;
+    public Collection<ContactNoteEntity> getContactNotesByContactId() {
+        return contactNotesByContactId;
     }
 
-    public void setContactnotesByContactId(Collection<ContactnoteEntity> contactnotesByContactId) {
-        this.contactnotesByContactId = contactnotesByContactId;
+    public void setContactNotesByContactId(Collection<ContactNoteEntity> contactNotesByContactId) {
+        this.contactNotesByContactId = contactNotesByContactId;
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "contactByContact")
-    public Collection<ContractingpartyEntity> getContractingpartiesByContactId() {
-        return contractingpartiesByContactId;
+    public Collection<ContractingPartyEntity> getContractingPartiesByContactId() {
+        return contractingPartiesByContactId;
     }
 
-    public void setContractingpartiesByContactId(Collection<ContractingpartyEntity> contractingpartiesByContactId) {
-        this.contractingpartiesByContactId = contractingpartiesByContactId;
+    public void setContractingPartiesByContactId(Collection<ContractingPartyEntity> contractingPartiesByContactId) {
+        this.contractingPartiesByContactId = contractingPartiesByContactId;
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "contactByContact")
-    public Collection<CreditcardEntity> getCreditcardsByContactId() {
-        return creditcardsByContactId;
+    public Collection<CreditCardEntity> getCreditCardsByContactId() {
+        return creditCardsByContactId;
     }
 
-    public void setCreditcardsByContactId(Collection<CreditcardEntity> creditcardsByContactId) {
-        this.creditcardsByContactId = creditcardsByContactId;
+    public void setCreditCardsByContactId(Collection<CreditCardEntity> creditCardsByContactId) {
+        this.creditCardsByContactId = creditCardsByContactId;
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @OneToMany(mappedBy = "contactByContact")
+    public Collection<InvoiceEntity> getInvoicesByContactId() {
+        return invoicesByContactId;
+    }
+
+    public void setInvoicesByContactId(Collection<InvoiceEntity> invoicesByContactId) {
+        this.invoicesByContactId = invoicesByContactId;
+    }
+
     @OneToMany(mappedBy = "contactByContact")
     public Collection<PersonEntity> getPeopleByContactId() {
         return peopleByContactId;

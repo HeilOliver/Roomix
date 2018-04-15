@@ -8,9 +8,11 @@ public class InvoicePositionDomain {
     private int reservationUnit;
     private Integer invoice;
     private Integer roomAssignment;
-    private Integer hotelService;
+    private Integer article;
+    private Integer arrangement;
+    private String freePosition;
     private int amount;
-    private Timestamp dateOfIssue;
+    private Timestamp determinationDate;
     private int count;
 
     public int getInvoicePositionId() {
@@ -53,12 +55,28 @@ public class InvoicePositionDomain {
         this.roomAssignment = roomAssignment;
     }
 
-    public Integer getHotelService() {
-        return hotelService;
+    public Integer getArticle() {
+        return article;
     }
 
-    public void setHotelService(Integer hotelService) {
-        this.hotelService = hotelService;
+    public void setArticle(Integer article) {
+        this.article = article;
+    }
+
+    public Integer getArrangement() {
+        return arrangement;
+    }
+
+    public void setArrangement(Integer arrangement) {
+        this.arrangement = arrangement;
+    }
+
+    public String getFreePosition() {
+        return freePosition;
+    }
+
+    public void setFreePosition(String freePosition) {
+        this.freePosition = freePosition;
     }
 
     public int getAmount() {
@@ -69,12 +87,12 @@ public class InvoicePositionDomain {
         this.amount = amount;
     }
 
-    public Timestamp getDateOfIssue() {
-        return dateOfIssue;
+    public Timestamp getDeterminationDate() {
+        return determinationDate;
     }
 
-    public void setDateOfIssue(Timestamp dateOfIssue) {
-        this.dateOfIssue = dateOfIssue;
+    public void setDeterminationDate(Timestamp determinationDate) {
+        this.determinationDate = determinationDate;
     }
 
     public int getCount() {

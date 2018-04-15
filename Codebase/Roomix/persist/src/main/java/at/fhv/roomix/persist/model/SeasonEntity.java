@@ -10,14 +10,14 @@ import java.util.Objects;
 @Entity
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@Table(name = "Season", schema = "roomix", catalog = "")
+@Table(name = "Season", schema = "Roomix", catalog = "")
 public class SeasonEntity {
     private int seasonId;
     private String description;
     private int additionalCharge;
     private Date startDate;
     private Date endDate;
-    private Collection<RoomcategorypriceEntity> roomcategorypricesBySeasonId;
+    private Collection<RoomCategoryPriceEntity> roomCategoryPricesBySeasonId;
 
     @Id
     @Column(name = "SeasonID")
@@ -89,11 +89,11 @@ public class SeasonEntity {
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "seasonBySeason")
-    public Collection<RoomcategorypriceEntity> getRoomcategorypricesBySeasonId() {
-        return roomcategorypricesBySeasonId;
+    public Collection<RoomCategoryPriceEntity> getRoomCategoryPricesBySeasonId() {
+        return roomCategoryPricesBySeasonId;
     }
 
-    public void setRoomcategorypricesBySeasonId(Collection<RoomcategorypriceEntity> roomcategorypricesBySeasonId) {
-        this.roomcategorypricesBySeasonId = roomcategorypricesBySeasonId;
+    public void setRoomCategoryPricesBySeasonId(Collection<RoomCategoryPriceEntity> roomCategoryPricesBySeasonId) {
+        this.roomCategoryPricesBySeasonId = roomCategoryPricesBySeasonId;
     }
 }

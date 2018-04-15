@@ -9,12 +9,13 @@ import java.util.Objects;
 @Entity
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@Table(name = "Arrangement", schema = "roomix", catalog = "")
+@Table(name = "Arrangement", schema = "Roomix", catalog = "")
 public class ArrangementEntity {
     private int arrangementId;
     private int article;
+    private Integer discount;
     private ArticleEntity articleByArticle;
-    private Collection<ReservationunitEntity> reservationunitsByArrangementId;
+    private Collection<InvoicePositionEntity> invoicePositionsByArrangementId;
 
     @Id
     @Column(name = "ArrangementID")
@@ -36,22 +37,32 @@ public class ArrangementEntity {
         this.article = article;
     }
 
+    @Basic
+    @Column(name = "Discount")
+    public Integer getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Integer discount) {
+        this.discount = discount;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ArrangementEntity that = (ArrangementEntity) o;
         return arrangementId == that.arrangementId &&
-                article == that.article;
+                article == that.article &&
+                Objects.equals(discount, that.discount);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(arrangementId, article);
+        return Objects.hash(arrangementId, article, discount);
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "Article", referencedColumnName = "ArticleID", nullable = false)
     public ArticleEntity getArticleByArticle() {
@@ -64,11 +75,11 @@ public class ArrangementEntity {
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "arrangementByArrangement")
-    public Collection<ReservationunitEntity> getReservationunitsByArrangementId() {
-        return reservationunitsByArrangementId;
+    public Collection<InvoicePositionEntity> getInvoicePositionsByArrangementId() {
+        return invoicePositionsByArrangementId;
     }
 
-    public void setReservationunitsByArrangementId(Collection<ReservationunitEntity> reservationunitsByArrangementId) {
-        this.reservationunitsByArrangementId = reservationunitsByArrangementId;
+    public void setInvoicePositionsByArrangementId(Collection<InvoicePositionEntity> invoicePositionsByArrangementId) {
+        this.invoicePositionsByArrangementId = invoicePositionsByArrangementId;
     }
 }

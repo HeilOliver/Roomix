@@ -9,16 +9,19 @@ import java.util.Objects;
 @Entity
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@Table(name = "PartnerAgreement", schema = "roomix", catalog = "")
-public class PartneragreementEntity {
+@Table(name = "PartnerAgreement", schema = "Roomix", catalog = "")
+public class PartnerAgreementEntity {
     private int agreementId;
     private int contractingParty;
     private int cancellationCondition;
     private Date startDate;
     private Date expiringDate;
+    private Integer roomCategory;
+    private Integer countRoomCategory;
     private int discount;
-    private ContractingpartyEntity contractingpartyByContractingParty;
-    private CancellationconditionEntity cancellationconditionByCancellationCondition;
+    private ContractingPartyEntity contractingPartyByContractingParty;
+    private CancellationConditionEntity cancellationConditionByCancellationCondition;
+    private RoomCategoryEntity roomCategoryByRoomCategory;
 
     @Id
     @Column(name = "AgreementID")
@@ -71,6 +74,26 @@ public class PartneragreementEntity {
     }
 
     @Basic
+    @Column(name = "RoomCategory", insertable = false, updatable = false)
+    public Integer getRoomCategory() {
+        return roomCategory;
+    }
+
+    public void setRoomCategory(Integer roomCategory) {
+        this.roomCategory = roomCategory;
+    }
+
+    @Basic
+    @Column(name = "CountRoomCategory")
+    public Integer getCountRoomCategory() {
+        return countRoomCategory;
+    }
+
+    public void setCountRoomCategory(Integer countRoomCategory) {
+        this.countRoomCategory = countRoomCategory;
+    }
+
+    @Basic
     @Column(name = "Discount")
     public int getDiscount() {
         return discount;
@@ -84,40 +107,50 @@ public class PartneragreementEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PartneragreementEntity that = (PartneragreementEntity) o;
+        PartnerAgreementEntity that = (PartnerAgreementEntity) o;
         return agreementId == that.agreementId &&
                 contractingParty == that.contractingParty &&
                 cancellationCondition == that.cancellationCondition &&
                 discount == that.discount &&
                 Objects.equals(startDate, that.startDate) &&
-                Objects.equals(expiringDate, that.expiringDate);
+                Objects.equals(expiringDate, that.expiringDate) &&
+                Objects.equals(roomCategory, that.roomCategory) &&
+                Objects.equals(countRoomCategory, that.countRoomCategory);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(agreementId, contractingParty, cancellationCondition, startDate, expiringDate, discount);
+        return Objects.hash(agreementId, contractingParty, cancellationCondition, startDate, expiringDate, roomCategory, countRoomCategory, discount);
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "ContractingParty", referencedColumnName = "ContractingPartyID", nullable = false)
-    public ContractingpartyEntity getContractingpartyByContractingParty() {
-        return contractingpartyByContractingParty;
+    public ContractingPartyEntity getContractingPartyByContractingParty() {
+        return contractingPartyByContractingParty;
     }
 
-    public void setContractingpartyByContractingParty(ContractingpartyEntity contractingpartyByContractingParty) {
-        this.contractingpartyByContractingParty = contractingpartyByContractingParty;
+    public void setContractingPartyByContractingParty(ContractingPartyEntity contractingPartyByContractingParty) {
+        this.contractingPartyByContractingParty = contractingPartyByContractingParty;
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "CancellationCondition", referencedColumnName = "CancellationConditionID", nullable = false)
-    public CancellationconditionEntity getCancellationconditionByCancellationCondition() {
-        return cancellationconditionByCancellationCondition;
+    public CancellationConditionEntity getCancellationConditionByCancellationCondition() {
+        return cancellationConditionByCancellationCondition;
     }
 
-    public void setCancellationconditionByCancellationCondition(CancellationconditionEntity cancellationconditionByCancellationCondition) {
-        this.cancellationconditionByCancellationCondition = cancellationconditionByCancellationCondition;
+    public void setCancellationConditionByCancellationCondition(CancellationConditionEntity cancellationConditionByCancellationCondition) {
+        this.cancellationConditionByCancellationCondition = cancellationConditionByCancellationCondition;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "RoomCategory", referencedColumnName = "RoomCategoryID")
+    public RoomCategoryEntity getRoomCategoryByRoomCategory() {
+        return roomCategoryByRoomCategory;
+    }
+
+    public void setRoomCategoryByRoomCategory(RoomCategoryEntity roomCategoryByRoomCategory) {
+        this.roomCategoryByRoomCategory = roomCategoryByRoomCategory;
     }
 }

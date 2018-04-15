@@ -8,8 +8,8 @@ import java.util.Objects;
 @Entity
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@Table(name = "ContactNote", schema = "roomix", catalog = "")
-public class ContactnoteEntity {
+@Table(name = "ContactNote", schema = "Roomix", catalog = "")
+public class ContactNoteEntity {
     private int contactNoteId;
     private int contact;
     private String noteContent;
@@ -26,7 +26,7 @@ public class ContactnoteEntity {
     }
 
     @Basic
-    @Column(name = "Contact", insertable = false, updatable = false)
+    @Column(name = "Contact", nullable = false, insertable = false)
     public int getContact() {
         return contact;
     }
@@ -49,7 +49,7 @@ public class ContactnoteEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ContactnoteEntity that = (ContactnoteEntity) o;
+        ContactNoteEntity that = (ContactNoteEntity) o;
         return contactNoteId == that.contactNoteId &&
                 contact == that.contact &&
                 Objects.equals(noteContent, that.noteContent);
@@ -61,7 +61,6 @@ public class ContactnoteEntity {
         return Objects.hash(contactNoteId, contact, noteContent);
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "Contact", referencedColumnName = "ContactID", nullable = false)
     public ContactEntity getContactByContact() {

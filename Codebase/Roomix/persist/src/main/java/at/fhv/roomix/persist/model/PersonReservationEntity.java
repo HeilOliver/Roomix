@@ -8,22 +8,22 @@ import java.util.Objects;
 @Entity
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@Table(name = "PersonRoomAssignment", schema = "Roomix", catalog = "")
-@IdClass(PersonRoomAssignmentEntityPK.class)
-public class PersonRoomAssignmentEntity {
-    private int roomAssignment;
+@Table(name = "PersonReservation", schema = "Roomix", catalog = "")
+@IdClass(PersonReservationEntityPK.class)
+public class PersonReservationEntity {
+    private int reservation;
     private int person;
-    private RoomAssignmentEntity roomAssignmentByRoomAssignment;
+    private ReservationEntity reservationByReservation;
     private PersonEntity personByPerson;
 
     @Id
-    @Column(name = "RoomAssignment", insertable = false, updatable = false)
-    public int getRoomAssignment() {
-        return roomAssignment;
+    @Column(name = "Reservation", insertable = false, updatable = false)
+    public int getReservation() {
+        return reservation;
     }
 
-    public void setRoomAssignment(int roomAssignment) {
-        this.roomAssignment = roomAssignment;
+    public void setReservation(int reservation) {
+        this.reservation = reservation;
     }
 
     @Id
@@ -40,25 +40,25 @@ public class PersonRoomAssignmentEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PersonRoomAssignmentEntity that = (PersonRoomAssignmentEntity) o;
-        return roomAssignment == that.roomAssignment &&
+        PersonReservationEntity that = (PersonReservationEntity) o;
+        return reservation == that.reservation &&
                 person == that.person;
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(roomAssignment, person);
+        return Objects.hash(reservation, person);
     }
 
     @ManyToOne
-    @JoinColumn(name = "RoomAssignment", referencedColumnName = "RoomAssignmentID", nullable = false)
-    public RoomAssignmentEntity getRoomAssignmentByRoomAssignment() {
-        return roomAssignmentByRoomAssignment;
+    @JoinColumn(name = "Reservation", referencedColumnName = "ReservationID", nullable = false)
+    public ReservationEntity getReservationByReservation() {
+        return reservationByReservation;
     }
 
-    public void setRoomAssignmentByRoomAssignment(RoomAssignmentEntity roomAssignmentByRoomAssignment) {
-        this.roomAssignmentByRoomAssignment = roomAssignmentByRoomAssignment;
+    public void setReservationByReservation(ReservationEntity reservationByReservation) {
+        this.reservationByReservation = reservationByReservation;
     }
 
     @ManyToOne

@@ -10,14 +10,14 @@ import java.util.Objects;
 @Entity
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@Table(name = "Cancellation", schema = "roomix", catalog = "")
+@Table(name = "Cancellation", schema = "Roomix", catalog = "")
 public class CancellationEntity {
     private int cancellationId;
     private int cancellationCondition;
-    private Timestamp date;
+    private Timestamp cancellationDate;
     private String description;
-    private CancellationconditionEntity cancellationconditionByCancellationCondition;
-    private Collection<ReservationunitEntity> reservationunitsByCancellationId;
+    private CancellationConditionEntity cancellationConditionByCancellationCondition;
+    private Collection<ReservationUnitEntity> reservationUnitsByCancellationId;
 
     @Id
     @Column(name = "CancellationID")
@@ -40,13 +40,13 @@ public class CancellationEntity {
     }
 
     @Basic
-    @Column(name = "Date")
-    public Timestamp getDate() {
-        return date;
+    @Column(name = "CancellationDate")
+    public Timestamp getCancellationDate() {
+        return cancellationDate;
     }
 
-    public void setDate(Timestamp date) {
-        this.date = date;
+    public void setCancellationDate(Timestamp cancellationDate) {
+        this.cancellationDate = cancellationDate;
     }
 
     @Basic
@@ -66,34 +66,33 @@ public class CancellationEntity {
         CancellationEntity that = (CancellationEntity) o;
         return cancellationId == that.cancellationId &&
                 cancellationCondition == that.cancellationCondition &&
-                Objects.equals(date, that.date) &&
+                Objects.equals(cancellationDate, that.cancellationDate) &&
                 Objects.equals(description, that.description);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(cancellationId, cancellationCondition, date, description);
+        return Objects.hash(cancellationId, cancellationCondition, cancellationDate, description);
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "CancellationCondition", referencedColumnName = "CancellationConditionID", nullable = false)
-    public CancellationconditionEntity getCancellationconditionByCancellationCondition() {
-        return cancellationconditionByCancellationCondition;
+    public CancellationConditionEntity getCancellationConditionByCancellationCondition() {
+        return cancellationConditionByCancellationCondition;
     }
 
-    public void setCancellationconditionByCancellationCondition(CancellationconditionEntity cancellationconditionByCancellationCondition) {
-        this.cancellationconditionByCancellationCondition = cancellationconditionByCancellationCondition;
+    public void setCancellationConditionByCancellationCondition(CancellationConditionEntity cancellationConditionByCancellationCondition) {
+        this.cancellationConditionByCancellationCondition = cancellationConditionByCancellationCondition;
     }
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @OneToMany(mappedBy = "cancellationByCancelation")
-    public Collection<ReservationunitEntity> getReservationunitsByCancellationId() {
-        return reservationunitsByCancellationId;
+    @OneToMany(mappedBy = "cancellationByCancellation")
+    public Collection<ReservationUnitEntity> getReservationUnitsByCancellationId() {
+        return reservationUnitsByCancellationId;
     }
 
-    public void setReservationunitsByCancellationId(Collection<ReservationunitEntity> reservationunitsByCancellationId) {
-        this.reservationunitsByCancellationId = reservationunitsByCancellationId;
+    public void setReservationUnitsByCancellationId(Collection<ReservationUnitEntity> reservationUnitsByCancellationId) {
+        this.reservationUnitsByCancellationId = reservationUnitsByCancellationId;
     }
 }

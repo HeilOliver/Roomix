@@ -9,13 +9,13 @@ import java.util.Objects;
 @Entity
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@Table(name = "ContractingParty", schema = "roomix", catalog = "")
-public class ContractingpartyEntity {
+@Table(name = "ContractingParty", schema = "Roomix", catalog = "")
+public class ContractingPartyEntity {
     private int contractingPartyId;
     private String contractingPartyType;
     private int contact;
     private ContactEntity contactByContact;
-    private Collection<PartneragreementEntity> partneragreementsByContractingPartyId;
+    private Collection<PartnerAgreementEntity> partnerAgreementsByContractingPartyId;
     private Collection<ReservationEntity> reservationsByContractingPartyId;
 
     @Id
@@ -52,7 +52,7 @@ public class ContractingpartyEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ContractingpartyEntity that = (ContractingpartyEntity) o;
+        ContractingPartyEntity that = (ContractingPartyEntity) o;
         return contractingPartyId == that.contractingPartyId &&
                 contact == that.contact &&
                 Objects.equals(contractingPartyType, that.contractingPartyType);
@@ -64,7 +64,6 @@ public class ContractingpartyEntity {
         return Objects.hash(contractingPartyId, contractingPartyType, contact);
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "Contact", referencedColumnName = "ContactID", nullable = false)
     public ContactEntity getContactByContact() {
@@ -76,17 +75,17 @@ public class ContractingpartyEntity {
     }
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @OneToMany(mappedBy = "contractingpartyByContractingParty")
-    public Collection<PartneragreementEntity> getPartneragreementsByContractingPartyId() {
-        return partneragreementsByContractingPartyId;
+    @OneToMany(mappedBy = "contractingPartyByContractingParty")
+    public Collection<PartnerAgreementEntity> getPartnerAgreementsByContractingPartyId() {
+        return partnerAgreementsByContractingPartyId;
     }
 
-    public void setPartneragreementsByContractingPartyId(Collection<PartneragreementEntity> partneragreementsByContractingPartyId) {
-        this.partneragreementsByContractingPartyId = partneragreementsByContractingPartyId;
+    public void setPartnerAgreementsByContractingPartyId(Collection<PartnerAgreementEntity> partnerAgreementsByContractingPartyId) {
+        this.partnerAgreementsByContractingPartyId = partnerAgreementsByContractingPartyId;
     }
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @OneToMany(mappedBy = "contractingpartyByContractingParty")
+    @OneToMany(mappedBy = "contractingPartyByContractingParty")
     public Collection<ReservationEntity> getReservationsByContractingPartyId() {
         return reservationsByContractingPartyId;
     }

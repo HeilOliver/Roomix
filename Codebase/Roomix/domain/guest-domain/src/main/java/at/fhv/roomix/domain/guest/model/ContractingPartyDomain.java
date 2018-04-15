@@ -1,7 +1,6 @@
 package at.fhv.roomix.domain.guest.model;
 
 public class ContractingPartyDomain {
-
     private int contractingPartyId;
     private String contractingPartyType;
     private int contact;
