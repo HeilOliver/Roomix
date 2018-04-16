@@ -38,7 +38,7 @@ public class TourGroupEntity {
     }
 
     @Basic
-    @Column(name = "TourGroupLeader")
+    @Column(name = "TourGroupLeader", updatable = false, insertable = false)
     public int getTourGroupLeader() {
         return tourGroupLeader;
     }

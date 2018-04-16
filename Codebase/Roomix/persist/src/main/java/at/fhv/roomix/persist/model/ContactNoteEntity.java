@@ -26,7 +26,7 @@ public class ContactNoteEntity {
     }
 
     @Basic
-    @Column(name = "Contact", nullable = false, insertable = false)
+    @Column(name = "Contact", nullable = false, insertable = false, updatable = false)
     public int getContact() {
         return contact;
     }

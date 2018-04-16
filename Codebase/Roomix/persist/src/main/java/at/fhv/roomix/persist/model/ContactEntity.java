@@ -1,10 +1,14 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Table(name = "Contact", schema = "Roomix", catalog = "")
 public class ContactEntity {
     private int contactId;
@@ -170,6 +174,7 @@ public class ContactEntity {
         return Objects.hash(contactId, firstName, lastName, companyName, phoneNumber, street, houseNumber, place, postcode, country, email, active);
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "contactByContact")
     public Collection<ContactNoteEntity> getContactNotesByContactId() {
         return contactNotesByContactId;
@@ -179,6 +184,7 @@ public class ContactEntity {
         this.contactNotesByContactId = contactNotesByContactId;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "contactByContact")
     public Collection<ContractingPartyEntity> getContractingPartiesByContactId() {
         return contractingPartiesByContactId;
@@ -188,6 +194,7 @@ public class ContactEntity {
         this.contractingPartiesByContactId = contractingPartiesByContactId;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "contactByContact")
     public Collection<CreditCardEntity> getCreditCardsByContactId() {
         return creditCardsByContactId;
@@ -197,6 +204,7 @@ public class ContactEntity {
         this.creditCardsByContactId = creditCardsByContactId;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "contactByContact")
     public Collection<InvoiceEntity> getInvoicesByContactId() {
         return invoicesByContactId;
@@ -206,6 +214,7 @@ public class ContactEntity {
         this.invoicesByContactId = invoicesByContactId;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "contactByContact")
     public Collection<PersonEntity> getPeopleByContactId() {
         return peopleByContactId;
