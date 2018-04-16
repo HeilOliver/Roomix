@@ -15,6 +15,15 @@ public class ReservationOptionPojo {
 
     private LocalDate dueDate;
     private String description;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public LocalDate getDueDate() {
         return dueDate;

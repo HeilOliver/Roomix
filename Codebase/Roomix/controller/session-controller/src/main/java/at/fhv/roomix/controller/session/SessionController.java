@@ -49,4 +49,12 @@ class SessionController implements ISessionController {
     public void dispose() {
 
     }
+
+    @Override
+    public void startUp() {
+        try {
+            Thread.sleep(9000);
+        } catch (InterruptedException ignore) {
+        }
+    }
 }

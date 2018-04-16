@@ -27,4 +27,9 @@ public class SessionControllerMock implements ISessionController {
     public void dispose() {
 
     }
+
+    @Override
+    public void startUp() {
+
+    }
 }

@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml"
-            xmlns="http://javafx.com/javafx"
-            fx:controller="at.fhv.roomix.ui.view.reservation.edit.ReservationEditView"
->
+<?import org.controlsfx.control.MasterDetailPane?>
 
+<AnchorPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhv.roomix.ui.view.reservation.edit.ReservationEditView">
+    <MasterDetailPane dividerPosition="0.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <masterNode>
+
+        </masterNode>
+        <detailNode>
+
+        </detailNode>
+    </MasterDetailPane>
 </AnchorPane>
