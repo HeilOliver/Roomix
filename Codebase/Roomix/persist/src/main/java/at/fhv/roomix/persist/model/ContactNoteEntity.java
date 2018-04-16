@@ -62,7 +62,7 @@ public class ContactNoteEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "Contact", referencedColumnName = "ContactID", nullable = false)
+    @JoinColumn(name = "Contact", referencedColumnName = "ContactID", nullable = false, insertable = false, updatable = false)
     public ContactEntity getContactByContact() {
         return contactByContact;
     }
