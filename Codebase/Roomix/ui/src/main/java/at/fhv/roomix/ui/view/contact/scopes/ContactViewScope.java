@@ -21,7 +21,7 @@ import java.util.function.Supplier;
  * <p>
  * Enter Description here
  */
-public class ContactViewScope extends AbstractMDScope<ContactPojo> implements Scope {
+public class ContactViewScope extends AbstractMDScope<ContactPojo>{
 
     public ContactViewScope() {
         super(ContactPojo::new, new ContactProvider());

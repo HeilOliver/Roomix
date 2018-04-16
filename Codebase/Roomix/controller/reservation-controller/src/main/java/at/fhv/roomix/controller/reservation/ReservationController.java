@@ -54,7 +54,7 @@ class ReservationController implements IReservationController {
 
         IAbstractDomainBuilder<GuestDomain, ContactEntity> guestBuilder = GuestDomainBuilder.getInstance();
         ModelMapper modelMapper = new ModelMapper();
-        HashSet<GuestDomain> guestDomainSet = new HashSet<GuestDomain>(guestBuilder.getAll());
+        HashSet<GuestDomain> guestDomainSet = new HashSet<>(guestBuilder.getAll());
         HashSet<ContactPojo> contactPojoSet = new HashSet<>();
 
         guestDomainSet.forEach(contact -> contactPojoSet.add(modelMapper.map(contact, ContactPojo.class)));
@@ -95,7 +95,7 @@ class ReservationController implements IReservationController {
     public void updateReservation(long sessionId, ReservationPojo reservationPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException {
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
 
-        
+
     }
 
     public Collection<ContactPojo> getSearchedContacts(long sessionId, String query) throws SessionFaultException {
