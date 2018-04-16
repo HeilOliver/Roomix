@@ -39,7 +39,7 @@ public class ReservationControllerTest {
     void newContact() throws SessionFaultException, ArgumentFaultException, ValidationFault {
         ReservationController controller = new ReservationController();
 
-        assertThrows(ArgumentFaultException.class, () -> controller.newContact(123L, null));
+        assertThrows(ArgumentFaultException.class, () -> controller.updateContact(123L, null));
 
         ContactPojo pojo = new ContactPojo();
         pojo.setFname("Max");
@@ -51,10 +51,10 @@ public class ReservationControllerTest {
         pojo.setPostcode("6850");
         pojo.setStreet("SomeStreet 4");
 
-        assertThrows(ValidationFault.class, () -> controller.newContact(123L, pojo));
+        assertThrows(ValidationFault.class, () -> controller.updateContact(123L, pojo));
         pojo.setHouseNumber("123");
 
-        controller.newContact(110L, pojo);
+        controller.updateContact(110L, pojo);
         assertTrue(mock.getNewContactBool());
 
     }

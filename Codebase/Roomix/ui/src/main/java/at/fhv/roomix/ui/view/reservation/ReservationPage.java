@@ -16,7 +16,7 @@ public class ReservationPage extends AbstractPage {
     private static final String DEFAULT_TAG = "Reservation";
     private static final String DEFAULT_GLYPH = "FILE_TEXT";
 
-    protected ReservationPage(SwitchablePage page) {
+    public ReservationPage() {
         super(new SwitchablePage(DEFAULT_TAG, DEFAULT_GLYPH, ReservationView.class));
     }
 }
