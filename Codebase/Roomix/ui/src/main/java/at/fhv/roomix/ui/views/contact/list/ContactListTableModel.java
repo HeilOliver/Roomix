@@ -21,12 +21,12 @@ public class ContactListTableModel {
         return pojo;
     }
 
-    public String getFname() {
-        return pojo.getFname();
+    public String getFirstName() {
+        return pojo.getFirstName();
     }
 
-    public String getLname() {
-        return pojo.getLname();
+    public String getLastName() {
+        return pojo.getLastName();
     }
 
     public String getHouseNumber() {

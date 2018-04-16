@@ -9,7 +9,6 @@ import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ViewModel;
 import de.saxsys.mvvmfx.utils.mapping.ModelWrapper;
 import de.saxsys.mvvmfx.utils.validation.*;
-import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.beans.property.StringProperty;
@@ -157,13 +156,13 @@ public class ContactEditViewModel implements ViewModel {
 
     StringProperty firstNameProperty() {
         return contactWrapper.field("firstName",
-                ContactPojo::getFname, ContactPojo::setFname);
+                ContactPojo::getFirstName, ContactPojo::setFirstName);
     }
 
     StringProperty lastNameProperty() {
         return contactWrapper.field(
-                "lastName", ContactPojo::getLname,
-                ContactPojo::setLname);
+                "lastName", ContactPojo::getLastName,
+                ContactPojo::setLastName);
     }
 
     StringProperty companyNameProperty() {

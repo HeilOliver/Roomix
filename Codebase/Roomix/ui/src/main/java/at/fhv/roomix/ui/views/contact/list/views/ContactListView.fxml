@@ -12,12 +12,12 @@
             <columns>
                 <TableColumn prefWidth="75.0" text="%contact.table.firstname">
                     <cellValueFactory>
-                        <PropertyValueFactory property="fname"/>
+                        <PropertyValueFactory property="firstName"/>
                     </cellValueFactory>
                 </TableColumn>
                 <TableColumn prefWidth="75.0" text="%contact.table.lastname">
                     <cellValueFactory>
-                        <PropertyValueFactory property="lname"/>
+                        <PropertyValueFactory property="lastName"/>
                     </cellValueFactory>
                 </TableColumn>
                 <TableColumn prefWidth="75.0" text="%contact.table.companyname">
