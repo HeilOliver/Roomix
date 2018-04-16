@@ -52,7 +52,7 @@ public class PersonReservationEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "Reservation", referencedColumnName = "ReservationID", nullable = false)
+    @JoinColumn(name = "Reservation", referencedColumnName = "ReservationID", nullable = false, insertable = false, updatable = false)
     public ReservationEntity getReservationByReservation() {
         return reservationByReservation;
     }
@@ -62,7 +62,7 @@ public class PersonReservationEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "Person", referencedColumnName = "PersonID", nullable = false)
+    @JoinColumn(name = "Person", referencedColumnName = "PersonID", nullable = false, insertable = false, updatable = false)
     public PersonEntity getPersonByPerson() {
         return personByPerson;
     }

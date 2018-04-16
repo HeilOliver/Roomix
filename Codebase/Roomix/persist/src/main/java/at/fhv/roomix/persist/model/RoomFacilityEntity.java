@@ -64,7 +64,7 @@ public class RoomFacilityEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "Room", referencedColumnName = "RoomID", nullable = false)
+    @JoinColumn(name = "Room", referencedColumnName = "RoomID", nullable = false, insertable = false, updatable = false)
     public RoomEntity getRoomByRoom() {
         return roomByRoom;
     }
@@ -74,7 +74,7 @@ public class RoomFacilityEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "Facility", referencedColumnName = "FacilityID", nullable = false)
+    @JoinColumn(name = "Facility", referencedColumnName = "FacilityID", nullable = false, insertable = false, updatable = false)
     public FacilityEntity getFacilityByFacility() {
         return facilityByFacility;
     }

@@ -17,7 +17,7 @@ public class TourGroupMemberEntity {
     private PersonEntity personByTourGroupMember;
 
     @Id
-    @Column(name = "TourGroupID")
+    @Column(name = "TourGroupID", insertable = false, updatable = false)
     public int getTourGroupId() {
         return tourGroupId;
     }
@@ -27,7 +27,7 @@ public class TourGroupMemberEntity {
     }
 
     @Id
-    @Column(name = "TourGroupMember")
+    @Column(name = "TourGroupMember", insertable = false, updatable = false)
     public int getTourGroupMember() {
         return tourGroupMember;
     }
@@ -52,7 +52,7 @@ public class TourGroupMemberEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "TourGroupID", referencedColumnName = "TourGroupID", nullable = false)
+    @JoinColumn(name = "TourGroupID", referencedColumnName = "TourGroupID", nullable = false, insertable = false, updatable = false)
     public TourGroupEntity getTourGroupByTourGroupId() {
         return tourGroupByTourGroupId;
     }
@@ -62,7 +62,7 @@ public class TourGroupMemberEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "TourGroupMember", referencedColumnName = "PersonID", nullable = false)
+    @JoinColumn(name = "TourGroupMember", referencedColumnName = "PersonID", nullable = false, insertable = false, updatable = false)
     public PersonEntity getPersonByTourGroupMember() {
         return personByTourGroupMember;
     }
