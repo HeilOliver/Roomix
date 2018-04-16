@@ -25,10 +25,10 @@
     <orderEntry type="library" name="Maven: org.jboss:jandex:2.0.3.Final" level="project" />
     <orderEntry type="library" name="Maven: dom4j:dom4j:1.6.1" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate.common:hibernate-commons-annotations:5.0.1.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.modelmapper:modelmapper:1.1.0" level="project" />
-    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:6.0.3" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-ehcache:5.2.15.Final" level="project" />
     <orderEntry type="library" name="Maven: net.sf.ehcache:ehcache:2.10.3" level="project" />
+    <orderEntry type="library" name="Maven: org.modelmapper:modelmapper:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:6.0.3" level="project" />
     <orderEntry type="library" name="Maven: org.junit.jupiter:junit-jupiter-api:5.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.apiguardian:apiguardian-api:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.opentest4j:opentest4j:1.0.0" level="project" />

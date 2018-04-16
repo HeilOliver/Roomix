@@ -58,6 +58,6 @@
     <jar href="weld-se-core-3.0.3.Final.jar" size="70512" download="eager" />
     <jar href="weld-spi-3.0.SP2.jar" size="89805" download="eager" />
   </resources>
-  <jfx:javafx-desc  width="800" height="600" main-class="at.fhv.roomix.ui.RunMe"  name="Roomix"  preloader-class="at.fhv.roomix.ui.SplashScreen"/>
+  <jfx:javafx-desc width="800" height="600" main-class="at.fhv.roomix.ui.loader.RunMe" name="Roomix" preloader-class="at.fhv.roomix.ui.loader.SplashScreen"/>
   <update check="background"/>
 </jnlp>

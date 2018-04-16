@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            xmlns="http://javafx.com/javafx"
+            fx:controller="at.fhv.roomix.ui.view.about.AboutView"
+>
+    <GridPane AnchorPane.topAnchor="10" AnchorPane.bottomAnchor="10"
+              AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10">
+        <columnConstraints>
+            <ColumnConstraints prefWidth="60"/>
+            <ColumnConstraints prefWidth="200"/>
+            <ColumnConstraints/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints prefHeight="60"/>
+            <RowConstraints prefHeight="100"/>
+            <RowConstraints prefHeight="30"/>
+            <RowConstraints prefHeight="30"/>
+            <RowConstraints prefHeight="100"/>
+        </rowConstraints>
+
+        <ImageView preserveRatio="true" fitHeight="90"
+                   GridPane.rowIndex="1" GridPane.columnIndex="1">
+            <Image backgroundLoading="true" url="/assets/roomix_logoBlack.png"/>
+        </ImageView>
+        <Label GridPane.rowIndex="2" GridPane.columnIndex="1">Copyright by Team F</Label>
+
+        <Label GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS" GridPane.hgrow="ALWAYS">
+            Contributors: Oliver Heil, Moritz Wilfling, Stefan Geiger, Robert Schmitzerli
+        </Label>
+
+    </GridPane>
+</AnchorPane>

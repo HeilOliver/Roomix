@@ -39,7 +39,7 @@ abstract class AbstractDomainBuilder<DM, EN> {
     }
 
     /**
-     * Add a mapping to a list of mappings for mapping an entity to a domain or the other way round
+     * Add a mapping to a content of mappings for mapping an entity to a domain or the other way round
      *
      * @param destinationType   Destination class type (Entity.class, Domain.class)
      * @param sourceMapper      Anonymous implementation of the source getter (Entity::getPersonEntities)
@@ -59,7 +59,7 @@ abstract class AbstractDomainBuilder<DM, EN> {
     }
 
     /**
-     * Does the actual mapping, by a given list, that contains source and destination
+     * Does the actual mapping, by a given content, that contains source and destination
      *
      * @param mapping Linked Hash Map with source getter, destination class and destination setter
      */
