@@ -24,8 +24,8 @@ public class ReservationMock implements IReservationController {
 
     ReservationMock() {
         ContactPojo pojo = new ContactPojo();
-        pojo.setFname("Oliver");
-        pojo.setLname("Heil");
+        pojo.setFirstName("Oliver");
+        pojo.setLastName("Heil");
         pojo.setCountry("Germany");
         pojo.setPhoneNumber("+4312132132132");
         pojo.setEmail("Some@some.com");
@@ -35,8 +35,8 @@ public class ReservationMock implements IReservationController {
         contactPojos.add(pojo);
 
         pojo = new ContactPojo();
-        pojo.setFname("Max");
-        pojo.setLname("Mustermann");
+        pojo.setFirstName("Max");
+        pojo.setLastName("Mustermann");
         pojo.setCountry("Germany");
         pojo.setPhoneNumber("+4312132132132");
         pojo.setEmail("Some@some.com");

@@ -42,8 +42,8 @@ public class ReservationControllerTest {
         assertThrows(ArgumentFaultException.class, () -> controller.updateContact(123L, null));
 
         ContactPojo pojo = new ContactPojo();
-        pojo.setFname("Max");
-        pojo.setLname("Mustermann");
+        pojo.setFirstName("Max");
+        pojo.setLastName("Mustermann");
         pojo.setCountry("Germany");
         pojo.setPhoneNumber("+4312132132132");
         pojo.setEmail("Some@some.com");
