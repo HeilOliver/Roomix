@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <!--
-This file gives a list of all country subdivisions in the ISO 3166-2
+This file gives a content of all country subdivisions in the ISO 3166-2
 standard, and is used to provide translations via gettext
 
 The following conventions are used in this file:

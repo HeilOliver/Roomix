@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            xmlns="http://javafx.com/javafx"
+            fx:controller="at.fhv.roomix.ui.view.login.LoginView"
+            stylesheets="@LoginStyle.css">
+    <StackPane AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
+               AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0">
+        <VBox alignment="CENTER">
+            <GridPane alignment="CENTER">
+                <rowConstraints>
+                    <RowConstraints prefHeight="100"/>
+                    <RowConstraints prefHeight="30"/>
+                    <RowConstraints prefHeight="30"/>
+                    <RowConstraints prefHeight="10"/>
+                    <RowConstraints prefHeight="30"/>
+                    <RowConstraints prefHeight="10"/>
+                    <RowConstraints prefHeight="30"/>
+                </rowConstraints>
+                <columnConstraints>
+                    <ColumnConstraints prefWidth="115"/>
+                    <ColumnConstraints prefWidth="10"/>
+                    <ColumnConstraints prefWidth="115"/>
+                    <ColumnConstraints prefWidth="4"/>
+                    <ColumnConstraints prefWidth="30"/>
+                </columnConstraints>
+
+                <FontAwesomeIconView glyphName="USER" size="10em"
+                                     GridPane.columnIndex="0" GridPane.columnSpan="3"
+                                     GridPane.rowIndex="0" GridPane.halignment="CENTER"/>
+                <TextField GridPane.rowIndex="2" GridPane.columnIndex="0"
+                           GridPane.columnSpan="3" fx:id="txtUsername" promptText="%login.prompt.username"/>
+
+                <PasswordField GridPane.rowIndex="4" GridPane.columnIndex="0"
+                               GridPane.columnSpan="3" fx:id="txtPassword" promptText="%login.prompt.password"/>
+
+                <Button fx:id="btnLogOut" GridPane.columnIndex="0"
+                        GridPane.rowIndex="6" onAction="#btnLogOut_Click"
+                        text="%login.logOut" maxWidth="Infinity"
+                        maxHeight="Infinity"/>
+
+                <Button fx:id="btnLogIn" onAction="#btnLogIn_Click"
+                        text="%login.logIn" GridPane.columnIndex="2"
+                        GridPane.rowIndex="6"
+                        maxWidth="Infinity" maxHeight="Infinity"/>
+
+                <ProgressIndicator fx:id="progressIndicator"
+                                   GridPane.columnIndex="4"
+                                   GridPane.rowIndex="6"/>
+            </GridPane>
+        </VBox>
+    </StackPane>
+</AnchorPane>

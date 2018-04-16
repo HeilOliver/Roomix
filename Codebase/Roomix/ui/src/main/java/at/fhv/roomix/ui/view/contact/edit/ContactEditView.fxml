@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            xmlns="http://javafx.com/javafx"
+            fx:controller="at.fhv.roomix.ui.view.contact.edit.ContactEditView"
+>
+    <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+          AnchorPane.topAnchor="0.0">
+        <Separator/>
+        <GridPane>
+            <columnConstraints>
+                <ColumnConstraints minWidth="10.0"/>
+                <ColumnConstraints minWidth="10.0"/>
+                <ColumnConstraints minWidth="10.0"/>
+                <ColumnConstraints minWidth="10.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+
+            <Label text="%contact.edit.firstname" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
+                   GridPane.rowIndex="0"/>
+            <Label text="%contact.edit.lastname" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
+                   GridPane.rowIndex="1"/>
+            <Label text="%contact.edit.companyname" GridPane.columnIndex="2" GridPane.halignment="RIGHT"
+                   GridPane.rowIndex="0"/>
+            <Label text="%contact.edit.street" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
+                   GridPane.rowIndex="2"/>
+            <Label text="%contact.edit.postalcode" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
+                   GridPane.rowIndex="3"/>
+            <Label text="%contact.edit.city" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
+                   GridPane.rowIndex="4"/>
+            <Label text="%contact.edit.country" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
+                   GridPane.rowIndex="5"/>
+            <Label text="%contact.edit.phonenumber" GridPane.columnIndex="2" GridPane.halignment="RIGHT"
+                   GridPane.rowIndex="1"/>
+            <Label text="%contact.edit.email" GridPane.columnIndex="2" GridPane.halignment="RIGHT"
+                   GridPane.rowIndex="2"/>
+            <Label text="%contact.edit.houseNumber" GridPane.columnIndex="2" GridPane.halignment="RIGHT"
+                   GridPane.rowIndex="3"/>
+            <TextField fx:id="firstnameInput" promptText="%contact.edit.firstname.prompt" GridPane.columnIndex="1"
+                       GridPane.rowIndex="0"/>
+            <TextField fx:id="lastnameInput" promptText="%contact.edit.lastname.prompt" GridPane.columnIndex="1"
+                       GridPane.rowIndex="1"/>
+            <TextField fx:id="companynameInput" promptText="%contact.edit.companyname.prompt" GridPane.columnIndex="3"
+                       GridPane.rowIndex="0"/>
+            <TextField fx:id="streetInput" promptText="%contact.edit.street.prompt" GridPane.columnIndex="1"
+                       GridPane.rowIndex="2"/>
+            <TextField fx:id="postcodeInput" promptText="%contact.edit.postalcode.prompt" GridPane.columnIndex="1"
+                       GridPane.rowIndex="3"/>
+            <TextField fx:id="placeInput" promptText="%contact.edit.city.prompt" GridPane.columnIndex="1"
+                       GridPane.rowIndex="4"/>
+            <TextField fx:id="countryInput" promptText="%contact.edit.country.prompt" GridPane.columnIndex="1"
+                       GridPane.rowIndex="5"/>
+            <TextField fx:id="phoneNumberInput" promptText="%contact.edit.phonenumber.prompt" GridPane.columnIndex="3"
+                       GridPane.rowIndex="1"/>
+            <TextField fx:id="emailInput" promptText="%contact.edit.email.prompt" GridPane.columnIndex="3"
+                       GridPane.rowIndex="2"/>
+            <TextField fx:id="houseNumberInput" promptText="%contact.edit.houseNumber.prompt" GridPane.columnIndex="3"
+                       GridPane.rowIndex="3"/>
+        </GridPane>
+    </VBox>
+</AnchorPane>

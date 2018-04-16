@@ -126,8 +126,8 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>8.1.2</version>
                 <configuration>
-                    <mainClass>at.fhv.roomix.ui.RunMe</mainClass>
-                    <preLoader>at.fhv.roomix.ui.SplashScreen</preLoader>
+                    <mainClass>at.fhv.roomix.ui.loader.RunMe</mainClass>
+                    <preLoader>at.fhv.roomix.ui.loader.SplashScreen</preLoader>
                 </configuration>
             </plugin>
         </plugins>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            xmlns="http://javafx.com/javafx"
+            fx:controller="at.fhv.roomix.ui.view.dashboard.DashBoardView"
+            stylesheets="@DashBoardStyle.css">
+    <Label>Hier könnte Ihre Werbung stehen</Label>
+</AnchorPane>

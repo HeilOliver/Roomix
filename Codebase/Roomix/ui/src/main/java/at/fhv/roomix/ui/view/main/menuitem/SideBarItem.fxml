@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
+<GridPane xmlns:fx="http://javafx.com/fxml/1" onMouseClicked="#itemClicked" styleClass="menuItem"
+          stylesheets="@../mainView.css" xmlns="http://javafx.com/javafx/8.0.121"
+          fx:controller="at.fhv.roomix.ui.view.main.menuitem.SideBarItem">
+    <columnConstraints>
+        <ColumnConstraints minWidth="50" prefWidth="50"/>
+        <ColumnConstraints/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="45" prefHeight="45"/>
+    </rowConstraints>
+    <Rectangle fx:id="selected" height="35" styleClass="sideBarSelected"
+               fill="darkorange" width="5" GridPane.columnIndex="0" GridPane.halignment="LEFT"/>
+    <FontAwesomeIconView fx:id="icon" glyphName="CLOSE" size="2em" styleClass="itemGlyph" GridPane.columnIndex="0"
+                         GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+
+    <Rectangle fx:id="spacer" height="20" opacity="0.0" styleClass="sideBarSelected" width="125"
+               GridPane.columnIndex="1"/>
+    <Label fx:id="lbl_tag" styleClass="itemTag" GridPane.columnIndex="1" GridPane.halignment="LEFT"
+           GridPane.valignment="CENTER"/>
+</GridPane>
