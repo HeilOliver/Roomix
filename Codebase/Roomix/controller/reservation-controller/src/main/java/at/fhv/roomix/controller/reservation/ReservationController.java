@@ -4,6 +4,7 @@ import at.fhv.roomix.controller.reservation.exeption.ArgumentFaultException;
 import at.fhv.roomix.controller.reservation.exeption.SessionFaultException;
 import at.fhv.roomix.controller.reservation.exeption.ValidationFault;
 import at.fhv.roomix.controller.reservation.model.ContactPojo;
+import at.fhv.roomix.controller.reservation.model.ReservationPojo;
 import at.fhv.roomix.domain.guest.model.GuestDomain;
 import at.fhv.roomix.domain.session.ISessionDomain;
 import at.fhv.roomix.domain.session.SessionFactory;
@@ -45,20 +46,6 @@ class ReservationController implements IReservationController {
         throw new ValidationFault(strings);
     }
 
-    @Override
-    public void newContact(long sessionId, ContactPojo contactPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException {
-
-        if (contactPojo == null) throw new ArgumentFaultException();
-        validate(contactPojo);
-        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
-
-        IAbstractDomainBuilder<GuestDomain, ContactEntity> guestBuilder = GuestDomainBuilder.getInstance();
-        ModelMapper modelMapper = new ModelMapper();
-
-        GuestDomain guestDomain = modelMapper.map(contactPojo, GuestDomain.class);
-
-        guestBuilder.set(guestDomain);
-    }
 
     @Override
     public Collection<ContactPojo> getAllContacts(long sessionId) throws SessionFaultException {
@@ -82,11 +69,36 @@ class ReservationController implements IReservationController {
         validate(contactPojo);
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
 
-        newContact(sessionId, contactPojo);
+        IAbstractDomainBuilder<GuestDomain, ContactEntity> guestBuilder = GuestDomainBuilder.getInstance();
+        ModelMapper modelMapper = new ModelMapper();
+
+        GuestDomain guestDomain = modelMapper.map(contactPojo, GuestDomain.class);
+
+        guestBuilder.set(guestDomain);
+    }
+
+    @Override
+    public Collection<ReservationPojo> getAllReservation(long sessionId) throws SessionFaultException {
+        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
+
+        return new HashSet<>();
+    }
+
+    @Override
+    public Collection<ReservationPojo> getSearchedReservation(long sessionId, String query) throws SessionFaultException {
+        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
+
+        return new HashSet<>();
+    }
+
+    @Override
+    public void updateReservation(long sessionId, ReservationPojo reservationPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException {
+        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
+
+        
     }
 
     public Collection<ContactPojo> getSearchedContacts(long sessionId, String query) throws SessionFaultException {
-
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
 
         Collection<ContactPojo> contactPojoSet = getAllContacts(sessionId);
