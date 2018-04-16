@@ -52,7 +52,7 @@ public class PersonRoomAssignmentEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "RoomAssignment", referencedColumnName = "RoomAssignmentID", nullable = false)
+    @JoinColumn(name = "RoomAssignment", referencedColumnName = "RoomAssignmentID", nullable = false, insertable = false, updatable = false)
     public RoomAssignmentEntity getRoomAssignmentByRoomAssignment() {
         return roomAssignmentByRoomAssignment;
     }
@@ -62,7 +62,7 @@ public class PersonRoomAssignmentEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "Person", referencedColumnName = "PersonID", nullable = false)
+    @JoinColumn(name = "Person", referencedColumnName = "PersonID", nullable = false, insertable = false, updatable = false)
     public PersonEntity getPersonByPerson() {
         return personByPerson;
     }
