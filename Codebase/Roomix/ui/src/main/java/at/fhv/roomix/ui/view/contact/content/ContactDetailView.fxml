@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            xmlns="http://javafx.com/javafx"
+            fx:controller="at.fhv.roomix.ui.view.contact.content.ContactDetailView"
+            stylesheets="@ContactContentStyle.css">
+    <FlowPane AnchorPane.leftAnchor="0.0"
+              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Text fx:id="txtFirstname" styleClass="detail_contact_name"/>
+        <Region prefWidth="10"/>
+        <Text fx:id="txtLastname" styleClass="detail_contact_name"/>
+    </FlowPane>
+    <VBox AnchorPane.leftAnchor="0.0"
+          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95">
+        <Separator/>
+    </VBox>
+
+    <GridPane fx:id="pnlContent" AnchorPane.leftAnchor="0.0"
+              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100">
+        <columnConstraints>
+            <ColumnConstraints minWidth="100.0" prefWidth="150.0"/>
+            <ColumnConstraints minWidth="150.0"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints prefHeight="30.0"/>
+            <RowConstraints prefHeight="30.0"/>
+            <RowConstraints prefHeight="30.0"/>
+            <RowConstraints prefHeight="30.0"/>
+            <RowConstraints prefHeight="30.0"/>
+            <RowConstraints prefHeight="30.0"/>
+            <RowConstraints prefHeight="30.0"/>
+            <RowConstraints prefHeight="30.0"/>
+            <RowConstraints prefHeight="30.0"/>
+        </rowConstraints>
+        <Label text="%contact.table.companyname" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <Text fx:id="txtCompanyname" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label text="%contact.table.street" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <Text fx:id="txtStreet" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <Label text="%contact.table.city" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <Text fx:id="txtCity" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+        <Label text="%contact.table.postalcode" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <Text fx:id="txtPostalcode" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+        <Label text="%contact.table.country" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <Text fx:id="txtCountry" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+        <Label text="%contact.table.phonenumber" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+        <Text fx:id="txtPhonenumber" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+        <Label text="%contact.table.email" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+        <Text fx:id="txtEmail" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+    </GridPane>
+
+    <VBox fx:id="pnlNothing">
+        <Label text="%contact.table.detail.nothingSelected"/>
+    </VBox>
+</AnchorPane>

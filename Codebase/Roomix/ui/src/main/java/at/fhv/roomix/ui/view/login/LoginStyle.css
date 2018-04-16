@@ -1,0 +1,6 @@
+.popover > .border {
+    -fx-border-style: none;
+    -fx-padding: 0;
+    -fx-border-width: 0;
+    -fx-fill: rgba(255, 0, 30, 0.7);
+}
