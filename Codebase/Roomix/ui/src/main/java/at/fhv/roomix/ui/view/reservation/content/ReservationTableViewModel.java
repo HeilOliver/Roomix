@@ -1,7 +1,9 @@
-package at.fhv.roomix.ui.view.contact.content;
+package at.fhv.roomix.ui.view.reservation.content;
 
-import at.fhv.roomix.controller.reservation.model.ContactPojo;
-import at.fhv.roomix.ui.view.contact.scopes.ContactViewScope;
+
+import at.fhv.roomix.controller.reservation.model.ReservationPojo;
+import at.fhv.roomix.ui.view.contact.content.ContactTableRowModel;
+import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
 import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.ObjectProperty;
@@ -12,22 +14,22 @@ import javafx.collections.SetChangeListener;
 
 /**
  * Roomix
- * at.fhv.roomix.ui.view.contact.content
- * ContactTableViewModel
- * 15/04/2018 Oliver
+ * at.fhv.roomix.ui.view.reservation.content
+ * ReservationTableViewModel
+ * 17/04/2018 Oliver
  * <p>
  * Enter Description here
  */
-public class ContactTableViewModel implements ViewModel {
+public class ReservationTableViewModel implements ViewModel {
 
-    private final ObservableList<ContactTableRowModel> contacts =
+    private final ObservableList<ReservationTableRowModel> contacts =
             FXCollections.observableArrayList();
 
-    private final ObjectProperty<ContactTableRowModel> selectedTableRow =
+    private final ObjectProperty<ReservationTableRowModel> selectedTableRow =
             new SimpleObjectProperty<>();
 
     @InjectScope
-    private ContactViewScope viewScope;
+    private ReservationViewScope viewScope;
 
     public void initialize() {
         selectedTableRow.addListener(((observable, oldValue, newValue) -> {
@@ -39,22 +41,23 @@ public class ContactTableViewModel implements ViewModel {
         }));
 
         viewScope.getObservableSet().addListener(
-                (SetChangeListener<ContactPojo>) c -> loadData());
+                (SetChangeListener<ReservationPojo>) c -> loadData());
     }
 
     private void loadData() {
         contacts.clear();
         viewScope.getObservableSet()
-                .forEach(contactPojo
-                        -> contacts.add(new ContactTableRowModel(
-                        contactPojo)));
+                .forEach(reservationPojo
+                        -> contacts.add(new ReservationTableRowModel(
+                        reservationPojo)));
     }
 
-    ObservableList<ContactTableRowModel> getContacts() {
+    ObservableList<ReservationTableRowModel> getContacts() {
         return contacts;
     }
 
-    ObjectProperty<ContactTableRowModel> selectedTableRowProperty() {
+    ObjectProperty<ReservationTableRowModel> selectedTableRowProperty() {
         return selectedTableRow;
     }
+
 }

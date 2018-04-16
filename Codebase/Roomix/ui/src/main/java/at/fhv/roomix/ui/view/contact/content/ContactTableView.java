@@ -18,7 +18,7 @@ public class ContactTableView implements FxmlView<ContactTableViewModel> {
     @InjectViewModel
     private ContactTableViewModel viewModel;
     @FXML
-    private TableView<ContactListTableModel> tabContactTable;
+    private TableView<ContactTableRowModel> tabContactTable;
 
 
     public void initialize() {
