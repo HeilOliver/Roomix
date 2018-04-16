@@ -66,6 +66,6 @@ public class LoginProvider extends AbstractProvider {
     }
 
     public static ReadOnlyBooleanProperty getInProcessProperty() {
-        return inProcess();
+        return inProcessProperty();
     }
 }

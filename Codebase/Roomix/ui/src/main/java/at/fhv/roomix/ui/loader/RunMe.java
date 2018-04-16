@@ -57,7 +57,7 @@ public class RunMe extends MvvmfxCdiApplication {
         ViewTuple<MainView, MainViewModel> main = FluentViewLoader.fxmlView(MainView.class).load();
         Scene rootScene = new Scene(main.getView());
         stage.setScene(rootScene);
-        stage.setMinWidth(600);
+        stage.setMinWidth(800);
         stage.setMinHeight(400);
         stage.show();
 

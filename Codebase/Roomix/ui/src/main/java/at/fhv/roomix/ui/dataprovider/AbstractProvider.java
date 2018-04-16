@@ -31,7 +31,7 @@ public abstract class AbstractProvider {
     private static HashSet<Object> runningThreads = new HashSet<>();
     private static List<ICallable> onShutdownCallback = new ArrayList<>();
 
-    protected static ReadOnlyBooleanProperty inProcess() {
+    protected static ReadOnlyBooleanProperty inProcessProperty() {
         return inProcess;
     }
 
@@ -107,5 +107,4 @@ public abstract class AbstractProvider {
             }
         }
     }
-
 }

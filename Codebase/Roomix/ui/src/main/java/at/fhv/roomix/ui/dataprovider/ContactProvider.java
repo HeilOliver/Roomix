@@ -18,29 +18,18 @@ import javafx.beans.property.ReadOnlyBooleanProperty;
  * <p>
  * Enter Description here
  */
-public class ContactProvider extends SearchProvider<ContactPojo> {
+public class ContactProvider extends AbstractSearchEditProvider<ContactPojo> {
 
-    public ContactProvider(IErrorCall onSearchError) {
-        super(query -> ReservationControllerFactory.getInstance()
+    public ContactProvider() {
+        super(
+                query -> ReservationControllerFactory.getInstance()
                         .getSearchedContacts(LoginProvider.getSessionID(), query),
-                onSearchError);
-    }
-
-    public void saveOrUpdate(ContactPojo pojo, IErrorCall onError, ICallable onSuccess) {
-        submit(() -> {
-            try {
-                ReservationControllerFactory
-                        .getInstance()
-                        .updateContact(LoginProvider.getSessionID(), pojo);
-                reSearch();
-                Platform.runLater(onSuccess::call);
-            } catch (SessionFaultException | ArgumentFaultException | ValidationFault e) {
-                Platform.runLater(() -> onError.errorOccurred(new Error(e.getMessage())));
-            }
-        });
+                update -> ReservationControllerFactory.getInstance().updateContact(
+                        LoginProvider.getSessionID(), update)
+                );
     }
 
     public ReadOnlyBooleanProperty getInProcessProperty() {
-        return inProcess();
+        return inProcessProperty();
     }
 }
