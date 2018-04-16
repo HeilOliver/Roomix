@@ -2,7 +2,6 @@ package at.fhv.roomix.ui.view.reservation;
 
 import at.fhv.roomix.ui.view.contact.scopes.ContactViewScope;
 import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
-import com.mysql.cj.api.x.View;
 import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ScopeProvider;
 import de.saxsys.mvvmfx.ViewModel;

@@ -1,9 +1,7 @@
 package at.fhv.roomix.ui.view.reservation.content;
 
-import at.fhv.roomix.ui.view.contact.content.ContactTableRowModel;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
-import de.saxsys.mvvmfx.ViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 

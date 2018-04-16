@@ -1,6 +1,5 @@
 package at.fhv.roomix.ui.view.reservation;
 
-import at.fhv.roomix.ui.view.contact.ContactViewModel;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import javafx.fxml.FXML;

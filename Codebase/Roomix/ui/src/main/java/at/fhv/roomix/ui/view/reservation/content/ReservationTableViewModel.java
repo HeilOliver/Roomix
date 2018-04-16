@@ -2,7 +2,6 @@ package at.fhv.roomix.ui.view.reservation.content;
 
 
 import at.fhv.roomix.controller.reservation.model.ReservationPojo;
-import at.fhv.roomix.ui.view.contact.content.ContactTableRowModel;
 import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
 import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ViewModel;

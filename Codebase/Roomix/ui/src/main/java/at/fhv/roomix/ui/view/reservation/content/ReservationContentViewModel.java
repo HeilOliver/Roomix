@@ -1,8 +1,6 @@
 package at.fhv.roomix.ui.view.reservation.content;
 
-import at.fhv.roomix.ui.view.contact.scopes.ContactViewScope;
 import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
-import com.mysql.cj.api.x.View;
 import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.BooleanProperty;

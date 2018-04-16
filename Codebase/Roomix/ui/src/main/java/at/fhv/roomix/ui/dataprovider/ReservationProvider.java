@@ -2,8 +2,6 @@ package at.fhv.roomix.ui.dataprovider;
 
 import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
 import at.fhv.roomix.controller.reservation.model.ReservationPojo;
-import at.fhv.roomix.ui.common.ISearchAble;
-import at.fhv.roomix.ui.common.validator.IUpdateAble;
 
 /**
  * Roomix

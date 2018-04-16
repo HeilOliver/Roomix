@@ -1,8 +1,6 @@
 package at.fhv.roomix.ui.common;
 
 import at.fhv.roomix.ui.dataprovider.AbstractSearchEditProvider;
-import at.fhv.roomix.ui.dataprovider.ContactProvider;
-import at.fhv.roomix.ui.dataprovider.SearchProvider;
 import at.fhv.roomix.ui.view.contact.scopes.ContactViewScope;
 import de.saxsys.mvvmfx.Scope;
 import javafx.beans.property.*;
@@ -21,8 +19,6 @@ import java.util.function.Supplier;
  * Enter Description here
  */
 public abstract class AbstractMDScope<T> implements Scope {
-    protected static final Logger LOG = LoggerFactory.getLogger(AbstractMDScope.class);
-
     public static final String commandSave = "Command_SAVE";
     public static final String commandCancel = "Command_CLOSE";
     public static final String commandEdit = "Command_EDIT";
@@ -30,7 +26,7 @@ public abstract class AbstractMDScope<T> implements Scope {
     public static final String commandEditView = "Command_EditView";
     public static final String commandContentView = "Command_ContentView";
     public static final String commandCommitEdit = "Command_CommitEdit";
-
+    protected static final Logger LOG = LoggerFactory.getLogger(AbstractMDScope.class);
     protected final AbstractSearchEditProvider<T> provider;
     protected final ObjectProperty<T> selectedPojo = new SimpleObjectProperty<>();
     protected final ObjectProperty<T> inEditPojo = new SimpleObjectProperty<>();

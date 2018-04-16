@@ -1,7 +1,6 @@
 package at.fhv.roomix.ui.common;
 
 import at.fhv.roomix.ui.view.contact.scopes.ContactViewScope;
-import de.saxsys.mvvmfx.InjectScope;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;

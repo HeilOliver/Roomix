@@ -3,7 +3,6 @@ package at.fhv.roomix.ui.dataprovider;
 import at.fhv.roomix.ui.common.IErrorCall;
 import at.fhv.roomix.ui.common.ISearchAble;
 import javafx.application.Platform;
-import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -26,19 +25,20 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 public abstract class SearchProvider<T> extends AbstractProvider {
     private final AtomicReference<String> nextQuery;
+    protected IErrorCall onError;
     private StringProperty currentQuery = new SimpleStringProperty();
     private ObservableSet<T> queryResultList = FXCollections.synchronizedObservableSet(
             FXCollections.observableSet(new HashSet<>()));
     private ISearchAble<T> searchProvider;
     private String lastQuery;
     private boolean inRun;
-    protected IErrorCall onError;
     private Thread addToSearchQuery;
 
     SearchProvider(ISearchAble<T> searchProvider) {
         inRun = true;
         this.searchProvider = searchProvider;
-        this.onError = (e) -> {};
+        this.onError = (e) -> {
+        };
         nextQuery = new AtomicReference<>("");
 
         onShutdown(() -> inRun = false);
@@ -57,7 +57,8 @@ public abstract class SearchProvider<T> extends AbstractProvider {
 
     public void addErrorCallBack(IErrorCall errorCall) {
         if (errorCall == null)
-            errorCall = (e) -> {};
+            errorCall = (e) -> {
+            };
         onError = errorCall;
     }
 

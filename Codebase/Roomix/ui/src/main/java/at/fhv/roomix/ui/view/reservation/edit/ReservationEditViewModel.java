@@ -1,6 +1,5 @@
 package at.fhv.roomix.ui.view.reservation.edit;
 
-import com.mysql.cj.api.x.View;
 import de.saxsys.mvvmfx.ViewModel;
 
 /**
