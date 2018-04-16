@@ -1,7 +1,10 @@
 package at.fhv.roomix.ui.view.reservation;
 
+import at.fhv.roomix.ui.view.contact.ContactViewModel;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
+import javafx.fxml.FXML;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * Roomix
@@ -12,7 +15,15 @@ import de.saxsys.mvvmfx.InjectViewModel;
  * Enter Description here
  */
 public class ReservationView implements FxmlView<ReservationViewModel> {
-
     @InjectViewModel
     private ReservationViewModel viewModel;
+    @FXML
+    private AnchorPane editView;
+    @FXML
+    private AnchorPane contentView;
+
+    public void initialize() {
+        editView.visibleProperty().bind(viewModel.editViewVisibleProperty());
+        contentView.visibleProperty().bind(viewModel.contentViewVisibleProperty());
+    }
 }

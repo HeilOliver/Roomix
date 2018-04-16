@@ -10,6 +10,22 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="at.fhv.roomix.ui.view.reservation.ReservationView"
             stylesheets="@ReservationStyle.css">
+    <fx:include source="ReservationToolbar.fxml" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
+                AnchorPane.rightAnchor="0"/>
+    <StackPane AnchorPane.topAnchor="50" AnchorPane.leftAnchor="0"
+               AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0">
 
+        <AnchorPane fx:id="contentView" AnchorPane.topAnchor="50" AnchorPane.leftAnchor="0"
+                    AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0">
+            <fx:include source="content/ReservationContentView.fxml" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
+                        AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0"/>
+        </AnchorPane>
+
+        <AnchorPane fx:id="editView" AnchorPane.topAnchor="50" AnchorPane.leftAnchor="0"
+                    AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0">
+            <fx:include source="edit/ReservationEditView.fxml" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
+                        AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0"/>
+        </AnchorPane>
+    </StackPane>
 
 </AnchorPane>
