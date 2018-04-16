@@ -18,7 +18,6 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -96,8 +95,8 @@ class ReservationController implements IReservationController {
         Set<ContactPojo> resultSet = new HashSet<>(contactPojoSet);
         for (String splitedQuery : split) {
             resultSet = resultSet.stream()
-                    .filter(c -> c.getFname().toLowerCase().contains(splitedQuery) ||
-                            c.getLname().toLowerCase().contains(splitedQuery) ||
+                    .filter(c -> c.getFirstName().toLowerCase().contains(splitedQuery) ||
+                            c.getLastName().toLowerCase().contains(splitedQuery) ||
                             c.getStreet().toLowerCase().contains(splitedQuery) ||
                             c.getPostcode().toLowerCase().contains(splitedQuery) ||
                             c.getPlace().toLowerCase().contains(splitedQuery))

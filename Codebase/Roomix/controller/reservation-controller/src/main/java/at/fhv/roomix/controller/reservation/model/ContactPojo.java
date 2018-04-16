@@ -16,13 +16,13 @@ import java.util.Objects;
 public class ContactPojo {
     private int contactId;
 
-    @NotNull(message = "fname cannot be null")
-    @Size(min = 1, max = 50, message = "fname must be between 1 and 200 characters")
-    private String fname;
+    @NotNull(message = "firstName cannot be null")
+    @Size(min = 1, max = 50, message = "firstName must be between 1 and 200 characters")
+    private String firstName;
 
-    @NotNull(message = "lname cannot be null")
-    @Size(min = 1, max = 50, message = "lname must be between 1 and 200 characters")
-    private String lname;
+    @NotNull(message = "lastName cannot be null")
+    @Size(min = 1, max = 50, message = "lastName must be between 1 and 200 characters")
+    private String lastName;
 
     @Size(max = 50, message = "companyName must be between 1 and 200 characters")
     private String companyName;
@@ -48,6 +48,9 @@ public class ContactPojo {
     @Email(message = "Email should be valid")
     private String email;
 
+    @NotNull(message = "Active cannot be null")
+    private byte active;
+
     public ContactPojo() {
     }
 
@@ -59,20 +62,20 @@ public class ContactPojo {
         this.contactId = contactId;
     }
 
-    public String getFname() {
-        return fname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFname(String fname) {
-        this.fname = fname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLname() {
-        return lname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLname(String lname) {
-        this.lname = lname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getCompanyName() {
@@ -139,14 +142,25 @@ public class ContactPojo {
         this.email = email;
     }
 
+    public Byte getActive() {
+        return active;
+    }
+
+    public void setActive(Byte active) {
+        this.active = active;
+    }
+
+
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ContactPojo that = (ContactPojo) o;
         return contactId == that.contactId &&
-                Objects.equals(fname, that.fname) &&
-                Objects.equals(lname, that.lname) &&
+                Objects.equals(firstName, that.firstName) &&
+                Objects.equals(lastName, that.lastName) &&
                 Objects.equals(companyName, that.companyName) &&
                 Objects.equals(phoneNumber, that.phoneNumber) &&
                 Objects.equals(street, that.street) &&
@@ -155,11 +169,12 @@ public class ContactPojo {
                 Objects.equals(postcode, that.postcode) &&
                 Objects.equals(country, that.country) &&
                 Objects.equals(email, that.email) &&
-                Objects.equals(houseNumber, that.houseNumber);
+                Objects.equals(houseNumber, that.houseNumber) &&
+                Objects.equals(active, that.active);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(contactId, fname, lname, companyName, phoneNumber, street, houseNumber, place, postcode, country, email);
+        return Objects.hash(contactId, firstName, lastName, companyName, phoneNumber, street, houseNumber, place, postcode, country, email);
     }
 }

@@ -37,8 +37,8 @@ public class ContactDetailViewModel implements ViewModel {
         viewScope.selectedPojoProperty()
                 .addListener(((observable, oldValue, newValue) -> {
                     detailAvailable.setValue(newValue != null);
-                    firstname.setValue(newValue == null ? null : newValue.getFname());
-                    lastname.setValue(newValue == null ? null : newValue.getLname());
+                    firstname.setValue(newValue == null ? null : newValue.getFirstName());
+                    lastname.setValue(newValue == null ? null : newValue.getLastName());
                     companyname.setValue(newValue == null ? null : newValue.getCompanyName());
                     phonenumber.setValue(newValue == null ? null : newValue.getPhoneNumber());
                     street.setValue(newValue == null ? null : newValue.getStreet());
