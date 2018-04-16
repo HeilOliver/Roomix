@@ -1,13 +1,17 @@
 package at.fhv.roomix.domain.guest.model;
 
 import java.sql.Date;
+import java.sql.Time;
 
 public class ReservationUnitDomain {
+
     private int reservationUnitId;
     private int reservation;
     private int roomCategory;
-    private Integer cancelation;
-    private Integer arrangement;
+    private Integer reservationOption;
+    private Integer amountOfRooms;
+    private Integer cancellation;
+    private Time arrivalTime;
     private Date startDate;
     private Date endDate;
 
@@ -35,20 +39,36 @@ public class ReservationUnitDomain {
         this.roomCategory = roomCategory;
     }
 
-    public Integer getCancelation() {
-        return cancelation;
+    public Integer getReservationOption() {
+        return reservationOption;
     }
 
-    public void setCancelation(Integer cancelation) {
-        this.cancelation = cancelation;
+    public void setReservationOption(Integer reservationOption) {
+        this.reservationOption = reservationOption;
     }
 
-    public Integer getArrangement() {
-        return arrangement;
+    public Integer getAmountOfRooms() {
+        return amountOfRooms;
     }
 
-    public void setArrangement(Integer arrangement) {
-        this.arrangement = arrangement;
+    public void setAmountOfRooms(Integer amountOfRooms) {
+        this.amountOfRooms = amountOfRooms;
+    }
+
+    public Integer getCancellation() {
+        return cancellation;
+    }
+
+    public void setCancellation(Integer cancellation) {
+        this.cancellation = cancellation;
+    }
+
+    public Time getArrivalTime() {
+        return arrivalTime;
+    }
+
+    public void setArrivalTime(Time arrivalTime) {
+        this.arrivalTime = arrivalTime;
     }
 
     public Date getStartDate() {
@@ -66,6 +86,4 @@ public class ReservationUnitDomain {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
-
-
 }

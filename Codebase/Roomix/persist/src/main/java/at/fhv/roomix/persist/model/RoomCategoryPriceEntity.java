@@ -8,16 +8,15 @@ import java.util.Objects;
 @Entity
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@Table(name = "RoomCategoryPrice", schema = "roomix", catalog = "")
-public class RoomcategorypriceEntity {
+@Table(name = "RoomCategoryPrice", schema = "Roomix", catalog = "")
+public class RoomCategoryPriceEntity {
     private int roomCategoryPriceId;
     private int roomCategory;
-    private int season;
     private int listPrice;
     private int acquisitionPrice;
     private int minimumPrice;
     private Integer dayPrice;
-    private RoomcategoryEntity roomcategoryByRoomCategory;
+    private RoomCategoryEntity roomCategoryByRoomCategory;
     private SeasonEntity seasonBySeason;
 
     @Id
@@ -38,16 +37,6 @@ public class RoomcategorypriceEntity {
 
     public void setRoomCategory(int roomCategory) {
         this.roomCategory = roomCategory;
-    }
-
-    @Basic
-    @Column(name = "Season", insertable = false, updatable = false)
-    public int getSeason() {
-        return season;
-    }
-
-    public void setSeason(int season) {
-        this.season = season;
     }
 
     @Basic
@@ -94,10 +83,9 @@ public class RoomcategorypriceEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RoomcategorypriceEntity that = (RoomcategorypriceEntity) o;
+        RoomCategoryPriceEntity that = (RoomCategoryPriceEntity) o;
         return roomCategoryPriceId == that.roomCategoryPriceId &&
                 roomCategory == that.roomCategory &&
-                season == that.season &&
                 listPrice == that.listPrice &&
                 acquisitionPrice == that.acquisitionPrice &&
                 minimumPrice == that.minimumPrice &&
@@ -107,21 +95,19 @@ public class RoomcategorypriceEntity {
     @Override
     public int hashCode() {
 
-        return Objects.hash(roomCategoryPriceId, roomCategory, season, listPrice, acquisitionPrice, minimumPrice, dayPrice);
+        return Objects.hash(roomCategoryPriceId, roomCategory, listPrice, acquisitionPrice, minimumPrice, dayPrice);
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "RoomCategory", referencedColumnName = "RoomCategoryID", nullable = false)
-    public RoomcategoryEntity getRoomcategoryByRoomCategory() {
-        return roomcategoryByRoomCategory;
+    public RoomCategoryEntity getRoomCategoryByRoomCategory() {
+        return roomCategoryByRoomCategory;
     }
 
-    public void setRoomcategoryByRoomCategory(RoomcategoryEntity roomcategoryByRoomCategory) {
-        this.roomcategoryByRoomCategory = roomcategoryByRoomCategory;
+    public void setRoomCategoryByRoomCategory(RoomCategoryEntity roomCategoryByRoomCategory) {
+        this.roomCategoryByRoomCategory = roomCategoryByRoomCategory;
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "Season", referencedColumnName = "SeasonID", nullable = false)
     public SeasonEntity getSeasonBySeason() {

@@ -9,18 +9,18 @@ import java.util.Objects;
 @Entity
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@Table(name = "Reservation", schema = "roomix", catalog = "")
+@Table(name = "Reservation", schema = "Roomix", catalog = "")
 public class ReservationEntity {
     private int reservationId;
     private int contractingParty;
-    private int person;
+    private int paymentType;
     private String reservationStatus;
-
-    private Collection<InvoicepositionEntity> invoicepositionsByReservationId;
-    private Collection<ReservationoptionEntity> reservationoptionsByReservationId;
-    private Collection<ReservationunitEntity> reservationunitsByReservationId;
-    private ContractingpartyEntity contractingpartyByContractingParty;
-    private PersonEntity personByPerson;
+    private String reservationComment;
+    private Collection<InvoicePositionEntity> invoicePositionsByReservationId;
+    private Collection<PersonReservationEntity> personReservationsByReservationId;
+    private ContractingPartyEntity contractingPartyByContractingParty;
+    private PaymentTypeEntity paymentTypeByPaymentType;
+    private Collection<ReservationUnitEntity> reservationUnitsByReservationId;
 
     @Id
     @Column(name = "ReservationID")
@@ -43,13 +43,13 @@ public class ReservationEntity {
     }
 
     @Basic
-    @Column(name = "Person", insertable = false, updatable = false)
-    public int getPerson() {
-        return person;
+    @Column(name = "PaymentType", insertable = false, updatable = false)
+    public int getPaymentType() {
+        return paymentType;
     }
 
-    public void setPerson(int person) {
-        this.person = person;
+    public void setPaymentType(int paymentType) {
+        this.paymentType = paymentType;
     }
 
     @Basic
@@ -62,6 +62,16 @@ public class ReservationEntity {
         this.reservationStatus = reservationStatus;
     }
 
+    @Basic
+    @Column(name = "ReservationComment")
+    public String getReservationComment() {
+        return reservationComment;
+    }
+
+    public void setReservationComment(String reservationComment) {
+        this.reservationComment = reservationComment;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -69,65 +79,64 @@ public class ReservationEntity {
         ReservationEntity that = (ReservationEntity) o;
         return reservationId == that.reservationId &&
                 contractingParty == that.contractingParty &&
-                person == that.person &&
-                Objects.equals(reservationStatus, that.reservationStatus);
+                paymentType == that.paymentType &&
+                Objects.equals(reservationStatus, that.reservationStatus) &&
+                Objects.equals(reservationComment, that.reservationComment);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(reservationId, contractingParty, person, reservationStatus);
+        return Objects.hash(reservationId, contractingParty, paymentType, reservationStatus, reservationComment);
     }
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "reservationByReservation")
-    public Collection<InvoicepositionEntity> getInvoicepositionsByReservationId() {
-        return invoicepositionsByReservationId;
+    public Collection<InvoicePositionEntity> getInvoicePositionsByReservationId() {
+        return invoicePositionsByReservationId;
     }
 
-    public void setInvoicepositionsByReservationId(Collection<InvoicepositionEntity> invoicepositionsByReservationId) {
-        this.invoicepositionsByReservationId = invoicepositionsByReservationId;
+    public void setInvoicePositionsByReservationId(Collection<InvoicePositionEntity> invoicePositionsByReservationId) {
+        this.invoicePositionsByReservationId = invoicePositionsByReservationId;
     }
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @OneToMany(mappedBy = "reservationByReservation")
+    public Collection<PersonReservationEntity> getPersonReservationsByReservationId() {
+        return personReservationsByReservationId;
+    }
+
+    public void setPersonReservationsByReservationId(Collection<PersonReservationEntity> personReservationsByReservationId) {
+        this.personReservationsByReservationId = personReservationsByReservationId;
+    }
+
     @ManyToOne
     @JoinColumn(name = "ContractingParty", referencedColumnName = "ContractingPartyID", nullable = false)
-    public ContractingpartyEntity getContractingpartyByContractingParty() {
-        return contractingpartyByContractingParty;
+    public ContractingPartyEntity getContractingPartyByContractingParty() {
+        return contractingPartyByContractingParty;
     }
 
-    public void setContractingpartyByContractingParty(ContractingpartyEntity contractingpartyByContractingParty) {
-        this.contractingpartyByContractingParty = contractingpartyByContractingParty;
+    public void setContractingPartyByContractingParty(ContractingPartyEntity contractingPartyByContractingParty) {
+        this.contractingPartyByContractingParty = contractingPartyByContractingParty;
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
-    @JoinColumn(name = "Person", referencedColumnName = "PersonID", nullable = false)
-    public PersonEntity getPersonByPerson() {
-        return personByPerson;
+    @JoinColumn(name = "PaymentType", referencedColumnName = "PaymentTypeID", nullable = false)
+    public PaymentTypeEntity getPaymentTypeByPaymentType() {
+        return paymentTypeByPaymentType;
     }
 
-    public void setPersonByPerson(PersonEntity personByPerson) {
-        this.personByPerson = personByPerson;
-    }
-
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @OneToMany(mappedBy = "reservationByReservation")
-    public Collection<ReservationoptionEntity> getReservationoptionsByReservationId() {
-        return reservationoptionsByReservationId;
-    }
-
-    public void setReservationoptionsByReservationId(Collection<ReservationoptionEntity> reservationoptionsByReservationId) {
-        this.reservationoptionsByReservationId = reservationoptionsByReservationId;
+    public void setPaymentTypeByPaymentType(PaymentTypeEntity paymentTypeByPaymentType) {
+        this.paymentTypeByPaymentType = paymentTypeByPaymentType;
     }
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "reservationByReservation")
-    public Collection<ReservationunitEntity> getReservationunitsByReservationId() {
-        return reservationunitsByReservationId;
+    public Collection<ReservationUnitEntity> getReservationUnitsByReservationId() {
+        return reservationUnitsByReservationId;
     }
 
-    public void setReservationunitsByReservationId(Collection<ReservationunitEntity> reservationunitsByReservationId) {
-        this.reservationunitsByReservationId = reservationunitsByReservationId;
+    public void setReservationUnitsByReservationId(Collection<ReservationUnitEntity> reservationUnitsByReservationId) {
+        this.reservationUnitsByReservationId = reservationUnitsByReservationId;
     }
 }

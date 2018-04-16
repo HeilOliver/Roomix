@@ -3,8 +3,8 @@ package at.fhv.roomix.persist.factory;
 import at.fhv.roomix.domain.guest.model.*;
 import at.fhv.roomix.persist.ContactDao;
 import at.fhv.roomix.persist.model.ContactEntity;
-import at.fhv.roomix.persist.model.ContractingpartyEntity;
-import at.fhv.roomix.persist.model.CreditcardEntity;
+import at.fhv.roomix.persist.model.ContractingPartyEntity;
+import at.fhv.roomix.persist.model.CreditCardEntity;
 import at.fhv.roomix.persist.model.PersonEntity;
 import org.modelmapper.ModelMapper;
 
@@ -47,14 +47,14 @@ public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, Conta
         LinkedHashMap<ISourceMapper<Collection>,
                 Map.Entry<Class, IDestinationMapper<Collection>>> mapping = new LinkedHashMap<>();
 
-        put(ContactNoteDomain.class, contactEntity::getContactnotesByContactId,
-                guestDomain::setContactNotes, mapping);
-        put(CreditCardDomain.class, contactEntity::getCreditcardsByContactId,
-                guestDomain::setCreditCards, mapping);
-        put(ContractingPartyDomain.class, contactEntity::getContractingpartiesByContactId,
-                guestDomain::setContractingPartys, mapping);
+        put(ContactNoteDomain.class, contactEntity::getContactNotesByContactId,
+                guestDomain::setContactNotesByContactId, mapping);
+        put(CreditCardDomain.class, contactEntity::getCreditCardsByContactId,
+                guestDomain::setCreditCardsByContactId, mapping);
+        put(ContractingPartyDomain.class, contactEntity::getContractingPartiesByContactId,
+                guestDomain::setContractingPartiesByContactId, mapping);
         put(PersonDomain.class, contactEntity::getPeopleByContactId,
-                guestDomain::setPersonDomains, mapping);
+                guestDomain::setPeopleByContactId, mapping);
 
         mapAllCollections(mapping);
         return guestDomain;
@@ -69,11 +69,11 @@ public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, Conta
         LinkedHashMap<ISourceMapper<Collection>,
                 Map.Entry<Class, IDestinationMapper<Collection>>> mapping = new LinkedHashMap<>();
 
-        put(ContactEntity.class, domain::getContactNotes, contactEntity::setContactnotesByContactId, mapping);
-        put(CreditcardEntity.class, domain::getCreditCards, contactEntity::setCreditcardsByContactId, mapping);
-        put(ContractingpartyEntity.class, domain::getContractingPartys,
-                contactEntity::setContractingpartiesByContactId, mapping);
-        put(PersonEntity.class, domain::getPersonDomains, contactEntity::setPeopleByContactId, mapping);
+        put(ContactEntity.class, domain::getContactNotesByContactId, contactEntity::setContactNotesByContactId, mapping);
+        put(CreditCardEntity.class, domain::getCreditCardsByContactId, contactEntity::setCreditCardsByContactId, mapping);
+        put(ContractingPartyEntity.class, domain::getContractingPartiesByContactId,
+                contactEntity::setContractingPartiesByContactId, mapping);
+        put(PersonEntity.class, domain::getPeopleByContactId, contactEntity::setPeopleByContactId, mapping);
 
         mapAllCollections(mapping);
 

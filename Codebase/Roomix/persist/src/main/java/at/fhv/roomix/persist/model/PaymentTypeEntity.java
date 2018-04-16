@@ -9,11 +9,12 @@ import java.util.Objects;
 @Entity
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@Table(name = "PaymentType", schema = "roomix", catalog = "")
-public class PaymenttypeEntity {
+@Table(name = "PaymentType", schema = "Roomix", catalog = "")
+public class PaymentTypeEntity {
     private int paymentTypeId;
     private String paymentTypeDescription;
     private Collection<PaymentEntity> paymentsByPaymentTypeId;
+    private Collection<ReservationEntity> reservationsByPaymentTypeId;
 
     @Id
     @Column(name = "PaymentTypeID")
@@ -39,7 +40,7 @@ public class PaymenttypeEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PaymenttypeEntity that = (PaymenttypeEntity) o;
+        PaymentTypeEntity that = (PaymentTypeEntity) o;
         return paymentTypeId == that.paymentTypeId &&
                 Objects.equals(paymentTypeDescription, that.paymentTypeDescription);
     }
@@ -51,12 +52,22 @@ public class PaymenttypeEntity {
     }
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @OneToMany(mappedBy = "paymenttypeByPaymentType")
+    @OneToMany(mappedBy = "paymentTypeByPaymentType")
     public Collection<PaymentEntity> getPaymentsByPaymentTypeId() {
         return paymentsByPaymentTypeId;
     }
 
     public void setPaymentsByPaymentTypeId(Collection<PaymentEntity> paymentsByPaymentTypeId) {
         this.paymentsByPaymentTypeId = paymentsByPaymentTypeId;
+    }
+
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @OneToMany(mappedBy = "paymentTypeByPaymentType")
+    public Collection<ReservationEntity> getReservationsByPaymentTypeId() {
+        return reservationsByPaymentTypeId;
+    }
+
+    public void setReservationsByPaymentTypeId(Collection<ReservationEntity> reservationsByPaymentTypeId) {
+        this.reservationsByPaymentTypeId = reservationsByPaymentTypeId;
     }
 }

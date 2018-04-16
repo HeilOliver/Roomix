@@ -4,19 +4,19 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@Table(name = "ReservationOption", schema = "roomix", catalog = "")
-public class ReservationoptionEntity {
+@Table(name = "ReservationOption", schema = "Roomix", catalog = "")
+public class ReservationOptionEntity {
     private int optionId;
-    private int reservation;
     private Date optionDueDate;
     private String optionDescription;
     private byte optionStatus;
-    private ReservationEntity reservationByReservation;
+    private Collection<ReservationUnitEntity> reservationUnitsByOptionId;
 
     @Id
     @Column(name = "OptionID")
@@ -26,16 +26,6 @@ public class ReservationoptionEntity {
 
     public void setOptionId(int optionId) {
         this.optionId = optionId;
-    }
-
-    @Basic
-    @Column(name = "Reservation", insertable = false, updatable = false)
-    public int getReservation() {
-        return reservation;
-    }
-
-    public void setReservation(int reservation) {
-        this.reservation = reservation;
     }
 
     @Basic
@@ -72,9 +62,8 @@ public class ReservationoptionEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ReservationoptionEntity that = (ReservationoptionEntity) o;
+        ReservationOptionEntity that = (ReservationOptionEntity) o;
         return optionId == that.optionId &&
-                reservation == that.reservation &&
                 optionStatus == that.optionStatus &&
                 Objects.equals(optionDueDate, that.optionDueDate) &&
                 Objects.equals(optionDescription, that.optionDescription);
@@ -83,17 +72,16 @@ public class ReservationoptionEntity {
     @Override
     public int hashCode() {
 
-        return Objects.hash(optionId, reservation, optionDueDate, optionDescription, optionStatus);
+        return Objects.hash(optionId, optionDueDate, optionDescription, optionStatus);
     }
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @ManyToOne
-    @JoinColumn(name = "Reservation", referencedColumnName = "ReservationID", nullable = false)
-    public ReservationEntity getReservationByReservation() {
-        return reservationByReservation;
+    @OneToMany(mappedBy = "reservationOptionByReservationOption")
+    public Collection<ReservationUnitEntity> getReservationUnitsByOptionId() {
+        return reservationUnitsByOptionId;
     }
 
-    public void setReservationByReservation(ReservationEntity reservationByReservation) {
-        this.reservationByReservation = reservationByReservation;
+    public void setReservationUnitsByOptionId(Collection<ReservationUnitEntity> reservationUnitsByOptionId) {
+        this.reservationUnitsByOptionId = reservationUnitsByOptionId;
     }
 }

@@ -2,13 +2,11 @@ package at.fhv.roomix.persist.factory;
 
 import at.fhv.roomix.domain.guest.model.InvoicePositionDomain;
 import at.fhv.roomix.domain.guest.model.ReservationDomain;
-import at.fhv.roomix.domain.guest.model.ReservationOptionDomain;
 import at.fhv.roomix.domain.guest.model.ReservationUnitDomain;
 import at.fhv.roomix.persist.ReservationDao;
-import at.fhv.roomix.persist.model.InvoicepositionEntity;
+import at.fhv.roomix.persist.model.InvoicePositionEntity;
 import at.fhv.roomix.persist.model.ReservationEntity;
-import at.fhv.roomix.persist.model.ReservationoptionEntity;
-import at.fhv.roomix.persist.model.ReservationunitEntity;
+import at.fhv.roomix.persist.model.ReservationUnitEntity;
 import org.modelmapper.ModelMapper;
 
 import java.util.Collection;
@@ -48,12 +46,10 @@ public class ReservationDomainBuilder extends AbstractDomainBuilder<ReservationD
         LinkedHashMap<ISourceMapper<Collection>,
                 Map.Entry<Class, IDestinationMapper<Collection>>> mapping = new LinkedHashMap<>();
 
-        put(InvoicePositionDomain.class, entity::getInvoicepositionsByReservationId,
-                reservationDomain::setInvoicePositions, mapping);
-        put(ReservationOptionDomain.class, entity::getReservationoptionsByReservationId,
-                reservationDomain::setReservationOptions, mapping);
-        put(ReservationUnitDomain.class, entity::getReservationunitsByReservationId,
-                reservationDomain::setReservationUnits, mapping);
+        put(InvoicePositionDomain.class, entity::getInvoicePositionsByReservationId,
+                reservationDomain::setInvoicePositionsByReservationId, mapping);
+        put(ReservationUnitDomain.class, entity::getReservationUnitsByReservationId,
+                reservationDomain::setReservationUnitsByReservationId, mapping);
         mapAllCollections(mapping);
 
         return reservationDomain;
@@ -67,12 +63,10 @@ public class ReservationDomainBuilder extends AbstractDomainBuilder<ReservationD
         LinkedHashMap<ISourceMapper<Collection>,
                 Map.Entry<Class, IDestinationMapper<Collection>>> mapping = new LinkedHashMap<>();
 
-        put(InvoicepositionEntity.class, domain::getInvoicePositions,
-                reservationEntity::setInvoicepositionsByReservationId, mapping);
-        put(ReservationoptionEntity.class, domain::getReservationOptions,
-                reservationEntity::setReservationoptionsByReservationId, mapping);
-        put(ReservationunitEntity.class, domain::getReservationUnits,
-                reservationEntity::setReservationunitsByReservationId, mapping);
+        put(InvoicePositionEntity.class, domain::getInvoicePositionsByReservationId,
+                reservationEntity::setInvoicePositionsByReservationId, mapping);
+        put(ReservationUnitEntity.class, domain::getReservationUnitsByReservationId,
+                reservationEntity::setReservationUnitsByReservationId, mapping);
         mapAllCollections(mapping);
 
         return reservationEntity;

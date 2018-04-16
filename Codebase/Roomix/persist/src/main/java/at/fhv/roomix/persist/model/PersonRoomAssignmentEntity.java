@@ -8,25 +8,15 @@ import java.util.Objects;
 @Entity
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-@Table(name = "PersonRoomAssignment", schema = "roomix", catalog = "")
-public class PersonroomassignmentEntity {
-    private int personRoomAssignmentId;
+@Table(name = "PersonRoomAssignment", schema = "Roomix", catalog = "")
+@IdClass(PersonRoomAssignmentEntityPK.class)
+public class PersonRoomAssignmentEntity {
     private int roomAssignment;
     private int person;
-    private RoomassignmentEntity roomassignmentByRoomAssignment;
+    private RoomAssignmentEntity roomAssignmentByRoomAssignment;
     private PersonEntity personByPerson;
 
     @Id
-    @Column(name = "PersonRoomAssignmentID")
-    public int getPersonRoomAssignmentId() {
-        return personRoomAssignmentId;
-    }
-
-    public void setPersonRoomAssignmentId(int personRoomAssignmentId) {
-        this.personRoomAssignmentId = personRoomAssignmentId;
-    }
-
-    @Basic
     @Column(name = "RoomAssignment", insertable = false, updatable = false)
     public int getRoomAssignment() {
         return roomAssignment;
@@ -36,7 +26,7 @@ public class PersonroomassignmentEntity {
         this.roomAssignment = roomAssignment;
     }
 
-    @Basic
+    @Id
     @Column(name = "Person", insertable = false, updatable = false)
     public int getPerson() {
         return person;
@@ -50,30 +40,27 @@ public class PersonroomassignmentEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PersonroomassignmentEntity that = (PersonroomassignmentEntity) o;
-        return personRoomAssignmentId == that.personRoomAssignmentId &&
-                roomAssignment == that.roomAssignment &&
+        PersonRoomAssignmentEntity that = (PersonRoomAssignmentEntity) o;
+        return roomAssignment == that.roomAssignment &&
                 person == that.person;
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(personRoomAssignmentId, roomAssignment, person);
+        return Objects.hash(roomAssignment, person);
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "RoomAssignment", referencedColumnName = "RoomAssignmentID", nullable = false)
-    public RoomassignmentEntity getRoomassignmentByRoomAssignment() {
-        return roomassignmentByRoomAssignment;
+    public RoomAssignmentEntity getRoomAssignmentByRoomAssignment() {
+        return roomAssignmentByRoomAssignment;
     }
 
-    public void setRoomassignmentByRoomAssignment(RoomassignmentEntity roomassignmentByRoomAssignment) {
-        this.roomassignmentByRoomAssignment = roomassignmentByRoomAssignment;
+    public void setRoomAssignmentByRoomAssignment(RoomAssignmentEntity roomAssignmentByRoomAssignment) {
+        this.roomAssignmentByRoomAssignment = roomAssignmentByRoomAssignment;
     }
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @ManyToOne
     @JoinColumn(name = "Person", referencedColumnName = "PersonID", nullable = false)
     public PersonEntity getPersonByPerson() {
