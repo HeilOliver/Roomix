@@ -25,6 +25,11 @@ public class LoginProvider extends AbstractProvider {
         currentSession.addListener(((observable, oldValue, newValue) -> {
             isLoggedIn.setValue(newValue != null);
         }));
+
+        onShutdown(() -> submit(() -> {
+            ISessionController instance = SessionControllerFactory.getInstance();
+            instance.dispose();
+        }));
     }
 
     private LoginProvider() {

@@ -17,4 +17,5 @@ public interface ISessionController {
 
     void closeSession(long SessionId);
 
+    void dispose();
 }

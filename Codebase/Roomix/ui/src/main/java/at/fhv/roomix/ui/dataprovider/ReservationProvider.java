@@ -11,7 +11,7 @@ import at.fhv.roomix.ui.common.validator.IUpdateAble;
  * ReservationProvider
  * 16/04/2018 Oliver
  * <p>
- * Enter Description here
+ * The Data Provider for the Reservation Part.
  */
 public class ReservationProvider extends AbstractSearchEditProvider<ReservationPojo> {
 
@@ -22,6 +22,5 @@ public class ReservationProvider extends AbstractSearchEditProvider<ReservationP
                         .getInstance().updateReservation(LoginProvider.getSessionID(), update)
         );
     }
-
 
 }

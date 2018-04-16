@@ -22,4 +22,9 @@ public class SessionControllerMock implements ISessionController {
     public void closeSession(long SessionId) {
 
     }
+
+    @Override
+    public void dispose() {
+
+    }
 }

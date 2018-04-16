@@ -44,4 +44,9 @@ class SessionController implements ISessionController {
         ISessionDomain instance = SessionFactory.getInstance();
         instance.closeSession(sessionId);
     }
+
+    @Override
+    public void dispose() {
+
+    }
 }
