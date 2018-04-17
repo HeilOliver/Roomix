@@ -150,6 +150,9 @@ public class ContactPojo {
         this.active = active;
     }
 
+
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
