@@ -31,7 +31,7 @@ public abstract class AbstractProvider {
     private static HashSet<Object> runningThreads = new HashSet<>();
     private static List<ICallable> onShutdownCallback = new ArrayList<>();
 
-    protected static ReadOnlyBooleanProperty inProcess() {
+    protected static ReadOnlyBooleanProperty inProcessProperty() {
         return inProcess;
     }
 
@@ -98,7 +98,6 @@ public abstract class AbstractProvider {
      * {@link at.fhv.roomix.ui.common.CloseEvent} CDI event.
      */
     public static void triggerShutdown(@Observes CloseEvent event) {
-        executor.shutdown();
         for (ICallable callable : onShutdownCallback) {
             try {
                 callable.call();
@@ -106,6 +105,6 @@ public abstract class AbstractProvider {
                 LOG.debug("Shutdown Callback Exception - " + e.getMessage());
             }
         }
+        executor.shutdown();
     }
-
 }

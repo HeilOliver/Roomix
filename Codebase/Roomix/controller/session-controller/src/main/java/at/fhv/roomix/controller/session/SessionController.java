@@ -44,4 +44,17 @@ class SessionController implements ISessionController {
         ISessionDomain instance = SessionFactory.getInstance();
         instance.closeSession(sessionId);
     }
+
+    @Override
+    public void dispose() {
+
+    }
+
+    @Override
+    public void startUp() {
+        try {
+            Thread.sleep(9000);
+        } catch (InterruptedException ignore) {
+        }
+    }
 }

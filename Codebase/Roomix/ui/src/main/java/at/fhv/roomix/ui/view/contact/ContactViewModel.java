@@ -39,11 +39,11 @@ public class ContactViewModel implements ViewModel {
         editViewVisible.setValue(true);
     }
 
-    public BooleanProperty contentViewVisibleProperty() {
+    BooleanProperty contentViewVisibleProperty() {
         return contentViewVisible;
     }
 
-    public BooleanProperty editViewVisibleProperty() {
+    BooleanProperty editViewVisibleProperty() {
         return editViewVisible;
     }
 }

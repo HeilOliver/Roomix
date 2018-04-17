@@ -90,6 +90,8 @@ public class ContactEditViewModel implements ViewModel {
         viewScope.subscribe(ContactViewScope.commandCommitEdit, (key, payload) -> {
             ContactPojo contactPojo = new ContactPojo();
             contactWrapper.copyValuesTo(contactPojo);
+            contactPojo.setContactId(
+                    viewScope.inEditPojoProperty().get().getContactId());
             viewScope.inEditPojoProperty().setValue(contactPojo);
         });
     }
