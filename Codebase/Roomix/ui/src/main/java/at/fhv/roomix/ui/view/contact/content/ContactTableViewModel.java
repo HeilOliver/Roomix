@@ -20,10 +20,10 @@ import javafx.collections.SetChangeListener;
  */
 public class ContactTableViewModel implements ViewModel {
 
-    private final ObservableList<ContactListTableModel> contacts =
+    private final ObservableList<ContactTableRowModel> contacts =
             FXCollections.observableArrayList();
 
-    private final ObjectProperty<ContactListTableModel> selectedTableRow =
+    private final ObjectProperty<ContactTableRowModel> selectedTableRow =
             new SimpleObjectProperty<>();
 
     @InjectScope
@@ -46,15 +46,15 @@ public class ContactTableViewModel implements ViewModel {
         contacts.clear();
         viewScope.getObservableSet()
                 .forEach(contactPojo
-                        -> contacts.add(new ContactListTableModel(
+                        -> contacts.add(new ContactTableRowModel(
                         contactPojo)));
     }
 
-    ObservableList<ContactListTableModel> getContacts() {
+    ObservableList<ContactTableRowModel> getContacts() {
         return contacts;
     }
 
-    ObjectProperty<ContactListTableModel> selectedTableRowProperty() {
+    ObjectProperty<ContactTableRowModel> selectedTableRowProperty() {
         return selectedTableRow;
     }
 }

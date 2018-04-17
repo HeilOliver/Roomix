@@ -4,6 +4,7 @@ import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import de.saxsys.mvvmfx.utils.validation.visualization.ControlsFxVisualizer;
 import de.saxsys.mvvmfx.utils.validation.visualization.ValidationVisualizer;
+import javafx.beans.property.IntegerProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -65,6 +66,8 @@ public class ContactEditView implements FxmlView<ContactEditViewModel> {
                 .bindBidirectional(viewModel.emailProperty());
         houseNumberInput.textProperty()
                 .bindBidirectional(viewModel.houseNumberProperty());
+
+        IntegerProperty property = viewModel.idProperty();
 
         validationVisualizer.initVisualization(
                 viewModel.getFirstNameValidator(), firstnameInput);

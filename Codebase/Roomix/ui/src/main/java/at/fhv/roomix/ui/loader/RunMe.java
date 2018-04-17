@@ -1,6 +1,7 @@
 package at.fhv.roomix.ui.loader;
 
 import at.fhv.roomix.ui.common.CloseEvent;
+import at.fhv.roomix.ui.common.StartEvent;
 import at.fhv.roomix.ui.dataprovider.LoginProvider;
 import at.fhv.roomix.ui.view.main.MainView;
 import at.fhv.roomix.ui.view.main.MainViewModel;
@@ -29,7 +30,7 @@ import java.util.ResourceBundle;
  */
 public class RunMe extends MvvmfxCdiApplication {
     // Turn Debug to true if you want to auto login as Admin
-    private static final boolean DEBUG_INIT = false;
+    private static final boolean DEBUG_INIT = true;
 
     private static final Logger LOG = LoggerFactory.getLogger(RunMe.class);
 
@@ -37,6 +38,8 @@ public class RunMe extends MvvmfxCdiApplication {
     private ResourceBundle resourceBundle;
     @Inject
     private Event<CloseEvent> onCloseEvent;
+    @Inject
+    private Event<StartEvent> onStartEvent;
 
     public static void main(String... args) {
         Locale.setDefault(Locale.GERMANY);
@@ -45,6 +48,7 @@ public class RunMe extends MvvmfxCdiApplication {
 
     @Override
     public void initMvvmfx() throws Exception {
+        onStartEvent.fire(new StartEvent());
     }
 
     @Override
@@ -57,7 +61,7 @@ public class RunMe extends MvvmfxCdiApplication {
         ViewTuple<MainView, MainViewModel> main = FluentViewLoader.fxmlView(MainView.class).load();
         Scene rootScene = new Scene(main.getView());
         stage.setScene(rootScene);
-        stage.setMinWidth(600);
+        stage.setMinWidth(800);
         stage.setMinHeight(400);
         stage.show();
 

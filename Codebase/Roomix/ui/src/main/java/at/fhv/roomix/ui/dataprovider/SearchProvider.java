@@ -25,19 +25,20 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 public abstract class SearchProvider<T> extends AbstractProvider {
     private final AtomicReference<String> nextQuery;
+    protected IErrorCall onError;
     private StringProperty currentQuery = new SimpleStringProperty();
     private ObservableSet<T> queryResultList = FXCollections.synchronizedObservableSet(
             FXCollections.observableSet(new HashSet<>()));
     private ISearchAble<T> searchProvider;
     private String lastQuery;
     private boolean inRun;
-    private IErrorCall onError;
     private Thread addToSearchQuery;
 
-    SearchProvider(ISearchAble<T> searchProvider, IErrorCall onError) {
+    SearchProvider(ISearchAble<T> searchProvider) {
         inRun = true;
         this.searchProvider = searchProvider;
-        this.onError = onError;
+        this.onError = (e) -> {
+        };
         nextQuery = new AtomicReference<>("");
 
         onShutdown(() -> inRun = false);
@@ -52,6 +53,13 @@ public abstract class SearchProvider<T> extends AbstractProvider {
             addToSearchQuery = new Thread(() -> addToSearchQuery(newValue));
             addToSearchQuery.start();
         }));
+    }
+
+    public void addErrorCallBack(IErrorCall errorCall) {
+        if (errorCall == null)
+            errorCall = (e) -> {
+            };
+        onError = errorCall;
     }
 
     private void addToSearchQuery(String toQuery) {
@@ -127,4 +135,5 @@ public abstract class SearchProvider<T> extends AbstractProvider {
     public StringProperty currentQueryProperty() {
         return currentQuery;
     }
+
 }
