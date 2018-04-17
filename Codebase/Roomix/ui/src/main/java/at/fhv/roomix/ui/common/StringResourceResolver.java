@@ -26,6 +26,7 @@ public class StringResourceResolver {
     private StringProperty resultString = new SimpleStringProperty();
 
     public StringResourceResolver(ResourceBundle bundle, ReadOnlyStringProperty stringProperty) {
+        // TODO: wird beim ersten mal initialisieren nicht ausfgeführt
         stringProperty.addListener((observable, oldValue, newValue) -> {
             String string = newValue;
             try {
@@ -35,7 +36,6 @@ public class StringResourceResolver {
             }
             resultString.setValue(string);
         });
-
     }
 
     public ReadOnlyStringProperty getResultProperty() {

@@ -13,7 +13,7 @@ import at.fhv.roomix.ui.view.main.models.SwitchablePage;
  * Enter Description here
  */
 public class LoginPage extends AbstractPage {
-    private static final String DEFAULT_TAG = "Anmelden";
+    private static final String DEFAULT_TAG = "common.Anmelden";
     private static final String DEFAULT_GLYPH = "USER";
 
     public LoginPage() {

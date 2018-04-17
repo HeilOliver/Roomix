@@ -12,7 +12,7 @@ import at.fhv.roomix.ui.view.main.models.SwitchablePage;
  * Enter Description here
  */
 public class DashBoardPage extends AbstractPage {
-    private static final String DEFAULT_TAG = "DashBoard";
+    private static final String DEFAULT_TAG = "common.DashBoard";
     private static final String DEFAULT_GLYPH = "HOME";
 
     public DashBoardPage() {
