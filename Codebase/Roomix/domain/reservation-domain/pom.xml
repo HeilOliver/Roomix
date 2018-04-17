@@ -15,6 +15,10 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>at.fhv.roomix.domain</groupId>
+            <artifactId>guest-domain</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
