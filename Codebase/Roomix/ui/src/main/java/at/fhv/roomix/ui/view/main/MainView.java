@@ -11,6 +11,10 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import at.fhv.roomix.ui.common.StringResourceResolver;
+
+import javax.inject.Inject;
+import java.util.ResourceBundle;
 
 
 /**
@@ -36,6 +40,10 @@ public class MainView implements FxmlView<MainViewModel> {
     private CachedViewModelCellFactory<SideBarItem, SideBarItemViewModel> cellFactory;
     @FXML
     private VBox bottomBox;
+
+    @Inject
+    private ResourceBundle resourceBundle;
+
 
     private void setChildren(Parent parent) {
         contentPane.getChildren().clear();
@@ -65,7 +73,7 @@ public class MainView implements FxmlView<MainViewModel> {
             bottomBox.getChildren().add(item);
         });
 
-        lbl_header.textProperty().bind(viewModel.headerProperty());
+        lbl_header.textProperty().bind(StringResourceResolver.getAnonymousProperty(resourceBundle, viewModel.headerProperty()));
     }
 
     @FXML
