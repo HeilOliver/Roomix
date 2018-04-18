@@ -1,8 +1,8 @@
-package at.fhv.roomix.controller.contact.exeption;
+package at.fhv.roomix.controller.exeption;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.contact.exeption
+ * at.fhv.roomix.controller.exeption
  * FaultException
  * 27/03/2018 OliverH
  * <p>

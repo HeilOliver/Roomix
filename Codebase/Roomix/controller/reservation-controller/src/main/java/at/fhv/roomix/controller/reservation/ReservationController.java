@@ -1,8 +1,8 @@
 package at.fhv.roomix.controller.reservation;
 
-import at.fhv.roomix.controller.reservation.exeption.ArgumentFaultException;
-import at.fhv.roomix.controller.reservation.exeption.SessionFaultException;
-import at.fhv.roomix.controller.reservation.exeption.ValidationFault;
+import at.fhv.roomix.controller.exeption.ArgumentFaultException;
+import at.fhv.roomix.controller.exeption.SessionFaultException;
+import at.fhv.roomix.controller.exeption.ValidationFault;
 import at.fhv.roomix.controller.reservation.model.ReservationPojo;
 import at.fhv.roomix.domain.guest.model.ReservationDomain;
 import at.fhv.roomix.domain.session.ISessionDomain;

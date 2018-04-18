@@ -1,6 +1,6 @@
 package at.fhv.roomix.ui.dataprovider;
 
-import at.fhv.roomix.controller.reservation.exeption.FaultException;
+import at.fhv.roomix.controller.exeption.FaultException;
 import at.fhv.roomix.ui.common.ICallable;
 import at.fhv.roomix.ui.common.IErrorCall;
 import at.fhv.roomix.ui.common.ISearchAble;

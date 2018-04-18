@@ -1,9 +1,9 @@
 package at.fhv.roomix.controller.contact;
 
 import at.fhv.roomix.controller.contact.model.ContactPojo;
-import at.fhv.roomix.controller.reservation.exeption.ArgumentFaultException;
-import at.fhv.roomix.controller.reservation.exeption.SessionFaultException;
-import at.fhv.roomix.controller.reservation.exeption.ValidationFault;
+import at.fhv.roomix.controller.exeption.ArgumentFaultException;
+import at.fhv.roomix.controller.exeption.SessionFaultException;
+import at.fhv.roomix.controller.exeption.ValidationFault;
 import at.fhv.roomix.domain.session.SessionFactory;
 import at.fhv.roomix.persist.factory.GuestDomainBuilder;
 import org.junit.jupiter.api.BeforeAll;
