@@ -16,11 +16,14 @@ public class ReservationEntity {
     private int paymentType;
     private String reservationStatus;
     private String reservationComment;
+
     private Collection<InvoicePositionEntity> invoicePositionsByReservationId;
     private Collection<PersonReservationEntity> personReservationsByReservationId;
-    private ContractingPartyEntity contractingPartyByContractingParty;
-    private PaymentTypeEntity paymentTypeByPaymentType;
     private Collection<ReservationUnitEntity> reservationUnitsByReservationId;
+
+    private ContractingPartyEntity contractingPartyByContractingParty;
+    private ReservationOptionEntity reservationOptionByReservationOption;
+    private PaymentTypeEntity paymentTypeByPaymentType;
 
     @Id
     @Column(name = "ReservationID")
@@ -138,5 +141,15 @@ public class ReservationEntity {
 
     public void setReservationUnitsByReservationId(Collection<ReservationUnitEntity> reservationUnitsByReservationId) {
         this.reservationUnitsByReservationId = reservationUnitsByReservationId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "ReservationOption", referencedColumnName = "OptionID")
+    public ReservationOptionEntity getReservationOptionByReservationOption() {
+        return reservationOptionByReservationOption;
+    }
+
+    public void setReservationOptionByReservationOption(ReservationOptionEntity reservationOptionByReservationOption) {
+        this.reservationOptionByReservationOption = reservationOptionByReservationOption;
     }
 }

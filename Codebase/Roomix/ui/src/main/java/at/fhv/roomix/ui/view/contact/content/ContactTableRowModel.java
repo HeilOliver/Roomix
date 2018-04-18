@@ -1,20 +1,20 @@
 package at.fhv.roomix.ui.view.contact.content;
 
 import at.fhv.roomix.controller.reservation.model.ContactPojo;
+import at.fhv.roomix.ui.common.AbstractTableRowModel;
 
 /**
  * Roomix
  * at.fhv.roomix.ui.view.contact.content
- * ContactListTableModel
+ * ContactTableRowModel
  * 15/04/2018 Oliver
  * <p>
  * Enter Description here
  */
-public class ContactListTableModel {
-    private ContactPojo pojo;
+public class ContactTableRowModel extends AbstractTableRowModel<ContactPojo> {
 
-    public ContactListTableModel(ContactPojo pojo) {
-        this.pojo = pojo;
+    public ContactTableRowModel(ContactPojo pojo) {
+        super(pojo);
     }
 
     public ContactPojo getPojo() {

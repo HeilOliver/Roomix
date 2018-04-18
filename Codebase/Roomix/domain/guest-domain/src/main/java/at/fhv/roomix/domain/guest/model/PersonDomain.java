@@ -7,6 +7,9 @@ public class PersonDomain {
     private byte archive;
     private int contact;
 
+    private String firstName;
+    private String lastName;
+
     public int getPersonId() {
         return personId;
     }
@@ -37,5 +40,22 @@ public class PersonDomain {
 
     public void setContact(int contact) {
         this.contact = contact;
+    }
+
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

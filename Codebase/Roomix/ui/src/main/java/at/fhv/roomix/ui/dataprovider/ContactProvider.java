@@ -1,13 +1,7 @@
 package at.fhv.roomix.ui.dataprovider;
 
 import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
-import at.fhv.roomix.controller.reservation.exeption.ArgumentFaultException;
-import at.fhv.roomix.controller.reservation.exeption.SessionFaultException;
-import at.fhv.roomix.controller.reservation.exeption.ValidationFault;
 import at.fhv.roomix.controller.reservation.model.ContactPojo;
-import at.fhv.roomix.ui.common.ICallable;
-import at.fhv.roomix.ui.common.IErrorCall;
-import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyBooleanProperty;
 
 /**
@@ -18,29 +12,18 @@ import javafx.beans.property.ReadOnlyBooleanProperty;
  * <p>
  * Enter Description here
  */
-public class ContactProvider extends SearchProvider<ContactPojo> {
+public class ContactProvider extends AbstractSearchEditProvider<ContactPojo> {
 
-    public ContactProvider(IErrorCall onSearchError) {
-        super(query -> ReservationControllerFactory.getInstance()
+    public ContactProvider() {
+        super(
+                query -> ReservationControllerFactory.getInstance()
                         .getSearchedContacts(LoginProvider.getSessionID(), query),
-                onSearchError);
-    }
-
-    public void saveOrUpdate(ContactPojo pojo, IErrorCall onError, ICallable onSuccess) {
-        submit(() -> {
-            try {
-                ReservationControllerFactory
-                        .getInstance()
-                        .updateContact(LoginProvider.getSessionID(), pojo);
-                reSearch();
-                Platform.runLater(onSuccess::call);
-            } catch (SessionFaultException | ArgumentFaultException | ValidationFault e) {
-                Platform.runLater(() -> onError.errorOccurred(new Error(e.getMessage())));
-            }
-        });
+                update -> ReservationControllerFactory.getInstance().updateContact(
+                        LoginProvider.getSessionID(), update)
+        );
     }
 
     public ReadOnlyBooleanProperty getInProcessProperty() {
-        return inProcess();
+        return inProcessProperty();
     }
 }

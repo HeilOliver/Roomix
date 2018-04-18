@@ -15,6 +15,8 @@ public class PersonEntity {
     private byte isVip;
     private byte archive;
     private int contact;
+    private String firstName;
+    private String lastName;
     private ContactEntity contactByContact;
     private Collection<PersonReservationEntity> personReservationsByPersonId;
     private Collection<PersonRoomAssignmentEntity> personRoomAssignmentsByPersonId;
@@ -29,6 +31,26 @@ public class PersonEntity {
 
     public void setPersonId(int personId) {
         this.personId = personId;
+    }
+
+    @Basic
+    @Column(name = "FirstName")
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    @Basic
+    @Column(name = "LastName")
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     @Basic
@@ -79,7 +101,7 @@ public class PersonEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "Contact", referencedColumnName = "ContactID", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "Contact", referencedColumnName = "ContactID", insertable = false, updatable = false)
     public ContactEntity getContactByContact() {
         return contactByContact;
     }

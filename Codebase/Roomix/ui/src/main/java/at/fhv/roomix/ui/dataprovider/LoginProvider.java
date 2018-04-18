@@ -4,9 +4,14 @@ import at.fhv.roomix.controller.session.ISessionController;
 import at.fhv.roomix.controller.session.SessionControllerFactory;
 import at.fhv.roomix.controller.session.exception.AuthenticationFaultException;
 import at.fhv.roomix.controller.session.model.SessionPojo;
+import at.fhv.roomix.ui.common.CloseEvent;
+import at.fhv.roomix.ui.common.ICallable;
 import at.fhv.roomix.ui.common.IErrorCall;
+import at.fhv.roomix.ui.common.StartEvent;
 import javafx.application.Platform;
 import javafx.beans.property.*;
+
+import javax.enterprise.event.Observes;
 
 /**
  * Roomix
@@ -24,6 +29,11 @@ public class LoginProvider extends AbstractProvider {
     static {
         currentSession.addListener(((observable, oldValue, newValue) -> {
             isLoggedIn.setValue(newValue != null);
+        }));
+
+        onShutdown(() -> submit(() -> {
+            ISessionController instance = SessionControllerFactory.getInstance();
+            instance.dispose();
         }));
     }
 
@@ -66,6 +76,17 @@ public class LoginProvider extends AbstractProvider {
     }
 
     public static ReadOnlyBooleanProperty getInProcessProperty() {
-        return inProcess();
+        return inProcessProperty();
+    }
+
+    /**
+     * The start of the application can be triggered by firing the
+     * {@link at.fhv.roomix.ui.common.StartEvent} CDI event.
+     */
+    public static void triggerStart(@Observes StartEvent event) {
+        submit(() -> {
+            ISessionController instance = SessionControllerFactory.getInstance();
+            instance.startUp();
+        });
     }
 }

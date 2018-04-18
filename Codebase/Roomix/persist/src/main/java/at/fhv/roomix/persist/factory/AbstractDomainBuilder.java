@@ -97,6 +97,22 @@ abstract class AbstractDomainBuilder<DM, EN> {
         }
     }
 
+    protected List<EN> loadAllEntites(Class<EN> entityClass){
+        Supplier daoInstanceSupplier = AbstractDao.getDaoInstanceByEntityClass(entityClass);
+        if (daoInstanceSupplier == null) {
+            throw new IllegalStateException("DAO Instance couldn't be retrieved");
+        } else {
+            AbstractDao generalDataAccessObject = (AbstractDao) daoInstanceSupplier.get();
+            List<EN> entities = null;
+            try {
+                entities = generalDataAccessObject.loadAll();
+            } catch (PersistLoadException e) {
+                logger.info(e.getMessage());
+            }
+            return entities;
+        }
+    }
+
     /**
      * Get all entries from the database as mapped domain objects. The domain object as specified in the generic
      * sub class (DM) will be returned.
