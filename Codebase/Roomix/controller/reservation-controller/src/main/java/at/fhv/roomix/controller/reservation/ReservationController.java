@@ -3,13 +3,16 @@ package at.fhv.roomix.controller.reservation;
 import at.fhv.roomix.controller.exeption.ArgumentFaultException;
 import at.fhv.roomix.controller.exeption.SessionFaultException;
 import at.fhv.roomix.controller.exeption.ValidationFault;
+import at.fhv.roomix.controller.reservation.model.ReservationOptionPojo;
 import at.fhv.roomix.controller.reservation.model.ReservationPojo;
 import at.fhv.roomix.domain.guest.model.ReservationDomain;
+import at.fhv.roomix.domain.guest.model.ReservationOptionDomain;
 import at.fhv.roomix.domain.session.ISessionDomain;
 import at.fhv.roomix.domain.session.SessionFactory;
 import at.fhv.roomix.persist.factory.IAbstractDomainBuilder;
 import at.fhv.roomix.persist.factory.ReservationDomainBuilder;
 import at.fhv.roomix.persist.model.ReservationEntity;
+import at.fhv.roomix.persist.model.ReservationOptionEntity;
 import org.modelmapper.ModelMapper;
 
 import javax.validation.ConstraintViolation;
@@ -79,11 +82,36 @@ class ReservationController implements IReservationController {
         return resultSet;
     }
 
-    @Override
-    public void updateReservation(long sessionId, ReservationPojo reservationPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException {
+    // TODO: ReservationOptionDomainBuilder fehlt noch in der persist Ebene
+
+/*    @Override
+    public void updateReservationOption(long sessionId, ReservationOptionPojo reservationOptionPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException {
+
+        if (reservationOptionPojo == null) throw new ArgumentFaultException();
+        validate(reservationOptionPojo);
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
 
+        IAbstractDomainBuilder<ReservationOptionDomain, ReservationOptionEntity> reservationOptionBuilder = ReservationOptionDomainBuilder.getInstance();
+        ModelMapper modelMapper = new ModelMapper();
 
+        ReservationOptionDomain reservationOptionDomain = modelMapper.map(reservationOptionPojo, ReservationOptionDomain.class);
+
+        reservationOptionBuilder.set(reservationOptionDomain);
+    }*/
+
+    @Override
+    public void updateReservation(long sessionId, ReservationPojo reservationPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException {
+
+        if (reservationPojo == null) throw new ArgumentFaultException();
+        validate(reservationPojo);
+        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
+
+        IAbstractDomainBuilder<ReservationDomain, ReservationEntity> reservationBuilder = ReservationDomainBuilder.getInstance();
+        ModelMapper modelMapper = new ModelMapper();
+
+        ReservationDomain reservationDomain = modelMapper.map(reservationPojo, ReservationDomain.class);
+
+        reservationBuilder.set(reservationDomain);
     }
 
 }
