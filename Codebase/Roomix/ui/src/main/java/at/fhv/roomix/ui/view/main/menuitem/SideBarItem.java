@@ -40,8 +40,6 @@ public class SideBarItem implements FxmlView<SideBarItemViewModel> {
     private ResourceBundle resourceBundle;
 
     public void initialize() {
-        // lbl_tag.textProperty().bind(viewModel.tagProperty());
-        // TODO:
         lbl_tag.textProperty().bind(StringResourceResolver.getAnonymousProperty(resourceBundle, viewModel.tagProperty()));
         icon.glyphNameProperty().bind(viewModel.glyphProperty());
         lbl_tag.visibleProperty().bind(viewModel.collapsedProperty().not());
