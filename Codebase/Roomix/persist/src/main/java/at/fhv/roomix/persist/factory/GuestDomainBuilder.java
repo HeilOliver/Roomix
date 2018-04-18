@@ -7,6 +7,7 @@ import at.fhv.roomix.persist.model.ContractingPartyEntity;
 import at.fhv.roomix.persist.model.CreditCardEntity;
 import at.fhv.roomix.persist.model.PersonEntity;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeMap;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -19,7 +20,6 @@ public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, Conta
     /* Dependency Injection */
     private static Supplier<IAbstractDomainBuilder<GuestDomain, ContactEntity>> supplier;
 
-    /* Constructor */
     private GuestDomainBuilder(ICallable registerAtDAO) {
         registerAtDAO.call();
     }
@@ -41,20 +41,30 @@ public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, Conta
     protected GuestDomain mapEntityToDomain(ContactEntity contactEntity) {
 
         ModelMapper modelMapper = new ModelMapper();
+        TypeMap<ContactEntity, GuestDomain> typeMap = modelMapper.createTypeMap(ContactEntity.class, GuestDomain.class);
+        typeMap.addMappings(mapper -> mapper.skip(GuestDomain::setContractingPartiesByContactId));
+        typeMap.addMappings(mapper -> mapper.skip(GuestDomain::setPeopleByContactId));
+        if(typeMap.getConverter() == null){
+            logger.fatal("no converter returned by typemap");
+        }
         GuestDomain guestDomain = modelMapper.map(contactEntity, GuestDomain.class);
 
-        /* Mapping of all collection entities to domain objects */
+        /* Mapping of collection entities to domain objects */
         LinkedHashMap<ISourceMapper<Collection>,
                 Map.Entry<Class, IDestinationMapper<Collection>>> mapping = new LinkedHashMap<>();
 
+        /* Map flat entities */
         put(ContactNoteDomain.class, contactEntity::getContactNotesByContactId,
                 guestDomain::setContactNotesByContactId, mapping);
         put(CreditCardDomain.class, contactEntity::getCreditCardsByContactId,
                 guestDomain::setCreditCardsByContactId, mapping);
-        put(ContractingPartyDomain.class, contactEntity::getContractingPartiesByContactId,
-                guestDomain::setContractingPartiesByContactId, mapping);
-        put(PersonDomain.class, contactEntity::getPeopleByContactId,
-                guestDomain::setPeopleByContactId, mapping);
+
+        /* Init proxy for lazy loading of deep entities */
+        Proxy<Collection<ContractingPartyDomain>, Integer> contractingPartyProxy =
+                new Proxy<>(guestDomain.getContactId(),
+                        key -> ContractingPartyDomainBuilder.getLazyInstance().lazyLoadCollection(key)
+                );
+        guestDomain.setContractingPartyDomainBuilderProxy(contractingPartyProxy);
 
         mapAllCollections(mapping);
         return guestDomain;
