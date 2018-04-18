@@ -4,13 +4,51 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import org.controlsfx.control.MasterDetailPane?>
 
-<AnchorPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhv.roomix.ui.view.reservation.edit.ReservationEditView">
-    <MasterDetailPane dividerPosition="0.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.Pane?>
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1"
+            stylesheets="@ReservationEditStyle.css"
+            fx:controller="at.fhv.roomix.ui.view.reservation.edit.ReservationEditView">
+    <MasterDetailPane dividerPosition="0.3"
+                      AnchorPane.bottomAnchor="0.0"
+                      AnchorPane.leftAnchor="0.0"
+                      AnchorPane.rightAnchor="0.0"
+                      AnchorPane.topAnchor="0.0">
         <masterNode>
-            
+            <VBox>
+                <Region minHeight="5" prefHeight="5"/>
+                <HBox maxWidth="Infinity" styleClass="headerBox"
+                      alignment="CENTER_LEFT">
+                    <Label text="Contracting Party"
+                           HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                    <Button fx:id="btnContractingParty" text="Add" mnemonicParsing="false" onAction="#addClicked">
+                        <graphic>
+                            <FontAwesomeIconView glyphName="PLUS" size="1.5em" styleClass="new_icon"/>
+                        </graphic>
+                    </Button>
+                </HBox>
+                <Region minHeight="5" prefHeight="5"/>
+                <Separator/>
+                <Region minHeight="5" prefHeight="5"/>
+                <HBox fx:id="boxContractingParty">
+                </HBox>
+                <Region minHeight="5" prefHeight="5"/>
+                <Separator/>
+                <Region minHeight="5" prefHeight="5"/>
+            </VBox>
         </masterNode>
         <detailNode>
+            <AnchorPane fx:id="boxDetailPane">
 
+            </AnchorPane>
         </detailNode>
     </MasterDetailPane>
 </AnchorPane>

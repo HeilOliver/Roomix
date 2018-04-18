@@ -29,8 +29,10 @@ import java.util.ResourceBundle;
  * The Main Class for starting the Application.
  */
 public class RunMe extends MvvmfxCdiApplication {
-    // Turn Debug to true if you want to auto login as Admin
+    // Turn Debug to true if you want some awesome hacks
     private static final boolean DEBUG_INIT = true;
+    private static final boolean DEBUG_SUPPRESS_START_EVENT = true;
+    private static final boolean DEBUG_SUPPRESS_STOP_EVENT = false;
 
     private static final Logger LOG = LoggerFactory.getLogger(RunMe.class);
 
@@ -48,6 +50,7 @@ public class RunMe extends MvvmfxCdiApplication {
 
     @Override
     public void initMvvmfx() throws Exception {
+        if (DEBUG_SUPPRESS_START_EVENT) return;
         onStartEvent.fire(new StartEvent());
     }
 
@@ -61,7 +64,7 @@ public class RunMe extends MvvmfxCdiApplication {
         ViewTuple<MainView, MainViewModel> main = FluentViewLoader.fxmlView(MainView.class).load();
         Scene rootScene = new Scene(main.getView());
         stage.setScene(rootScene);
-        stage.setMinWidth(800);
+        stage.setMinWidth(900);
         stage.setMinHeight(400);
         stage.show();
 
@@ -72,6 +75,7 @@ public class RunMe extends MvvmfxCdiApplication {
 
     @Override
     public void stopMvvmfx() throws Exception {
+        if (DEBUG_SUPPRESS_STOP_EVENT) return;
         onCloseEvent.fire(new CloseEvent());
     }
 }

@@ -25,20 +25,22 @@ public class StringResourceResolver {
     private static final Logger LOG = LoggerFactory.getLogger(AbstractProvider.class);
     private StringProperty resultString = new SimpleStringProperty();
 
-    public StringResourceResolver(ResourceBundle bundle, ReadOnlyStringProperty stringProperty) {
-        stringProperty.addListener((observable, oldValue, newValue) -> {
-            String string = newValue;
-            try {
-                string = bundle.getString(newValue);
-            } catch (MissingResourceException | ClassCastException ignore) {
-                LOG.debug("Cant find Resource - " + newValue);
-            }
-            resultString.setValue(string);
-        });
-
+    private void onChange(ResourceBundle bundle, String newValue) {
+        String string = newValue;
+        try {
+            string = bundle.getString(newValue);
+        } catch (MissingResourceException | ClassCastException ignore) {
+            LOG.debug("Cant find Resource - " + newValue);
+        }
+        resultString.setValue(string);
     }
 
-    public ReadOnlyStringProperty getResultProperty() {
+    private StringResourceResolver(ResourceBundle bundle, ReadOnlyStringProperty stringProperty) {
+        stringProperty.addListener((observable, oldValue, newValue) -> onChange(bundle, newValue));
+        onChange(bundle, stringProperty.get());
+    }
+
+    private ReadOnlyStringProperty getResultProperty() {
         return resultString;
     }
 

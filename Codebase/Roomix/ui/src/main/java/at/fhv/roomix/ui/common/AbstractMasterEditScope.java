@@ -13,12 +13,12 @@ import java.util.function.Supplier;
 /**
  * Roomix
  * at.fhv.roomix.ui.common
- * AbstractMDScope
+ * AbstractMasterEditScope
  * 16/04/2018 Oliver
  * <p>
  * Enter Description here
  */
-public abstract class AbstractMDScope<T> implements Scope {
+public abstract class AbstractMasterEditScope<T> implements Scope {
     public static final String commandSave = "Command_SAVE";
     public static final String commandCancel = "Command_CLOSE";
     public static final String commandEdit = "Command_EDIT";
@@ -26,7 +26,7 @@ public abstract class AbstractMDScope<T> implements Scope {
     public static final String commandEditView = "Command_EditView";
     public static final String commandContentView = "Command_ContentView";
     public static final String commandCommitEdit = "Command_CommitEdit";
-    protected static final Logger LOG = LoggerFactory.getLogger(AbstractMDScope.class);
+    protected static final Logger LOG = LoggerFactory.getLogger(AbstractMasterEditScope.class);
     protected final AbstractSearchEditProvider<T> provider;
     protected final ObjectProperty<T> selectedPojo = new SimpleObjectProperty<>();
     protected final ObjectProperty<T> inEditPojo = new SimpleObjectProperty<>();
@@ -36,7 +36,7 @@ public abstract class AbstractMDScope<T> implements Scope {
     protected IErrorCall onSaveUpdateError;
     protected IErrorCall onSearchError;
 
-    public AbstractMDScope(Supplier<T> valueSupplier, AbstractSearchEditProvider<T> provider) {
+    public AbstractMasterEditScope(Supplier<T> valueSupplier, AbstractSearchEditProvider<T> provider) {
         this.provider = provider;
         supplier = valueSupplier;
 
@@ -82,7 +82,6 @@ public abstract class AbstractMDScope<T> implements Scope {
     public ObjectProperty<T> inEditPojoProperty() {
         return inEditPojo;
     }
-
 
     public ObservableSet<T> getObservableSet() {
         return provider.getQueryResultSet();

@@ -1,0 +1,15 @@
+.new_icon {
+    -fx-fill: #86cc69;
+}
+
+.new_icon:hover {
+    -fx-fill: #31af0f;
+}
+
+.headerBox {
+    -fx-padding: 0.1em, 0.5em, 0.1em, 0.1em;
+}
+
+.headerBox .label {
+    -fx-font-size: 1.7em;
+}
