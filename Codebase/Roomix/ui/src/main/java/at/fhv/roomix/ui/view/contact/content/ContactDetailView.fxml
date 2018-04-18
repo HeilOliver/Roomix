@@ -35,25 +35,25 @@
             <RowConstraints prefHeight="30.0"/>
             <RowConstraints prefHeight="30.0"/>
         </rowConstraints>
-        <Label text="%contact.table.companyname" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <Label text="%common.companyname" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
         <Text fx:id="txtCompanyname" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
-        <Label text="%contact.table.street" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <Label text="%common.street" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
         <Text fx:id="txtStreet" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
-        <Label text="%contact.table.city" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <Label text="%common.city" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
         <Text fx:id="txtCity" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 
-        <Label text="%contact.table.postalcode" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <Label text="%common.postalcode" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
         <Text fx:id="txtPostalcode" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
 
-        <Label text="%contact.table.country" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <Label text="%common.country" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
         <Text fx:id="txtCountry" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
 
-        <Label text="%contact.table.phonenumber" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+        <Label text="%common.phonenumber" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
         <Text fx:id="txtPhonenumber" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
 
-        <Label text="%contact.table.email" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+        <Label text="%common.email" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
         <Text fx:id="txtEmail" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
     </GridPane>
 

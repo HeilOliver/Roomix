@@ -12,7 +12,7 @@ import at.fhv.roomix.ui.view.main.models.SwitchablePage;
  * Enter Description here
  */
 public class ReservationPage extends AbstractPage {
-    private static final String DEFAULT_TAG = "Reservation";
+    private static final String DEFAULT_TAG = "common.Reservation";
     private static final String DEFAULT_GLYPH = "FILE_TEXT";
 
     public ReservationPage() {

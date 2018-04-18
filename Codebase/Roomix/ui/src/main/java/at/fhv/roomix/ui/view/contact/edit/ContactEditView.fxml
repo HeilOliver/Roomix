@@ -25,25 +25,25 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
 
-            <Label text="%contact.edit.firstname" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
+            <Label text="%common.firstname" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
                    GridPane.rowIndex="0"/>
-            <Label text="%contact.edit.lastname" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
+            <Label text="%common.lastname" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
                    GridPane.rowIndex="1"/>
-            <Label text="%contact.edit.companyname" GridPane.columnIndex="2" GridPane.halignment="RIGHT"
+            <Label text="%common.companyname" GridPane.columnIndex="2" GridPane.halignment="RIGHT"
                    GridPane.rowIndex="0"/>
-            <Label text="%contact.edit.street" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
+            <Label text="%common.street" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
                    GridPane.rowIndex="2"/>
-            <Label text="%contact.edit.postalcode" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
+            <Label text="%common.postalcode" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
                    GridPane.rowIndex="3"/>
-            <Label text="%contact.edit.city" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
+            <Label text="%common.city" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
                    GridPane.rowIndex="4"/>
-            <Label text="%contact.edit.country" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
+            <Label text="%common.country" GridPane.columnIndex="0" GridPane.halignment="RIGHT"
                    GridPane.rowIndex="5"/>
-            <Label text="%contact.edit.phonenumber" GridPane.columnIndex="2" GridPane.halignment="RIGHT"
+            <Label text="%common.phonenumber" GridPane.columnIndex="2" GridPane.halignment="RIGHT"
                    GridPane.rowIndex="1"/>
-            <Label text="%contact.edit.email" GridPane.columnIndex="2" GridPane.halignment="RIGHT"
+            <Label text="%common.email" GridPane.columnIndex="2" GridPane.halignment="RIGHT"
                    GridPane.rowIndex="2"/>
-            <Label text="%contact.edit.houseNumber" GridPane.columnIndex="2" GridPane.halignment="RIGHT"
+            <Label text="%common.houseNumber" GridPane.columnIndex="2" GridPane.halignment="RIGHT"
                    GridPane.rowIndex="3"/>
             <TextField fx:id="firstnameInput" promptText="%contact.edit.firstname.prompt" GridPane.columnIndex="1"
                        GridPane.rowIndex="0"/>
