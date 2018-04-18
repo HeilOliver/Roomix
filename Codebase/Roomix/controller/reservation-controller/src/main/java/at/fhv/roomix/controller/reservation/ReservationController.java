@@ -1,5 +1,6 @@
 package at.fhv.roomix.controller.reservation;
 
+import at.fhv.roomix.controller.contact.model.ContactPojo;
 import at.fhv.roomix.controller.exeption.ArgumentFaultException;
 import at.fhv.roomix.controller.exeption.SessionFaultException;
 import at.fhv.roomix.controller.exeption.ValidationFault;
@@ -80,6 +81,35 @@ class ReservationController implements IReservationController {
         }
 
         return resultSet;
+    }
+
+    @Override
+    public Collection<ReservationPojo> getSearchedReservationbyContact(long sessionId, ContactPojo contactPojo) throws SessionFaultException {
+        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
+
+        return null;
+    }
+
+    //Todo: Müssen noch implementiert werden! Reine Vorbereitung!
+
+    @Override
+    public Collection<ReservationPojo> getAllReservationUnits(long sessionId) throws SessionFaultException {
+        return null;
+    }
+
+    @Override
+    public Collection<ReservationPojo> getSearchedReservationUnit(long sessionId, String query) throws SessionFaultException {
+        return null;
+    }
+
+    @Override
+    public Collection<ReservationPojo> getAllReservationOptions(long sessionId) throws SessionFaultException {
+        return null;
+    }
+
+    @Override
+    public Collection<ReservationPojo> getSearchedReservationOptions(long sessionId) throws SessionFaultException {
+        return null;
     }
 
     // TODO: ReservationOptionDomainBuilder fehlt noch in der persist Ebene
