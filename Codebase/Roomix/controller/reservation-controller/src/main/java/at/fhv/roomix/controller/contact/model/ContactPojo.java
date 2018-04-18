@@ -1,4 +1,4 @@
-package at.fhv.roomix.controller.reservation.model;
+package at.fhv.roomix.controller.contact.model;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -7,9 +7,9 @@ import java.util.Objects;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.reservation.model
+ * at.fhv.roomix.controller.contact.model
  * ContactPojo
- * 25/03/2018 OliverH
+ * 18.04.2018 sge
  * <p>
  * Enter Description here
  */

@@ -1,7 +1,7 @@
 package at.fhv.roomix.ui.dataprovider;
 
 import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
-import at.fhv.roomix.controller.reservation.model.ContactPojo;
+import at.fhv.roomix.controller.contact.model.ContactPojo;
 import javafx.beans.property.ReadOnlyBooleanProperty;
 
 /**

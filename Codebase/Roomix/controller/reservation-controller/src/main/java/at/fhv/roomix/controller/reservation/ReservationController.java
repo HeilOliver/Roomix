@@ -3,14 +3,13 @@ package at.fhv.roomix.controller.reservation;
 import at.fhv.roomix.controller.reservation.exeption.ArgumentFaultException;
 import at.fhv.roomix.controller.reservation.exeption.SessionFaultException;
 import at.fhv.roomix.controller.reservation.exeption.ValidationFault;
-import at.fhv.roomix.controller.reservation.model.ContactPojo;
 import at.fhv.roomix.controller.reservation.model.ReservationPojo;
-import at.fhv.roomix.domain.guest.model.GuestDomain;
+import at.fhv.roomix.domain.guest.model.ReservationDomain;
 import at.fhv.roomix.domain.session.ISessionDomain;
 import at.fhv.roomix.domain.session.SessionFactory;
-import at.fhv.roomix.persist.factory.GuestDomainBuilder;
 import at.fhv.roomix.persist.factory.IAbstractDomainBuilder;
-import at.fhv.roomix.persist.model.ContactEntity;
+import at.fhv.roomix.persist.factory.ReservationDomainBuilder;
+import at.fhv.roomix.persist.model.ReservationEntity;
 import org.modelmapper.ModelMapper;
 
 import javax.validation.ConstraintViolation;
@@ -26,7 +25,7 @@ import java.util.stream.Collectors;
  * Roomix
  * at.fhv.roomix.controller.session
  * ReservationController
- * 22.03.2018 sge
+ * 18.04.2018 Robert S.
  * <p>
  * The Implementation for the ReservationController itself
  */
@@ -45,49 +44,39 @@ class ReservationController implements IReservationController {
         throw new ValidationFault(strings);
     }
 
-
-    @Override
-    public Collection<ContactPojo> getAllContacts(long sessionId) throws SessionFaultException {
-
-        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
-
-        IAbstractDomainBuilder<GuestDomain, ContactEntity> guestBuilder = GuestDomainBuilder.getInstance();
-        ModelMapper modelMapper = new ModelMapper();
-        HashSet<GuestDomain> guestDomainSet = new HashSet<>(guestBuilder.getAll());
-        HashSet<ContactPojo> contactPojoSet = new HashSet<>();
-
-        guestDomainSet.forEach(contact -> contactPojoSet.add(modelMapper.map(contact, ContactPojo.class)));
-
-        return contactPojoSet;
-    }
-
-    @Override
-    public void updateContact(long sessionId, ContactPojo contactPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException {
-
-        if (contactPojo == null) throw new ArgumentFaultException();
-        validate(contactPojo);
-        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
-
-        IAbstractDomainBuilder<GuestDomain, ContactEntity> guestBuilder = GuestDomainBuilder.getInstance();
-        ModelMapper modelMapper = new ModelMapper();
-
-        GuestDomain guestDomain = modelMapper.map(contactPojo, GuestDomain.class);
-
-        guestBuilder.set(guestDomain);
-    }
-
     @Override
     public Collection<ReservationPojo> getAllReservation(long sessionId) throws SessionFaultException {
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
 
-        return new HashSet<>();
+        IAbstractDomainBuilder<ReservationDomain, ReservationEntity> reservationBuilder = ReservationDomainBuilder.getInstance();
+        ModelMapper modelMapper = new ModelMapper();
+        HashSet<ReservationDomain> reservationDomainSet = new HashSet<>(reservationBuilder.getAll());
+        HashSet<ReservationPojo> reservationPojoSet = new HashSet<>();
+
+        reservationDomainSet.forEach(reservation -> reservationPojoSet.add(modelMapper.map(reservation, ReservationPojo.class)));
+
+        return reservationPojoSet;
     }
 
     @Override
     public Collection<ReservationPojo> getSearchedReservation(long sessionId, String query) throws SessionFaultException {
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
 
-        return new HashSet<>();
+        Collection<ReservationPojo> reservationPojoSet = getAllReservation(sessionId);
+
+        String[] split = query.toLowerCase().split(" ");
+
+        Set<ReservationPojo> resultSet = new HashSet<>(reservationPojoSet);
+        for (String splitedQuery : split) {
+            resultSet = resultSet.stream()
+                    .filter(c -> c.getContractingParty().toString().toLowerCase().contains(splitedQuery) ||
+                            c.getPersons().toString().toLowerCase().contains(splitedQuery) ||
+                            c.getComment().toLowerCase().contains(splitedQuery) ||
+                            c.getUnits().toString().toLowerCase().contains(splitedQuery))
+                    .collect(Collectors.toSet());
+        }
+
+        return resultSet;
     }
 
     @Override
@@ -97,24 +86,4 @@ class ReservationController implements IReservationController {
 
     }
 
-    public Collection<ContactPojo> getSearchedContacts(long sessionId, String query) throws SessionFaultException {
-        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
-
-        Collection<ContactPojo> contactPojoSet = getAllContacts(sessionId);
-
-        String[] split = query.toLowerCase().split(" ");
-
-        Set<ContactPojo> resultSet = new HashSet<>(contactPojoSet);
-        for (String splitedQuery : split) {
-            resultSet = resultSet.stream()
-                    .filter(c -> c.getFirstName().toLowerCase().contains(splitedQuery) ||
-                            c.getLastName().toLowerCase().contains(splitedQuery) ||
-                            c.getStreet().toLowerCase().contains(splitedQuery) ||
-                            c.getPostcode().toLowerCase().contains(splitedQuery) ||
-                            c.getPlace().toLowerCase().contains(splitedQuery))
-                    .collect(Collectors.toSet());
-        }
-
-        return resultSet;
-    }
 }
