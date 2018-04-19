@@ -1,6 +1,7 @@
 package at.fhv.roomix.persist;
 
 import org.apache.log4j.Logger;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
@@ -102,5 +103,15 @@ public abstract class AbstractDao<T, PK extends Serializable> {
         CriteriaQuery<T> select = query.select(from);
 
         return session.createQuery(select).getResultList();
+    }
+
+    protected List<T> internalLoadByKey(PK foreignKey, String referencedColumn){
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+
+        CriteriaQuery<T> query = builder.createQuery(type);
+        Root<T> from = query.from(type);
+        CriteriaQuery<T> statement = query.select(from).where(builder.equal(from.get(referencedColumn), foreignKey));
+
+        return session.createQuery(statement).getResultList();
     }
 }

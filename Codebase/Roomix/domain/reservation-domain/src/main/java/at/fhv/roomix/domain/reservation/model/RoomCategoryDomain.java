@@ -7,6 +7,7 @@ public class RoomCategoryDomain {
     /* Database */
     private int roomCategoryId;
     private String categoryDescription;
+
     private OccupationStatusHelper occupation;
 
     public int getRoomCategoryId() {
