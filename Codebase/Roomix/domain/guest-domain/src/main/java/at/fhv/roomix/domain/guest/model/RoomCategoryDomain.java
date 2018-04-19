@@ -1,7 +1,5 @@
-package at.fhv.roomix.domain.reservation.model;
+package at.fhv.roomix.domain.guest.model;
 
-
-import at.fhv.roomix.domain.reservation.helper.OccupationStatusHelper;
 
 public class RoomCategoryDomain {
     /* Database */

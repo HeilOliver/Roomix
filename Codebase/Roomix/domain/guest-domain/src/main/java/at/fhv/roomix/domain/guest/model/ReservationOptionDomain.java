@@ -1,4 +1,4 @@
-package at.fhv.roomix.domain.reservation.model;
+package at.fhv.roomix.domain.guest.model;
 
 import java.sql.Date;
 

@@ -5,12 +5,20 @@ import org.hibernate.HibernateException;
 
 public class ContractingPartyDao extends AbstractDao<ContractingPartyEntity, Integer> {
 
-    ContractingPartyDao() {
+    static {
+        AbstractDao.addDao(ContractingPartyEntity.class, ContractingPartyDao::new);
+    }
+
+    private ContractingPartyDao() {
         super(ContractingPartyEntity.class);
     }
 
-    public ContractingPartyDao getInstance() {
+    public static ContractingPartyDao getInstance() {
         return new ContractingPartyDao();
+    }
+
+    public static void registerAtDao() {
+        daoLogger.info("Registered at Contracting Party DAO");
     }
 
     @Override

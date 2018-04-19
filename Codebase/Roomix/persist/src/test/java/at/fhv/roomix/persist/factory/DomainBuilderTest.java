@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class DomainBuilderTest {
 
@@ -49,5 +50,11 @@ class DomainBuilderTest {
     void testInvalidVarMapping() {
         TestEntity resultEntity = testBuilder.injectDomain(reuseableDomain);
         assertEquals(0, resultEntity.getInvalidInteger());
+    }
+
+    @Test
+    void testSkippedProperty(){
+        TestDomain resultDomain = testBuilder.injectEntity(reuseableEntity);
+        assertNull(resultDomain.getDoNotMap());
     }
 }

@@ -1,8 +1,9 @@
 package at.fhv.roomix.persist.factory;
 
-import at.fhv.roomix.domain.reservation.model.PersonReservationDomain;
-import at.fhv.roomix.domain.reservation.model.ReservationDomain;
-import at.fhv.roomix.domain.reservation.model.ReservationUnitDomain;
+import at.fhv.roomix.domain.guest.model.IProxy;
+import at.fhv.roomix.domain.guest.model.PersonReservationDomain;
+import at.fhv.roomix.domain.guest.model.ReservationDomain;
+import at.fhv.roomix.domain.guest.model.ReservationUnitDomain;
 import at.fhv.roomix.persist.ReservationDao;
 import at.fhv.roomix.persist.model.PersonReservationEntity;
 import at.fhv.roomix.persist.model.ReservationEntity;
@@ -16,18 +17,25 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class ReservationDomainBuilder extends AbstractDomainBuilder<ReservationDomain, ReservationEntity>
-        implements IAbstractDomainBuilder<ReservationDomain, ReservationEntity> {
+        implements IAbstractDomainBuilder<ReservationDomain, ReservationEntity>, IProxy<ReservationDomain, Integer> {
 
-    /* Dependency Injection */
-    private static Supplier<IAbstractDomainBuilder<ReservationDomain, ReservationEntity>> supplier;
-
-    /* Constructor */
     private ReservationDomainBuilder(ICallable registerAtDAO) {
         registerAtDAO.call();
     }
 
-    private ReservationDomainBuilder() {
+    ReservationDomainBuilder(){}
+
+    private static IProxy<ReservationDomain, Integer> lazyInstance;
+
+    public static IProxy<ReservationDomain, Integer> getLazyInstance(){
+        if(lazyInstance == null){
+            lazyInstance = new ReservationDomainBuilder();
+        }
+        return lazyInstance;
     }
+
+    /* Dependency Injection */
+    private static Supplier<IAbstractDomainBuilder<ReservationDomain, ReservationEntity>> supplier;
 
     public static IAbstractDomainBuilder<ReservationDomain, ReservationEntity> getInstance() {
         if (supplier == null) return new ReservationDomainBuilder(ReservationDao::registerAtDao);
@@ -85,5 +93,15 @@ public class ReservationDomainBuilder extends AbstractDomainBuilder<ReservationD
     @Override
     public void set(ReservationDomain domainObject) {
         new ReservationDomainBuilder(ReservationDao::registerAtDao).save(ReservationEntity.class, domainObject);
+    }
+
+    @Override
+    public ReservationDomain lazyLoadInstance(Integer key, String referencedColumn) {
+        return null;
+    }
+
+    @Override
+    public Collection<ReservationDomain> lazyLoadCollection(Integer key, String referencedColumn) {
+        return null;
     }
 }

@@ -19,7 +19,10 @@ import java.util.function.Supplier;
  * AbstractDao
  * 24/03/2018 OliverH
  * <p>
- * Enter Description here
+ * Abstract Data Access Object. Loads database "contents" over
+ * a hibernate session. By inheriting from this class you can override
+ * the methods with "internal" prefix so provide your own implementation of
+ * how to load the data.
  */
 public abstract class AbstractDao<T, PK extends Serializable> {
     protected static Logger daoLogger = Logger.getLogger(Logger.class);
@@ -34,7 +37,6 @@ public abstract class AbstractDao<T, PK extends Serializable> {
 
     //public static AbstractDao<T, PK> getInstance();
 
-    // TODO: nicht verzagen - Wolfgang fragen
     public static void addDao(Class contactEntityClass, Supplier<AbstractDao> supplier) {
         supplierHashMap.put(contactEntityClass, supplier);
     }
@@ -103,6 +105,24 @@ public abstract class AbstractDao<T, PK extends Serializable> {
         CriteriaQuery<T> select = query.select(from);
 
         return session.createQuery(select).getResultList();
+    }
+
+    /**
+     * Load a collection of entities where a foreign key (referencedColumn) matches the given key.
+     * @param foreignKey Foreign key value for the entity the DAO provides
+     * @param referencedColumn The database column name the given foreign key references
+     * @return List of Entities where the condition is true
+     * @throws PersistLoadException
+     */
+    public final List<T> loadByForeignKey(PK foreignKey, String referencedColumn)
+            throws PersistLoadException, IllegalStateException {
+        if (session == null) throw new IllegalStateException("Session Closed or Empty");
+
+        try {
+            return internalLoadByKey(foreignKey, referencedColumn);
+        } catch (HibernateException e) {
+            throw new PersistLoadException(e.getCause());
+        }
     }
 
     protected List<T> internalLoadByKey(PK foreignKey, String referencedColumn){

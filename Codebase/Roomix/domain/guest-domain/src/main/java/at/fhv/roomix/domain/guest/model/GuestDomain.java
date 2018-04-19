@@ -26,15 +26,26 @@ public class GuestDomain {
     private byte active;
 
     private Collection<ContactNoteDomain> contactNotesByContactId;
-    private Collection<ContractingPartyDomain> contractingPartiesByContactId;
     private Collection<CreditCardDomain> creditCardsByContactId;
+    /* Loaded by proxy */
+    private Collection<ContractingPartyDomain> contractingPartiesByContactId;
     private Collection<InvoiceDomain> invoicesByContactId;
     private Collection<PersonDomain> peopleByContactId;
 
     private Proxy<Collection<ContractingPartyDomain>, Integer> contractingPartyDomainBuilderProxy;
+    private Proxy<Collection<PersonDomain>, Integer> personDomainBuilderProxy;
+    private Proxy<Collection<InvoiceDomain>, Integer> invoiceDomainBuilderProxy;
 
     public void setContractingPartyDomainBuilderProxy(Proxy<Collection<ContractingPartyDomain>, Integer> contractingPartyDomainBuilderProxy) {
         this.contractingPartyDomainBuilderProxy = contractingPartyDomainBuilderProxy;
+    }
+
+    public void setPersonDomainBuilderProxy(Proxy<Collection<PersonDomain>, Integer> personDomainBuilderProxy){
+        this.personDomainBuilderProxy = personDomainBuilderProxy;
+    }
+
+    public void setInvoiceDomainBuilderProxy(Proxy<Collection<InvoiceDomain>, Integer> invoiceDomainBuilderProxy){
+        this.invoiceDomainBuilderProxy = invoiceDomainBuilderProxy;
     }
 
     public int getContactId() {
@@ -142,11 +153,11 @@ public class GuestDomain {
     }
 
     public Collection<ContractingPartyDomain> getContractingPartiesByContactId() {
-        return contractingPartiesByContactId;
+        return contractingPartyDomainBuilderProxy.get();
     }
 
     public void setContractingPartiesByContactId(Collection<ContractingPartyDomain> contractingPartiesByContactId) {
-        this.contractingPartiesByContactId = contractingPartyDomainBuilderProxy.get();
+        this.contractingPartiesByContactId = contractingPartiesByContactId;
     }
 
     public Collection<CreditCardDomain> getCreditCardsByContactId() {
@@ -158,7 +169,7 @@ public class GuestDomain {
     }
 
     public Collection<InvoiceDomain> getInvoicesByContactId() {
-        return invoicesByContactId;
+        return invoiceDomainBuilderProxy.get();
     }
 
     public void setInvoicesByContactId(Collection<InvoiceDomain> invoicesByContactId) {
@@ -166,7 +177,7 @@ public class GuestDomain {
     }
 
     public Collection<PersonDomain> getPeopleByContactId() {
-        return peopleByContactId;
+        return personDomainBuilderProxy.get();
     }
 
     public void setPeopleByContactId(Collection<PersonDomain> peopleByContactId) {

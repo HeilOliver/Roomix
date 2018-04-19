@@ -1,7 +1,7 @@
 package at.fhv.roomix.persist.factory;
 
-import at.fhv.roomix.domain.reservation.helper.OccupationStatusHelper;
-import at.fhv.roomix.domain.reservation.model.RoomCategoryDomain;
+import at.fhv.roomix.domain.guest.model.OccupationStatusHelper;
+import at.fhv.roomix.domain.guest.model.RoomCategoryDomain;
 import at.fhv.roomix.persist.model.RoomCategoryEntity;
 import org.modelmapper.ModelMapper;
 

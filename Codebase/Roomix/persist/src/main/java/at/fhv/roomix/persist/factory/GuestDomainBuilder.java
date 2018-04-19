@@ -1,13 +1,11 @@
 package at.fhv.roomix.persist.factory;
 
 import at.fhv.roomix.domain.guest.model.*;
+import at.fhv.roomix.domain.guest.model.ContractingPartyDomain;
 import at.fhv.roomix.persist.ContactDao;
-import at.fhv.roomix.persist.model.ContactEntity;
-import at.fhv.roomix.persist.model.ContractingPartyEntity;
-import at.fhv.roomix.persist.model.CreditCardEntity;
-import at.fhv.roomix.persist.model.PersonEntity;
+import at.fhv.roomix.persist.model.*;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeMap;
+import org.modelmapper.PropertyMap;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -15,8 +13,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
+
 public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, ContactEntity>
-        implements IAbstractDomainBuilder<GuestDomain, ContactEntity> {
+        implements IAbstractDomainBuilder<GuestDomain, ContactEntity>, IProxy<GuestDomain, Integer> {
+
     /* Dependency Injection */
     private static Supplier<IAbstractDomainBuilder<GuestDomain, ContactEntity>> supplier;
 
@@ -41,12 +41,15 @@ public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, Conta
     protected GuestDomain mapEntityToDomain(ContactEntity contactEntity) {
 
         ModelMapper modelMapper = new ModelMapper();
-        TypeMap<ContactEntity, GuestDomain> typeMap = modelMapper.createTypeMap(ContactEntity.class, GuestDomain.class);
-        typeMap.addMappings(mapper -> mapper.skip(GuestDomain::setContractingPartiesByContactId));
-        typeMap.addMappings(mapper -> mapper.skip(GuestDomain::setPeopleByContactId));
-        if(typeMap.getConverter() == null){
-            logger.fatal("no converter returned by typemap");
-        }
+        /* Skip Collections that should be used for lazy loading */
+        modelMapper.addMappings(new PropertyMap<ContactEntity, GuestDomain>() {
+            @Override
+            protected void configure() {
+                skip().setContractingPartiesByContactId(null);
+                skip().setPeopleByContactId(null);
+                skip().setInvoicesByContactId(null);
+            }
+        });
         GuestDomain guestDomain = modelMapper.map(contactEntity, GuestDomain.class);
 
         /* Mapping of collection entities to domain objects */
@@ -62,9 +65,21 @@ public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, Conta
         /* Init proxy for lazy loading of deep entities */
         Proxy<Collection<ContractingPartyDomain>, Integer> contractingPartyProxy =
                 new Proxy<>(guestDomain.getContactId(),
-                        key -> ContractingPartyDomainBuilder.getLazyInstance().lazyLoadCollection(key)
+                        key -> ContractingPartyDomainBuilder.getLazyInstance().
+                                lazyLoadCollection(key, "Contact"));
+        Proxy<Collection<PersonDomain>, Integer> personProxy =
+                new Proxy<>(guestDomain.getContactId(),
+                        key -> PersonDomainBuilder.getLazyInstance().
+                                lazyLoadCollection(key, "Contact"));
+        Proxy<Collection<InvoiceDomain>, Integer> invoiceProxy =
+                new Proxy<>(guestDomain.getContactId(),
+                        key -> InvoiceDomainBuilder.getLazyInstance().
+                                lazyLoadCollection(key, "Contact")
                 );
+
         guestDomain.setContractingPartyDomainBuilderProxy(contractingPartyProxy);
+        guestDomain.setPersonDomainBuilderProxy(personProxy);
+        guestDomain.setInvoiceDomainBuilderProxy(invoiceProxy);
 
         mapAllCollections(mapping);
         return guestDomain;
@@ -84,6 +99,7 @@ public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, Conta
         put(ContractingPartyEntity.class, domain::getContractingPartiesByContactId,
                 contactEntity::setContractingPartiesByContactId, mapping);
         put(PersonEntity.class, domain::getPeopleByContactId, contactEntity::setPeopleByContactId, mapping);
+        put(InvoiceEntity.class, domain::getInvoicesByContactId, contactEntity::setInvoicesByContactId, mapping);
 
         mapAllCollections(mapping);
 
@@ -103,5 +119,16 @@ public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, Conta
     @Override
     public void set(GuestDomain domainObject) {
         new GuestDomainBuilder(ContactDao::registerAtDao).save(ContactEntity.class, domainObject);
+    }
+
+    @Override
+    public GuestDomain lazyLoadInstance(Integer key, String referencedColumn) {
+        return null;
+    }
+
+    @Override
+    public Collection<GuestDomain> lazyLoadCollection(Integer key, String referencedColumn) {
+        return new GuestDomainBuilder(ContactDao::registerAtDao).
+                loadByForeignKey(ContactEntity.class, key, referencedColumn);
     }
 }

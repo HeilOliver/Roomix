@@ -1,4 +1,4 @@
-package at.fhv.roomix.domain.reservation.helper;
+package at.fhv.roomix.domain.guest.model;
 
 public class OccupationStatusHelper {
 
