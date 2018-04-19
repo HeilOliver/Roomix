@@ -1,4 +1,6 @@
-package at.fhv.roomix.domain.guest.model;
+package at.fhv.roomix.domain.reservation.model;
+
+import at.fhv.roomix.domain.guest.model.CancellationDomain;
 
 import java.sql.Date;
 import java.sql.Time;
@@ -14,6 +16,9 @@ public class ReservationUnitDomain {
     private Time arrivalTime;
     private Date startDate;
     private Date endDate;
+
+    private RoomCategoryDomain roomCategoryByRoomCategory;
+    private CancellationDomain cancellationByCancellation;
 
     public int getReservationUnitId() {
         return reservationUnitId;
@@ -86,4 +91,22 @@ public class ReservationUnitDomain {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
+
+
+    public RoomCategoryDomain getRoomCategoryByRoomCategory() {
+        return roomCategoryByRoomCategory;
+    }
+
+    public void setRoomCategoryByRoomCategory(RoomCategoryDomain roomCategoryByRoomCategory) {
+        this.roomCategoryByRoomCategory = roomCategoryByRoomCategory;
+    }
+
+    public CancellationDomain getCancellationByCancellation() {
+        return cancellationByCancellation;
+    }
+
+    public void setCancellationByCancellation(CancellationDomain cancellationByCancellation) {
+        this.cancellationByCancellation = cancellationByCancellation;
+    }
+
 }

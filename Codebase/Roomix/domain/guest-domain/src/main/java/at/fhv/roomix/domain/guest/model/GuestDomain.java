@@ -1,6 +1,5 @@
 package at.fhv.roomix.domain.guest.model;
 
-
 import java.util.Collection;
 
 /**
@@ -31,6 +30,12 @@ public class GuestDomain {
     private Collection<CreditCardDomain> creditCardsByContactId;
     private Collection<InvoiceDomain> invoicesByContactId;
     private Collection<PersonDomain> peopleByContactId;
+
+    private Proxy<Collection<ContractingPartyDomain>, Integer> contractingPartyDomainBuilderProxy;
+
+    public void setContractingPartyDomainBuilderProxy(Proxy<Collection<ContractingPartyDomain>, Integer> contractingPartyDomainBuilderProxy) {
+        this.contractingPartyDomainBuilderProxy = contractingPartyDomainBuilderProxy;
+    }
 
     public int getContactId() {
         return contactId;
@@ -141,7 +146,7 @@ public class GuestDomain {
     }
 
     public void setContractingPartiesByContactId(Collection<ContractingPartyDomain> contractingPartiesByContactId) {
-        this.contractingPartiesByContactId = contractingPartiesByContactId;
+        this.contractingPartiesByContactId = contractingPartyDomainBuilderProxy.get();
     }
 
     public Collection<CreditCardDomain> getCreditCardsByContactId() {

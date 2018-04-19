@@ -16,7 +16,7 @@ public class ReservationOptionEntity {
     private Date optionDueDate;
     private String optionDescription;
     private byte optionStatus;
-    private Collection<ReservationUnitEntity> reservationUnitsByOptionId;
+    private Collection<ReservationEntity> reservationsByOptionId;
 
     @Id
     @Column(name = "OptionID")
@@ -77,11 +77,11 @@ public class ReservationOptionEntity {
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "reservationOptionByReservationOption")
-    public Collection<ReservationUnitEntity> getReservationUnitsByOptionId() {
-        return reservationUnitsByOptionId;
+    public Collection<ReservationEntity> getReservationUnitsByOptionId() {
+        return reservationsByOptionId;
     }
 
-    public void setReservationUnitsByOptionId(Collection<ReservationUnitEntity> reservationUnitsByOptionId) {
-        this.reservationUnitsByOptionId = reservationUnitsByOptionId;
+    public void setReservationUnitsByOptionId(Collection<ReservationEntity> reservationsByOptionId) {
+        this.reservationsByOptionId = reservationsByOptionId;
     }
 }

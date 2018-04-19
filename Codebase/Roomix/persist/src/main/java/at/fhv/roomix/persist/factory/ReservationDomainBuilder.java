@@ -1,10 +1,10 @@
 package at.fhv.roomix.persist.factory;
 
-import at.fhv.roomix.domain.guest.model.InvoicePositionDomain;
-import at.fhv.roomix.domain.guest.model.ReservationDomain;
-import at.fhv.roomix.domain.guest.model.ReservationUnitDomain;
+import at.fhv.roomix.domain.reservation.model.PersonReservationDomain;
+import at.fhv.roomix.domain.reservation.model.ReservationDomain;
+import at.fhv.roomix.domain.reservation.model.ReservationUnitDomain;
 import at.fhv.roomix.persist.ReservationDao;
-import at.fhv.roomix.persist.model.InvoicePositionEntity;
+import at.fhv.roomix.persist.model.PersonReservationEntity;
 import at.fhv.roomix.persist.model.ReservationEntity;
 import at.fhv.roomix.persist.model.ReservationUnitEntity;
 import org.modelmapper.ModelMapper;
@@ -46,8 +46,8 @@ public class ReservationDomainBuilder extends AbstractDomainBuilder<ReservationD
         LinkedHashMap<ISourceMapper<Collection>,
                 Map.Entry<Class, IDestinationMapper<Collection>>> mapping = new LinkedHashMap<>();
 
-        put(InvoicePositionDomain.class, entity::getInvoicePositionsByReservationId,
-                reservationDomain::setInvoicePositionsByReservationId, mapping);
+        put(PersonReservationDomain.class, entity::getPersonReservationsByReservationId,
+                reservationDomain::setPersonReservationsByReservationId, mapping);
         put(ReservationUnitDomain.class, entity::getReservationUnitsByReservationId,
                 reservationDomain::setReservationUnitsByReservationId, mapping);
         mapAllCollections(mapping);
@@ -63,8 +63,8 @@ public class ReservationDomainBuilder extends AbstractDomainBuilder<ReservationD
         LinkedHashMap<ISourceMapper<Collection>,
                 Map.Entry<Class, IDestinationMapper<Collection>>> mapping = new LinkedHashMap<>();
 
-        put(InvoicePositionEntity.class, domain::getInvoicePositionsByReservationId,
-                reservationEntity::setInvoicePositionsByReservationId, mapping);
+        put(PersonReservationEntity.class, domain::getPersonReservationsByReservationId,
+                reservationEntity::setPersonReservationsByReservationId, mapping);
         put(ReservationUnitEntity.class, domain::getReservationUnitsByReservationId,
                 reservationEntity::setReservationUnitsByReservationId, mapping);
         mapAllCollections(mapping);
