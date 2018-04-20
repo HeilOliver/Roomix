@@ -138,7 +138,34 @@ abstract class AbstractDomainBuilder<DM, EN> {
             }
             return domainObjects;
         }
+    }
 
+    // TODO: move the daoInstanceSupplier to own method (code reuse)
+    /**
+     *
+     * @param entityClass
+     * @param key
+     * @param referencedColumn
+     * @return
+     */
+    protected List<DM> loadByForeignKey(Class<EN> entityClass, Integer key, String referencedColumn){
+        Supplier daoInstanceSupplier = AbstractDao.getDaoInstanceByEntityClass(entityClass);
+        if (daoInstanceSupplier == null) {
+            throw new IllegalStateException("DAO Instance couldn't be retrieved");
+        } else {
+            AbstractDao generalDataAccessObject = (AbstractDao) daoInstanceSupplier.get();
+            List<EN> entities = null;
+            try {
+                entities = generalDataAccessObject.loadByForeignKey(key, referencedColumn);
+            } catch (PersistLoadException e) {
+                logger.info(e.getMessage());
+            }
+            List<DM> domainObjects = new LinkedList<>();
+            for (EN entity : entities) {
+                domainObjects.add(mapEntityToDomain(entity));
+            }
+            return domainObjects;
+        }
     }
 
     /**

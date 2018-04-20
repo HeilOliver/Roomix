@@ -24,6 +24,7 @@ public class TestEntity {
     private String string = "Slim Shady";
     /* complex datatypes */
     private Collection<DeepTestEntity> collection = new LinkedList<>();
+    private Collection<DeepTestEntity> doNotMap = new LinkedList<>();
     /*  */
     private Callable<TestEntity> callable;
     /* multidimensional datatypes */
@@ -39,6 +40,7 @@ public class TestEntity {
         deepEntity.setDeepID(Integer.MAX_VALUE);
         collection.add(deepEntity);
         callable = TestEntity::new;
+        doNotMap.add(new DeepTestEntity());
     }
 
     public static int getStaticInteger() {
@@ -141,6 +143,13 @@ public class TestEntity {
         this.invalidInteger = invalidInteger;
     }
 
+    public Collection<DeepTestEntity> getDoNotMap() {
+        return doNotMap;
+    }
+
+    public void setDoNotMap(Collection<DeepTestEntity> doNotMap) {
+        this.doNotMap = doNotMap;
+    }
 
     @Override
     public int hashCode() {

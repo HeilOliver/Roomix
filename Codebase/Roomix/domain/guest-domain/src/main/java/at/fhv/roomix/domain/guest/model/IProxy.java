@@ -10,6 +10,6 @@ import java.util.Collection;
  * @param <PK> Primary key type
  */
 public interface IProxy<D, PK> {
-    D lazyLoadInstance(PK key);
-    Collection<D> lazyLoadCollection(PK key);
+    D lazyLoadInstance(PK key, String referencedColumn);
+    Collection<D> lazyLoadCollection(PK key, String referencedColumn);
 }

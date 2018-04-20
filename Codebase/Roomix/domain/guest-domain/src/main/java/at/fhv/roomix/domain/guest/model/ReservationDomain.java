@@ -1,7 +1,4 @@
-package at.fhv.roomix.domain.reservation.model;
-
-import at.fhv.roomix.domain.guest.model.ContractingPartyDomain;
-import at.fhv.roomix.domain.guest.model.PaymentTypeDomain;
+package at.fhv.roomix.domain.guest.model;
 
 import java.util.Collection;
 

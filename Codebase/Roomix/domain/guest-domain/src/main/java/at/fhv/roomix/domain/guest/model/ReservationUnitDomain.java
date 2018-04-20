@@ -1,6 +1,4 @@
-package at.fhv.roomix.domain.reservation.model;
-
-import at.fhv.roomix.domain.guest.model.CancellationDomain;
+package at.fhv.roomix.domain.guest.model;
 
 import java.sql.Date;
 import java.sql.Time;

@@ -1,6 +1,4 @@
-package at.fhv.roomix.domain.reservation.model;
-
-import at.fhv.roomix.domain.guest.model.PersonDomain;
+package at.fhv.roomix.domain.guest.model;
 
 public class PersonReservationDomain {
 
