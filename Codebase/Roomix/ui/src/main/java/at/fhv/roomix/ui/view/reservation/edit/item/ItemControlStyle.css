@@ -1,0 +1,24 @@
+.close_icon {
+    -fx-fill:  #cc9a9a;
+}
+
+.close_icon:hover {
+    -fx-fill:  #af5b5e;
+}
+
+.content_box .button {
+    -fx-background-color: none;
+}
+
+.content_box:hover {
+    -fx-background-color: rgba(255, 189, 48, 0.2);
+}
+
+.item_root {
+    -fx-padding: 0.5em;
+}
+
+.label {
+    -fx-font-size: 1.2em;
+}
+

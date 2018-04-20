@@ -1,10 +1,13 @@
 package at.fhv.roomix.ui.view.contact;
 
+import at.fhv.roomix.controller.reservation.model.ContactPojo;
+import at.fhv.roomix.ui.common.ISelectionReadWriteAble;
 import at.fhv.roomix.ui.view.contact.scopes.ContactViewScope;
 import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ScopeProvider;
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 
 /**
@@ -16,7 +19,7 @@ import javafx.beans.property.SimpleBooleanProperty;
  * Enter Description here
  */
 @ScopeProvider(scopes = ContactViewScope.class)
-public class ContactViewModel implements ViewModel {
+public class ContactViewModel implements ViewModel, ISelectionReadWriteAble<ContactPojo> {
     private BooleanProperty contentViewVisible = new SimpleBooleanProperty();
     private BooleanProperty editViewVisible = new SimpleBooleanProperty();
 
@@ -45,5 +48,15 @@ public class ContactViewModel implements ViewModel {
 
     BooleanProperty editViewVisibleProperty() {
         return editViewVisible;
+    }
+
+    @Override
+    public ReadOnlyObjectProperty<ContactPojo> getSelectionProperty() {
+        return viewScope.selectedPojoProperty();
+    }
+
+    @Override
+    public void setSelection(ContactPojo value) {
+        viewScope.selectedPojoProperty().setValue(value);
     }
 }

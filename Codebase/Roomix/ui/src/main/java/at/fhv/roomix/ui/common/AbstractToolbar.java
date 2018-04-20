@@ -14,7 +14,7 @@ import javafx.beans.property.StringProperty;
  * <p>
  * Enter Description here
  */
-public abstract class AbstractToolbar<T extends AbstractMDScope> {
+public abstract class AbstractToolbar<T extends AbstractMasterEditScope> {
     private BooleanProperty inEditView = new SimpleBooleanProperty();
     private BooleanProperty inContentView = new SimpleBooleanProperty();
     private BooleanProperty editAble = new SimpleBooleanProperty();
@@ -24,12 +24,12 @@ public abstract class AbstractToolbar<T extends AbstractMDScope> {
 
     public void initialize(T viewScope) {
         this.viewScope = viewScope;
-        viewScope.subscribe(AbstractMDScope.commandEditView, (key, payload) -> {
+        viewScope.subscribe(AbstractMasterEditScope.commandEditView, (key, payload) -> {
             inEditView.setValue(true);
             inContentView.setValue(false);
         });
 
-        viewScope.subscribe(AbstractMDScope.commandContentView, (key, payload) -> {
+        viewScope.subscribe(AbstractMasterEditScope.commandContentView, (key, payload) -> {
             inEditView.setValue(false);
             inContentView.setValue(true);
         });
