@@ -1,6 +1,13 @@
 package at.fhv.roomix.controller.reservation.model;
 
-
+/**
+ * Roomix
+ * at.fhv.roomix.controller.reservation.model
+ * ZimmerPojo
+ * 20/04/2018 Robert Schmitzer
+ * <p>
+ * Enter Description here
+ */
 
 public class ZimmerPojo {
     private int id;

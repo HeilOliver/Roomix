@@ -3,6 +3,15 @@ package at.fhv.roomix.controller.reservation.model;
 import java.util.Collection;
 import java.util.HashSet;
 
+/**
+ * Roomix
+ * at.fhv.roomix.controller.reservation.model
+ * CategoryPojo
+ * 20/04/2018 Robert Schmitzer
+ * <p>
+ * Enter Description here
+ */
+
 public class CategoryPojo {
     private int id;
     private String discription;

@@ -2,6 +2,15 @@ package at.fhv.roomix.controller.reservation.model;
 
 import java.time.LocalDate;
 
+/**
+ * Roomix
+ * at.fhv.roomix.controller.reservation.model
+ * OccupationPojo
+ * 20/04/2018 Robert Schmitzer
+ * <p>
+ * Enter Description here
+ */
+
 public class OccupationPojo {
     private LocalDate startDate;
     private LocalDate endDate;
