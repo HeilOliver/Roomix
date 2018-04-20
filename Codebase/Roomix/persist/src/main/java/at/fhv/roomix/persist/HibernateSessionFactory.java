@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-class HibernateSessionFactory {
+public class HibernateSessionFactory {
     private static SessionFactory ourSessionFactory;
     private static boolean initTry = false;
     private static Logger logger = Logger.getLogger(HibernateSessionFactory.class);
@@ -28,7 +28,7 @@ class HibernateSessionFactory {
         }
     }
 
-    static Session getSession() throws IllegalStateException {
+    public static Session getSession() throws IllegalStateException {
         if (!initTry) init();
         if (ourSessionFactory == null) return null;
         try {
@@ -36,6 +36,12 @@ class HibernateSessionFactory {
         } catch (HibernateException e) {
             logger.fatal(e.getMessage());
             return null;
+        }
+    }
+
+    public static void disposeHibernate(){
+        if(initTry && ourSessionFactory != null) {
+            ourSessionFactory.close();
         }
     }
 }

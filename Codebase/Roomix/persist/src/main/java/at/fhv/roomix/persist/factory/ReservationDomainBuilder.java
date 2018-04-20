@@ -1,14 +1,12 @@
 package at.fhv.roomix.persist.factory;
 
-import at.fhv.roomix.domain.guest.model.IProxy;
-import at.fhv.roomix.domain.guest.model.PersonReservationDomain;
-import at.fhv.roomix.domain.guest.model.ReservationDomain;
-import at.fhv.roomix.domain.guest.model.ReservationUnitDomain;
+import at.fhv.roomix.domain.guest.model.*;
 import at.fhv.roomix.persist.ReservationDao;
 import at.fhv.roomix.persist.model.PersonReservationEntity;
 import at.fhv.roomix.persist.model.ReservationEntity;
 import at.fhv.roomix.persist.model.ReservationUnitEntity;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -26,6 +24,8 @@ public class ReservationDomainBuilder extends AbstractDomainBuilder<ReservationD
     ReservationDomainBuilder(){}
 
     private static IProxy<ReservationDomain, Integer> lazyInstance;
+    private static Supplier<IAbstractDomainBuilder<ReservationDomain, ReservationEntity>> supplier;
+
 
     public static IProxy<ReservationDomain, Integer> getLazyInstance(){
         if(lazyInstance == null){
@@ -33,9 +33,6 @@ public class ReservationDomainBuilder extends AbstractDomainBuilder<ReservationD
         }
         return lazyInstance;
     }
-
-    /* Dependency Injection */
-    private static Supplier<IAbstractDomainBuilder<ReservationDomain, ReservationEntity>> supplier;
 
     public static IAbstractDomainBuilder<ReservationDomain, ReservationEntity> getInstance() {
         if (supplier == null) return new ReservationDomainBuilder(ReservationDao::registerAtDao);
@@ -49,17 +46,27 @@ public class ReservationDomainBuilder extends AbstractDomainBuilder<ReservationD
     @Override
     protected ReservationDomain mapEntityToDomain(ReservationEntity entity) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.addMappings(new PropertyMap<ReservationEntity, ReservationDomain>() {
+            @Override
+            protected void configure() {
+               skip().setPersonReservationsByReservationId(null);
+               skip().setReservationUnitsByReservationId(null);
+            }
+        });
         ReservationDomain reservationDomain = modelMapper.map(entity, ReservationDomain.class);
 
-        LinkedHashMap<ISourceMapper<Collection>,
-                Map.Entry<Class, IDestinationMapper<Collection>>> mapping = new LinkedHashMap<>();
-
-        put(PersonReservationDomain.class, entity::getPersonReservationsByReservationId,
-                reservationDomain::setPersonReservationsByReservationId, mapping);
-        put(ReservationUnitDomain.class, entity::getReservationUnitsByReservationId,
-                reservationDomain::setReservationUnitsByReservationId, mapping);
-        mapAllCollections(mapping);
-
+        Proxy<Collection<PersonReservationDomain>, Integer> personReservationProxy =
+                new Proxy<>(reservationDomain.getReservationId(),
+                        key -> PersonReservationDomainBuilder.getLazyInstance().
+                                lazyLoadCollection(key, "Reservation")
+                );
+        Proxy<Collection<ReservationUnitDomain>, Integer> reservationUnitProxy =
+                new Proxy<>(reservationDomain.getReservationId(),
+                        key -> ReservationUnitDomainBuilder.getLazyInstance().
+                                lazyLoadCollection(key, "Reservation")
+                );
+        reservationDomain.setPersonReservationProxy(personReservationProxy);
+        reservationDomain.setReservationUnitProxy(reservationUnitProxy);
         return reservationDomain;
     }
 

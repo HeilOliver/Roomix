@@ -8,9 +8,10 @@ import org.modelmapper.ModelMapper;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Supplier;
 
 public class InvoiceDomainBuilder extends AbstractDomainBuilder<InvoiceDomain, InvoiceEntity>
-        implements IProxy<InvoiceDomain, Integer> {
+        implements IAbstractDomainBuilder<InvoiceDomain, InvoiceEntity>, IProxy<InvoiceDomain, Integer> {
 
     private InvoiceDomainBuilder(ICallable registerAtDAO) {
         registerAtDAO.call();
@@ -19,6 +20,17 @@ public class InvoiceDomainBuilder extends AbstractDomainBuilder<InvoiceDomain, I
     InvoiceDomainBuilder(){}
 
     private static IProxy<InvoiceDomain, Integer> lazyInstance;
+    private static Supplier<IAbstractDomainBuilder<InvoiceDomain, InvoiceEntity>> supplier;
+
+    public static IAbstractDomainBuilder<InvoiceDomain, InvoiceEntity> getInstance() {
+        if (supplier == null) return new InvoiceDomainBuilder(InvoiceDao::registerAtDao);
+        return supplier.get();
+    }
+
+    public static void injectDependency(
+            Supplier<IAbstractDomainBuilder<InvoiceDomain, InvoiceEntity>> builderSupplier) {
+        supplier = builderSupplier;
+    }
 
     public static IProxy<InvoiceDomain, Integer> getLazyInstance(){
         if(lazyInstance == null){

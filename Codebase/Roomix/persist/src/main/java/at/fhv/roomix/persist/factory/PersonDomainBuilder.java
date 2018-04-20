@@ -2,15 +2,22 @@ package at.fhv.roomix.persist.factory;
 
 import at.fhv.roomix.domain.guest.model.IProxy;
 import at.fhv.roomix.domain.guest.model.PersonDomain;
+import at.fhv.roomix.domain.guest.model.PersonReservationDomain;
+import at.fhv.roomix.domain.guest.model.Proxy;
 import at.fhv.roomix.persist.PersonDao;
 import at.fhv.roomix.persist.model.PersonEntity;
+import at.fhv.roomix.persist.model.PersonReservationEntity;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 
 import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Supplier;
 
 public class PersonDomainBuilder extends AbstractDomainBuilder<PersonDomain, PersonEntity>
-        implements IProxy<PersonDomain, Integer> {
+        implements IAbstractDomainBuilder<PersonDomain, PersonEntity> ,IProxy<PersonDomain, Integer> {
 
     private PersonDomainBuilder(ICallable registerAtDAO) {
         registerAtDAO.call();
@@ -18,7 +25,17 @@ public class PersonDomainBuilder extends AbstractDomainBuilder<PersonDomain, Per
 
     PersonDomainBuilder() {}
 
+    private static Supplier<IAbstractDomainBuilder<PersonDomain, PersonEntity>> supplier;
     private static IProxy<PersonDomain, Integer> lazyInstance;
+
+    public static IAbstractDomainBuilder<PersonDomain, PersonEntity> getInstance() {
+        if (supplier == null) return new PersonDomainBuilder(PersonDao::registerAtDao);
+        return supplier.get();
+    }
+
+    public static void injectDependency(Supplier<IAbstractDomainBuilder<PersonDomain, PersonEntity>> builderSupplier) {
+        supplier = builderSupplier;
+    }
 
     public static IProxy<PersonDomain, Integer> getLazyInstance(){
         if(lazyInstance == null){
@@ -30,15 +47,34 @@ public class PersonDomainBuilder extends AbstractDomainBuilder<PersonDomain, Per
     @Override
     protected PersonDomain mapEntityToDomain(PersonEntity entity) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.addMappings(new PropertyMap<PersonEntity, PersonDomain>() {
+            @Override
+            protected void configure() {
+                skip().setPersonReservationsByPersonId(null);
+            }
+        });
         PersonDomain personDomain = modelMapper.map(entity, PersonDomain.class);
-        /* TODO: Add proxies and collection mappings */
+        /* TODO: Add all proxies and collection mappings */
+        Proxy<Collection<PersonReservationDomain>, Integer> personReservationProxy =
+                new Proxy<>(personDomain.getPersonId(),
+                        key -> PersonReservationDomainBuilder.getLazyInstance().
+                                lazyLoadCollection(key, "Person")
+                );
+        personDomain.setPersonReservationProxy(personReservationProxy);
         return personDomain;
     }
 
     @Override
     protected PersonEntity mapDomainToEntity(PersonDomain domain) {
         ModelMapper modelMapper = new ModelMapper();
-        PersonEntity personEntity= modelMapper.map(domain, PersonEntity.class);
+        PersonEntity personEntity = modelMapper.map(domain, PersonEntity.class);
+
+        LinkedHashMap<ISourceMapper<Collection>,
+                Map.Entry<Class, IDestinationMapper<Collection>>> mapping = new LinkedHashMap<>();
+        put(PersonReservationEntity.class, domain::getPersonReservationsByPersonId,
+                personEntity::setPersonReservationsByPersonId, mapping);
+        mapAllCollections(mapping);
+
         return personEntity;
     }
 

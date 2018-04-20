@@ -19,6 +19,7 @@ public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, Conta
 
     /* Dependency Injection */
     private static Supplier<IAbstractDomainBuilder<GuestDomain, ContactEntity>> supplier;
+    private static IProxy<GuestDomain, Integer> lazyInstance;
 
     private GuestDomainBuilder(ICallable registerAtDAO) {
         registerAtDAO.call();
@@ -34,6 +35,13 @@ public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, Conta
 
     public static void injectDependency(Supplier<IAbstractDomainBuilder<GuestDomain, ContactEntity>> builderSupplier) {
         supplier = builderSupplier;
+    }
+
+    public static IProxy<GuestDomain, Integer> getLazyInstance(){
+        if(lazyInstance == null){
+            lazyInstance = new GuestDomainBuilder();
+        }
+        return lazyInstance;
     }
 
 
