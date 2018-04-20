@@ -6,18 +6,18 @@ import java.util.HashSet;
 /**
  * Roomix
  * at.fhv.roomix.controller.reservation.model
- * CategoryPojo
+ * RoomCategoryPojo
  * 20/04/2018 Robert Schmitzer
  * <p>
  * Enter Description here
  */
 
-public class CategoryPojo {
+public class RoomCategoryPojo {
     private int id;
     private String discription;
     private Collection<ZimmerPojo> rooms;
 
-    public CategoryPojo(){
+    public RoomCategoryPojo(){
         rooms = new HashSet<>();
     }
 
