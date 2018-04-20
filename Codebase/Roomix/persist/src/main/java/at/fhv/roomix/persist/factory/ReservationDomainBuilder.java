@@ -9,6 +9,7 @@ import at.fhv.roomix.persist.model.PersonReservationEntity;
 import at.fhv.roomix.persist.model.ReservationEntity;
 import at.fhv.roomix.persist.model.ReservationUnitEntity;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -49,6 +50,13 @@ public class ReservationDomainBuilder extends AbstractDomainBuilder<ReservationD
     @Override
     protected ReservationDomain mapEntityToDomain(ReservationEntity entity) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.addMappings(new PropertyMap<ReservationEntity, ReservationDomain>() {
+            @Override
+            protected void configure() {
+               skip().setPersonReservationsByReservationId(null);
+               skip().setReservationUnitsByReservationId(null);
+            }
+        });
         ReservationDomain reservationDomain = modelMapper.map(entity, ReservationDomain.class);
 
         LinkedHashMap<ISourceMapper<Collection>,

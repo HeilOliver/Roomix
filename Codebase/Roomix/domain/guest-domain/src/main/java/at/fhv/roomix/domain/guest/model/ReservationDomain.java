@@ -13,6 +13,9 @@ public class ReservationDomain {
     private Collection<PersonReservationDomain> personReservationsByReservationId;
     private Collection<ReservationUnitDomain> reservationUnitsByReservationId;
 
+    private Proxy<Collection<PersonReservationDomain>, Integer> personReservationProxy;
+    private Proxy<Collection<ReservationUnitDomain>, Integer> reservationUnitProxy;
+
     private ContractingPartyDomain contractingPartyByContractingParty;
     private PaymentTypeDomain paymentTypeByPaymentType;
     private ReservationOptionDomain reservationOptionByReservationOption;
@@ -58,7 +61,7 @@ public class ReservationDomain {
     }
 
     public Collection<PersonReservationDomain> getPersonReservationsByReservationId() {
-        return personReservationsByReservationId;
+        return personReservationProxy.get();
     }
 
     public void setPersonReservationsByReservationId(Collection<PersonReservationDomain> personReservationsByReservationId) {
@@ -82,7 +85,7 @@ public class ReservationDomain {
     }
 
     public Collection<ReservationUnitDomain> getReservationUnitsByReservationId() {
-        return reservationUnitsByReservationId;
+        return reservationUnitProxy.get();
     }
 
     public void setReservationUnitsByReservationId(Collection<ReservationUnitDomain> reservationUnitsByReservationId) {
@@ -97,4 +100,13 @@ public class ReservationDomain {
     public void setReservationOptionByReservationOption(ReservationOptionDomain reservationOptionByReservationOption) {
         this.reservationOptionByReservationOption = reservationOptionByReservationOption;
     }
+
+    public void setPersonReservationProxy(Proxy<Collection<PersonReservationDomain>, Integer> personReservationProxy) {
+        this.personReservationProxy = personReservationProxy;
+    }
+
+    public void setReservationUnitProxy(Proxy<Collection<ReservationUnitDomain>, Integer> reservationUnitProxy) {
+        this.reservationUnitProxy = reservationUnitProxy;
+    }
+
 }
