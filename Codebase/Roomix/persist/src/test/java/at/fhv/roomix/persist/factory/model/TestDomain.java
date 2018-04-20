@@ -17,6 +17,7 @@ public class TestDomain {
     private String string;
     /* complex datatypes */
     private Collection<DeepTestDomain> collection;
+    private Collection<DeepTestEntity> doNotMap;
     /*  */
     private Callable<TestDomain> callable;
     /* multidimensional datatypes */
@@ -121,6 +122,13 @@ public class TestDomain {
         this.invalidInteger = invalidInteger;
     }
 
+    public Collection<DeepTestEntity> getDoNotMap() {
+        return doNotMap;
+    }
+
+    public void setDoNotMap(Collection<DeepTestEntity> doNotMap) {
+        this.doNotMap = doNotMap;
+    }
 
     @Override
     public int hashCode() {

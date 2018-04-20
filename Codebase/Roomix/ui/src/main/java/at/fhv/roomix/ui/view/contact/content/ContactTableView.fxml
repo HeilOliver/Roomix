@@ -12,47 +12,47 @@
         <Separator/>
         <TableView fx:id="tabContactTable" VBox.vgrow="ALWAYS">
             <columns>
-                <TableColumn prefWidth="75.0" text="%contact.table.firstname">
+                <TableColumn prefWidth="75.0" text="%common.firstname">
                     <cellValueFactory>
                         <PropertyValueFactory property="firstName"/>
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn prefWidth="75.0" text="%contact.table.lastname">
+                <TableColumn prefWidth="75.0" text="%common.lastname">
                     <cellValueFactory>
                         <PropertyValueFactory property="lastName"/>
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn prefWidth="75.0" text="%contact.table.companyname">
+                <TableColumn prefWidth="75.0" text="%common.companyname">
                     <cellValueFactory>
                         <PropertyValueFactory property="companyName"/>
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn prefWidth="75.0" text="%contact.table.phonenumber">
+                <TableColumn prefWidth="75.0" text="%common.phonenumber">
                     <cellValueFactory>
                         <PropertyValueFactory property="phonenumber"/>
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn prefWidth="75.0" text="%contact.table.city">
+                <TableColumn prefWidth="75.0" text="%common.city">
                     <cellValueFactory>
                         <PropertyValueFactory property="place"/>
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn prefWidth="75.0" text="%contact.table.postalcode">
+                <TableColumn prefWidth="75.0" text="%common.postalcode">
                     <cellValueFactory>
                         <PropertyValueFactory property="postcode"/>
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn prefWidth="75.0" text="%contact.table.street">
+                <TableColumn prefWidth="75.0" text="%common.street">
                     <cellValueFactory>
                         <PropertyValueFactory property="street"/>
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn prefWidth="75.0" text="%contact.table.country">
+                <TableColumn prefWidth="75.0" text="%common.country">
                     <cellValueFactory>
                         <PropertyValueFactory property="country"/>
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn prefWidth="75.0" text="%contact.table.email">
+                <TableColumn prefWidth="75.0" text="%common.email">
                     <cellValueFactory>
                         <PropertyValueFactory property="email"/>
                     </cellValueFactory>

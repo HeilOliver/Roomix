@@ -10,11 +10,12 @@ public class ReservationDomain {
     private String reservationStatus;
     private String reservationComment;
 
-    private Collection<InvoicePositionDomain> invoicePositionsByReservationId;
     private Collection<PersonReservationDomain> personReservationsByReservationId;
+    private Collection<ReservationUnitDomain> reservationUnitsByReservationId;
+
     private ContractingPartyDomain contractingPartyByContractingParty;
     private PaymentTypeDomain paymentTypeByPaymentType;
-    private Collection<ReservationUnitDomain> reservationUnitsByReservationId;
+    private ReservationOptionDomain reservationOptionByReservationOption;
 
     public int getReservationId() {
         return reservationId;
@@ -56,14 +57,6 @@ public class ReservationDomain {
         this.reservationComment = reservationComment;
     }
 
-    public Collection<InvoicePositionDomain> getInvoicePositionsByReservationId() {
-        return invoicePositionsByReservationId;
-    }
-
-    public void setInvoicePositionsByReservationId(Collection<InvoicePositionDomain> invoicePositionsByReservationId) {
-        this.invoicePositionsByReservationId = invoicePositionsByReservationId;
-    }
-
     public Collection<PersonReservationDomain> getPersonReservationsByReservationId() {
         return personReservationsByReservationId;
     }
@@ -94,5 +87,14 @@ public class ReservationDomain {
 
     public void setReservationUnitsByReservationId(Collection<ReservationUnitDomain> reservationUnitsByReservationId) {
         this.reservationUnitsByReservationId = reservationUnitsByReservationId;
+    }
+
+
+    public ReservationOptionDomain getReservationOptionByReservationOption() {
+        return reservationOptionByReservationOption;
+    }
+
+    public void setReservationOptionByReservationOption(ReservationOptionDomain reservationOptionByReservationOption) {
+        this.reservationOptionByReservationOption = reservationOptionByReservationOption;
     }
 }

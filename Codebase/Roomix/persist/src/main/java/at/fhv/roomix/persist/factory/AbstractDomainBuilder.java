@@ -97,6 +97,22 @@ abstract class AbstractDomainBuilder<DM, EN> {
         }
     }
 
+    protected List<EN> loadAllEntites(Class<EN> entityClass){
+        Supplier daoInstanceSupplier = AbstractDao.getDaoInstanceByEntityClass(entityClass);
+        if (daoInstanceSupplier == null) {
+            throw new IllegalStateException("DAO Instance couldn't be retrieved");
+        } else {
+            AbstractDao generalDataAccessObject = (AbstractDao) daoInstanceSupplier.get();
+            List<EN> entities = null;
+            try {
+                entities = generalDataAccessObject.loadAll();
+            } catch (PersistLoadException e) {
+                logger.info(e.getMessage());
+            }
+            return entities;
+        }
+    }
+
     /**
      * Get all entries from the database as mapped domain objects. The domain object as specified in the generic
      * sub class (DM) will be returned.
@@ -122,7 +138,34 @@ abstract class AbstractDomainBuilder<DM, EN> {
             }
             return domainObjects;
         }
+    }
 
+    // TODO: move the daoInstanceSupplier to own method (code reuse)
+    /**
+     *
+     * @param entityClass
+     * @param key
+     * @param referencedColumn
+     * @return
+     */
+    protected List<DM> loadByForeignKey(Class<EN> entityClass, Integer key, String referencedColumn){
+        Supplier daoInstanceSupplier = AbstractDao.getDaoInstanceByEntityClass(entityClass);
+        if (daoInstanceSupplier == null) {
+            throw new IllegalStateException("DAO Instance couldn't be retrieved");
+        } else {
+            AbstractDao generalDataAccessObject = (AbstractDao) daoInstanceSupplier.get();
+            List<EN> entities = null;
+            try {
+                entities = generalDataAccessObject.loadByForeignKey(key, referencedColumn);
+            } catch (PersistLoadException e) {
+                logger.info(e.getMessage());
+            }
+            List<DM> domainObjects = new LinkedList<>();
+            for (EN entity : entities) {
+                domainObjects.add(mapEntityToDomain(entity));
+            }
+            return domainObjects;
+        }
     }
 
     /**

@@ -27,6 +27,9 @@ public class ReservationDao extends AbstractDao<ReservationEntity, Integer> {
         session.saveOrUpdate(entity.getContractingPartyByContractingParty());
         session.saveOrUpdate(entity.getInvoicePositionsByReservationId());
         session.saveOrUpdate(entity.getReservationUnitsByReservationId());
+        session.saveOrUpdate(entity.getPaymentTypeByPaymentType());
+        session.saveOrUpdate(entity.getPersonReservationsByReservationId());
+        session.saveOrUpdate(entity.getReservationOptionByReservationOption());
         session.save(entity);
         session.getTransaction().commit();
     }

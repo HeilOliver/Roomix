@@ -1,5 +1,6 @@
 package at.fhv.roomix.ui.view.main.menuitem;
 
+import at.fhv.roomix.ui.common.StringResourceResolver;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
@@ -7,6 +8,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
+
+import javax.inject.Inject;
+import java.util.ResourceBundle;
 
 /**
  * Roomix
@@ -32,8 +36,11 @@ public class SideBarItem implements FxmlView<SideBarItemViewModel> {
     @FXML
     private Rectangle selected;
 
+    @Inject
+    private ResourceBundle resourceBundle;
+
     public void initialize() {
-        lbl_tag.textProperty().bind(viewModel.tagProperty());
+        lbl_tag.textProperty().bind(StringResourceResolver.getAnonymousProperty(resourceBundle, viewModel.tagProperty()));
         icon.glyphNameProperty().bind(viewModel.glyphProperty());
         lbl_tag.visibleProperty().bind(viewModel.collapsedProperty().not());
         lbl_tag.managedProperty().bind(viewModel.collapsedProperty().not());

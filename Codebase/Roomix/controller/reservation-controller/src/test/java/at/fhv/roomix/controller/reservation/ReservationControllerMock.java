@@ -1,9 +1,8 @@
 package at.fhv.roomix.controller.reservation;
 
-import at.fhv.roomix.controller.reservation.exeption.ArgumentFaultException;
-import at.fhv.roomix.controller.reservation.exeption.SessionFaultException;
-import at.fhv.roomix.controller.reservation.exeption.ValidationFault;
-import at.fhv.roomix.controller.reservation.model.ContactPojo;
+import at.fhv.roomix.controller.exeption.ArgumentFaultException;
+import at.fhv.roomix.controller.exeption.SessionFaultException;
+import at.fhv.roomix.controller.exeption.ValidationFault;
 import at.fhv.roomix.controller.reservation.model.ReservationPojo;
 
 import java.util.Collection;
@@ -17,24 +16,6 @@ import java.util.Collection;
  * Enter Description here
  */
 public class ReservationControllerMock implements IReservationController {
-
-
-
-    @Override
-    public Collection<ContactPojo> getAllContacts(long sessionId) throws SessionFaultException {
-        return null;
-    }
-
-    @Override
-    public Collection<ContactPojo> getSearchedContacts(long sessionId, String query) throws SessionFaultException {
-        return null;
-    }
-
-    @Override
-    public void updateContact(long sessionId, ContactPojo contactPojo)
-            throws SessionFaultException, ValidationFault, ArgumentFaultException {
-
-    }
 
     @Override
     public Collection<ReservationPojo> getAllReservation(long sessionId) throws SessionFaultException {

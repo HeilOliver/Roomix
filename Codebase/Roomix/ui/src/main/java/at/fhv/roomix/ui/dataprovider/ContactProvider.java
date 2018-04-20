@@ -1,7 +1,7 @@
 package at.fhv.roomix.ui.dataprovider;
 
-import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
-import at.fhv.roomix.controller.reservation.model.ContactPojo;
+import at.fhv.roomix.controller.contact.ContactControllerFactory;
+import at.fhv.roomix.controller.contact.model.ContactPojo;
 import javafx.beans.property.ReadOnlyBooleanProperty;
 
 /**
@@ -16,9 +16,9 @@ public class ContactProvider extends AbstractSearchEditProvider<ContactPojo> {
 
     public ContactProvider() {
         super(
-                query -> ReservationControllerFactory.getInstance()
+                query -> ContactControllerFactory.getInstance()
                         .getSearchedContacts(LoginProvider.getSessionID(), query),
-                update -> ReservationControllerFactory.getInstance().updateContact(
+                update -> ContactControllerFactory.getInstance().updateContact(
                         LoginProvider.getSessionID(), update)
         );
     }

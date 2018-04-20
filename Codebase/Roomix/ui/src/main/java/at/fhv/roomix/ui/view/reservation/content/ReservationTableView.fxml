@@ -12,7 +12,7 @@
         <Separator/>
         <TableView fx:id="tabContactTable" VBox.vgrow="ALWAYS">
             <columns>
-                <TableColumn prefWidth="75.0" text="%contact.table.firstname">
+                <TableColumn prefWidth="75.0" text="%common.firstname">
                     <cellValueFactory>
                         <PropertyValueFactory property="firstName"/>
                     </cellValueFactory>

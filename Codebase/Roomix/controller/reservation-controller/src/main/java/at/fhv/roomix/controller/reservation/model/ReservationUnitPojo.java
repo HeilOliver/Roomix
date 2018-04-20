@@ -19,6 +19,7 @@ public class ReservationUnitPojo {
     private int amount;
 
     private Collection<ReservationOptionPojo> options;
+    private Collection<ArrangementPojo> arrangements;
 
     private LocalTime arrivalTime;
     private LocalDate startDate;
@@ -26,6 +27,7 @@ public class ReservationUnitPojo {
 
     public ReservationUnitPojo() {
         options = new HashSet<>();
+        arrangements = new HashSet<>();
     }
 
     public int getId() {
@@ -82,5 +84,13 @@ public class ReservationUnitPojo {
 
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
+    }
+
+    public Collection<ArrangementPojo> getArrangements() {
+        return arrangements;
+    }
+
+    public void setArrangements(Collection<ArrangementPojo> arrangements) {
+        this.arrangements = arrangements;
     }
 }

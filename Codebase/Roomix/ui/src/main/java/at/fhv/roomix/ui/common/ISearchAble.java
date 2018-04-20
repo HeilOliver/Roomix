@@ -1,6 +1,6 @@
 package at.fhv.roomix.ui.common;
 
-import at.fhv.roomix.controller.reservation.exeption.FaultException;
+import at.fhv.roomix.controller.exeption.FaultException;
 
 import java.util.Collection;
 

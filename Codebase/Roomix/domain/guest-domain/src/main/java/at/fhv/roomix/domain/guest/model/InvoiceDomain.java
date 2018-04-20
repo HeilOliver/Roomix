@@ -8,6 +8,8 @@ public class InvoiceDomain {
     private Timestamp determinationDate;
     private String status;
 
+    private GuestDomain contactByContact;
+
     public int getInvoiceId() {
         return invoiceId;
     }
@@ -39,4 +41,14 @@ public class InvoiceDomain {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public GuestDomain getContactByContact() {
+        return contactByContact;
+    }
+
+    public void setContactByContact(GuestDomain contactByContact) {
+        this.contactByContact = contactByContact;
+    }
 }
+
+

@@ -17,8 +17,16 @@ public class PersonDao extends AbstractDao<PersonEntity, Integer> {
         super(PersonEntity.class);
     }
 
+    static {
+        AbstractDao.addDao(PersonEntity.class, PersonDao::new);
+    }
+
     public PersonDao getInstance() {
         return new PersonDao();
+    }
+
+    public static void registerAtDao() {
+        daoLogger.info("Registered at Contact DAO");
     }
 
     @Override
