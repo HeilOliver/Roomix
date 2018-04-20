@@ -1,16 +1,8 @@
 package at.fhv.roomix.controller.reservation.model;
 
-import java.util.Collection;
-import java.util.HashSet;
-
-public class CategoryPojo {
+public class ArticlePojo {
     private int id;
     private String discription;
-    private Collection<ZimmerPojo> rooms;
-
-    public CategoryPojo(){
-        rooms = new HashSet<>();
-    }
 
     public int getId() {
         return id;
@@ -28,11 +20,15 @@ public class CategoryPojo {
         this.discription = discription;
     }
 
-    public Collection<ZimmerPojo> getRooms() {
-        return rooms;
+    public int getAmount() {
+        return amount;
     }
 
-    public void setRooms(Collection<ZimmerPojo> rooms) {
-        this.rooms = rooms;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
+
+    private int amount;
+
+
 }

@@ -23,7 +23,7 @@ public class OccupationPojo {
     public void setStatus(OccupationPojo.status status) {
         this.status = status;
     }
-    
+
     public LocalDate getStartDate() {
         return startDate;
     }

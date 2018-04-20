@@ -20,6 +20,7 @@ public class ReservationPojo {
     private ContactPojo contractingParty;
     private Collection<ReservationUnitPojo> units;
     private Collection<ContactPojo> persons;
+    private Collection<ArrangementPojo> arrangements;
 
     public ReservationPojo() {
         units = new HashSet<>();
@@ -64,5 +65,13 @@ public class ReservationPojo {
 
     public void setPersons(Collection<ContactPojo> persons) {
         this.persons = persons;
+    }
+
+    public Collection<ArrangementPojo> getArrangements() {
+        return arrangements;
+    }
+
+    public void setArrangements(Collection<ArrangementPojo> arrangements) {
+        this.arrangements = arrangements;
     }
 }
