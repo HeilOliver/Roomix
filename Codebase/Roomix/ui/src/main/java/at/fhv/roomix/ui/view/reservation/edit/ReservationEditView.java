@@ -1,16 +1,21 @@
 package at.fhv.roomix.ui.view.reservation.edit;
 
+import at.fhv.roomix.controller.reservation.model.ReservationOptionPojo;
+import at.fhv.roomix.ui.common.ViewHelper;
 import at.fhv.roomix.ui.view.reservation.edit.item.ItemControl;
 import at.fhv.roomix.ui.view.reservation.edit.item.ItemControlViewModel;
+import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import de.saxsys.mvvmfx.utils.viewlist.CachedViewModelCellFactory;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import org.controlsfx.control.MasterDetailPane;
 
 /**
  * Roomix
@@ -22,49 +27,83 @@ import javafx.scene.layout.HBox;
  */
 public class ReservationEditView implements FxmlView<ReservationEditViewModel> {
 
+    private static final double MINIMAL_DIVIDER_POSITION = 0.3D;
+
     @InjectViewModel
     private ReservationEditViewModel viewModel;
 
     private CachedViewModelCellFactory<ItemControl, ItemControlViewModel> cellFactory
             = CachedViewModelCellFactory.createForFxmlView(ItemControl.class);
-
+    @FXML
+    private Button btnAddContractingParty;
     @FXML
     private HBox boxContractingParty;
     @FXML
-    private Button btnContractingParty;
+    private Button btnAddPerson;
+    @FXML
+    private ListView listPersons;
+    @FXML
+    private Button btnAddUnit;
+    @FXML
+    private ListView listUnits;
+    @FXML
+    private Button btnAddOption;
+    @FXML
+    private ListView<ItemControlViewModel> listOptions;
+    @FXML
+    private Button btnAddComment;
+    @FXML
+    private HBox boxComment;
+
     @FXML
     private AnchorPane boxDetailPane;
-
-    private void setChildren(Parent parent) {
-        boxDetailPane.getChildren().clear();
-        if (parent == null) return;
-        AnchorPane.setTopAnchor(parent, 0.0);
-        AnchorPane.setBottomAnchor(parent, 0.0);
-        AnchorPane.setLeftAnchor(parent, 0.0);
-        AnchorPane.setRightAnchor(parent, 0.0);
-        boxDetailPane.getChildren().add(parent);
-    }
+    @FXML
+    private MasterDetailPane mdPane;
 
     public void initialize() {
-        viewModel.getContractingParty().addListener(((observable, oldValue, newValue) -> {
-            boxContractingParty.getChildren().clear();
-
-            if(newValue == null) return;
-            Parent view = cellFactory.map(newValue).getView();
-            boxContractingParty.getChildren().add(view);
+        mdPane.dividerPositionProperty().addListener(((observable, oldValue, newValue) -> {
+            if (newValue.doubleValue() >= MINIMAL_DIVIDER_POSITION) return;
+            // Let set the property later. If we not do this we get an exception.
+            Platform.runLater(() -> mdPane.setDividerPosition(MINIMAL_DIVIDER_POSITION));
         }));
 
-        btnContractingParty.disableProperty().bind(viewModel.getContractingParty().isNotNull());
-
-        viewModel.getDetailView().addListener(((observable, oldValue, newValue) -> {
-            setChildren(newValue);
+        viewModel.getCurrentDetailView().addListener(((observable, oldValue, newValue) -> {
+            ViewHelper.setChildren(boxDetailPane, newValue);
         }));
+
+        viewModel.getCommentControl().addListener((observable, oldValue, newValue) -> {
+            if (newValue == null) {
+                boxComment.getChildren().clear();
+                return;
+            }
+            ViewHelper.setChildren(boxComment, cellFactory.map(newValue).getView());
+        });
+        btnAddComment.disableProperty().bind(viewModel.isCommendAddAble().not());
+
+        listOptions.setItems(viewModel.getOptionControls());
+        listOptions.setCellFactory(cellFactory);
+        btnAddOption.disableProperty().bind(viewModel.isOptionAddAble().not());
     }
 
     @FXML
-    private void addClicked(ActionEvent actionEvent) {
-        viewModel.contractingPartyAdd();
+    private void addContractingParty(ActionEvent actionEvent) {
     }
 
+    @FXML
+    private void addPersonClick(ActionEvent actionEvent) {
+    }
 
+    @FXML
+    private void addUnitClick(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    private void addOptionClick(ActionEvent actionEvent) {
+        viewModel.addOption();
+    }
+
+    @FXML
+    private void addComment(ActionEvent actionEvent) {
+        viewModel.addComment();
+    }
 }

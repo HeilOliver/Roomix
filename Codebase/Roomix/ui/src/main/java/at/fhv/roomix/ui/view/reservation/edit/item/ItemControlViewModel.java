@@ -1,13 +1,9 @@
 package at.fhv.roomix.ui.view.reservation.edit.item;
 
-import at.fhv.roomix.ui.common.ISelectionReadWriteAble;
-import de.saxsys.mvvmfx.FluentViewLoader;
-import de.saxsys.mvvmfx.FxmlView;
+
 import de.saxsys.mvvmfx.ViewModel;
-import de.saxsys.mvvmfx.ViewTuple;
 import javafx.beans.property.*;
-import javafx.beans.value.ChangeListener;
-import javafx.scene.Parent;
+
 
 /**
  * Roomix
@@ -18,47 +14,29 @@ import javafx.scene.Parent;
  * Enter Description here
  */
 public class ItemControlViewModel<T> implements ViewModel {
-    private final AbstractItemHandler scope;
+    private static final String EMPTY = "reservation.item.empty";
+    private final ItemHandler<T> scope;
+
     private final StringProperty contentText = new SimpleStringProperty();
     private final BooleanProperty isSelected = new SimpleBooleanProperty();
-    private final ObjectProperty<T> currPojo = new SimpleObjectProperty<>();
-    private final Parent detailView;
+    private final ObjectProperty<T> currentPojo = new SimpleObjectProperty<>();
 
-    private static final String IN_EDIT = "reservation.item.inEdit";
-
-    private final ChangeListener<ItemControlViewModel> selectionChangeListener;
-
-    public <V extends FxmlView<VM>, VM extends ViewModel & ISelectionReadWriteAble<T>> ItemControlViewModel(
-            AbstractItemHandler scope, Class<V> detailViewType, IContentBuilder<T> builder) {
-        this(scope, detailViewType,builder, null);
-    }
-
-    public <V extends FxmlView<VM>, VM extends ViewModel & ISelectionReadWriteAble<T>> ItemControlViewModel(
-            AbstractItemHandler scope, Class<V> detailViewType, IContentBuilder<T> builder, T injectedPojo) {
+    public ItemControlViewModel(ItemHandler<T> scope, IContentBuilder<T> builder) {
         this.scope = scope;
 
-        ViewTuple<V, VM> load = FluentViewLoader.fxmlView(detailViewType).load();
-        currPojo.bind(load.getViewModel().getSelectionProperty());
-        detailView = load.getView();
+        isSelected.bind(scope.currentSelectionProperty().isEqualTo(this));
+        isSelected.addListener(((observable, oldValue, newValue) -> {
+            if (!oldValue || newValue) return;
+            if (currentPojo.get() == null) onDelete();
+        }));
 
-        selectionChangeListener = (observable, oldValue, newValue) -> {
-            isSelected.setValue(newValue == this);
-            if (isSelected.get()) {
-                contentText.setValue(IN_EDIT);
+        currentPojo.addListener(((observable, oldValue, newValue) -> {
+            if (newValue == null) {
+                contentText.setValue(EMPTY);
             } else {
-                contentText.setValue(builder.buildString(currPojo.get()));
+                contentText.setValue(builder.buildString(newValue));
             }
-
-            if (oldValue == null || oldValue != this) return;
-            if (currPojo.get() == null) onDelete();
-        };
-
-        scope.selectedControlProperty().addListener(selectionChangeListener);
-        scope.selectMe(this);
-    }
-
-    public Parent getDetailView() {
-        return detailView;
+        }));
     }
 
     ReadOnlyBooleanProperty isSelectedProperty() {
@@ -70,16 +48,23 @@ public class ItemControlViewModel<T> implements ViewModel {
     }
 
     void onDelete() {
-        scope.deleteMe(this);
-        dispose();
+        scope.delete(this);
     }
 
     public T getPojo() {
-        return currPojo.get();
+        return currentPojo.get();
     }
 
-    public void dispose() {
-        scope.selectedControlProperty().removeListener(selectionChangeListener);
-        currPojo.unbind();
+    public ObjectProperty<T> currentPojoProperty() {
+        return currentPojo;
     }
+
+    void selectMe() {
+        scope.select(this);
+    }
+
+    void dispose() {
+        isSelected.unbind();
+    }
+
 }

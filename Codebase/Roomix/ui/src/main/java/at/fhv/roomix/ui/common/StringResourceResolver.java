@@ -26,13 +26,7 @@ public class StringResourceResolver {
     private StringProperty resultString = new SimpleStringProperty();
 
     private void onChange(ResourceBundle bundle, String newValue) {
-        String string = newValue;
-        try {
-            string = bundle.getString(newValue);
-        } catch (MissingResourceException | ClassCastException ignore) {
-            LOG.debug("Cant find Resource - " + newValue);
-        }
-        resultString.setValue(string);
+        resultString.setValue(getStaticResolve(bundle, newValue));
     }
 
     private StringResourceResolver(ResourceBundle bundle, ReadOnlyStringProperty stringProperty) {
@@ -48,5 +42,16 @@ public class StringResourceResolver {
             ResourceBundle bundle, ReadOnlyStringProperty stringProperty) {
         StringResourceResolver resolver = new StringResourceResolver(bundle, stringProperty);
         return resolver.getResultProperty();
+    }
+
+    public static String getStaticResolve(ResourceBundle bundle, String rKey) {
+        if (rKey == null) return "";
+        String string = rKey;
+        try {
+            string = bundle.getString(rKey);
+        } catch (MissingResourceException | ClassCastException ignore) {
+            LOG.debug("Cant find Resource - " + rKey);
+        }
+        return string;
     }
 }

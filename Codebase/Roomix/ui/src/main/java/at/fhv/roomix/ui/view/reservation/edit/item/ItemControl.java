@@ -7,6 +7,8 @@ import de.saxsys.mvvmfx.InjectViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Rectangle;
 
 import java.util.ResourceBundle;
 
@@ -28,14 +30,23 @@ public class ItemControl implements FxmlView<ItemControlViewModel> {
 
     @FXML
     private Label lblContentBoxDescription;
+    @FXML
+    private Rectangle selected;
 
     public void initialize() {
         lblContentBoxDescription.textProperty().bind(
                 StringResourceResolver.getAnonymousProperty(bundle, viewModel.contentTextProperty()));
+
+        selected.visibleProperty().bind(viewModel.isSelectedProperty());
     }
 
     @FXML
     private void deleteClicked(ActionEvent actionEvent) {
         viewModel.onDelete();
+    }
+
+    @FXML
+    private void selectedClicked(MouseEvent mouseEvent) {
+        viewModel.selectMe();
     }
 }
