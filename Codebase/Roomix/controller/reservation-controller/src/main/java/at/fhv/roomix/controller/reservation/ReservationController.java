@@ -4,10 +4,7 @@ import at.fhv.roomix.controller.contact.model.ContactPojo;
 import at.fhv.roomix.controller.exeption.ArgumentFaultException;
 import at.fhv.roomix.controller.exeption.SessionFaultException;
 import at.fhv.roomix.controller.exeption.ValidationFault;
-import at.fhv.roomix.controller.reservation.model.RoomCategoryPojo;
-import at.fhv.roomix.controller.reservation.model.ReservationOptionPojo;
-import at.fhv.roomix.controller.reservation.model.ReservationPojo;
-import at.fhv.roomix.controller.reservation.model.ReservationUnitPojo;
+import at.fhv.roomix.controller.reservation.model.*;
 import at.fhv.roomix.domain.guest.model.ReservationDomain;
 import at.fhv.roomix.domain.guest.model.ReservationOptionDomain;
 import at.fhv.roomix.domain.guest.model.ReservationUnitDomain;
@@ -25,6 +22,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -92,10 +90,44 @@ class ReservationController implements IReservationController {
     public Collection<ReservationPojo> getSearchedReservationbyContact(long sessionId, ContactPojo contactPojo) throws SessionFaultException {
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
 
-        return null;
+        Collection<ReservationPojo> reservationPojoSet = getAllReservation(sessionId);
+
+        int contactId = contactPojo.getContactId();
+
+        Set<ReservationPojo> resultSet = new HashSet<>(reservationPojoSet);
+
+        for (ReservationPojo resPoj : reservationPojoSet) {
+            if (contactId == resPoj.getContractingParty().getContactId()) {
+                resultSet.add(resPoj);
+            }
+        }
+
+        return resultSet;
     }
 
-    //Todo: Müssen noch implementiert werden! Reine Vorbereitung!
+    // TODO: ReservationUnitPojo hat end/startdatum ... what to do?!
+/*
+    Collection<ReservationPojo> getAllReservationbyOccupation(long sessionId, OccupationPojo occupationPojo) throws SessionFaultException {
+        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
+
+        Collection<ReservationPojo> reservationPojoSet = getAllReservation(sessionId);
+
+        LocalDate startDate = occupationPojo.getStartDate();
+        LocalDate endDate = occupationPojo.getEndDate();
+        Enum status = occupationPojo.getStatus();
+
+        Set<ReservationPojo> resultSet = new HashSet<>(reservationPojoSet);
+
+
+
+        for (ReservationPojo resPoj : reservationPojoSet) {
+            if (resPoj.)
+
+        }
+
+        return resultSet;
+    }
+*/
 
     @Override
     public Collection<ReservationUnitPojo> getAllReservationUnits(long sessionId) throws SessionFaultException {
@@ -112,8 +144,10 @@ class ReservationController implements IReservationController {
     }
 
     @Override
-    public Collection<ReservationUnitPojo> getSearchedReservationUnit(long sessionId, String query) throws SessionFaultException {
-        return null;
+    public Collection<ReservationUnitPojo> getSearchedReservationUnit(long sessionId, ReservationPojo reservationPojo) throws SessionFaultException {
+        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
+
+        return reservationPojo.getUnits();
     }
 
     @Override
@@ -131,8 +165,10 @@ class ReservationController implements IReservationController {
     }
 
     @Override
-    public Collection<ReservationOptionPojo> getSearchedReservationOptions(long sessionId) throws SessionFaultException {
-        return null;
+    public Collection<ReservationOptionPojo> getSearchedReservationOptions(long sessionId, ReservationUnitPojo reservationUnitPojo) throws SessionFaultException {
+        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
+
+        return reservationUnitPojo.getOptions();
     }
     
     @Override
@@ -148,6 +184,8 @@ class ReservationController implements IReservationController {
 
         return roomCategoryPojoSet;
     }
+
+    // TODO: getAllArrangements -> ArrangementsDomain fehlt noch
 
     @Override
     public void updateReservationOption(long sessionId, ReservationOptionPojo reservationOptionPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException {
