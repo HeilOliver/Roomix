@@ -1,4 +1,7 @@
 package at.fhv.roomix.persist.factory;
 
-public class ReservationOptionDomainBuilder {
+import at.fhv.roomix.domain.guest.model.ReservationOptionDomain;
+import at.fhv.roomix.persist.model.ReservationOptionEntity;
+
+public class ReservationOptionDomainBuilder  {
 }

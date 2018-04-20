@@ -1,5 +1,7 @@
 package at.fhv.roomix.domain.guest.model;
 
+import java.util.Collection;
+
 public class PersonDomain {
 
     private int personId;
@@ -9,6 +11,8 @@ public class PersonDomain {
 
     private String firstName;
     private String lastName;
+    private Collection<PersonReservationDomain> personReservationsByPersonId;
+    private Proxy<Collection<PersonReservationDomain>, Integer> personReservationProxy;
 
     public int getPersonId() {
         return personId;
@@ -58,4 +62,17 @@ public class PersonDomain {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public Collection<PersonReservationDomain> getPersonReservationsByPersonId() {
+        return personReservationsByPersonId;
+    }
+
+    public void setPersonReservationsByPersonId(Collection<PersonReservationDomain> personReservationsByPersonId) {
+        this.personReservationsByPersonId = personReservationsByPersonId;
+    }
+
+    public void setPersonReservationProxy(Proxy<Collection<PersonReservationDomain>, Integer> personReservationProxy) {
+        this.personReservationProxy = personReservationProxy;
+    }
+
 }

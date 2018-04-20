@@ -12,9 +12,10 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Supplier;
 
 public class ContractingPartyDomainBuilder extends AbstractDomainBuilder<ContractingPartyDomain, ContractingPartyEntity>
-        implements IProxy<ContractingPartyDomain, Integer> {
+        implements IAbstractDomainBuilder<ContractingPartyDomain, ContractingPartyEntity> , IProxy<ContractingPartyDomain, Integer> {
 
     private ContractingPartyDomainBuilder(ICallable registerAtDAO) {
         registerAtDAO.call();
@@ -23,6 +24,18 @@ public class ContractingPartyDomainBuilder extends AbstractDomainBuilder<Contrac
     ContractingPartyDomainBuilder(){}
 
     private static IProxy<ContractingPartyDomain, Integer> lazyInstance;
+    private static Supplier<IAbstractDomainBuilder<ContractingPartyDomain, ContractingPartyEntity>> supplier;
+
+    public static IAbstractDomainBuilder<ContractingPartyDomain, ContractingPartyEntity> getInstance() {
+        if (supplier == null) return new ContractingPartyDomainBuilder(ContractingPartyDao::registerAtDao);
+        return supplier.get();
+    }
+
+    public static void injectDependency(
+            Supplier<IAbstractDomainBuilder<ContractingPartyDomain, ContractingPartyEntity>> builderSupplier) {
+        supplier = builderSupplier;
+    }
+
 
     public static IProxy<ContractingPartyDomain, Integer> getLazyInstance(){
         if(lazyInstance == null){
