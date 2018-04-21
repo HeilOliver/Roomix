@@ -81,6 +81,8 @@ class ReservationController implements IReservationController {
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
         IAbstractDomainBuilder<RoomCategoryDomain,RoomCategoryEntity> roomCategoryBuilder = RoomCategoryDomainBuilder.getInstance();
         ModelMapper modelMapper = new ModelMapper();
+        HashSet<RoomCategoryDomain> roomCategoryDomainSet = new HashSet<>(roomCategoryBuilder.getAll());
+
 
 
         return null;
