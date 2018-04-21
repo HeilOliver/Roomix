@@ -1,8 +1,5 @@
 package at.fhv.roomix.controller.reservation.model;
 
-import java.util.Collection;
-import java.util.HashSet;
-
 /**
  * Roomix
  * at.fhv.roomix.controller.reservation.model
@@ -13,13 +10,14 @@ import java.util.HashSet;
  */
 
 public class RoomCategoryPojo {
+
     private int id;
     private String discription;
-    private Collection<ZimmerPojo> rooms;
+    private int occupied;
+    private int unconfirmedReservation;
+    private int free;
+    private int quota;
 
-    public RoomCategoryPojo() {
-        rooms = new HashSet<>();
-    }
 
     public int getId() {
         return id;
@@ -37,11 +35,35 @@ public class RoomCategoryPojo {
         this.discription = discription;
     }
 
-    public Collection<ZimmerPojo> getRooms() {
-        return rooms;
+    public int getOccupied() {
+        return occupied;
     }
 
-    public void setRooms(Collection<ZimmerPojo> rooms) {
-        this.rooms = rooms;
+    public void setOccupied(int occupied) {
+        this.occupied = occupied;
+    }
+
+    public int getUnconfirmedReservation() {
+        return unconfirmedReservation;
+    }
+
+    public void setUnconfirmedReservation(int unconfirmedReservation) {
+        this.unconfirmedReservation = unconfirmedReservation;
+    }
+
+    public int getFree() {
+        return free;
+    }
+
+    public void setFree(int free) {
+        this.free = free;
+    }
+
+    public int getQuota() {
+        return quota;
+    }
+
+    public void setQuota(int quota) {
+        this.quota = quota;
     }
 }

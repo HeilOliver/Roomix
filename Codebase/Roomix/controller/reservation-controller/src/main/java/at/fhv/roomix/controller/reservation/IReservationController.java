@@ -31,18 +31,13 @@ public interface IReservationController {
 
     Collection<ReservationUnitPojo> getSearchedReservationUnit(long sessionId, ReservationPojo reservationPojo) throws SessionFaultException;
 
-    Collection<ReservationOptionPojo> getAllReservationOptions(long sessionId) throws SessionFaultException;
+    Collection<ReservationOptionPojo> getAllReservationOptions(long sessionId) throws SessionFaultException, ArgumentFaultException;
 
     Collection<ReservationOptionPojo> getSearchedReservationOptions(long sessionId, ReservationUnitPojo reservationUnitPojo) throws SessionFaultException;
 
     Collection<RoomCategoryPojo> getAllCategory(long sessionId) throws SessionFaultException;
 
-    //Collection<ArrangementPojo> getAllArrangements(long sessionId) throws SessionFaultException;
-
-    //Collection<ReservationPojo> getAllReservationbyOccupation(long sessionId, OccupationPojo occupationPojo) throws SessionFaultException;
-
     void updateReservation(long sessionId, ReservationPojo reservationPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException;
 
     void updateReservationOption(long sessionId, ReservationOptionPojo reservationOptionPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException;
-
 }

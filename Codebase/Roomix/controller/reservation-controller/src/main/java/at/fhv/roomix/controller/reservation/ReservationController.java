@@ -94,28 +94,6 @@ class ReservationController implements IReservationController {
         return resultSet;
     }
 
-    // TODO: ReservationUnitPojo hat end/startdatum ... what to do?!
-/*
-    Collection<ReservationPojo> getAllReservationbyOccupation(long sessionId, OccupationPojo occupationPojo) throws SessionFaultException {
-        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
-
-        Collection<ReservationPojo> reservationPojoSet = getAllReservation(sessionId);
-
-        LocalDate startDate = occupationPojo.getStartDate();
-        LocalDate endDate = occupationPojo.getEndDate();
-        Enum status = occupationPojo.getStatus();
-
-        Set<ReservationPojo> resultSet = new HashSet<>(reservationPojoSet);
-
-        for (ReservationPojo resPoj : reservationPojoSet) {
-            if (resPoj.)
-
-        }
-
-        return resultSet;
-    }
-*/
-
     @Override
     public Collection<ReservationUnitPojo> getAllReservationUnits(long sessionId) throws SessionFaultException {
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
@@ -138,12 +116,17 @@ class ReservationController implements IReservationController {
     }
 
     @Override
-    public Collection<ReservationOptionPojo> getAllReservationOptions(long sessionId) throws SessionFaultException {
+    public Collection<ReservationOptionPojo> getAllReservationOptions(long sessionId) throws SessionFaultException, ArgumentFaultException {
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
 
         IAbstractDomainBuilder<ReservationOptionDomain, ReservationOptionEntity> reservationOptionBuilder = ReservationOptionDomainBuilder.getInstance();
         ModelMapper modelMapper = new ModelMapper();
-        HashSet<ReservationOptionDomain> reservationOptionDomainSet = new HashSet<>(reservationOptionBuilder.getAll());
+        HashSet<ReservationOptionDomain> reservationOptionDomainSet = null;
+        if (reservationOptionBuilder != null) {
+            reservationOptionDomainSet = new HashSet<>(reservationOptionBuilder.getAll());
+        } else {
+            throw new ArgumentFaultException();
+        }
         HashSet<ReservationOptionPojo> reservationOptionPojoSet = new HashSet<>();
 
         reservationOptionDomainSet.forEach(reservationOption -> reservationOptionPojoSet.add(modelMapper.map(reservationOption, ReservationOptionPojo.class)));
@@ -172,8 +155,6 @@ class ReservationController implements IReservationController {
         return roomCategoryPojoSet;
     }
 
-    // TODO: getAllArrangements -> ArrangementsDomain fehlt noch
-
     @Override
     public void updateReservationOption(long sessionId, ReservationOptionPojo reservationOptionPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException {
 
@@ -186,7 +167,11 @@ class ReservationController implements IReservationController {
 
         ReservationOptionDomain reservationOptionDomain = modelMapper.map(reservationOptionPojo, ReservationOptionDomain.class);
 
-        reservationOptionBuilder.set(reservationOptionDomain);
+        if (reservationOptionBuilder != null) {
+            reservationOptionBuilder.set(reservationOptionDomain);
+        } else {
+            throw new ArgumentFaultException();
+        }
     }
 
     @Override
