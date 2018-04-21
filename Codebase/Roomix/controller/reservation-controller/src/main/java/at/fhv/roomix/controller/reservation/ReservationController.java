@@ -5,16 +5,14 @@ import at.fhv.roomix.controller.common.exceptions.SessionFaultException;
 import at.fhv.roomix.controller.common.exceptions.ValidationFault;
 import at.fhv.roomix.controller.contact.model.ContactPojo;
 import at.fhv.roomix.controller.reservation.model.*;
-import at.fhv.roomix.domain.guest.model.ReservationDomain;
-import at.fhv.roomix.domain.guest.model.ReservationOptionDomain;
-import at.fhv.roomix.domain.guest.model.ReservationUnitDomain;
-import at.fhv.roomix.domain.guest.model.RoomCategoryDomain;
+import at.fhv.roomix.domain.guest.model.*;
 import at.fhv.roomix.domain.session.ISessionDomain;
 import at.fhv.roomix.domain.session.SessionFactory;
 import at.fhv.roomix.persist.factory.*;
 import at.fhv.roomix.persist.model.*;
 import org.modelmapper.ModelMapper;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashSet;
@@ -73,19 +71,29 @@ class ReservationController implements IReservationController {
     @Override
     public PricePojo getPricebyReservationUnitAndContractingParty(long sessionId, ReservationUnitPojo reservationUnit, ContactPojo contractingParty) throws SessionFaultException {
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
+        
         return null;
     }
 
     @Override
-    public Collection<RoomCategoryPojo> getSearchedCategorybyDateAndContract(long sessionId,LocalDateTime startDate, LocalDateTime endDate, ContactPojo contractingParty) throws SessionFaultException {
+    public Collection<RoomCategoryPojo> getSearchedCategorybyDateAndContract(long sessionId, LocalDate startDate, LocalDate endDate, ContactPojo contractingParty) throws SessionFaultException {
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
         IAbstractDomainBuilder<RoomCategoryDomain,RoomCategoryEntity> roomCategoryBuilder = RoomCategoryDomainBuilder.getInstance();
         ModelMapper modelMapper = new ModelMapper();
+        GuestDomain guestDomain = modelMapper.map(contractingParty, GuestDomain.class);
         HashSet<RoomCategoryDomain> roomCategoryDomainSet = new HashSet<>(roomCategoryBuilder.getAll());
+        HashSet<RoomCategoryPojo> roomCategoryset = new HashSet<>();
+        for (RoomCategoryDomain roomCategoryDomain : roomCategoryDomainSet) {
+            roomCategoryDomain.setCategoryMetaData(startDate,endDate, guestDomain);
+            RoomCategoryPojo roomCategoryPojo = new RoomCategoryPojo();
+            roomCategoryPojo.setDiscription(roomCategoryDomain.getCategoryDescription());
+            roomCategoryPojo.setOccupied(roomCategoryDomain.getMetaData().getNumberOfOccupiedRooms());
+            roomCategoryPojo.setUnconfirmedReservation(roomCategoryDomain.getMetaData().getNumberOfConfirmedReservations());
+            roomCategoryPojo.setFree(roomCategoryDomain.getMetaData().getNumberOfConfirmedReservations());
+            roomCategoryset.add(roomCategoryPojo);
+        }
 
-
-
-        return null;
+        return roomCategoryset;
     }
 
     @Override

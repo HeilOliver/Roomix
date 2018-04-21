@@ -44,7 +44,7 @@ public class ReservationOptionPojo {
     public int getPrice() {
         return price;
     }
-    
+
 
     public void setPrice(int price) {
         this.price = price;
