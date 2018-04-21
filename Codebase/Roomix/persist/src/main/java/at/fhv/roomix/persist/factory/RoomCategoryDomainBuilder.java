@@ -1,7 +1,7 @@
 package at.fhv.roomix.persist.factory;
 
 import at.fhv.roomix.domain.guest.model.IProxy;
-import at.fhv.roomix.domain.guest.model.OccupationStatusHelper;
+import at.fhv.roomix.domain.guest.model.RoomCategoryMetaData;
 import at.fhv.roomix.domain.guest.model.RoomCategoryDomain;
 import at.fhv.roomix.persist.RoomCategoryDao;
 import at.fhv.roomix.persist.model.RoomCategoryEntity;
@@ -59,18 +59,6 @@ public class RoomCategoryDomainBuilder extends AbstractDomainBuilder<RoomCategor
     public void set(RoomCategoryDomain domainObject) {
 
     }
-
-    private OccupationStatusHelper getOccupationStatus(){
-        return null;
-    }
-
-    public void getOccupationStatusFromDatabase(){
-        List<RoomCategoryEntity> roomCategoryRoot = loadAllEntites(RoomCategoryEntity.class);
-        roomCategoryRoot.forEach(roomCategoryEntity -> {
-
-        });
-    }
-
 
     @Override
     public RoomCategoryDomain lazyLoadInstance(RoomCategoryEntity key, String referencedColumn) {

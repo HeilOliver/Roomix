@@ -1,10 +1,13 @@
 package at.fhv.roomix.domain.guest.model;
 
-public class OccupationStatusHelper {
+public class RoomCategoryMetaData {
 
     private int numberOfConfirmedReservations;
     private int numberOfUnconfirmedReservations;
     private int numberOfOccupiedRooms;
+    private int totalNumberOfRooms;
+
+    private int pricePerDay;
 
     public int getNumberOfConfirmedReservations() {
         return numberOfConfirmedReservations;

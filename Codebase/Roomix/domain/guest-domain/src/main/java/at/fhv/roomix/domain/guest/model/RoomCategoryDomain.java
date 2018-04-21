@@ -1,12 +1,14 @@
 package at.fhv.roomix.domain.guest.model;
 
 
+import java.time.LocalDate;
+
 public class RoomCategoryDomain {
     /* Database */
     private int roomCategoryId;
     private String categoryDescription;
 
-    private OccupationStatusHelper occupation;
+    private RoomCategoryMetaData metaData;
 
     public int getRoomCategoryId() {
         return roomCategoryId;
@@ -25,12 +27,12 @@ public class RoomCategoryDomain {
     }
 
 
-    public OccupationStatusHelper getOccupation() {
-        return occupation;
+    public RoomCategoryMetaData getMetaData() {
+        return metaData;
     }
 
-    public void setOccupation(OccupationStatusHelper occupation) {
-        this.occupation = occupation;
+    public void setCategoryMetaData(LocalDate start, LocalDate end, GuestDomain guest){
+
     }
 
 }
