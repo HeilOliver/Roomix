@@ -12,10 +12,7 @@ import at.fhv.roomix.domain.guest.model.RoomCategoryDomain;
 import at.fhv.roomix.domain.session.ISessionDomain;
 import at.fhv.roomix.domain.session.SessionFactory;
 import at.fhv.roomix.persist.factory.*;
-import at.fhv.roomix.persist.model.ReservationEntity;
-import at.fhv.roomix.persist.model.ReservationOptionEntity;
-import at.fhv.roomix.persist.model.ReservationUnitEntity;
-import at.fhv.roomix.persist.model.RoomCategoryEntity;
+import at.fhv.roomix.persist.model.*;
 import org.modelmapper.ModelMapper;
 
 import java.time.LocalDateTime;
@@ -82,6 +79,10 @@ class ReservationController implements IReservationController {
     @Override
     public Collection<RoomCategoryPojo> getSearchedCategorybyDateAndContract(long sessionId,LocalDateTime startDate, LocalDateTime endDate, ContactPojo contractingParty) throws SessionFaultException {
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
+        IAbstractDomainBuilder<RoomCategoryDomain,RoomCategoryEntity> roomCategoryBuilder = RoomCategoryDomainBuilder.getInstance();
+        ModelMapper modelMapper = new ModelMapper();
+
+
         return null;
     }
 
