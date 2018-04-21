@@ -17,6 +17,7 @@ public class ReservationUnitPojo {
     private int id;
     private int roomCategory;
     private int amount;
+    private int price;
 
     private Collection<ReservationOptionPojo> options;
     private Collection<ArrangementPojo> arrangements;
@@ -92,5 +93,13 @@ public class ReservationUnitPojo {
 
     public void setArrangements(Collection<ArrangementPojo> arrangements) {
         this.arrangements = arrangements;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

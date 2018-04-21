@@ -9,6 +9,7 @@ import at.fhv.roomix.controller.reservation.model.ReservationPojo;
 import at.fhv.roomix.controller.reservation.model.ReservationUnitPojo;
 import at.fhv.roomix.controller.reservation.model.RoomCategoryPojo;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 
 /**
@@ -24,6 +25,8 @@ public interface IReservationController {
     Collection<ReservationPojo> getAllReservation(long sessionId) throws SessionFaultException;
 
     Collection<ReservationPojo> getSearchedReservation(long sessionId, String query) throws SessionFaultException;
+
+    Collection<RoomCategoryPojo> getSearchedCategorybyDateAndContract(LocalDateTime startDate,LocalDateTime endDate, ContactPojo contractingParty) throws SessionFaultException;
 
     Collection<ReservationPojo> getSearchedReservationbyContact(long sessionId, ContactPojo contactPojo) throws SessionFaultException;
 

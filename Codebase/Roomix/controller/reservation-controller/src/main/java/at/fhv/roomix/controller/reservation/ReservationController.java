@@ -21,6 +21,7 @@ import at.fhv.roomix.persist.model.ReservationUnitEntity;
 import at.fhv.roomix.persist.model.RoomCategoryEntity;
 import org.modelmapper.ModelMapper;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -73,6 +74,11 @@ class ReservationController implements IReservationController {
         }
 
         return resultSet;
+    }
+
+    @Override
+    public Collection<RoomCategoryPojo> getSearchedCategorybyDateAndContract(LocalDateTime startDate, LocalDateTime endDate, ContactPojo contractingParty) throws SessionFaultException {
+        return null;
     }
 
     @Override

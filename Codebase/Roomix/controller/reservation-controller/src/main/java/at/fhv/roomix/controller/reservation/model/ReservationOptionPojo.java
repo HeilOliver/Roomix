@@ -15,6 +15,7 @@ public class ReservationOptionPojo {
     private LocalDate dueDate;
     private String description;
     private int id;
+    private int price;
 
     public int getId() {
         return id;
@@ -38,5 +39,13 @@ public class ReservationOptionPojo {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }
