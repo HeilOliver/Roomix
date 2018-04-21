@@ -17,7 +17,7 @@ public class RoomCategoryPojo {
     private String discription;
     private Collection<ZimmerPojo> rooms;
 
-    public RoomCategoryPojo(){
+    public RoomCategoryPojo() {
         rooms = new HashSet<>();
     }
 

@@ -4,6 +4,7 @@ import at.fhv.roomix.ui.common.ViewHelper;
 import at.fhv.roomix.ui.view.main.menuitem.SideBarItem;
 import at.fhv.roomix.ui.view.main.menuitem.SideBarItemViewModel;
 import de.saxsys.mvvmfx.FxmlView;
+import de.saxsys.mvvmfx.InjectResourceBundle;
 import de.saxsys.mvvmfx.InjectViewModel;
 import de.saxsys.mvvmfx.utils.viewlist.CachedViewModelCellFactory;
 import javafx.fxml.FXML;
@@ -30,6 +31,9 @@ public class MainView implements FxmlView<MainViewModel> {
 
     @InjectViewModel
     private MainViewModel viewModel;
+
+    @InjectResourceBundle
+    private ResourceBundle resourceBundle;
 
     @FXML
     private AnchorPane contentPane;

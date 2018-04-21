@@ -11,6 +11,7 @@ package at.fhv.roomix.controller.reservation.model;
 
 public class ZimmerPojo {
     private int id;
+    private OccupationPojo status;
 
     public int getId() {
         return id;
@@ -27,10 +28,6 @@ public class ZimmerPojo {
     public void setStatus(OccupationPojo status) {
         this.status = status;
     }
-
-    private OccupationPojo status;
-
-
 
 
 }

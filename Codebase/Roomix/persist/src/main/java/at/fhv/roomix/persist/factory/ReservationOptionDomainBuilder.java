@@ -4,4 +4,7 @@ import at.fhv.roomix.domain.guest.model.ReservationOptionDomain;
 import at.fhv.roomix.persist.model.ReservationOptionEntity;
 
 public class ReservationOptionDomainBuilder  {
+    public static IAbstractDomainBuilder<ReservationOptionDomain, ReservationOptionEntity> getInstance() {
+        return null;
+    }
 }

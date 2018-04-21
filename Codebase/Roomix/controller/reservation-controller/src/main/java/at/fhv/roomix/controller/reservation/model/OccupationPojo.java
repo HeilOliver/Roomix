@@ -18,13 +18,6 @@ public class OccupationPojo {
 
     private status status;
 
-    private enum status{
-        FREE,
-        RESERVATED,
-        OCCUPIED,
-        RESERVEDNOTCONFERMED;
-    }
-
     public OccupationPojo.status getStatus() {
         return status;
     }
@@ -49,12 +42,12 @@ public class OccupationPojo {
         this.endDate = endDate;
     }
 
-
-
-
-
-
-
+    private enum status {
+        FREE,
+        RESERVATED,
+        OCCUPIED,
+        RESERVEDNOTCONFERMED;
+    }
 
 
 }

@@ -1,4 +1,4 @@
-package at.fhv.roomix.controller.exeption;
+package at.fhv.roomix.controller.common.exceptions;
 
 /**
  * Roomix

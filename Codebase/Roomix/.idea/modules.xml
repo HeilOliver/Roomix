@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/controller/common/common.iml" filepath="$PROJECT_DIR$/controller/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/controller/controller.iml" filepath="$PROJECT_DIR$/controller/controller.iml" />
       <module fileurl="file://$PROJECT_DIR$/domain/domain.iml" filepath="$PROJECT_DIR$/domain/domain.iml" />
       <module fileurl="file://$PROJECT_DIR$/domain/guest-domain/guest-domain.iml" filepath="$PROJECT_DIR$/domain/guest-domain/guest-domain.iml" />

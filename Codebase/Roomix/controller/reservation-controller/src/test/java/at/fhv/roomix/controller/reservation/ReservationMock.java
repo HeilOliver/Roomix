@@ -15,12 +15,11 @@ import java.util.Collection;
  * Roomix
  * at.fhv.roomix.controller.reservation
  * ReservationMock
- * 25/03/2018 OliverH
+ * 21/04/2018 Oliver
  * <p>
  * Enter Description here
  */
-public class ReservationControllerMock implements IReservationController {
-
+public class ReservationMock implements IReservationController {
     @Override
     public Collection<ReservationPojo> getAllReservation(long sessionId) throws SessionFaultException {
         return null;

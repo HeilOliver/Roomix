@@ -1,10 +1,13 @@
 package at.fhv.roomix.controller.reservation;
 
+import at.fhv.roomix.controller.common.exceptions.ArgumentFaultException;
+import at.fhv.roomix.controller.common.exceptions.SessionFaultException;
+import at.fhv.roomix.controller.common.exceptions.ValidationFault;
 import at.fhv.roomix.controller.contact.model.ContactPojo;
-import at.fhv.roomix.controller.exeption.ArgumentFaultException;
-import at.fhv.roomix.controller.exeption.SessionFaultException;
-import at.fhv.roomix.controller.exeption.ValidationFault;
-import at.fhv.roomix.controller.reservation.model.*;
+import at.fhv.roomix.controller.reservation.model.ReservationOptionPojo;
+import at.fhv.roomix.controller.reservation.model.ReservationPojo;
+import at.fhv.roomix.controller.reservation.model.ReservationUnitPojo;
+import at.fhv.roomix.controller.reservation.model.RoomCategoryPojo;
 
 import java.util.Collection;
 
@@ -34,9 +37,9 @@ public interface IReservationController {
 
     Collection<RoomCategoryPojo> getAllCategory(long sessionId) throws SessionFaultException;
 
-    Collection<ArrangementPojo> getAllArrangements(long sessionId) throws SessionFaultException;
+    //Collection<ArrangementPojo> getAllArrangements(long sessionId) throws SessionFaultException;
 
-    Collection<ReservationPojo> getAllReservationbyOccupation(long sessionId, OccupationPojo occupationPojo) throws SessionFaultException;
+    //Collection<ReservationPojo> getAllReservationbyOccupation(long sessionId, OccupationPojo occupationPojo) throws SessionFaultException;
 
     void updateReservation(long sessionId, ReservationPojo reservationPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException;
 

@@ -1,9 +1,9 @@
 package at.fhv.roomix.controller.contact;
 
+import at.fhv.roomix.controller.common.exceptions.ArgumentFaultException;
+import at.fhv.roomix.controller.common.exceptions.SessionFaultException;
+import at.fhv.roomix.controller.common.exceptions.ValidationFault;
 import at.fhv.roomix.controller.contact.model.ContactPojo;
-import at.fhv.roomix.controller.exeption.ArgumentFaultException;
-import at.fhv.roomix.controller.exeption.SessionFaultException;
-import at.fhv.roomix.controller.exeption.ValidationFault;
 import at.fhv.roomix.domain.guest.model.GuestDomain;
 import at.fhv.roomix.domain.session.ISessionDomain;
 import at.fhv.roomix.domain.session.SessionFactory;
@@ -12,14 +12,12 @@ import at.fhv.roomix.persist.factory.IAbstractDomainBuilder;
 import at.fhv.roomix.persist.model.ContactEntity;
 import org.modelmapper.ModelMapper;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import static at.fhv.roomix.controller.common.validator.Validator.validate;
 
 /**
  * Roomix
@@ -31,18 +29,6 @@ import java.util.stream.Collectors;
  */
 class ContactController implements IContactController {
     private final ISessionDomain sessionHandler = SessionFactory.getInstance();
-    private ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
-
-    private <T> void validate(T object) throws ValidationFault {
-        Validator validator = validatorFactory.getValidator();
-        Set<ConstraintViolation<T>> violations = validator.validate(object);
-
-        if (violations.isEmpty()) return;
-
-        Set<String> strings = new HashSet<>();
-        violations.forEach((v) -> strings.add(v.getMessage()));
-        throw new ValidationFault(strings);
-    }
 
 
     @Override

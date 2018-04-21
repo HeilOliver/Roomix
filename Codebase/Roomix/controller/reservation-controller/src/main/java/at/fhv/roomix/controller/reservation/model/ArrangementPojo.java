@@ -17,7 +17,7 @@ public class ArrangementPojo {
     private int discount;
     private Collection<ArticlePojo> article;
 
-    public ArrangementPojo(){
+    public ArrangementPojo() {
         article = new HashSet<>();
     }
 

@@ -1,10 +1,13 @@
 package at.fhv.roomix.controller.reservation;
 
+import at.fhv.roomix.controller.common.exceptions.ArgumentFaultException;
+import at.fhv.roomix.controller.common.exceptions.SessionFaultException;
+import at.fhv.roomix.controller.common.exceptions.ValidationFault;
 import at.fhv.roomix.controller.contact.model.ContactPojo;
-import at.fhv.roomix.controller.exeption.ArgumentFaultException;
-import at.fhv.roomix.controller.exeption.SessionFaultException;
-import at.fhv.roomix.controller.exeption.ValidationFault;
-import at.fhv.roomix.controller.reservation.model.*;
+import at.fhv.roomix.controller.reservation.model.ReservationOptionPojo;
+import at.fhv.roomix.controller.reservation.model.ReservationPojo;
+import at.fhv.roomix.controller.reservation.model.ReservationUnitPojo;
+import at.fhv.roomix.controller.reservation.model.RoomCategoryPojo;
 import at.fhv.roomix.domain.guest.model.ReservationDomain;
 import at.fhv.roomix.domain.guest.model.ReservationOptionDomain;
 import at.fhv.roomix.domain.guest.model.ReservationUnitDomain;
@@ -18,15 +21,13 @@ import at.fhv.roomix.persist.model.ReservationUnitEntity;
 import at.fhv.roomix.persist.model.RoomCategoryEntity;
 import org.modelmapper.ModelMapper;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
-import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import static at.fhv.roomix.controller.common.validator.Validator.validate;
+
 
 /**
  * Roomix
@@ -38,18 +39,6 @@ import java.util.stream.Collectors;
  */
 class ReservationController implements IReservationController {
     private final ISessionDomain sessionHandler = SessionFactory.getInstance();
-    private ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
-
-    private <T> void validate(T object) throws ValidationFault {
-        Validator validator = validatorFactory.getValidator();
-        Set<ConstraintViolation<T>> violations = validator.validate(object);
-
-        if (violations.isEmpty()) return;
-
-        Set<String> strings = new HashSet<>();
-        violations.forEach((v) -> strings.add(v.getMessage()));
-        throw new ValidationFault(strings);
-    }
 
     @Override
     public Collection<ReservationPojo> getAllReservation(long sessionId) throws SessionFaultException {
@@ -118,8 +107,6 @@ class ReservationController implements IReservationController {
 
         Set<ReservationPojo> resultSet = new HashSet<>(reservationPojoSet);
 
-
-
         for (ReservationPojo resPoj : reservationPojoSet) {
             if (resPoj.)
 
@@ -170,7 +157,7 @@ class ReservationController implements IReservationController {
 
         return reservationUnitPojo.getOptions();
     }
-    
+
     @Override
     public Collection<RoomCategoryPojo> getAllCategory(long sessionId) throws SessionFaultException {
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();

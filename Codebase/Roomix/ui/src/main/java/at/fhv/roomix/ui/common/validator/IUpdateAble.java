@@ -1,6 +1,7 @@
 package at.fhv.roomix.ui.common.validator;
 
-import at.fhv.roomix.controller.exeption.FaultException;
+
+import at.fhv.roomix.controller.common.exceptions.FaultException;
 
 /**
  * Roomix

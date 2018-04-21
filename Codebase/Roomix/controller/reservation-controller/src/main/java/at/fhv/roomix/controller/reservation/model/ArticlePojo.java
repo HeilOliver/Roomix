@@ -12,6 +12,7 @@ package at.fhv.roomix.controller.reservation.model;
 public class ArticlePojo {
     private int id;
     private String discription;
+    private int amount;
 
     public int getId() {
         return id;
@@ -36,8 +37,6 @@ public class ArticlePojo {
     public void setAmount(int amount) {
         this.amount = amount;
     }
-
-    private int amount;
 
 
 }

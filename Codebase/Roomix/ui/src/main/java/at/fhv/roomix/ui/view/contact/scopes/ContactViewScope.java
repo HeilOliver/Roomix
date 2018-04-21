@@ -1,6 +1,6 @@
 package at.fhv.roomix.ui.view.contact.scopes;
 
-import at.fhv.roomix.controller.reservation.model.ContactPojo;
+import at.fhv.roomix.controller.contact.model.ContactPojo;
 import at.fhv.roomix.ui.common.AbstractMasterEditScope;
 import at.fhv.roomix.ui.dataprovider.ContactProvider;
 
