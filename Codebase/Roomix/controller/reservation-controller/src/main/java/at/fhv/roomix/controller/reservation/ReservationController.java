@@ -71,7 +71,7 @@ class ReservationController implements IReservationController {
     @Override
     public PricePojo getPricebyReservationUnitAndContractingParty(long sessionId, ReservationUnitPojo reservationUnit, ContactPojo contractingParty) throws SessionFaultException {
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
-        
+
         return null;
     }
 
@@ -88,8 +88,8 @@ class ReservationController implements IReservationController {
             RoomCategoryPojo roomCategoryPojo = new RoomCategoryPojo();
             roomCategoryPojo.setDiscription(roomCategoryDomain.getCategoryDescription());
             roomCategoryPojo.setOccupied(roomCategoryDomain.getMetaData().getNumberOfOccupiedRooms());
-            roomCategoryPojo.setUnconfirmedReservation(roomCategoryDomain.getMetaData().getNumberOfConfirmedReservations());
-            roomCategoryPojo.setFree(roomCategoryDomain.getMetaData().getNumberOfConfirmedReservations());
+            roomCategoryPojo.setUnconfirmedReservation(roomCategoryDomain.getMetaData().getNumberOfUnconfirmedReservations());
+            roomCategoryPojo.setConfirmedReservation(roomCategoryDomain.getMetaData().getNumberOfConfirmedReservations());
             roomCategoryset.add(roomCategoryPojo);
         }
 

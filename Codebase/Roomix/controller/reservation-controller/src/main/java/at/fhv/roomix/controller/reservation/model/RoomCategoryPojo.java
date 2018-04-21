@@ -16,6 +16,7 @@ public class RoomCategoryPojo {
     private int occupied;
     private int unconfirmedReservation;
     private int free;
+    private int confirmedReservation;
     private int quota;
 
 
@@ -65,5 +66,13 @@ public class RoomCategoryPojo {
 
     public void setQuota(int quota) {
         this.quota = quota;
+    }
+
+    public int getConfirmedReservation() {
+        return confirmedReservation;
+    }
+
+    public void setConfirmedReservation(int confirmedReservation) {
+        this.confirmedReservation = confirmedReservation;
     }
 }
