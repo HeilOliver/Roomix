@@ -4,10 +4,7 @@ import at.fhv.roomix.controller.common.exceptions.ArgumentFaultException;
 import at.fhv.roomix.controller.common.exceptions.SessionFaultException;
 import at.fhv.roomix.controller.common.exceptions.ValidationFault;
 import at.fhv.roomix.controller.contact.model.ContactPojo;
-import at.fhv.roomix.controller.reservation.model.ReservationOptionPojo;
-import at.fhv.roomix.controller.reservation.model.ReservationPojo;
-import at.fhv.roomix.controller.reservation.model.ReservationUnitPojo;
-import at.fhv.roomix.controller.reservation.model.RoomCategoryPojo;
+import at.fhv.roomix.controller.reservation.model.*;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -26,7 +23,9 @@ public interface IReservationController {
 
     Collection<ReservationPojo> getSearchedReservation(long sessionId, String query) throws SessionFaultException;
 
-    Collection<RoomCategoryPojo> getSearchedCategorybyDateAndContract(LocalDateTime startDate,LocalDateTime endDate, ContactPojo contractingParty) throws SessionFaultException;
+    PricePojo getPricebyReservationUnitAndContractingParty(long sessionId, ReservationUnitPojo reservationUnit, ContactPojo contractingParty) throws SessionFaultException;
+
+    Collection<RoomCategoryPojo> getSearchedCategorybyDateAndContract(long sessionId,LocalDateTime startDate,LocalDateTime endDate, ContactPojo contractingParty) throws SessionFaultException;
 
     Collection<ReservationPojo> getSearchedReservationbyContact(long sessionId, ContactPojo contactPojo) throws SessionFaultException;
 

@@ -4,10 +4,7 @@ import at.fhv.roomix.controller.common.exceptions.ArgumentFaultException;
 import at.fhv.roomix.controller.common.exceptions.SessionFaultException;
 import at.fhv.roomix.controller.common.exceptions.ValidationFault;
 import at.fhv.roomix.controller.contact.model.ContactPojo;
-import at.fhv.roomix.controller.reservation.model.ReservationOptionPojo;
-import at.fhv.roomix.controller.reservation.model.ReservationPojo;
-import at.fhv.roomix.controller.reservation.model.ReservationUnitPojo;
-import at.fhv.roomix.controller.reservation.model.RoomCategoryPojo;
+import at.fhv.roomix.controller.reservation.model.*;
 import at.fhv.roomix.domain.guest.model.ReservationDomain;
 import at.fhv.roomix.domain.guest.model.ReservationOptionDomain;
 import at.fhv.roomix.domain.guest.model.ReservationUnitDomain;
@@ -77,7 +74,14 @@ class ReservationController implements IReservationController {
     }
 
     @Override
-    public Collection<RoomCategoryPojo> getSearchedCategorybyDateAndContract(LocalDateTime startDate, LocalDateTime endDate, ContactPojo contractingParty) throws SessionFaultException {
+    public PricePojo getPricebyReservationUnitAndContractingParty(long sessionId, ReservationUnitPojo reservationUnit, ContactPojo contractingParty) throws SessionFaultException {
+        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
+        return null;
+    }
+
+    @Override
+    public Collection<RoomCategoryPojo> getSearchedCategorybyDateAndContract(long sessionId,LocalDateTime startDate, LocalDateTime endDate, ContactPojo contractingParty) throws SessionFaultException {
+        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
         return null;
     }
 
