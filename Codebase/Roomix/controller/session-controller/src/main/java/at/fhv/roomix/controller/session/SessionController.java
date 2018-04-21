@@ -6,7 +6,9 @@ import at.fhv.roomix.domain.session.ISessionDomain;
 import at.fhv.roomix.domain.session.InvalidUserPasswordCombination;
 import at.fhv.roomix.domain.session.SessionFactory;
 import at.fhv.roomix.domain.session.model.RoomixSession;
+import at.fhv.roomix.persist.HibernateSessionFactory;
 import org.apache.log4j.Logger;
+import org.hibernate.Session;
 
 /**
  * Roomix
@@ -47,14 +49,16 @@ class SessionController implements ISessionController {
 
     @Override
     public void dispose() {
-
+        HibernateSessionFactory.disposeHibernate();
     }
 
     @Override
     public void startUp() {
-        try {
-            Thread.sleep(9000);
-        } catch (InterruptedException ignore) {
+        Session session = HibernateSessionFactory.getSession();
+        if(session == null){
+            logger.fatal("Couldn't start hibernate");
+        } else {
+            session.close();
         }
     }
 }

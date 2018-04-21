@@ -1,6 +1,6 @@
 package at.fhv.roomix.ui.view.contact.edit;
 
-import at.fhv.roomix.controller.reservation.model.ContactPojo;
+import at.fhv.roomix.controller.contact.model.ContactPojo;
 import at.fhv.roomix.ui.common.validator.EmailValidator;
 import at.fhv.roomix.ui.common.validator.PhoneValidator;
 import at.fhv.roomix.ui.view.contact.scopes.ContactViewScope;

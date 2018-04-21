@@ -13,6 +13,7 @@ import java.util.Objects;
 public class RoomCategoryEntity {
     private int roomCategoryId;
     private String categoryDescription;
+
     private Collection<PartnerAgreementEntity> partnerAgreementsByRoomCategoryId;
     private Collection<ReservationUnitEntity> reservationUnitsByRoomCategoryId;
     private Collection<RoomEntity> roomsByRoomCategoryId;

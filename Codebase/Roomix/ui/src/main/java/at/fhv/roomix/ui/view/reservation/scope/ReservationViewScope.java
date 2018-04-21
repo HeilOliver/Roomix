@@ -2,7 +2,7 @@ package at.fhv.roomix.ui.view.reservation.scope;
 
 
 import at.fhv.roomix.controller.reservation.model.ReservationPojo;
-import at.fhv.roomix.ui.common.AbstractMDScope;
+import at.fhv.roomix.ui.common.AbstractMasterEditScope;
 import at.fhv.roomix.ui.dataprovider.ReservationProvider;
 
 /**
@@ -13,7 +13,7 @@ import at.fhv.roomix.ui.dataprovider.ReservationProvider;
  * <p>
  * Enter Description here
  */
-public class ReservationViewScope extends AbstractMDScope<ReservationPojo> {
+public class ReservationViewScope extends AbstractMasterEditScope<ReservationPojo> {
 
     public ReservationViewScope() {
         super(ReservationPojo::new, new ReservationProvider());

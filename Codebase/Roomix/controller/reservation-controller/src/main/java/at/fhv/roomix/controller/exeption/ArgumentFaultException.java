@@ -1,8 +1,8 @@
-package at.fhv.roomix.controller.reservation.exeption;
+package at.fhv.roomix.controller.exeption;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.reservation.exeption
+ * at.fhv.roomix.controller.exeption
  * ArgumentFaultException
  * 08.04.2018 sge
  * <p>

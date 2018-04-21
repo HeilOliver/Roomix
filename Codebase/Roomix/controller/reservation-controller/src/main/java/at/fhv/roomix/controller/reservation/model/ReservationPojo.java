@@ -1,5 +1,7 @@
 package at.fhv.roomix.controller.reservation.model;
 
+import at.fhv.roomix.controller.contact.model.ContactPojo;
+
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -63,4 +65,6 @@ public class ReservationPojo {
     public void setPersons(Collection<ContactPojo> persons) {
         this.persons = persons;
     }
+
+
 }

@@ -5,6 +5,8 @@ import at.fhv.roomix.persist.factory.model.DeepTestEntity;
 import at.fhv.roomix.persist.factory.model.TestDomain;
 import at.fhv.roomix.persist.factory.model.TestEntity;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
+import org.modelmapper.TypeMap;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -29,6 +31,12 @@ public class AbstractDomainBuilderMock extends AbstractDomainBuilder<TestDomain,
     @Override
     protected TestDomain mapEntityToDomain(TestEntity entity) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.addMappings(new PropertyMap<TestEntity, TestDomain>() {
+            @Override
+            protected void configure() {
+                skip().setDoNotMap(null);
+            }
+        });
         TestDomain testDomain = modelMapper.map(entity, TestDomain.class);
 
         LinkedHashMap<ISourceMapper<Collection>,

@@ -2,22 +2,23 @@ package at.fhv.roomix.domain.guest.model;
 
 public class PersonReservationDomain {
 
-    private int reservation;
-    private int person;
+    private ReservationDomain reservationByReservation;
+    private PersonDomain personByPerson;
 
-    public int getReservation() {
-        return reservation;
+
+    public ReservationDomain getReservationByReservation() {
+        return reservationByReservation;
     }
 
-    public void setReservation(int reservation) {
-        this.reservation = reservation;
+    public void setReservationByReservation(ReservationDomain reservationByReservation) {
+        this.reservationByReservation = reservationByReservation;
     }
 
-    public int getPerson() {
-        return person;
+    public PersonDomain getPersonByPerson() {
+        return personByPerson;
     }
 
-    public void setPerson(int person) {
-        this.person = person;
+    public void setPersonByPerson(PersonDomain personByPerson) {
+        this.personByPerson = personByPerson;
     }
 }

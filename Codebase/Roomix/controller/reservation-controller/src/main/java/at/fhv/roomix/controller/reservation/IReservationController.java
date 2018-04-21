@@ -1,10 +1,10 @@
 package at.fhv.roomix.controller.reservation;
 
-import at.fhv.roomix.controller.reservation.exeption.ArgumentFaultException;
-import at.fhv.roomix.controller.reservation.exeption.SessionFaultException;
-import at.fhv.roomix.controller.reservation.exeption.ValidationFault;
-import at.fhv.roomix.controller.reservation.model.ContactPojo;
-import at.fhv.roomix.controller.reservation.model.ReservationPojo;
+import at.fhv.roomix.controller.contact.model.ContactPojo;
+import at.fhv.roomix.controller.exeption.ArgumentFaultException;
+import at.fhv.roomix.controller.exeption.SessionFaultException;
+import at.fhv.roomix.controller.exeption.ValidationFault;
+import at.fhv.roomix.controller.reservation.model.*;
 
 import java.util.Collection;
 
@@ -18,15 +18,28 @@ import java.util.Collection;
  */
 public interface IReservationController {
 
-    Collection<ContactPojo> getAllContacts(long sessionId) throws SessionFaultException;
-
-    Collection<ContactPojo> getSearchedContacts(long sessionId, String query) throws SessionFaultException;
-
-    void updateContact(long sessionId, ContactPojo contactPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException;
-
     Collection<ReservationPojo> getAllReservation(long sessionId) throws SessionFaultException;
 
     Collection<ReservationPojo> getSearchedReservation(long sessionId, String query) throws SessionFaultException;
 
+    Collection<ReservationPojo> getSearchedReservationbyContact(long sessionId, ContactPojo contactPojo) throws SessionFaultException;
+
+    Collection<ReservationUnitPojo> getAllReservationUnits(long sessionId) throws SessionFaultException;
+
+    Collection<ReservationUnitPojo> getSearchedReservationUnit(long sessionId, ReservationPojo reservationPojo) throws SessionFaultException;
+
+    Collection<ReservationOptionPojo> getAllReservationOptions(long sessionId) throws SessionFaultException;
+
+    Collection<ReservationOptionPojo> getSearchedReservationOptions(long sessionId, ReservationUnitPojo reservationUnitPojo) throws SessionFaultException;
+
+    Collection<RoomCategoryPojo> getAllCategory(long sessionId) throws SessionFaultException;
+
+    Collection<ArrangementPojo> getAllArrangements(long sessionId) throws SessionFaultException;
+
+    Collection<ReservationPojo> getAllReservationbyOccupation(long sessionId, OccupationPojo occupationPojo) throws SessionFaultException;
+
     void updateReservation(long sessionId, ReservationPojo reservationPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException;
+
+    void updateReservationOption(long sessionId, ReservationOptionPojo reservationOptionPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException;
+
 }

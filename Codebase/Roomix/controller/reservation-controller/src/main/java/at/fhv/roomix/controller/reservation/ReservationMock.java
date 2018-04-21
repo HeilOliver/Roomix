@@ -1,9 +1,8 @@
 package at.fhv.roomix.controller.reservation;
 
-import at.fhv.roomix.controller.reservation.exeption.ArgumentFaultException;
-import at.fhv.roomix.controller.reservation.exeption.SessionFaultException;
-import at.fhv.roomix.controller.reservation.exeption.ValidationFault;
-import at.fhv.roomix.controller.reservation.model.ContactPojo;
+import at.fhv.roomix.controller.exeption.ArgumentFaultException;
+import at.fhv.roomix.controller.exeption.SessionFaultException;
+import at.fhv.roomix.controller.exeption.ValidationFault;
 import at.fhv.roomix.controller.reservation.model.ReservationPojo;
 
 import java.util.Collection;
@@ -20,30 +19,9 @@ import java.util.HashSet;
 public class ReservationMock implements IReservationController {
     private static final Object lock = new Object();
     private static ReservationMock instance;
-    private Collection<ContactPojo> contactPojos = new HashSet<>();
+    private Collection<ReservationPojo> reservationPojos = new HashSet<>();
 
     ReservationMock() {
-        ContactPojo pojo = new ContactPojo();
-        pojo.setFirstName("Oliver");
-        pojo.setLastName("Heil");
-        pojo.setCountry("Germany");
-        pojo.setPhoneNumber("+4312132132132");
-        pojo.setEmail("Some@some.com");
-        pojo.setPlace("Dornbirn");
-        pojo.setPostcode("8505");
-        pojo.setStreet("SomeStreet 4");
-        contactPojos.add(pojo);
-
-        pojo = new ContactPojo();
-        pojo.setFirstName("Max");
-        pojo.setLastName("Mustermann");
-        pojo.setCountry("Germany");
-        pojo.setPhoneNumber("+4312132132132");
-        pojo.setEmail("Some@some.com");
-        pojo.setPlace("Dornbirn");
-        pojo.setPostcode("8505");
-        pojo.setStreet("SomeStreet 4");
-        contactPojos.add(pojo);
     }
 
     public static ReservationMock getInstance() {
@@ -54,32 +32,6 @@ public class ReservationMock implements IReservationController {
             }
         }
         return instance;
-    }
-
-    public void newContact(long sessionId, ContactPojo contactPojo)
-            throws SessionFaultException, ValidationFault, ArgumentFaultException {
-        contactPojos.add(contactPojo);
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public Collection<ContactPojo> getAllContacts(long sessionId) throws SessionFaultException {
-        return new HashSet<>(contactPojos);
-    }
-
-    @Override
-    public Collection<ContactPojo> getSearchedContacts(long sessionId, String query) throws SessionFaultException {
-        return null;
-    }
-
-    @Override
-    public void updateContact(long sessionId, ContactPojo contactPojo)
-            throws SessionFaultException, ValidationFault, ArgumentFaultException {
-        contactPojos.add(contactPojo);
     }
 
     @Override

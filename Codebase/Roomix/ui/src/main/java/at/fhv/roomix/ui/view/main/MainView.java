@@ -1,5 +1,6 @@
 package at.fhv.roomix.ui.view.main;
 
+import at.fhv.roomix.ui.common.ViewHelper;
 import at.fhv.roomix.ui.view.main.menuitem.SideBarItem;
 import at.fhv.roomix.ui.view.main.menuitem.SideBarItemViewModel;
 import de.saxsys.mvvmfx.FxmlView;
@@ -41,27 +42,13 @@ public class MainView implements FxmlView<MainViewModel> {
     @FXML
     private VBox bottomBox;
 
-    @Inject
-    private ResourceBundle resourceBundle;
-
-
-    private void setChildren(Parent parent) {
-        contentPane.getChildren().clear();
-        if (parent == null) return;
-        AnchorPane.setTopAnchor(parent, 0.0);
-        AnchorPane.setBottomAnchor(parent, 0.0);
-        AnchorPane.setLeftAnchor(parent, 0.0);
-        AnchorPane.setRightAnchor(parent, 0.0);
-        contentPane.getChildren().add(parent);
-    }
-
     public void initialize() {
         cellFactory = CachedViewModelCellFactory.createForFxmlView(SideBarItem.class);
 
         viewModel.currentViewProperty().addListener(((observable, oldValue, newValue) -> {
-            setChildren(newValue);
+            ViewHelper.setChildren(contentPane, newValue);
         }));
-        setChildren(viewModel.currentViewProperty().get());
+        ViewHelper.setChildren(contentPane, viewModel.currentViewProperty().get());
 
         viewModel.getTopItems().forEach((i) -> {
             Parent item = cellFactory.map(i).getView();

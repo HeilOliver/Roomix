@@ -1,10 +1,10 @@
-package at.fhv.roomix.controller.reservation.exeption;
+package at.fhv.roomix.controller.exeption;
 
 import java.util.Set;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.reservation.exeption
+ * at.fhv.roomix.controller.exeption
  * ValidationFault
  * 27/03/2018 OliverH
  * <p>
