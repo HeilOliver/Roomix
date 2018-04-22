@@ -41,9 +41,13 @@ class ReservationController implements IReservationController {
         ModelMapper modelMapper = new ModelMapper();
         HashSet<ReservationDomain> reservationDomainSet = new HashSet<>(reservationBuilder.getAll());
         HashSet<ReservationPojo> reservationPojoSet = new HashSet<>();
-
-        reservationDomainSet.forEach(reservation -> reservationPojoSet.add(modelMapper.map(reservation, ReservationPojo.class)));
-
+        reservationDomainSet.forEach(reservation -> {
+            ReservationPojo reservationPojo = modelMapper.map(reservation, ReservationPojo.class);
+            CommentPojo commentPojo = new CommentPojo();
+            commentPojo.setComment(reservation.getReservationComment());
+            reservationPojo.setComment(commentPojo);
+            reservationPojoSet.add(reservationPojo);
+        });
         return reservationPojoSet;
     }
 
@@ -124,16 +128,23 @@ class ReservationController implements IReservationController {
 
     @Override
     public Collection<ArrangementPojo> getAllArrangement(long sessionId) throws SessionFaultException {
-/*        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
-        IAbstractDomainBuilder<ArrangementDomain, ArrangementEntity> arrangementBuilder = ArrangementDomainBuilder.getInstance();
+        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
+        /*IAbstractDomainBuilder<ArrangementDomain, ArrangementEntity> arrangementBuilder = ArrangementDomainBuilder.getInstance();
         ModelMapper modelMapper = new ModelMapper();
         HashSet<ArrangementDomain> arrangementDomainSet = new HashSet<>(arrangementBuilder.getAll());
         HashSet<ArrangementPojo> arrangementPojoSet = new HashSet<>();
 
-        arrangementDomainSet.forEach(arrangement -> arrangementPojoSet.add(modelMapper.map(arrangement, ArrangementPojo.class)));
-
-        return arrangementPojoSet;
-        */
+        arrangementDomainSet.forEach(arrangement -> {
+                ArrangementPojo arrangementPojo = modelMapper.map(arrangement, ArrangementPojo.class);
+                PricePojo price = new PricePojo();
+                price.setPrice(arrangement.getPrice());
+                DiscountPojo discount = new DiscountPojo();
+                discount.setDiscount(arrangement.getDiscount());
+                arrangementPojo.setDiscount(discount);
+                arrangementPojo.setPrice(price);
+                arrangementPojoSet.add(arrangementPojo);
+        }
+        return arrangementPojoSet;*/
         return null;
     }
 
