@@ -35,17 +35,17 @@ public class OptionViewModel extends SubscribeAbleViewModel<ReservationOptionPoj
 
     StringProperty descriptionProperty() {
         return pojoWrapper.field("description",
-                ReservationOptionPojo::getDescription, ReservationOptionPojo::setDescription);
+                ReservationOptionPojo::getOptionDescription, ReservationOptionPojo::setOptionDescription);
     }
 
     ObjectProperty<LocalDate> dueDateProperty() {
         return pojoWrapper.field("dueDate",
-                ReservationOptionPojo::getDueDate, ReservationOptionPojo::setDueDate);
+                ReservationOptionPojo::getOptionDueDate, ReservationOptionPojo::setOptionDueDate);
     }
 
     private ObjectProperty<PricePojo> priceProperty() {
         return pojoWrapper.field("price",
-                ReservationOptionPojo::getPrice, ReservationOptionPojo::setPrice);
+                ReservationOptionPojo::getOptionFee, ReservationOptionPojo::setOptionFee);
     }
 
     // region Validation

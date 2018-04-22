@@ -97,16 +97,10 @@ public class ReservationUnitProvider extends AbstractProvider {
                     ReservationControllerFactory.getInstance();
             try {
 
-//                PricePojo price =
-//                        instance.getPrice(LoginProvider.getSessionID(), pojo, contractingParty);
-
-                if (false) {
-                    throw new SessionFaultException();
-                }
+                PricePojo price =
+                        instance.getPrice(LoginProvider.getSessionID(), pojo, contractingParty);
                 Platform.runLater(() -> {
-                    PricePojo pricePojo = new PricePojo();
-                    pricePojo.setPrice(200);
-                    onSuccess.call(pricePojo);
+                    onSuccess.call(price);
                 });
             } catch (SessionFaultException e) {
                 LOG.debug(e.getMessage());

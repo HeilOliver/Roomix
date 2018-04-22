@@ -152,6 +152,7 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
 
         categoryProperty().addListener(((observable, oldValue, newValue) -> {
             availableRooms.clear();
+            currCategoryPrice.setValue("");
             if (newValue == null) return;
             XYChart.Series<Number, String> series = new XYChart.Series<>();
             series.getData().add(new XYChart.Data<>( newValue.getFree(),
@@ -164,8 +165,7 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
                     StringResourceResolver.getStaticResolve(resourceBundle, "reservation.edit.unit.unconfirmedrooms")));
             availableRooms.add(series);
 
-            // TODO Price
-            currCategoryPrice.setValue("Add Price");
+            currCategoryPrice.setValue(Float.toString(newValue.getPricePerDay() / 100));
         }));
     }
 
