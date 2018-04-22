@@ -30,7 +30,7 @@ public class ReservationControllerMock implements IReservationController {
     }
 
     @Override
-    public Collection<PricePojo> getPrice(long sessionId, ReservationUnitPojo reservationUnit, ContactPojo contractingParty) throws SessionFaultException {
+    public PricePojo getPrice(long sessionId, ReservationUnitPojo reservationUnit, ContactPojo contractingParty) throws SessionFaultException {
         return null;
     }
 
