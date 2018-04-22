@@ -2,6 +2,7 @@ package at.fhv.roomix.controller.reservation;
 
 import at.fhv.roomix.domain.session.SessionFactory;
 import at.fhv.roomix.persist.factory.GuestDomainBuilder;
+import at.fhv.roomix.persist.factory.ReservationDomainBuilder;
 import org.junit.jupiter.api.BeforeAll;
 
 /**
@@ -13,13 +14,13 @@ import org.junit.jupiter.api.BeforeAll;
  * Enter Description here
  */
 public class ReservationControllerTest {
-    private static GuestDomainBuilderMock mock;
+    private static ReservationDomainBuilderMock mock;
 
     @BeforeAll
     static void init() {
-        mock = new GuestDomainBuilderMock();
+        mock = new ReservationDomainBuilderMock();
 
-        GuestDomainBuilder.injectDependency(() -> mock);
+        ReservationDomainBuilder.injectDependency(() -> mock);
         SessionDomainMock sessionDomain = new SessionDomainMock();
         SessionFactory.inject(sessionDomain);
     }
