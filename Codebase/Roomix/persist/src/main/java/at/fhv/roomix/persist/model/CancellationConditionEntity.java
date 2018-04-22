@@ -18,6 +18,7 @@ public class CancellationConditionEntity {
     private Collection<PartnerAgreementEntity> partnerAgreementsByCancellationConditionId;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "CancellationConditionID")
     public int getCancellationConditionId() {
         return cancellationConditionId;

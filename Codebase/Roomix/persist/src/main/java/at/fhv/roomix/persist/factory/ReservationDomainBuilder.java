@@ -109,6 +109,7 @@ public class ReservationDomainBuilder extends AbstractDomainBuilder<ReservationD
 
     @Override
     public Collection<ReservationDomain> lazyLoadCollection(Integer key, String referencedColumn) {
-        return null;
+        return new ReservationDomainBuilder(ReservationDao::registerAtDao).
+                loadByForeignKey(ReservationEntity.class, key, referencedColumn);
     }
 }

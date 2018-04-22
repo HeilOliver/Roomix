@@ -22,6 +22,7 @@ public class PaymentEntity {
     private PaymentTypeEntity paymentTypeByPaymentType;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "PaymentID")
     public int getPaymentId() {
         return paymentId;

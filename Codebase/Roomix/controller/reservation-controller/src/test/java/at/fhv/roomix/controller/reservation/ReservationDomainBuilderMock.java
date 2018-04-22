@@ -1,9 +1,7 @@
 package at.fhv.roomix.controller.reservation;
 
-import at.fhv.roomix.domain.guest.model.GuestDomain;
 import at.fhv.roomix.domain.guest.model.ReservationDomain;
 import at.fhv.roomix.persist.factory.IAbstractDomainBuilder;
-import at.fhv.roomix.persist.model.ContactEntity;
 import at.fhv.roomix.persist.model.ReservationEntity;
 
 import java.util.LinkedList;
@@ -38,7 +36,7 @@ public class ReservationDomainBuilderMock implements IAbstractDomainBuilder<Rese
 
     }
 
-    public boolean getNewContactBool() {
+    public boolean getNewReservation() {
         return newReservationBool;
     }
 

@@ -7,6 +7,16 @@ public class ReservationOptionDomain {
     private Date optionDueDate;
     private String optionDescription;
     private byte optionStatus;
+    private int optionFee;
+
+
+    public int getOptionFee() {
+        return optionFee;
+    }
+
+    public void setOptionFee(int optionFee) {
+        this.optionFee = optionFee;
+    }
 
     public int getOptionId() {
         return optionId;

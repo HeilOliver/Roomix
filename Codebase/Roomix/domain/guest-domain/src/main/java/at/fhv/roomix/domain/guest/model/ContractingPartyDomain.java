@@ -56,7 +56,7 @@ public class ContractingPartyDomain {
     }
 
     public Collection<PartnerAgreementDomain> getPartnerAgreementsByContractingPartyId() {
-        return partnerAgreementProxy.get();
+        return (partnerAgreementsByContractingPartyId = partnerAgreementProxy.get());
     }
 
     public void setPartnerAgreementsByContractingPartyId(Collection<PartnerAgreementDomain> partnerAgreementsByContractingPartyId) {
@@ -64,7 +64,7 @@ public class ContractingPartyDomain {
     }
 
     public Collection<ReservationDomain> getReservationsByContractingPartyId() {
-        return reservationProxy.get();
+        return (reservationsByContractingPartyId = reservationProxy.get());
     }
 
     public void setReservationsByContractingPartyId(Collection<ReservationDomain> reservationsByContractingPartyId) {

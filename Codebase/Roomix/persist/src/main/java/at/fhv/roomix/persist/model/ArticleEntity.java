@@ -18,6 +18,7 @@ public class ArticleEntity {
     private Collection<InvoicePositionEntity> invoicePositionsByArticleId;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ArticleID")
     public int getArticleId() {
         return articleId;

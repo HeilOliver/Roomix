@@ -71,9 +71,9 @@ public class ReservationEditViewModel implements ViewModel {
             ReservationPojo pojo = new ReservationPojo();
             pojo.setContractingParty(contractingPartyHandler.getObject());
             pojo.setComment(commentHandler.getObject());
-            pojo.setOptions(optionHandler.getObjects());
-            pojo.setUnits(unitHandler.getObjects());
-            pojo.setPersons(personHandler.getObjects());
+            pojo.setReservationOptionByReservationOption(optionHandler.getObjects());
+            pojo.setReservationUnitsByReservationId(unitHandler.getObjects());
+            pojo.setPersonReservationsByReservationId(personHandler.getObjects());
             viewScope.inEditPojoProperty().setValue(pojo);
         });
     }
@@ -183,16 +183,16 @@ public class ReservationEditViewModel implements ViewModel {
     private final IContentBuilder<ReservationOptionPojo> optionBuilder = (pojo -> {
         StringBuilder sb = new StringBuilder();
 
-        if (pojo.getDueDate() == null) {
+        if (pojo.getOptionDueDate() == null) {
             sb.append(StringResourceResolver.getStaticResolve(bundle, "reservation.edit.option.tag.nodate"));
         } else {
-            sb.append(pojo.getDueDate().format(DateTimeFormatter.ofPattern("dd MMMM yyyy")));
+            sb.append(pojo.getOptionDueDate().format(DateTimeFormatter.ofPattern("dd MMMM yyyy")));
         }
         sb.append(" - ");
-        if (pojo.getPrice() == null) {
+        if (pojo.getOptionFee() == null) {
             sb.append("? €");
         } else {
-            sb.append((float) pojo.getPrice().getPrice()/100);
+            sb.append((float) pojo.getOptionFee().getPrice()/100);
             sb.append("€");
         }
         return sb.toString();
