@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="at.fhv.roomix.ui.view.reservation.edit.contact.ContactView"
+            >
+    <AnchorPane AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
+                AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0"
+                minHeight="60" maxHeight="60" prefHeight="60">
+        <HBox AnchorPane.topAnchor="12" AnchorPane.rightAnchor="0" alignment="CENTER_RIGHT">
+            <TextField fx:id="searchInput" promptText="%contact.table.enterSearch" prefWidth="300" HBox.hgrow="ALWAYS"/>
+            <Region prefWidth="5"/>
+            <Button fx:id="btnCommit" onAction="#buttonCommitClick" text="%main.edit" prefWidth="120">
+                <graphic>
+                    <FontAwesomeIconView glyphName="ARROW_LEFT" size="2em"/>
+                </graphic>
+            </Button>
+            <Region prefWidth="5" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+            <Button fx:id="btnEdit" onAction="#buttonEditClick" text="%main.edit" prefWidth="120">
+                <graphic>
+                    <FontAwesomeIconView glyphName="EDIT" size="2em"/>
+                </graphic>
+            </Button>
+            <Region prefWidth="5"/>
+            <Button fx:id="btnNew" onAction="#buttonNewClick" text="%main.new" prefWidth="120">
+                <graphic>
+                    <FontAwesomeIconView glyphName="PLUS" size="2em"/>
+                </graphic>
+            </Button>
+            <Button fx:id="btnCancel" onAction="#buttonCancelClick" text="%main.cancel" prefWidth="120">
+                <graphic>
+                    <FontAwesomeIconView glyphName="TIMES" size="2em"/>
+                </graphic>
+            </Button>
+        </HBox>
+    </AnchorPane>
+    <StackPane AnchorPane.topAnchor="60" AnchorPane.leftAnchor="0"
+                AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0"
+                >
+        <fx:include source="ContactTableView.fxml" fx:id="viewTable"/>
+        <fx:include source="ContactEditView.fxml" fx:id="viewEdit"/>
+    </StackPane>
+</AnchorPane>

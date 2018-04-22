@@ -75,7 +75,7 @@ public class LoginProvider extends AbstractProvider {
         return session.getSessionId();
     }
 
-    public static ReadOnlyBooleanProperty getInProcessProperty() {
+    public static ReadOnlyBooleanProperty _getInProcessProperty() {
         return inProcessProperty();
     }
 

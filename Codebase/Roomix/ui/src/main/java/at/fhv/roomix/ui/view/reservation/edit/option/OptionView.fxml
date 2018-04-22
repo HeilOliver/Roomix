@@ -21,11 +21,12 @@
             </Button>
         </HBox>
     </AnchorPane>
-    <VBox AnchorPane.topAnchor="60" AnchorPane.rightAnchor="0"
-            AnchorPane.leftAnchor="0" AnchorPane.bottomAnchor="0">
+    <VBox AnchorPane.topAnchor="60" AnchorPane.rightAnchor="10"
+            AnchorPane.leftAnchor="10" AnchorPane.bottomAnchor="10">
         <DatePicker fx:id="datePicker"/>
 
         <TextField fx:id="txtDescriptionField" AnchorPane.topAnchor="60" AnchorPane.rightAnchor="0"
                    AnchorPane.leftAnchor="0" AnchorPane.bottomAnchor="0"/>
+        <TextField fx:id="txtPrice"/>
     </VBox>
 </AnchorPane>

@@ -1,8 +1,16 @@
 package at.fhv.roomix.ui.view.reservation.edit.item;
 
 
+import at.fhv.roomix.ui.common.StringResourceResolver;
+import de.saxsys.mvvmfx.InjectResourceBundle;
 import de.saxsys.mvvmfx.ViewModel;
+import de.saxsys.mvvmfx.utils.validation.FunctionBasedValidator;
+import de.saxsys.mvvmfx.utils.validation.ValidationMessage;
+import de.saxsys.mvvmfx.utils.validation.ValidationStatus;
 import javafx.beans.property.*;
+
+import javax.validation.Validation;
+import java.util.ResourceBundle;
 
 
 /**
@@ -21,7 +29,14 @@ public class ItemControlViewModel<T> implements ViewModel {
     private final BooleanProperty isSelected = new SimpleBooleanProperty();
     private final ObjectProperty<T> currentPojo = new SimpleObjectProperty<>();
 
-    public ItemControlViewModel(ItemHandler<T> scope, IContentBuilder<T> builder) {
+    private BooleanProperty validationStatus = new SimpleBooleanProperty();
+
+    @InjectResourceBundle
+    private ResourceBundle resourceBundle;
+
+
+    ItemControlViewModel(ItemHandler<T> scope, IContentBuilder<T> builder) {
+        validationStatus.setValue(true);
         this.scope = scope;
 
         isSelected.bind(scope.currentSelectionProperty().isEqualTo(this));
@@ -47,15 +62,28 @@ public class ItemControlViewModel<T> implements ViewModel {
         return contentText;
     }
 
+    BooleanProperty isValidProperty() {
+        return validationStatus;
+    }
+
+    ValidationStatus getValidationStatus(){
+        FunctionBasedValidator<Boolean> validator = new FunctionBasedValidator<>(
+                isValidProperty(),
+                bool -> !bool,
+                ValidationMessage.error(StringResourceResolver.getStaticResolve(resourceBundle,
+                        "reservation.edit.item.invalid")));
+        return validator.getValidationStatus();
+    }
+
     void onDelete() {
         scope.delete(this);
     }
 
-    public T getPojo() {
+    T getPojo() {
         return currentPojo.get();
     }
 
-    public ObjectProperty<T> currentPojoProperty() {
+    ObjectProperty<T> currentPojoProperty() {
         return currentPojo;
     }
 
@@ -66,5 +94,4 @@ public class ItemControlViewModel<T> implements ViewModel {
     void dispose() {
         isSelected.unbind();
     }
-
 }

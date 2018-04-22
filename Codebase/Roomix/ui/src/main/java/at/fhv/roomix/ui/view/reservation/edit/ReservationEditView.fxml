@@ -20,8 +20,9 @@
                       AnchorPane.leftAnchor="0.0"
                       AnchorPane.rightAnchor="0.0"
                       AnchorPane.topAnchor="0.0"
+                      detailSide="LEFT"
     fx:id="mdPane">
-        <masterNode>
+        <detailNode>
             <GridPane>
                 <rowConstraints>
                     <!-- Contracting Party -->
@@ -120,7 +121,6 @@
                 </HBox>
                 <HBox fx:id="boxComment" GridPane.rowIndex="13" GridPane.hgrow="ALWAYS"/>
 
-
                 <!-- Separators -->
                 <Separator GridPane.rowIndex="2" GridPane.hgrow="ALWAYS"/>
                 <Separator GridPane.rowIndex="5" GridPane.hgrow="ALWAYS"/>
@@ -128,9 +128,9 @@
                 <Separator GridPane.rowIndex="11" GridPane.hgrow="ALWAYS"/>
                 <Separator GridPane.rowIndex="14" GridPane.hgrow="ALWAYS"/>
             </GridPane>
-        </masterNode>
-        <detailNode>
-            <AnchorPane fx:id="boxDetailPane"/>
         </detailNode>
+        <masterNode>
+            <AnchorPane fx:id="boxDetailPane"/>
+        </masterNode>
     </MasterDetailPane>
 </AnchorPane>

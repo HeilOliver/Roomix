@@ -2,7 +2,7 @@ package at.fhv.roomix.ui.view.reservation.edit.comment;
 
 import at.fhv.roomix.controller.reservation.model.CommentPojo;
 import at.fhv.roomix.ui.common.StringResourceResolver;
-import at.fhv.roomix.ui.view.reservation.edit.ISubscribeAbleViewModel;
+import at.fhv.roomix.ui.view.reservation.edit.SubscribeAbleViewModel;
 import de.saxsys.mvvmfx.InjectResourceBundle;
 import de.saxsys.mvvmfx.utils.mapping.ModelWrapper;
 import de.saxsys.mvvmfx.utils.validation.FunctionBasedValidator;
@@ -25,14 +25,11 @@ import java.util.ResourceBundle;
  * <p>
  * Enter Description here
  */
-public class CommentViewModel implements ISubscribeAbleViewModel<CommentPojo> {
+public class CommentViewModel extends SubscribeAbleViewModel<CommentPojo> {
     private static final Logger LOG = LoggerFactory.getLogger(CommentViewModel.class);
 
     @InjectResourceBundle
     private ResourceBundle resourceBundle;
-
-    private ModelWrapper<CommentPojo> pojoWrapper = new ModelWrapper<>();
-
     private Validator commentValidator;
 
     ValidationStatus commentValidation() {
@@ -49,7 +46,7 @@ public class CommentViewModel implements ISubscribeAbleViewModel<CommentPojo> {
     }
 
     void commitChange() {
-        pojoWrapper.commit();
+        commit();
     }
 
     ReadOnlyBooleanProperty isCommitAble() {
@@ -61,14 +58,4 @@ public class CommentViewModel implements ISubscribeAbleViewModel<CommentPojo> {
                 CommentPojo::getComment, CommentPojo::setComment);
     }
 
-    @Override
-    public void subscribe(ObjectProperty<CommentPojo> property) {
-        pojoWrapper.modelProperty().bindBidirectional(property);
-        pojoWrapper.reload();
-    }
-
-    @Override
-    public void unSubscribe() {
-        pojoWrapper.modelProperty().unbind();
-    }
 }
