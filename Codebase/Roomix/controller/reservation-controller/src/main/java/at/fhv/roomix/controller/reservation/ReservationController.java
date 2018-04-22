@@ -12,7 +12,9 @@ import at.fhv.roomix.persist.factory.*;
 import at.fhv.roomix.persist.model.*;
 import org.modelmapper.ModelMapper;
 
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -75,10 +77,24 @@ class ReservationController implements IReservationController {
     @Override
     public Collection<PricePojo> getPrice(long sessionId, ReservationUnitPojo reservationUnit, ContactPojo contractingParty) throws SessionFaultException {
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
+        if (contractingParty == null) {
+            contractingParty = new ContactPojo();
+            contractingParty.setContactId(0);
+        }
 
-
-
-        return new HashSet<>();
+        RoomCategoryPojo roomCategoryPojo = reservationUnit.getRoomCategory();
+        IAbstractDomainBuilder<RoomCategoryDomain,RoomCategoryEntity> roomCategoryBuilder = RoomCategoryDomainBuilder.getInstance();
+        ModelMapper modelMapper = new ModelMapper();
+        GuestDomain guestDomain = modelMapper.map(contractingParty, GuestDomain.class);
+        RoomCategoryDomain roomCategoryDomain = roomCategoryBuilder.get(roomCategoryPojo.getId());
+        HashSet<PricePojo> pricePojoSet = new HashSet<>();
+        PricePojo pricePojo = new PricePojo();
+        
+        roomCategoryDomain.setCategoryMetaData(reservationUnit.getStartDate(),reservationUnit.getEndDate(), guestDomain);
+        int price = roomCategoryDomain.getMetaData().getPricePerDay()*(int)Duration.ofDays(ChronoUnit.DAYS.between(reservationUnit.getStartDate(),reservationUnit.getEndDate())).toDays();
+        pricePojo.setPrice(price);
+        pricePojoSet.add(pricePojo);
+        return pricePojoSet;
     }
 
     @Override
@@ -101,7 +117,7 @@ class ReservationController implements IReservationController {
             roomCategoryPojo.setOccupied(roomCategoryDomain.getMetaData().getNumberOfOccupiedRooms());
             roomCategoryPojo.setUnconfirmedReservation(roomCategoryDomain.getMetaData().getNumberOfUnconfirmedReservations());
             roomCategoryPojo.setConfirmedReservation(roomCategoryDomain.getMetaData().getNumberOfConfirmedReservations());
-            roomCategoryPojo.setFree(roomCategoryDomain.getMetaData().getNumbersOfAllRooms()-
+            roomCategoryPojo.setFree(roomCategoryDomain.getMetaData().getTotalNumberOfRooms()-
                                      roomCategoryDomain.getMetaData().getNumberOfConfirmedReservations()-
                                      roomCategoryDomain.getMetaData().getNumberOfOccupiedRooms()-
                                      roomCategoryDomain.getMetaData().getNumberOfUnconfirmedReservations());
@@ -129,7 +145,7 @@ class ReservationController implements IReservationController {
     @Override
     public Collection<ArrangementPojo> getAllArrangement(long sessionId) throws SessionFaultException {
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
-        /*IAbstractDomainBuilder<ArrangementDomain, ArrangementEntity> arrangementBuilder = ArrangementDomainBuilder.getInstance();
+        IAbstractDomainBuilder<ArrangementDomain, ArrangementEntity> arrangementBuilder = ArrangementDomainBuilder.getInstance();
         ModelMapper modelMapper = new ModelMapper();
         HashSet<ArrangementDomain> arrangementDomainSet = new HashSet<>(arrangementBuilder.getAll());
         HashSet<ArrangementPojo> arrangementPojoSet = new HashSet<>();
@@ -137,15 +153,14 @@ class ReservationController implements IReservationController {
         arrangementDomainSet.forEach(arrangement -> {
                 ArrangementPojo arrangementPojo = modelMapper.map(arrangement, ArrangementPojo.class);
                 PricePojo price = new PricePojo();
-                price.setPrice(arrangement.getPrice());
+                price.setPrice(arrangement.getArrangementPrice());
                 DiscountPojo discount = new DiscountPojo();
                 discount.setDiscount(arrangement.getDiscount());
                 arrangementPojo.setDiscount(discount);
                 arrangementPojo.setPrice(price);
                 arrangementPojoSet.add(arrangementPojo);
-        }
-        return arrangementPojoSet;*/
-        return new HashSet<>();
+        });
+        return arrangementPojoSet;
     }
 
     @Override
