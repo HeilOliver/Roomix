@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 
 import static at.fhv.roomix.controller.common.validator.Validator.validate;
 
-
 /**
  * Roomix
  * at.fhv.roomix.controller.session
@@ -62,6 +61,7 @@ class ReservationController implements IReservationController {
         Set<ReservationPojo> resultSet = new HashSet<>(reservationPojoSet);
         for (String splitedQuery : split) {
             resultSet = resultSet.stream()
+                    // TODO master oli, collection in einer collection suchen mit viel for und so?!
                     .filter(c -> c.getContractingParty().toString().toLowerCase().contains(splitedQuery) ||
                             c.getPersons().toString().toLowerCase().contains(splitedQuery) ||
                             c.getComment().toString().toLowerCase().contains(splitedQuery) ||
@@ -78,7 +78,7 @@ class ReservationController implements IReservationController {
 
 
 
-        return null;
+        return new HashSet<>();
     }
 
     @Override
@@ -145,7 +145,7 @@ class ReservationController implements IReservationController {
                 arrangementPojoSet.add(arrangementPojo);
         }
         return arrangementPojoSet;*/
-        return null;
+        return new HashSet<>();
     }
 
     @Override

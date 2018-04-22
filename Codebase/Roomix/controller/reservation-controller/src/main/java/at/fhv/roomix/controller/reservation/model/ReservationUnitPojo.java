@@ -1,5 +1,6 @@
 package at.fhv.roomix.controller.reservation.model;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Collection;
@@ -14,9 +15,12 @@ import java.util.HashSet;
  * Enter Description here
  */
 public class ReservationUnitPojo {
+
     private int id;
+    @NotNull(message = "roomCategory cannot be null")
     private RoomCategoryPojo roomCategory;
     private int amount;
+    @NotNull(message = "price cannot be null")
     private PricePojo price;
 
     private Collection<ArrangementPojo> arrangements;

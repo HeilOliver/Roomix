@@ -1,5 +1,8 @@
 package at.fhv.roomix.controller.reservation.model;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 /**
  * Roomix
  * at.fhv.roomix.controller.reservation.model
@@ -12,6 +15,9 @@ package at.fhv.roomix.controller.reservation.model;
 public class RoomCategoryPojo {
 
     private int id;
+
+    @NotNull(message = "description cannot be null")
+    @Size(min = 1, max = 200, message = "Description must be between 1 and 200 characters")
     private String description;
     private int occupied;
     private int unconfirmedReservation;

@@ -2,7 +2,7 @@ package at.fhv.roomix.controller.reservation.model;
 
 import at.fhv.roomix.controller.contact.model.ContactPojo;
 
-import javax.xml.stream.events.Comment;
+import javax.validation.constraints.NotNull;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -15,12 +15,17 @@ import java.util.HashSet;
  * Enter Description here
  */
 public class ReservationPojo {
-    private int id;
-    private CommentPojo comment;
 
+    private int id;
+    @NotNull(message = "comment cannot be null")
+    private CommentPojo comment;
+    @NotNull(message = "contractingParty cannot be null")
     private ContactPojo contractingParty;
+    @NotNull(message = "units cannot be null")
     private Collection<ReservationUnitPojo> units;
+
     private Collection<ReservationOptionPojo> options;
+    @NotNull(message = "persons cannot be null")
     private Collection<ContactPojo> persons;
 
     public ReservationPojo() {
@@ -36,7 +41,6 @@ public class ReservationPojo {
     public void setId(int id) {
         this.id = id;
     }
-
 
     public ContactPojo getContractingParty() {
         return contractingParty;
