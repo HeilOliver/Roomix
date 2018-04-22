@@ -1,5 +1,8 @@
 package at.fhv.roomix.controller.reservation.model;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 /**
  * Roomix
  * at.fhv.roomix.controller.reservation.model
@@ -12,10 +15,14 @@ package at.fhv.roomix.controller.reservation.model;
 public class RoomCategoryPojo {
 
     private int id;
-    private String discription;
+
+    @NotNull(message = "description cannot be null")
+    @Size(min = 1, max = 200, message = "Description must be between 1 and 200 characters")
+    private String description;
     private int occupied;
     private int unconfirmedReservation;
     private int free;
+    private int confirmedReservation;
     private int quota;
 
 
@@ -27,12 +34,12 @@ public class RoomCategoryPojo {
         this.id = id;
     }
 
-    public String getDiscription() {
-        return discription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDiscription(String discription) {
-        this.discription = discription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getOccupied() {
@@ -65,5 +72,13 @@ public class RoomCategoryPojo {
 
     public void setQuota(int quota) {
         this.quota = quota;
+    }
+
+    public int getConfirmedReservation() {
+        return confirmedReservation;
+    }
+
+    public void setConfirmedReservation(int confirmedReservation) {
+        this.confirmedReservation = confirmedReservation;
     }
 }

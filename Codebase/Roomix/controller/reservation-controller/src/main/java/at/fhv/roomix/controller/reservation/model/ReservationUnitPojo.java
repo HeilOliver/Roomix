@@ -1,5 +1,6 @@
 package at.fhv.roomix.controller.reservation.model;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Collection;
@@ -14,12 +15,14 @@ import java.util.HashSet;
  * Enter Description here
  */
 public class ReservationUnitPojo {
-    private int id;
-    private int roomCategory;
-    private int amount;
-    private int price;
 
-    private Collection<ReservationOptionPojo> options;
+    private int id;
+    @NotNull(message = "roomCategory cannot be null")
+    private RoomCategoryPojo roomCategory;
+    private int amount;
+    @NotNull(message = "price cannot be null")
+    private PricePojo price;
+
     private Collection<ArrangementPojo> arrangements;
 
     private LocalTime arrivalTime;
@@ -27,7 +30,6 @@ public class ReservationUnitPojo {
     private LocalDate endDate;
 
     public ReservationUnitPojo() {
-        options = new HashSet<>();
         arrangements = new HashSet<>();
     }
 
@@ -39,13 +41,6 @@ public class ReservationUnitPojo {
         this.id = id;
     }
 
-    public int getRoomCategory() {
-        return roomCategory;
-    }
-
-    public void setRoomCategory(int roomCategory) {
-        this.roomCategory = roomCategory;
-    }
 
     public int getAmount() {
         return amount;
@@ -55,13 +50,6 @@ public class ReservationUnitPojo {
         this.amount = amount;
     }
 
-    public Collection<ReservationOptionPojo> getOptions() {
-        return options;
-    }
-
-    public void setOptions(Collection<ReservationOptionPojo> options) {
-        this.options = options;
-    }
 
     public LocalTime getArrivalTime() {
         return arrivalTime;
@@ -95,11 +83,19 @@ public class ReservationUnitPojo {
         this.arrangements = arrangements;
     }
 
-    public int getPrice() {
+    public RoomCategoryPojo getRoomCategory() {
+        return roomCategory;
+    }
+
+    public void setRoomCategory(RoomCategoryPojo roomCategory) {
+        this.roomCategory = roomCategory;
+    }
+
+    public PricePojo getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(PricePojo price) {
         this.price = price;
     }
 }

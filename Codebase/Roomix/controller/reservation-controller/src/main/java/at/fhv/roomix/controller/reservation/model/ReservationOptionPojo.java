@@ -1,5 +1,7 @@
 package at.fhv.roomix.controller.reservation.model;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 /**
@@ -12,11 +14,14 @@ import java.time.LocalDate;
  */
 public class ReservationOptionPojo {
 
-    private LocalDate dueDate;
-    private String description;
     private int id;
-    private int price;
-    private int amount;
+    private LocalDate dueDate;
+
+    @NotNull(message = "description cannot be null")
+    @Size(min = 1, max = 200, message = "Description must be between 1 and 200 characters")
+    private String description;
+    @NotNull(message = "price cannot be null")
+    private PricePojo price;
 
     public int getId() {
         return id;
@@ -42,19 +47,11 @@ public class ReservationOptionPojo {
         this.description = description;
     }
 
-    public int getPrice() {
+    public PricePojo getPrice() {
         return price;
     }
 
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
-    public void setPrice(int price) {
+    public void setPrice(PricePojo price) {
         this.price = price;
     }
 }

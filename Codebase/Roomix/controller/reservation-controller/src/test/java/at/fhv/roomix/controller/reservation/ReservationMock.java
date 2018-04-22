@@ -6,8 +6,9 @@ import at.fhv.roomix.controller.common.exceptions.ValidationFault;
 import at.fhv.roomix.controller.contact.model.ContactPojo;
 import at.fhv.roomix.controller.reservation.model.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Collection;
+import java.util.HashSet;
 
 /**
  * Roomix
@@ -18,6 +19,21 @@ import java.util.Collection;
  * Enter Description here
  */
 public class ReservationMock implements IReservationController {
+
+    private static final Object lock = new Object();
+    private static ReservationMock instance;
+    private Collection<ContactPojo> contactPojos = new HashSet<>();
+
+    public static ReservationMock getInstance() {
+        if (instance != null) return instance;
+        synchronized (lock) {
+            if (instance == null) {
+                instance = new ReservationMock();
+            }
+        }
+        return instance;
+    }
+
     @Override
     public Collection<ReservationPojo> getAllReservation(long sessionId) throws SessionFaultException {
         return null;
@@ -29,37 +45,12 @@ public class ReservationMock implements IReservationController {
     }
 
     @Override
-    public PricePojo getPricebyReservationUnitAndContractingParty(long sessionId, ReservationUnitPojo reservationUnit, ContactPojo contractingParty) throws SessionFaultException {
+    public Collection<PricePojo> getPrice(long sessionId, ReservationUnitPojo reservationUnit, ContactPojo contractingParty) throws SessionFaultException {
         return null;
     }
 
     @Override
-    public Collection<RoomCategoryPojo> getSearchedCategorybyDateAndContract(long sessionId, LocalDateTime startDate, LocalDateTime endDate, ContactPojo contractingParty) throws SessionFaultException {
-        return null;
-    }
-
-    @Override
-    public Collection<ReservationPojo> getSearchedReservationbyContact(long sessionId, ContactPojo contactPojo) throws SessionFaultException {
-        return null;
-    }
-
-    @Override
-    public Collection<ReservationUnitPojo> getAllReservationUnits(long sessionId) throws SessionFaultException {
-        return null;
-    }
-
-    @Override
-    public Collection<ReservationUnitPojo> getSearchedReservationUnit(long sessionId, ReservationPojo reservationPojo) throws SessionFaultException {
-        return null;
-    }
-
-    @Override
-    public Collection<ReservationOptionPojo> getAllReservationOptions(long sessionId) throws SessionFaultException {
-        return null;
-    }
-
-    @Override
-    public Collection<ReservationOptionPojo> getSearchedReservationOptions(long sessionId, ReservationUnitPojo reservationUnitPojo) throws SessionFaultException {
+    public Collection<RoomCategoryPojo> getSearchedCategory(long sessionId, LocalDate startDate, LocalDate endDate, ContactPojo contractingParty) throws SessionFaultException {
         return null;
     }
 
@@ -69,12 +60,12 @@ public class ReservationMock implements IReservationController {
     }
 
     @Override
-    public void updateReservation(long sessionId, ReservationPojo reservationPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException {
-
+    public Collection<ArrangementPojo> getAllArrangement(long sessionId) throws SessionFaultException {
+        return null;
     }
 
     @Override
-    public void updateReservationOption(long sessionId, ReservationOptionPojo reservationOptionPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException {
+    public void updateReservation(long sessionId, ReservationPojo reservationPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException {
 
     }
 }

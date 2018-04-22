@@ -5,24 +5,20 @@ import at.fhv.roomix.controller.common.exceptions.SessionFaultException;
 import at.fhv.roomix.controller.common.exceptions.ValidationFault;
 import at.fhv.roomix.controller.contact.model.ContactPojo;
 import at.fhv.roomix.controller.reservation.model.*;
-import at.fhv.roomix.domain.guest.model.ReservationDomain;
-import at.fhv.roomix.domain.guest.model.ReservationOptionDomain;
-import at.fhv.roomix.domain.guest.model.ReservationUnitDomain;
-import at.fhv.roomix.domain.guest.model.RoomCategoryDomain;
+import at.fhv.roomix.domain.guest.model.*;
 import at.fhv.roomix.domain.session.ISessionDomain;
 import at.fhv.roomix.domain.session.SessionFactory;
 import at.fhv.roomix.persist.factory.*;
 import at.fhv.roomix.persist.model.*;
 import org.modelmapper.ModelMapper;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import static at.fhv.roomix.controller.common.validator.Validator.validate;
-
 
 /**
  * Roomix
@@ -32,6 +28,7 @@ import static at.fhv.roomix.controller.common.validator.Validator.validate;
  * <p>
  * The Implementation for the ReservationController itself
  */
+
 class ReservationController implements IReservationController {
     private final ISessionDomain sessionHandler = SessionFactory.getInstance();
 
@@ -43,9 +40,13 @@ class ReservationController implements IReservationController {
         ModelMapper modelMapper = new ModelMapper();
         HashSet<ReservationDomain> reservationDomainSet = new HashSet<>(reservationBuilder.getAll());
         HashSet<ReservationPojo> reservationPojoSet = new HashSet<>();
-
-        reservationDomainSet.forEach(reservation -> reservationPojoSet.add(modelMapper.map(reservation, ReservationPojo.class)));
-
+        reservationDomainSet.forEach(reservation -> {
+            ReservationPojo reservationPojo = modelMapper.map(reservation, ReservationPojo.class);
+            CommentPojo commentPojo = new CommentPojo();
+            commentPojo.setComment(reservation.getReservationComment());
+            reservationPojo.setComment(commentPojo);
+            reservationPojoSet.add(reservationPojo);
+        });
         return reservationPojoSet;
     }
 
@@ -60,9 +61,10 @@ class ReservationController implements IReservationController {
         Set<ReservationPojo> resultSet = new HashSet<>(reservationPojoSet);
         for (String splitedQuery : split) {
             resultSet = resultSet.stream()
+                    // TODO master oli, collection in einer collection suchen mit viel for und so?!
                     .filter(c -> c.getContractingParty().toString().toLowerCase().contains(splitedQuery) ||
                             c.getPersons().toString().toLowerCase().contains(splitedQuery) ||
-                            c.getComment().toLowerCase().contains(splitedQuery) ||
+                            c.getComment().toString().toLowerCase().contains(splitedQuery) ||
                             c.getUnits().toString().toLowerCase().contains(splitedQuery))
                     .collect(Collectors.toSet());
         }
@@ -71,86 +73,44 @@ class ReservationController implements IReservationController {
     }
 
     @Override
-    public PricePojo getPricebyReservationUnitAndContractingParty(long sessionId, ReservationUnitPojo reservationUnit, ContactPojo contractingParty) throws SessionFaultException {
+    public Collection<PricePojo> getPrice(long sessionId, ReservationUnitPojo reservationUnit, ContactPojo contractingParty) throws SessionFaultException {
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
-        return null;
+
+
+
+        return new HashSet<>();
     }
 
     @Override
-    public Collection<RoomCategoryPojo> getSearchedCategorybyDateAndContract(long sessionId,LocalDateTime startDate, LocalDateTime endDate, ContactPojo contractingParty) throws SessionFaultException {
+    public Collection<RoomCategoryPojo> getSearchedCategory(long sessionId, LocalDate startDate, LocalDate endDate, ContactPojo contractingParty) throws SessionFaultException {
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
+        if (contractingParty == null) {
+            contractingParty = new ContactPojo();
+            contractingParty.setContactId(0);
+        }
         IAbstractDomainBuilder<RoomCategoryDomain,RoomCategoryEntity> roomCategoryBuilder = RoomCategoryDomainBuilder.getInstance();
         ModelMapper modelMapper = new ModelMapper();
+        GuestDomain guestDomain = modelMapper.map(contractingParty, GuestDomain.class);
+        HashSet<RoomCategoryDomain> roomCategoryDomainSet = new HashSet<>(roomCategoryBuilder.getAll());
+        HashSet<RoomCategoryPojo> roomCategoryset = new HashSet<>();
 
-
-        return null;
-    }
-
-    @Override
-    public Collection<ReservationPojo> getSearchedReservationbyContact(long sessionId, ContactPojo contactPojo) throws SessionFaultException {
-        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
-
-        Collection<ReservationPojo> reservationPojoSet = getAllReservation(sessionId);
-
-        int contactId = contactPojo.getContactId();
-
-        Set<ReservationPojo> resultSet = new HashSet<>(reservationPojoSet);
-
-        for (ReservationPojo resPoj : reservationPojoSet) {
-            if (contactId == resPoj.getContractingParty().getContactId()) {
-                resultSet.add(resPoj);
-            }
+        for (RoomCategoryDomain roomCategoryDomain : roomCategoryDomainSet) {
+            roomCategoryDomain.setCategoryMetaData(startDate,endDate, guestDomain);
+            RoomCategoryPojo roomCategoryPojo = new RoomCategoryPojo();
+            roomCategoryPojo.setDescription(roomCategoryDomain.getCategoryDescription());
+            roomCategoryPojo.setOccupied(roomCategoryDomain.getMetaData().getNumberOfOccupiedRooms());
+            roomCategoryPojo.setUnconfirmedReservation(roomCategoryDomain.getMetaData().getNumberOfUnconfirmedReservations());
+            roomCategoryPojo.setConfirmedReservation(roomCategoryDomain.getMetaData().getNumberOfConfirmedReservations());
+            /*roomCategoryPojo.setFree(roomCategoryDomain.getMetaData().getNumbersOfAllRooms()-
+                                     roomCategoryDomain.getMetaData().getNumberOfConfirmedReservations()-
+                                     roomCategoryDomain.getMetaData().getNumberOfOccupiedRooms()-
+                                     roomCategoryDomain.getMetaData().getNumberOfUnconfirmedReservations());*/
+            roomCategoryset.add(roomCategoryPojo);
         }
 
-        return resultSet;
+        return roomCategoryset;
     }
 
-    @Override
-    public Collection<ReservationUnitPojo> getAllReservationUnits(long sessionId) throws SessionFaultException {
-        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
-
-        IAbstractDomainBuilder<ReservationUnitDomain, ReservationUnitEntity> reservationUnitBuilder = ReservationUnitDomainBuilder.getInstance();
-        ModelMapper modelMapper = new ModelMapper();
-        HashSet<ReservationUnitDomain> reservationUnitDomainSet = new HashSet<>(reservationUnitBuilder.getAll());
-        HashSet<ReservationUnitPojo> reservationUnitPojoSet = new HashSet<>();
-
-        reservationUnitDomainSet.forEach(reservationUnit -> reservationUnitPojoSet.add(modelMapper.map(reservationUnit, ReservationUnitPojo.class)));
-
-        return reservationUnitPojoSet;
-    }
-
-    @Override
-    public Collection<ReservationUnitPojo> getSearchedReservationUnit(long sessionId, ReservationPojo reservationPojo) throws SessionFaultException {
-        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
-
-        return reservationPojo.getUnits();
-    }
-
-    @Override
-    public Collection<ReservationOptionPojo> getAllReservationOptions(long sessionId) throws SessionFaultException, ArgumentFaultException {
-        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
-
-        IAbstractDomainBuilder<ReservationOptionDomain, ReservationOptionEntity> reservationOptionBuilder = ReservationOptionDomainBuilder.getInstance();
-        ModelMapper modelMapper = new ModelMapper();
-        HashSet<ReservationOptionDomain> reservationOptionDomainSet = null;
-        if (reservationOptionBuilder != null) {
-            reservationOptionDomainSet = new HashSet<>(reservationOptionBuilder.getAll());
-        } else {
-            throw new ArgumentFaultException();
-        }
-        HashSet<ReservationOptionPojo> reservationOptionPojoSet = new HashSet<>();
-
-        reservationOptionDomainSet.forEach(reservationOption -> reservationOptionPojoSet.add(modelMapper.map(reservationOption, ReservationOptionPojo.class)));
-
-        return reservationOptionPojoSet;
-    }
-
-    @Override
-    public Collection<ReservationOptionPojo> getSearchedReservationOptions(long sessionId, ReservationUnitPojo reservationUnitPojo) throws SessionFaultException {
-        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
-
-        return reservationUnitPojo.getOptions();
-    }
 
     @Override
     public Collection<RoomCategoryPojo> getAllCategory(long sessionId) throws SessionFaultException {
@@ -167,22 +127,25 @@ class ReservationController implements IReservationController {
     }
 
     @Override
-    public void updateReservationOption(long sessionId, ReservationOptionPojo reservationOptionPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException {
-
-        if (reservationOptionPojo == null) throw new ArgumentFaultException();
-        validate(reservationOptionPojo);
+    public Collection<ArrangementPojo> getAllArrangement(long sessionId) throws SessionFaultException {
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
-
-        IAbstractDomainBuilder<ReservationOptionDomain, ReservationOptionEntity> reservationOptionBuilder = ReservationOptionDomainBuilder.getInstance();
+        /*IAbstractDomainBuilder<ArrangementDomain, ArrangementEntity> arrangementBuilder = ArrangementDomainBuilder.getInstance();
         ModelMapper modelMapper = new ModelMapper();
+        HashSet<ArrangementDomain> arrangementDomainSet = new HashSet<>(arrangementBuilder.getAll());
+        HashSet<ArrangementPojo> arrangementPojoSet = new HashSet<>();
 
-        ReservationOptionDomain reservationOptionDomain = modelMapper.map(reservationOptionPojo, ReservationOptionDomain.class);
-
-        if (reservationOptionBuilder != null) {
-            reservationOptionBuilder.set(reservationOptionDomain);
-        } else {
-            throw new ArgumentFaultException();
+        arrangementDomainSet.forEach(arrangement -> {
+                ArrangementPojo arrangementPojo = modelMapper.map(arrangement, ArrangementPojo.class);
+                PricePojo price = new PricePojo();
+                price.setPrice(arrangement.getPrice());
+                DiscountPojo discount = new DiscountPojo();
+                discount.setDiscount(arrangement.getDiscount());
+                arrangementPojo.setDiscount(discount);
+                arrangementPojo.setPrice(price);
+                arrangementPojoSet.add(arrangementPojo);
         }
+        return arrangementPojoSet;*/
+        return new HashSet<>();
     }
 
     @Override
@@ -199,5 +162,4 @@ class ReservationController implements IReservationController {
 
         reservationBuilder.set(reservationDomain);
     }
-
 }

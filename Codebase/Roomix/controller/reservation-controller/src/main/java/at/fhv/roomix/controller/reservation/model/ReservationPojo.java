@@ -2,6 +2,7 @@ package at.fhv.roomix.controller.reservation.model;
 
 import at.fhv.roomix.controller.contact.model.ContactPojo;
 
+import javax.validation.constraints.NotNull;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -14,16 +15,23 @@ import java.util.HashSet;
  * Enter Description here
  */
 public class ReservationPojo {
-    private int id;
-    private String comment;
 
+    private int id;
+    @NotNull(message = "comment cannot be null")
+    private CommentPojo comment;
+    @NotNull(message = "contractingParty cannot be null")
     private ContactPojo contractingParty;
+    @NotNull(message = "units cannot be null")
     private Collection<ReservationUnitPojo> units;
+
+    private Collection<ReservationOptionPojo> options;
+    @NotNull(message = "persons cannot be null")
     private Collection<ContactPojo> persons;
 
     public ReservationPojo() {
         units = new HashSet<>();
         persons = new HashSet<>();
+        options = new HashSet<>();
     }
 
     public int getId() {
@@ -32,14 +40,6 @@ public class ReservationPojo {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
     }
 
     public ContactPojo getContractingParty() {
@@ -66,5 +66,19 @@ public class ReservationPojo {
         this.persons = persons;
     }
 
+    public CommentPojo getComment() {
+        return comment;
+    }
 
+    public void setComment(CommentPojo comment) {
+        this.comment = comment;
+    }
+
+    public Collection<ReservationOptionPojo> getOptions() {
+        return options;
+    }
+
+    public void setOptions(Collection<ReservationOptionPojo> options) {
+        this.options = options;
+    }
 }

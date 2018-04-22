@@ -1,5 +1,8 @@
 package at.fhv.roomix.controller.reservation.model;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 /**
  * Roomix
  * at.fhv.roomix.controller.reservation.model
@@ -10,6 +13,8 @@ package at.fhv.roomix.controller.reservation.model;
  */
 public class CommentPojo {
 
+    @NotNull(message = "comment cannot be null")
+    @Size(min = 1, max = 500, message = "Comment must be between 1 and 500 characters")
     private String comment;
 
     public String getComment() {
