@@ -21,17 +21,17 @@ public class ReservationPojo {
     private CommentPojo comment;
     @NotNull(message = "contractingParty cannot be null")
     private ContactPojo contractingParty;
-    @NotNull(message = "units cannot be null")
-    private Collection<ReservationUnitPojo> units;
+    @NotNull(message = "reservationUnit cannot be null")
+    private Collection<ReservationUnitPojo> reservationUnit;
 
-    private Collection<ReservationOptionPojo> options;
+    private Collection<ReservationOptionPojo> reservationOption;
     @NotNull(message = "persons cannot be null")
     private Collection<ContactPojo> persons;
 
     public ReservationPojo() {
-        units = new HashSet<>();
+        reservationUnit = new HashSet<>();
         persons = new HashSet<>();
-        options = new HashSet<>();
+        reservationOption = new HashSet<>();
     }
 
     public int getId() {
@@ -50,12 +50,12 @@ public class ReservationPojo {
         this.contractingParty = contractingParty;
     }
 
-    public Collection<ReservationUnitPojo> getUnits() {
-        return units;
+    public Collection<ReservationUnitPojo> getReservationUnit() {
+        return reservationUnit;
     }
 
-    public void setUnits(Collection<ReservationUnitPojo> units) {
-        this.units = units;
+    public void setReservationUnit(Collection<ReservationUnitPojo> reservationUnit) {
+        this.reservationUnit = reservationUnit;
     }
 
     public Collection<ContactPojo> getPersons() {
@@ -74,11 +74,11 @@ public class ReservationPojo {
         this.comment = comment;
     }
 
-    public Collection<ReservationOptionPojo> getOptions() {
-        return options;
+    public Collection<ReservationOptionPojo> getReservationOption() {
+        return reservationOption;
     }
 
-    public void setOptions(Collection<ReservationOptionPojo> options) {
-        this.options = options;
+    public void setReservationOption(Collection<ReservationOptionPojo> reservationOption) {
+        this.reservationOption = reservationOption;
     }
 }

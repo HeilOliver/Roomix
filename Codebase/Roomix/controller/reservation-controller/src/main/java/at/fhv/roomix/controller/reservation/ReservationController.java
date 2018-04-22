@@ -67,7 +67,7 @@ class ReservationController implements IReservationController {
                     .filter(c -> c.getContractingParty().toString().toLowerCase().contains(splitedQuery) ||
                             c.getPersons().toString().toLowerCase().contains(splitedQuery) ||
                             c.getComment().toString().toLowerCase().contains(splitedQuery) ||
-                            c.getUnits().toString().toLowerCase().contains(splitedQuery))
+                            c.getReservationUnit().toString().toLowerCase().contains(splitedQuery))
                     .collect(Collectors.toSet());
         }
 
