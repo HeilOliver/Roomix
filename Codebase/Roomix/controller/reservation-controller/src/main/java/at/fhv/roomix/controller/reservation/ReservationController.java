@@ -170,10 +170,14 @@ class ReservationController implements IReservationController {
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
 
         IAbstractDomainBuilder<ReservationDomain, ReservationEntity> reservationBuilder = ReservationDomainBuilder.getInstance();
+
+        GuestDomain guestDomain = GuestDomainBuilder.getInstance().get(reservationPojo.getContractingParty().getContactId());
+        ContractingPartyDomain contractingPartyDomain = guestDomain.getContractingPartiesByContactId().iterator().next();
+
         ModelMapper modelMapper = new ModelMapper();
-
         ReservationDomain reservationDomain = modelMapper.map(reservationPojo, ReservationDomain.class);
-
+        reservationDomain.setContractingPartyByContractingParty(contractingPartyDomain);
+        
         reservationBuilder.set(reservationDomain);
     }
 }
