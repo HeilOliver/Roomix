@@ -20,6 +20,7 @@ public class ReservationOptionEntity {
     private Collection<ReservationEntity> reservationsByOptionId;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "OptionID")
     public int getOptionId() {
         return optionId;

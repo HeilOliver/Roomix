@@ -8,6 +8,7 @@ public class RoomCategoryMetaData {
     private int totalNumberOfRooms;
 
     private int pricePerDay;
+    private int noOfDays;
     private int agreementDiscount = 0; // percent (0-100)
 
     private int contingent;
@@ -67,5 +68,14 @@ public class RoomCategoryMetaData {
     public void setContingent(int contingent) {
         this.contingent = contingent;
     }
+
+    public int getNoOfDays() {
+        return noOfDays;
+    }
+
+    public void setNoOfDays(int noOfDays) {
+        this.noOfDays = noOfDays;
+    }
+
 
 }

@@ -24,6 +24,7 @@ public class RoomCategoryEntity {
     private Collection<RoomCategoryPriceEntity> roomCategoryPricesByRoomCategoryId;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "RoomCategoryID")
     public int getRoomCategoryId() {
         return roomCategoryId;

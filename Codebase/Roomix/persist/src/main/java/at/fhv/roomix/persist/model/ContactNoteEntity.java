@@ -16,6 +16,7 @@ public class ContactNoteEntity {
     private ContactEntity contactByContact;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ContactNoteID")
     public int getContactNoteId() {
         return contactNoteId;

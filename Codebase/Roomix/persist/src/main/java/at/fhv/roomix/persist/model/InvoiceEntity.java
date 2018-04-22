@@ -21,6 +21,7 @@ public class InvoiceEntity {
     private Collection<PaymentEntity> paymentsByInvoiceId;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "InvoiceID")
     public int getInvoiceId() {
         return invoiceId;

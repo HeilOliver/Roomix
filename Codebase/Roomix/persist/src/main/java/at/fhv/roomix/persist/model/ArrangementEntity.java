@@ -21,6 +21,7 @@ public class ArrangementEntity {
     private Collection<InvoicePositionEntity> invoicePositionsByArrangementId;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ArrangementID")
     public int getArrangementId() {
         return arrangementId;

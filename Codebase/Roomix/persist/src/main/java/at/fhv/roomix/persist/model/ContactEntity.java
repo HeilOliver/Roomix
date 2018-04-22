@@ -30,6 +30,7 @@ public class ContactEntity {
     private Collection<PersonEntity> peopleByContactId;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ContactID")
     public int getContactId() {
         return contactId;
