@@ -34,5 +34,10 @@
                 <FontAwesomeIconView glyphName="EDIT" size="2em"/>
             </graphic>
         </Button>
+        <Button fx:id="btnPrint" onAction="#buttonPrintClick" text="%main.edit" prefWidth="120">
+            <graphic>
+                <FontAwesomeIconView glyphName="EDIT" size="2em"/>
+            </graphic>
+        </Button>
     </HBox>
 </AnchorPane>

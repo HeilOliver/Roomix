@@ -14,6 +14,7 @@ import at.fhv.roomix.ui.dataprovider.ReservationProvider;
  * Enter Description here
  */
 public class ReservationViewScope extends AbstractMasterEditScope<ReservationPojo> {
+    public static final String commandPrint = "Command_Print";
 
     public ReservationViewScope() {
         super(ReservationPojo::new, new ReservationProvider());

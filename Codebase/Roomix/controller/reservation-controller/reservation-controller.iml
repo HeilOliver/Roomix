@@ -42,6 +42,8 @@
     <orderEntry type="library" name="Maven: org.glassfish:javax.el:3.0.1-b09" level="project" />
     <orderEntry type="library" name="Maven: common:at.fhv.roomix.controller:1.0-SNAPSHOT" level="project" />
     <orderEntry type="module" module-name="session-domain" />
+    <orderEntry type="library" name="Maven: org.aeonbits.owner:owner-java8:1.0.6" level="project" />
+    <orderEntry type="library" name="Maven: org.aeonbits.owner:owner:1.0.6" level="project" />
     <orderEntry type="module" module-name="common" />
   </component>
 </module>

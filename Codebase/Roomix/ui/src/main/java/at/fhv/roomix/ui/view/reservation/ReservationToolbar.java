@@ -33,6 +33,8 @@ public class ReservationToolbar implements FxmlView<ReservationToolbarViewModel>
     private Button btnSave;
     @FXML
     private Button btnCancel;
+    @FXML
+    private Button btnPrint;
 
     public void initialize() {
         icoLoadProcess.visibleProperty().bind(viewModel.getInProcessProperty());
@@ -53,6 +55,10 @@ public class ReservationToolbar implements FxmlView<ReservationToolbarViewModel>
 
         btnCancel.visibleProperty().bind(viewModel.inEditViewProperty());
         btnCancel.managedProperty().bind(viewModel.inEditViewProperty());
+
+        btnPrint.visibleProperty().bind(viewModel.inEditViewProperty().not());
+        btnPrint.disableProperty().bind(viewModel.editAbleProperty());
+        btnPrint.managedProperty().bind(viewModel.inEditViewProperty().not());
     }
 
     @FXML
@@ -73,5 +79,10 @@ public class ReservationToolbar implements FxmlView<ReservationToolbarViewModel>
     @FXML
     private void buttonCancel_Click(ActionEvent actionEvent) {
         viewModel.onCancel();
+    }
+
+    @FXML
+    private void buttonPrintClick(ActionEvent actionEvent) {
+        viewModel.onPrint();
     }
 }

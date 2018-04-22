@@ -38,10 +38,12 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
 
     private final ReadOnlyReservationProvider provider;
     private final ObservableList<CategoryItemViewModel> roomCategories;
+
     @InjectResourceBundle
     private ResourceBundle resourceBundle;
     @InjectScope
     private ReservationEditScope scope;
+
     private StringProperty duration = new SimpleStringProperty();
     private CompositeValidator formValidator = new CompositeValidator();
     private StringProperty arrivalTime = new SimpleStringProperty();

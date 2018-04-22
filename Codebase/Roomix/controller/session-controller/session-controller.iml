@@ -13,6 +13,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:6.0.6" level="project" />
     <orderEntry type="module" module-name="session-domain" />
+    <orderEntry type="library" name="Maven: org.aeonbits.owner:owner-java8:1.0.6" level="project" />
+    <orderEntry type="library" name="Maven: org.aeonbits.owner:owner:1.0.6" level="project" />
     <orderEntry type="module" module-name="persist" />
     <orderEntry type="module" module-name="domain" />
     <orderEntry type="module" module-name="guest-domain" />

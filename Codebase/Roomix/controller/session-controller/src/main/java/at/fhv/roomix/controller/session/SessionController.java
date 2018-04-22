@@ -5,6 +5,8 @@ import at.fhv.roomix.controller.session.model.SessionPojo;
 import at.fhv.roomix.domain.session.ISessionDomain;
 import at.fhv.roomix.domain.session.InvalidUserPasswordCombination;
 import at.fhv.roomix.domain.session.SessionFactory;
+import at.fhv.roomix.domain.session.configuration.ConfigurationLoader;
+import at.fhv.roomix.domain.session.configuration.IUiConfiguration;
 import at.fhv.roomix.domain.session.model.RoomixSession;
 import at.fhv.roomix.persist.HibernateSessionFactory;
 import org.apache.log4j.Logger;
@@ -60,5 +62,10 @@ class SessionController implements ISessionController {
         } else {
             session.close();
         }
+    }
+
+    @Override
+    public IUiConfiguration getUiConfiguration() {
+        return ConfigurationLoader.getUiConfiguration();
     }
 }

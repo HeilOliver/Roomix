@@ -88,6 +88,7 @@ public class ItemControlViewModel<T> implements ViewModel {
     }
 
     void selectMe() {
+        if (isSelected.get()) return;
         scope.select(this);
     }
 

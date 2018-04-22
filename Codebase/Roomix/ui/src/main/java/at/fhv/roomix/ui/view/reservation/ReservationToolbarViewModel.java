@@ -22,5 +22,7 @@ public class ReservationToolbarViewModel extends AbstractToolbar<ReservationView
         super.initialize(viewScope);
     }
 
-
+    void onPrint() {
+        viewScope.publish(ReservationViewScope.commandPrint);
+    }
 }
