@@ -19,6 +19,7 @@ public class ContractingPartyEntity {
     private Collection<ReservationEntity> reservationsByContractingPartyId;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ContractingPartyID")
     public int getContractingPartyId() {
         return contractingPartyId;

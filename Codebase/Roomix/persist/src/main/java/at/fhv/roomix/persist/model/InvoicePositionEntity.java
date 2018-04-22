@@ -30,6 +30,7 @@ public class InvoicePositionEntity {
     private ArrangementEntity arrangementByArrangement;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "InvoicePositionID")
     public int getInvoicePositionId() {
         return invoicePositionId;
