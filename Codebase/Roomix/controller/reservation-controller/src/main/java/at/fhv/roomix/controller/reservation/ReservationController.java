@@ -101,10 +101,10 @@ class ReservationController implements IReservationController {
             roomCategoryPojo.setOccupied(roomCategoryDomain.getMetaData().getNumberOfOccupiedRooms());
             roomCategoryPojo.setUnconfirmedReservation(roomCategoryDomain.getMetaData().getNumberOfUnconfirmedReservations());
             roomCategoryPojo.setConfirmedReservation(roomCategoryDomain.getMetaData().getNumberOfConfirmedReservations());
-            /*roomCategoryPojo.setFree(roomCategoryDomain.getMetaData().getNumbersOfAllRooms()-
+            roomCategoryPojo.setFree(roomCategoryDomain.getMetaData().getNumbersOfAllRooms()-
                                      roomCategoryDomain.getMetaData().getNumberOfConfirmedReservations()-
                                      roomCategoryDomain.getMetaData().getNumberOfOccupiedRooms()-
-                                     roomCategoryDomain.getMetaData().getNumberOfUnconfirmedReservations());*/
+                                     roomCategoryDomain.getMetaData().getNumberOfUnconfirmedReservations());
             roomCategoryset.add(roomCategoryPojo);
         }
 
