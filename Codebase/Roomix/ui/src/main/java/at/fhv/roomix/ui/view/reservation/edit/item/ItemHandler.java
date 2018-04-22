@@ -2,6 +2,7 @@ package at.fhv.roomix.ui.view.reservation.edit.item;
 
 import at.fhv.roomix.ui.view.reservation.edit.SubscribeAbleViewModel;
 import de.saxsys.mvvmfx.FxmlView;
+import de.saxsys.mvvmfx.Scope;
 import javafx.beans.property.*;
 import javafx.scene.Parent;
 
@@ -22,11 +23,23 @@ public abstract class ItemHandler<T> {
     private final ObjectProperty<Parent> currentView;
     protected BooleanProperty addAble = new SimpleBooleanProperty();
 
+
     public <ViewType extends FxmlView<? extends SubscribeAbleViewModel<T>>>
     ItemHandler(Class<? extends ViewType> viewType, IContentBuilder<T> contentBuilder,
                 ObjectProperty<ItemControlViewModel> currentSelection,
                 ObjectProperty<Parent> currentView, Supplier<T> emptyPojoSupplier) {
-        viewTuple = new DetailViewTuple<>(viewType);
+        this(viewType, contentBuilder, currentSelection, currentView, emptyPojoSupplier, null);
+    }
+
+    public <ViewType extends FxmlView<? extends SubscribeAbleViewModel<T>>>
+    ItemHandler(Class<? extends ViewType> viewType, IContentBuilder<T> contentBuilder,
+                ObjectProperty<ItemControlViewModel> currentSelection,
+                ObjectProperty<Parent> currentView, Supplier<T> emptyPojoSupplier, Scope providedScope) {
+        if (providedScope == null) {
+            viewTuple = new DetailViewTuple<>(viewType);
+        } else {
+            viewTuple = new DetailViewTuple<>(viewType, providedScope);
+        }
         this.emptyPojoSupplier = emptyPojoSupplier;
         this.contentBuilder = contentBuilder;
         this.currentSelection = currentSelection;

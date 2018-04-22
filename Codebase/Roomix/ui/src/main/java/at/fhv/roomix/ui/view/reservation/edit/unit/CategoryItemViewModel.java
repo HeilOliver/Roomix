@@ -5,10 +5,7 @@ import de.saxsys.mvvmfx.InjectResourceBundle;
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import org.controlsfx.control.SegmentedBar;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -21,12 +18,12 @@ import java.util.ResourceBundle;
  */
 public class CategoryItemViewModel implements ViewModel {
 
+    private final RoomCategoryPojo pojo;
+
     @InjectResourceBundle
     private ResourceBundle resourceBundle;
 
-    private List<SegmentedBar.Segment> segments = new ArrayList<>();
-
-    private final RoomCategoryPojo pojo;
+    private StringProperty content = new SimpleStringProperty();
 
     public CategoryItemViewModel(RoomCategoryPojo pojo) {
         this.pojo = pojo;
@@ -49,12 +46,6 @@ public class CategoryItemViewModel implements ViewModel {
     public void initialize() {
 
     }
-
-    List<SegmentedBar.Segment> getSegments() {
-        return segments;
-    }
-
-    private StringProperty content = new SimpleStringProperty();
 
     public StringProperty contentProperty() {
         return content;

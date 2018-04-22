@@ -1,6 +1,7 @@
 package at.fhv.roomix.ui.dataprovider;
 
 import at.fhv.roomix.controller.contact.model.ContactPojo;
+import at.fhv.roomix.controller.reservation.model.ArticlePojo;
 import at.fhv.roomix.controller.reservation.model.RoomCategoryPojo;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -20,6 +21,7 @@ import java.time.LocalDate;
 public class ReadOnlyReservationProvider extends AbstractProvider {
 
     private ObservableList<RoomCategoryPojo> possibleCategories = FXCollections.observableArrayList();
+    private ObservableList<ArticlePojo> possibleArticles = FXCollections.observableArrayList();
 
     public void loadCategories(LocalDate from, LocalDate till, ContactPojo contractingParty) {
         possibleCategories.clear();
@@ -45,6 +47,8 @@ public class ReadOnlyReservationProvider extends AbstractProvider {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            // TODO Wy???
+            Platform.setImplicitExit(false);
             Platform.runLater(() -> {
                 possibleCategories.add(CatA);
                 possibleCategories.add(CatB);
@@ -52,7 +56,40 @@ public class ReadOnlyReservationProvider extends AbstractProvider {
         }).start();
     }
 
+    public void loadArticles() {
+        possibleCategories.clear();
+        new Thread(() -> {
+            ArticlePojo ArtA = new ArticlePojo();
+            ArtA.setAmount(356);
+            ArtA.setDiscription("HalloWelt");
+
+            ArticlePojo ArtB = new ArticlePojo();
+            ArtB.setAmount(356);
+            ArtB.setDiscription("HalloWelt");
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            // TODO Wy???
+            Platform.setImplicitExit(false);
+            Platform.runLater(() -> {
+                possibleArticles.add(ArtA);
+                possibleArticles.add(ArtB);
+            });
+        }).start();
+    }
+
     public ObservableList<RoomCategoryPojo> getPossibleCategories() {
         return possibleCategories;
+    }
+
+    public ObservableList<ArticlePojo> getPossibleArticles() {
+        return possibleArticles;
+    }
+
+    public void clear() {
+        possibleCategories.clear();
+        possibleArticles.clear();
     }
 }

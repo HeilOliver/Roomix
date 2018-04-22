@@ -1,19 +1,21 @@
 package at.fhv.roomix.ui.view.reservation.edit.unit;
 
+import at.fhv.roomix.controller.reservation.model.ArticlePojo;
 import at.fhv.roomix.controller.reservation.model.ReservationUnitPojo;
 import at.fhv.roomix.controller.reservation.model.RoomCategoryPojo;
 import at.fhv.roomix.ui.common.StringResourceResolver;
 import at.fhv.roomix.ui.common.validator.DateValidator;
 import at.fhv.roomix.ui.dataprovider.ReadOnlyReservationProvider;
+import at.fhv.roomix.ui.view.reservation.edit.ReservationEditScope;
 import at.fhv.roomix.ui.view.reservation.edit.SubscribeAbleViewModel;
 import de.saxsys.mvvmfx.InjectResourceBundle;
+import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.utils.itemlist.ListTransformation;
 import de.saxsys.mvvmfx.utils.validation.CompositeValidator;
 import de.saxsys.mvvmfx.utils.validation.FunctionBasedValidator;
 import de.saxsys.mvvmfx.utils.validation.ValidationMessage;
 import de.saxsys.mvvmfx.utils.validation.Validator;
 import javafx.beans.property.*;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 
 import java.time.Duration;
@@ -34,17 +36,33 @@ import java.util.ResourceBundle;
  */
 public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
 
+    private final ReadOnlyReservationProvider provider;
+    private final ObservableList<CategoryItemViewModel> roomCategories;
     @InjectResourceBundle
     private ResourceBundle resourceBundle;
+    @InjectScope
+    private ReservationEditScope scope;
     private StringProperty duration = new SimpleStringProperty();
-
     private CompositeValidator formValidator = new CompositeValidator();
+    private StringProperty arrivalTime = new SimpleStringProperty();
+    private ObservableList<PacketsItemViewModel> articleList;
+
+    public UnitViewModel() {
+        provider = new ReadOnlyReservationProvider();
+
+        ListTransformation<RoomCategoryPojo, CategoryItemViewModel> transRoomCategory
+                = new ListTransformation<>(provider.getPossibleCategories(), CategoryItemViewModel::new);
+        roomCategories = transRoomCategory.getTargetList();
+
+        ListTransformation<ArticlePojo, PacketsItemViewModel> transArticle
+                = new ListTransformation<>(provider.getPossibleArticles(), PacketsItemViewModel::new);
+        articleList = transArticle.getTargetList();
+    }
 
     ObjectProperty<LocalDate> arrivalDateProperty() {
         return pojoWrapper.field("arrivalDate",
                 ReservationUnitPojo::getStartDate, ReservationUnitPojo::setStartDate);
     }
-    private final ReadOnlyReservationProvider provider;
 
     ObjectProperty<LocalDate> departureDateProperty() {
         return pojoWrapper.field("departureDate",
@@ -61,7 +79,6 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
                 ReservationUnitPojo::getArrivalTime, ReservationUnitPojo::setArrivalTime);
     }
 
-    private StringProperty arrivalTime = new SimpleStringProperty();
     StringProperty arrivalTimeProperty() {
         return arrivalTime;
     }
@@ -79,9 +96,8 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
         Duration days = Duration.ofDays(ChronoUnit.DAYS.between(arrivalDateProperty().get(), departureDateProperty().get()));
         duration.setValue(days.toDays() + " " + StringResourceResolver.getStaticResolve(resourceBundle, "reservation.days"));
 
-        provider.loadCategories(arrivalDateProperty().get(), departureDateProperty().get(), null);
+        provider.loadCategories(arrivalDateProperty().get(), departureDateProperty().get(), scope.getCurrContractingParty());
     }
-
 
     public void initialize() {
         arrivalDateProperty().addListener((observable) -> calculateDuration());
@@ -92,7 +108,7 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
             String trimmedString = newValue.trim();
 
             if (trimmedString.isEmpty()) return;
-            if (!trimmedString.matches("^(\\d)+$")){
+            if (!trimmedString.matches("^(\\d)+$")) {
                 arrivalTime.setValue(oldValue);
                 return;
             }
@@ -125,20 +141,15 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
         isValid = formValidator.getValidationStatus().validProperty();
     }
 
-    public UnitViewModel() {
-        provider = new ReadOnlyReservationProvider();
-
-        ListTransformation<RoomCategoryPojo, CategoryItemViewModel> transformation
-                = new ListTransformation<>(provider.getPossibleCategories(), CategoryItemViewModel::new);
-        roomCategories = transformation.getTargetList();
-
-        roomCategories.addListener((ListChangeListener<? super CategoryItemViewModel>)  observable -> {
-            observable.toString();
-        });
-
+    @Override
+    protected void afterSubscribe(boolean isNew) {
+        provider.clear();
+        provider.loadArticles();
     }
 
-    private final ObservableList<CategoryItemViewModel> roomCategories;
+    public ObservableList<PacketsItemViewModel> getArticleList() {
+        return articleList;
+    }
 
     ObservableList<CategoryItemViewModel> getRoomCategories() {
         return roomCategories;

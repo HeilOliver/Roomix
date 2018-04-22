@@ -46,13 +46,11 @@
         <HBox spacing="50">
             <VBox>
                 <Label text="Categories"/>
-                <ListView prefHeight="200" fx:id="listCategories">
-                </ListView>
+                <ListView prefHeight="200" fx:id="listCategories"/>
             </VBox>
             <VBox>
                 <Label text="Options"/>
-                <CheckListView prefHeight="200">
-                </CheckListView>
+                <ListView prefHeight="200" fx:id="listPackets"/>
             </VBox>
         </HBox>
         <Separator/>

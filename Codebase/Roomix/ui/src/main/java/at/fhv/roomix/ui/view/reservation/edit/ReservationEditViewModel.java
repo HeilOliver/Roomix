@@ -16,6 +16,7 @@ import at.fhv.roomix.ui.view.reservation.edit.unit.UnitView;
 import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
 import de.saxsys.mvvmfx.InjectResourceBundle;
 import de.saxsys.mvvmfx.InjectScope;
+import de.saxsys.mvvmfx.ScopeProvider;
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.ReadOnlyBooleanProperty;
@@ -48,7 +49,16 @@ public class ReservationEditViewModel implements ViewModel {
     @InjectScope
     private ReservationViewScope viewScope;
 
+    private final ReservationEditScope editScope = new ReservationEditScope();
+
     public void initialize() {
+        contractingPartyHandler.currentItem().addListener((observable, oldValue, newValue) -> {
+            if (newValue == null) {
+                editScope.currContractingPartyProperty().setValue(null);
+            } else {
+                editScope.currContractingPartyProperty().setValue(newValue.getPojo());
+            }
+        });
     }
 
     //region ContractingParty
@@ -128,7 +138,7 @@ public class ReservationEditViewModel implements ViewModel {
     });
 
     private final ItemHandlerList<ReservationUnitPojo> unitHandler = new ItemHandlerList<>(
-            UnitView.class, unitBuilder, currentSelection, currentView, ReservationUnitPojo::new
+            UnitView.class, unitBuilder, currentSelection, currentView, ReservationUnitPojo::new, editScope
     );
 
     ObservableList<ItemControlViewModel> getUnitControls() {

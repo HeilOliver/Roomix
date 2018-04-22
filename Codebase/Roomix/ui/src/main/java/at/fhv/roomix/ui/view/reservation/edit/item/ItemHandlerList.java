@@ -2,6 +2,7 @@ package at.fhv.roomix.ui.view.reservation.edit.item;
 
 import at.fhv.roomix.ui.view.reservation.edit.SubscribeAbleViewModel;
 import de.saxsys.mvvmfx.FxmlView;
+import de.saxsys.mvvmfx.Scope;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -27,6 +28,14 @@ public class ItemHandlerList<T> extends ItemHandler<T> {
     ItemHandlerList(Class<? extends ViewType> viewType, IContentBuilder<T> contentBuilder,
                     ObjectProperty<ItemControlViewModel> currentSelection, ObjectProperty<Parent> currentView, Supplier<T> emptyTypeSupplier) {
         this(viewType,contentBuilder, currentSelection, currentView, emptyTypeSupplier, Integer.MAX_VALUE);
+    }
+
+    public <ViewType extends FxmlView<? extends SubscribeAbleViewModel<T>>>
+    ItemHandlerList(Class<? extends ViewType> viewType, IContentBuilder<T> contentBuilder,
+                    ObjectProperty<ItemControlViewModel> currentSelection, ObjectProperty<Parent> currentView,
+                    Supplier<T> emptyTypeSupplier, Scope viewScope) {
+        super(viewType, contentBuilder, currentSelection, currentView, emptyTypeSupplier, viewScope);
+
     }
 
     public <ViewType extends FxmlView<? extends SubscribeAbleViewModel<T>>>

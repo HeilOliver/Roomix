@@ -21,11 +21,14 @@ public interface IReservationController {
 
     Collection<ReservationPojo> getAllReservation(long sessionId) throws SessionFaultException;
 
+    void updateReservation(long sessionId, ReservationPojo reservationPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException;
+
     Collection<ReservationPojo> getSearchedReservation(long sessionId, String query) throws SessionFaultException;
+
+    Collection<RoomCategoryPojo> getSearchedCategorybyDateAndContract(long sessionId,LocalDateTime startDate,LocalDateTime endDate, ContactPojo contractingParty) throws SessionFaultException;
 
     PricePojo getPricebyReservationUnitAndContractingParty(long sessionId, ReservationUnitPojo reservationUnit, ContactPojo contractingParty) throws SessionFaultException;
 
-    Collection<RoomCategoryPojo> getSearchedCategorybyDateAndContract(long sessionId,LocalDateTime startDate,LocalDateTime endDate, ContactPojo contractingParty) throws SessionFaultException;
 
     Collection<ReservationPojo> getSearchedReservationbyContact(long sessionId, ContactPojo contactPojo) throws SessionFaultException;
 
@@ -38,8 +41,6 @@ public interface IReservationController {
     Collection<ReservationOptionPojo> getSearchedReservationOptions(long sessionId, ReservationUnitPojo reservationUnitPojo) throws SessionFaultException;
 
     Collection<RoomCategoryPojo> getAllCategory(long sessionId) throws SessionFaultException;
-
-    void updateReservation(long sessionId, ReservationPojo reservationPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException;
 
     void updateReservationOption(long sessionId, ReservationOptionPojo reservationOptionPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException;
 }

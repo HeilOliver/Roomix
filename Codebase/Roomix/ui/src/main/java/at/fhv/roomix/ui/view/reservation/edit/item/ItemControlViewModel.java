@@ -79,7 +79,7 @@ public class ItemControlViewModel<T> implements ViewModel {
         scope.delete(this);
     }
 
-    T getPojo() {
+    public T getPojo() {
         return currentPojo.get();
     }
 
