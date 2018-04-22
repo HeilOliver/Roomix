@@ -8,6 +8,7 @@ import at.fhv.roomix.controller.reservation.model.*;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.HashSet;
 
 /**
  * Roomix
@@ -18,6 +19,20 @@ import java.util.Collection;
  * Enter Description here
  */
 public class ReservationMock implements IReservationController {
+
+    private static final Object lock = new Object();
+    private static ReservationMock instance;
+    private Collection<ContactPojo> contactPojos = new HashSet<>();
+
+    public static ReservationMock getInstance() {
+        if (instance != null) return instance;
+        synchronized (lock) {
+            if (instance == null) {
+                instance = new ReservationMock();
+            }
+        }
+        return instance;
+    }
 
     @Override
     public Collection<ReservationPojo> getAllReservation(long sessionId) throws SessionFaultException {
