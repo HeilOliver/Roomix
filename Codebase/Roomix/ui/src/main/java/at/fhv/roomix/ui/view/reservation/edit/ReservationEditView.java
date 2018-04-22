@@ -35,17 +35,17 @@ public class ReservationEditView implements FxmlView<ReservationEditViewModel> {
     private CachedViewModelCellFactory<ItemControl, ItemControlViewModel> cellFactory
             = CachedViewModelCellFactory.createForFxmlView(ItemControl.class);
     @FXML
+    private HBox boxContractingParty;
+    @FXML
     private Button btnAddContractingParty;
     @FXML
-    private HBox boxContractingParty;
+    private ListView<ItemControlViewModel> listPersons;
     @FXML
     private Button btnAddPerson;
     @FXML
-    private ListView listPersons;
+    private ListView<ItemControlViewModel> listUnits;
     @FXML
     private Button btnAddUnit;
-    @FXML
-    private ListView listUnits;
     @FXML
     private Button btnAddOption;
     @FXML
@@ -80,21 +80,41 @@ public class ReservationEditView implements FxmlView<ReservationEditViewModel> {
         });
         btnAddComment.disableProperty().bind(viewModel.isCommendAddAble().not());
 
+        viewModel.getContractingPartyControl().addListener(((observable, oldValue, newValue) -> {
+            if (newValue == null) {
+                boxContractingParty.getChildren().clear();
+                return;
+            }
+            ViewHelper.setChildren(boxContractingParty, cellFactory.map(newValue).getView());
+        }));
+        btnAddContractingParty.disableProperty().bind(viewModel.isCommendAddAble().not());
+
         listOptions.setItems(viewModel.getOptionControls());
         listOptions.setCellFactory(cellFactory);
         btnAddOption.disableProperty().bind(viewModel.isOptionAddAble().not());
+
+        listPersons.setItems(viewModel.getPersonControls());
+        listPersons.setCellFactory(cellFactory);
+        btnAddPerson.disableProperty().bind(viewModel.isPersonAddAble().not());
+
+        listUnits.setItems(viewModel.getUnitControls());
+        listUnits.setCellFactory(cellFactory);
+        btnAddUnit.disableProperty().bind(viewModel.isUnitAddAble().not());
     }
 
     @FXML
     private void addContractingParty(ActionEvent actionEvent) {
+        viewModel.addContractingParty();
     }
 
     @FXML
     private void addPersonClick(ActionEvent actionEvent) {
+        viewModel.addPerson();
     }
 
     @FXML
     private void addUnitClick(ActionEvent actionEvent) {
+        viewModel.addUnit();
     }
 
     @FXML

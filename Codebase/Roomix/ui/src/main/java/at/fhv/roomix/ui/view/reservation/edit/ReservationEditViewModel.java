@@ -1,14 +1,20 @@
 package at.fhv.roomix.ui.view.reservation.edit;
 
+import at.fhv.roomix.controller.contact.model.ContactPojo;
 import at.fhv.roomix.controller.reservation.model.CommentPojo;
 import at.fhv.roomix.controller.reservation.model.ReservationOptionPojo;
+import at.fhv.roomix.controller.reservation.model.ReservationUnitPojo;
+import at.fhv.roomix.ui.common.StringResourceResolver;
 import at.fhv.roomix.ui.view.reservation.edit.comment.CommentView;
+import at.fhv.roomix.ui.view.reservation.edit.contact.ContactView;
 import at.fhv.roomix.ui.view.reservation.edit.item.IContentBuilder;
 import at.fhv.roomix.ui.view.reservation.edit.item.ItemControlViewModel;
 import at.fhv.roomix.ui.view.reservation.edit.item.ItemHandlerList;
 import at.fhv.roomix.ui.view.reservation.edit.item.ItemHandlerSingle;
 import at.fhv.roomix.ui.view.reservation.edit.option.OptionView;
+import at.fhv.roomix.ui.view.reservation.edit.unit.UnitView;
 import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
+import de.saxsys.mvvmfx.InjectResourceBundle;
 import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.ObjectProperty;
@@ -21,6 +27,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.format.DateTimeFormatter;
+import java.util.ResourceBundle;
 
 /**
  * Roomix
@@ -35,21 +42,126 @@ public class ReservationEditViewModel implements ViewModel {
     private ObjectProperty<Parent> currentView = new SimpleObjectProperty<>();
     private ObjectProperty<ItemControlViewModel> currentSelection = new SimpleObjectProperty<>();
 
+    @InjectResourceBundle
+    private ResourceBundle bundle;
+
     @InjectScope
     private ReservationViewScope viewScope;
 
     public void initialize() {
     }
 
-    //region Option
-    private static final IContentBuilder<ReservationOptionPojo> optionBuilder = (pojo -> {
-        if (pojo.getDueDate() == null) {
-            return "";
+    //region ContractingParty
+    private final IContentBuilder<ContactPojo> contactBuilder = (pojo -> {
+        StringBuilder sb = new StringBuilder();
+
+        if ((pojo.getFirstName() == null || pojo.getLastName() == null) || pojo.getCompanyName() == null) {
+            sb.append(StringResourceResolver.getStaticResolve(bundle, "reservation.edit.contact.tag.noname"));
+        } else {
+            if (pojo.getCompanyName() == null) {
+                sb.append(pojo.getFirstName());
+                sb.append(" ");
+                sb.append(pojo.getLastName());
+            } else {
+                sb.append(pojo.getCompanyName());
+            }
         }
-        return pojo.getDueDate().format(DateTimeFormatter.ofPattern("dd MMMM yyyy"));
+        sb.append(" - ");
+        sb.append(pojo.getPlace());
+        return sb.toString();
     });
 
+    private final ItemHandlerSingle<ContactPojo> contractingPartyHandler = new ItemHandlerSingle<>(
+            ContactView.class, contactBuilder, currentSelection, currentView, ContactPojo::new
+    );
 
+    ReadOnlyObjectProperty<ItemControlViewModel<ContactPojo>> getContractingPartyControl(){
+        return contractingPartyHandler.currentItem();
+    }
+
+    ReadOnlyBooleanProperty isContractingPartyAddAble() {
+        return contractingPartyHandler.isAddAble();
+    }
+
+    void addContractingParty() {
+        contractingPartyHandler.add();
+    }
+    //endregion
+
+    //region Person
+    private final ItemHandlerList<ContactPojo> personHandler = new ItemHandlerList<>(
+            ContactView.class, contactBuilder, currentSelection, currentView, ContactPojo::new
+    );
+
+    ObservableList<ItemControlViewModel> getPersonControls() {
+        return personHandler.currentItems();
+    }
+
+    ReadOnlyBooleanProperty isPersonAddAble() {
+        return personHandler.isAddAble();
+    }
+
+    void addPerson() {
+        personHandler.add();
+    }
+    //endregion
+
+    //region Units
+    private final IContentBuilder<ReservationUnitPojo> unitBuilder = (pojo -> {
+        StringBuilder sb = new StringBuilder();
+
+        if (pojo.getStartDate() == null || pojo.getEndDate() == null) {
+            sb.append(StringResourceResolver.getStaticResolve(bundle, "reservation.edit.unit.tag.nodate"));
+        } else {
+            sb.append(pojo.getStartDate().format(DateTimeFormatter.ofPattern("dd MMMM")));
+            sb.append(" -> ");
+            sb.append(pojo.getEndDate().format(DateTimeFormatter.ofPattern("dd MMMM")));
+        }
+        sb.append(" - ");
+        if (pojo.getPrice() <= 0) {
+            sb.append("? €");
+        } else {
+            sb.append(pojo.getPrice());
+            sb.append("€");
+        }
+        return sb.toString();
+    });
+
+    private final ItemHandlerList<ReservationUnitPojo> unitHandler = new ItemHandlerList<>(
+            UnitView.class, unitBuilder, currentSelection, currentView, ReservationUnitPojo::new
+    );
+
+    ObservableList<ItemControlViewModel> getUnitControls() {
+        return unitHandler.currentItems();
+    }
+
+    ReadOnlyBooleanProperty isUnitAddAble() {
+        return unitHandler.isAddAble();
+    }
+
+    void addUnit() {
+        unitHandler.add();
+    }
+    //endregion
+
+    //region Option
+    private final IContentBuilder<ReservationOptionPojo> optionBuilder = (pojo -> {
+        StringBuilder sb = new StringBuilder();
+
+        if (pojo.getDueDate() == null) {
+            sb.append(StringResourceResolver.getStaticResolve(bundle, "reservation.edit.option.tag.nodate"));
+        } else {
+            sb.append(pojo.getDueDate().format(DateTimeFormatter.ofPattern("dd MMMM yyyy")));
+        }
+        sb.append(" - ");
+        if (pojo.getPrice() <= 0) {
+            sb.append("? €");
+        } else {
+            sb.append(pojo.getPrice());
+            sb.append("€");
+        }
+        return sb.toString();
+    });
 
     private final ItemHandlerList<ReservationOptionPojo> optionHandler = new ItemHandlerList<>(
             OptionView.class, optionBuilder, currentSelection, currentView, ReservationOptionPojo::new

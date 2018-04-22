@@ -107,4 +107,8 @@ public abstract class AbstractProvider {
         }
         executor.shutdown();
     }
+
+    public ReadOnlyBooleanProperty getInProcessProperty() {
+        return inProcessProperty();
+    }
 }

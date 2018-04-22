@@ -2,13 +2,10 @@ package at.fhv.roomix.ui.view.reservation.edit.option;
 
 import at.fhv.roomix.controller.reservation.model.ReservationOptionPojo;
 import at.fhv.roomix.ui.common.StringResourceResolver;
-import at.fhv.roomix.ui.view.reservation.edit.ISubscribeAbleViewModel;
+import at.fhv.roomix.ui.view.reservation.edit.SubscribeAbleViewModel;
 import de.saxsys.mvvmfx.InjectResourceBundle;
-import de.saxsys.mvvmfx.utils.mapping.ModelWrapper;
 import de.saxsys.mvvmfx.utils.validation.*;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.ReadOnlyBooleanProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -21,19 +18,15 @@ import java.util.ResourceBundle;
  * <p>
  * Enter Description here
  */
-public class OptionViewModel implements ISubscribeAbleViewModel<ReservationOptionPojo> {
-    private ModelWrapper<ReservationOptionPojo> pojoWrapper = new ModelWrapper<>();
+public class OptionViewModel extends SubscribeAbleViewModel<ReservationOptionPojo> {
 
     @InjectResourceBundle
     private ResourceBundle resourceBundle;
-
-    void commitChange() {
-        pojoWrapper.commit();
-    }
+    private StringProperty downPrice = new SimpleStringProperty();
 
     private Validator descriptionValidator;
     private Validator dueDateValidator;
-    private CompositeValidator formValidator = new CompositeValidator();
+    private CompositeValidator compositePriceValidator;
 
     ReadOnlyBooleanProperty isCommitAble() {
         return pojoWrapper.dirtyProperty();
@@ -42,6 +35,15 @@ public class OptionViewModel implements ISubscribeAbleViewModel<ReservationOptio
     StringProperty descriptionProperty() {
         return pojoWrapper.field("description",
                 ReservationOptionPojo::getDescription, ReservationOptionPojo::setDescription);
+    }
+
+    StringProperty downPriceProperty() {
+        return downPrice;
+    }
+
+    private IntegerProperty priceProperty() {
+        return pojoWrapper.field("price",
+                ReservationOptionPojo::getPrice, ReservationOptionPojo::setPrice);
     }
 
     ObjectProperty<LocalDate> dueDateProperty() {
@@ -57,6 +59,10 @@ public class OptionViewModel implements ISubscribeAbleViewModel<ReservationOptio
         return dueDateValidator.getValidationStatus();
     }
 
+    ValidationStatus priceValidation() {
+        return compositePriceValidator.getValidationStatus();
+    }
+
     public void initialize() {
         descriptionValidator = new FunctionBasedValidator<>(
                 descriptionProperty(),
@@ -66,19 +72,48 @@ public class OptionViewModel implements ISubscribeAbleViewModel<ReservationOptio
 
         dueDateValidator = new FunctionBasedValidator<>(
                 dueDateProperty(),
-                date -> date != null && date.isBefore(LocalDate.now()),
+                date -> date != null && !date.isBefore(LocalDate.now()),
                 ValidationMessage.error(StringResourceResolver.getStaticResolve(resourceBundle,
                         "reservation.edit.option.dueDateBeforeNow")));
+
+        Validator priceNullEmptyValidator = new FunctionBasedValidator<>(
+                priceProperty(),
+                price -> price.intValue() <= 0,
+                ValidationMessage.error(StringResourceResolver.getStaticResolve(resourceBundle,
+                        "reservation.edit.option.priceinvalid"))
+        );
+
+        Validator priceInvalidNumberValidator = new FunctionBasedValidator<>(
+                downPriceProperty(),
+                string -> string != null && !string.trim().isEmpty(),
+                ValidationMessage.error(StringResourceResolver.getStaticResolve(resourceBundle,
+                        "reservation.edit.option.priceinvalid"))
+        );
+
+        compositePriceValidator = new CompositeValidator(
+                priceInvalidNumberValidator,
+                priceNullEmptyValidator
+        );
+
+        downPriceProperty().addListener(((observable, oldValue, newValue) -> {
+            try {
+                int i = Integer.parseInt(newValue);
+                priceProperty().setValue(i);
+            } catch (NumberFormatException ignore){
+            }
+        }));
+
+        isValid = compositePriceValidator.getValidationStatus().validProperty();
     }
 
     @Override
-    public void subscribe(ObjectProperty<ReservationOptionPojo> property) {
-        pojoWrapper.modelProperty().bindBidirectional(property);
-        pojoWrapper.reload();
+    protected void afterSubscribe(boolean isNew) {
+        Integer i = priceProperty().get();
+        downPriceProperty().setValue(i.toString());
     }
 
-    @Override
-    public void unSubscribe() {
-        pojoWrapper.modelProperty().unbind();
+    void commitChange() {
+        commit();
     }
+
 }

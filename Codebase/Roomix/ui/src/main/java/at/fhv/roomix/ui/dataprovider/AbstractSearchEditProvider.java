@@ -35,8 +35,4 @@ public abstract class AbstractSearchEditProvider<T> extends SearchProvider<T> {
             }
         });
     }
-
-    public ReadOnlyBooleanProperty getInProcessProperty() {
-        return inProcessProperty();
-    }
 }
