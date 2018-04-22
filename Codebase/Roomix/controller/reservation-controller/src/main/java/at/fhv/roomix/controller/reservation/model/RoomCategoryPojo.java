@@ -24,6 +24,7 @@ public class RoomCategoryPojo {
     private int free;
     private int confirmedReservation;
     private int quota;
+    private int pricePerDay;
 
 
 
@@ -33,6 +34,14 @@ public class RoomCategoryPojo {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getPricePerDay() {
+        return pricePerDay;
+    }
+
+    public void setPricePerDay(int pricePerDay) {
+        this.pricePerDay = pricePerDay;
     }
 
     public String getDescription() {

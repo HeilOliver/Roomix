@@ -112,6 +112,7 @@ class ReservationController implements IReservationController {
             roomCategoryDomain.setCategoryMetaData(startDate,endDate, guestDomain);
             RoomCategoryPojo roomCategoryPojo = new RoomCategoryPojo();
             roomCategoryPojo.setDescription(roomCategoryDomain.getCategoryDescription());
+            roomCategoryPojo.setPricePerDay(roomCategoryDomain.getMetaData().getPricePerDay());
             roomCategoryPojo.setQuota(roomCategoryDomain.getMetaData().getContingent());
             roomCategoryPojo.setOccupied(roomCategoryDomain.getMetaData().getNumberOfOccupiedRooms());
             roomCategoryPojo.setUnconfirmedReservation(roomCategoryDomain.getMetaData().getNumberOfUnconfirmedReservations());
@@ -122,7 +123,6 @@ class ReservationController implements IReservationController {
                                      roomCategoryDomain.getMetaData().getNumberOfUnconfirmedReservations());
             roomCategoryset.add(roomCategoryPojo);
         }
-
         return roomCategoryset;
     }
 
