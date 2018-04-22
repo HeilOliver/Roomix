@@ -75,7 +75,7 @@ class ReservationController implements IReservationController {
     }
 
     @Override
-    public Collection<PricePojo> getPrice(long sessionId, ReservationUnitPojo reservationUnit, ContactPojo contractingParty) throws SessionFaultException {
+    public PricePojo getPrice(long sessionId, ReservationUnitPojo reservationUnit, ContactPojo contractingParty) throws SessionFaultException {
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
         if (contractingParty == null) {
             contractingParty = new ContactPojo();
@@ -87,14 +87,12 @@ class ReservationController implements IReservationController {
         ModelMapper modelMapper = new ModelMapper();
         GuestDomain guestDomain = modelMapper.map(contractingParty, GuestDomain.class);
         RoomCategoryDomain roomCategoryDomain = roomCategoryBuilder.get(roomCategoryPojo.getId());
-        HashSet<PricePojo> pricePojoSet = new HashSet<>();
         PricePojo pricePojo = new PricePojo();
-        
+
         roomCategoryDomain.setCategoryMetaData(reservationUnit.getStartDate(),reservationUnit.getEndDate(), guestDomain);
         int price = roomCategoryDomain.getMetaData().getPricePerDay()*(int)Duration.ofDays(ChronoUnit.DAYS.between(reservationUnit.getStartDate(),reservationUnit.getEndDate())).toDays();
         pricePojo.setPrice(price);
-        pricePojoSet.add(pricePojo);
-        return pricePojoSet;
+        return pricePojo;
     }
 
     @Override
