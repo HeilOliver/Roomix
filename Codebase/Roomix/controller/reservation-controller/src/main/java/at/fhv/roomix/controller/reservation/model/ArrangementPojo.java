@@ -17,7 +17,7 @@ public class ArrangementPojo {
     private DiscountPojo discount;
     private String name;
     private String description;
-    private int price;
+    private PricePojo price;
 
 
 
@@ -53,11 +53,11 @@ public class ArrangementPojo {
         this.description = description;
     }
 
-    public int getPrice() {
+    public PricePojo getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(PricePojo price) {
         this.price = price;
     }
 }
