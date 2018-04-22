@@ -45,6 +45,7 @@ public class RoomAssignmentDomainBuilder extends AbstractDomainBuilder<RoomAssig
     @Override
     protected RoomAssignmentDomain mapEntityToDomain(RoomAssignmentEntity entity) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
         RoomAssignmentDomain roomAssignmentDomain = modelMapper.map(entity, RoomAssignmentDomain.class);
         return roomAssignmentDomain;
     }
@@ -52,6 +53,7 @@ public class RoomAssignmentDomainBuilder extends AbstractDomainBuilder<RoomAssig
     @Override
     protected RoomAssignmentEntity mapDomainToEntity(RoomAssignmentDomain domain) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
         RoomAssignmentEntity roomAssignmentEntity = modelMapper.map(domain, RoomAssignmentEntity.class);
         return roomAssignmentEntity;
     }

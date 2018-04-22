@@ -41,6 +41,7 @@ public class ReservationUnitDomainBuilder extends AbstractDomainBuilder<Reservat
     @Override
     protected ReservationUnitDomain mapEntityToDomain(ReservationUnitEntity entity) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
         ReservationUnitDomain reservationUnitDomain = modelMapper.map(entity, ReservationUnitDomain.class);
         return reservationUnitDomain;
     }
@@ -48,6 +49,7 @@ public class ReservationUnitDomainBuilder extends AbstractDomainBuilder<Reservat
     @Override
     protected ReservationUnitEntity mapDomainToEntity(ReservationUnitDomain domain) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
         ReservationUnitEntity reservationUnitEntity= modelMapper.map(domain, ReservationUnitEntity.class);
         return reservationUnitEntity;
     }

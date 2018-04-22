@@ -4,6 +4,7 @@ import at.fhv.roomix.domain.guest.model.ArrangementDomain;
 import at.fhv.roomix.domain.guest.model.IProxy;
 import at.fhv.roomix.persist.ArrangementDao;
 import at.fhv.roomix.persist.model.ArrangementEntity;
+import org.modelmapper.ModelMapper;
 
 import java.util.Collection;
 import java.util.List;
@@ -41,12 +42,18 @@ public class ArrangementDomainBuilder extends AbstractDomainBuilder<ArrangementD
     }
     @Override
     protected ArrangementDomain mapEntityToDomain(ArrangementEntity entity) {
-        return null;
+        ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
+        ArrangementDomain arrangementDomain = modelMapper.map(entity, ArrangementDomain.class);
+        return arrangementDomain;
     }
 
     @Override
     protected ArrangementEntity mapDomainToEntity(ArrangementDomain domain) {
-        return null;
+        ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
+        ArrangementEntity arrangementEntity = modelMapper.map(domain, ArrangementEntity.class);
+        return arrangementEntity;
     }
 
     @Override

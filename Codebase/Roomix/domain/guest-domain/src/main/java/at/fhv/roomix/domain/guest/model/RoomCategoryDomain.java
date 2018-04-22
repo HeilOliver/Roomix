@@ -132,8 +132,10 @@ public class RoomCategoryDomain {
                         roomCategoryPriceDomain.getSeasonBySeason().getAdditionalCharge());
                 count.incrementAndGet();
             });
-            metaData.setPricePerDay(total.get() / count.get());
-            if(partnerAgreement != null){
+            if(count.get() > 0){
+                metaData.setPricePerDay(total.get() / count.get());
+            }
+            if(partnerAgreement.isPresent()){
                 metaData.setAgreementDiscount(partnerAgreement.get().getDiscount());
                 metaData.setContingent(partnerAgreement.get().getCountRoomCategory());
             }
@@ -178,19 +180,19 @@ public class RoomCategoryDomain {
     private void calculateReservationMap(){
         confirmedReservationMap = initTimeMap();
         unconfirmedReservationMap = initTimeMap();
-        Stream<ReservationUnitDomain> reservationUnitDomainStream = getReservationUnitsByRoomCategoryId().stream().filter(reservationUnitDomain -> {
+        List<ReservationUnitDomain> reservationUnitDomainStream = getReservationUnitsByRoomCategoryId().stream().filter(reservationUnitDomain -> {
             LocalDate unitStartDate = reservationUnitDomain.getStartDate().toLocalDate();
             LocalDate unitEndDate = reservationUnitDomain.getEndDate().toLocalDate();
             return (unitStartDate.isAfter(startDate) && unitStartDate.isBefore(endDate)) ||
                     (unitEndDate.isBefore(endDate) && unitEndDate.isAfter(startDate)) ||
                     (unitEndDate.isAfter(endDate) && unitStartDate.isBefore(startDate));
-        });
-        List<ReservationUnitDomain> confirmedReservationUnits = reservationUnitDomainStream.filter(reservationUnitDomain ->
+        }).collect(Collectors.toList());
+        List<ReservationUnitDomain> confirmedReservationUnits = reservationUnitDomainStream.stream().filter(reservationUnitDomain ->
                 reservationUnitDomain.getCancellationByCancellation() == null &&
                         reservationUnitDomain.getReservationByReservation().
                                 getReservationStatus().equals(EReservationStatus.CONFIRMED.getStr())).collect(Collectors.toList());
 
-        List<ReservationUnitDomain> unconfirmedReservationUnits = reservationUnitDomainStream.filter(reservationUnitDomain ->
+        List<ReservationUnitDomain> unconfirmedReservationUnits = reservationUnitDomainStream.stream().filter(reservationUnitDomain ->
                 reservationUnitDomain.getCancellationByCancellation() == null &&
                         reservationUnitDomain.getReservationByReservation().
                                 getReservationStatus().equals(EReservationStatus.UNCONFIRMED.getStr())).collect(Collectors.toList());

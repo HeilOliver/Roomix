@@ -42,6 +42,7 @@ public class PartnerAgreementDomainBuilder extends AbstractDomainBuilder<Partner
     @Override
     protected PartnerAgreementDomain mapEntityToDomain(PartnerAgreementEntity entity) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
         PartnerAgreementDomain partnerAgreementDomain = modelMapper.map(entity, PartnerAgreementDomain.class);
         return partnerAgreementDomain;
     }
@@ -49,6 +50,7 @@ public class PartnerAgreementDomainBuilder extends AbstractDomainBuilder<Partner
     @Override
     protected PartnerAgreementEntity mapDomainToEntity(PartnerAgreementDomain domain) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
         PartnerAgreementEntity partnerAgreementEntity = modelMapper.map(domain, PartnerAgreementEntity.class);
         return partnerAgreementEntity;
     }
