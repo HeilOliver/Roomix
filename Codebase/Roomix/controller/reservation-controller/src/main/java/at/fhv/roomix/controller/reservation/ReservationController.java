@@ -65,9 +65,9 @@ class ReservationController implements IReservationController {
             resultSet = resultSet.stream()
                     // TODO master oli, collection in einer collection suchen mit viel for und so?!
                     .filter(c -> c.getContractingParty().toString().toLowerCase().contains(splitedQuery) ||
-                            c.getPersons().toString().toLowerCase().contains(splitedQuery) ||
+                            c.getPersonReservationsByReservationId().toString().toLowerCase().contains(splitedQuery) ||
                             c.getComment().toString().toLowerCase().contains(splitedQuery) ||
-                            c.getReservationUnit().toString().toLowerCase().contains(splitedQuery))
+                            c.getReservationUnitsByReservationId().toString().toLowerCase().contains(splitedQuery))
                     .collect(Collectors.toSet());
         }
 
@@ -177,6 +177,11 @@ class ReservationController implements IReservationController {
         ModelMapper modelMapper = new ModelMapper();
         ReservationDomain reservationDomain = modelMapper.map(reservationPojo, ReservationDomain.class);
         reservationDomain.setContractingPartyByContractingParty(contractingPartyDomain);
+
+        ReservationOptionPojo reservationOptionPojo = reservationPojo.getReservationOptionByReservationOption().iterator().next();
+        reservationOptionPojo.setOptionStatus((byte) 1);
+        ReservationOptionDomain reservationOptionDomain = modelMapper.map(reservationOptionPojo, ReservationOptionDomain.class);
+        reservationDomain.setReservationOptionByReservationOption(reservationOptionDomain);
         
         reservationBuilder.set(reservationDomain);
     }

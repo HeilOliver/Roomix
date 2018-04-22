@@ -14,44 +14,54 @@ import java.time.LocalDate;
  */
 public class ReservationOptionPojo {
 
-    private int id;
-    private LocalDate dueDate;
+    private int optionId;
+    private LocalDate optionDueDate;
 
-    @NotNull(message = "description cannot be null")
+    @NotNull(message = "optionDescription cannot be null")
     @Size(min = 1, max = 200, message = "Description must be between 1 and 200 characters")
-    private String description;
-    @NotNull(message = "price cannot be null")
-    private PricePojo price;
+    private String optionDescription;
+    @NotNull(message = "optionFee cannot be null")
+    private PricePojo optionFee;
 
-    public int getId() {
-        return id;
+    private byte optionStatus;
+
+    public int getOptionId() {
+        return optionId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setOptionId(int optionId) {
+        this.optionId = optionId;
     }
 
-    public LocalDate getDueDate() {
-        return dueDate;
+    public LocalDate getOptionDueDate() {
+        return optionDueDate;
     }
 
-    public void setDueDate(LocalDate dueDate) {
-        this.dueDate = dueDate;
+    public void setOptionDueDate(LocalDate optionDueDate) {
+        this.optionDueDate = optionDueDate;
     }
 
-    public String getDescription() {
-        return description;
+    public String getOptionDescription() {
+        return optionDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setOptionDescription(String optionDescription) {
+        this.optionDescription = optionDescription;
     }
 
-    public PricePojo getPrice() {
-        return price;
+    public PricePojo getOptionFee() {
+        return optionFee;
     }
 
-    public void setPrice(PricePojo price) {
-        this.price = price;
+    public void setOptionFee(PricePojo optionFee) {
+        this.optionFee = optionFee;
+    }
+
+    public byte getOptionStatus() {
+        return optionStatus;
+    }
+
+    public void setOptionStatus(byte optionStatus) {
+        this.optionStatus = optionStatus;
     }
 }

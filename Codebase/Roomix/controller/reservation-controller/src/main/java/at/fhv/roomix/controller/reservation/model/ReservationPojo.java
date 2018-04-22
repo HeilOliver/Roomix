@@ -21,17 +21,19 @@ public class ReservationPojo {
     private CommentPojo comment;
     @NotNull(message = "contractingParty cannot be null")
     private ContactPojo contractingParty;
-    @NotNull(message = "reservationUnit cannot be null")
-    private Collection<ReservationUnitPojo> reservationUnit;
+    @NotNull(message = "reservationUnitsByReservationId cannot be null")
+    private Collection<ReservationUnitPojo> reservationUnitsByReservationId;
 
-    private Collection<ReservationOptionPojo> reservationOption;
-    @NotNull(message = "persons cannot be null")
-    private Collection<ContactPojo> persons;
+    private Collection<ReservationOptionPojo> reservationOptionByReservationOption;
+    @NotNull(message = "personReservationsByReservationId cannot be null")
+    private Collection<ContactPojo> personReservationsByReservationId;
+    private String reservationStatus;
+    private int paymentType;
 
     public ReservationPojo() {
-        reservationUnit = new HashSet<>();
-        persons = new HashSet<>();
-        reservationOption = new HashSet<>();
+        reservationUnitsByReservationId = new HashSet<>();
+        personReservationsByReservationId = new HashSet<>();
+        reservationOptionByReservationOption = new HashSet<>();
     }
 
     public int getId() {
@@ -50,20 +52,20 @@ public class ReservationPojo {
         this.contractingParty = contractingParty;
     }
 
-    public Collection<ReservationUnitPojo> getReservationUnit() {
-        return reservationUnit;
+    public Collection<ReservationUnitPojo> getReservationUnitsByReservationId() {
+        return reservationUnitsByReservationId;
     }
 
-    public void setReservationUnit(Collection<ReservationUnitPojo> reservationUnit) {
-        this.reservationUnit = reservationUnit;
+    public void setReservationUnitsByReservationId(Collection<ReservationUnitPojo> reservationUnitsByReservationId) {
+        this.reservationUnitsByReservationId = reservationUnitsByReservationId;
     }
 
-    public Collection<ContactPojo> getPersons() {
-        return persons;
+    public Collection<ContactPojo> getPersonReservationsByReservationId() {
+        return personReservationsByReservationId;
     }
 
-    public void setPersons(Collection<ContactPojo> persons) {
-        this.persons = persons;
+    public void setPersonReservationsByReservationId(Collection<ContactPojo> personReservationsByReservationId) {
+        this.personReservationsByReservationId = personReservationsByReservationId;
     }
 
     public CommentPojo getComment() {
@@ -74,11 +76,27 @@ public class ReservationPojo {
         this.comment = comment;
     }
 
-    public Collection<ReservationOptionPojo> getReservationOption() {
-        return reservationOption;
+    public Collection<ReservationOptionPojo> getReservationOptionByReservationOption() {
+        return reservationOptionByReservationOption;
     }
 
-    public void setReservationOption(Collection<ReservationOptionPojo> reservationOption) {
-        this.reservationOption = reservationOption;
+    public void setReservationOptionByReservationOption(Collection<ReservationOptionPojo> reservationOptionByReservationOption) {
+        this.reservationOptionByReservationOption = reservationOptionByReservationOption;
+    }
+
+    public String getReservationStatus() {
+        return reservationStatus;
+    }
+
+    public void setReservationStatus(String reservationStatus) {
+        this.reservationStatus = reservationStatus;
+    }
+
+    public int getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(int paymentType) {
+        this.paymentType = paymentType;
     }
 }

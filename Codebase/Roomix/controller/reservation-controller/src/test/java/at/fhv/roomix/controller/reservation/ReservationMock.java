@@ -42,9 +42,9 @@ public class ReservationMock implements IReservationController {
         resPojo.setId(123);
         resPojo.setComment(new CommentPojo());
         resPojo.setContractingParty(new ContactPojo());
-        resPojo.setReservationOption(new HashSet<>());
-        resPojo.setPersons(new HashSet<>());
-        resPojo.setReservationUnit(new HashSet<>());
+        resPojo.setReservationOptionByReservationOption(new HashSet<>());
+        resPojo.setPersonReservationsByReservationId(new HashSet<>());
+        resPojo.setReservationUnitsByReservationId(new HashSet<>());
         reservationPojos.add(resPojo);
 
         RoomCategoryPojo roomPojo = new RoomCategoryPojo();

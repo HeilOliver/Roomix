@@ -148,16 +148,16 @@ public class ReservationEditViewModel implements ViewModel {
     private final IContentBuilder<ReservationOptionPojo> optionBuilder = (pojo -> {
         StringBuilder sb = new StringBuilder();
 
-        if (pojo.getDueDate() == null) {
+        if (pojo.getOptionDueDate() == null) {
             sb.append(StringResourceResolver.getStaticResolve(bundle, "reservation.edit.option.tag.nodate"));
         } else {
-            sb.append(pojo.getDueDate().format(DateTimeFormatter.ofPattern("dd MMMM yyyy")));
+            sb.append(pojo.getOptionDueDate().format(DateTimeFormatter.ofPattern("dd MMMM yyyy")));
         }
         sb.append(" - ");
-        if (pojo.getPrice() <= 0) {
+        if (pojo.getOptionFee() <= 0) {
             sb.append("? €");
         } else {
-            sb.append(pojo.getPrice());
+            sb.append(pojo.getOptionFee());
             sb.append("€");
         }
         return sb.toString();

@@ -34,7 +34,7 @@ public class OptionViewModel extends SubscribeAbleViewModel<ReservationOptionPoj
 
     StringProperty descriptionProperty() {
         return pojoWrapper.field("description",
-                ReservationOptionPojo::getDescription, ReservationOptionPojo::setDescription);
+                ReservationOptionPojo::getOptionDescription, ReservationOptionPojo::setOptionDescription);
     }
 
     StringProperty downPriceProperty() {
@@ -43,12 +43,12 @@ public class OptionViewModel extends SubscribeAbleViewModel<ReservationOptionPoj
 
     private IntegerProperty priceProperty() {
         return pojoWrapper.field("price",
-                ReservationOptionPojo::getPrice, ReservationOptionPojo::setPrice);
+                ReservationOptionPojo::getOptionFee, ReservationOptionPojo::setOptionFee);
     }
 
     ObjectProperty<LocalDate> dueDateProperty() {
         return pojoWrapper.field("dueDate",
-                ReservationOptionPojo::getDueDate, ReservationOptionPojo::setDueDate);
+                ReservationOptionPojo::getOptionDueDate, ReservationOptionPojo::setOptionDueDate);
     }
 
     ValidationStatus descriptionValidation() {

@@ -45,9 +45,9 @@ public class ReservationControllerTest {
         resPojo.setId(123);
         resPojo.setComment(new CommentPojo());
         resPojo.setContractingParty(new ContactPojo());
-        resPojo.setReservationOption(new HashSet<>());
-        resPojo.setPersons(new HashSet<>());
-        resPojo.setReservationUnit(new HashSet<>());
+        resPojo.setReservationOptionByReservationOption(new HashSet<>());
+        resPojo.setPersonReservationsByReservationId(new HashSet<>());
+        resPojo.setReservationUnitsByReservationId(new HashSet<>());
 
         controller.updateReservation(110L, resPojo);
         assertTrue(mock.getNewReservation());
