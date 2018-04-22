@@ -1,9 +1,9 @@
 package at.fhv.roomix.domain.guest.model;
 
 
-import javax.swing.text.html.Option;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -20,7 +20,7 @@ public class RoomCategoryDomain {
     private Proxy<Collection<RoomDomain>, Integer> roomProxy;
     private Proxy<Collection<ReservationUnitDomain>, Integer> reservationUnitProxy;
 
-    private List<RoomCategoryMetaData> metaData;
+    private RoomCategoryMetaData metaData;
 
     public Collection<ReservationUnitDomain> getReservationUnitsByRoomCategoryId() {
         return (reservationUnitsByRoomCategoryId = reservationUnitProxy.get());
@@ -74,7 +74,7 @@ public class RoomCategoryDomain {
         this.reservationUnitProxy = reservationUnitProxy;
     }
 
-    public List<RoomCategoryMetaData> getMetaData() {
+    public RoomCategoryMetaData getMetaData() {
         return metaData;
     }
 
@@ -88,7 +88,7 @@ public class RoomCategoryDomain {
     public void setCategoryMetaData(LocalDate start, LocalDate end, GuestDomain guest){
         startDate = start;
         endDate = end;
-        metaData = new LinkedList<>();
+        metaData = new RoomCategoryMetaData();
         Collection<RoomCategoryPriceDomain> result = getRoomCategoryPricesByRoomCategoryId().stream()
                 .filter(
                         roomCategoryPriceDomain -> {
@@ -125,21 +125,22 @@ public class RoomCategoryDomain {
         calculateOccupationMap();
         calculateReservationMap();
         if(result != null){
-            Optional<PartnerAgreementDomain> finalPartnerAgreement = partnerAgreement;
+            AtomicInteger total = new AtomicInteger();
+            AtomicInteger count = new AtomicInteger();
             result.forEach(roomCategoryPriceDomain -> {
-                RoomCategoryMetaData roomCategoryMetaData = new RoomCategoryMetaData();
-                roomCategoryMetaData.setPricePerDay(roomCategoryPriceDomain.getListPrice() +
+                total.addAndGet(roomCategoryPriceDomain.getListPrice() +
                         roomCategoryPriceDomain.getSeasonBySeason().getAdditionalCharge());
-                if(finalPartnerAgreement != null){
-                    roomCategoryMetaData.setAgreementDiscount(finalPartnerAgreement.get().getDiscount());
-                    roomCategoryMetaData.setContingent(finalPartnerAgreement.get().getCountRoomCategory());
-                }
-                roomCategoryMetaData.setTotalNumberOfRooms(getTotalNumberOfRooms());
-                roomCategoryMetaData.setNumberOfConfirmedReservations(getOccupationStatusByMap(confirmedReservationMap));
-                roomCategoryMetaData.setNumberOfUnconfirmedReservations(getOccupationStatusByMap(unconfirmedReservationMap));
-                roomCategoryMetaData.setNumberOfOccupiedRooms(getOccupationStatusByMap(occupationMap));
-                metaData.add(roomCategoryMetaData);
+                count.incrementAndGet();
             });
+            metaData.setPricePerDay(total.get() / count.get());
+            if(partnerAgreement != null){
+                metaData.setAgreementDiscount(partnerAgreement.get().getDiscount());
+                metaData.setContingent(partnerAgreement.get().getCountRoomCategory());
+            }
+            metaData.setTotalNumberOfRooms(getTotalNumberOfRooms());
+            metaData.setNumberOfConfirmedReservations(getOccupationStatusByMap(confirmedReservationMap));
+            metaData.setNumberOfUnconfirmedReservations(getOccupationStatusByMap(unconfirmedReservationMap));
+            metaData.setNumberOfOccupiedRooms(getOccupationStatusByMap(occupationMap));
         }
 
     }
