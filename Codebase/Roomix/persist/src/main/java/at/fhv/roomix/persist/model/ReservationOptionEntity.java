@@ -16,6 +16,7 @@ public class ReservationOptionEntity {
     private Date optionDueDate;
     private String optionDescription;
     private byte optionStatus;
+    private int optionFee;
     private Collection<ReservationEntity> reservationsByOptionId;
 
     @Id
@@ -83,5 +84,15 @@ public class ReservationOptionEntity {
 
     public void setReservationUnitsByOptionId(Collection<ReservationEntity> reservationsByOptionId) {
         this.reservationsByOptionId = reservationsByOptionId;
+    }
+
+    @Basic
+    @Column(name = "OptionFee")
+    public int getOptionFee() {
+        return optionFee;
+    }
+
+    public void setOptionFee(int optionFee) {
+        this.optionFee = optionFee;
     }
 }

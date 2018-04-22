@@ -1,5 +1,9 @@
 package at.fhv.roomix.persist.model;
 
+import at.fhv.roomix.domain.guest.model.Proxy;
+import at.fhv.roomix.domain.guest.model.ReservationUnitDomain;
+import at.fhv.roomix.domain.guest.model.RoomCategoryPriceDomain;
+import at.fhv.roomix.domain.guest.model.RoomDomain;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;

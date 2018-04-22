@@ -1,6 +1,6 @@
 package at.fhv.roomix.domain.guest.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class PartnerAgreementDomain {
     private int agreementId;

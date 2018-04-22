@@ -8,6 +8,17 @@ public class RoomCategoryMetaData {
     private int totalNumberOfRooms;
 
     private int pricePerDay;
+    private int agreementDiscount = 0; // percent (0-100)
+
+    private int contingent;
+
+    public int getAgreementDiscount() {
+        return agreementDiscount;
+    }
+
+    public void setAgreementDiscount(int agreementDiscount) {
+        this.agreementDiscount = agreementDiscount;
+    }
 
     public int getNumberOfConfirmedReservations() {
         return numberOfConfirmedReservations;
@@ -32,4 +43,29 @@ public class RoomCategoryMetaData {
     public void setNumberOfOccupiedRooms(int numberOfOccupiedRooms) {
         this.numberOfOccupiedRooms = numberOfOccupiedRooms;
     }
+
+    public int getTotalNumberOfRooms() {
+        return totalNumberOfRooms;
+    }
+
+    public void setTotalNumberOfRooms(int totalNumberOfRooms) {
+        this.totalNumberOfRooms = totalNumberOfRooms;
+    }
+
+    public int getPricePerDay() {
+        return pricePerDay;
+    }
+
+    public void setPricePerDay(int pricePerDay) {
+        this.pricePerDay = pricePerDay;
+    }
+
+    public int getContingent() {
+        return contingent;
+    }
+
+    public void setContingent(int contingent) {
+        this.contingent = contingent;
+    }
+
 }
