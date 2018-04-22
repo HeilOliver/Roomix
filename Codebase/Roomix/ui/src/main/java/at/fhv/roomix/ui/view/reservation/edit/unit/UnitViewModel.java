@@ -1,11 +1,12 @@
 package at.fhv.roomix.ui.view.reservation.edit.unit;
 
-import at.fhv.roomix.controller.reservation.model.ArticlePojo;
+import at.fhv.roomix.controller.reservation.model.ArrangementPojo;
+import at.fhv.roomix.controller.reservation.model.PricePojo;
 import at.fhv.roomix.controller.reservation.model.ReservationUnitPojo;
 import at.fhv.roomix.controller.reservation.model.RoomCategoryPojo;
 import at.fhv.roomix.ui.common.StringResourceResolver;
 import at.fhv.roomix.ui.common.validator.DateValidator;
-import at.fhv.roomix.ui.dataprovider.ReadOnlyReservationProvider;
+import at.fhv.roomix.ui.dataprovider.ReservationUnitProvider;
 import at.fhv.roomix.ui.view.reservation.edit.ReservationEditScope;
 import at.fhv.roomix.ui.view.reservation.edit.SubscribeAbleViewModel;
 import de.saxsys.mvvmfx.InjectResourceBundle;
@@ -16,7 +17,9 @@ import de.saxsys.mvvmfx.utils.validation.FunctionBasedValidator;
 import de.saxsys.mvvmfx.utils.validation.ValidationMessage;
 import de.saxsys.mvvmfx.utils.validation.Validator;
 import javafx.beans.property.*;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.chart.XYChart;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -36,7 +39,7 @@ import java.util.ResourceBundle;
  */
 public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
 
-    private final ReadOnlyReservationProvider provider;
+    private final ReservationUnitProvider provider;
     private final ObservableList<CategoryItemViewModel> roomCategories;
 
     @InjectResourceBundle
@@ -50,14 +53,14 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
     private ObservableList<PacketsItemViewModel> articleList;
 
     public UnitViewModel() {
-        provider = new ReadOnlyReservationProvider();
+        provider = new ReservationUnitProvider();
 
         ListTransformation<RoomCategoryPojo, CategoryItemViewModel> transRoomCategory
                 = new ListTransformation<>(provider.getPossibleCategories(), CategoryItemViewModel::new);
         roomCategories = transRoomCategory.getTargetList();
 
-        ListTransformation<ArticlePojo, PacketsItemViewModel> transArticle
-                = new ListTransformation<>(provider.getPossibleArticles(), PacketsItemViewModel::new);
+        ListTransformation<ArrangementPojo, PacketsItemViewModel> transArticle
+                = new ListTransformation<>(provider.getPossibleArrangements(), PacketsItemViewModel::new);
         articleList = transArticle.getTargetList();
     }
 
@@ -71,9 +74,14 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
                 ReservationUnitPojo::getEndDate, ReservationUnitPojo::setEndDate);
     }
 
-    IntegerProperty categoryProperty() {
+    ObjectProperty<RoomCategoryPojo> categoryProperty() {
         return pojoWrapper.field("roomCategory",
                 ReservationUnitPojo::getRoomCategory, ReservationUnitPojo::setRoomCategory);
+    }
+
+    ObjectProperty<PricePojo> priceProperty() {
+        return pojoWrapper.field("price",
+                ReservationUnitPojo::getPrice, ReservationUnitPojo::setPrice);
     }
 
     private ObjectProperty<LocalTime> arrivalTime() {
@@ -141,6 +149,24 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
         );
 
         isValid = formValidator.getValidationStatus().validProperty();
+
+        categoryProperty().addListener(((observable, oldValue, newValue) -> {
+            availableRooms.clear();
+            if (newValue == null) return;
+            XYChart.Series<Number, String> series = new XYChart.Series<>();
+            series.getData().add(new XYChart.Data<>( newValue.getFree(),
+                    StringResourceResolver.getStaticResolve(resourceBundle, "reservation.edit.unit.freerooms")));
+            series.getData().add(new XYChart.Data<>( newValue.getQuota(),
+                    StringResourceResolver.getStaticResolve(resourceBundle, "reservation.edit.unit.quotarooms")));
+            series.getData().add(new XYChart.Data<>( newValue.getOccupied(),
+                    StringResourceResolver.getStaticResolve(resourceBundle, "reservation.edit.unit.occupiedrooms")));
+            series.getData().add(new XYChart.Data<>( newValue.getUnconfirmedReservation(),
+                    StringResourceResolver.getStaticResolve(resourceBundle, "reservation.edit.unit.unconfirmedrooms")));
+            availableRooms.add(series);
+
+            // TODO Price
+            currCategoryPrice.setValue("Add Price");
+        }));
     }
 
     @Override
@@ -149,11 +175,39 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
         provider.loadArticles();
     }
 
-    public ObservableList<PacketsItemViewModel> getArticleList() {
+    ReadOnlyBooleanProperty getContactInLoad() {
+        return provider.inLoadCategoriesProperty();
+    }
+
+    ReadOnlyBooleanProperty getArrangementsInLoad() {
+        return provider.inLoadArrangementsProperty();
+    }
+
+    ObservableList<PacketsItemViewModel> getArticleList() {
         return articleList;
     }
 
     ObservableList<CategoryItemViewModel> getRoomCategories() {
         return roomCategories;
+    }
+
+    private ObservableList<XYChart.Series<Number, String>> availableRooms = FXCollections.observableArrayList();
+
+    ObservableList<XYChart.Series<Number, String>> getAvailableRooms() {
+        return availableRooms;
+    }
+
+    private StringProperty currCategoryPrice = new SimpleStringProperty();
+
+    public ReadOnlyStringProperty currCategoryPriceProperty() {
+        return currCategoryPrice;
+    }
+
+    void onCommit() {
+        commit();
+        provider.calculatePrice((price) -> {
+            priceProperty().setValue(price);
+            commit();
+        }, currModel.get(), scope.getCurrContractingParty());
     }
 }

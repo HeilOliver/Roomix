@@ -22,6 +22,7 @@ import java.util.function.Supplier;
  * Enter Description here
  */
 public class ItemHandlerList<T> extends ItemHandler<T> {
+    private final int maxSize;
     private ObservableList<ItemControlViewModel> items = FXCollections.observableArrayList();
 
     public <ViewType extends FxmlView<? extends SubscribeAbleViewModel<T>>>
@@ -35,7 +36,7 @@ public class ItemHandlerList<T> extends ItemHandler<T> {
                     ObjectProperty<ItemControlViewModel> currentSelection, ObjectProperty<Parent> currentView,
                     Supplier<T> emptyTypeSupplier, Scope viewScope) {
         super(viewType, contentBuilder, currentSelection, currentView, emptyTypeSupplier, viewScope);
-
+        this.maxSize = Integer.MAX_VALUE;
     }
 
     public <ViewType extends FxmlView<? extends SubscribeAbleViewModel<T>>>
@@ -43,6 +44,7 @@ public class ItemHandlerList<T> extends ItemHandler<T> {
                     ObjectProperty<ItemControlViewModel> currentSelection, ObjectProperty<Parent> currentView,
                     Supplier<T> emptyTypeSupplier, int maxSize) {
         super(viewType, contentBuilder, currentSelection, currentView, emptyTypeSupplier);
+        this.maxSize = maxSize;
 
         items.addListener((ListChangeListener<? super ItemControlViewModel>)
                 c -> addAble.setValue(items.size() <= maxSize));
@@ -50,6 +52,9 @@ public class ItemHandlerList<T> extends ItemHandler<T> {
 
     @Override
     public void add() {
+        if (items.size() >= maxSize)
+            throw new IllegalStateException("To much items in this list");
+
         ItemControlViewModel<T> model =
                 new ItemControlViewModel<>(this, contentBuilder);
         items.add(model);
@@ -64,7 +69,25 @@ public class ItemHandlerList<T> extends ItemHandler<T> {
         }
     }
 
-    public Collection<T> getAllPojo() {
+    @Override
+    public void clear() {
+        items.forEach(ItemControlViewModel::dispose);
+        items.clear();
+    }
+
+    public void setObjects(Collection<T> objects) {
+        if (items.size() >= maxSize)
+            throw new IllegalStateException("To much items in this list");
+
+        for (T object : objects) {
+            ItemControlViewModel<T> model =
+                    new ItemControlViewModel<>(this, contentBuilder);
+            model.setPojo(object);
+            items.add(model);
+        }
+    }
+
+    public Collection<T> getObjects() {
         HashSet<T> set = new HashSet<>();
         for (@SuppressWarnings("unchecked")
                 ItemControlViewModel<T> item : items) {
@@ -76,6 +99,7 @@ public class ItemHandlerList<T> extends ItemHandler<T> {
     public ObservableList<ItemControlViewModel> currentItems() {
         return items;
     }
+
 }
 
 

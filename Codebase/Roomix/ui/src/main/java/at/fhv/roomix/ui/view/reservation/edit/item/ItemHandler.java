@@ -74,6 +74,8 @@ public abstract class ItemHandler<T> {
                 emptyPojoSupplier, me.isValidProperty());
     }
 
+    public abstract void clear();
+
     public ObjectProperty<ItemControlViewModel> currentSelectionProperty() {
         return currentSelection;
     }

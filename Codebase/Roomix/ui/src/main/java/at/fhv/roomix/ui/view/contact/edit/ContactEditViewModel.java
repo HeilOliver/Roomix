@@ -71,6 +71,16 @@ public class ContactEditViewModel implements ViewModel {
 
         viewScope.subscribe(ContactViewScope.commandEditView, ((key, payload) -> reLoad()));
         viewScope.subscribe(ContactViewScope.commandContentView, ((key, payload) -> contactWrapper.reset()));
+        viewScope.inEditPropertyValidProperty().bind(
+                formValidator.getValidationStatus().validProperty()
+        );
+        viewScope.subscribe(ContactViewScope.commandCommitEdit, (key, payload) -> {
+            ContactPojo contactPojo = new ContactPojo();
+            contactWrapper.copyValuesTo(contactPojo);
+            contactPojo.setContactId(
+                    viewScope.inEditPojoProperty().get().getContactId());
+            viewScope.inEditPojoProperty().setValue(contactPojo);
+        });
 
         formValidator.addValidators(
                 firstNameValidator,
@@ -82,18 +92,6 @@ public class ContactEditViewModel implements ViewModel {
                 countryValidator,
                 emailValidator
         );
-
-        viewScope.inEditPropertyValidProperty().bind(
-                formValidator.getValidationStatus().validProperty()
-        );
-
-        viewScope.subscribe(ContactViewScope.commandCommitEdit, (key, payload) -> {
-            ContactPojo contactPojo = new ContactPojo();
-            contactWrapper.copyValuesTo(contactPojo);
-            contactPojo.setContactId(
-                    viewScope.inEditPojoProperty().get().getContactId());
-            viewScope.inEditPojoProperty().setValue(contactPojo);
-        });
     }
 
     private void reLoad() {

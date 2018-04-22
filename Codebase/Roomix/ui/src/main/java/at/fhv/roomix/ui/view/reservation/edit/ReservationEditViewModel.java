@@ -3,8 +3,10 @@ package at.fhv.roomix.ui.view.reservation.edit;
 import at.fhv.roomix.controller.contact.model.ContactPojo;
 import at.fhv.roomix.controller.reservation.model.CommentPojo;
 import at.fhv.roomix.controller.reservation.model.ReservationOptionPojo;
+import at.fhv.roomix.controller.reservation.model.ReservationPojo;
 import at.fhv.roomix.controller.reservation.model.ReservationUnitPojo;
 import at.fhv.roomix.ui.common.StringResourceResolver;
+import at.fhv.roomix.ui.view.contact.scopes.ContactViewScope;
 import at.fhv.roomix.ui.view.reservation.edit.comment.CommentView;
 import at.fhv.roomix.ui.view.reservation.edit.contact.ContactView;
 import at.fhv.roomix.ui.view.reservation.edit.item.IContentBuilder;
@@ -59,6 +61,29 @@ public class ReservationEditViewModel implements ViewModel {
                 editScope.currContractingPartyProperty().setValue(newValue.getPojo());
             }
         });
+        viewScope.subscribe(ReservationViewScope.commandEditView, ((key, payload) -> {
+            clear();
+        }));
+        viewScope.subscribe(ReservationViewScope.commandContentView, ((key, payload) -> {
+            clear();
+        }));
+        viewScope.subscribe(ReservationViewScope.commandCommitEdit, (key, payload) -> {
+            ReservationPojo pojo = new ReservationPojo();
+            pojo.setContractingParty(contractingPartyHandler.getObject());
+            pojo.setComment(commentHandler.getObject());
+            pojo.setOptions(optionHandler.getObjects());
+            pojo.setUnits(unitHandler.getObjects());
+            pojo.setPersons(personHandler.getObjects());
+            viewScope.inEditPojoProperty().setValue(pojo);
+        });
+    }
+
+    private void clear() {
+        contractingPartyHandler.clear();
+        personHandler.clear();
+        unitHandler.clear();
+        optionHandler.clear();
+        commentHandler.clear();
     }
 
     //region ContractingParty
@@ -128,10 +153,10 @@ public class ReservationEditViewModel implements ViewModel {
             sb.append(pojo.getEndDate().format(DateTimeFormatter.ofPattern("dd MMMM")));
         }
         sb.append(" - ");
-        if (pojo.getPrice() <= 0) {
+        if (pojo.getPrice() == null || pojo.getPrice().getPrice() <= 0) {
             sb.append("? €");
         } else {
-            sb.append(pojo.getPrice());
+            sb.append(pojo.getPrice().getPrice());
             sb.append("€");
         }
         return sb.toString();
@@ -164,17 +189,17 @@ public class ReservationEditViewModel implements ViewModel {
             sb.append(pojo.getDueDate().format(DateTimeFormatter.ofPattern("dd MMMM yyyy")));
         }
         sb.append(" - ");
-        if (pojo.getPrice() <= 0) {
+        if (pojo.getPrice() == null) {
             sb.append("? €");
         } else {
-            sb.append(pojo.getPrice());
+            sb.append((float) pojo.getPrice().getPrice()/100);
             sb.append("€");
         }
         return sb.toString();
     });
 
     private final ItemHandlerList<ReservationOptionPojo> optionHandler = new ItemHandlerList<>(
-            OptionView.class, optionBuilder, currentSelection, currentView, ReservationOptionPojo::new
+            OptionView.class, optionBuilder, currentSelection, currentView, ReservationOptionPojo::new, 1
     );
 
     ObservableList<ItemControlViewModel> getOptionControls() {

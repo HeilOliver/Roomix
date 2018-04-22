@@ -5,7 +5,11 @@ import at.fhv.roomix.controller.contact.model.ContactPojo;
 import at.fhv.roomix.controller.reservation.IReservationController;
 import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
 import at.fhv.roomix.controller.reservation.model.ArrangementPojo;
+import at.fhv.roomix.controller.reservation.model.PricePojo;
+import at.fhv.roomix.controller.reservation.model.ReservationUnitPojo;
 import at.fhv.roomix.controller.reservation.model.RoomCategoryPojo;
+import at.fhv.roomix.ui.common.ICallable;
+import at.fhv.roomix.ui.common.ICallableWithParameter;
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -14,16 +18,17 @@ import javafx.collections.ObservableList;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.concurrent.Callable;
 
 /**
  * Roomix
  * at.fhv.roomix.ui.dataprovider
- * ReadOnlyReservationProvider
+ * ReservationUnitProvider
  * 22/04/2018 Oliver
  * <p>
  * Enter Description here
  */
-public class ReadOnlyReservationProvider extends AbstractProvider {
+public class ReservationUnitProvider extends AbstractProvider {
 
     private ObservableList<RoomCategoryPojo> possibleCategories = FXCollections.observableArrayList();
     private ObservableList<ArrangementPojo> possibleArrangements = FXCollections.observableArrayList();
@@ -80,6 +85,31 @@ public class ReadOnlyReservationProvider extends AbstractProvider {
                     e.printStackTrace();
                 }
                 Platform.runLater(() -> inLoadArrangements.setValue(false));
+            }
+        });
+    }
+
+    public void calculatePrice(ICallableWithParameter<PricePojo> onSuccess,
+                               ReservationUnitPojo pojo, ContactPojo contractingParty) {
+        submit(() -> {
+            Platform.runLater(() -> inLoadArrangements.setValue(true));
+            IReservationController instance =
+                    ReservationControllerFactory.getInstance();
+            try {
+
+//                PricePojo price =
+//                        instance.getPrice(LoginProvider.getSessionID(), pojo, contractingParty);
+
+                if (false) {
+                    throw new SessionFaultException();
+                }
+                Platform.runLater(() -> {
+                    PricePojo pricePojo = new PricePojo();
+                    pricePojo.setPrice(200);
+                    onSuccess.call(pricePojo);
+                });
+            } catch (SessionFaultException e) {
+                LOG.debug(e.getMessage());
             }
         });
     }

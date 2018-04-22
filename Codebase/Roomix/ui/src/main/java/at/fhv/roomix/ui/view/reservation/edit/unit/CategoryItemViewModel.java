@@ -30,11 +30,7 @@ public class CategoryItemViewModel implements ViewModel {
 
         StringBuilder sb = new StringBuilder();
         sb.append(pojo.getDescription());
-        sb.append("Free:");
-        sb.append(pojo.getFree());
-        sb.append(" Occupied:");
-        sb.append(pojo.getOccupied());
-        sb.append(" Unconfirmed:");
+
         sb.append(pojo.getUnconfirmedReservation());
         if (pojo.getQuota() > 0) {
             sb.append(" Quota:");
@@ -45,6 +41,10 @@ public class CategoryItemViewModel implements ViewModel {
 
     public void initialize() {
 
+    }
+
+    public RoomCategoryPojo getPojo() {
+        return pojo;
     }
 
     public StringProperty contentProperty() {

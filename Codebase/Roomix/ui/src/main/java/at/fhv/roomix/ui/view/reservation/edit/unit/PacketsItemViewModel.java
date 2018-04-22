@@ -1,6 +1,6 @@
 package at.fhv.roomix.ui.view.reservation.edit.unit;
 
-import at.fhv.roomix.controller.reservation.model.ArticlePojo;
+import at.fhv.roomix.controller.reservation.model.ArrangementPojo;
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -16,11 +16,23 @@ import javafx.beans.property.StringProperty;
  * Enter Description here
  */
 public class PacketsItemViewModel implements ViewModel {
-    private final ArticlePojo pojo;
+    private final ArrangementPojo pojo;
 
-    public PacketsItemViewModel(ArticlePojo pojo) {
+    public PacketsItemViewModel(ArrangementPojo pojo) {
         this.pojo = pojo;
-        content.setValue(pojo.getDiscription() + " - " + pojo.getAmount() + "€");
+        StringBuilder sb = new StringBuilder();
+        sb.append(pojo.getDescription());
+        sb.append(" - ");
+        if (pojo.getDiscount() != null) {
+            sb.append(pojo.getDiscount().getDiscount());
+            sb.append("%");
+        } else if (pojo.getPrice() != null) {
+            sb.append(pojo.getPrice().getPrice());
+            sb.append("€");
+        } else {
+            sb.append("?");
+        }
+        content.setValue(sb.toString());
     }
 
     private StringProperty content = new SimpleStringProperty();
@@ -34,7 +46,7 @@ public class PacketsItemViewModel implements ViewModel {
         return checked.get();
     }
 
-    public BooleanProperty checkedProperty() {
+    BooleanProperty checkedProperty() {
         return checked;
     }
 }

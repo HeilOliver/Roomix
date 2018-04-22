@@ -9,6 +9,10 @@
 <?import org.controlsfx.control.SegmentedBar?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import org.controlsfx.control.CheckListView?>
+<?import javafx.scene.shape.Box?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.CategoryAxis?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="at.fhv.roomix.ui.view.reservation.edit.unit.UnitView"
@@ -39,31 +43,54 @@
             </VBox>
             <VBox>
                 <Label text="%reservation.arrivaltime"/>
-                <TextField promptText="%reservation.arrivaltime.hour" fx:id="arrivalTime"/>
+                <TextField promptText="%reservation.arrivaltime.hour" maxWidth="35" fx:id="arrivalTime"/>
             </VBox>
         </HBox>
         <Separator/>
-        <HBox spacing="50">
+            <HBox spacing="20">
+                <StackPane>
+                    <VBox>
+                        <Label text="%reservation.edit.unit.categorie"/>
+                        <ListView prefHeight="200" fx:id="listCategories"/>
+                    </VBox>
+                    <ProgressIndicator fx:id="icoCategoriesLoad"
+                                              maxHeight="60" maxWidth="60"/>
+                </StackPane>
+                <VBox HBox.hgrow="ALWAYS" maxWidth="Infinity">
+                    <Label text="%reservation.edit.unit.selectedcategorie"/>
+                    <TextField fx:id="inputAmount"/>
+                    <HBox spacing="10">
+                        <Label text="%reservation.edit.unit.perday"/>
+                        <Label fx:id="lblPricePerDay"/>
+                    </HBox>
+                    <AnchorPane VBox.vgrow="ALWAYS" maxWidth="Infinity">
+                        <BarChart AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0"
+                                  AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0"
+                                fx:id="chartSelectedCategorie" prefHeight="110" prefWidth="120">
+                            <xAxis>
+                                <NumberAxis side="TOP" fx:id="xAxis"  />
+                            </xAxis>
+                            <yAxis>
+                                <CategoryAxis fx:id="yAxis" side="LEFT" />
+                            </yAxis>
+                        </BarChart>
+                    </AnchorPane>
+                </VBox>
+            </HBox>
+        <StackPane>
             <VBox>
-                <Label text="Categories"/>
-                <ListView prefHeight="200" fx:id="listCategories"/>
-            </VBox>
-            <VBox>
-                <Label text="Options"/>
+                <Label text="%reservation.edit.arrangements"/>
                 <ListView prefHeight="200" fx:id="listPackets"/>
             </VBox>
-        </HBox>
+            <ProgressIndicator fx:id="icoArrangementsLoad"
+                               maxHeight="60" maxWidth="60"/>
+        </StackPane>
         <Separator/>
         <VBox>
             <HBox  >
-                <Label text="Categories Overview" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
-                <Label text="Total: " />
-                <Label text="250€" minWidth="100"/>
+                <Label text="%reservation.edit.unit.endsum" />
+                <Label fx:id="lblSum" minWidth="100"/>
             </HBox>
         </VBox>
-        <ListView>
-        </ListView>
     </VBox>
-
-
 </AnchorPane>

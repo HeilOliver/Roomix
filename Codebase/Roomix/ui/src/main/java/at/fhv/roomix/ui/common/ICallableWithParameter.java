@@ -8,5 +8,7 @@ package at.fhv.roomix.ui.common;
  * <p>
  * Enter Description here
  */
-public interface ICallableWithParameter {
+public interface ICallableWithParameter<T> {
+
+    void call(T para);
 }

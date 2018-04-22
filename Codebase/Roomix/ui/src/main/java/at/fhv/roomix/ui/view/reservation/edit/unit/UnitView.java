@@ -5,6 +5,10 @@ import de.saxsys.mvvmfx.InjectViewModel;
 import de.saxsys.mvvmfx.utils.viewlist.CachedViewModelCellFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.util.Callback;
 
@@ -36,7 +40,23 @@ public class UnitView implements FxmlView<UnitViewModel> {
     private ListView<CategoryItemViewModel> listCategories;
     @FXML
     private ListView<PacketsItemViewModel> listPackets;
+    @FXML
+    private Label lblSum;
+    @FXML
+    private ProgressIndicator icoArrangementsLoad;
+    @FXML
+    private ProgressIndicator icoCategoriesLoad;
+    @FXML
+    private TextField inputAmount;
+    @FXML
+    private Label lblPricePerDay;
+    @FXML
+    private BarChart<Number,String> chartSelectedCategorie;
 
+    @FXML
+    NumberAxis xAxis;
+    @FXML
+    CategoryAxis yAxis;
 
     public void initialize() {
         pickArrival.setDayCellFactory(arrivalCellFactory);
@@ -52,10 +72,32 @@ public class UnitView implements FxmlView<UnitViewModel> {
 
         listPackets.setItems(viewModel.getArticleList());
         listPackets.setCellFactory(CachedViewModelCellFactory.createForFxmlView(PacketsItem.class));
+
+        icoArrangementsLoad.visibleProperty().bind(viewModel.getArrangementsInLoad());
+        listPackets.disableProperty().bind(viewModel.getArrangementsInLoad());
+
+        icoCategoriesLoad.visibleProperty().bind(viewModel.getContactInLoad());
+        listCategories.disableProperty().bind(viewModel.getContactInLoad());
+
+        //yAxis.setTickLabelRotation(90);
+        xAxis.setLabel("Available Rooms");
+
+        chartSelectedCategorie.setData(viewModel.getAvailableRooms());
+
+        listCategories.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue == null) {
+                viewModel.categoryProperty().setValue(null);
+                return;
+            }
+            viewModel.categoryProperty().setValue(newValue.getPojo());
+        });
+
+        lblPricePerDay.textProperty().bind(viewModel.currCategoryPriceProperty());
     }
 
     @FXML
     private void buttonCommitClick(ActionEvent actionEvent) {
+        viewModel.onCommit();
     }
 
     final Callback<DatePicker, DateCell> depatureCellFactory =
@@ -66,7 +108,11 @@ public class UnitView implements FxmlView<UnitViewModel> {
                         @Override
                         public void updateItem(LocalDate item, boolean empty) {
                             super.updateItem(item, empty);
-
+                            if (pickArrival.getValue() == null) {
+                                setDisable(true);
+                                setStyle("-fx-background-color: #ffc0cb;");
+                                return;
+                            }
                             if (item.isBefore(
                                     pickArrival.getValue().plusDays(1))
                                     ) {

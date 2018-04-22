@@ -44,7 +44,31 @@ public class ItemHandlerSingle<T> extends ItemHandler<T> {
         }
     }
 
+    @Override
+    public void clear() {
+        if (item.get() != null)
+            item.get().dispose();
+        item.setValue(null);
+    }
+
     public ObjectProperty<ItemControlViewModel<T>> currentItem() {
         return item;
+    }
+
+    public void setObject(T object) {
+        if (item.get() != null)
+            throw new IllegalStateException("Item is already set");
+
+        ItemControlViewModel<T> itemControl =
+                new ItemControlViewModel<>(this, contentBuilder);
+        if (object != null)
+            itemControl.setPojo(object);
+        item.setValue(itemControl);
+    }
+
+    public T getObject() {
+        ItemControlViewModel<T> control = currentItem().get();
+        if (control == null) return null;
+        return control.getPojo();
     }
 }

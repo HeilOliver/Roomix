@@ -95,4 +95,8 @@ public class ItemControlViewModel<T> implements ViewModel {
     void dispose() {
         isSelected.unbind();
     }
+
+    public void setPojo(T object) {
+        currentPojo.setValue(object);
+    }
 }
