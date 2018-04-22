@@ -14,12 +14,12 @@ import java.util.HashSet;
 
 public class ArrangementPojo {
     private int id;
-    private int discount;
-    private Collection<ArticlePojo> article;
+    private DiscountPojo discount;
+    private String name;
+    private String description;
+    private int price;
 
-    public ArrangementPojo() {
-        article = new HashSet<>();
-    }
+
 
     public int getId() {
         return id;
@@ -29,19 +29,35 @@ public class ArrangementPojo {
         this.id = id;
     }
 
-    public int getDiscount() {
+    public DiscountPojo getDiscount() {
         return discount;
     }
 
-    public void setDiscount(int discount) {
+    public void setDiscount(DiscountPojo discount) {
         this.discount = discount;
     }
 
-    public Collection<ArticlePojo> getArticle() {
-        return article;
+    public String getName() {
+        return name;
     }
 
-    public void setArticle(Collection<ArticlePojo> article) {
-        this.article = article;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

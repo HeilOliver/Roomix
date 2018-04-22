@@ -12,7 +12,7 @@ package at.fhv.roomix.controller.reservation.model;
 public class RoomCategoryPojo {
 
     private int id;
-    private String discription;
+    private String description;
     private int occupied;
     private int unconfirmedReservation;
     private int free;
@@ -28,12 +28,12 @@ public class RoomCategoryPojo {
         this.id = id;
     }
 
-    public String getDiscription() {
-        return discription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDiscription(String discription) {
-        this.discription = discription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getOccupied() {

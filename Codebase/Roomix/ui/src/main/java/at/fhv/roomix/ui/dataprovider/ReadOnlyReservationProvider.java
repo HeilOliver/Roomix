@@ -5,7 +5,6 @@ import at.fhv.roomix.controller.reservation.model.RoomCategoryPojo;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableSet;
 
 import java.time.LocalDate;
 
@@ -30,7 +29,7 @@ public class ReadOnlyReservationProvider extends AbstractProvider {
             CatA.setQuota(5);
             CatA.setUnconfirmedReservation(6);
             CatA.setId(100);
-            CatA.setDiscription("Cat A");
+            CatA.setDescription("Cat A");
 
             RoomCategoryPojo CatB = new RoomCategoryPojo();
             CatB.setFree(3);
@@ -38,7 +37,7 @@ public class ReadOnlyReservationProvider extends AbstractProvider {
             CatB.setQuota(22);
             CatB.setUnconfirmedReservation(54);
             CatB.setId(100);
-            CatB.setDiscription("Cat A");
+            CatB.setDescription("Cat A");
 
             try {
                 Thread.sleep(200);

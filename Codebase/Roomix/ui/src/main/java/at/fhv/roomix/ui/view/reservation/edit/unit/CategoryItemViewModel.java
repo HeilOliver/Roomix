@@ -32,7 +32,7 @@ public class CategoryItemViewModel implements ViewModel {
         this.pojo = pojo;
 
         StringBuilder sb = new StringBuilder();
-        sb.append(pojo.getDiscription());
+        sb.append(pojo.getDescription());
         sb.append("Free:");
         sb.append(pojo.getFree());
         sb.append(" Occupied:");

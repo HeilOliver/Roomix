@@ -2,6 +2,7 @@ package at.fhv.roomix.controller.reservation.model;
 
 import at.fhv.roomix.controller.contact.model.ContactPojo;
 
+import javax.xml.stream.events.Comment;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -15,15 +16,17 @@ import java.util.HashSet;
  */
 public class ReservationPojo {
     private int id;
-    private String comment;
+    private CommentPojo comment;
 
     private ContactPojo contractingParty;
     private Collection<ReservationUnitPojo> units;
+    private Collection<ReservationOptionPojo> options;
     private Collection<ContactPojo> persons;
 
     public ReservationPojo() {
         units = new HashSet<>();
         persons = new HashSet<>();
+        options = new HashSet<>();
     }
 
     public int getId() {
@@ -34,13 +37,6 @@ public class ReservationPojo {
         this.id = id;
     }
 
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
 
     public ContactPojo getContractingParty() {
         return contractingParty;
@@ -66,5 +62,19 @@ public class ReservationPojo {
         this.persons = persons;
     }
 
+    public CommentPojo getComment() {
+        return comment;
+    }
 
+    public void setComment(CommentPojo comment) {
+        this.comment = comment;
+    }
+
+    public Collection<ReservationOptionPojo> getOptions() {
+        return options;
+    }
+
+    public void setOptions(Collection<ReservationOptionPojo> options) {
+        this.options = options;
+    }
 }
