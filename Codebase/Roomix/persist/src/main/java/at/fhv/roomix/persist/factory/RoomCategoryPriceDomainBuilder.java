@@ -43,6 +43,7 @@ public class RoomCategoryPriceDomainBuilder
     @Override
     protected RoomCategoryPriceDomain mapEntityToDomain(RoomCategoryPriceEntity entity) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
         RoomCategoryPriceDomain roomCategoryPriceDomain = modelMapper.map(entity, RoomCategoryPriceDomain.class);
         return roomCategoryPriceDomain;
     }
@@ -50,6 +51,7 @@ public class RoomCategoryPriceDomainBuilder
     @Override
     protected RoomCategoryPriceEntity mapDomainToEntity(RoomCategoryPriceDomain domain) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
         RoomCategoryPriceEntity roomCategoryPriceEntity = modelMapper.map(domain, RoomCategoryPriceEntity.class);
         return roomCategoryPriceEntity;
     }

@@ -9,6 +9,7 @@ import at.fhv.roomix.persist.model.RoomEntity;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -47,6 +48,7 @@ public class RoomCategoryDomainBuilder extends AbstractDomainBuilder<RoomCategor
     @Override
     protected RoomCategoryDomain mapEntityToDomain(RoomCategoryEntity entity) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
         modelMapper.addMappings(new PropertyMap<RoomCategoryEntity, RoomCategoryDomain>() {
             @Override
             protected void configure() {
@@ -59,17 +61,17 @@ public class RoomCategoryDomainBuilder extends AbstractDomainBuilder<RoomCategor
         Proxy<Collection<RoomCategoryPriceDomain>, Integer> roomCategoryPriceProxy =
                 new Proxy<>(roomCategoryDomain.getRoomCategoryId(),
                         key -> RoomCategoryPriceDomainBuilder.getLazyInstance().
-                                lazyLoadCollection(key, "RoomCategory")
+                                lazyLoadCollection(key, "roomCategory")
                 );
         Proxy<Collection<RoomDomain>, Integer> roomProxy =
                 new Proxy<>(roomCategoryDomain.getRoomCategoryId(),
                         key -> RoomDomainBuilder.getLazyInstance().
-                                lazyLoadCollection(key, "RoomCategory")
+                                lazyLoadCollection(key, "roomCategory")
                 );
         Proxy<Collection<ReservationUnitDomain>, Integer> reservationUnitProxy =
                 new Proxy<>(roomCategoryDomain.getRoomCategoryId(),
                         key -> ReservationUnitDomainBuilder.getLazyInstance().
-                                lazyLoadCollection(key, "RoomCategory")
+                                lazyLoadCollection(key, "roomCategory")
                 );
         roomCategoryDomain.setRoomProxy(roomProxy);
         roomCategoryDomain.setReservationUnitProxy(reservationUnitProxy);
@@ -80,6 +82,7 @@ public class RoomCategoryDomainBuilder extends AbstractDomainBuilder<RoomCategor
     @Override
     protected RoomCategoryEntity mapDomainToEntity(RoomCategoryDomain domain) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
         RoomCategoryEntity roomCategoryEntity = modelMapper.map(domain, RoomCategoryEntity.class);
 
         LinkedHashMap<ISourceMapper<Collection>,

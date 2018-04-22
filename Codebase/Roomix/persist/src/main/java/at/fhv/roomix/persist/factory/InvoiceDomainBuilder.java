@@ -42,6 +42,7 @@ public class InvoiceDomainBuilder extends AbstractDomainBuilder<InvoiceDomain, I
     @Override
     protected InvoiceDomain mapEntityToDomain(InvoiceEntity entity) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
         InvoiceDomain invoiceDomain = modelMapper.map(entity, InvoiceDomain.class);
         /* TODO: Add proxies and collection mappings */
         return invoiceDomain;
@@ -50,6 +51,7 @@ public class InvoiceDomainBuilder extends AbstractDomainBuilder<InvoiceDomain, I
     @Override
     protected InvoiceEntity mapDomainToEntity(InvoiceDomain domain) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
         InvoiceEntity invoiceEntity = modelMapper.map(domain, InvoiceEntity.class);
         return invoiceEntity;
     }

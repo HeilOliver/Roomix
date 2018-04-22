@@ -47,6 +47,7 @@ public class RoomDomainBuilder extends AbstractDomainBuilder<RoomDomain, RoomEnt
     @Override
     protected RoomDomain mapEntityToDomain(RoomEntity entity) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
         modelMapper.addMappings(new PropertyMap<RoomEntity, RoomDomain>() {
             @Override
             protected void configure() {
@@ -57,7 +58,7 @@ public class RoomDomainBuilder extends AbstractDomainBuilder<RoomDomain, RoomEnt
 
         Proxy<Collection<RoomAssignmentDomain>, Integer> roomAssignmentProxy =
                 new Proxy<>(roomDomain.getRoomId(), key -> RoomAssignmentDomainBuilder.
-                        getLazyInstance().lazyLoadCollection(key, "Room")
+                        getLazyInstance().lazyLoadCollection(key, "room")
                 );
         roomDomain.setRoomAssignmentProxy(roomAssignmentProxy);
         return roomDomain;
@@ -66,6 +67,7 @@ public class RoomDomainBuilder extends AbstractDomainBuilder<RoomDomain, RoomEnt
     @Override
     protected RoomEntity mapDomainToEntity(RoomDomain domain) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
         RoomEntity roomEntity = modelMapper.map(domain, RoomEntity.class);
 
         LinkedHashMap<ISourceMapper<Collection>,
