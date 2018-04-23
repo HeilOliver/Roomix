@@ -115,6 +115,7 @@ class ReservationController implements IReservationController {
         for (RoomCategoryDomain roomCategoryDomain : roomCategoryDomainSet) {
             roomCategoryDomain.setCategoryMetaData(startDate,endDate, guestDomain);
             RoomCategoryPojo roomCategoryPojo = new RoomCategoryPojo();
+            roomCategoryPojo.setId(roomCategoryDomain.getRoomCategoryId());
             roomCategoryPojo.setDescription(roomCategoryDomain.getCategoryDescription());
             roomCategoryPojo.setPricePerDay(roomCategoryDomain.getMetaData().getPricePerDay());
             roomCategoryPojo.setQuota(roomCategoryDomain.getMetaData().getContingent());
