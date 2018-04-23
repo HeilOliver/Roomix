@@ -10,6 +10,7 @@ import de.saxsys.mvvmfx.utils.mapping.ModelWrapper;
 import de.saxsys.mvvmfx.utils.validation.*;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.StringProperty;
+import org.controlsfx.control.Notifications;
 
 /**
  * Roomix
@@ -31,6 +32,7 @@ public class ContactEditViewModel implements ViewModel {
     private final Validator placeValidator;
     private final Validator houseNumberValidator;
     private CompositeValidator formValidator = new CompositeValidator();
+
     @InjectScope
     private ContactViewScope viewScope;
 
@@ -92,6 +94,15 @@ public class ContactEditViewModel implements ViewModel {
                 countryValidator,
                 emailValidator
         );
+
+        viewScope.setOnError(this::onError);
+    }
+
+    private void onError(Error e) {
+        Notifications.create()
+                .title("Error")
+                .text(e.getMessage())
+                .showError();
     }
 
     private void reLoad() {

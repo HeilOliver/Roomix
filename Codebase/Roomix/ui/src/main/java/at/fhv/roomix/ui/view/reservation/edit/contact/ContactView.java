@@ -41,13 +41,19 @@ public class ContactView implements FxmlView<ContactViewModel> {
         searchInput.visibleProperty().bind(viewModel.inEditViewProperty().not());
         searchInput.textProperty().bindBidirectional(viewModel.searchQueryProperty());
 
-        btnNew.visibleProperty().bind(viewModel.inEditViewProperty().not());
-        btnNew.managedProperty().bind(viewModel.inEditViewProperty().not());
-
-        btnEdit.visibleProperty().bind(viewModel.inEditViewProperty().not());
-        btnEdit.disableProperty().bind(viewModel.isSelectedProperty().not());
-        btnCancel.visibleProperty().bind(viewModel.inEditViewProperty());
-        btnCancel.managedProperty().bind(viewModel.inEditViewProperty());
+//        btnNew.visibleProperty().bind(viewModel.inEditViewProperty().not());
+//        btnNew.managedProperty().bind(viewModel.inEditViewProperty().not());
+//
+//        btnEdit.visibleProperty().bind(viewModel.inEditViewProperty().not());
+//        btnEdit.disableProperty().bind(viewModel.isSelectedProperty().not());
+//        btnCancel.visibleProperty().bind(viewModel.inEditViewProperty());
+//        btnCancel.managedProperty().bind(viewModel.inEditViewProperty());
+        btnEdit.setVisible(false);
+        btnCancel.setVisible(false);
+        btnNew.setVisible(false);
+        btnEdit.setManaged(false);
+        btnCancel.setManaged(false);
+        btnNew.setManaged(false);
 
         btnCommit.disableProperty().bind(viewModel.isSelectedProperty().not());
         //btnCommit.visibleProperty().bind(viewModel.inEditViewProperty());

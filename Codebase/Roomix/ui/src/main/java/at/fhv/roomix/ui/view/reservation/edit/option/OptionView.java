@@ -7,8 +7,10 @@ import de.saxsys.mvvmfx.utils.validation.visualization.ValidationVisualizer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.util.Callback;
 
 import java.time.LocalDate;
 
@@ -50,10 +52,35 @@ public class OptionView implements FxmlView<OptionViewModel> {
         validationVisualizer.initVisualization(
                 viewModel.priceValidation(), txtPrice
         );
+
+        datePicker.setDayCellFactory(dateCellFactory);
     }
 
     @FXML
     private void buttonCommit_Click(ActionEvent actionEvent) {
         viewModel.commitChange();
     }
+
+    final Callback<DatePicker, DateCell> dateCellFactory =
+            new Callback<DatePicker, DateCell>() {
+                @Override
+                public DateCell call(final DatePicker datePicker) {
+                    return new DateCell() {
+                        @Override
+                        public void updateItem(LocalDate item, boolean empty) {
+                            super.updateItem(item, empty);
+
+                            if (item.isBefore(
+                                    LocalDate.now().plusDays(1))
+                                    ) {
+                                setDisable(true);
+                                setStyle("-fx-background-color: #ffc0cb;");
+                            }
+                        }
+                    };
+                }
+            };
+
 }
+
+

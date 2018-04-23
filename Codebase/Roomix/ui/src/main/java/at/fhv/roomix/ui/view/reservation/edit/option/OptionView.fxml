@@ -22,11 +22,14 @@
         </HBox>
     </AnchorPane>
     <VBox AnchorPane.topAnchor="60" AnchorPane.rightAnchor="10"
-            AnchorPane.leftAnchor="10" AnchorPane.bottomAnchor="10">
-        <DatePicker fx:id="datePicker"/>
-
-        <TextField fx:id="txtDescriptionField" AnchorPane.topAnchor="60" AnchorPane.rightAnchor="0"
-                   AnchorPane.leftAnchor="0" AnchorPane.bottomAnchor="0"/>
-        <TextField fx:id="txtPrice"/>
+            AnchorPane.leftAnchor="10" AnchorPane.bottomAnchor="10" spacing="3">
+        <HBox spacing="10">
+            <DatePicker fx:id="datePicker" promptText="%reservation.options.duedate"/>
+            <TextField fx:id="txtPrice" promptText="%reservation.options.price" />
+        </HBox>
+        <Separator/>
+        <TextField fx:id="txtDescriptionField" AnchorPane.topAnchor="60"
+                   AnchorPane.rightAnchor="0" prefHeight="60"
+                   AnchorPane.leftAnchor="0" AnchorPane.bottomAnchor="0" promptText="%reservation.options.description"/>
     </VBox>
 </AnchorPane>

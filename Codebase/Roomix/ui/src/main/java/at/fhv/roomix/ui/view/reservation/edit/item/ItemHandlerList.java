@@ -37,6 +37,8 @@ public class ItemHandlerList<T> extends ItemHandler<T> {
                     Supplier<T> emptyTypeSupplier, Scope viewScope) {
         super(viewType, contentBuilder, currentSelection, currentView, emptyTypeSupplier, viewScope);
         this.maxSize = Integer.MAX_VALUE;
+        items.addListener((ListChangeListener<? super ItemControlViewModel>)
+                c -> addAble.setValue(items.size() < maxSize));
     }
 
     public <ViewType extends FxmlView<? extends SubscribeAbleViewModel<T>>>
@@ -47,7 +49,7 @@ public class ItemHandlerList<T> extends ItemHandler<T> {
         this.maxSize = maxSize;
 
         items.addListener((ListChangeListener<? super ItemControlViewModel>)
-                c -> addAble.setValue(items.size() <= maxSize));
+                c -> addAble.setValue(items.size() < maxSize));
     }
 
     @Override

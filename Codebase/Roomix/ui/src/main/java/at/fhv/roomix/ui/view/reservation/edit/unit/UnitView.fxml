@@ -22,7 +22,7 @@
         <HBox AnchorPane.topAnchor="12" AnchorPane.rightAnchor="0">
             <Button fx:id="btnCommit" onAction="#buttonCommitClick" text="%main.commit" prefWidth="120">
                 <graphic>
-                    <FontAwesomeIconView glyphName="SAVE" size="2em"/>
+                    <FontAwesomeIconView glyphName="ARROW_LEFT" size="2em"/>
                 </graphic>
             </Button>
         </HBox>
@@ -58,7 +58,7 @@
                 </StackPane>
                 <VBox HBox.hgrow="ALWAYS" maxWidth="Infinity">
                     <Label text="%reservation.edit.unit.selectedcategorie"/>
-                    <TextField fx:id="inputAmount"/>
+                    <TextField fx:id="inputAmount" prefWidth="100" promptText="%reservation.edit.amount"/>
                     <HBox spacing="10">
                         <Label text="%reservation.edit.unit.perday"/>
                         <Label fx:id="lblPricePerDay"/>

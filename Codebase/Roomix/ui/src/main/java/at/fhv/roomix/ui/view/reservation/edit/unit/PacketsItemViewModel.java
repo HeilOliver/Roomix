@@ -49,4 +49,8 @@ public class PacketsItemViewModel implements ViewModel {
     BooleanProperty checkedProperty() {
         return checked;
     }
+
+    public ArrangementPojo getArrangement() {
+        return pojo;
+    }
 }

@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.util.Callback;
 
@@ -70,7 +69,7 @@ public class UnitView implements FxmlView<UnitViewModel> {
         listCategories.setItems(viewModel.getRoomCategories());
         listCategories.setCellFactory(CachedViewModelCellFactory.createForFxmlView(CategoryItem.class));
 
-        listPackets.setItems(viewModel.getArticleList());
+        listPackets.setItems(viewModel.getArrangementList());
         listPackets.setCellFactory(CachedViewModelCellFactory.createForFxmlView(PacketsItem.class));
 
         icoArrangementsLoad.visibleProperty().bind(viewModel.getArrangementsInLoad());

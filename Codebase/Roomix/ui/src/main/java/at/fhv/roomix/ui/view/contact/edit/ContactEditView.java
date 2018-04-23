@@ -7,6 +7,7 @@ import de.saxsys.mvvmfx.utils.validation.visualization.ValidationVisualizer;
 import javafx.beans.property.IntegerProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import org.controlsfx.control.Notifications;
 
 /**
  * Roomix

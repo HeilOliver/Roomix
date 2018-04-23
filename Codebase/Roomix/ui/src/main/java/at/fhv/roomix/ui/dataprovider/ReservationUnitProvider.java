@@ -51,15 +51,16 @@ public class ReservationUnitProvider extends AbstractProvider {
                     possibleCategories.clear();
                     possibleCategories.addAll(collection);
                 });
-            } catch (SessionFaultException e) {
+            } catch (Exception e) {
                 LOG.debug(e.getMessage());
+                e.printStackTrace();
             } finally {
                 Platform.runLater(() -> inLoadCategories.setValue(false));
             }
         });
     }
 
-    public void loadArrangements() {
+    public void loadArrangements(ICallable onSuccess) {
         submit(() -> {
             Platform.runLater(() -> inLoadArrangements.setValue(true));
             IReservationController instance =
@@ -71,6 +72,13 @@ public class ReservationUnitProvider extends AbstractProvider {
                     possibleArrangements.clear();
                     possibleArrangements.addAll(collection);
                 });
+                // Wait here a little bit
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Platform.runLater(onSuccess::call);
             } catch (SessionFaultException e) {
                 LOG.debug(e.getMessage());
             } finally {
@@ -82,7 +90,6 @@ public class ReservationUnitProvider extends AbstractProvider {
     public void calculatePrice(ICallableWithParameter<PricePojo> onSuccess,
                                ReservationUnitPojo pojo, ContactPojo contractingParty) {
         submit(() -> {
-            Platform.runLater(() -> inLoadArrangements.setValue(true));
             IReservationController instance =
                     ReservationControllerFactory.getInstance();
             try {
@@ -91,7 +98,7 @@ public class ReservationUnitProvider extends AbstractProvider {
                 Platform.runLater(() -> {
                     onSuccess.call(price);
                 });
-            } catch (SessionFaultException e) {
+            } catch (Exception e) {
                 LOG.debug(e.getMessage());
             }
         });

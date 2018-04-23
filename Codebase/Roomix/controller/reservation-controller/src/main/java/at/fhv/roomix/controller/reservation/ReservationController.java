@@ -98,15 +98,17 @@ class ReservationController implements IReservationController {
     @Override
     public Collection<RoomCategoryPojo> getSearchedCategory(long sessionId, LocalDate startDate, LocalDate endDate, ContactPojo contractingParty) throws SessionFaultException {
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
-        if (contractingParty == null) {
-            contractingParty = new ContactPojo();
-            contractingParty.setContactId(0);
-        }
         IAbstractDomainBuilder<RoomCategoryDomain,RoomCategoryEntity> roomCategoryBuilder = RoomCategoryDomainBuilder.getInstance();
         ModelMapper modelMapper = new ModelMapper();
-        GuestDomain guestDomain = modelMapper.map(contractingParty, GuestDomain.class);
+        //GuestDomain guestDomain = modelMapper.map(contractingParty, GuestDomain.class);
         HashSet<RoomCategoryDomain> roomCategoryDomainSet = new HashSet<>(roomCategoryBuilder.getAll());
         HashSet<RoomCategoryPojo> roomCategoryset = new HashSet<>();
+
+        GuestDomain guestDomain = null;
+        if (contractingParty != null && contractingParty.getContactId() > 0) {
+            IAbstractDomainBuilder<GuestDomain, ContactEntity> domainBuilder = GuestDomainBuilder.getInstance();
+            guestDomain = domainBuilder.get(contractingParty.getContactId());
+        }
 
         for (RoomCategoryDomain roomCategoryDomain : roomCategoryDomainSet) {
             roomCategoryDomain.setCategoryMetaData(startDate,endDate, guestDomain);
