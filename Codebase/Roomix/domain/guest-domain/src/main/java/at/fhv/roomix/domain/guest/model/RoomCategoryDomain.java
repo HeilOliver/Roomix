@@ -107,20 +107,25 @@ public class RoomCategoryDomain {
                           return false;
                         }).collect(Collectors.toCollection(LinkedHashSet::new));
         startDate = start;
-        ContractingPartyDomain contractingParty = guest.getContractingPartiesByContactId().iterator().next();
-        Collection<PartnerAgreementDomain> partnerAgreements = null;
-        Optional<PartnerAgreementDomain> partnerAgreement = null;
-        if(contractingParty.getPartnerAgreementsByContractingPartyId() != null){
-            partnerAgreements =
-                    contractingParty.getPartnerAgreementsByContractingPartyId().stream().
-                    filter(partnerAgreementDomain ->
-                            partnerAgreementDomain.getStartDate().toLocalDate().isBefore(start) &&
-                                    partnerAgreementDomain.getExpiringDate().toLocalDate().isAfter(end)
-                    ).collect(Collectors.toCollection(LinkedHashSet::new));
+        Optional<PartnerAgreementDomain> partnerAgreement = Optional.empty();
+        if(guest != null && guest.getContactId() != 0) {
+            Collection<ContractingPartyDomain> contractingPartiesByContactId = guest.getContractingPartiesByContactId();
+            if (contractingPartiesByContactId != null) {
+                ContractingPartyDomain contractingParty = contractingPartiesByContactId.iterator().next();
+                Collection<PartnerAgreementDomain> partnerAgreements = null;
+                if (contractingParty.getPartnerAgreementsByContractingPartyId() != null) {
+                    partnerAgreements =
+                            contractingParty.getPartnerAgreementsByContractingPartyId().stream().
+                                    filter(partnerAgreementDomain ->
+                                            partnerAgreementDomain.getStartDate().toLocalDate().isBefore(start) &&
+                                                    partnerAgreementDomain.getExpiringDate().toLocalDate().isAfter(end)
+                                    ).collect(Collectors.toCollection(LinkedHashSet::new));
 
-            partnerAgreement = partnerAgreements.stream().
-                    filter(partnerAgreementDomain -> partnerAgreementDomain.getRoomCategory().equals(roomCategoryId)).
-                    findFirst();
+                    partnerAgreement = partnerAgreements.stream().
+                            filter(partnerAgreementDomain -> partnerAgreementDomain.getRoomCategory().equals(roomCategoryId)).
+                            findFirst();
+                }
+            }
         }
         calculateOccupationMap();
         calculateReservationMap();
