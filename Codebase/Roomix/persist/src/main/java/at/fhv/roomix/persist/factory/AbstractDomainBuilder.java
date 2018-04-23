@@ -30,7 +30,7 @@ abstract class AbstractDomainBuilder<DM, EN> {
      */
     private static <S, D> Collection<D> mapCollection(Collection<S> sourceModels, Class<D> destinationType) {
         ModelMapper singleModelMapper = new ModelMapper();
-        Collection<D> destinationCollection = new LinkedList<>();
+        Collection<D> destinationCollection = new HashSet<>();
         for (S sourceModel : sourceModels) {
             D destinationModel = singleModelMapper.map(sourceModel, destinationType);
             destinationCollection.add(destinationModel);
@@ -132,7 +132,7 @@ abstract class AbstractDomainBuilder<DM, EN> {
             } catch (PersistLoadException e) {
                 logger.info(e.getMessage());
             }
-            List<DM> domainObjects = new LinkedList<>();
+            List<DM> domainObjects = new ArrayList<>();
             for (EN entity : entities) {
                 domainObjects.add(mapEntityToDomain(entity));
             }
@@ -160,7 +160,7 @@ abstract class AbstractDomainBuilder<DM, EN> {
             } catch (PersistLoadException e) {
                 logger.info(e.getMessage());
             }
-            List<DM> domainObjects = new LinkedList<>();
+            List<DM> domainObjects = new ArrayList<>();
             for (EN entity : entities) {
                 domainObjects.add(mapEntityToDomain(entity));
             }

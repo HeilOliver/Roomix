@@ -204,8 +204,8 @@ class ReservationController implements IReservationController {
             reservationDomain.setReservationOptionByReservationOption(tempOption);
         }
         reservationDomain.setReservationStatus(EReservationStatus.UNCONFIRMED.getStr());
-        Collection<ReservationUnitDomain> unitSet = new LinkedList<>();
-        reservationDomain.setReservationComment(reservationPojo.getComment().getComment());
+        Collection<ReservationUnitDomain> unitSet = new HashSet<>();
+        reservationDomain.setReservationComment(reservationPojo.getComment() == null ? null : reservationPojo.getComment().getComment());
         for (ReservationUnitPojo reservationUnitPojo : reservationPojo.getReservationUnitsByReservationId()) {
             ReservationUnitDomain unit = new ReservationUnitDomain();
             RoomCategoryDomain tempRoomCategory = RoomCategoryDomainBuilder.getInstance().get(reservationUnitPojo.getRoomCategory().getId());

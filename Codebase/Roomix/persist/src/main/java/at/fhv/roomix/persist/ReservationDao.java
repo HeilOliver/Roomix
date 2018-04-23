@@ -1,6 +1,7 @@
 package at.fhv.roomix.persist;
 
 import at.fhv.roomix.persist.model.ReservationEntity;
+import at.fhv.roomix.persist.model.ReservationUnitEntity;
 import org.hibernate.HibernateException;
 
 public class ReservationDao extends AbstractDao<ReservationEntity, Integer> {
@@ -24,14 +25,19 @@ public class ReservationDao extends AbstractDao<ReservationEntity, Integer> {
     @Override
     protected void internalSave(ReservationEntity entity) throws HibernateException {
         session.beginTransaction();
-        session.saveOrUpdate(entity.getContractingPartyByContractingParty());
-        session.saveOrUpdate(entity.getInvoicePositionsByReservationId());
-        session.saveOrUpdate(entity.getReservationUnitsByReservationId());
-        session.saveOrUpdate(entity.getPaymentTypeByPaymentType());
-        session.saveOrUpdate(entity.getPersonReservationsByReservationId());
-        session.saveOrUpdate(entity.getReservationOptionByReservationOption());
+        saveUpdate(entity.getContractingPartyByContractingParty());
+        saveUpdate(entity.getInvoicePositionsByReservationId());
+        saveUpdate(entity.getPaymentTypeByPaymentType());
+        saveUpdate(entity.getPersonReservationsByReservationId());
+        saveUpdate(entity.getReservationOptionByReservationOption());
         session.save(entity);
+        session.merge("",entity.getReservationUnitsByReservationId());
         session.getTransaction().commit();
+    }
+
+    private <V>void saveUpdate(V obj) {
+        if (obj == null) return;
+        session.saveOrUpdate(obj);
     }
 
 
