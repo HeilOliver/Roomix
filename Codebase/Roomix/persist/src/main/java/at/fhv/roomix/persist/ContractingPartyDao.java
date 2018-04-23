@@ -26,7 +26,6 @@ public class ContractingPartyDao extends AbstractDao<ContractingPartyEntity, Int
         session.beginTransaction();
         session.saveOrUpdate(entity.getContactByContact());
         session.saveOrUpdate(entity.getPartnerAgreementsByContractingPartyId());
-        session.saveOrUpdate(entity.getReservationsByContractingPartyId());
         session.save(entity);
         session.getTransaction().commit();
     }

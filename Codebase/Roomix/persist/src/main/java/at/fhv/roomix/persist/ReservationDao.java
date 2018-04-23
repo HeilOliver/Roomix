@@ -25,13 +25,14 @@ public class ReservationDao extends AbstractDao<ReservationEntity, Integer> {
     @Override
     protected void internalSave(ReservationEntity entity) throws HibernateException {
         session.beginTransaction();
+        session.save(entity);
         saveUpdate(entity.getContractingPartyByContractingParty());
         saveUpdate(entity.getInvoicePositionsByReservationId());
         saveUpdate(entity.getPaymentTypeByPaymentType());
         saveUpdate(entity.getPersonReservationsByReservationId());
         saveUpdate(entity.getReservationOptionByReservationOption());
-        session.save(entity);
-        session.merge("",entity.getReservationUnitsByReservationId());
+        //session.save(entity);
+        //session.merge("",entity.getReservationUnitsByReservationId());
         session.getTransaction().commit();
     }
 
