@@ -196,7 +196,9 @@ class ReservationController implements IReservationController {
             ContractingPartyDomain actualContractingParty = existingContractingParty.iterator().next();
             reservationDomain.setContractingPartyByContractingParty(actualContractingParty);
         }
-        reservationDomain.setPaymentType(1);
+        PaymentTypeDomain paymentTypeDomain = PaymentTypeBuilder.getInstance().get(1);
+        reservationDomain.setPaymentTypeByPaymentType(paymentTypeDomain);
+
         Collection<ReservationOptionPojo> reservationOptions = reservationPojo.getReservationOptionByReservationOption();
         if(reservationOptions != null && !reservationOptions.isEmpty()){
             ReservationOptionDomain tempOption =
