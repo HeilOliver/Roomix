@@ -203,7 +203,7 @@ class ReservationController implements IReservationController {
             reservationDomain.setReservationOptionByReservationOption(tempOption);
         }
         reservationDomain.setReservationStatus(EReservationStatus.UNCONFIRMED.getStr());
-        reservationDomain.setReservationComment(reservationPojo.getComment().getComment());
+        reservationDomain.setReservationComment(reservationPojo.getComment() == null ? null : reservationPojo.getComment().getComment());
         IAbstractDomainBuilder<ReservationUnitDomain, ReservationUnitEntity> unitBuilder = ReservationUnitDomainBuilder.getInstance();
         for (ReservationUnitPojo reservationUnitPojo : reservationPojo.getReservationUnitsByReservationId()) {
             ReservationUnitDomain unit = new ReservationUnitDomain();

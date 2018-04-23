@@ -54,6 +54,7 @@ public class ReservationEditViewModel implements ViewModel {
     private final ReservationEditScope editScope = new ReservationEditScope();
 
     public void initialize() {
+        viewScope.inEditPropertyValidProperty().setValue(true);
         contractingPartyHandler.currentItem().addListener((observable, oldValue, newValue) -> {
             if (newValue == null) {
                 editScope.currContractingPartyProperty().setValue(null);

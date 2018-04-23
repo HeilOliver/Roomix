@@ -17,7 +17,7 @@ import java.util.HashSet;
 public class ReservationPojo {
 
     private int id;
-    @NotNull(message = "comment cannot be null")
+
     private CommentPojo comment;
     @NotNull(message = "contractingParty cannot be null")
     private ContactPojo contractingParty;

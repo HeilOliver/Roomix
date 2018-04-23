@@ -2,6 +2,8 @@ package at.fhv.roomix.ui.view.reservation.edit.unit;
 
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
+import de.saxsys.mvvmfx.utils.validation.visualization.ControlsFxVisualizer;
+import de.saxsys.mvvmfx.utils.validation.visualization.ValidationVisualizer;
 import de.saxsys.mvvmfx.utils.viewlist.CachedViewModelCellFactory;
 import javafx.beans.InvalidationListener;
 import javafx.event.ActionEvent;
@@ -52,6 +54,8 @@ public class UnitView implements FxmlView<UnitViewModel> {
     private Label lblPricePerDay;
     @FXML
     private BarChart<Number,String> chartSelectedCategorie;
+
+    private ValidationVisualizer validationVisualizer = new ControlsFxVisualizer();
 
     @FXML
     NumberAxis xAxis;

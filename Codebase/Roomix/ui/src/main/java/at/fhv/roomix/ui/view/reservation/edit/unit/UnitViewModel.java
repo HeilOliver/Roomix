@@ -12,14 +12,9 @@ import at.fhv.roomix.ui.view.reservation.edit.SubscribeAbleViewModel;
 import de.saxsys.mvvmfx.InjectResourceBundle;
 import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.utils.itemlist.ListTransformation;
-import de.saxsys.mvvmfx.utils.validation.CompositeValidator;
-import de.saxsys.mvvmfx.utils.validation.FunctionBasedValidator;
-import de.saxsys.mvvmfx.utils.validation.ValidationMessage;
-import de.saxsys.mvvmfx.utils.validation.Validator;
-import javafx.beans.InvalidationListener;
+import de.saxsys.mvvmfx.utils.validation.*;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart;
 
@@ -57,6 +52,12 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
     private ObservableList<PacketsItemViewModel> arrangementList;
     private ObservableList<XYChart.Series<Number, String>> availableRooms = FXCollections.observableArrayList();
     private StringProperty currCategoryPrice = new SimpleStringProperty();
+    private StringProperty amountAsStringProperty = new SimpleStringProperty();
+    private Validator arrivalDateValidator;
+    private Validator departureDateValidator;
+    private Validator arrivalTimeValidator;
+    private Validator amountValidator;
+    private Validator categoriesValidator;
 
     public UnitViewModel() {
         provider = new ReservationUnitProvider();
@@ -106,8 +107,6 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
                 ReservationUnitPojo::getArrivalTime, ReservationUnitPojo::setArrivalTime);
     }
 
-    private StringProperty amountAsStringProperty = new SimpleStringProperty();
-
     public StringProperty amountAsStringPropertyProperty() {
         return amountAsStringProperty;
     }
@@ -129,7 +128,7 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
         Duration days = Duration.ofDays(ChronoUnit.DAYS.between(arrivalDateProperty().get(), departureDateProperty().get()));
         duration.setValue(days.toDays() + " " + StringResourceResolver.getStaticResolve(resourceBundle, "reservation.days"));
 
-        provider.loadCategories(arrivalDateProperty().get(), departureDateProperty().get(), scope.getContractingParty(), this::createVms );
+        provider.loadCategories(arrivalDateProperty().get(), departureDateProperty().get(), scope.getContractingParty(), this::createVms);
     }
 
     private void createVms() {
@@ -137,6 +136,22 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
         for (RoomCategoryPojo pojo : provider.getPossibleCategories()) {
             roomCategories.add(new CategoryItemViewModel(pojo));
         }
+    }
+
+    ValidationStatus getArrivalDateValidator() {
+        return arrivalDateValidator.getValidationStatus();
+    }
+
+    ValidationStatus getDepartureDateValidator() {
+        return departureDateValidator.getValidationStatus();
+    }
+
+    ValidationStatus getArrivalTimeValidator() {
+        return arrivalTimeValidator.getValidationStatus();
+    }
+
+    ValidationStatus getCategoryValidator() {
+        return categoriesValidator.getValidationStatus();
     }
 
     public void initialize() {
@@ -167,21 +182,22 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
             arrivalTime().setValue(parse);
         }));
 
-        Validator arrivalDateValidator = new DateValidator(arrivalDateProperty());
-        Validator departureDateValidator = new DateValidator(departureDateProperty());
-        Validator arrivalTimeValidator = new FunctionBasedValidator<>(
+
+        arrivalDateValidator = new DateValidator(arrivalDateProperty());
+        departureDateValidator = new DateValidator(departureDateProperty());
+        arrivalTimeValidator = new FunctionBasedValidator<>(
                 arrivalTime(), Objects::nonNull, ValidationMessage.error(""));
-        Validator validator = new FunctionBasedValidator<>(
+        amountValidator = new FunctionBasedValidator<>(
                 amountProperty(), (i) -> i.intValue() <= 0, ValidationMessage.error("")
         );
-        Validator categoriesValidator = new FunctionBasedValidator<>(
+        categoriesValidator = new FunctionBasedValidator<>(
                 categoryProperty(), Objects::nonNull, ValidationMessage.error(""));
 
         formValidator = new CompositeValidator(
                 arrivalDateValidator,
                 departureDateValidator,
                 arrivalTimeValidator,
-                validator,
+                amountValidator,
                 categoriesValidator
         );
 
@@ -222,6 +238,7 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
             amountProperty().setValue(i);
         }));
     }
+
 
     @Override
     protected void afterSubscribe(boolean isNew) {
