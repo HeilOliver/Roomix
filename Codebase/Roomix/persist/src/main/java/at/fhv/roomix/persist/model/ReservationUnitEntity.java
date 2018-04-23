@@ -30,6 +30,7 @@ public class ReservationUnitEntity {
     private CancellationEntity cancellationByCancellation;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ReservationUnitID")
     public int getReservationUnitId() {
         return reservationUnitId;

@@ -1,7 +1,7 @@
 package at.fhv.roomix.controller.reservation.model;
 
-import java.util.Collection;
-import java.util.HashSet;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * Roomix
@@ -13,13 +13,20 @@ import java.util.HashSet;
  */
 
 public class RoomCategoryPojo {
-    private int id;
-    private String discription;
-    private Collection<ZimmerPojo> rooms;
 
-    public RoomCategoryPojo(){
-        rooms = new HashSet<>();
-    }
+    private int id;
+
+    @NotNull(message = "description cannot be null")
+    @Size(min = 1, max = 200, message = "Description must be between 1 and 200 characters")
+    private String description;
+    private int occupied;
+    private int unconfirmedReservation;
+    private int free;
+    private int confirmedReservation;
+    private int quota;
+    private int pricePerDay;
+
+
 
     public int getId() {
         return id;
@@ -29,19 +36,59 @@ public class RoomCategoryPojo {
         this.id = id;
     }
 
-    public String getDiscription() {
-        return discription;
+    public int getPricePerDay() {
+        return pricePerDay;
     }
 
-    public void setDiscription(String discription) {
-        this.discription = discription;
+    public void setPricePerDay(int pricePerDay) {
+        this.pricePerDay = pricePerDay;
     }
 
-    public Collection<ZimmerPojo> getRooms() {
-        return rooms;
+    public String getDescription() {
+        return description;
     }
 
-    public void setRooms(Collection<ZimmerPojo> rooms) {
-        this.rooms = rooms;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getOccupied() {
+        return occupied;
+    }
+
+    public void setOccupied(int occupied) {
+        this.occupied = occupied;
+    }
+
+    public int getUnconfirmedReservation() {
+        return unconfirmedReservation;
+    }
+
+    public void setUnconfirmedReservation(int unconfirmedReservation) {
+        this.unconfirmedReservation = unconfirmedReservation;
+    }
+
+    public int getFree() {
+        return free;
+    }
+
+    public void setFree(int free) {
+        this.free = free;
+    }
+
+    public int getQuota() {
+        return quota;
+    }
+
+    public void setQuota(int quota) {
+        this.quota = quota;
+    }
+
+    public int getConfirmedReservation() {
+        return confirmedReservation;
+    }
+
+    public void setConfirmedReservation(int confirmedReservation) {
+        this.confirmedReservation = confirmedReservation;
     }
 }

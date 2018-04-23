@@ -17,6 +17,7 @@ public class PaymentTypeEntity {
     private Collection<ReservationEntity> reservationsByPaymentTypeId;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "PaymentTypeID")
     public int getPaymentTypeId() {
         return paymentTypeId;

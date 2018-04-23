@@ -47,6 +47,7 @@ public class ContractingPartyDomainBuilder extends AbstractDomainBuilder<Contrac
     @Override
     protected ContractingPartyDomain mapEntityToDomain(ContractingPartyEntity entity) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
         modelMapper.addMappings(new PropertyMap<ContractingPartyEntity, ContractingPartyDomain>() {
             @Override
             protected void configure() {
@@ -59,12 +60,12 @@ public class ContractingPartyDomainBuilder extends AbstractDomainBuilder<Contrac
         Proxy<Collection<PartnerAgreementDomain>, Integer> partnerAgreementProxy = new Proxy<>(
                 contractingPartyDomain.getContractingPartyId(),
                 key -> PartnerAgreementDomainBuilder.getLazyInstance().
-                        lazyLoadCollection(key, "ContractingParty")
+                        lazyLoadCollection(key, "contractingParty")
                 );
         Proxy<Collection<ReservationDomain>, Integer> reservationProxy = new Proxy<>(
                 contractingPartyDomain.getContractingPartyId(),
                 key -> ReservationDomainBuilder.getLazyInstance().
-                        lazyLoadCollection(key, "ContractingParty")
+                        lazyLoadCollection(key, "contractingParty")
         );
         contractingPartyDomain.setPartnerAgreementProxy(partnerAgreementProxy);
         contractingPartyDomain.setReservationProxy(reservationProxy);
@@ -75,6 +76,7 @@ public class ContractingPartyDomainBuilder extends AbstractDomainBuilder<Contrac
     @Override
     protected ContractingPartyEntity mapDomainToEntity(ContractingPartyDomain domain) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
         ContractingPartyEntity entity = modelMapper.map(domain, ContractingPartyEntity.class);
 
         LinkedHashMap<ISourceMapper<Collection>,

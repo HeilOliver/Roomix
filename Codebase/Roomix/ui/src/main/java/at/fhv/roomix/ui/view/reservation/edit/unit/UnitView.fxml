@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import org.controlsfx.control.SegmentedBar?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import org.controlsfx.control.CheckListView?>
+<?import javafx.scene.shape.Box?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.CategoryAxis?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="at.fhv.roomix.ui.view.reservation.edit.unit.UnitView"
+            >
+    <AnchorPane minHeight="60" maxHeight="60" prefHeight="60"
+                AnchorPane.topAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0">
+        <HBox AnchorPane.topAnchor="12" AnchorPane.rightAnchor="0">
+            <Button fx:id="btnCommit" onAction="#buttonCommitClick" text="%main.commit" prefWidth="120">
+                <graphic>
+                    <FontAwesomeIconView glyphName="ARROW_LEFT" size="2em"/>
+                </graphic>
+            </Button>
+        </HBox>
+        <Separator AnchorPane.topAnchor="59" AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0"/>
+    </AnchorPane>
+    <VBox AnchorPane.topAnchor="60" AnchorPane.rightAnchor="10"
+          AnchorPane.leftAnchor="10" AnchorPane.bottomAnchor="10" spacing="10">
+        <HBox spacing="20">
+            <VBox>
+                <Label text="%reservation.dates"/>
+                <HBox alignment="CENTER_LEFT">
+                    <DatePicker promptText="%reservation.arrivaldate" fx:id="pickArrival"/>
+                    <Separator prefWidth="15"/>
+                    <Label fx:id="lblDuration" minWidth="60" alignment="CENTER"/>
+                    <Separator prefWidth="15"/>
+                    <DatePicker promptText="%reservation.departure" fx:id="pickDeparture"/>
+                </HBox>
+            </VBox>
+            <VBox>
+                <Label text="%reservation.arrivaltime"/>
+                <TextField promptText="%reservation.arrivaltime.hour" maxWidth="35" fx:id="arrivalTime"/>
+            </VBox>
+        </HBox>
+        <Separator/>
+            <HBox spacing="20">
+                <StackPane>
+                    <VBox>
+                        <Label text="%reservation.edit.unit.categorie"/>
+                        <ListView prefHeight="200" fx:id="listCategories"/>
+                    </VBox>
+                    <ProgressIndicator fx:id="icoCategoriesLoad"
+                                              maxHeight="60" maxWidth="60"/>
+                </StackPane>
+                <VBox HBox.hgrow="ALWAYS" maxWidth="Infinity">
+                    <Label text="%reservation.edit.unit.selectedcategorie"/>
+                    <TextField fx:id="inputAmount" prefWidth="100" promptText="%reservation.edit.amount"/>
+                    <HBox spacing="10">
+                        <Label text="%reservation.edit.unit.perday"/>
+                        <Label fx:id="lblPricePerDay"/>
+                    </HBox>
+                    <AnchorPane VBox.vgrow="ALWAYS" maxWidth="Infinity">
+                        <BarChart AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0"
+                                  AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0"
+                                fx:id="chartSelectedCategorie" prefHeight="110" prefWidth="120">
+                            <xAxis>
+                                <NumberAxis side="TOP" fx:id="xAxis"  />
+                            </xAxis>
+                            <yAxis>
+                                <CategoryAxis fx:id="yAxis" side="LEFT" />
+                            </yAxis>
+                        </BarChart>
+                    </AnchorPane>
+                </VBox>
+            </HBox>
+        <StackPane>
+            <VBox>
+                <Label text="%reservation.edit.arrangements"/>
+                <ListView prefHeight="200" fx:id="listPackets"/>
+            </VBox>
+            <ProgressIndicator fx:id="icoArrangementsLoad"
+                               maxHeight="60" maxWidth="60"/>
+        </StackPane>
+        <Separator/>
+        <VBox>
+            <HBox  >
+                <Label text="%reservation.edit.unit.endsum" />
+                <Label fx:id="lblSum" minWidth="100"/>
+            </HBox>
+        </VBox>
+    </VBox>
+</AnchorPane>

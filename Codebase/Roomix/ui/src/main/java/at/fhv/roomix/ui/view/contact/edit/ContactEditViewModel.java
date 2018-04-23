@@ -10,6 +10,7 @@ import de.saxsys.mvvmfx.utils.mapping.ModelWrapper;
 import de.saxsys.mvvmfx.utils.validation.*;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.StringProperty;
+import org.controlsfx.control.Notifications;
 
 /**
  * Roomix
@@ -31,6 +32,7 @@ public class ContactEditViewModel implements ViewModel {
     private final Validator placeValidator;
     private final Validator houseNumberValidator;
     private CompositeValidator formValidator = new CompositeValidator();
+
     @InjectScope
     private ContactViewScope viewScope;
 
@@ -71,6 +73,16 @@ public class ContactEditViewModel implements ViewModel {
 
         viewScope.subscribe(ContactViewScope.commandEditView, ((key, payload) -> reLoad()));
         viewScope.subscribe(ContactViewScope.commandContentView, ((key, payload) -> contactWrapper.reset()));
+        viewScope.inEditPropertyValidProperty().bind(
+                formValidator.getValidationStatus().validProperty()
+        );
+        viewScope.subscribe(ContactViewScope.commandCommitEdit, (key, payload) -> {
+            ContactPojo contactPojo = new ContactPojo();
+            contactWrapper.copyValuesTo(contactPojo);
+            contactPojo.setContactId(
+                    viewScope.inEditPojoProperty().get().getContactId());
+            viewScope.inEditPojoProperty().setValue(contactPojo);
+        });
 
         formValidator.addValidators(
                 firstNameValidator,
@@ -83,17 +95,14 @@ public class ContactEditViewModel implements ViewModel {
                 emailValidator
         );
 
-        viewScope.inEditPropertyValidProperty().bind(
-                formValidator.getValidationStatus().validProperty()
-        );
+        viewScope.setOnError(this::onError);
+    }
 
-        viewScope.subscribe(ContactViewScope.commandCommitEdit, (key, payload) -> {
-            ContactPojo contactPojo = new ContactPojo();
-            contactWrapper.copyValuesTo(contactPojo);
-            contactPojo.setContactId(
-                    viewScope.inEditPojoProperty().get().getContactId());
-            viewScope.inEditPojoProperty().setValue(contactPojo);
-        });
+    private void onError(Error e) {
+        Notifications.create()
+                .title("Error")
+                .text(e.getMessage())
+                .showError();
     }
 
     private void reLoad() {

@@ -20,6 +20,7 @@ public class CreditCardEntity {
     private ContactEntity contactByContact;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "CreditCardID")
     public int getCreditCardId() {
         return creditCardId;

@@ -2,6 +2,7 @@ package at.fhv.roomix.controller.session;
 
 import at.fhv.roomix.controller.session.exception.AuthenticationFaultException;
 import at.fhv.roomix.controller.session.model.SessionPojo;
+import at.fhv.roomix.domain.session.configuration.IUiConfiguration;
 
 /**
  * Roomix
@@ -20,4 +21,6 @@ public interface ISessionController {
     void dispose();
 
     void startUp();
+
+    IUiConfiguration getUiConfiguration();
 }

@@ -23,6 +23,7 @@ public class RoomAssignmentEntity {
     private ReservationUnitEntity reservationUnitByReservationUnit;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "RoomAssignmentID")
     public int getRoomAssignmentId() {
         return roomAssignmentId;

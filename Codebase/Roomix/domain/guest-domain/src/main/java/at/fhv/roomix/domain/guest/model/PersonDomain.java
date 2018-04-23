@@ -11,6 +11,7 @@ public class PersonDomain {
 
     private String firstName;
     private String lastName;
+    private GuestDomain contactByContact;
     private Collection<PersonReservationDomain> personReservationsByPersonId;
     private Proxy<Collection<PersonReservationDomain>, Integer> personReservationProxy;
 
@@ -64,7 +65,19 @@ public class PersonDomain {
     }
 
     public Collection<PersonReservationDomain> getPersonReservationsByPersonId() {
-        return personReservationsByPersonId;
+        if (personReservationProxy != null) {
+            return (personReservationsByPersonId = personReservationProxy.get());
+        } else {
+            return personReservationsByPersonId;
+        }
+    }
+
+    public GuestDomain getContactByContact() {
+        return contactByContact;
+    }
+
+    public void setContactByContact(GuestDomain contactByContact) {
+        this.contactByContact = contactByContact;
     }
 
     public void setPersonReservationsByPersonId(Collection<PersonReservationDomain> personReservationsByPersonId) {

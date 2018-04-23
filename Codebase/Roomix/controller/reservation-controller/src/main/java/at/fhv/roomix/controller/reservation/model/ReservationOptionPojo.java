@@ -1,7 +1,8 @@
 package at.fhv.roomix.controller.reservation.model;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 /**
  * Roomix
@@ -13,31 +14,54 @@ import java.time.LocalDateTime;
  */
 public class ReservationOptionPojo {
 
-    private LocalDate dueDate;
-    private String description;
-    private int id;
+    private int optionId;
+    private LocalDate optionDueDate;
 
-    public int getId() {
-        return id;
+    @NotNull(message = "optionDescription cannot be null")
+    @Size(min = 1, max = 200, message = "Description must be between 1 and 200 characters")
+    private String optionDescription;
+    @NotNull(message = "optionFee cannot be null")
+    private PricePojo optionFee;
+
+    private byte optionStatus;
+
+    public int getOptionId() {
+        return optionId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setOptionId(int optionId) {
+        this.optionId = optionId;
     }
 
-    public LocalDate getDueDate() {
-        return dueDate;
+    public LocalDate getOptionDueDate() {
+        return optionDueDate;
     }
 
-    public void setDueDate(LocalDate dueDate) {
-        this.dueDate = dueDate;
+    public void setOptionDueDate(LocalDate optionDueDate) {
+        this.optionDueDate = optionDueDate;
     }
 
-    public String getDescription() {
-        return description;
+    public String getOptionDescription() {
+        return optionDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setOptionDescription(String optionDescription) {
+        this.optionDescription = optionDescription;
+    }
+
+    public PricePojo getOptionFee() {
+        return optionFee;
+    }
+
+    public void setOptionFee(PricePojo optionFee) {
+        this.optionFee = optionFee;
+    }
+
+    public byte getOptionStatus() {
+        return optionStatus;
+    }
+
+    public void setOptionStatus(byte optionStatus) {
+        this.optionStatus = optionStatus;
     }
 }

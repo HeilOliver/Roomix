@@ -1,7 +1,8 @@
 package at.fhv.roomix.ui.view.contact.scopes;
 
-import at.fhv.roomix.controller.reservation.model.ContactPojo;
+import at.fhv.roomix.controller.contact.model.ContactPojo;
 import at.fhv.roomix.ui.common.AbstractMasterEditScope;
+import at.fhv.roomix.ui.common.IErrorCall;
 import at.fhv.roomix.ui.dataprovider.ContactProvider;
 
 /**
@@ -16,5 +17,10 @@ public class ContactViewScope extends AbstractMasterEditScope<ContactPojo> {
 
     public ContactViewScope() {
         super(ContactPojo::new, new ContactProvider());
+
+    }
+
+    public void setOnError(IErrorCall e) {
+        onSaveUpdateError = e;
     }
 }

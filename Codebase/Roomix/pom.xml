@@ -68,6 +68,13 @@
             </dependency>
 
             <dependency>
+                <groupId>common</groupId>
+                <artifactId>at.fhv.roomix.controller</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+
+            <dependency>
                 <groupId>at.fhv.roomix.domain</groupId>
                 <artifactId>session-domain</artifactId>
                 <version>${project.version}</version>
@@ -113,6 +120,12 @@
             <dependency>
                 <groupId>at.fhv.roomix.controller</groupId>
                 <artifactId>stay-controller</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>at.fhv.roomix.controller</groupId>
+                <artifactId>common</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

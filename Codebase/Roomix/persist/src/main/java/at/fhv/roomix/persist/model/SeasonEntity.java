@@ -20,6 +20,7 @@ public class SeasonEntity {
     private Collection<RoomCategoryPriceEntity> roomCategoryPricesBySeasonId;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "SeasonID")
     public int getSeasonId() {
         return seasonId;

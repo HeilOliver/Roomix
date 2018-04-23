@@ -17,6 +17,7 @@ public class ReservationUnitDomain {
 
     private RoomCategoryDomain roomCategoryByRoomCategory;
     private CancellationDomain cancellationByCancellation;
+    private ReservationDomain reservationByReservation;
 
     public int getReservationUnitId() {
         return reservationUnitId;
@@ -105,6 +106,14 @@ public class ReservationUnitDomain {
 
     public void setCancellationByCancellation(CancellationDomain cancellationByCancellation) {
         this.cancellationByCancellation = cancellationByCancellation;
+    }
+
+    public ReservationDomain getReservationByReservation() {
+        return reservationByReservation;
+    }
+
+    public void setReservationByReservation(ReservationDomain reservationByReservation) {
+        this.reservationByReservation = reservationByReservation;
     }
 
 }

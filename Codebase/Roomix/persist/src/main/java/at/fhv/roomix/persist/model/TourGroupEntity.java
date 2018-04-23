@@ -18,6 +18,7 @@ public class TourGroupEntity {
     private Collection<TourGroupMemberEntity> tourGroupMembersByTourGroupId;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "TourGroupID")
     public int getTourGroupId() {
         return tourGroupId;

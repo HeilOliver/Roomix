@@ -12,9 +12,29 @@
         <Separator/>
         <TableView fx:id="tabContactTable" VBox.vgrow="ALWAYS">
             <columns>
+                <TableColumn prefWidth="75.0" text="%common.id">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="id"/>
+                    </cellValueFactory>
+                </TableColumn>
                 <TableColumn prefWidth="75.0" text="%common.firstname">
                     <cellValueFactory>
                         <PropertyValueFactory property="firstName"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="%common.lastname">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="lastName"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="%common.companyname">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="companyName"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="%common.comment">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="comment"/>
                     </cellValueFactory>
                 </TableColumn>
                 <!-- Add here more columns-->

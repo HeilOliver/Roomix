@@ -2,6 +2,7 @@ package at.fhv.roomix.controller.reservation.model;
 
 import at.fhv.roomix.controller.contact.model.ContactPojo;
 
+import javax.validation.constraints.NotNull;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -14,16 +15,25 @@ import java.util.HashSet;
  * Enter Description here
  */
 public class ReservationPojo {
-    private int id;
-    private String comment;
 
+    private int id;
+
+    private CommentPojo comment;
+    @NotNull(message = "contractingParty cannot be null")
     private ContactPojo contractingParty;
-    private Collection<ReservationUnitPojo> units;
-    private Collection<ContactPojo> persons;
+    @NotNull(message = "reservationUnitsByReservationId cannot be null")
+    private Collection<ReservationUnitPojo> reservationUnitsByReservationId;
+
+    private Collection<ReservationOptionPojo> reservationOptionByReservationOption;
+    @NotNull(message = "personReservationsByReservationId cannot be null")
+    private Collection<ContactPojo> personReservationsByReservationId;
+    private String reservationStatus;
+    private int paymentType;
 
     public ReservationPojo() {
-        units = new HashSet<>();
-        persons = new HashSet<>();
+        reservationUnitsByReservationId = new HashSet<>();
+        personReservationsByReservationId = new HashSet<>();
+        reservationOptionByReservationOption = new HashSet<>();
     }
 
     public int getId() {
@@ -34,14 +44,6 @@ public class ReservationPojo {
         this.id = id;
     }
 
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
     public ContactPojo getContractingParty() {
         return contractingParty;
     }
@@ -50,21 +52,51 @@ public class ReservationPojo {
         this.contractingParty = contractingParty;
     }
 
-    public Collection<ReservationUnitPojo> getUnits() {
-        return units;
+    public Collection<ReservationUnitPojo> getReservationUnitsByReservationId() {
+        return reservationUnitsByReservationId;
     }
 
-    public void setUnits(Collection<ReservationUnitPojo> units) {
-        this.units = units;
+    public void setReservationUnitsByReservationId(Collection<ReservationUnitPojo> reservationUnitsByReservationId) {
+        this.reservationUnitsByReservationId = reservationUnitsByReservationId;
     }
 
-    public Collection<ContactPojo> getPersons() {
-        return persons;
+    public Collection<ContactPojo> getPersonReservationsByReservationId() {
+        return personReservationsByReservationId;
     }
 
-    public void setPersons(Collection<ContactPojo> persons) {
-        this.persons = persons;
+    public void setPersonReservationsByReservationId(Collection<ContactPojo> personReservationsByReservationId) {
+        this.personReservationsByReservationId = personReservationsByReservationId;
     }
 
+    public CommentPojo getComment() {
+        return comment;
+    }
 
+    public void setComment(CommentPojo comment) {
+        this.comment = comment;
+    }
+
+    public Collection<ReservationOptionPojo> getReservationOptionByReservationOption() {
+        return reservationOptionByReservationOption;
+    }
+
+    public void setReservationOptionByReservationOption(Collection<ReservationOptionPojo> reservationOptionByReservationOption) {
+        this.reservationOptionByReservationOption = reservationOptionByReservationOption;
+    }
+
+    public String getReservationStatus() {
+        return reservationStatus;
+    }
+
+    public void setReservationStatus(String reservationStatus) {
+        this.reservationStatus = reservationStatus;
+    }
+
+    public int getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(int paymentType) {
+        this.paymentType = paymentType;
+    }
 }

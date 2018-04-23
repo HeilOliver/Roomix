@@ -4,10 +4,13 @@ import at.fhv.roomix.ui.common.StringResourceResolver;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectResourceBundle;
 import de.saxsys.mvvmfx.InjectViewModel;
+import de.saxsys.mvvmfx.utils.validation.visualization.ControlsFxVisualizer;
+import de.saxsys.mvvmfx.utils.validation.visualization.ValidationVisualizer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.shape.Rectangle;
 
 import java.util.ResourceBundle;
@@ -33,11 +36,17 @@ public class ItemControl implements FxmlView<ItemControlViewModel> {
     @FXML
     private Rectangle selected;
 
-    public void initialize() {
-        lblContentBoxDescription.textProperty().bind(
-                StringResourceResolver.getAnonymousProperty(bundle, viewModel.contentTextProperty()));
+    private ValidationVisualizer validationVisualizer = new ControlsFxVisualizer();
 
+
+    public void initialize() {
+        lblContentBoxDescription.textProperty().bind(viewModel.contentTextProperty());
         selected.visibleProperty().bind(viewModel.isSelectedProperty());
+
+        validationVisualizer.initVisualization(
+                viewModel.getValidationStatus(),
+                lblContentBoxDescription
+        );
     }
 
     @FXML

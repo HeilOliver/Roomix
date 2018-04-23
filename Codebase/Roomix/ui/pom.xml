@@ -33,6 +33,10 @@
             <groupId>at.fhv.roomix.controller</groupId>
             <artifactId>stay-controller</artifactId>
         </dependency>
+        <dependency>
+            <groupId>at.fhv.roomix.controller</groupId>
+            <artifactId>common</artifactId>
+        </dependency>
 
         <!-- Binding, Mvvm and more -->
         <dependency>

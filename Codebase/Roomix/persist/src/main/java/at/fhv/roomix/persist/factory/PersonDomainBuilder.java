@@ -47,6 +47,7 @@ public class PersonDomainBuilder extends AbstractDomainBuilder<PersonDomain, Per
     @Override
     protected PersonDomain mapEntityToDomain(PersonEntity entity) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
         modelMapper.addMappings(new PropertyMap<PersonEntity, PersonDomain>() {
             @Override
             protected void configure() {
@@ -58,7 +59,7 @@ public class PersonDomainBuilder extends AbstractDomainBuilder<PersonDomain, Per
         Proxy<Collection<PersonReservationDomain>, Integer> personReservationProxy =
                 new Proxy<>(personDomain.getPersonId(),
                         key -> PersonReservationDomainBuilder.getLazyInstance().
-                                lazyLoadCollection(key, "Person")
+                                lazyLoadCollection(key, "person")
                 );
         personDomain.setPersonReservationProxy(personReservationProxy);
         return personDomain;
@@ -67,6 +68,7 @@ public class PersonDomainBuilder extends AbstractDomainBuilder<PersonDomain, Per
     @Override
     protected PersonEntity mapDomainToEntity(PersonDomain domain) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
         PersonEntity personEntity = modelMapper.map(domain, PersonEntity.class);
 
         LinkedHashMap<ISourceMapper<Collection>,

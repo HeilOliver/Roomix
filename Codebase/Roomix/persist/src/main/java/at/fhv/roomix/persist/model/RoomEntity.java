@@ -19,6 +19,7 @@ public class RoomEntity {
     private Collection<RoomFacilityEntity> roomFacilitiesByRoomId;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "RoomID")
     public int getRoomId() {
         return roomId;

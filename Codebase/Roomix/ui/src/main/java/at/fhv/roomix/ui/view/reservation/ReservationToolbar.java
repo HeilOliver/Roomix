@@ -23,8 +23,8 @@ public class ReservationToolbar implements FxmlView<ReservationToolbarViewModel>
 
     @FXML
     private Button btnNew;
-    @FXML
-    private Button btnEdit;
+//    @FXML
+//    private Button btnEdit;
     @FXML
     private ProgressIndicator icoLoadProcess;
     @FXML
@@ -33,6 +33,8 @@ public class ReservationToolbar implements FxmlView<ReservationToolbarViewModel>
     private Button btnSave;
     @FXML
     private Button btnCancel;
+    @FXML
+    private Button btnPrint;
 
     public void initialize() {
         icoLoadProcess.visibleProperty().bind(viewModel.getInProcessProperty());
@@ -43,9 +45,9 @@ public class ReservationToolbar implements FxmlView<ReservationToolbarViewModel>
         btnNew.visibleProperty().bind(viewModel.inContentViewProperty());
         btnNew.managedProperty().bind(viewModel.inContentViewProperty());
 
-        btnEdit.visibleProperty().bind(viewModel.inContentViewProperty());
-        btnEdit.managedProperty().bind(viewModel.inContentViewProperty());
-        btnEdit.disableProperty().bind(viewModel.editAbleProperty().not());
+//        btnEdit.visibleProperty().bind(viewModel.inContentViewProperty());
+//        btnEdit.managedProperty().bind(viewModel.inContentViewProperty());
+//        btnEdit.disableProperty().bind(viewModel.editAbleProperty().not());
 
         btnSave.visibleProperty().bind(viewModel.inEditViewProperty());
         btnSave.managedProperty().bind(viewModel.inEditViewProperty());
@@ -53,6 +55,12 @@ public class ReservationToolbar implements FxmlView<ReservationToolbarViewModel>
 
         btnCancel.visibleProperty().bind(viewModel.inEditViewProperty());
         btnCancel.managedProperty().bind(viewModel.inEditViewProperty());
+
+        //btnPrint.visibleProperty().bind(viewModel.inContentViewProperty());
+        //btnPrint.managedProperty().bind(viewModel.inContentViewProperty());
+        //btnPrint.disableProperty().bind(viewModel.editAbleProperty().not());
+
+        btnPrint.setVisible(false);
     }
 
     @FXML
@@ -73,5 +81,10 @@ public class ReservationToolbar implements FxmlView<ReservationToolbarViewModel>
     @FXML
     private void buttonCancel_Click(ActionEvent actionEvent) {
         viewModel.onCancel();
+    }
+
+    @FXML
+    private void buttonPrintClick(ActionEvent actionEvent) {
+        viewModel.onPrint();
     }
 }

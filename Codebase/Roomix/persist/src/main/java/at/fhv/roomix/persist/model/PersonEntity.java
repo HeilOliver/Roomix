@@ -24,6 +24,7 @@ public class PersonEntity {
     private Collection<TourGroupMemberEntity> tourGroupMembersByPersonId;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "PersonID")
     public int getPersonId() {
         return personId;

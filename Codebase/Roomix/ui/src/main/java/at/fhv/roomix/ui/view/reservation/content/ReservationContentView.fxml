@@ -9,7 +9,7 @@
     <MasterDetailPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                       AnchorPane.topAnchor="0.0" fx:id="mdPane" dividerPosition="0.75">
         <masterNode>
-            <fx:include source="ReservationDetailView.fxml"/>
+            <fx:include source="ReservationTableView.fxml"/>
         </masterNode>
         <detailNode>
             <fx:include source="ReservationDetailView.fxml"/>

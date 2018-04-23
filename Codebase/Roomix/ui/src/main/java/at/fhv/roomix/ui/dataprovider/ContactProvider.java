@@ -23,7 +23,4 @@ public class ContactProvider extends AbstractSearchEditProvider<ContactPojo> {
         );
     }
 
-    public ReadOnlyBooleanProperty getInProcessProperty() {
-        return inProcessProperty();
-    }
 }

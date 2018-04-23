@@ -61,7 +61,11 @@ public class ReservationDomain {
     }
 
     public Collection<PersonReservationDomain> getPersonReservationsByReservationId() {
-        return personReservationProxy.get();
+        if (personReservationProxy != null) {
+            return (personReservationsByReservationId = personReservationProxy.get());
+        } else{
+            return personReservationsByReservationId;
+        }
     }
 
     public void setPersonReservationsByReservationId(Collection<PersonReservationDomain> personReservationsByReservationId) {
@@ -85,7 +89,11 @@ public class ReservationDomain {
     }
 
     public Collection<ReservationUnitDomain> getReservationUnitsByReservationId() {
-        return reservationUnitProxy.get();
+        if (reservationUnitProxy != null) {
+            return (reservationUnitsByReservationId = reservationUnitProxy.get());
+        } else{
+            return reservationUnitsByReservationId;
+        }
     }
 
     public void setReservationUnitsByReservationId(Collection<ReservationUnitDomain> reservationUnitsByReservationId) {

@@ -24,6 +24,7 @@ public class PartnerAgreementEntity {
     private RoomCategoryEntity roomCategoryByRoomCategory;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "AgreementID")
     public int getAgreementId() {
         return agreementId;

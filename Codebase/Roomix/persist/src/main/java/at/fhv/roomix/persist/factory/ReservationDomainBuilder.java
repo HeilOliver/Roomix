@@ -46,6 +46,7 @@ public class ReservationDomainBuilder extends AbstractDomainBuilder<ReservationD
     @Override
     protected ReservationDomain mapEntityToDomain(ReservationEntity entity) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
         modelMapper.addMappings(new PropertyMap<ReservationEntity, ReservationDomain>() {
             @Override
             protected void configure() {
@@ -58,12 +59,12 @@ public class ReservationDomainBuilder extends AbstractDomainBuilder<ReservationD
         Proxy<Collection<PersonReservationDomain>, Integer> personReservationProxy =
                 new Proxy<>(reservationDomain.getReservationId(),
                         key -> PersonReservationDomainBuilder.getLazyInstance().
-                                lazyLoadCollection(key, "Reservation")
+                                lazyLoadCollection(key, "reservation")
                 );
         Proxy<Collection<ReservationUnitDomain>, Integer> reservationUnitProxy =
                 new Proxy<>(reservationDomain.getReservationId(),
                         key -> ReservationUnitDomainBuilder.getLazyInstance().
-                                lazyLoadCollection(key, "Reservation")
+                                lazyLoadCollection(key, "reservation")
                 );
         reservationDomain.setPersonReservationProxy(personReservationProxy);
         reservationDomain.setReservationUnitProxy(reservationUnitProxy);
@@ -73,6 +74,7 @@ public class ReservationDomainBuilder extends AbstractDomainBuilder<ReservationD
     @Override
     protected ReservationEntity mapDomainToEntity(ReservationDomain domain) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
         ReservationEntity reservationEntity = modelMapper.map(domain, ReservationEntity.class);
 
         LinkedHashMap<ISourceMapper<Collection>,
@@ -109,6 +111,7 @@ public class ReservationDomainBuilder extends AbstractDomainBuilder<ReservationD
 
     @Override
     public Collection<ReservationDomain> lazyLoadCollection(Integer key, String referencedColumn) {
-        return null;
+        return new ReservationDomainBuilder(ReservationDao::registerAtDao).
+                loadByForeignKey(ReservationEntity.class, key, referencedColumn);
     }
 }

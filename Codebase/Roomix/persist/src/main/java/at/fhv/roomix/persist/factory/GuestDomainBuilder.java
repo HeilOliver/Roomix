@@ -49,6 +49,7 @@ public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, Conta
     protected GuestDomain mapEntityToDomain(ContactEntity contactEntity) {
 
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
         /* Skip Collections that should be used for lazy loading */
         modelMapper.addMappings(new PropertyMap<ContactEntity, GuestDomain>() {
             @Override
@@ -74,15 +75,15 @@ public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, Conta
         Proxy<Collection<ContractingPartyDomain>, Integer> contractingPartyProxy =
                 new Proxy<>(guestDomain.getContactId(),
                         key -> ContractingPartyDomainBuilder.getLazyInstance().
-                                lazyLoadCollection(key, "Contact"));
+                                lazyLoadCollection(key, "contact"));
         Proxy<Collection<PersonDomain>, Integer> personProxy =
                 new Proxy<>(guestDomain.getContactId(),
                         key -> PersonDomainBuilder.getLazyInstance().
-                                lazyLoadCollection(key, "Contact"));
+                                lazyLoadCollection(key, "contact"));
         Proxy<Collection<InvoiceDomain>, Integer> invoiceProxy =
                 new Proxy<>(guestDomain.getContactId(),
                         key -> InvoiceDomainBuilder.getLazyInstance().
-                                lazyLoadCollection(key, "Contact")
+                                lazyLoadCollection(key, "contact")
                 );
 
         guestDomain.setContractingPartyDomainBuilderProxy(contractingPartyProxy);
@@ -97,6 +98,7 @@ public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, Conta
     protected ContactEntity mapDomainToEntity(GuestDomain domain) {
 
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
         ContactEntity contactEntity = modelMapper.map(domain, ContactEntity.class);
 
         LinkedHashMap<ISourceMapper<Collection>,
