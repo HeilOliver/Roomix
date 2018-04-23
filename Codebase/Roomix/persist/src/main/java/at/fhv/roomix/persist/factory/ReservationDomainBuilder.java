@@ -1,15 +1,12 @@
 package at.fhv.roomix.persist.factory;
 
-import at.fhv.roomix.domain.guest.model.InvoicePositionDomain;
-import at.fhv.roomix.domain.guest.model.ReservationDomain;
-import at.fhv.roomix.domain.guest.model.ReservationOptionDomain;
-import at.fhv.roomix.domain.guest.model.ReservationUnitDomain;
+import at.fhv.roomix.domain.guest.model.*;
 import at.fhv.roomix.persist.ReservationDao;
-import at.fhv.roomix.persist.model.InvoicepositionEntity;
+import at.fhv.roomix.persist.model.PersonReservationEntity;
 import at.fhv.roomix.persist.model.ReservationEntity;
-import at.fhv.roomix.persist.model.ReservationoptionEntity;
-import at.fhv.roomix.persist.model.ReservationunitEntity;
+import at.fhv.roomix.persist.model.ReservationUnitEntity;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -18,17 +15,23 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class ReservationDomainBuilder extends AbstractDomainBuilder<ReservationDomain, ReservationEntity>
-        implements IAbstractDomainBuilder<ReservationDomain, ReservationEntity> {
+        implements IAbstractDomainBuilder<ReservationDomain, ReservationEntity>, IProxy<ReservationDomain, Integer> {
 
-    /* Dependency Injection */
-    private static Supplier<IAbstractDomainBuilder<ReservationDomain, ReservationEntity>> supplier;
-
-    /* Constructor */
     private ReservationDomainBuilder(ICallable registerAtDAO) {
         registerAtDAO.call();
     }
 
-    private ReservationDomainBuilder() {
+    ReservationDomainBuilder(){}
+
+    private static IProxy<ReservationDomain, Integer> lazyInstance;
+    private static Supplier<IAbstractDomainBuilder<ReservationDomain, ReservationEntity>> supplier;
+
+
+    public static IProxy<ReservationDomain, Integer> getLazyInstance(){
+        if(lazyInstance == null){
+            lazyInstance = new ReservationDomainBuilder();
+        }
+        return lazyInstance;
     }
 
     public static IAbstractDomainBuilder<ReservationDomain, ReservationEntity> getInstance() {
@@ -43,36 +46,44 @@ public class ReservationDomainBuilder extends AbstractDomainBuilder<ReservationD
     @Override
     protected ReservationDomain mapEntityToDomain(ReservationEntity entity) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
+        modelMapper.addMappings(new PropertyMap<ReservationEntity, ReservationDomain>() {
+            @Override
+            protected void configure() {
+               skip().setPersonReservationsByReservationId(null);
+               skip().setReservationUnitsByReservationId(null);
+            }
+        });
         ReservationDomain reservationDomain = modelMapper.map(entity, ReservationDomain.class);
 
-        LinkedHashMap<ISourceMapper<Collection>,
-                Map.Entry<Class, IDestinationMapper<Collection>>> mapping = new LinkedHashMap<>();
-
-        put(InvoicePositionDomain.class, entity::getInvoicepositionsByReservationId,
-                reservationDomain::setInvoicePositions, mapping);
-        put(ReservationOptionDomain.class, entity::getReservationoptionsByReservationId,
-                reservationDomain::setReservationOptions, mapping);
-        put(ReservationUnitDomain.class, entity::getReservationunitsByReservationId,
-                reservationDomain::setReservationUnits, mapping);
-        mapAllCollections(mapping);
-
+        Proxy<Collection<PersonReservationDomain>, Integer> personReservationProxy =
+                new Proxy<>(reservationDomain.getReservationId(),
+                        key -> PersonReservationDomainBuilder.getLazyInstance().
+                                lazyLoadCollection(key, "reservation")
+                );
+        Proxy<Collection<ReservationUnitDomain>, Integer> reservationUnitProxy =
+                new Proxy<>(reservationDomain.getReservationId(),
+                        key -> ReservationUnitDomainBuilder.getLazyInstance().
+                                lazyLoadCollection(key, "reservation")
+                );
+        reservationDomain.setPersonReservationProxy(personReservationProxy);
+        reservationDomain.setReservationUnitProxy(reservationUnitProxy);
         return reservationDomain;
     }
 
     @Override
     protected ReservationEntity mapDomainToEntity(ReservationDomain domain) {
         ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
         ReservationEntity reservationEntity = modelMapper.map(domain, ReservationEntity.class);
 
         LinkedHashMap<ISourceMapper<Collection>,
                 Map.Entry<Class, IDestinationMapper<Collection>>> mapping = new LinkedHashMap<>();
 
-        put(InvoicepositionEntity.class, domain::getInvoicePositions,
-                reservationEntity::setInvoicepositionsByReservationId, mapping);
-        put(ReservationoptionEntity.class, domain::getReservationOptions,
-                reservationEntity::setReservationoptionsByReservationId, mapping);
-        put(ReservationunitEntity.class, domain::getReservationUnits,
-                reservationEntity::setReservationunitsByReservationId, mapping);
+        put(PersonReservationEntity.class, domain::getPersonReservationsByReservationId,
+                reservationEntity::setPersonReservationsByReservationId, mapping);
+        put(ReservationUnitEntity.class, domain::getReservationUnitsByReservationId,
+                reservationEntity::setReservationUnitsByReservationId, mapping);
         mapAllCollections(mapping);
 
         return reservationEntity;
@@ -91,5 +102,16 @@ public class ReservationDomainBuilder extends AbstractDomainBuilder<ReservationD
     @Override
     public void set(ReservationDomain domainObject) {
         new ReservationDomainBuilder(ReservationDao::registerAtDao).save(ReservationEntity.class, domainObject);
+    }
+
+    @Override
+    public ReservationDomain lazyLoadInstance(Integer key, String referencedColumn) {
+        return null;
+    }
+
+    @Override
+    public Collection<ReservationDomain> lazyLoadCollection(Integer key, String referencedColumn) {
+        return new ReservationDomainBuilder(ReservationDao::registerAtDao).
+                loadByForeignKey(ReservationEntity.class, key, referencedColumn);
     }
 }

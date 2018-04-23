@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import org.controlsfx.control.MasterDetailPane?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            xmlns="http://javafx.com/javafx"
+            fx:controller="at.fhv.roomix.ui.view.reservation.content.ReservationContentView"
+>
+    <MasterDetailPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                      AnchorPane.topAnchor="0.0" fx:id="mdPane" dividerPosition="0.75">
+        <masterNode>
+            <fx:include source="ReservationTableView.fxml"/>
+        </masterNode>
+        <detailNode>
+            <fx:include source="ReservationDetailView.fxml"/>
+        </detailNode>
+    </MasterDetailPane>
+</AnchorPane>

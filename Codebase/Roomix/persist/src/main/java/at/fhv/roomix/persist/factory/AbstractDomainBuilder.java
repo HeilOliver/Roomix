@@ -30,7 +30,7 @@ abstract class AbstractDomainBuilder<DM, EN> {
      */
     private static <S, D> Collection<D> mapCollection(Collection<S> sourceModels, Class<D> destinationType) {
         ModelMapper singleModelMapper = new ModelMapper();
-        Collection<D> destinationCollection = new LinkedList<>();
+        Collection<D> destinationCollection = new HashSet<>();
         for (S sourceModel : sourceModels) {
             D destinationModel = singleModelMapper.map(sourceModel, destinationType);
             destinationCollection.add(destinationModel);
@@ -39,7 +39,7 @@ abstract class AbstractDomainBuilder<DM, EN> {
     }
 
     /**
-     * Add a mapping to a list of mappings for mapping an entity to a domain or the other way round
+     * Add a mapping to a content of mappings for mapping an entity to a domain or the other way round
      *
      * @param destinationType   Destination class type (Entity.class, Domain.class)
      * @param sourceMapper      Anonymous implementation of the source getter (Entity::getPersonEntities)
@@ -59,7 +59,7 @@ abstract class AbstractDomainBuilder<DM, EN> {
     }
 
     /**
-     * Does the actual mapping, by a given list, that contains source and destination
+     * Does the actual mapping, by a given content, that contains source and destination
      *
      * @param mapping Linked Hash Map with source getter, destination class and destination setter
      */
@@ -97,6 +97,22 @@ abstract class AbstractDomainBuilder<DM, EN> {
         }
     }
 
+    protected List<EN> loadAllEntites(Class<EN> entityClass){
+        Supplier daoInstanceSupplier = AbstractDao.getDaoInstanceByEntityClass(entityClass);
+        if (daoInstanceSupplier == null) {
+            throw new IllegalStateException("DAO Instance couldn't be retrieved");
+        } else {
+            AbstractDao generalDataAccessObject = (AbstractDao) daoInstanceSupplier.get();
+            List<EN> entities = null;
+            try {
+                entities = generalDataAccessObject.loadAll();
+            } catch (PersistLoadException e) {
+                logger.info(e.getMessage());
+            }
+            return entities;
+        }
+    }
+
     /**
      * Get all entries from the database as mapped domain objects. The domain object as specified in the generic
      * sub class (DM) will be returned.
@@ -116,13 +132,40 @@ abstract class AbstractDomainBuilder<DM, EN> {
             } catch (PersistLoadException e) {
                 logger.info(e.getMessage());
             }
-            List<DM> domainObjects = new LinkedList<>();
+            List<DM> domainObjects = new ArrayList<>();
             for (EN entity : entities) {
                 domainObjects.add(mapEntityToDomain(entity));
             }
             return domainObjects;
         }
+    }
 
+    // TODO: move the daoInstanceSupplier to own method (code reuse)
+    /**
+     *
+     * @param entityClass
+     * @param key
+     * @param referencedColumn
+     * @return
+     */
+    protected List<DM> loadByForeignKey(Class<EN> entityClass, Integer key, String referencedColumn){
+        Supplier daoInstanceSupplier = AbstractDao.getDaoInstanceByEntityClass(entityClass);
+        if (daoInstanceSupplier == null) {
+            throw new IllegalStateException("DAO Instance couldn't be retrieved");
+        } else {
+            AbstractDao generalDataAccessObject = (AbstractDao) daoInstanceSupplier.get();
+            List<EN> entities = null;
+            try {
+                entities = generalDataAccessObject.loadByForeignKey(key, referencedColumn);
+            } catch (PersistLoadException e) {
+                logger.info(e.getMessage());
+            }
+            List<DM> domainObjects = new ArrayList<>();
+            for (EN entity : entities) {
+                domainObjects.add(mapEntityToDomain(entity));
+            }
+            return domainObjects;
+        }
     }
 
     /**

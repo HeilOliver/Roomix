@@ -19,6 +19,7 @@
         <module>stay-controller</module>
         <module>report-controller</module>
         <module>invoice-controller</module>
+        <module>common</module>
     </modules>
 
     <dependencyManagement>

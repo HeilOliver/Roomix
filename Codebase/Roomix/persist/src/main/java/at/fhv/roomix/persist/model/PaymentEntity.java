@@ -1,24 +1,28 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "payment", schema = "roomix", catalog = "")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Table(name = "Payment", schema = "Roomix", catalog = "")
 public class PaymentEntity {
     private int paymentId;
     private int invoice;
-    private int paymentType;
     private int amount;
-    private Timestamp dateOfIssue;
+    private Timestamp determinationDate;
     private Date dueDate;
     private Date paidDate;
     private InvoiceEntity invoiceByInvoice;
-    private PaymenttypeEntity paymenttypeByPaymentType;
+    private PaymentTypeEntity paymentTypeByPaymentType;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "PaymentID")
     public int getPaymentId() {
         return paymentId;
@@ -39,16 +43,6 @@ public class PaymentEntity {
     }
 
     @Basic
-    @Column(name = "PaymentType", insertable = false, updatable = false)
-    public int getPaymentType() {
-        return paymentType;
-    }
-
-    public void setPaymentType(int paymentType) {
-        this.paymentType = paymentType;
-    }
-
-    @Basic
     @Column(name = "Amount")
     public int getAmount() {
         return amount;
@@ -59,13 +53,13 @@ public class PaymentEntity {
     }
 
     @Basic
-    @Column(name = "DateOfIssue")
-    public Timestamp getDateOfIssue() {
-        return dateOfIssue;
+    @Column(name = "DeterminationDate")
+    public Timestamp getDeterminationDate() {
+        return determinationDate;
     }
 
-    public void setDateOfIssue(Timestamp dateOfIssue) {
-        this.dateOfIssue = dateOfIssue;
+    public void setDeterminationDate(Timestamp determinationDate) {
+        this.determinationDate = determinationDate;
     }
 
     @Basic
@@ -95,9 +89,8 @@ public class PaymentEntity {
         PaymentEntity that = (PaymentEntity) o;
         return paymentId == that.paymentId &&
                 invoice == that.invoice &&
-                paymentType == that.paymentType &&
                 amount == that.amount &&
-                Objects.equals(dateOfIssue, that.dateOfIssue) &&
+                Objects.equals(determinationDate, that.determinationDate) &&
                 Objects.equals(dueDate, that.dueDate) &&
                 Objects.equals(paidDate, that.paidDate);
     }
@@ -105,7 +98,7 @@ public class PaymentEntity {
     @Override
     public int hashCode() {
 
-        return Objects.hash(paymentId, invoice, paymentType, amount, dateOfIssue, dueDate, paidDate);
+        return Objects.hash(paymentId, invoice, amount, determinationDate, dueDate, paidDate);
     }
 
     @ManyToOne
@@ -120,11 +113,11 @@ public class PaymentEntity {
 
     @ManyToOne
     @JoinColumn(name = "PaymentType", referencedColumnName = "PaymentTypeID", nullable = false)
-    public PaymenttypeEntity getPaymenttypeByPaymentType() {
-        return paymenttypeByPaymentType;
+    public PaymentTypeEntity getPaymentTypeByPaymentType() {
+        return paymentTypeByPaymentType;
     }
 
-    public void setPaymenttypeByPaymentType(PaymenttypeEntity paymenttypeByPaymentType) {
-        this.paymenttypeByPaymentType = paymenttypeByPaymentType;
+    public void setPaymentTypeByPaymentType(PaymentTypeEntity paymentTypeByPaymentType) {
+        this.paymentTypeByPaymentType = paymentTypeByPaymentType;
     }
 }

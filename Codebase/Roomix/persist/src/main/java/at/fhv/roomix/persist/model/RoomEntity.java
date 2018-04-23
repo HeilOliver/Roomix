@@ -1,20 +1,25 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "room", schema = "roomix", catalog = "")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Table(name = "Room", schema = "Roomix", catalog = "")
 public class RoomEntity {
     private int roomId;
     private int roomCategory;
     private String status;
-    private RoomcategoryEntity roomcategoryByRoomCategory;
-    private Collection<RoomassignmentEntity> roomassignmentsByRoomId;
-    private Collection<RoomfacilityEntity> roomfacilitiesByRoomId;
+    private RoomCategoryEntity roomCategoryByRoomCategory;
+    private Collection<RoomAssignmentEntity> roomAssignmentsByRoomId;
+    private Collection<RoomFacilityEntity> roomFacilitiesByRoomId;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "RoomID")
     public int getRoomId() {
         return roomId;
@@ -62,29 +67,31 @@ public class RoomEntity {
 
     @ManyToOne
     @JoinColumn(name = "RoomCategory", referencedColumnName = "RoomCategoryID", nullable = false)
-    public RoomcategoryEntity getRoomcategoryByRoomCategory() {
-        return roomcategoryByRoomCategory;
+    public RoomCategoryEntity getRoomCategoryByRoomCategory() {
+        return roomCategoryByRoomCategory;
     }
 
-    public void setRoomcategoryByRoomCategory(RoomcategoryEntity roomcategoryByRoomCategory) {
-        this.roomcategoryByRoomCategory = roomcategoryByRoomCategory;
+    public void setRoomCategoryByRoomCategory(RoomCategoryEntity roomCategoryByRoomCategory) {
+        this.roomCategoryByRoomCategory = roomCategoryByRoomCategory;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "roomByRoom")
-    public Collection<RoomassignmentEntity> getRoomassignmentsByRoomId() {
-        return roomassignmentsByRoomId;
+    public Collection<RoomAssignmentEntity> getRoomAssignmentsByRoomId() {
+        return roomAssignmentsByRoomId;
     }
 
-    public void setRoomassignmentsByRoomId(Collection<RoomassignmentEntity> roomassignmentsByRoomId) {
-        this.roomassignmentsByRoomId = roomassignmentsByRoomId;
+    public void setRoomAssignmentsByRoomId(Collection<RoomAssignmentEntity> roomAssignmentsByRoomId) {
+        this.roomAssignmentsByRoomId = roomAssignmentsByRoomId;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "roomByRoom")
-    public Collection<RoomfacilityEntity> getRoomfacilitiesByRoomId() {
-        return roomfacilitiesByRoomId;
+    public Collection<RoomFacilityEntity> getRoomFacilitiesByRoomId() {
+        return roomFacilitiesByRoomId;
     }
 
-    public void setRoomfacilitiesByRoomId(Collection<RoomfacilityEntity> roomfacilitiesByRoomId) {
-        this.roomfacilitiesByRoomId = roomfacilitiesByRoomId;
+    public void setRoomFacilitiesByRoomId(Collection<RoomFacilityEntity> roomFacilitiesByRoomId) {
+        this.roomFacilitiesByRoomId = roomFacilitiesByRoomId;
     }
 }

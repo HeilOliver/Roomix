@@ -1,6 +1,7 @@
 package at.fhv.roomix.controller.session;
 
 import at.fhv.roomix.controller.session.model.SessionPojo;
+import at.fhv.roomix.domain.session.configuration.IUiConfiguration;
 
 /**
  * Roomix
@@ -21,5 +22,20 @@ public class SessionControllerMock implements ISessionController {
     @Override
     public void closeSession(long SessionId) {
 
+    }
+
+    @Override
+    public void dispose() {
+
+    }
+
+    @Override
+    public void startUp() {
+
+    }
+
+    @Override
+    public IUiConfiguration getUiConfiguration() {
+        return null;
     }
 }

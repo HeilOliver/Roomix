@@ -1,23 +1,30 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "Person", schema = "roomix", catalog = "")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Table(name = "Person", schema = "Roomix", catalog = "")
 public class PersonEntity {
     private int personId;
     private byte isVip;
     private byte archive;
     private int contact;
+    private String firstName;
+    private String lastName;
     private ContactEntity contactByContact;
-    private Collection<PersonroomassignmentEntity> personroomassignmentsByPersonId;
-    private Collection<ReservationEntity> reservationsByPersonId;
-    private Collection<TourgroupEntity> tourgroupsByPersonId;
-    private Collection<TourgroupmemberEntity> tourgroupmembersByPersonId;
+    private Collection<PersonReservationEntity> personReservationsByPersonId;
+    private Collection<PersonRoomAssignmentEntity> personRoomAssignmentsByPersonId;
+    private Collection<TourGroupEntity> tourGroupsByPersonId;
+    private Collection<TourGroupMemberEntity> tourGroupMembersByPersonId;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "PersonID")
     public int getPersonId() {
         return personId;
@@ -25,6 +32,26 @@ public class PersonEntity {
 
     public void setPersonId(int personId) {
         this.personId = personId;
+    }
+
+    @Basic
+    @Column(name = "FirstName")
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    @Basic
+    @Column(name = "LastName")
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     @Basic
@@ -75,7 +102,7 @@ public class PersonEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "Contact", referencedColumnName = "ContactID", nullable = false)
+    @JoinColumn(name = "Contact", referencedColumnName = "ContactID", insertable = false, updatable = false)
     public ContactEntity getContactByContact() {
         return contactByContact;
     }
@@ -84,39 +111,43 @@ public class PersonEntity {
         this.contactByContact = contactByContact;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "personByPerson")
-    public Collection<PersonroomassignmentEntity> getPersonroomassignmentsByPersonId() {
-        return personroomassignmentsByPersonId;
+    public Collection<PersonReservationEntity> getPersonReservationsByPersonId() {
+        return personReservationsByPersonId;
     }
 
-    public void setPersonroomassignmentsByPersonId(Collection<PersonroomassignmentEntity> personroomassignmentsByPersonId) {
-        this.personroomassignmentsByPersonId = personroomassignmentsByPersonId;
+    public void setPersonReservationsByPersonId(Collection<PersonReservationEntity> personReservationsByPersonId) {
+        this.personReservationsByPersonId = personReservationsByPersonId;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "personByPerson")
-    public Collection<ReservationEntity> getReservationsByPersonId() {
-        return reservationsByPersonId;
+    public Collection<PersonRoomAssignmentEntity> getPersonRoomAssignmentsByPersonId() {
+        return personRoomAssignmentsByPersonId;
     }
 
-    public void setReservationsByPersonId(Collection<ReservationEntity> reservationsByPersonId) {
-        this.reservationsByPersonId = reservationsByPersonId;
+    public void setPersonRoomAssignmentsByPersonId(Collection<PersonRoomAssignmentEntity> personRoomAssignmentsByPersonId) {
+        this.personRoomAssignmentsByPersonId = personRoomAssignmentsByPersonId;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "personByTourGroupLeader")
-    public Collection<TourgroupEntity> getTourgroupsByPersonId() {
-        return tourgroupsByPersonId;
+    public Collection<TourGroupEntity> getTourGroupsByPersonId() {
+        return tourGroupsByPersonId;
     }
 
-    public void setTourgroupsByPersonId(Collection<TourgroupEntity> tourgroupsByPersonId) {
-        this.tourgroupsByPersonId = tourgroupsByPersonId;
+    public void setTourGroupsByPersonId(Collection<TourGroupEntity> tourGroupsByPersonId) {
+        this.tourGroupsByPersonId = tourGroupsByPersonId;
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "personByTourGroupMember")
-    public Collection<TourgroupmemberEntity> getTourgroupmembersByPersonId() {
-        return tourgroupmembersByPersonId;
+    public Collection<TourGroupMemberEntity> getTourGroupMembersByPersonId() {
+        return tourGroupMembersByPersonId;
     }
 
-    public void setTourgroupmembersByPersonId(Collection<TourgroupmemberEntity> tourgroupmembersByPersonId) {
-        this.tourgroupmembersByPersonId = tourgroupmembersByPersonId;
+    public void setTourGroupMembersByPersonId(Collection<TourGroupMemberEntity> tourGroupMembersByPersonId) {
+        this.tourGroupMembersByPersonId = tourGroupMembersByPersonId;
     }
 }

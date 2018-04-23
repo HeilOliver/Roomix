@@ -1,10 +1,13 @@
 package at.fhv.roomix.controller.reservation;
 
-import at.fhv.roomix.controller.reservation.exeption.ArgumentFaultException;
-import at.fhv.roomix.controller.reservation.exeption.SessionFaultException;
-import at.fhv.roomix.controller.reservation.exeption.ValidationFault;
-import at.fhv.roomix.controller.reservation.model.ContactPojo;
+import at.fhv.roomix.controller.common.exceptions.ArgumentFaultException;
+import at.fhv.roomix.controller.common.exceptions.SessionFaultException;
+import at.fhv.roomix.controller.common.exceptions.ValidationFault;
+import at.fhv.roomix.controller.contact.model.ContactPojo;
+import at.fhv.roomix.controller.reservation.model.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collection;
 
 /**
@@ -17,10 +20,17 @@ import java.util.Collection;
  */
 public interface IReservationController {
 
-    void newContact(long sessionId, ContactPojo contactPojo)
-            throws SessionFaultException, ValidationFault, ArgumentFaultException;
+    Collection<ReservationPojo> getAllReservation(long sessionId) throws SessionFaultException;
 
-    Collection<ContactPojo> getAllContacts(long sessionId) throws SessionFaultException;
+    Collection<ReservationPojo> getSearchedReservation(long sessionId, String query) throws SessionFaultException;
 
-    void updateContact(long sessionId, ContactPojo contactPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException;
+    PricePojo getPrice(long sessionId, ReservationUnitPojo reservationUnit, ContactPojo contractingParty) throws SessionFaultException;
+
+    Collection<RoomCategoryPojo> getSearchedCategory(long sessionId, LocalDate startDate, LocalDate endDate, ContactPojo contractingParty) throws SessionFaultException;
+
+    Collection<RoomCategoryPojo> getAllCategory(long sessionId) throws SessionFaultException;
+
+    Collection<ArrangementPojo> getAllArrangement(long sessionId) throws SessionFaultException;
+
+    void updateReservation(long sessionId, ReservationPojo reservationPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException;
 }

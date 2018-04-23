@@ -33,6 +33,10 @@
             <groupId>at.fhv.roomix.controller</groupId>
             <artifactId>stay-controller</artifactId>
         </dependency>
+        <dependency>
+            <groupId>at.fhv.roomix.controller</groupId>
+            <artifactId>common</artifactId>
+        </dependency>
 
         <!-- Binding, Mvvm and more -->
         <dependency>
@@ -74,27 +78,5 @@
             <version>8.40.14</version>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>com.zenjava</groupId>
-                <artifactId>javafx-maven-plugin</artifactId>
-                <version>8.1.2</version>
-                <configuration>
-                    <mainClass>at.fhv.roomix.ui.RunMe</mainClass>
-                </configuration>
-            </plugin>
-        </plugins>
-
-        <resources>
-            <resource>
-                <directory>src/main/java</directory>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-        </resources>
-    </build>
 
 </project>

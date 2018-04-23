@@ -1,21 +1,26 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "season", schema = "roomix", catalog = "")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Table(name = "Season", schema = "Roomix", catalog = "")
 public class SeasonEntity {
     private int seasonId;
     private String description;
     private int additionalCharge;
     private Date startDate;
     private Date endDate;
-    private Collection<RoomcategorypriceEntity> roomcategorypricesBySeasonId;
+    private Collection<RoomCategoryPriceEntity> roomCategoryPricesBySeasonId;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "SeasonID")
     public int getSeasonId() {
         return seasonId;
@@ -83,12 +88,13 @@ public class SeasonEntity {
         return Objects.hash(seasonId, description, additionalCharge, startDate, endDate);
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "seasonBySeason")
-    public Collection<RoomcategorypriceEntity> getRoomcategorypricesBySeasonId() {
-        return roomcategorypricesBySeasonId;
+    public Collection<RoomCategoryPriceEntity> getRoomCategoryPricesBySeasonId() {
+        return roomCategoryPricesBySeasonId;
     }
 
-    public void setRoomcategorypricesBySeasonId(Collection<RoomcategorypriceEntity> roomcategorypricesBySeasonId) {
-        this.roomcategorypricesBySeasonId = roomcategorypricesBySeasonId;
+    public void setRoomCategoryPricesBySeasonId(Collection<RoomCategoryPriceEntity> roomCategoryPricesBySeasonId) {
+        this.roomCategoryPricesBySeasonId = roomCategoryPricesBySeasonId;
     }
 }

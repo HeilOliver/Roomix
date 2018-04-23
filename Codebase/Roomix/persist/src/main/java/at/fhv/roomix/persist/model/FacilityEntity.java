@@ -1,18 +1,23 @@
 package at.fhv.roomix.persist.model;
 
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "facility", schema = "roomix", catalog = "")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Table(name = "Facility", schema = "Roomix", catalog = "")
 public class FacilityEntity {
     private int facilityId;
     private String description;
     private int additionalCharge;
-    private Collection<RoomfacilityEntity> roomfacilitiesByFacilityId;
+    private Collection<RoomFacilityEntity> roomFacilitiesByFacilityId;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "FacilityID")
     public int getFacilityId() {
         return facilityId;
@@ -58,12 +63,13 @@ public class FacilityEntity {
         return Objects.hash(facilityId, description, additionalCharge);
     }
 
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "facilityByFacility")
-    public Collection<RoomfacilityEntity> getRoomfacilitiesByFacilityId() {
-        return roomfacilitiesByFacilityId;
+    public Collection<RoomFacilityEntity> getRoomFacilitiesByFacilityId() {
+        return roomFacilitiesByFacilityId;
     }
 
-    public void setRoomfacilitiesByFacilityId(Collection<RoomfacilityEntity> roomfacilitiesByFacilityId) {
-        this.roomfacilitiesByFacilityId = roomfacilitiesByFacilityId;
+    public void setRoomFacilitiesByFacilityId(Collection<RoomFacilityEntity> roomFacilitiesByFacilityId) {
+        this.roomFacilitiesByFacilityId = roomFacilitiesByFacilityId;
     }
 }

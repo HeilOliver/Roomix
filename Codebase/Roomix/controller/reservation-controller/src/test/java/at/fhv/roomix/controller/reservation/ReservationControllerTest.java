@@ -1,15 +1,15 @@
 package at.fhv.roomix.controller.reservation;
 
-import at.fhv.roomix.controller.reservation.exeption.ArgumentFaultException;
-import at.fhv.roomix.controller.reservation.exeption.SessionFaultException;
-import at.fhv.roomix.controller.reservation.exeption.ValidationFault;
-import at.fhv.roomix.controller.reservation.model.ContactPojo;
+import at.fhv.roomix.controller.common.exceptions.ArgumentFaultException;
+import at.fhv.roomix.controller.common.exceptions.SessionFaultException;
+import at.fhv.roomix.controller.common.exceptions.ValidationFault;
+import at.fhv.roomix.controller.contact.model.ContactPojo;
+import at.fhv.roomix.controller.reservation.model.*;
 import at.fhv.roomix.domain.session.SessionFactory;
-import at.fhv.roomix.persist.factory.GuestDomainBuilder;
+import at.fhv.roomix.persist.factory.ReservationDomainBuilder;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.util.Collection;
 import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -18,54 +18,40 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 /**
  * Roomix
  * at.fhv.roomix.controller.reservation
- * ReservationControllerTest
+ * ContactControllerTest
  * 08.04.2018 sge
  * <p>
  * Enter Description here
  */
 public class ReservationControllerTest {
-    static GuestDomainBuilderMock mock;
+    private static ReservationDomainBuilderMock mock;
 
     @BeforeAll
     static void init() {
-        mock = new GuestDomainBuilderMock();
+        mock = new ReservationDomainBuilderMock();
 
-        GuestDomainBuilder.injectDependency(() -> mock);
+        ReservationDomainBuilder.injectDependency(() -> mock);
         SessionDomainMock sessionDomain = new SessionDomainMock();
         SessionFactory.inject(sessionDomain);
     }
 
     @Test
-    void newContact() throws SessionFaultException, ArgumentFaultException, ValidationFault {
+    void updateReservation() throws SessionFaultException, ValidationFault, ArgumentFaultException {
         ReservationController controller = new ReservationController();
 
-        assertThrows(ArgumentFaultException.class, () -> controller.newContact(123L, null));
+        assertThrows(ArgumentFaultException.class, () -> controller.updateReservation(123L, null));
 
-        ContactPojo pojo = new ContactPojo();
-        pojo.setFname("Max");
-        pojo.setLname("Mustermann");
-        pojo.setCountry("Germany");
-        pojo.setPhoneNumber("+4312132132132");
-        pojo.setEmail("Some@some.com");
-        pojo.setPlace("Dornbirn");
-        pojo.setPostcode("6850");
-        pojo.setStreet("SomeStreet 4");
+        ReservationPojo resPojo = new ReservationPojo();
+        resPojo.setId(123);
+        resPojo.setComment(new CommentPojo());
+        resPojo.setContractingParty(new ContactPojo());
+        resPojo.setReservationOptionByReservationOption(new HashSet<>());
+        resPojo.setPersonReservationsByReservationId(new HashSet<>());
+        resPojo.setReservationUnitsByReservationId(new HashSet<>());
 
-        assertThrows(ValidationFault.class, () -> controller.newContact(123L, pojo));
-        pojo.setHouseNumber("123");
+        controller.updateReservation(110L, resPojo);
+        assertTrue(mock.getNewReservation());
 
-        controller.newContact(110L, pojo);
-        assertTrue(mock.getNewContactBool());
-
-    }
-
-    @Test
-    void getAllContactsValid() throws SessionFaultException {
-        ReservationController controller = new ReservationController();
-
-        Collection gettAllTest = new HashSet();
-        gettAllTest = controller.getAllContacts(123L);
-        assertTrue(mock.isGetAllBool());
     }
 
 }

@@ -5,9 +5,9 @@ import java.sql.Date;
 public class CreditCardDomain {
 
     private int creditCardId;
-    private String number;
-    private String owner;
-    private String type;
+    private String cardNumber;
+    private String cardOwner;
+    private String cardType;
     private Date validDate;
     private Integer contact;
 
@@ -20,27 +20,27 @@ public class CreditCardDomain {
     }
 
     public String getNumber() {
-        return number;
+        return cardNumber;
     }
 
     public void setNumber(String number) {
-        this.number = number;
+        this.cardNumber = number;
     }
 
     public String getOwner() {
-        return owner;
+        return cardOwner;
     }
 
     public void setOwner(String owner) {
-        this.owner = owner;
+        this.cardOwner = owner;
     }
 
     public String getType() {
-        return type;
+        return cardType;
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.cardType = type;
     }
 
     public Date getValidDate() {

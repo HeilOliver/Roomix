@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="ui" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="fc88055d-1879-4edc-9f9a-3902eec78626" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/config/SessionProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/invoice-controller/invoice-controller.iml" beforeDir="false" afterPath="$PROJECT_DIR$/controller/invoice-controller/invoice-controller.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/report-controller/report-controller.iml" beforeDir="false" afterPath="$PROJECT_DIR$/controller/report-controller/report-controller.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/reservation-controller/reservation-controller.iml" beforeDir="false" afterPath="$PROJECT_DIR$/controller/reservation-controller/reservation-controller.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/session-controller/session-controller.iml" beforeDir="false" afterPath="$PROJECT_DIR$/controller/session-controller/session-controller.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/stay-controller/stay-controller.iml" beforeDir="false" afterPath="$PROJECT_DIR$/controller/stay-controller/stay-controller.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persist/persist.iml" beforeDir="false" afterPath="$PROJECT_DIR$/persist/persist.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/ContactProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/ContactProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/login/LoginProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/login/LoginProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/ui.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/main/models/PageProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/main/models/PageProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/ReservationToolbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/ReservationToolbar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/ReservationEditViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/ReservationEditViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/unit/UnitView.java" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/unit/UnitView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/unit/UnitViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/unit/UnitViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/scope/ReservationViewScope.java" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/scope/ReservationViewScope.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/controller/target/" />
     <ignored path="$PROJECT_DIR$/domain/reservation-domain/target/" />
@@ -27,6 +29,7 @@
     <ignored path="$PROJECT_DIR$/controller/guest-controller/target/" />
     <ignored path="$PROJECT_DIR$/controller/session-controller/target/" />
     <ignored path="$PROJECT_DIR$/persist/target/" />
+    <ignored path="$PROJECT_DIR$/controller/common/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,107 +39,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ContactEditViewModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/edit/ContactEditViewModel.java">
+      <file leaf-file-name="PageProvider.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/main/models/PageProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1679">
-              <caret line="148" column="49" selection-start-line="148" selection-start-column="49" selection-end-line="148" selection-end-column="49" />
+            <state relative-caret-position="444">
+              <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ContactDetailViewModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactDetailViewModel.java">
+      <file leaf-file-name="ReservationView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/ReservationView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="40" column="83" selection-start-line="40" selection-start-column="83" selection-end-line="40" selection-end-column="83" />
+            <state relative-caret-position="30">
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RunMe.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/RunMe.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="992">
-              <caret line="49" column="30" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ContactEditView.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/edit/ContactEditView.fxml">
+      <file leaf-file-name="ReservationToolbar.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/ReservationToolbar.fxml">
+          <provider selected="true" editor-type-id="text-editor" />
           <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
-            </state>
-          </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReservationMock.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationMock.java">
+      <file leaf-file-name="ReservationToolbar.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/ReservationToolbar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="26" column="22" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ContactProvider.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/ContactProvider.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1147">
-              <caret line="57" column="80" selection-start-line="57" selection-start-column="80" selection-end-line="57" selection-end-column="80" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginViewModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/login/LoginViewModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="55" column="8" selection-start-line="55" selection-start-column="8" selection-end-line="58" selection-end-column="45" />
-              <folding>
-                <element signature="e#3390#3391#0" expanded="true" />
-                <element signature="e#3452#3453#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginProvider.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/login/LoginProvider.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="76" column="33" lean-forward="true" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
-              <folding>
-                <element signature="e#2418#2419#0" expanded="true" />
-                <element signature="e#2455#2456#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ResourceHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/config/ResourceHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SessionProvider.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/config/SessionProvider.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="22" column="35" lean-forward="true" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
-              <folding>
-                <element signature="e#690#691#0" expanded="true" />
-                <element signature="e#722#723#0" expanded="true" />
-                <element signature="e#777#778#0" expanded="true" />
-                <element signature="e#830#831#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="149">
+              <caret line="62" column="33" selection-start-line="62" selection-start-column="33" selection-end-line="62" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -146,40 +77,85 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="CSS File" />
+        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>ContactPojo</find>
+      <find>contact.edit.city</find>
+      <find>linke</find>
+    </findStrings>
+  </component>
+  <component name="Git.Rebase.Settings">
+    <option name="ONTO" value="refs/heads/development" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/../.." value="ReservationDomain" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactDataView.fxml" />
-        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/scope/ContactViewScope.java" />
-        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/scope/ContactMasterDetailScope.java" />
-        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactDataViewModel.java" />
-        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/ContactViewModel.java" />
-        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/ContactView.java" />
-        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactListViewModel.java" />
-        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactDetailView.fxml" />
-        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactDataView.java" />
-        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactDataToolbar.java" />
-        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactDataToolbarViewModel.java" />
-        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactDataView.fxml" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/unit/PacketsItem.java" />
+        <option value="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/IReservationController.java" />
+        <option value="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/model/RoomCategoryPojo.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/ReservationToolbarViewModel.java" />
+        <option value="$PROJECT_DIR$/domain/session-domain/pom.xml" />
+        <option value="$PROJECT_DIR$/domain/session-domain/src/main/java/at/fhv/roomix/domain/session/configuration/Configuration.java" />
+        <option value="$PROJECT_DIR$/domain/session-domain/src/main/java/at/fhv/roomix/domain/session/configuration/ConfigurationLoader.java" />
+        <option value="$PROJECT_DIR$/controller/session-controller/src/main/java/at/fhv/roomix/controller/session/ISessionController.java" />
+        <option value="$PROJECT_DIR$/controller/session-controller/src/main/java/at/fhv/roomix/controller/session/SessionController.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/dataprovider/ConfigurationProvider.java" />
+        <option value="$PROJECT_DIR$/controller/session-controller/src/test/java/at/fhv/roomix/controller/session/SessionControllerMock.java" />
+        <option value="$PROJECT_DIR$/domain/session-domain/src/main/java/at/fhv/roomix/domain/session/configuration/IUiConfiguration.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/resources/etc/app.config" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/unit/CategoryItemViewModel.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/dataprovider/ReadOnlyReservationProvider.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/dataprovider/ReadOnlyReservationUnitProvider.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/common/ICallableWithParameter.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/item/ItemHandler.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/item/ItemControlViewModel.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/item/ItemHandlerSingle.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/option/OptionViewModel.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/content/ReservationTableRowModel.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/content/ReservationContentView.fxml" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/content/ReservationTableView.fxml" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/ReservationToolbar.fxml" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/ReservationEditScope.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/loader/RunMe.java" />
         <option value="$PROJECT_DIR$/ui/src/main/resources/log4j.properties" />
-        <option value="$PROJECT_DIR$/ui/src/main/resources/default_de.properties" />
-        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactDataToolbar.fxml" />
-        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/ContactView.fxml" />
-        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/edit/ContactEditView.java" />
-        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/edit/ContactEditView.fxml" />
-        <option value="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationMock.java" />
-        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/edit/ContactEditViewModel.java" />
-        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactDetailViewModel.java" />
-        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/config/SessionProvider.java" />
-        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/ContactProvider.java" />
-        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/login/LoginProvider.java" />
+        <option value="$PROJECT_DIR$/domain/guest-domain/src/main/java/at/fhv/roomix/domain/guest/model/RoomCategoryDomain.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/common/AbstractToolbar.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/contact/edit/ContactEditView.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/contact/scopes/ContactViewScope.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/contact/edit/ContactEditViewModel.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/option/OptionView.fxml" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/option/OptionView.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/item/ItemHandlerList.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/contact/ContactView.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/contact/ContactView.fxml" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/unit/UnitView.fxml" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/unit/PacketsItemViewModel.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/dataprovider/ReservationUnitProvider.java" />
+        <option value="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/model/ReservationPojo.java" />
+        <option value="$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationController.java" />
+        <option value="$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/factory/AbstractDomainBuilder.java" />
+        <option value="$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/ReservationDao.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/unit/UnitViewModel.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/unit/UnitView.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/scope/ReservationViewScope.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/ReservationEditViewModel.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/main/models/PageProvider.java" />
+        <option value="$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/ReservationToolbar.java" />
       </list>
     </option>
   </component>
@@ -196,11 +172,69 @@
       </MavenImportingSettings>
     </option>
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-18" />
+    <option name="y" value="-18" />
+    <option name="width" value="864" />
+    <option name="height" value="468" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
+              <item name="reservation-controller" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ui" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ui" type="616d4139:PackageViewModuleNode" />
+              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ui" type="616d4139:PackageViewModuleNode" />
+              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
+              <item name="view" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ui" type="616d4139:PackageViewModuleNode" />
+              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
+              <item name="view" type="1f31426a:PackageElementNode" />
+              <item name="contact" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ui" type="616d4139:PackageViewModuleNode" />
+              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
+              <item name="view" type="1f31426a:PackageElementNode" />
+              <item name="dashboard" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -211,6 +245,74 @@
             <path>
               <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
               <item name="Roomix" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="reservation-controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="reservation-controller" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="reservation-controller" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="reservation-controller" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="reservation-controller" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="reservation-controller" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="reservation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="reservation-controller" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="reservation" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -251,7 +353,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="loader" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
@@ -261,7 +363,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="connector" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
@@ -271,7 +373,8 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="events" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="reservation" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
@@ -279,178 +382,192 @@
               <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="validators" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="about" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="contact" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="contact" type="462c0819:PsiDirectoryNode" />
-              <item name="list" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="contact" type="462c0819:PsiDirectoryNode" />
-              <item name="scope" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="login" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane">
-        <subPane>
+      <pane id="Scope">
+        <subPane subId="Default">
           <expand>
             <path>
-              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
-              <item name="reservation-controller" type="616d4139:PackageViewModuleNode" />
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="ui" type="cbb8eebc:String" user="ui" />
             </path>
             <path>
-              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
-              <item name="reservation-controller" type="616d4139:PackageViewModuleNode" />
-              <item name="at.fhv.roomix.controller.reservation" type="1f31426a:PackageElementNode" />
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="ui" type="cbb8eebc:String" user="ui" />
+              <item name="ui" type="cbb8eebc:String" user="ui" />
             </path>
             <path>
-              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
-              <item name="reservation-controller" type="616d4139:PackageViewModuleNode" />
-              <item name="at.fhv.roomix.controller.reservation" type="1f31426a:PackageElementNode" />
-              <item name="model" type="1f31426a:PackageElementNode" />
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="ui" type="cbb8eebc:String" user="ui" />
+              <item name="ui" type="cbb8eebc:String" user="ui" />
+              <item name="src/main/java" type="cbb8eebc:String" user="src/main/java" />
             </path>
             <path>
-              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
-              <item name="ui" type="616d4139:PackageViewModuleNode" />
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="ui" type="cbb8eebc:String" user="ui" />
+              <item name="ui" type="cbb8eebc:String" user="ui" />
+              <item name="src/main/java" type="cbb8eebc:String" user="src/main/java" />
+              <item name="at/fhv/roomix/ui" type="cbb8eebc:String" user="at/fhv/roomix/ui" />
             </path>
             <path>
-              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
-              <item name="ui" type="616d4139:PackageViewModuleNode" />
-              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
-              <item name="ui" type="616d4139:PackageViewModuleNode" />
-              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
-              <item name="validators" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
-              <item name="ui" type="616d4139:PackageViewModuleNode" />
-              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
-              <item name="views" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
-              <item name="ui" type="616d4139:PackageViewModuleNode" />
-              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
-              <item name="views" type="1f31426a:PackageElementNode" />
-              <item name="contact" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
-              <item name="ui" type="616d4139:PackageViewModuleNode" />
-              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
-              <item name="views" type="1f31426a:PackageElementNode" />
-              <item name="contact" type="1f31426a:PackageElementNode" />
-              <item name="edit" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
-              <item name="ui" type="616d4139:PackageViewModuleNode" />
-              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
-              <item name="views" type="1f31426a:PackageElementNode" />
-              <item name="contact" type="1f31426a:PackageElementNode" />
-              <item name="list" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
-              <item name="ui" type="616d4139:PackageViewModuleNode" />
-              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
-              <item name="views" type="1f31426a:PackageElementNode" />
-              <item name="contact" type="1f31426a:PackageElementNode" />
-              <item name="list" type="1f31426a:PackageElementNode" />
-              <item name="views" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
-              <item name="ui" type="616d4139:PackageViewModuleNode" />
-              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
-              <item name="views" type="1f31426a:PackageElementNode" />
-              <item name="contact" type="1f31426a:PackageElementNode" />
-              <item name="scope" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
-              <item name="ui" type="616d4139:PackageViewModuleNode" />
-              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
-              <item name="views" type="1f31426a:PackageElementNode" />
-              <item name="login" type="1f31426a:PackageElementNode" />
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="ui" type="cbb8eebc:String" user="ui" />
+              <item name="ui" type="cbb8eebc:String" user="ui" />
+              <item name="src/main/java" type="cbb8eebc:String" user="src/main/java" />
+              <item name="at/fhv/roomix/ui" type="cbb8eebc:String" user="at/fhv/roomix/ui" />
+              <item name="view/reservation" type="cbb8eebc:String" user="view/reservation" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
     </panes>
   </component>
+  <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="Reser&#9;FILE&#9;file://C:/Users/Oliver/IdeaProjects/Roomix/Codebase/Roomix/persist/src/main/java/at/fhv/roomix/persist/ReservationDao.java&#10;Abst&#9;FILE&#9;file://C:/Users/Oliver/IdeaProjects/Roomix/Codebase/Roomix/persist/src/main/java/at/fhv/roomix/persist/factory/AbstractDomainBuilder.java&#10;ReservationUni&#9;PSI&#9;JAVA://at.fhv.roomix.persist.factory.ReservationUnitDomainBuilder" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2764868" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Oliver\Documents\GitHub\Roomanizer\Codebase\Roomix\ui\src\main\java\at\fhv\roomix\ui\views\contact\list\views" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="at.fhv.roomix.ui.view.reservation.edit.unit" />
+      <recent name="at.fhv.roomix.ui.view.reservation.edit.contact" />
+      <recent name="at.fhv.roomix.controller.reservation" />
+      <recent name="at.fhv.roomix.controller.reservation.model" />
+      <recent name="at.fhv.roomix.ui.view.reservation.edit" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="at.fhv.roomix.controller.contact" />
+      <recent name="at.fhv.roomix.controller.reservation" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="at.fhv.roomix.ui.view.reservation.edit.contact" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Oliver\IdeaProjects\Roomix\Codebase\Roomix\domain\session-domain\src\main\resources" />
+      <recent name="C:\Users\Oliver\IdeaProjects\Roomix\Codebase\Roomix\controller" />
+    </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationController.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -464,7 +581,18 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.RunMe (1)">
+    <configuration name="RunMe (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="at.fhv.roomix.ui.loader.RunMe" />
+      <module name="ui" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="at.fhv.roomix.ui.loader.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
     <configuration name="RunMe" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="at.fhv.roomix.ui.RunMe" />
       <module name="ui" />
@@ -517,11 +645,22 @@
       <properties />
       <listeners />
     </configuration>
+    <list>
+      <item itemvalue="Application.RunMe" />
+      <item itemvalue="Application.RunMe (1)" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.RunMe (1)" />
         <item itemvalue="Application.RunMe" />
+        <item itemvalue="Application.RunMe (1)" />
+        <item itemvalue="Application.RunMe" />
+        <item itemvalue="Application.RunMe (1)" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -531,488 +670,768 @@
       <option name="presentableId" value="Default" />
       <updated>1523175408361</updated>
       <workItem from="1523175409904" duration="15521000" />
+      <workItem from="1523848598007" duration="5846000" />
+      <workItem from="1523910888001" duration="12105000" />
+      <workItem from="1523942201995" duration="1183000" />
+      <workItem from="1523966502533" duration="1166000" />
+      <workItem from="1524391374102" duration="22406000" />
+      <workItem from="1524421780823" duration="11800000" />
+      <workItem from="1524453639329" duration="7621000" />
     </task>
+    <task id="LOCAL-00001" summary="Added Integer Property @ContactEditView, Added Dispose Method that fires before the window is closed">
+      <created>1523915491802</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1523915491802</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added Reservation Table, MD Pane, And Edit View">
+      <created>1523917848378</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1523917848378</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add Reservation View">
+      <created>1523918393542</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1523918393542</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Rearrange Code">
+      <created>1523918461608</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1523918461608</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added ReservationPojo and SubPojos">
+      <created>1523921279551</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1523921279551</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added StartEvent to init Hibernate">
+      <created>1523922809289</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1523922809289</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added ResourceResolver">
+      <created>1523967542475</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1523967542475</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Fix all errors, Move Controller Exceptions to Controller Common, Added Maven Module Common to Controller, Move Validation to Common">
+      <created>1524311599389</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1524311599389</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added ReservationEditView">
+      <created>1524391545060</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1524391545060</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added Pakets to Unit View">
+      <created>1524400806933</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1524400806933</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add ConfigurationLoader">
+      <created>1524415228739</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1524415228739</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Merge remote-tracking branch 'remotes/origin/Reservation_calculate' into ReservationUI_57&#10;&#10;# Conflicts:&#10;#&#9;Codebase/Roomix/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/ReservationEditViewModel.java&#10;#&#9;Codebase/Roomix/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/option/OptionViewModel.java">
+      <created>1524434759752</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1524434759752</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Fix Some issues">
+      <created>1524442765758</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1524442765758</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Fix">
+      <created>1524451832895</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1524451832896</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Hot Fixing">
+      <created>1524455398470</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1524455398470</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Fix die dritte">
+      <created>1524457900418</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1524457900418</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Fix die vierte">
+      <created>1524459784160</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1524459784160</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10846000" />
+    <option name="totallyTimeSpent" value="137131000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1719" height="932" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.329602" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info anchor="bottom" id="Java Enterprise" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50030065" side_tool="true" weight="0.329602" />
-      <window_info anchor="right" id="Maven Projects" order="3" weight="0.32952496" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="right" id="CDI" order="3" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.329602" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49969932" weight="0.20895523" />
-      <window_info anchor="bottom" id="Sequence" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info id="Persistence" order="2" side_tool="true" />
-      <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2892363" />
-      <window_info anchor="right" id="Bean Validation" order="5" />
-      <window_info anchor="bottom" id="Statistic" order="7" />
-      <window_info anchor="right" id="Database" order="3" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="2" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39925373" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49969932" visible="true" weight="0.16666667" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50030065" side_tool="true" weight="0.329602" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20324714" />
-      <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Java Enterprise" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Palette" order="5" />
-      <window_info anchor="right" id="Palette&#9;" order="5" />
-      <window_info anchor="right" id="Maven Projects" order="5" />
-      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Sequence" order="9" />
-      <window_info id="Persistence" order="4" side_tool="true" />
-      <window_info anchor="right" id="Database" order="5" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.329602" />
-      <window_info anchor="right" id="CDI" order="5" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.329602" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="UI Designer" order="4" />
-      <window_info anchor="bottom" id="Statistic" order="9" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39925373" />
-      <window_info anchor="bottom" id="Messages" order="9" weight="0.329602" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.32711443" />
+      <window_info anchor="right" id="Palette&#9;" order="5" />
+      <window_info anchor="bottom" id="Java Enterprise" order="9" weight="0.32900432" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50030065" side_tool="true" weight="0.32900432" />
+      <window_info anchor="right" id="Maven Projects" order="5" weight="0.32952496" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="right" id="CDI" order="5" weight="0.32952496" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3283582" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49969932" visible="true" weight="0.38059703" />
+      <window_info anchor="bottom" id="Sequence" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info id="Persistence" order="4" side_tool="true" />
       <window_info id="Designer" order="4" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2573662" />
+      <window_info anchor="right" id="Bean Validation" order="5" />
+      <window_info anchor="bottom" id="Statistic" order="9" weight="0.32900432" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.37810946" />
+      <window_info anchor="bottom" id="Inspection Results" order="10" weight="0.329602" />
+      <window_info id="Capture Tool" order="8" />
+      <window_info anchor="bottom" id="Dependency Viewer" order="10" weight="0.32900432" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info id="Image Layers" order="8" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Code Iris" order="9" />
+      <window_info anchor="right" id="PlantUML" order="9" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32711443" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="Capture Analysis" order="9" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Persistence" order="2" side_tool="true" />
+      <window_info id="Designer" order="3" />
+      <window_info anchor="right" id="PlantUML" order="9" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info id="Image Layers" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49969932" weight="0.38059703" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="10" />
+      <window_info anchor="bottom" id="Inspection Results" order="15" weight="0.329602" />
+      <window_info anchor="right" id="CDI" order="4" weight="0.32952496" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50030065" side_tool="true" weight="0.32900432" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32711443" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Sequence" order="7" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.32900432" />
+      <window_info anchor="bottom" id="Dependency Viewer" order="16" weight="0.32900432" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.3283582" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info anchor="bottom" id="Terminal" order="13" />
+      <window_info anchor="right" id="Code Iris" order="11" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.173181" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="bottom" id="Statistic" order="14" weight="0.32900432" />
+      <window_info anchor="right" id="Theme Preview" order="12" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32792208" />
+      <window_info anchor="right" id="Bean Validation" order="8" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39800996" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add ReservationPage, Add Abstarct Classes for MDPages and Scopes" />
+    <MESSAGE value="Added getAll, Update, Search for Reservations into Interface" />
+    <MESSAGE value="Added ReservationScope" />
+    <MESSAGE value="Added Interface to Reservation Controller,&#10;Some Fixes" />
+    <MESSAGE value="Added Integer Property @ContactEditView, Added Dispose Method that fires before the window is closed" />
+    <MESSAGE value="Added Reservation Table, MD Pane, And Edit View" />
+    <MESSAGE value="Add Reservation View" />
+    <MESSAGE value="Rearrange Code" />
+    <MESSAGE value="Added ReservationPojo and SubPojos" />
+    <MESSAGE value="Added StartEvent to init Hibernate" />
+    <MESSAGE value="Added ResourceResolver" />
+    <MESSAGE value="Fix all errors, Move Controller Exceptions to Controller Common, Added Maven Module Common to Controller, Move Validation to Common" />
+    <MESSAGE value="Added ReservationEditView" />
+    <MESSAGE value="Added Pakets to Unit View" />
+    <MESSAGE value="Add ConfigurationLoader" />
+    <MESSAGE value="Merge remote-tracking branch 'remotes/origin/Reservation_calculate' into ReservationUI_57&#10;&#10;# Conflicts:&#10;#&#9;Codebase/Roomix/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/ReservationEditViewModel.java&#10;#&#9;Codebase/Roomix/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/option/OptionViewModel.java" />
+    <MESSAGE value="Fix Some issues" />
+    <MESSAGE value="Fix" />
+    <MESSAGE value="Hot Fixing" />
+    <MESSAGE value="Fix die dritte" />
+    <MESSAGE value="Fix die vierte" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix die vierte" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/dataprovider/AbstractProvider.java</url>
+          <line>49</line>
+          <properties />
+          <option name="timeStamp" value="142" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/factory/ReservationUnitDomainBuilder.java</url>
+          <line>70</line>
+          <properties />
+          <option name="timeStamp" value="143" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="155" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/ContactView.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/modelmapper/modelmapper/1.1.0/modelmapper-1.1.0-sources.jar!/org/modelmapper/internal/Errors.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+        <state relative-caret-position="152">
+          <caret line="257" selection-start-line="257" selection-end-line="257" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/modelmapper/modelmapper/1.1.0/modelmapper-1.1.0-sources.jar!/org/modelmapper/internal/MappingEngineImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="159" selection-start-line="159" selection-end-line="159" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/modelmapper/modelmapper/1.1.0/modelmapper-1.1.0-sources.jar!/org/modelmapper/internal/PropertyInfoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="772">
+          <caret line="106" column="5" lean-forward="true" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/loader/RunMe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/contact/edit/ContactEditView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="491">
+          <caret line="97" column="71" selection-start-line="97" selection-start-column="71" selection-end-line="97" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/contact/scopes/ContactViewScope.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#623#624#0" expanded="true" />
+            <element signature="e#660#661#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/scope/ContactMasterDetailScope.java">
+    <entry file="file://$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/factory/GuestDomainBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+        <state relative-caret-position="524">
+          <caret line="112" lean-forward="true" selection-start-line="112" selection-end-line="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/option/OptionView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#2145#2691#0" expanded="true" />
+            <element signature="e#2690#2691#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactDetailView.java">
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/item/ItemHandlerList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-372">
-          <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+        <state relative-caret-position="-191">
+          <caret line="40" column="52" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactListView.java">
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/contact/ContactView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="24" column="26" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="26" />
+        <state relative-caret-position="149">
+          <caret line="55" column="33" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactListTableModel.java">
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/unit/PacketsItemViewModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactListViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1325">
-          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+        <state relative-caret-position="474">
+          <caret line="52" column="41" selection-start-line="52" selection-start-column="41" selection-end-line="52" selection-end-column="41" />
           <folding>
-            <element signature="e#1845#1846#0" expanded="true" />
-            <element signature="e#1876#1877#0" expanded="true" />
-            <element signature="e#1955#1956#0" expanded="true" />
-            <element signature="e#1994#1995#0" expanded="true" />
+            <element signature="e#1532#1533#0" expanded="true" />
+            <element signature="e#1558#1559#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactDetailViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="34" column="26" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/ContactViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="774">
-          <caret line="50" column="24" lean-forward="true" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/resources/log4j.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="31">
-          <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactDataView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactDataToolbar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="45" column="35" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactDataViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactDataToolbarViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/login/LoginProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="86" column="23" selection-start-line="86" selection-start-column="23" selection-end-line="86" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/src.zip!/java/util/function/Function.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="48" column="6" selection-start-line="48" selection-start-column="6" selection-end-line="48" selection-end-column="6" />
+        <state relative-caret-position="-486">
+          <caret line="40" column="17" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/login/LoginView.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/de/saxsys/mvvmfx/1.7.0/mvvmfx-1.7.0-sources.jar!/de/saxsys/mvvmfx/utils/itemlist/ListTransformation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="44" column="4" selection-start-line="44" selection-start-column="4" selection-end-line="45" selection-end-column="42" />
+        <state relative-caret-position="2390">
+          <caret line="189" column="21" selection-start-line="189" selection-start-column="21" selection-end-line="189" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/login/LoginViewModel.java">
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/unit/CategoryItemViewModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="55" column="8" selection-start-line="55" selection-start-column="8" selection-end-line="58" selection-end-column="45" />
-          <folding>
-            <element signature="e#3390#3391#0" expanded="true" />
-            <element signature="e#3452#3453#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="31">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/ContactProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="63" selection-start-line="63" selection-end-line="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/edit/ContactEditView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-786">
-          <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
-          <folding>
-            <element signature="e#4594#4595#0" expanded="true" />
-            <element signature="e#4631#4632#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/edit/ContactEditViewModel.java">
+    <entry file="file://$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/factory/RoomCategoryDomainBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="124">
-          <caret line="39" column="71" selection-start-line="39" selection-start-column="71" selection-end-line="39" selection-end-column="71" />
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/src.zip!/java/lang/Class.java">
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/common/AbstractMasterEditScope.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10493">
-          <caret line="441" selection-start-line="441" selection-end-line="441" />
+        <state relative-caret-position="251">
+          <caret line="64" column="54" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="54" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/de/saxsys/mvvmfx/1.7.0/mvvmfx-1.7.0.jar!/de/saxsys/mvvmfx/ScopeProvider.class">
+    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/model/ReservationPojo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="165">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/scope/ContactViewScope.java">
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/dataprovider/ReservationUnitProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="336">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/de/saxsys/mvvmfx/1.7.0/mvvmfx-1.7.0.jar!/de/saxsys/mvvmfx/internal/viewloader/ViewLoaderReflectionUtils.class">
+    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationControllerFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="198" selection-start-line="198" selection-end-line="198" />
+        <state relative-caret-position="175">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/main/models/PageProvider.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/javafx-src.zip!/javafx/beans/property/ObjectPropertyBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
+        <state relative-caret-position="144">
+          <caret line="131" selection-start-line="131" selection-end-line="131" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/session-controller/src/main/java/at/fhv/roomix/controller/session/model/SessionPojo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#339#340#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/dataprovider/LoginProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="74" selection-start-line="74" selection-end-line="74" />
+          <folding>
+            <element signature="e#2305#2306#0" expanded="true" />
+            <element signature="e#2342#2343#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/content/ReservationTableViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/domain/guest-domain/src/main/java/at/fhv/roomix/domain/guest/model/ReservationUnitDomain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/factory/ReservationUnitDomainBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="71" column="19" selection-start-line="71" selection-start-column="19" selection-end-line="71" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/item/ItemControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="38" selection-start-line="38" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/ReservationUnitDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-222" />
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/5.2.15.Final/hibernate-core-5.2.15.Final-sources.jar!/org/hibernate/event/spi/SaveOrUpdateEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/dataprovider/AbstractSearchEditProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/dataprovider/AbstractProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
           <caret line="49" selection-start-line="49" selection-end-line="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/ContactView.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/src.zip!/java/util/LinkedList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+        <state relative-caret-position="156">
+          <caret line="82" column="13" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/dataprovider/ReservationProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="206" column="40" selection-start-line="206" selection-start-column="19" selection-end-line="206" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/scope/ContactMasterDetailScope.java">
+    <entry file="file://$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/model/ReservationEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="289">
+          <caret line="139" column="21" selection-start-line="139" selection-start-column="21" selection-end-line="139" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactDetailView.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/src.zip!/java/util/concurrent/Executors.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-372">
-          <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+        <state relative-caret-position="157">
+          <caret line="510" selection-start-line="510" selection-end-line="510" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactListView.java">
+    <entry file="file://$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/factory/AbstractDomainBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="24" column="26" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="26" />
+        <state relative-caret-position="165">
+          <caret line="161" column="13" lean-forward="true" selection-start-line="161" selection-start-column="13" selection-end-line="161" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactListTableModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactListViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1325">
-          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
-          <folding>
-            <element signature="e#1845#1846#0" expanded="true" />
-            <element signature="e#1876#1877#0" expanded="true" />
-            <element signature="e#1955#1956#0" expanded="true" />
-            <element signature="e#1994#1995#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/ContactViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="67" column="43" selection-start-line="67" selection-start-column="43" selection-end-line="67" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/resources/log4j.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="31">
-          <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactDataView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/views/ContactDataToolbar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="78" column="43" selection-start-line="78" selection-start-column="43" selection-end-line="78" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactDataViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactDataToolbarViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/src.zip!/java/util/function/Function.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="48" column="6" selection-start-line="48" selection-start-column="6" selection-end-line="48" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/login/LoginView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="44" column="4" selection-start-line="44" selection-start-column="4" selection-end-line="45" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/edit/ContactEditView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9">
-          <caret line="38" column="26" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
-          <folding>
-            <element signature="e#4594#4595#0" expanded="true" />
-            <element signature="e#4631#4632#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/edit/ContactEditView.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/ReservationMock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="26" column="22" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/edit/ContactEditViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1679">
-          <caret line="148" column="49" selection-start-line="148" selection-start-column="49" selection-end-line="148" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/list/ContactDetailViewModel.java">
+    <entry file="file://$PROJECT_DIR$/controller/reservation-controller/src/main/java/at/fhv/roomix/controller/reservation/model/PricePojo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="217">
-          <caret line="40" column="83" selection-start-line="40" selection-start-column="83" selection-end-line="40" selection-end-column="83" />
+          <caret line="7" column="6" lean-forward="true" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/RunMe.java">
+    <entry file="file://$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/AbstractDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="992">
-          <caret line="49" column="30" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="30" />
+        <state relative-caret-position="149">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/none/NoneView.fxml">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/5.2.15.Final/hibernate-core-5.2.15.Final-sources.jar!/org/hibernate/Session.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6260">
+          <caret line="499" column="6" lean-forward="true" selection-start-line="499" selection-start-column="6" selection-end-line="499" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/ReservationDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="34" column="42" lean-forward="true" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/unit/UnitView.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-372" />
+      </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
-        </state>
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/config/ResourceHandler.java">
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/unit/UnitViewModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/config/SessionProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="22" column="35" lean-forward="true" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+        <state relative-caret-position="274">
+          <caret line="110" column="4" selection-start-line="110" selection-start-column="4" selection-end-line="110" selection-end-column="4" />
           <folding>
-            <element signature="e#690#691#0" expanded="true" />
-            <element signature="e#722#723#0" expanded="true" />
-            <element signature="e#777#778#0" expanded="true" />
-            <element signature="e#830#831#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#4518#4519#0" expanded="true" />
+            <element signature="e#4563#4564#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/contact/ContactProvider.java">
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/unit/UnitView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1147">
-          <caret line="57" column="80" selection-start-line="57" selection-start-column="80" selection-end-line="57" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/login/LoginViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="55" column="8" selection-start-line="55" selection-start-column="8" selection-end-line="58" selection-end-column="45" />
+        <state relative-caret-position="350">
+          <caret line="121" column="95" selection-start-line="121" selection-start-column="95" selection-end-line="121" selection-end-column="95" />
           <folding>
-            <element signature="e#3390#3391#0" expanded="true" />
-            <element signature="e#3452#3453#0" expanded="true" />
+            <element signature="class#3648:4651" />
+            <element signature="class#4732:5467" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/views/login/LoginProvider.java">
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/SubscribeAbleViewModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="76" column="33" lean-forward="true" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
+        <state relative-caret-position="350">
+          <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/contact/edit/ContactEditViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="100" column="4" lean-forward="true" selection-start-line="100" selection-start-column="4" selection-end-line="105" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/scope/ReservationViewScope.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="491">
+          <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
           <folding>
-            <element signature="e#2418#2419#0" expanded="true" />
-            <element signature="e#2455#2456#0" expanded="true" />
+            <element signature="e#555#556#0" expanded="true" />
+            <element signature="e#625#626#0" expanded="true" />
+            <element signature="e#718#719#0" expanded="true" />
+            <element signature="e#760#761#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/edit/ReservationEditViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="245" column="29" selection-start-line="245" selection-start-column="29" selection-end-line="245" selection-end-column="29" />
+          <folding>
+            <element signature="method#clear#0;class#ReservationEditViewModel#0" />
+            <element signature="n#!!doc;n#contactBuilder#0;n#ReservationEditViewModel#0" />
+            <element signature="n#!!doc;n#personHandler#0;n#ReservationEditViewModel#0" />
+            <element signature="n#!!doc;n#unitBuilder#0;n#ReservationEditViewModel#0" />
+            <element signature="n#!!doc;n#optionBuilder#0;n#ReservationEditViewModel#0" />
+            <element signature="n#!!doc;n#commentBuilder#0;n#ReservationEditViewModel#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/main/models/PageProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/ReservationView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/ReservationToolbar.fxml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/at/fhv/roomix/ui/view/reservation/ReservationToolbar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="62" column="33" selection-start-line="62" selection-start-column="33" selection-end-line="62" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>ui</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2764868" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Hibernate</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>ui</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2764868" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: antlr:antlr:2.7.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

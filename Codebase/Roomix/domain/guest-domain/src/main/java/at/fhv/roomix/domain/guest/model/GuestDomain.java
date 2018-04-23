@@ -1,6 +1,5 @@
 package at.fhv.roomix.domain.guest.model;
 
-
 import java.util.Collection;
 
 /**
@@ -14,8 +13,8 @@ import java.util.Collection;
 public class GuestDomain {
 
     private int contactId;
-    private String fname;
-    private String lname;
+    private String firstName;
+    private String lastName;
     private String companyName;
     private String phoneNumber;
     private String street;
@@ -24,45 +23,29 @@ public class GuestDomain {
     private String postcode;
     private String country;
     private String email;
+    private byte active;
 
-    private Collection<ContactNoteDomain> contactNotes;
-    private Collection<CreditCardDomain> creditCards;
-    private Collection<ContractingPartyDomain> contractingPartys;
-    private Collection<PersonDomain> personDomains;
+    private Collection<ContactNoteDomain> contactNotesByContactId;
+    private Collection<CreditCardDomain> creditCardsByContactId;
+    /* Loaded by proxy */
+    private Collection<ContractingPartyDomain> contractingPartiesByContactId;
+    private Collection<InvoiceDomain> invoicesByContactId;
+    private Collection<PersonDomain> peopleByContactId;
 
+    private Proxy<Collection<ContractingPartyDomain>, Integer> contractingPartyDomainBuilderProxy;
+    private Proxy<Collection<PersonDomain>, Integer> personDomainBuilderProxy;
+    private Proxy<Collection<InvoiceDomain>, Integer> invoiceDomainBuilderProxy;
 
-    public Collection<PersonDomain> getPersonDomains() {
-        return personDomains;
+    public void setContractingPartyDomainBuilderProxy(Proxy<Collection<ContractingPartyDomain>, Integer> contractingPartyDomainBuilderProxy) {
+        this.contractingPartyDomainBuilderProxy = contractingPartyDomainBuilderProxy;
     }
 
-    public void setPersonDomains(Collection<PersonDomain> personDomains) {
-        this.personDomains = personDomains;
+    public void setPersonDomainBuilderProxy(Proxy<Collection<PersonDomain>, Integer> personDomainBuilderProxy){
+        this.personDomainBuilderProxy = personDomainBuilderProxy;
     }
 
-
-    public Collection<ContractingPartyDomain> getContractingPartys() {
-        return contractingPartys;
-    }
-
-    public void setContractingPartys(Collection<ContractingPartyDomain> contractingPartys) {
-        this.contractingPartys = contractingPartys;
-    }
-
-
-    public Collection<CreditCardDomain> getCreditCards() {
-        return creditCards;
-    }
-
-    public void setCreditCards(Collection<CreditCardDomain> creditCards) {
-        this.creditCards = creditCards;
-    }
-
-    public Collection<ContactNoteDomain> getContactNotes() {
-        return contactNotes;
-    }
-
-    public void setContactNotes(Collection<ContactNoteDomain> contactNotes) {
-        this.contactNotes = contactNotes;
+    public void setInvoiceDomainBuilderProxy(Proxy<Collection<InvoiceDomain>, Integer> invoiceDomainBuilderProxy){
+        this.invoiceDomainBuilderProxy = invoiceDomainBuilderProxy;
     }
 
     public int getContactId() {
@@ -73,20 +56,20 @@ public class GuestDomain {
         this.contactId = contactId;
     }
 
-    public String getFname() {
-        return fname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFname(String fname) {
-        this.fname = fname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLname() {
-        return lname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLname(String lname) {
-        this.lname = lname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getCompanyName() {
@@ -153,4 +136,63 @@ public class GuestDomain {
         this.email = email;
     }
 
+    public byte getActive() {
+        return active;
+    }
+
+    public void setActive(byte active) {
+        this.active = active;
+    }
+
+    public Collection<ContactNoteDomain> getContactNotesByContactId() {
+        return contactNotesByContactId;
+    }
+
+    public void setContactNotesByContactId(Collection<ContactNoteDomain> contactNotesByContactId) {
+        this.contactNotesByContactId = contactNotesByContactId;
+    }
+
+    public Collection<ContractingPartyDomain> getContractingPartiesByContactId() {
+        if(contractingPartyDomainBuilderProxy != null) {
+            return (contractingPartiesByContactId = contractingPartyDomainBuilderProxy.get());
+        } else {
+            return contractingPartiesByContactId;
+        }
+    }
+
+    public void setContractingPartiesByContactId(Collection<ContractingPartyDomain> contractingPartiesByContactId) {
+        this.contractingPartiesByContactId = contractingPartiesByContactId;
+    }
+
+    public Collection<CreditCardDomain> getCreditCardsByContactId() {
+        return creditCardsByContactId;
+    }
+
+    public void setCreditCardsByContactId(Collection<CreditCardDomain> creditCardsByContactId) {
+        this.creditCardsByContactId = creditCardsByContactId;
+    }
+
+    public Collection<InvoiceDomain> getInvoicesByContactId() {
+        if(invoiceDomainBuilderProxy != null) {
+            return (invoicesByContactId = invoiceDomainBuilderProxy.get());
+        } else {
+            return invoicesByContactId;
+        }
+    }
+
+    public void setInvoicesByContactId(Collection<InvoiceDomain> invoicesByContactId) {
+        this.invoicesByContactId = invoicesByContactId;
+    }
+
+    public Collection<PersonDomain> getPeopleByContactId() {
+        if(personDomainBuilderProxy != null) {
+            return (peopleByContactId = personDomainBuilderProxy.get());
+        } else {
+            return peopleByContactId;
+        }
+    }
+
+    public void setPeopleByContactId(Collection<PersonDomain> peopleByContactId) {
+        this.peopleByContactId = peopleByContactId;
+    }
 }
