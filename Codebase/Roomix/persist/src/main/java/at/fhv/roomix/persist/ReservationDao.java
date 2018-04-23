@@ -34,4 +34,6 @@ public class ReservationDao extends AbstractDao<ReservationEntity, Integer> {
         session.getTransaction().commit();
     }
 
+
+
 }

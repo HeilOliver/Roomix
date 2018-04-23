@@ -23,7 +23,11 @@ public class RoomCategoryDomain {
     private RoomCategoryMetaData metaData;
 
     public Collection<ReservationUnitDomain> getReservationUnitsByRoomCategoryId() {
-        return (reservationUnitsByRoomCategoryId = reservationUnitProxy.get());
+        if (reservationUnitProxy != null) {
+            return (reservationUnitsByRoomCategoryId = reservationUnitProxy.get());
+        } else {
+            return reservationUnitsByRoomCategoryId;
+        }
     }
 
     public void setReservationUnitsByRoomCategoryId(Collection<ReservationUnitDomain> reservationUnitsByRoomCategoryId) {
@@ -31,7 +35,11 @@ public class RoomCategoryDomain {
     }
 
     public Collection<RoomDomain> getRoomsByRoomCategoryId() {
-        return (roomsByRoomCategoryId = roomProxy.get());
+        if (roomProxy != null) {
+            return (roomsByRoomCategoryId = roomProxy.get());
+        } else{
+            return roomsByRoomCategoryId;
+        }
     }
 
     public void setRoomsByRoomCategoryId(Collection<RoomDomain> roomsByRoomCategoryId) {
@@ -39,7 +47,11 @@ public class RoomCategoryDomain {
     }
 
     public Collection<RoomCategoryPriceDomain> getRoomCategoryPricesByRoomCategoryId() {
-        return (roomCategoryPricesByRoomCategoryId = roomCategoryPriceProxy.get());
+        if (roomCategoryPriceProxy != null) {
+            return (roomCategoryPricesByRoomCategoryId = roomCategoryPriceProxy.get());
+        } else {
+            return roomCategoryPricesByRoomCategoryId;
+        }
     }
 
     public void setRoomCategoryPricesByRoomCategoryId(Collection<RoomCategoryPriceDomain> roomCategoryPricesByRoomCategoryId) {

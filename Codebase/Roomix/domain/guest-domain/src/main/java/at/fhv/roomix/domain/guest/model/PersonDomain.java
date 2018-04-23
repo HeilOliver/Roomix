@@ -65,7 +65,11 @@ public class PersonDomain {
     }
 
     public Collection<PersonReservationDomain> getPersonReservationsByPersonId() {
-        return (personReservationsByPersonId = personReservationProxy.get());
+        if (personReservationProxy != null) {
+            return (personReservationsByPersonId = personReservationProxy.get());
+        } else {
+            return personReservationsByPersonId;
+        }
     }
 
     public GuestDomain getContactByContact() {
