@@ -19,6 +19,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -203,16 +204,19 @@ class ReservationController implements IReservationController {
             reservationDomain.setReservationOptionByReservationOption(tempOption);
         }
         reservationDomain.setReservationStatus(EReservationStatus.UNCONFIRMED.getStr());
+        Collection<ReservationUnitDomain> unitSet = new LinkedList<>();
         reservationDomain.setReservationComment(reservationPojo.getComment().getComment());
-        IAbstractDomainBuilder<ReservationUnitDomain, ReservationUnitEntity> unitBuilder = ReservationUnitDomainBuilder.getInstance();
         for (ReservationUnitPojo reservationUnitPojo : reservationPojo.getReservationUnitsByReservationId()) {
             ReservationUnitDomain unit = new ReservationUnitDomain();
-            unit.setReservationByReservation(reservationDomain);
             RoomCategoryDomain tempRoomCategory = RoomCategoryDomainBuilder.getInstance().get(reservationUnitPojo.getRoomCategory().getId());
             unit.setRoomCategoryByRoomCategory(tempRoomCategory);
             unit.setStartDate(Date.valueOf(reservationUnitPojo.getStartDate()));
             unit.setEndDate(Date.valueOf(reservationUnitPojo.getEndDate()));
-            unitBuilder.set(unit);
+            unitSet.add(unit);
         }
+        reservationDomain.setReservationUnitsByReservationId(unitSet);
+        IAbstractDomainBuilder<ReservationDomain, ReservationEntity> reservationBuilder = ReservationDomainBuilder.getInstance();
+        reservationBuilder.set(reservationDomain);
+
     }
 }
