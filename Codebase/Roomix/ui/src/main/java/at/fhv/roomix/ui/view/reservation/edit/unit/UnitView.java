@@ -97,6 +97,29 @@ public class UnitView implements FxmlView<UnitViewModel> {
         });
 
         lblPricePerDay.textProperty().bind(viewModel.currCategoryPriceProperty());
+
+        validationVisualizer.initVisualization(
+                viewModel.getArrivalDateValidator(),
+                pickArrival
+        );
+        validationVisualizer.initVisualization(
+                viewModel.getDepartureDateValidator(),
+                pickDeparture
+        );
+        validationVisualizer.initVisualization(
+                viewModel.getArrivalTimeValidator(),
+                arrivalTime
+        );
+        validationVisualizer.initVisualization(
+                viewModel.getCategoryValidator(),
+                listCategories
+        );
+        validationVisualizer.initVisualization(
+                viewModel.getAmountValidator(),
+                inputAmount
+        );
+
+        inputAmount.textProperty().bindBidirectional(viewModel.amountAsStringPropertyProperty());
     }
 
     @FXML

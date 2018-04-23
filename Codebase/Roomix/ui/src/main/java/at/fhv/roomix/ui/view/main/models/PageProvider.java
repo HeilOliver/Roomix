@@ -23,7 +23,7 @@ public class PageProvider {
 
     static {
         topItem = FXCollections.observableArrayList(
-                new DashBoardPage().getPage(),
+                //new DashBoardPage().getPage(),
                 new ContactPage().getPage(),
                 new ReservationPage().getPage()
         );

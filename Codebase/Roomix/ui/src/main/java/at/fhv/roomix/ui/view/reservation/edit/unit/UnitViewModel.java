@@ -53,6 +53,7 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
     private ObservableList<XYChart.Series<Number, String>> availableRooms = FXCollections.observableArrayList();
     private StringProperty currCategoryPrice = new SimpleStringProperty();
     private StringProperty amountAsStringProperty = new SimpleStringProperty();
+
     private Validator arrivalDateValidator;
     private Validator departureDateValidator;
     private Validator arrivalTimeValidator;
@@ -107,7 +108,7 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
                 ReservationUnitPojo::getArrivalTime, ReservationUnitPojo::setArrivalTime);
     }
 
-    public StringProperty amountAsStringPropertyProperty() {
+    StringProperty amountAsStringPropertyProperty() {
         return amountAsStringProperty;
     }
 
@@ -152,6 +153,10 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
 
     ValidationStatus getCategoryValidator() {
         return categoriesValidator.getValidationStatus();
+    }
+
+    ValidationStatus getAmountValidator() {
+        return amountValidator.getValidationStatus();
     }
 
     public void initialize() {
@@ -242,7 +247,10 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
 
     @Override
     protected void afterSubscribe(boolean isNew) {
+        roomCategories.clear();
+        arrangementList.clear();
         provider.clear();
+
         provider.loadArrangements(() -> {
             if (arrangementsProperty().get() == null) return;
             for (ArrangementPojo pojo : arrangementsProperty().get()) {

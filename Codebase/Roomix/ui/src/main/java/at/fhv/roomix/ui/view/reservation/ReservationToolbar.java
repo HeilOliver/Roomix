@@ -56,9 +56,11 @@ public class ReservationToolbar implements FxmlView<ReservationToolbarViewModel>
         btnCancel.visibleProperty().bind(viewModel.inEditViewProperty());
         btnCancel.managedProperty().bind(viewModel.inEditViewProperty());
 
-        btnPrint.visibleProperty().bind(viewModel.inContentViewProperty());
-        btnPrint.managedProperty().bind(viewModel.inContentViewProperty());
-        btnPrint.disableProperty().bind(viewModel.editAbleProperty().not());
+        //btnPrint.visibleProperty().bind(viewModel.inContentViewProperty());
+        //btnPrint.managedProperty().bind(viewModel.inContentViewProperty());
+        //btnPrint.disableProperty().bind(viewModel.editAbleProperty().not());
+
+        btnPrint.setVisible(false);
     }
 
     @FXML

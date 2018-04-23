@@ -3,6 +3,7 @@ package at.fhv.roomix.ui.view.reservation.scope;
 
 import at.fhv.roomix.controller.reservation.model.ReservationPojo;
 import at.fhv.roomix.ui.common.AbstractMasterEditScope;
+import at.fhv.roomix.ui.common.IErrorCall;
 import at.fhv.roomix.ui.dataprovider.ReservationProvider;
 
 /**
@@ -18,5 +19,9 @@ public class ReservationViewScope extends AbstractMasterEditScope<ReservationPoj
 
     public ReservationViewScope() {
         super(ReservationPojo::new, new ReservationProvider());
+    }
+
+    public void setOnError(IErrorCall onError) {
+        onSaveUpdateError = onError;
     }
 }
