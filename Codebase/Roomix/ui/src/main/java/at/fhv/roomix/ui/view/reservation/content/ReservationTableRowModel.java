@@ -17,4 +17,24 @@ public class ReservationTableRowModel extends AbstractTableRowModel<ReservationP
         super(pojo);
     }
 
+    public int getId() {
+        return pojo.getId();
+    }
+
+    public String getFirstName(){
+        return pojo.getContractingParty().getFirstName();
+    }
+
+    public String getLastName(){
+        return pojo.getContractingParty().getLastName();
+    }
+
+    public String getCompanyName(){
+        return pojo.getContractingParty().getCompanyName();
+    }
+
+    public String getComment(){
+        return pojo.getComment() != null ?
+                pojo.getComment().getComment() : "-";
+    }
 }

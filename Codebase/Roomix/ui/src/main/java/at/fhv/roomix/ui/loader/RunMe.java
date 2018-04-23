@@ -12,6 +12,7 @@ import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.MvvmFX;
 import de.saxsys.mvvmfx.ViewTuple;
 import de.saxsys.mvvmfx.cdi.MvvmfxCdiApplication;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -74,9 +75,11 @@ public class RunMe extends MvvmfxCdiApplication {
         ViewTuple<MainView, MainViewModel> main = FluentViewLoader.fxmlView(MainView.class).load();
         Scene rootScene = new Scene(main.getView());
         stage.setScene(rootScene);
-        stage.setMinWidth(900);
+        stage.setMinWidth(1000);
         stage.setMinHeight(400);
         stage.show();
+
+        Platform.setImplicitExit(false);
 
         if (!DEBUG_INIT) return;
         LoginProvider

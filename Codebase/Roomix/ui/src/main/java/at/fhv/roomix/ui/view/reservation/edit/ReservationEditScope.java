@@ -2,6 +2,7 @@ package at.fhv.roomix.ui.view.reservation.edit;
 
 
 import at.fhv.roomix.controller.contact.model.ContactPojo;
+import at.fhv.roomix.ui.view.reservation.edit.item.ItemControlViewModel;
 import de.saxsys.mvvmfx.Scope;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -16,13 +17,18 @@ import javafx.beans.property.SimpleObjectProperty;
  */
 public class ReservationEditScope implements Scope {
 
-    private ObjectProperty<ContactPojo> currContractingParty = new SimpleObjectProperty<>();
+    private ObjectProperty<ItemControlViewModel<ContactPojo>> currContractingParty = new SimpleObjectProperty<>();
 
-    public ContactPojo getCurrContractingParty() {
+    public ItemControlViewModel<ContactPojo> getCurrContractingParty() {
         return currContractingParty.get();
     }
 
-    public ObjectProperty<ContactPojo> currContractingPartyProperty() {
+    public ContactPojo getContractingParty() {
+        if (currContractingParty.get() == null) return null;
+        return currContractingParty.get().getPojo();
+    }
+
+    public ObjectProperty<ItemControlViewModel<ContactPojo>> currContractingPartyProperty() {
         return currContractingParty;
     }
 }

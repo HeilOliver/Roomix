@@ -46,7 +46,7 @@ public class ReservationUnitProvider extends AbstractProvider {
             try {
                 Collection<RoomCategoryPojo> collection =
                         instance.getSearchedCategory(LoginProvider.getSessionID(),
-                                from, till, contractingParty);
+                        from, till, contractingParty);
                 Platform.runLater(() -> {
                     possibleCategories.clear();
                     possibleCategories.addAll(collection);
@@ -54,17 +54,12 @@ public class ReservationUnitProvider extends AbstractProvider {
             } catch (SessionFaultException e) {
                 LOG.debug(e.getMessage());
             } finally {
-                try {
-                    Thread.sleep(6000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
                 Platform.runLater(() -> inLoadCategories.setValue(false));
             }
         });
     }
 
-    public void loadArticles() {
+    public void loadArrangements() {
         submit(() -> {
             Platform.runLater(() -> inLoadArrangements.setValue(true));
             IReservationController instance =
@@ -79,11 +74,6 @@ public class ReservationUnitProvider extends AbstractProvider {
             } catch (SessionFaultException e) {
                 LOG.debug(e.getMessage());
             } finally {
-                try {
-                    Thread.sleep(6000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
                 Platform.runLater(() -> inLoadArrangements.setValue(false));
             }
         });
@@ -96,7 +86,6 @@ public class ReservationUnitProvider extends AbstractProvider {
             IReservationController instance =
                     ReservationControllerFactory.getInstance();
             try {
-
                 PricePojo price =
                         instance.getPrice(LoginProvider.getSessionID(), pojo, contractingParty);
                 Platform.runLater(() -> {

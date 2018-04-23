@@ -58,7 +58,7 @@ public class ReservationEditViewModel implements ViewModel {
             if (newValue == null) {
                 editScope.currContractingPartyProperty().setValue(null);
             } else {
-                editScope.currContractingPartyProperty().setValue(newValue.getPojo());
+                editScope.currContractingPartyProperty().setValue(newValue);
             }
         });
         viewScope.subscribe(ReservationViewScope.commandEditView, ((key, payload) -> {

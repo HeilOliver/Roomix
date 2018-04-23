@@ -51,6 +51,8 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
     private CompositeValidator formValidator = new CompositeValidator();
     private StringProperty arrivalTime = new SimpleStringProperty();
     private ObservableList<PacketsItemViewModel> articleList;
+    private ObservableList<XYChart.Series<Number, String>> availableRooms = FXCollections.observableArrayList();
+    private StringProperty currCategoryPrice = new SimpleStringProperty();
 
     public UnitViewModel() {
         provider = new ReservationUnitProvider();
@@ -106,7 +108,7 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
         Duration days = Duration.ofDays(ChronoUnit.DAYS.between(arrivalDateProperty().get(), departureDateProperty().get()));
         duration.setValue(days.toDays() + " " + StringResourceResolver.getStaticResolve(resourceBundle, "reservation.days"));
 
-        provider.loadCategories(arrivalDateProperty().get(), departureDateProperty().get(), scope.getCurrContractingParty());
+        provider.loadCategories(arrivalDateProperty().get(), departureDateProperty().get(), scope.getContractingParty());
     }
 
     public void initialize() {
@@ -155,24 +157,25 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
             currCategoryPrice.setValue("");
             if (newValue == null) return;
             XYChart.Series<Number, String> series = new XYChart.Series<>();
-            series.getData().add(new XYChart.Data<>( newValue.getFree(),
+            series.getData().add(new XYChart.Data<>(newValue.getFree(),
                     StringResourceResolver.getStaticResolve(resourceBundle, "reservation.edit.unit.freerooms")));
-            series.getData().add(new XYChart.Data<>( newValue.getQuota(),
+            series.getData().add(new XYChart.Data<>(newValue.getQuota(),
                     StringResourceResolver.getStaticResolve(resourceBundle, "reservation.edit.unit.quotarooms")));
-            series.getData().add(new XYChart.Data<>( newValue.getOccupied(),
+            series.getData().add(new XYChart.Data<>(newValue.getOccupied(),
                     StringResourceResolver.getStaticResolve(resourceBundle, "reservation.edit.unit.occupiedrooms")));
-            series.getData().add(new XYChart.Data<>( newValue.getUnconfirmedReservation(),
+            series.getData().add(new XYChart.Data<>(newValue.getUnconfirmedReservation(),
                     StringResourceResolver.getStaticResolve(resourceBundle, "reservation.edit.unit.unconfirmedrooms")));
             availableRooms.add(series);
-
             currCategoryPrice.setValue(Float.toString(newValue.getPricePerDay() / 100));
         }));
+
+
     }
 
     @Override
     protected void afterSubscribe(boolean isNew) {
         provider.clear();
-        provider.loadArticles();
+        provider.loadArrangements();
     }
 
     ReadOnlyBooleanProperty getContactInLoad() {
@@ -191,13 +194,9 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
         return roomCategories;
     }
 
-    private ObservableList<XYChart.Series<Number, String>> availableRooms = FXCollections.observableArrayList();
-
     ObservableList<XYChart.Series<Number, String>> getAvailableRooms() {
         return availableRooms;
     }
-
-    private StringProperty currCategoryPrice = new SimpleStringProperty();
 
     public ReadOnlyStringProperty currCategoryPriceProperty() {
         return currCategoryPrice;
@@ -208,6 +207,6 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
         provider.calculatePrice((price) -> {
             priceProperty().setValue(price);
             commit();
-        }, currModel.get(), scope.getCurrContractingParty());
+        }, currModel.get(), scope.getContractingParty());
     }
 }
