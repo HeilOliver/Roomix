@@ -36,7 +36,7 @@ public class ReservationUnitProvider extends AbstractProvider {
     private BooleanProperty inLoadCategories = new SimpleBooleanProperty();
     private BooleanProperty inLoadArrangements = new SimpleBooleanProperty();
 
-    public void loadCategories(LocalDate from, LocalDate till, ContactPojo contractingParty) {
+    public void loadCategories(LocalDate from, LocalDate till, ContactPojo contractingParty, ICallable onSuccess) {
         if (from == null || till == null) return;
         // TODO Das ist nicht ThreadSave!
         submit(() -> {
@@ -50,6 +50,7 @@ public class ReservationUnitProvider extends AbstractProvider {
                 Platform.runLater(() -> {
                     possibleCategories.clear();
                     possibleCategories.addAll(collection);
+                    onSuccess.call();
                 });
             } catch (Exception e) {
                 LOG.debug(e.getMessage());

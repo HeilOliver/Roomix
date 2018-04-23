@@ -122,7 +122,7 @@ public class RoomCategoryDomain {
         Optional<PartnerAgreementDomain> partnerAgreement = Optional.empty();
         if(guest != null && guest.getContactId() != 0) {
             Collection<ContractingPartyDomain> contractingPartiesByContactId = guest.getContractingPartiesByContactId();
-            if (contractingPartiesByContactId != null) {
+            if (contractingPartiesByContactId != null && !contractingPartiesByContactId.isEmpty()) {
                 ContractingPartyDomain contractingParty = contractingPartiesByContactId.iterator().next();
                 Collection<PartnerAgreementDomain> partnerAgreements = null;
                 if (contractingParty.getPartnerAgreementsByContractingPartyId() != null) {

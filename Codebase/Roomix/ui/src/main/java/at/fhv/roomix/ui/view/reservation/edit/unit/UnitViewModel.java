@@ -16,8 +16,10 @@ import de.saxsys.mvvmfx.utils.validation.CompositeValidator;
 import de.saxsys.mvvmfx.utils.validation.FunctionBasedValidator;
 import de.saxsys.mvvmfx.utils.validation.ValidationMessage;
 import de.saxsys.mvvmfx.utils.validation.Validator;
+import javafx.beans.InvalidationListener;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart;
 
@@ -59,9 +61,10 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
     public UnitViewModel() {
         provider = new ReservationUnitProvider();
 
-        ListTransformation<RoomCategoryPojo, CategoryItemViewModel> transRoomCategory
-                = new ListTransformation<>(provider.getPossibleCategories(), CategoryItemViewModel::new);
-        roomCategories = transRoomCategory.getTargetList();
+//        ListTransformation<RoomCategoryPojo, CategoryItemViewModel> transRoomCategory
+//                = new ListTransformation<>(provider.getPossibleCategories(), CategoryItemViewModel::new);
+//        roomCategories = transRoomCategory.getTargetList();
+        roomCategories = FXCollections.observableArrayList();
 
         ListTransformation<ArrangementPojo, PacketsItemViewModel> transArticle
                 = new ListTransformation<>(provider.getPossibleArrangements(), PacketsItemViewModel::new);
@@ -126,7 +129,14 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
         Duration days = Duration.ofDays(ChronoUnit.DAYS.between(arrivalDateProperty().get(), departureDateProperty().get()));
         duration.setValue(days.toDays() + " " + StringResourceResolver.getStaticResolve(resourceBundle, "reservation.days"));
 
-        provider.loadCategories(arrivalDateProperty().get(), departureDateProperty().get(), scope.getContractingParty());
+        provider.loadCategories(arrivalDateProperty().get(), departureDateProperty().get(), scope.getContractingParty(), this::createVms );
+    }
+
+    private void createVms() {
+        roomCategories.clear();
+        for (RoomCategoryPojo pojo : provider.getPossibleCategories()) {
+            roomCategories.add(new CategoryItemViewModel(pojo));
+        }
     }
 
     public void initialize() {
