@@ -12,6 +12,8 @@ import at.fhv.roomix.persist.factory.*;
 import at.fhv.roomix.persist.model.*;
 import org.modelmapper.ModelMapper;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -167,24 +169,49 @@ class ReservationController implements IReservationController {
     @Override
     public void updateReservation(long sessionId, ReservationPojo reservationPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException {
 
+        ReservationDomain reservationDomain = new ReservationDomain();
+
         if (reservationPojo == null) throw new ArgumentFaultException();
         validate(reservationPojo);
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
 
-        IAbstractDomainBuilder<ReservationDomain, ReservationEntity> reservationBuilder = ReservationDomainBuilder.getInstance();
-
-        GuestDomain guestDomain = GuestDomainBuilder.getInstance().get(reservationPojo.getContractingParty().getContactId());
-        ContractingPartyDomain contractingPartyDomain = guestDomain.getContractingPartiesByContactId().iterator().next();
-
-        ModelMapper modelMapper = new ModelMapper();
-        ReservationDomain reservationDomain = modelMapper.map(reservationPojo, ReservationDomain.class);
-        reservationDomain.setContractingPartyByContractingParty(contractingPartyDomain);
-
-        ReservationOptionPojo reservationOptionPojo = reservationPojo.getReservationOptionByReservationOption().iterator().next();
-        reservationOptionPojo.setOptionStatus((byte) 1);
-        ReservationOptionDomain reservationOptionDomain = modelMapper.map(reservationOptionPojo, ReservationOptionDomain.class);
-        reservationDomain.setReservationOptionByReservationOption(reservationOptionDomain);
-        
-        reservationBuilder.set(reservationDomain);
+        if(reservationPojo.getContractingParty() == null) throw new ArgumentFaultException();
+        ContactPojo contactPojo = reservationPojo.getContractingParty();
+        GuestDomain guestDomain = null;
+        if(contactPojo.getContactId() > 0) {
+            guestDomain = GuestDomainBuilder.getInstance().get(contactPojo.getContactId());
+        } else{
+            throw new ArgumentFaultException("invalid");
+        }
+        Collection<ContractingPartyDomain> existingContractingParty = guestDomain.getContractingPartiesByContactId();
+        if(existingContractingParty == null || existingContractingParty.isEmpty()){
+            ContractingPartyDomain contractingPartyDomain = new ContractingPartyDomain();
+            contractingPartyDomain.setContactByContact(guestDomain);
+            contractingPartyDomain.setContractingPartyType("INDIVIDUAL");
+            //ContractingPartyDomainBuilder.getInstance().set(contractingPartyDomain);
+            reservationDomain.setContractingPartyByContractingParty(contractingPartyDomain);
+        } else{
+            ContractingPartyDomain actualContractingParty = existingContractingParty.iterator().next();
+            reservationDomain.setContractingPartyByContractingParty(actualContractingParty);
+        }
+        reservationDomain.setPaymentType(1);
+        Collection<ReservationOptionPojo> reservationOptions = reservationPojo.getReservationOptionByReservationOption();
+        if(reservationOptions != null && !reservationOptions.isEmpty()){
+            ReservationOptionDomain tempOption =
+                    new ModelMapper().map(reservationOptions.iterator().next(), ReservationOptionDomain.class);
+            reservationDomain.setReservationOptionByReservationOption(tempOption);
+        }
+        reservationDomain.setReservationStatus(EReservationStatus.UNCONFIRMED.getStr());
+        reservationDomain.setReservationComment(reservationPojo.getComment().getComment());
+        IAbstractDomainBuilder<ReservationUnitDomain, ReservationUnitEntity> unitBuilder = ReservationUnitDomainBuilder.getInstance();
+        for (ReservationUnitPojo reservationUnitPojo : reservationPojo.getReservationUnitsByReservationId()) {
+            ReservationUnitDomain unit = new ReservationUnitDomain();
+            unit.setReservationByReservation(reservationDomain);
+            RoomCategoryDomain tempRoomCategory = RoomCategoryDomainBuilder.getInstance().get(reservationUnitPojo.getRoomCategory().getId());
+            unit.setRoomCategoryByRoomCategory(tempRoomCategory);
+            unit.setStartDate(Date.valueOf(reservationUnitPojo.getStartDate()));
+            unit.setEndDate(Date.valueOf(reservationUnitPojo.getEndDate()));
+            unitBuilder.set(unit);
+        }
     }
 }

@@ -48,7 +48,11 @@ public class RoomDomain {
     }
 
     public Collection<RoomAssignmentDomain> getRoomAssignmentsByRoomId() {
-        return (roomAssignmentsByRoomId = roomAssignmentProxy.get());
+        if (roomAssignmentProxy != null) {
+            return (roomAssignmentsByRoomId = roomAssignmentProxy.get());
+        } else {
+            return roomAssignmentsByRoomId;
+        }
     }
 
     public void setRoomAssignmentsByRoomId(Collection<RoomAssignmentDomain> roomAssignmentsByRoomId) {
