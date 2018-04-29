@@ -17,9 +17,9 @@ public class InvoicePositionEntity {
     private Integer invoice;
     private Integer roomAssignment;
     private Integer article;
-    private Integer arrangement;
-    private String freePosition;
-    private int amount;
+    private String comment;
+    private int price;
+    private int paidFlag;
     private Timestamp determinationDate;
     private int count;
     private ReservationEntity reservationByReservation;
@@ -91,33 +91,23 @@ public class InvoicePositionEntity {
     }
 
     @Basic
-    @Column(name = "Arrangement", insertable = false, updatable = false)
-    public Integer getArrangement() {
-        return arrangement;
+    @Column(name = "Comment")
+    public String getComment() {
+        return comment;
     }
 
-    public void setArrangement(Integer arrangement) {
-        this.arrangement = arrangement;
-    }
-
-    @Basic
-    @Column(name = "FreePosition")
-    public String getFreePosition() {
-        return freePosition;
-    }
-
-    public void setFreePosition(String freePosition) {
-        this.freePosition = freePosition;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     @Basic
-    @Column(name = "Amount")
-    public int getAmount() {
-        return amount;
+    @Column(name = "Price")
+    public int getPrice() {
+        return price;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     @Basic
@@ -140,6 +130,16 @@ public class InvoicePositionEntity {
         this.count = count;
     }
 
+    @Basic
+    @Column(name = "PaidFlag")
+    public int getPaidFlag() {
+        return paidFlag;
+    }
+
+    public void setPaidFlag(int paidFlag) {
+        this.paidFlag = paidFlag;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -148,20 +148,19 @@ public class InvoicePositionEntity {
         return invoicePositionId == that.invoicePositionId &&
                 reservation == that.reservation &&
                 reservationUnit == that.reservationUnit &&
-                amount == that.amount &&
+                price == that.price &&
                 count == that.count &&
                 Objects.equals(invoice, that.invoice) &&
                 Objects.equals(roomAssignment, that.roomAssignment) &&
                 Objects.equals(article, that.article) &&
-                Objects.equals(arrangement, that.arrangement) &&
-                Objects.equals(freePosition, that.freePosition) &&
+                Objects.equals(comment, that.comment) &&
                 Objects.equals(determinationDate, that.determinationDate);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(invoicePositionId, reservation, reservationUnit, invoice, roomAssignment, article, arrangement, freePosition, amount, determinationDate, count);
+        return Objects.hash(invoicePositionId, reservation, reservationUnit, invoice, roomAssignment, article, comment, price, determinationDate, count);
     }
 
     @ManyToOne

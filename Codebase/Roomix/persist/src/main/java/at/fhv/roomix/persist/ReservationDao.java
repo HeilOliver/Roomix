@@ -1,9 +1,6 @@
 package at.fhv.roomix.persist;
 
-import at.fhv.roomix.persist.model.ContractingPartyEntity;
-import at.fhv.roomix.persist.model.InvoicePositionEntity;
-import at.fhv.roomix.persist.model.ReservationEntity;
-import at.fhv.roomix.persist.model.ReservationUnitEntity;
+import at.fhv.roomix.persist.model.*;
 import org.hibernate.HibernateException;
 
 import java.util.Collection;
@@ -39,6 +36,13 @@ public class ReservationDao extends AbstractDao<ReservationEntity, Integer> {
                     saveUpdate(reservationUnitEntity);
             }
         );
+        if(entity.getPersonReservationsByReservationId() != null) {
+            for (PersonReservationEntity personReservationEntity : entity.getPersonReservationsByReservationId()) {
+                saveUpdate(personReservationEntity.getPerson());
+                personReservationEntity.setReservationByReservation(entity);
+                saveUpdate(personReservationEntity);
+            }
+        }
         saveCollection(entity.getInvoicePositionsByReservationId());
         saveUpdate(entity.getPaymentTypeByPaymentType());
         //saveUpdate(entity.getPersonReservationsByReservationId());

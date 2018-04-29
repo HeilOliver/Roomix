@@ -14,7 +14,7 @@ import java.util.Objects;
 public class PaymentEntity {
     private int paymentId;
     private int invoice;
-    private int amount;
+    private int totalPrice;
     private Timestamp determinationDate;
     private Date dueDate;
     private Date paidDate;
@@ -43,13 +43,13 @@ public class PaymentEntity {
     }
 
     @Basic
-    @Column(name = "Amount")
-    public int getAmount() {
-        return amount;
+    @Column(name = "TotalPrice")
+    public int getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setTotalPrice(int totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     @Basic
@@ -89,7 +89,7 @@ public class PaymentEntity {
         PaymentEntity that = (PaymentEntity) o;
         return paymentId == that.paymentId &&
                 invoice == that.invoice &&
-                amount == that.amount &&
+                totalPrice == that.totalPrice &&
                 Objects.equals(determinationDate, that.determinationDate) &&
                 Objects.equals(dueDate, that.dueDate) &&
                 Objects.equals(paidDate, that.paidDate);
@@ -97,8 +97,7 @@ public class PaymentEntity {
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(paymentId, invoice, amount, determinationDate, dueDate, paidDate);
+        return Objects.hash(paymentId, invoice, totalPrice, determinationDate, dueDate, paidDate);
     }
 
     @ManyToOne

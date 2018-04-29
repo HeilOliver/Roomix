@@ -15,9 +15,12 @@ public class PersonEntity {
     private byte isVip;
     private byte archive;
     private int contact;
+
     private String firstName;
     private String lastName;
+
     private ContactEntity contactByContact;
+
     private Collection<PersonReservationEntity> personReservationsByPersonId;
     private Collection<PersonRoomAssignmentEntity> personRoomAssignmentsByPersonId;
     private Collection<TourGroupEntity> tourGroupsByPersonId;

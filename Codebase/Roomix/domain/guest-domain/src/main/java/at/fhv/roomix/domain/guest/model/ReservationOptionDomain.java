@@ -4,18 +4,26 @@ import java.sql.Date;
 
 public class ReservationOptionDomain {
     private int optionId;
-    private Date optionDueDate;
+    private int daysBeforeArrival;
     private String optionDescription;
     private byte optionStatus;
-    private int optionFee;
+    private int optionPercentage;
 
 
-    public int getOptionFee() {
-        return optionFee;
+    public int getDaysBeforeArrival() {
+        return daysBeforeArrival;
     }
 
-    public void setOptionFee(int optionFee) {
-        this.optionFee = optionFee;
+    public void setDaysBeforeArrival(int daysBeforeArrival) {
+        this.daysBeforeArrival = daysBeforeArrival;
+    }
+
+    public int getOptionPercentage() {
+        return optionPercentage;
+    }
+
+    public void setOptionPercentage(int optionFee) {
+        this.optionPercentage = optionFee;
     }
 
     public int getOptionId() {
@@ -24,14 +32,6 @@ public class ReservationOptionDomain {
 
     public void setOptionId(int optionId) {
         this.optionId = optionId;
-    }
-
-    public Date getOptionDueDate() {
-        return optionDueDate;
-    }
-
-    public void setOptionDueDate(Date optionDueDate) {
-        this.optionDueDate = optionDueDate;
     }
 
     public String getOptionDescription() {

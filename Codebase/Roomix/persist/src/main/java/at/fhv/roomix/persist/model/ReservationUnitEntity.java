@@ -16,7 +16,6 @@ public class ReservationUnitEntity {
     private int reservationUnitId;
     private int reservation;
     private int roomCategory;
-    private Integer amountOfRooms;
     private Integer cancellation;
     private Time arrivalTime;
     private Date startDate;
@@ -58,16 +57,6 @@ public class ReservationUnitEntity {
 
     public void setRoomCategory(int roomCategory) {
         this.roomCategory = roomCategory;
-    }
-
-    @Basic
-    @Column(name = "AmountOfRooms")
-    public Integer getAmountOfRooms() {
-        return amountOfRooms;
-    }
-
-    public void setAmountOfRooms(Integer amountOfRooms) {
-        this.amountOfRooms = amountOfRooms;
     }
 
     @Basic
@@ -118,7 +107,6 @@ public class ReservationUnitEntity {
         return reservationUnitId == that.reservationUnitId &&
                 reservation == that.reservation &&
                 roomCategory == that.roomCategory &&
-                Objects.equals(amountOfRooms, that.amountOfRooms) &&
                 Objects.equals(cancellation, that.cancellation) &&
                 Objects.equals(arrivalTime, that.arrivalTime) &&
                 Objects.equals(startDate, that.startDate) &&
@@ -128,7 +116,7 @@ public class ReservationUnitEntity {
     @Override
     public int hashCode() {
 
-        return Objects.hash(reservationUnitId, reservation, roomCategory, amountOfRooms, cancellation, arrivalTime, startDate, endDate);
+        return Objects.hash(reservationUnitId, reservation, roomCategory, cancellation, arrivalTime, startDate, endDate);
     }
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)

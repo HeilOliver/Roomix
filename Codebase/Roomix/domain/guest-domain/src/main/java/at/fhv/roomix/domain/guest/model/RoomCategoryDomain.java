@@ -1,11 +1,12 @@
 package at.fhv.roomix.domain.guest.model;
 
 
+import at.fhv.roomix.domain.guest.enumtypes.EReservationStatus;
+
 import java.time.LocalDate;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class RoomCategoryDomain {
     /* Database */
@@ -207,12 +208,12 @@ public class RoomCategoryDomain {
         List<ReservationUnitDomain> confirmedReservationUnits = reservationUnitDomainStream.stream().filter(reservationUnitDomain ->
                 reservationUnitDomain.getCancellationByCancellation() == null &&
                         reservationUnitDomain.getReservationByReservation().
-                                getReservationStatus().equals(EReservationStatus.CONFIRMED.getStr())).collect(Collectors.toList());
+                                getReservationStatus().equals(EReservationStatus.CONFIRMED.getValue())).collect(Collectors.toList());
 
         List<ReservationUnitDomain> unconfirmedReservationUnits = reservationUnitDomainStream.stream().filter(reservationUnitDomain ->
                 reservationUnitDomain.getCancellationByCancellation() == null &&
                         reservationUnitDomain.getReservationByReservation().
-                                getReservationStatus().equals(EReservationStatus.UNCONFIRMED.getStr())).collect(Collectors.toList());
+                                getReservationStatus().equals(EReservationStatus.UNCONFIRMED.getValue())).collect(Collectors.toList());
 
         for (ReservationUnitDomain unconfirmedReservationUnit : unconfirmedReservationUnits) {
             LocalDate current = unconfirmedReservationUnit.getStartDate().toLocalDate();

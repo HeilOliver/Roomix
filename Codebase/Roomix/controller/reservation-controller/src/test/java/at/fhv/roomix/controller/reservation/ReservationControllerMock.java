@@ -8,6 +8,7 @@ import at.fhv.roomix.controller.reservation.model.*;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.HashSet;
 
 /**
  * Roomix
@@ -46,7 +47,7 @@ public class ReservationControllerMock implements IReservationController {
 
     @Override
     public Collection<ArrangementPojo> getAllArrangement(long sessionId) throws SessionFaultException {
-        return null;
+        return new HashSet<>();
     }
 
     @Override

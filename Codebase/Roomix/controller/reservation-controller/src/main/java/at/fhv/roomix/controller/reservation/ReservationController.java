@@ -5,6 +5,9 @@ import at.fhv.roomix.controller.common.exceptions.SessionFaultException;
 import at.fhv.roomix.controller.common.exceptions.ValidationFault;
 import at.fhv.roomix.controller.contact.model.ContactPojo;
 import at.fhv.roomix.controller.reservation.model.*;
+import at.fhv.roomix.domain.guest.enumtypes.EContractingPartyType;
+import at.fhv.roomix.domain.guest.enumtypes.EReservationStatus;
+import at.fhv.roomix.domain.guest.enumtypes.ICommonType;
 import at.fhv.roomix.domain.guest.model.*;
 import at.fhv.roomix.domain.session.ISessionDomain;
 import at.fhv.roomix.domain.session.SessionFactory;
@@ -13,13 +16,11 @@ import at.fhv.roomix.persist.model.*;
 import org.modelmapper.ModelMapper;
 
 import java.sql.Date;
-import java.sql.Time;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -150,28 +151,44 @@ class ReservationController implements IReservationController {
     @Override
     public Collection<ArrangementPojo> getAllArrangement(long sessionId) throws SessionFaultException {
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
-        IAbstractDomainBuilder<ArrangementDomain, ArrangementEntity> arrangementBuilder = ArrangementDomainBuilder.getInstance();
-        ModelMapper modelMapper = new ModelMapper();
-        HashSet<ArrangementDomain> arrangementDomainSet = new HashSet<>(arrangementBuilder.getAll());
-        HashSet<ArrangementPojo> arrangementPojoSet = new HashSet<>();
-
-        arrangementDomainSet.forEach(arrangement -> {
-                ArrangementPojo arrangementPojo = modelMapper.map(arrangement, ArrangementPojo.class);
-                PricePojo price = new PricePojo();
-                price.setPrice(arrangement.getArrangementPrice());
-                DiscountPojo discount = new DiscountPojo();
-                discount.setDiscount(arrangement.getDiscount());
-                arrangementPojo.setDiscount(discount);
-                arrangementPojo.setPrice(price);
-                arrangementPojoSet.add(arrangementPojo);
-        });
-        return arrangementPojoSet;
+        Collection<ArrangementPojo> collection = new HashSet<>();
+        /* Get all arrangements from article domain builder and filter for article type = arrangement */
+        return collection;
     }
+
 
     @Override
     public void updateReservation(long sessionId, ReservationPojo reservationPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException {
 
         ReservationDomain reservationDomain = new ReservationDomain();
+
+        /* TODO: method name "getPersonReservationsByReservationId" is incorrect */
+        Collection<ContactPojo> assignedPersons = reservationPojo.getPersonReservationsByReservationId();
+        Collection<PersonDomain> personDomains = new HashSet<>();
+        assignedPersons.add(reservationPojo.getContractingParty());
+        for (ContactPojo assignedPerson : assignedPersons) {
+            int contactID = assignedPerson.getContactId();
+            if(contactID > 0) {
+                IAbstractDomainBuilder<GuestDomain, ContactEntity> temporaryBuilder = GuestDomainBuilder.getInstance();
+                GuestDomain contactOfAssignedPerson = temporaryBuilder.get(contactID);
+                Collection<PersonDomain> peopleByContactId = contactOfAssignedPerson.getPeopleByContactId();
+                if(peopleByContactId == null || peopleByContactId.isEmpty()){
+                    PersonDomain contactToPerson = new PersonDomain();
+                    contactToPerson.setFirstName(contactOfAssignedPerson.getFirstName());
+                    contactToPerson.setLastName(contactOfAssignedPerson.getLastName());
+                    contactToPerson.setContact(contactOfAssignedPerson.getContactId());
+                    personDomains.add(contactToPerson);
+                } else {
+                    personDomains.add(peopleByContactId.iterator().next());
+                }
+            } else {
+                PersonDomain newPerson = new PersonDomain();
+                newPerson.setFirstName(assignedPerson.getFirstName());
+                newPerson.setLastName(assignedPerson.getLastName());
+                personDomains.add(newPerson);
+            }
+        }
+
 
         if (reservationPojo == null) throw new ArgumentFaultException();
         validate(reservationPojo);
@@ -189,13 +206,14 @@ class ReservationController implements IReservationController {
         if(existingContractingParty == null || existingContractingParty.isEmpty()){
             ContractingPartyDomain contractingPartyDomain = new ContractingPartyDomain();
             contractingPartyDomain.setContactByContact(guestDomain);
-            contractingPartyDomain.setContractingPartyType("INDIVIDUAL");
+            contractingPartyDomain.setContractingPartyType(EContractingPartyType.INDIVIDUAL.getValue());
             //ContractingPartyDomainBuilder.getInstance().set(contractingPartyDomain);
             reservationDomain.setContractingPartyByContractingParty(contractingPartyDomain);
         } else{
             ContractingPartyDomain actualContractingParty = existingContractingParty.iterator().next();
             reservationDomain.setContractingPartyByContractingParty(actualContractingParty);
         }
+        /* TODO: remove hard coded payment type and get it over the reservationPojo  */
         PaymentTypeDomain paymentTypeDomain = PaymentTypeBuilder.getInstance().get(1);
         reservationDomain.setPaymentTypeByPaymentType(paymentTypeDomain);
 
@@ -205,7 +223,7 @@ class ReservationController implements IReservationController {
                     new ModelMapper().map(reservationOptions.iterator().next(), ReservationOptionDomain.class);
             reservationDomain.setReservationOptionByReservationOption(tempOption);
         }
-        reservationDomain.setReservationStatus(EReservationStatus.UNCONFIRMED.getStr());
+        reservationDomain.setReservationStatus(EReservationStatus.UNCONFIRMED.getValue());
         Collection<ReservationUnitDomain> unitSet = new HashSet<>();
         reservationDomain.setReservationComment(reservationPojo.getComment() == null ? null : reservationPojo.getComment().getComment());
         for (ReservationUnitPojo reservationUnitPojo : reservationPojo.getReservationUnitsByReservationId()) {
@@ -217,8 +235,17 @@ class ReservationController implements IReservationController {
             unitSet.add(unit);
         }
         reservationDomain.setReservationUnitsByReservationId(unitSet);
+
+        Collection<PersonReservationDomain> personReservationDomain = new HashSet<>();
+        for (PersonDomain personDomain : personDomains) {
+            PersonReservationDomain tempPR = new PersonReservationDomain();
+            tempPR.setPersonByPerson(personDomain);
+            tempPR.setReservationByReservation(null);
+            personReservationDomain.add(tempPR);
+        }
+        //reservationDomain.setPersonReservationsByReservationId(personReservationDomain);
+
         IAbstractDomainBuilder<ReservationDomain, ReservationEntity> reservationBuilder = ReservationDomainBuilder.getInstance();
         reservationBuilder.set(reservationDomain);
-
     }
 }

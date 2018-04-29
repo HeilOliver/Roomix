@@ -24,6 +24,7 @@ public class ReservationPojo {
     @NotNull(message = "reservationUnitsByReservationId cannot be null")
     private Collection<ReservationUnitPojo> reservationUnitsByReservationId;
 
+    /* TODO: not a collection. only one reservation option per reservation */
     private Collection<ReservationOptionPojo> reservationOptionByReservationOption;
     @NotNull(message = "personReservationsByReservationId cannot be null")
     private Collection<ContactPojo> personReservationsByReservationId;

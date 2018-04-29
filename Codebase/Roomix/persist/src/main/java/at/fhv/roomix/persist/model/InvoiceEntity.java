@@ -13,6 +13,14 @@ import java.util.Objects;
 @Table(name = "Invoice", schema = "Roomix", catalog = "")
 public class InvoiceEntity {
     private int invoiceId;
+    private String firstName;
+    private String lastName;
+    private String companyName;
+    private String street;
+    private String houseNumber;
+    private String place;
+    private String postcode;
+    private String country;
     private int contact;
     private Timestamp determinationDate;
     private String status;
@@ -59,6 +67,86 @@ public class InvoiceEntity {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Basic
+    @Column(name = "FirstName")
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    @Basic
+    @Column(name = "LastName")
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    @Basic
+    @Column(name = "CompanyName")
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    @Basic
+    @Column(name = "Street")
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    @Basic
+    @Column(name = "HouseNumber")
+    public String getHouseNumber() {
+        return houseNumber;
+    }
+
+    public void setHouseNumber(String houseNumber) {
+        this.houseNumber = houseNumber;
+    }
+
+    @Basic
+    @Column(name = "Place")
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    @Basic
+    @Column(name = "Postcode")
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
+
+    @Basic
+    @Column(name = "Country")
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     @Override

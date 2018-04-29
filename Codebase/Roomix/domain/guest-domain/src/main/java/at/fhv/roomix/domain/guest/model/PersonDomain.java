@@ -11,8 +11,11 @@ public class PersonDomain {
 
     private String firstName;
     private String lastName;
+
     private GuestDomain contactByContact;
+
     private Collection<PersonReservationDomain> personReservationsByPersonId;
+
     private Proxy<Collection<PersonReservationDomain>, Integer> personReservationProxy;
 
     public int getPersonId() {

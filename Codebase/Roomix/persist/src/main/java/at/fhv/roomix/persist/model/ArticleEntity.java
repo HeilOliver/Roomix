@@ -13,7 +13,8 @@ import java.util.Objects;
 public class ArticleEntity {
     private int articleId;
     private String articleDescription;
-    private Integer amount;
+    private String articleType;
+    private int price;
     private Collection<ArrangementEntity> arrangementsByArticleId;
     private Collection<InvoicePositionEntity> invoicePositionsByArticleId;
 
@@ -39,14 +40,25 @@ public class ArticleEntity {
     }
 
     @Basic
-    @Column(name = "Amount")
-    public Integer getAmount() {
-        return amount;
+    @Column(name = "Price")
+    public Integer getPrice() {
+        return price;
     }
 
-    public void setAmount(Integer amount) {
-        this.amount = amount;
+    public void setPrice(Integer price) {
+        this.price = price;
     }
+
+    @Basic
+    @Column(name = "ArticleType")
+    public String getArticleType() {
+        return articleType;
+    }
+
+    public void setArticleType(String articleType) {
+        this.articleType = articleType;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -55,13 +67,13 @@ public class ArticleEntity {
         ArticleEntity that = (ArticleEntity) o;
         return articleId == that.articleId &&
                 Objects.equals(articleDescription, that.articleDescription) &&
-                Objects.equals(amount, that.amount);
+                Objects.equals(price, that.price);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(articleId, articleDescription, amount);
+        return Objects.hash(articleId, articleDescription, price);
     }
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)

@@ -8,8 +8,6 @@ public class ReservationUnitDomain {
     private int reservationUnitId;
     private int reservation;
     private int roomCategory;
-    private Integer reservationOption;
-    private Integer amountOfRooms;
     private Integer cancellation;
     private Time arrivalTime;
     private Date startDate;
@@ -41,22 +39,6 @@ public class ReservationUnitDomain {
 
     public void setRoomCategory(int roomCategory) {
         this.roomCategory = roomCategory;
-    }
-
-    public Integer getReservationOption() {
-        return reservationOption;
-    }
-
-    public void setReservationOption(Integer reservationOption) {
-        this.reservationOption = reservationOption;
-    }
-
-    public Integer getAmountOfRooms() {
-        return amountOfRooms;
-    }
-
-    public void setAmountOfRooms(Integer amountOfRooms) {
-        this.amountOfRooms = amountOfRooms;
     }
 
     public Integer getCancellation() {

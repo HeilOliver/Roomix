@@ -9,9 +9,9 @@ public class InvoicePositionDomain {
     private Integer invoice;
     private Integer roomAssignment;
     private Integer article;
-    private Integer arrangement;
-    private String freePosition;
-    private int amount;
+    private String comment;
+    private int price;
+    private int paidFlag;
     private Timestamp determinationDate;
     private int count;
 
@@ -63,28 +63,20 @@ public class InvoicePositionDomain {
         this.article = article;
     }
 
-    public Integer getArrangement() {
-        return arrangement;
+    public String getComment() {
+        return comment;
     }
 
-    public void setArrangement(Integer arrangement) {
-        this.arrangement = arrangement;
+    public void setComment(String freePosition) {
+        this.comment = freePosition;
     }
 
-    public String getFreePosition() {
-        return freePosition;
+    public int getPrice() {
+        return price;
     }
 
-    public void setFreePosition(String freePosition) {
-        this.freePosition = freePosition;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setPrice(int amount) {
+        this.price = amount;
     }
 
     public Timestamp getDeterminationDate() {
@@ -101,5 +93,13 @@ public class InvoicePositionDomain {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public int getPaidFlag() {
+        return paidFlag;
+    }
+
+    public void setPaidFlag(int paidFlag) {
+        this.paidFlag = paidFlag;
     }
 }

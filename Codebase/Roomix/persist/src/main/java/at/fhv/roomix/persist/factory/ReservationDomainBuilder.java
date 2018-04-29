@@ -5,6 +5,7 @@ import at.fhv.roomix.persist.ReservationDao;
 import at.fhv.roomix.persist.model.PersonReservationEntity;
 import at.fhv.roomix.persist.model.ReservationEntity;
 import at.fhv.roomix.persist.model.ReservationUnitEntity;
+import org.modelmapper.MappingException;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 
@@ -75,8 +76,14 @@ public class ReservationDomainBuilder extends AbstractDomainBuilder<ReservationD
     protected ReservationEntity mapDomainToEntity(ReservationDomain domain) {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setAmbiguityIgnored(true);
-        ReservationEntity reservationEntity = modelMapper.map(domain, ReservationEntity.class);
-
+        modelMapper.addMappings(new PropertyMap<ReservationDomain, ReservationEntity>() {
+            @Override
+            protected void configure() {
+                skip().setPersonReservationsByReservationId(null);
+            }
+        });
+        ReservationEntity reservationEntity = null;
+        reservationEntity = modelMapper.map(domain, ReservationEntity.class);
         LinkedHashMap<ISourceMapper<Collection>,
                 Map.Entry<Class, IDestinationMapper<Collection>>> mapping = new LinkedHashMap<>();
 

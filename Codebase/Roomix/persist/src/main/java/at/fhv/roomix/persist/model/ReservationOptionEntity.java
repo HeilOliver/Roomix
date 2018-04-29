@@ -3,7 +3,6 @@ package at.fhv.roomix.persist.model;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -13,10 +12,10 @@ import java.util.Objects;
 @Table(name = "ReservationOption", schema = "Roomix", catalog = "")
 public class ReservationOptionEntity {
     private int optionId;
-    private Date optionDueDate;
+    private int daysBeforeArrival;
     private String optionDescription;
     private byte optionStatus;
-    private int optionFee;
+    private int optionPercentage;
     private Collection<ReservationEntity> reservationsByOptionId;
 
     @Id
@@ -31,13 +30,13 @@ public class ReservationOptionEntity {
     }
 
     @Basic
-    @Column(name = "OptionDueDate")
-    public Date getOptionDueDate() {
-        return optionDueDate;
+    @Column(name = "DaysBeforeArrival")
+    public int getDaysBeforeArrival() {
+        return daysBeforeArrival;
     }
 
-    public void setOptionDueDate(Date optionDueDate) {
-        this.optionDueDate = optionDueDate;
+    public void setDaysBeforeArrival(int optionDueDate) {
+        this.daysBeforeArrival = daysBeforeArrival;
     }
 
     @Basic
@@ -67,14 +66,14 @@ public class ReservationOptionEntity {
         ReservationOptionEntity that = (ReservationOptionEntity) o;
         return optionId == that.optionId &&
                 optionStatus == that.optionStatus &&
-                Objects.equals(optionDueDate, that.optionDueDate) &&
+                Objects.equals(daysBeforeArrival, that.daysBeforeArrival) &&
                 Objects.equals(optionDescription, that.optionDescription);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(optionId, optionDueDate, optionDescription, optionStatus);
+        return Objects.hash(optionId, daysBeforeArrival, optionDescription, optionStatus);
     }
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -88,12 +87,12 @@ public class ReservationOptionEntity {
     }
 
     @Basic
-    @Column(name = "OptionFee")
-    public int getOptionFee() {
-        return optionFee;
+    @Column(name = "OptionPercentage")
+    public int getOptionPercentage() {
+        return optionPercentage;
     }
 
-    public void setOptionFee(int optionFee) {
-        this.optionFee = optionFee;
+    public void setOptionPercentage(int optionPercentage) {
+        this.optionPercentage = optionPercentage;
     }
 }
