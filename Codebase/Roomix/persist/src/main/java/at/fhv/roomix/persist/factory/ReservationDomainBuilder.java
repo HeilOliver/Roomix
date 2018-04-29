@@ -8,6 +8,8 @@ import at.fhv.roomix.persist.model.ReservationUnitEntity;
 import org.modelmapper.MappingException;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
+import org.modelmapper.convention.MatchingStrategies;
+import org.modelmapper.spi.MatchingStrategy;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -82,7 +84,7 @@ public class ReservationDomainBuilder extends AbstractDomainBuilder<ReservationD
                 skip().setPersonReservationsByReservationId(null);
             }
         });
-        ReservationEntity reservationEntity = null;
+        ReservationEntity reservationEntity;
         reservationEntity = modelMapper.map(domain, ReservationEntity.class);
         LinkedHashMap<ISourceMapper<Collection>,
                 Map.Entry<Class, IDestinationMapper<Collection>>> mapping = new LinkedHashMap<>();

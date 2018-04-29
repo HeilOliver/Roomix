@@ -172,14 +172,20 @@ class ReservationController implements IReservationController {
                 IAbstractDomainBuilder<GuestDomain, ContactEntity> temporaryBuilder = GuestDomainBuilder.getInstance();
                 GuestDomain contactOfAssignedPerson = temporaryBuilder.get(contactID);
                 Collection<PersonDomain> peopleByContactId = contactOfAssignedPerson.getPeopleByContactId();
+                PersonDomain contactToPerson;
                 if(peopleByContactId == null || peopleByContactId.isEmpty()){
-                    PersonDomain contactToPerson = new PersonDomain();
+                    contactToPerson = new PersonDomain();
                     contactToPerson.setFirstName(contactOfAssignedPerson.getFirstName());
                     contactToPerson.setLastName(contactOfAssignedPerson.getLastName());
                     contactToPerson.setContact(contactOfAssignedPerson.getContactId());
                     personDomains.add(contactToPerson);
                 } else {
-                    personDomains.add(peopleByContactId.iterator().next());
+                    contactToPerson = peopleByContactId.iterator().next();
+                    PersonDomain flatPerson = new PersonDomain();
+                    flatPerson.setFirstName(contactToPerson.getFirstName());
+                    flatPerson.setLastName(contactToPerson.getLastName());
+                    flatPerson.setContact(contactToPerson.getContact());
+                    personDomains.add(flatPerson);
                 }
             } else {
                 PersonDomain newPerson = new PersonDomain();
@@ -243,7 +249,7 @@ class ReservationController implements IReservationController {
             tempPR.setReservationByReservation(null);
             personReservationDomain.add(tempPR);
         }
-        //reservationDomain.setPersonReservationsByReservationId(personReservationDomain);
+        reservationDomain.setPersonReservationsByReservationId(personReservationDomain);
 
         IAbstractDomainBuilder<ReservationDomain, ReservationEntity> reservationBuilder = ReservationDomainBuilder.getInstance();
         reservationBuilder.set(reservationDomain);
