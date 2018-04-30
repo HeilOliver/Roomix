@@ -11,7 +11,6 @@ public class PersonReservationDao extends AbstractDao<PersonReservationEntity, I
         super(PersonReservationEntity.class);
     }
 
-
     public static PersonReservationDao getInstance() {
         return new PersonReservationDao();
     }

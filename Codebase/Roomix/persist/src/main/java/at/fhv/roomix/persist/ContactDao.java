@@ -4,7 +4,7 @@ import at.fhv.roomix.persist.model.ContactEntity;
 
 /**
  * Roomix
- * at.fhv.roomix.persist.dao
+ * at.fhv.roomix.persist.dataaccess
  * ContactDao
  * 24/03/2018 OliverH
  * <p>

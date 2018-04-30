@@ -1,7 +1,9 @@
-package at.fhv.roomix.persist;
+package at.fhv.roomix.persistlayer.dataaccess.dao;
 
+import at.fhv.roomix.persistlayer.dataaccess.IDao;
 import at.fhv.roomix.persistlayer.exception.PersistLoadException;
 import at.fhv.roomix.persistlayer.exception.PersistSaveException;
+import at.fhv.roomix.persistlayer.exception.PersistStateException;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -10,9 +12,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.List;
-import java.util.function.Supplier;
 
 /**
  * Roomix
@@ -25,35 +25,19 @@ import java.util.function.Supplier;
  * the methods with "internal" prefix so provide your own implementation of
  * how to load the data.
  */
-public abstract class AbstractDao<T, PK extends Serializable> {
-    protected static Logger daoLogger = Logger.getLogger(Logger.class);
-    private static HashMap<Class, Supplier<AbstractDao>> supplierHashMap = new HashMap<>();
+public abstract class AbstractDao<T, PK extends Serializable> implements IDao<T, PK> {
+    protected static Logger daoLogger = Logger.getLogger(AbstractDao.class);
     protected Session session;
     private Class<T> type;
 
     AbstractDao(Class<T> type) {
         this.type = type;
-        session = HibernateSessionFactory.getSession();
-    }
-
-    //public static AbstractDao<T, PK> getInstance();
-
-    public static void addDao(Class contactEntityClass, Supplier<AbstractDao> supplier) {
-        supplierHashMap.put(contactEntityClass, supplier);
-    }
-
-    public static <T extends AbstractDao> Supplier<AbstractDao> getDaoInstanceByEntityClass(Class type) {
-        if (supplierHashMap.containsKey(type)) {
-            return supplierHashMap.get(type);
-        } else {
-            daoLogger.info("No DAO Instance found for given key (Class type)");
-            return null;
+        // Try this here out because we don't want any exception in our constructor
+        try {
+            session = HibernateSessionController.getSession();
+        } catch (PersistStateException e) {
+            session = null;
         }
-    }
-
-    public void dispose() {
-        session.close();
-        session = null;
     }
 
     public final void save(T entity) throws IllegalArgumentException, IllegalStateException, PersistSaveException {
@@ -68,9 +52,7 @@ public abstract class AbstractDao<T, PK extends Serializable> {
     }
 
     protected void internalSave(T entity) throws HibernateException {
-        session.beginTransaction();
         session.saveOrUpdate(entity);
-        session.getTransaction().commit();
     }
 
     public final T load(PK id) throws IllegalArgumentException, IllegalStateException, PersistLoadException {
@@ -134,5 +116,10 @@ public abstract class AbstractDao<T, PK extends Serializable> {
         CriteriaQuery<T> statement = query.select(from).where(builder.equal(from.get(referencedColumn), foreignKey));
 
         return session.createQuery(statement).getResultList();
+    }
+
+    @Override
+    public void delete(T entity) throws IllegalArgumentException, PersistStateException, PersistSaveException {
+        throw new IllegalStateException("Not implemented");
     }
 }

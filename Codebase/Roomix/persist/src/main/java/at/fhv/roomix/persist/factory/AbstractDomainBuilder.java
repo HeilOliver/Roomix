@@ -1,8 +1,8 @@
 package at.fhv.roomix.persist.factory;
 
 import at.fhv.roomix.persist.AbstractDao;
-import at.fhv.roomix.persist.PersistLoadException;
-import at.fhv.roomix.persist.PersistSaveException;
+import at.fhv.roomix.persistlayer.exception.PersistLoadException;
+import at.fhv.roomix.persistlayer.exception.PersistSaveException;
 import org.apache.log4j.Logger;
 import org.modelmapper.ModelMapper;
 

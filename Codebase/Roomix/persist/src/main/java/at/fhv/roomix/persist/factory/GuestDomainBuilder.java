@@ -66,7 +66,7 @@ public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, Conta
                 Map.Entry<Class, IDestinationMapper<Collection>>> mapping = new LinkedHashMap<>();
 
         /* Map flat entities */
-        put(ContactNoteDomain.class, contactEntity::getContactNotesByContactId,
+        put(ContactNoteDomain.class, contactEntity::getContactNotes,
                 guestDomain::setContactNotesByContactId, mapping);
         put(CreditCardDomain.class, contactEntity::getCreditCardsByContactId,
                 guestDomain::setCreditCardsByContactId, mapping);
@@ -104,7 +104,7 @@ public class GuestDomainBuilder extends AbstractDomainBuilder<GuestDomain, Conta
         LinkedHashMap<ISourceMapper<Collection>,
                 Map.Entry<Class, IDestinationMapper<Collection>>> mapping = new LinkedHashMap<>();
 
-        put(ContactEntity.class, domain::getContactNotesByContactId, contactEntity::setContactNotesByContactId, mapping);
+        put(ContactEntity.class, domain::getContactNotesByContactId, contactEntity::setContactNotes, mapping);
         put(CreditCardEntity.class, domain::getCreditCardsByContactId, contactEntity::setCreditCardsByContactId, mapping);
         put(ContractingPartyEntity.class, domain::getContractingPartiesByContactId,
                 contactEntity::setContractingPartiesByContactId, mapping);

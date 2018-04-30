@@ -11,9 +11,8 @@ import java.util.Objects;
 @Table(name = "ContactNote", schema = "Roomix", catalog = "")
 public class ContactNoteEntity {
     private int contactNoteId;
-    private int contact;
     private String noteContent;
-    private ContactEntity contactByContact;
+    private ContactEntity contact;
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -24,16 +23,6 @@ public class ContactNoteEntity {
 
     public void setContactNoteId(int contactNoteId) {
         this.contactNoteId = contactNoteId;
-    }
-
-    @Basic
-    @Column(name = "Contact", nullable = false, insertable = false)
-    public int getContact() {
-        return contact;
-    }
-
-    public void setContact(int contact) {
-        this.contact = contact;
     }
 
     @Basic
@@ -52,23 +41,21 @@ public class ContactNoteEntity {
         if (o == null || getClass() != o.getClass()) return false;
         ContactNoteEntity that = (ContactNoteEntity) o;
         return contactNoteId == that.contactNoteId &&
-                contact == that.contact &&
                 Objects.equals(noteContent, that.noteContent);
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(contactNoteId, contact, noteContent);
+        return Objects.hash(contactNoteId, noteContent);
     }
 
     @ManyToOne
-    @JoinColumn(name = "Contact", referencedColumnName = "ContactID", nullable = false, insertable = false, updatable = false)
-    public ContactEntity getContactByContact() {
-        return contactByContact;
+    @JoinColumn(name = "Contact")
+    public ContactEntity getContact() {
+        return contact;
     }
 
-    public void setContactByContact(ContactEntity contactByContact) {
-        this.contactByContact = contactByContact;
+    public void setContact(ContactEntity contactByContact) {
+        this.contact = contactByContact;
     }
 }

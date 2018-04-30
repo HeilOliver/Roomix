@@ -5,7 +5,7 @@ import org.hibernate.HibernateException;
 
 /**
  * Roomix
- * at.fhv.roomix.persist.dao
+ * at.fhv.roomix.persist.dataaccess
  * PersonDao
  * 24/03/2018 OliverH
  * <p>

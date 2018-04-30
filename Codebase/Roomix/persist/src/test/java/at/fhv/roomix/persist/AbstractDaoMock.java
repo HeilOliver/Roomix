@@ -4,7 +4,7 @@ import org.hibernate.Session;
 
 /**
  * Roomix
- * at.fhv.roomix.persist.dao
+ * at.fhv.roomix.persist.dataaccess
  * AbstractDaoMock
  * 04/04/2018 Oliver
  * <p>

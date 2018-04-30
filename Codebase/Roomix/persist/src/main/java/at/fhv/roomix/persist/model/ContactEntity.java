@@ -4,6 +4,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Objects;
 
 @Entity
@@ -23,7 +24,7 @@ public class ContactEntity {
     private String country;
     private String email;
     private byte active;
-    private Collection<ContactNoteEntity> contactNotesByContactId;
+    private Collection<ContactNoteEntity> contactNotes = new HashSet<>();
     private Collection<ContractingPartyEntity> contractingPartiesByContactId;
     private Collection<CreditCardEntity> creditCardsByContactId;
     private Collection<InvoiceEntity> invoicesByContactId;
@@ -171,18 +172,17 @@ public class ContactEntity {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(contactId, firstName, lastName, companyName, phoneNumber, street, houseNumber, place, postcode, country, email, active);
     }
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @OneToMany(mappedBy = "contactByContact")
-    public Collection<ContactNoteEntity> getContactNotesByContactId() {
-        return contactNotesByContactId;
+    @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL, orphanRemoval=true)
+    public Collection<ContactNoteEntity> getContactNotes() {
+        return contactNotes;
     }
 
-    public void setContactNotesByContactId(Collection<ContactNoteEntity> contactNotesByContactId) {
-        this.contactNotesByContactId = contactNotesByContactId;
+    public void setContactNotes(Collection<ContactNoteEntity> contactNotesByContactId) {
+        this.contactNotes = contactNotesByContactId;
     }
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)

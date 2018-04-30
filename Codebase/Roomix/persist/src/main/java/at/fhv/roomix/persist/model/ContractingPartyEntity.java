@@ -61,7 +61,6 @@ public class ContractingPartyEntity {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(contractingPartyId, contractingPartyType, contact);
     }
 

@@ -73,7 +73,6 @@ public class ReservationUnitDomain {
         this.endDate = endDate;
     }
 
-
     public RoomCategoryDomain getRoomCategoryByRoomCategory() {
         return roomCategoryByRoomCategory;
     }
