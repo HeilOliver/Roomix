@@ -34,7 +34,6 @@ public class ItemControlViewModel<T> implements ViewModel {
     @InjectResourceBundle
     private ResourceBundle resourceBundle;
 
-
     ItemControlViewModel(ItemHandler<T> scope, IContentBuilder<T> builder) {
         validationStatus.setValue(true);
         this.scope = scope;

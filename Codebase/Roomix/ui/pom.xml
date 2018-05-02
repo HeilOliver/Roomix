@@ -13,29 +13,10 @@
     <artifactId>ui</artifactId>
 
     <dependencies>
+        <!-- Internal Dependency's -->
         <dependency>
-            <groupId>at.fhv.roomix.controller</groupId>
-            <artifactId>reservation-controller</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>at.fhv.roomix.controller</groupId>
-            <artifactId>invoice-controller</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>at.fhv.roomix.controller</groupId>
-            <artifactId>report-controller</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>at.fhv.roomix.controller</groupId>
-            <artifactId>session-controller</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>at.fhv.roomix.controller</groupId>
-            <artifactId>stay-controller</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>at.fhv.roomix.controller</groupId>
-            <artifactId>common</artifactId>
+            <groupId>at.fhv.roomix</groupId>
+            <artifactId>controller</artifactId>
         </dependency>
 
         <!-- Binding, Mvvm and more -->

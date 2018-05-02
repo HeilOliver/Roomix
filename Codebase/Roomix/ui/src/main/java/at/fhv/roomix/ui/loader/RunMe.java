@@ -35,7 +35,7 @@ import java.util.ResourceBundle;
 public class RunMe extends MvvmfxCdiApplication {
     // Turn Debug to true if you want some awesome hacks
     private static final boolean DEBUG_INIT = true;
-    private static final boolean DEBUG_SUPPRESS_START_EVENT = true;
+    private static final boolean DEBUG_SUPPRESS_START_EVENT = false;
     private static final boolean DEBUG_SUPPRESS_STOP_EVENT = false;
 
     private static final Logger LOG = LoggerFactory.getLogger(RunMe.class);

@@ -4,7 +4,6 @@ import at.fhv.roomix.controller.reservation.model.ReservationOptionPojo;
 import at.fhv.roomix.ui.common.ViewHelper;
 import at.fhv.roomix.ui.view.reservation.edit.item.ItemControl;
 import at.fhv.roomix.ui.view.reservation.edit.item.ItemControlViewModel;
-import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import de.saxsys.mvvmfx.utils.viewlist.CachedViewModelCellFactory;

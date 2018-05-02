@@ -6,7 +6,6 @@ import at.fhv.roomix.ui.common.IErrorCall;
 import at.fhv.roomix.ui.common.ISearchAble;
 import at.fhv.roomix.ui.common.validator.IUpdateAble;
 import javafx.application.Platform;
-import javafx.beans.property.ReadOnlyBooleanProperty;
 
 /**
  * Roomix

@@ -1,6 +1,6 @@
 package at.fhv.roomix.ui.dataprovider;
 
-import at.fhv.roomix.controller.common.exceptions.SessionFaultException;
+import at.fhv.roomix.controller.common.exceptions.FaultException;
 import at.fhv.roomix.controller.contact.model.ContactPojo;
 import at.fhv.roomix.controller.reservation.IReservationController;
 import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
@@ -18,7 +18,6 @@ import javafx.collections.ObservableList;
 
 import java.time.LocalDate;
 import java.util.Collection;
-import java.util.concurrent.Callable;
 
 /**
  * Roomix
@@ -45,7 +44,7 @@ public class ReservationUnitProvider extends AbstractProvider {
                     ReservationControllerFactory.getInstance();
             try {
                 Collection<RoomCategoryPojo> collection =
-                        instance.getSearchedCategory(LoginProvider.getSessionID(),
+                        instance.getRoomAllocation(LoginProvider.getSessionID(),
                         from, till, contractingParty);
                 Platform.runLater(() -> {
                     possibleCategories.clear();
@@ -80,7 +79,7 @@ public class ReservationUnitProvider extends AbstractProvider {
                     e.printStackTrace();
                 }
                 Platform.runLater(onSuccess::call);
-            } catch (SessionFaultException e) {
+            } catch (FaultException e) {
                 LOG.debug(e.getMessage());
             } finally {
                 Platform.runLater(() -> inLoadArrangements.setValue(false));

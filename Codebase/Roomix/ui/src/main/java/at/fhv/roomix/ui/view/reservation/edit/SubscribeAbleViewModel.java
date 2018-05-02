@@ -3,7 +3,6 @@ package at.fhv.roomix.ui.view.reservation.edit;
 import at.fhv.roomix.controller.reservation.model.ReservationOptionPojo;
 import de.saxsys.mvvmfx.ViewModel;
 import de.saxsys.mvvmfx.utils.mapping.ModelWrapper;
-import de.saxsys.mvvmfx.utils.validation.ValidationStatus;
 import javafx.beans.property.*;
 
 import java.util.function.Supplier;
