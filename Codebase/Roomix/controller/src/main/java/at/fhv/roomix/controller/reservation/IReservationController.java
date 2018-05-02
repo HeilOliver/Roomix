@@ -19,9 +19,9 @@ public interface IReservationController {
 
     Collection<ReservationPojo> getSearchedReservation(long sessionId, String query) throws SessionFaultException, GetFault;
 
-    PricePojo getPrice(long sessionId, ReservationUnitPojo reservationUnit, ContactPojo contractingParty) throws SessionFaultException;
+    PricePojo calculatePrice(long sessionId, ReservationUnitPojo reservationUnit, ContactPojo contractingParty) throws SessionFaultException, ArgumentFaultException, GetFault;
 
-    Collection<RoomCategoryPojo> getRoomAllocation(long sessionId, LocalDate startDate, LocalDate endDate, ContactPojo contractingParty) throws SessionFaultException, ArgumentFaultException;
+    Collection<RoomCategoryPojo> getRoomAllocation(long sessionId, LocalDate startDate, LocalDate endDate, ContactPojo contractingParty) throws SessionFaultException, ArgumentFaultException, GetFault;
 
     Collection<RoomCategoryPojo> getAllCategory(long sessionId) throws SessionFaultException, GetFault;
 

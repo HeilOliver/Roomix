@@ -68,12 +68,9 @@ public class ContractingPartyBuilder {
     public static Company getCompany(int contactId) throws BuilderLoadException {
         if (contactId == 0) throw new BuilderLoadException("Cant load individual without contact");
 
-        try {
             Contact contact = ContactBuilder.getContact(contactId);
             return new Company(contact);
-        } catch (PersistLoadException e) {
-            throw new BuilderLoadException("Cant load contact, see inner exception fore more detail", e);
-        }
+
     }
 
     public static void updateCompany(Company company) throws BuilderUpdateException {
@@ -147,6 +144,18 @@ public class ContractingPartyBuilder {
         } catch (PersistLoadException e) {
             throw new BuilderUpdateException("Cant update ContractingParty, see inner exception fore more detail", e);
         }
+    }
+
+    public static ContractingParty getByContact(int contactId)throws BuilderLoadException {
+        ContactEntity entity;
+        try {
+            entity = ContactFactory.getInstance().get(contactId);
+        } catch (PersistLoadException e) {
+            throw new BuilderLoadException(e.getMessage(), e);
+        }
+        ContractingPartyEntity contractingParty = entity.getContractingParty();
+        if (contractingParty == null) return null;
+        return get(entity.getContractingParty().getContractingPartyId());
     }
 
     public static ContractingParty get(int id) throws BuilderLoadException {

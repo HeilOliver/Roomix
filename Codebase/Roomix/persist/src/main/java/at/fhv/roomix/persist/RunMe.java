@@ -3,7 +3,7 @@ package at.fhv.roomix.persist;
 import at.fhv.roomix.domain.guest.contact.Contact;
 import at.fhv.roomix.domain.reservation.*;
 import at.fhv.roomix.domain.guest.contractingparty.Individual;
-import at.fhv.roomix.domain.guest.room.RoomCategory;
+import at.fhv.roomix.domain.room.RoomCategory;
 import at.fhv.roomix.domain.stay.CategoryFinder;
 import at.fhv.roomix.domain.stay.CategoryStatus;
 import at.fhv.roomix.persist.builder.accessbuilder.*;

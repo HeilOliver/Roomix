@@ -1,6 +1,6 @@
 package at.fhv.roomix.persist.builder.accessbuilder;
 
-import at.fhv.roomix.domain.guest.room.RoomCategory;
+import at.fhv.roomix.domain.room.RoomCategory;
 import at.fhv.roomix.persist.dataaccess.factory.RoomCategoryFactory;
 import at.fhv.roomix.persist.exception.BuilderLoadException;
 import at.fhv.roomix.persist.exception.PersistLoadException;

@@ -9,7 +9,6 @@ import de.saxsys.mvvmfx.utils.validation.ValidationMessage;
 import de.saxsys.mvvmfx.utils.validation.ValidationStatus;
 import javafx.beans.property.*;
 
-import javax.validation.Validation;
 import java.util.ResourceBundle;
 
 

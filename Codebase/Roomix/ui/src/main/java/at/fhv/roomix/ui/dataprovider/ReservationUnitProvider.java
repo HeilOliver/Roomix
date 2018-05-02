@@ -94,7 +94,7 @@ public class ReservationUnitProvider extends AbstractProvider {
                     ReservationControllerFactory.getInstance();
             try {
                 PricePojo price =
-                        instance.getPrice(LoginProvider.getSessionID(), pojo, contractingParty);
+                        instance.calculatePrice(LoginProvider.getSessionID(), pojo, contractingParty);
                 Platform.runLater(() -> {
                     onSuccess.call(price);
                 });

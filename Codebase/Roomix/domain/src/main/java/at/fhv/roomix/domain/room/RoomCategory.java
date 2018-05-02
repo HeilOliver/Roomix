@@ -1,4 +1,4 @@
-package at.fhv.roomix.domain.guest.room;
+package at.fhv.roomix.domain.room;
 
 import java.util.Objects;
 

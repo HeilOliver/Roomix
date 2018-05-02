@@ -9,9 +9,7 @@ import at.fhv.roomix.domain.session.configuration.ConfigurationLoader;
 import at.fhv.roomix.domain.session.configuration.IUiConfiguration;
 import at.fhv.roomix.domain.session.model.RoomixSession;
 import at.fhv.roomix.persist.dataaccess.dao.HibernateSessionController;
-import at.fhv.roomix.persist.exception.PersistStateException;
 import org.apache.log4j.Logger;
-import org.hibernate.Session;
 
 /**
  * Roomix
@@ -57,16 +55,12 @@ class SessionController implements ISessionController {
 
     @Override
     public void startUp() {
-        Session session = null;
-        try {
-            session = HibernateSessionController.getSession();
-        } catch (PersistStateException e) {
-            logger.fatal("Couldn't start hibernate");
-        }
+        HibernateSessionController.start();
     }
 
     @Override
     public IUiConfiguration getUiConfiguration() {
-        return ConfigurationLoader.getUiConfiguration();
+        //return ConfigurationLoader.getUiConfiguration();
+        return null;
     }
 }

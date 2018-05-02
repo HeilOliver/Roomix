@@ -1,7 +1,6 @@
 package at.fhv.roomix.domain.session.configuration;
 
 import org.aeonbits.owner.ConfigCache;
-import org.aeonbits.owner.ConfigFactory;
 
 /**
  * Roomix
@@ -20,6 +19,7 @@ public class ConfigurationLoader {
     }
 
     public static IUiConfiguration getUiConfiguration() {
-        return ConfigCache.getOrCreate(IUiConfiguration.class);
+        IUiConfiguration create = ConfigCache.getOrCreate(IUiConfiguration.class);
+        return create;
     }
 }

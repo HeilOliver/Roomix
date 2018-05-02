@@ -1,6 +1,6 @@
 package at.fhv.roomix.domain.stay;
 
-import at.fhv.roomix.domain.guest.room.RoomCategory;
+import at.fhv.roomix.domain.room.RoomCategory;
 
 import java.time.LocalDate;
 
@@ -13,18 +13,24 @@ import java.time.LocalDate;
  * Enter Description here
  */
 public class CategoryStatus {
-    private LocalDate date;
-    private RoomCategory category;
-    private int free;
-    private int unconfirmed;
-    private int occupied;
+    private final LocalDate date;
+    private final RoomCategory category;
+    private final int free;
+    private final int unconfirmed;
+    private final int occupied;
+    private final int quota;
 
-    public CategoryStatus(LocalDate date, RoomCategory category, int unconfirmed, int occupied) {
+    CategoryStatus(LocalDate date, RoomCategory category, int unconfirmed, int occupied, int quota) {
         this.date = date;
         this.category = category;
         this.unconfirmed = unconfirmed;
         this.occupied = occupied;
+        this.quota = quota;
         free = category.getRooms() - unconfirmed - occupied;
+    }
+
+    public int getQuota() {
+        return quota;
     }
 
     public LocalDate getDate() {

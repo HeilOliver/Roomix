@@ -51,6 +51,10 @@ public class HibernateSessionController implements ISessionController {
         }
     }
 
+    public static void start() {
+        init();
+    }
+
     public static void disposeHibernate() {
         if (initTry && ourSessionFactory != null) {
             ourSessionFactory.close();

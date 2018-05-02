@@ -1,7 +1,7 @@
 package at.fhv.roomix.domain.reservation;
 
 import at.fhv.roomix.domain.common.Proxy;
-import at.fhv.roomix.domain.guest.room.RoomCategory;
+import at.fhv.roomix.domain.room.RoomCategory;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

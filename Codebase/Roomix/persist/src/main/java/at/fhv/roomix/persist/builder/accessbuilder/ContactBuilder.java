@@ -3,6 +3,7 @@ package at.fhv.roomix.persist.builder.accessbuilder;
 import at.fhv.roomix.domain.guest.contact.Contact;
 import at.fhv.roomix.domain.guest.contact.ContactNote;
 import at.fhv.roomix.persist.dataaccess.factory.ContactFactory;
+import at.fhv.roomix.persist.exception.BuilderLoadException;
 import at.fhv.roomix.persist.exception.BuilderUpdateException;
 import at.fhv.roomix.persist.exception.PersistLoadException;
 import at.fhv.roomix.persist.models.ContactEntity;
@@ -39,14 +40,24 @@ public class ContactBuilder {
         return typeMap;
     }
 
-    public static Contact getContact(int id) throws PersistLoadException {
+    public static Contact getContact(int id) throws BuilderLoadException {
         if (id == 0) return new Contact();
-        ContactEntity entity = ContactFactory.getInstance().get(id);
+        ContactEntity entity = null;
+        try {
+            entity = ContactFactory.getInstance().get(id);
+        } catch (PersistLoadException e) {
+            throw new BuilderLoadException(e.getMessage(), e);
+        }
         return converterFromEntity().map(entity);
     }
 
-    public static Collection<Contact> getContacts() throws PersistLoadException {
-        Collection<ContactEntity> all = ContactFactory.getInstance().getAll();
+    public static Collection<Contact> getContacts() throws BuilderLoadException {
+        Collection<ContactEntity> all = null;
+        try {
+            all = ContactFactory.getInstance().getAll();
+        } catch (PersistLoadException e) {
+            throw new BuilderLoadException(e.getMessage(), e);
+        }
         Collection<Contact> results = new HashSet<>();
 
         all.forEach((e) -> results.add(converterFromEntity().map(e)));

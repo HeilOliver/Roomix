@@ -1,7 +1,5 @@
 package at.fhv.roomix.ui.loader;
 
-import at.fhv.roomix.domain.session.configuration.Configuration;
-import at.fhv.roomix.domain.session.configuration.IUiConfiguration;
 import at.fhv.roomix.ui.common.CloseEvent;
 import at.fhv.roomix.ui.common.StartEvent;
 import at.fhv.roomix.ui.dataprovider.ConfigurationProvider;
@@ -48,14 +46,15 @@ public class RunMe extends MvvmfxCdiApplication {
     private Event<StartEvent> onStartEvent;
 
     public static void main(String... args) {
-        IUiConfiguration configuration = ConfigurationProvider.getConfiguration();
-        if (configuration == null) {
-            Locale.setDefault(Locale.ENGLISH);
-        } else {
-            String language = configuration.language();
-            Locale locale = Locale.forLanguageTag(language);
-            Locale.setDefault(locale);
-        }
+        //IUiConfiguration configuration = ConfigurationProvider.getConfiguration();
+//        if (configuration == null) {
+//            Locale.setDefault(Locale.ENGLISH);
+//        } else {
+//            String language = configuration.language();
+//            Locale locale = Locale.forLanguageTag(language);
+//            Locale.setDefault(locale);
+//        }
+        Locale.setDefault(Locale.ENGLISH);
         launch(args);
     }
 
