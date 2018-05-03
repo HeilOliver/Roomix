@@ -1,7 +1,9 @@
 package at.fhv.roomix.ui.view.reservation;
 
+import at.fhv.roomix.ui.common.AbstractMasterEditScope;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
+import de.saxsys.mvvmfx.ScopeProvider;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 
@@ -13,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
  * <p>
  * Enter Description here
  */
+
 public class ReservationView implements FxmlView<ReservationViewModel> {
     @InjectViewModel
     private ReservationViewModel viewModel;

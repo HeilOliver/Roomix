@@ -2,6 +2,7 @@ package at.fhv.roomix.ui.view.main.models;
 
 
 import at.fhv.roomix.ui.view.about.AboutPage;
+import at.fhv.roomix.ui.view.checkin.CheckInPage;
 import at.fhv.roomix.ui.view.contact.ContactPage;
 import at.fhv.roomix.ui.view.dashboard.DashBoardPage;
 import at.fhv.roomix.ui.view.login.LoginPage;
@@ -25,7 +26,8 @@ public class PageProvider {
         topItem = FXCollections.observableArrayList(
                 //new DashBoardPage().getPage(),
                 new ContactPage().getPage(),
-                new ReservationPage().getPage()
+                new ReservationPage().getPage(),
+                new CheckInPage().getPage()
         );
 
         bottomItem = FXCollections.observableArrayList(
