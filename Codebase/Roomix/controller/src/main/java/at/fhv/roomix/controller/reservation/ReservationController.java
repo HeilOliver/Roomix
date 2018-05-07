@@ -7,7 +7,9 @@ import at.fhv.roomix.controller.reservation.model.*;
 import at.fhv.roomix.domain.guest.contractingparty.ContractingParty;
 import at.fhv.roomix.domain.payment.DayPrice;
 import at.fhv.roomix.domain.payment.PriceCalculator;
+import at.fhv.roomix.domain.reservation.Person;
 import at.fhv.roomix.domain.reservation.Reservation;
+import at.fhv.roomix.domain.reservation.ReservationOption;
 import at.fhv.roomix.domain.reservation.ReservationUnit;
 import at.fhv.roomix.domain.room.RoomCategory;
 import at.fhv.roomix.domain.session.ISessionDomain;
@@ -63,9 +65,33 @@ class ReservationController implements IReservationController {
                                 Integer.toString(r.getContractingParty().getContact().getId()).contains(splicedQuery))
                         .collect(Collectors.toSet()));
             }
-            // TODO Hier richtig Mappen
-            Set<ReservationPojo> collect = resultSet.stream().map((res) -> mapper.map(res, ReservationPojo.class)).collect(Collectors.toSet());
-            return collect;
+            Set<ReservationPojo> reservationPojoSet = new HashSet<>();
+            for (Reservation reservation:resultSet) {
+                ReservationPojo reservationPojo = new ReservationPojo();
+                CommentPojo commentPojo = new CommentPojo();
+                commentPojo.setComment(reservation.getComment());
+                reservationPojo.setComment(commentPojo);
+                reservationPojo.setContractingParty(mapper.map(reservation.getContractingParty().getContact(), ContactPojo.class));
+                reservationPojo.setPaymentType(reservation.getPaymentType().getId());
+                reservationPojo.setReservationStatus(reservation.getStatus().toString());
+                Set<ReservationOption> reservationOptionSet = new HashSet<>();
+                Set<ReservationOptionPojo> reservationOptionPojoSet = new HashSet<>();
+                reservationOptionSet.add(reservation.getOption());
+                for (ReservationOption reservationOption:reservationOptionSet) {
+                    reservationOptionPojoSet.add(mapper.map(reservationOption,ReservationOptionPojo.class));
+                }
+                reservationPojo.setReservationOptionByReservationOption(reservationOptionPojoSet);
+                Set<ContactPojo> contactPojoSet = new HashSet<>();
+                Set<Person> personSet = new HashSet<>(reservation.getGuests());
+                for (Person person: personSet) {
+                    contactPojoSet.add(mapper.map(person.getContact(),ContactPojo.class));
+                }
+                reservationPojo.setPersonReservationsByReservationId(contactPojoSet);
+
+                reservationPojoSet.add(reservationPojo);
+            }
+            //Set<ReservationPojo> collect = resultSet.stream().map((res) -> mapper.map(res, ReservationPojo.class)).collect(Collectors.toSet());
+            return reservationPojoSet;
         } catch (BuilderLoadException | MappingException e) {
             throw new GetFault("Exception by loading data, see inner exception fore more details", e);
         }
