@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import org.controlsfx.control.MasterDetailPane?>
-
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.Button?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.control.Separator?>
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.121"
-            xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/8.0.121"
             stylesheets="@ReservationEditStyle.css"
             fx:controller="at.fhv.roomix.ui.view.reservation.edit.ReservationEditView">
     <MasterDetailPane dividerPosition="0.3"
@@ -21,7 +14,7 @@
                       AnchorPane.rightAnchor="0.0"
                       AnchorPane.topAnchor="0.0"
                       detailSide="LEFT"
-    fx:id="mdPane">
+                      fx:id="mdPane">
         <detailNode>
             <GridPane>
                 <rowConstraints>
@@ -32,17 +25,17 @@
 
                     <!-- Persons -->
                     <RowConstraints prefHeight="60"/>
-                    <RowConstraints />
+                    <RowConstraints/>
                     <RowConstraints prefHeight="10"/>
 
                     <!-- Units -->
                     <RowConstraints prefHeight="60"/>
-                    <RowConstraints />
+                    <RowConstraints/>
                     <RowConstraints prefHeight="10"/>
 
                     <!-- Options/Packets -->
                     <RowConstraints prefHeight="60"/>
-                    <RowConstraints />
+                    <RowConstraints/>
                     <RowConstraints prefHeight="10"/>
 
                     <!-- Comment -->

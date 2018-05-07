@@ -54,35 +54,9 @@
 
     <dependencyManagement>
         <dependencies>
-
             <dependency>
                 <groupId>at.fhv.roomix</groupId>
                 <artifactId>domain</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>at.fhv.roomix.domain</groupId>
-                <artifactId>guest-domain</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>common</groupId>
-                <artifactId>at.fhv.roomix.controller</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>at.fhv.roomix.domain</groupId>
-                <artifactId>session-domain</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>at.fhv.roomix.domain</groupId>
-                <artifactId>reservation-domain</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -93,66 +67,25 @@
             </dependency>
 
             <dependency>
-                <groupId>at.fhv.roomix.controller</groupId>
-                <artifactId>reservation-controller</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>at.fhv.roomix.controller</groupId>
-                <artifactId>invoice-controller</artifactId>
+                <groupId>at.fhv.roomix</groupId>
+                <artifactId>controller</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>at.fhv.roomix.controller</groupId>
-                <artifactId>report-controller</artifactId>
-                <version>${project.version}</version>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>5.0.0</version>
+                <scope>test</scope>
             </dependency>
 
             <dependency>
-                <groupId>at.fhv.roomix.controller</groupId>
-                <artifactId>session-controller</artifactId>
-                <version>${project.version}</version>
+                <groupId>org.modelmapper</groupId>
+                <artifactId>modelmapper</artifactId>
+                <version>1.1.3</version>
             </dependency>
-
-            <dependency>
-                <groupId>at.fhv.roomix.controller</groupId>
-                <artifactId>stay-controller</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>at.fhv.roomix.controller</groupId>
-                <artifactId>common</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
         </dependencies>
     </dependencyManagement>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>com.zenjava</groupId>
-                <artifactId>javafx-maven-plugin</artifactId>
-                <version>8.1.2</version>
-                <configuration>
-                    <mainClass>at.fhv.roomix.ui.loader.RunMe</mainClass>
-                    <preLoader>at.fhv.roomix.ui.loader.SplashScreen</preLoader>
-                </configuration>
-            </plugin>
-        </plugins>
-
-        <resources>
-            <resource>
-                <directory>src/main/java</directory>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-        </resources>
-    </build>
 
 </project>

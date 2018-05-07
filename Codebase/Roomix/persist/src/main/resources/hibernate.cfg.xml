@@ -6,46 +6,42 @@
     <session-factory>
         <property name="connection.autocommit">true</property>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/Roomix</property>
-        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/Roomix?useSSL=false&amp;autoReconnec=true</property>
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="connection.username">root</property>
         <property name="connection.password">0000</property>
 
-
         <property name="hibernate.cache.use_second_level_cache">true</property>
         <property name="hibernate.cache.use_query_cache">true</property>
-        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
-      <!--  <property name="net.sf.ehcache.configurationResourceName">/cacheConfig.xml</property> -->
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory
+        </property>
+        <!--<property name="show_sql">true</property>-->
 
-
-        <mapping class="at.fhv.roomix.persist.model.ContactEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.PersonEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.ArrangementEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.ArticleEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.CancellationEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.FacilityEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.InvoiceEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.PaymentEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.ReservationEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.SeasonEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.RoomEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.CancellationConditionEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.ContactNoteEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.ContractingPartyEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.CreditCardEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.InvoicePositionEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.PartnerAgreementEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.PaymentTypeEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.PersonReservationEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.PersonRoomAssignmentEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.ReservationOptionEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.ReservationUnitEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.RoomAssignmentEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.RoomCategoryEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.RoomCategoryPriceEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.RoomFacilityEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.TourGroupEntity"/>
-        <mapping class="at.fhv.roomix.persist.model.TourGroupMemberEntity"/>
+        <mapping class="at.fhv.roomix.persist.models.ContactEntity"/>
+        <mapping class="at.fhv.roomix.persist.models.PersonEntity"/>
+        <mapping class="at.fhv.roomix.persist.models.ArticleEntity"/>
+        <mapping class="at.fhv.roomix.persist.models.CancellationEntity"/>
+        <mapping class="at.fhv.roomix.persist.models.FacilityEntity"/>
+        <mapping class="at.fhv.roomix.persist.models.InvoiceEntity"/>
+        <mapping class="at.fhv.roomix.persist.models.PaymentEntity"/>
+        <mapping class="at.fhv.roomix.persist.models.ReservationEntity"/>
+        <mapping class="at.fhv.roomix.persist.models.SeasonEntity"/>
+        <mapping class="at.fhv.roomix.persist.models.RoomEntity"/>
+        <mapping class="at.fhv.roomix.persist.models.CancellationConditionEntity"/>
+        <mapping class="at.fhv.roomix.persist.models.ContactNoteEntity"/>
+        <mapping class="at.fhv.roomix.persist.models.ContractingPartyEntity"/>
+        <mapping class="at.fhv.roomix.persist.models.CreditCardEntity"/>
+        <mapping class="at.fhv.roomix.persist.models.InvoicePositionEntity"/>
+        <mapping class="at.fhv.roomix.persist.models.PartnerAgreementEntity"/>
+        <mapping class="at.fhv.roomix.persist.models.PaymentTypeEntity"/>
+        <mapping class="at.fhv.roomix.persist.models.ReservationOptionEntity"/>
+        <mapping class="at.fhv.roomix.persist.models.ReservationUnitEntity"/>
+        <mapping class="at.fhv.roomix.persist.models.RoomAssignmentEntity"/>
+        <mapping class="at.fhv.roomix.persist.models.RoomCategoryEntity"/>
+        <mapping class="at.fhv.roomix.persist.models.RoomCategoryPriceEntity"/>
+        <mapping class="at.fhv.roomix.persist.models.RoomFacilityEntity"/>
+        <mapping class="at.fhv.roomix.persist.models.TourGroupEntity"/>
+        <mapping class="at.fhv.roomix.persist.models.TourGroupMemberEntity"/>
 
 
         <!-- DB schema will be updated if needed -->

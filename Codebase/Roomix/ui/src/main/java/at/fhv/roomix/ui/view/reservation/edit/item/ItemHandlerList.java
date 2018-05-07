@@ -3,7 +3,7 @@ package at.fhv.roomix.ui.view.reservation.edit.item;
 import at.fhv.roomix.ui.view.reservation.edit.SubscribeAbleViewModel;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.Scope;
-import javafx.beans.property.*;
+import javafx.beans.property.ObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -28,7 +28,7 @@ public class ItemHandlerList<T> extends ItemHandler<T> {
     public <ViewType extends FxmlView<? extends SubscribeAbleViewModel<T>>>
     ItemHandlerList(Class<? extends ViewType> viewType, IContentBuilder<T> contentBuilder,
                     ObjectProperty<ItemControlViewModel> currentSelection, ObjectProperty<Parent> currentView, Supplier<T> emptyTypeSupplier) {
-        this(viewType,contentBuilder, currentSelection, currentView, emptyTypeSupplier, Integer.MAX_VALUE);
+        this(viewType, contentBuilder, currentSelection, currentView, emptyTypeSupplier, Integer.MAX_VALUE);
     }
 
     public <ViewType extends FxmlView<? extends SubscribeAbleViewModel<T>>>
@@ -64,7 +64,7 @@ public class ItemHandlerList<T> extends ItemHandler<T> {
     }
 
     @Override
-    public void delete(ItemControlViewModel<T> me){
+    public void delete(ItemControlViewModel<T> me) {
         items.remove(me);
         if (me.equals(currentSelectionProperty().get())) {
             select(null);
@@ -77,6 +77,15 @@ public class ItemHandlerList<T> extends ItemHandler<T> {
         items.clear();
     }
 
+    public Collection<T> getObjects() {
+        HashSet<T> set = new HashSet<>();
+        for (@SuppressWarnings("unchecked")
+                ItemControlViewModel<T> item : items) {
+            set.add(item.getPojo());
+        }
+        return set;
+    }
+
     public void setObjects(Collection<T> objects) {
         if (items.size() >= maxSize)
             throw new IllegalStateException("To much items in this list");
@@ -87,15 +96,6 @@ public class ItemHandlerList<T> extends ItemHandler<T> {
             model.setPojo(object);
             items.add(model);
         }
-    }
-
-    public Collection<T> getObjects() {
-        HashSet<T> set = new HashSet<>();
-        for (@SuppressWarnings("unchecked")
-                ItemControlViewModel<T> item : items) {
-            set.add(item.getPojo());
-        }
-        return set;
     }
 
     public ObservableList<ItemControlViewModel> currentItems() {

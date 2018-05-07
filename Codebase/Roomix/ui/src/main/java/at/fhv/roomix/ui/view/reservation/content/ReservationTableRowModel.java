@@ -21,19 +21,19 @@ public class ReservationTableRowModel extends AbstractTableRowModel<ReservationP
         return pojo.getId();
     }
 
-    public String getFirstName(){
+    public String getFirstName() {
         return pojo.getContractingParty().getFirstName();
     }
 
-    public String getLastName(){
+    public String getLastName() {
         return pojo.getContractingParty().getLastName();
     }
 
-    public String getCompanyName(){
+    public String getCompanyName() {
         return pojo.getContractingParty().getCompanyName();
     }
 
-    public String getComment(){
+    public String getComment() {
         return pojo.getComment() != null ?
                 pojo.getComment().getComment() : "-";
     }

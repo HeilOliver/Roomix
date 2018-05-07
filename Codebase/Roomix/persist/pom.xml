@@ -11,27 +11,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>persist</artifactId>
+    <packaging>pom</packaging>
 
     <dependencies>
         <!-- Internal Dependency's-->
         <dependency>
             <groupId>at.fhv.roomix</groupId>
             <artifactId>domain</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>at.fhv.roomix.domain</groupId>
-            <artifactId>guest-domain</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>at.fhv.roomix.domain</groupId>
-            <artifactId>reservation-domain</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>at.fhv.roomix.domain</groupId>
-            <artifactId>session-domain</artifactId>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
@@ -50,14 +36,13 @@
         <dependency>
             <groupId>org.modelmapper</groupId>
             <artifactId>modelmapper</artifactId>
-            <version>1.1.0</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>6.0.3</version>
+            <version>8.0.11</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
@@ -76,23 +61,10 @@
         </dependency>
 
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-ehcache</artifactId>
-            <version>5.2.15.Final</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.0.0</version>
             <scope>test</scope>
         </dependency>
-
-        <!--<dependency>
-            <groupId>at.fhv.roomix</groupId>
-            <artifactId>guest-domain</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency> -->
 
     </dependencies>
 </project>

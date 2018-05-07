@@ -3,8 +3,6 @@ package at.fhv.roomix.ui.view.reservation.edit.contact;
 import at.fhv.roomix.controller.contact.model.ContactPojo;
 import at.fhv.roomix.ui.common.validator.EmailValidator;
 import at.fhv.roomix.ui.common.validator.PhoneValidator;
-import at.fhv.roomix.ui.view.contact.scopes.ContactViewScope;
-import at.fhv.roomix.ui.view.reservation.edit.SubscribeAbleViewModel;
 import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ViewModel;
 import de.saxsys.mvvmfx.utils.mapping.ModelWrapper;
@@ -22,9 +20,6 @@ import javafx.beans.property.StringProperty;
  */
 public class ContactEditViewModel implements ViewModel {
 
-    @InjectScope
-    private ContactScope viewScope;
-
     private final Validator firstNameValidator;
     private final ModelWrapper<ContactPojo> contactWrapper = new ModelWrapper<>();
     private final Validator lastNameValidator;
@@ -35,6 +30,8 @@ public class ContactEditViewModel implements ViewModel {
     private final Validator postcodeValidator;
     private final Validator placeValidator;
     private final Validator houseNumberValidator;
+    @InjectScope
+    private ContactScope viewScope;
     private CompositeValidator formValidator = new CompositeValidator();
 
     public ContactEditViewModel() {

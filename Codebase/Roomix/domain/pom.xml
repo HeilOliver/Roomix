@@ -13,15 +13,17 @@
     <artifactId>domain</artifactId>
     <packaging>pom</packaging>
 
-    <modules>
-        <module>/reservation-domain</module>
-        <module>/guest-domain</module>
-        <module>/session-domain</module>
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>org.aeonbits.owner</groupId>
+            <artifactId>owner-java8</artifactId>
+            <version>1.0.6</version>
+        </dependency>
 
-    <dependencyManagement>
-        <dependencies>
-
-        </dependencies>
-    </dependencyManagement>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>

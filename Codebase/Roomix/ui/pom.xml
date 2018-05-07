@@ -12,30 +12,34 @@
 
     <artifactId>ui</artifactId>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.zenjava</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>8.1.2</version>
+                <configuration>
+                    <mainClass>at.fhv.roomix.ui.loader.RunMe</mainClass>
+                    <preLoader>at.fhv.roomix.ui.loader.SplashScreen</preLoader>
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+    </build>
+
     <dependencies>
+        <!-- Internal Dependency's -->
         <dependency>
-            <groupId>at.fhv.roomix.controller</groupId>
-            <artifactId>reservation-controller</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>at.fhv.roomix.controller</groupId>
-            <artifactId>invoice-controller</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>at.fhv.roomix.controller</groupId>
-            <artifactId>report-controller</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>at.fhv.roomix.controller</groupId>
-            <artifactId>session-controller</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>at.fhv.roomix.controller</groupId>
-            <artifactId>stay-controller</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>at.fhv.roomix.controller</groupId>
-            <artifactId>common</artifactId>
+            <groupId>at.fhv.roomix</groupId>
+            <artifactId>controller</artifactId>
         </dependency>
 
         <!-- Binding, Mvvm and more -->

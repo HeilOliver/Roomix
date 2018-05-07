@@ -6,7 +6,10 @@ import at.fhv.roomix.ui.common.StringResourceResolver;
 import at.fhv.roomix.ui.view.reservation.edit.SubscribeAbleViewModel;
 import de.saxsys.mvvmfx.InjectResourceBundle;
 import de.saxsys.mvvmfx.utils.validation.*;
-import javafx.beans.property.*;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.ReadOnlyBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -24,6 +27,10 @@ public class OptionViewModel extends SubscribeAbleViewModel<ReservationOptionPoj
     @InjectResourceBundle
     private ResourceBundle resourceBundle;
     private StringProperty downPrice = new SimpleStringProperty();
+    // region Validation
+    private Validator descriptionValidator;
+    private Validator dueDateValidator;
+    private Validator priceValidator;
 
     ReadOnlyBooleanProperty isCommitAble() {
         return pojoWrapper.dirtyProperty();
@@ -47,11 +54,6 @@ public class OptionViewModel extends SubscribeAbleViewModel<ReservationOptionPoj
         return pojoWrapper.field("price",
                 ReservationOptionPojo::getOptionFee, ReservationOptionPojo::setOptionFee);
     }
-
-    // region Validation
-    private Validator descriptionValidator;
-    private Validator dueDateValidator;
-    private Validator priceValidator;
 
     ValidationStatus descriptionValidation() {
         return descriptionValidator.getValidationStatus();

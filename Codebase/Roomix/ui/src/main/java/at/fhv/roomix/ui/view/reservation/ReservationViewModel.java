@@ -1,6 +1,9 @@
 package at.fhv.roomix.ui.view.reservation;
 
+import at.fhv.roomix.controller.stay.model.ReservationPojo;
+import at.fhv.roomix.ui.common.AbstractMasterEditScope;
 import at.fhv.roomix.ui.view.contact.scopes.ContactViewScope;
+import at.fhv.roomix.ui.view.reservation.scope.EDataProvider;
 import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
 import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ScopeProvider;
@@ -26,6 +29,7 @@ public class ReservationViewModel implements ViewModel {
     private ReservationViewScope viewScope;
 
     public void initialize() {
+        viewScope.init(EDataProvider.ReservationProvider);
         viewScope.subscribe(ContactViewScope.commandContentView, (key, payload) -> showContent());
         viewScope.subscribe(ContactViewScope.commandEditView, (key, payload) -> showEdit());
         showContent();

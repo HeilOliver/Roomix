@@ -9,7 +9,6 @@ import de.saxsys.mvvmfx.utils.validation.ValidationMessage;
 import de.saxsys.mvvmfx.utils.validation.ValidationStatus;
 import javafx.beans.property.*;
 
-import javax.validation.Validation;
 import java.util.ResourceBundle;
 
 
@@ -66,7 +65,7 @@ public class ItemControlViewModel<T> implements ViewModel {
         return validationStatus;
     }
 
-    ValidationStatus getValidationStatus(){
+    ValidationStatus getValidationStatus() {
         FunctionBasedValidator<Boolean> validator = new FunctionBasedValidator<>(
                 isValidProperty(),
                 bool -> !bool,
@@ -83,6 +82,10 @@ public class ItemControlViewModel<T> implements ViewModel {
         return currentPojo.get();
     }
 
+    public void setPojo(T object) {
+        currentPojo.setValue(object);
+    }
+
     ObjectProperty<T> currentPojoProperty() {
         return currentPojo;
     }
@@ -94,9 +97,5 @@ public class ItemControlViewModel<T> implements ViewModel {
 
     void dispose() {
         isSelected.unbind();
-    }
-
-    public void setPojo(T object) {
-        currentPojo.setValue(object);
     }
 }

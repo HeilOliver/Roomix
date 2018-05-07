@@ -12,11 +12,18 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:6.0.6" level="project" />
     <orderEntry type="library" name="Maven: javax.validation:validation-api:2.0.0.Final" level="project" />
-    <orderEntry type="module" module-name="reservation-controller" />
-    <orderEntry type="module" module-name="reservation-domain" />
-    <orderEntry type="module" module-name="guest-domain" />
-    <orderEntry type="module" module-name="persist" />
+    <orderEntry type="module" module-name="controller" />
+    <orderEntry type="library" name="Maven: javax.validation:validation-api:2.0.1.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.hibernate.validator:hibernate-validator:6.0.9.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging:3.3.2.Final" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml:classmate:1.3.4" level="project" />
+    <orderEntry type="library" name="Maven: org.hibernate.validator:hibernate-validator-annotation-processor:6.0.9.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish:javax.el:3.0.1-b09" level="project" />
+    <orderEntry type="library" name="Maven: org.modelmapper:modelmapper:1.1.3" level="project" />
     <orderEntry type="module" module-name="domain" />
+    <orderEntry type="library" name="Maven: org.aeonbits.owner:owner-java8:1.0.6" level="project" />
+    <orderEntry type="library" name="Maven: org.aeonbits.owner:owner:1.0.6" level="project" />
+    <orderEntry type="module" module-name="persist" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-core:5.2.15.Final" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final" level="project" />
     <orderEntry type="library" name="Maven: org.javassist:javassist:3.22.0-GA" level="project" />
@@ -27,27 +34,8 @@
     <orderEntry type="library" name="Maven: org.hibernate.common:hibernate-commons-annotations:5.0.1.Final" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-ehcache:5.2.15.Final" level="project" />
     <orderEntry type="library" name="Maven: net.sf.ehcache:ehcache:2.10.3" level="project" />
-    <orderEntry type="library" name="Maven: org.modelmapper:modelmapper:1.1.0" level="project" />
-    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:6.0.3" level="project" />
-    <orderEntry type="library" name="Maven: org.junit.jupiter:junit-jupiter-api:5.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apiguardian:apiguardian-api:1.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.opentest4j:opentest4j:1.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.junit.platform:junit-platform-commons:1.0.0" level="project" />
-    <orderEntry type="library" name="Maven: javax.validation:validation-api:2.0.1.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.hibernate.validator:hibernate-validator:6.0.9.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.jboss.logging:jboss-logging:3.3.2.Final" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml:classmate:1.3.4" level="project" />
-    <orderEntry type="library" name="Maven: org.hibernate.validator:hibernate-validator-annotation-processor:6.0.9.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.glassfish:javax.el:3.0.1-b09" level="project" />
-    <orderEntry type="library" name="Maven: common:at.fhv.roomix.controller:1.0-SNAPSHOT" level="project" />
-    <orderEntry type="module" module-name="session-domain" />
-    <orderEntry type="library" name="Maven: org.aeonbits.owner:owner-java8:1.0.6" level="project" />
-    <orderEntry type="library" name="Maven: org.aeonbits.owner:owner:1.0.6" level="project" />
-    <orderEntry type="module" module-name="invoice-controller" />
-    <orderEntry type="module" module-name="report-controller" />
-    <orderEntry type="module" module-name="session-controller" />
-    <orderEntry type="module" module-name="stay-controller" />
-    <orderEntry type="module" module-name="common" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.11" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.google.protobuf:protobuf-java:2.6.0" level="project" />
     <orderEntry type="library" name="Maven: de.saxsys:mvvmfx:1.7.0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.12" level="project" />
     <orderEntry type="library" name="Maven: net.jodah:typetools:0.4.1" level="project" />

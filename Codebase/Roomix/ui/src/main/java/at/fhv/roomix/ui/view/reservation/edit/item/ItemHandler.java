@@ -3,7 +3,10 @@ package at.fhv.roomix.ui.view.reservation.edit.item;
 import at.fhv.roomix.ui.view.reservation.edit.SubscribeAbleViewModel;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.Scope;
-import javafx.beans.property.*;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.ReadOnlyBooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.Parent;
 
 import java.util.function.Supplier;
@@ -17,12 +20,12 @@ import java.util.function.Supplier;
  * Enter Description here
  */
 public abstract class ItemHandler<T> {
-    private final DetailViewTuple<T> viewTuple;
     protected final IContentBuilder<T> contentBuilder;
+    private final DetailViewTuple<T> viewTuple;
     private final ObjectProperty<ItemControlViewModel> currentSelection;
     private final ObjectProperty<Parent> currentView;
     protected BooleanProperty addAble = new SimpleBooleanProperty();
-
+    private Supplier<T> emptyPojoSupplier;
 
     public <ViewType extends FxmlView<? extends SubscribeAbleViewModel<T>>>
     ItemHandler(Class<? extends ViewType> viewType, IContentBuilder<T> contentBuilder,
@@ -61,9 +64,7 @@ public abstract class ItemHandler<T> {
 
     public abstract void delete(ItemControlViewModel<T> me);
 
-    private Supplier<T> emptyPojoSupplier;
-
-    void select(ItemControlViewModel<T> me){
+    void select(ItemControlViewModel<T> me) {
         currentSelection.setValue(me);
         if (me == null) {
             currentView.setValue(null);

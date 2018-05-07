@@ -1,5 +1,6 @@
 package at.fhv.roomix.ui.view.main;
 
+import at.fhv.roomix.ui.common.StringResourceResolver;
 import at.fhv.roomix.ui.common.ViewHelper;
 import at.fhv.roomix.ui.view.main.menuitem.SideBarItem;
 import at.fhv.roomix.ui.view.main.menuitem.SideBarItemViewModel;
@@ -13,9 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import at.fhv.roomix.ui.common.StringResourceResolver;
 
-import javax.inject.Inject;
 import java.util.ResourceBundle;
 
 
