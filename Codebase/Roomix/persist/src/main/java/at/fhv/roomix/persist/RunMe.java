@@ -39,7 +39,7 @@ public class RunMe {
 
         for (RoomCategory category : RoomCategoryBuilder.getRoomCategories()) {
             List<CategoryStatus> categoryStatuses
-                    = categoryFinder.calculateStatus(LocalDate.now(), LocalDate.now().plusDays(5), category);
+                    = categoryFinder.calculateStatus(LocalDate.now(), LocalDate.now().plusDays(5), category, null);
             categoryStatuses.forEach((s) -> System.out.print(String.format("%d/%d/%d - ",s.getFree(), s.getOccupied(), s.getUnconfirmed())));
             System.out.println(category.getDescription());
         }

@@ -7,7 +7,7 @@
     <groupId>at.fhv.roomix</groupId>
     <artifactId>roomix</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>maven-plugin</packaging>
+    <packaging>pom</packaging>
     <name>RooMix</name>
 
     <description>An Application for Hotel Management</description>
@@ -87,27 +87,5 @@
         </dependencies>
     </dependencyManagement>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>com.zenjava</groupId>
-                <artifactId>javafx-maven-plugin</artifactId>
-                <version>8.1.2</version>
-                <configuration>
-                    <mainClass>at.fhv.roomix.ui.loader.RunMe</mainClass>
-                    <preLoader>at.fhv.roomix.ui.loader.SplashScreen</preLoader>
-                </configuration>
-            </plugin>
-        </plugins>
-
-        <resources>
-            <resource>
-                <directory>src/main/java</directory>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-        </resources>
-    </build>
 
 </project>

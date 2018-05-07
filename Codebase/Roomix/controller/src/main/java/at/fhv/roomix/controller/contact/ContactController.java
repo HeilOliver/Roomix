@@ -8,10 +8,7 @@ import at.fhv.roomix.domain.session.ISessionDomain;
 import at.fhv.roomix.domain.session.SessionFactory;
 import at.fhv.roomix.persist.builder.accessbuilder.ContactBuilder;
 import at.fhv.roomix.persist.dataaccess.factory.EntityFactory;
-import at.fhv.roomix.persist.exception.BuilderUpdateException;
-import at.fhv.roomix.persist.exception.PersistLoadException;
-import at.fhv.roomix.persist.exception.PersistSaveException;
-import at.fhv.roomix.persist.exception.PersistStateException;
+import at.fhv.roomix.persist.exception.*;
 import org.modelmapper.ModelMapper;
 
 import java.util.Collection;
@@ -61,7 +58,7 @@ class ContactController implements IContactController {
             mapper.map(contactPojo, contact);
             ContactBuilder.update(contact);
             EntityFactory.commitAll();
-        } catch (PersistLoadException | BuilderUpdateException | PersistStateException | PersistSaveException e) {
+        } catch (BuilderLoadException | BuilderUpdateException | PersistStateException | PersistSaveException e) {
             throw new SaveFault("Exception occurred in save procedure, see inner exception for detail", e);
         } finally {
             EntityFactory.stashChanges();
@@ -87,7 +84,7 @@ class ContactController implements IContactController {
                         .collect(Collectors.toSet()));
             }
             return resultSet;
-        } catch (PersistLoadException e) {
+        } catch (BuilderLoadException e) {
             throw new GetFault("Exception by loading data, see inner exception fore more details", e);
         }
     }

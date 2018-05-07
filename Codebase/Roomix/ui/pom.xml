@@ -12,6 +12,29 @@
 
     <artifactId>ui</artifactId>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.zenjava</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>8.1.2</version>
+                <configuration>
+                    <mainClass>at.fhv.roomix.ui.loader.RunMe</mainClass>
+                    <preLoader>at.fhv.roomix.ui.loader.SplashScreen</preLoader>
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+    </build>
+
     <dependencies>
         <!-- Internal Dependency's -->
         <dependency>

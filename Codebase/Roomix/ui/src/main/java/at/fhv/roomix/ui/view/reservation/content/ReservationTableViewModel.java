@@ -2,6 +2,7 @@ package at.fhv.roomix.ui.view.reservation.content;
 
 
 import at.fhv.roomix.controller.reservation.model.ReservationPojo;
+import at.fhv.roomix.ui.common.AbstractMasterEditScope;
 import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
 import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ViewModel;
@@ -28,7 +29,7 @@ public class ReservationTableViewModel implements ViewModel {
             new SimpleObjectProperty<>();
 
     @InjectScope
-    private ReservationViewScope viewScope;
+    private AbstractMasterEditScope<ReservationPojo> viewScope;
 
     public void initialize() {
         selectedTableRow.addListener(((observable, oldValue, newValue) -> {

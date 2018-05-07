@@ -3,6 +3,7 @@ package at.fhv.roomix.persist.builder.accessbuilder;
 import at.fhv.roomix.domain.guest.contact.Contact;
 import at.fhv.roomix.domain.reservation.Person;
 import at.fhv.roomix.persist.dataaccess.factory.PersonFactory;
+import at.fhv.roomix.persist.exception.BuilderLoadException;
 import at.fhv.roomix.persist.exception.BuilderUpdateException;
 import at.fhv.roomix.persist.exception.PersistLoadException;
 import at.fhv.roomix.persist.models.ContactEntity;
@@ -46,8 +47,13 @@ public class GuestBuilder {
         }
     }
 
-    public static Person getPerson(int id) throws PersistLoadException{
-        PersonEntity entity = PersonFactory.getInstance().get(id);
+    public static Person getPerson(int id) throws BuilderLoadException {
+        PersonEntity entity = null;
+        try {
+            entity = PersonFactory.getInstance().get(id);
+        } catch (PersistLoadException e) {
+            throw new BuilderLoadException(e.getMessage(), e);
+        }
 
         Contact contact = null;
         if (entity.getContact() != null) {
@@ -76,7 +82,7 @@ public class GuestBuilder {
     static Person getPersonUC(int id) throws RuntimeException {
         try {
             return getPerson(id);
-        } catch (PersistLoadException e) {
+        } catch (BuilderLoadException e) {
             throw new RuntimeException(e);
         }
     }

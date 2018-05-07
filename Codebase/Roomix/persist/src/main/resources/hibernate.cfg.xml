@@ -6,7 +6,7 @@
     <session-factory>
         <property name="connection.autocommit">true</property>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/Roomix</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/Roomix?useSSL=false&amp;autoReconnec=true</property>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="connection.username">root</property>
         <property name="connection.password">0000</property>
