@@ -22,7 +22,6 @@ import javafx.collections.SetChangeListener;
  * <p>
  * Enter Description here
  */
-@ScopeProvider(scopes = ReservationViewScope.class)
 public class ReservationTableViewModel implements ViewModel {
 
     private final ObservableList<ReservationTableRowModel> contacts =

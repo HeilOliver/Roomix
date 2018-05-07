@@ -40,10 +40,10 @@ public abstract class AbstractMasterEditScope<T> implements Scope {
         this.provider = provider;
         supplier = valueSupplier;
 
-        subscribe(ContactViewScope.commandCancel, (key, payload) -> closeCommand());
-        subscribe(ContactViewScope.commandSave, (key, payload) -> saveCommand());
-        subscribe(ContactViewScope.commandEdit, (key, payload) -> editCommand());
-        subscribe(ContactViewScope.commandNew, (key, payload) -> newCommand());
+        subscribe(AbstractMasterEditScope.commandCancel, (key, payload) -> closeCommand());
+        subscribe(AbstractMasterEditScope.commandSave, (key, payload) -> saveCommand());
+        subscribe(AbstractMasterEditScope.commandEdit, (key, payload) -> editCommand());
+        subscribe(AbstractMasterEditScope.commandNew, (key, payload) -> newCommand());
     }
 
     private void closeCommand() {

@@ -1,5 +1,6 @@
 package at.fhv.roomix.ui.dataprovider;
 
+import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
 import at.fhv.roomix.ui.common.IErrorCall;
 import at.fhv.roomix.ui.common.ISearchAble;
 import javafx.application.Platform;
@@ -35,6 +36,8 @@ public abstract class SearchProvider<T> extends AbstractProvider {
     private Thread addToSearchQuery;
 
     SearchProvider(ISearchAble<T> searchProvider) {
+        // TODO: remove mock
+        ReservationControllerFactory.InjectDependency(ReservationControllerMock::new);
         inRun = true;
         this.searchProvider = searchProvider;
         this.onError = (e) -> {

@@ -28,6 +28,8 @@ public class ItemControlViewModel<T> implements ViewModel {
     private final BooleanProperty isSelected = new SimpleBooleanProperty();
     private final ObjectProperty<T> currentPojo = new SimpleObjectProperty<>();
 
+    private BooleanProperty showDeleteButton = new SimpleBooleanProperty();
+
     private BooleanProperty validationStatus = new SimpleBooleanProperty();
 
     @InjectResourceBundle
@@ -97,5 +99,13 @@ public class ItemControlViewModel<T> implements ViewModel {
 
     void dispose() {
         isSelected.unbind();
+    }
+
+    public void hideDeleteButton(){
+        showDeleteButton.setValue(false);
+    }
+
+    public BooleanProperty showDeleteButtonProperty() {
+        return showDeleteButton;
     }
 }

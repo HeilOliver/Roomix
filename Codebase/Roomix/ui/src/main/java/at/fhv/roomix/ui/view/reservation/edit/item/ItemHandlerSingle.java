@@ -72,4 +72,8 @@ public class ItemHandlerSingle<T> extends ItemHandler<T> {
             itemControl.setPojo(object);
         item.setValue(itemControl);
     }
+
+    public void hideDeleteButton(){
+        if(item.get() != null) {hideDeleteButton(); }
+    }
 }

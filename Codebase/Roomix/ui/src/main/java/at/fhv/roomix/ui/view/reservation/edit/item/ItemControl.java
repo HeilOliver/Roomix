@@ -7,6 +7,7 @@ import de.saxsys.mvvmfx.utils.validation.visualization.ControlsFxVisualizer;
 import de.saxsys.mvvmfx.utils.validation.visualization.ValidationVisualizer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
@@ -33,6 +34,8 @@ public class ItemControl implements FxmlView<ItemControlViewModel> {
     private Label lblContentBoxDescription;
     @FXML
     private Rectangle selected;
+    @FXML
+    private Button deleteEntryButton;
 
     private ValidationVisualizer validationVisualizer = new ControlsFxVisualizer();
 
@@ -40,6 +43,7 @@ public class ItemControl implements FxmlView<ItemControlViewModel> {
     public void initialize() {
         lblContentBoxDescription.textProperty().bind(viewModel.contentTextProperty());
         selected.visibleProperty().bind(viewModel.isSelectedProperty());
+        deleteEntryButton.visibleProperty().bind(viewModel.showDeleteButtonProperty());
 
         validationVisualizer.initVisualization(
                 viewModel.getValidationStatus(),

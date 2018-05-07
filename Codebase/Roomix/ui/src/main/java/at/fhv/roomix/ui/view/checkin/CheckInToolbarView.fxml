@@ -16,9 +16,9 @@
         <ProgressIndicator fx:id="icoLoadProcess" maxHeight="30" maxWidth="30" />
     </HBox>
     <HBox alignment="CENTER_RIGHT" spacing="5" AnchorPane.rightAnchor="5" AnchorPane.topAnchor="12">
-        <Button fx:id="btnDoCheckIn" onAction="#btnDoCheckIn_OnClick" prefWidth="120" text="%checkin.toolbar.checkin">
+        <Button fx:id="btnDoCheckIn" onAction="#btnDoCheckIn_OnClick" prefWidth="160" text="%checkin.toolbar.checkin">
             <graphic>
-                <FontAwesomeIconView glyphName="SAVE" size="2em"/>
+                <FontAwesomeIconView glyphName="CHECK_CIRCLE" size="2em"/>
             </graphic>
         </Button>
         <Button fx:id="btnCancelCheckIn" onAction="#btnCancelCheckIn_OnClick" prefWidth="120" text="%main.cancel">
