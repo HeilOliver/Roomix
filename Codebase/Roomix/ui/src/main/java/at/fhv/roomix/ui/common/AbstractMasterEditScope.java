@@ -27,7 +27,7 @@ public abstract class AbstractMasterEditScope<T> implements Scope {
     public static final String commandContentView = "Command_ContentView";
     public static final String commandCommitEdit = "Command_CommitEdit";
     protected static final Logger LOG = LoggerFactory.getLogger(AbstractMasterEditScope.class);
-    protected final AbstractSearchEditProvider<T> provider;
+    protected AbstractSearchEditProvider<T> provider;
     protected final ObjectProperty<T> selectedPojo = new SimpleObjectProperty<>();
     protected final ObjectProperty<T> inEditPojo = new SimpleObjectProperty<>();
     protected final BooleanProperty inEditPropertyValid = new SimpleBooleanProperty();
