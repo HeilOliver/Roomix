@@ -17,7 +17,8 @@ import javafx.beans.property.StringProperty;
  */
 public class PacketsItemViewModel implements ViewModel {
     private final ArrangementPojo pojo;
-
+    private StringProperty content = new SimpleStringProperty();
+    private BooleanProperty checked = new SimpleBooleanProperty();
     public PacketsItemViewModel(ArrangementPojo pojo) {
         this.pojo = pojo;
         StringBuilder sb = new StringBuilder();
@@ -34,9 +35,6 @@ public class PacketsItemViewModel implements ViewModel {
         }
         content.setValue(sb.toString());
     }
-
-    private StringProperty content = new SimpleStringProperty();
-    private BooleanProperty checked = new SimpleBooleanProperty();
 
     StringProperty contentProperty() {
         return content;

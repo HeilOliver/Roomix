@@ -5,7 +5,6 @@ import de.saxsys.mvvmfx.utils.validation.ObservableRules;
 import de.saxsys.mvvmfx.utils.validation.ValidationMessage;
 import javafx.beans.value.ObservableValue;
 
-import java.time.LocalDate;
 import java.util.Objects;
 
 /**

@@ -7,9 +7,9 @@ import at.fhv.roomix.ui.dataprovider.CheckInProvider;
 
 public class CheckInScope extends AbstractMasterEditScope<StayPojo>{
 
-        public CheckInScope() {
-            super(StayPojo::new, new CheckInProvider());
-        }
+    public CheckInScope() {
+        super(StayPojo::new, new CheckInProvider());
+    }
 
         public void setOnError(IErrorCall onError) {
             onSaveUpdateError = onError;

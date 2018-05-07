@@ -23,7 +23,7 @@ public class ReservationToolbar implements FxmlView<ReservationToolbarViewModel>
 
     @FXML
     private Button btnNew;
-//    @FXML
+    //    @FXML
 //    private Button btnEdit;
     @FXML
     private ProgressIndicator icoLoadProcess;

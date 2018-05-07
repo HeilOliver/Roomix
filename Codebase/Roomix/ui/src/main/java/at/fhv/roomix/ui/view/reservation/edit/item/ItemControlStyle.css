@@ -1,9 +1,9 @@
 .close_icon {
-    -fx-fill:  #cc9a9a;
+    -fx-fill: #cc9a9a;
 }
 
 .close_icon:hover {
-    -fx-fill:  #af5b5e;
+    -fx-fill: #af5b5e;
 }
 
 .content_box .button {

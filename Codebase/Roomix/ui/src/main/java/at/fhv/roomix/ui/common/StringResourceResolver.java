@@ -25,17 +25,9 @@ public class StringResourceResolver {
     private static final Logger LOG = LoggerFactory.getLogger(AbstractProvider.class);
     private StringProperty resultString = new SimpleStringProperty();
 
-    private void onChange(ResourceBundle bundle, String newValue) {
-        resultString.setValue(getStaticResolve(bundle, newValue));
-    }
-
     private StringResourceResolver(ResourceBundle bundle, ReadOnlyStringProperty stringProperty) {
         stringProperty.addListener((observable, oldValue, newValue) -> onChange(bundle, newValue));
         onChange(bundle, stringProperty.get());
-    }
-
-    private ReadOnlyStringProperty getResultProperty() {
-        return resultString;
     }
 
     public static ReadOnlyStringProperty getAnonymousProperty(
@@ -53,5 +45,13 @@ public class StringResourceResolver {
             LOG.debug("Cant find Resource - " + rKey);
         }
         return string;
+    }
+
+    private void onChange(ResourceBundle bundle, String newValue) {
+        resultString.setValue(getStaticResolve(bundle, newValue));
+    }
+
+    private ReadOnlyStringProperty getResultProperty() {
+        return resultString;
     }
 }

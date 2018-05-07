@@ -1,7 +1,6 @@
 package at.fhv.roomix.ui.dataprovider;
 
 import at.fhv.roomix.controller.session.SessionControllerFactory;
-import at.fhv.roomix.domain.session.SessionFactory;
 import at.fhv.roomix.domain.session.configuration.IUiConfiguration;
 
 import java.util.concurrent.ExecutionException;

@@ -1,5 +1,6 @@
 package at.fhv.roomix.ui.dataprovider;
 
+import at.fhv.roomix.controller.common.exceptions.GetFault;
 import at.fhv.roomix.controller.common.exceptions.SessionFaultException;
 import at.fhv.roomix.controller.contact.model.ContactPojo;
 import at.fhv.roomix.controller.reservation.IReservationController;
@@ -18,7 +19,6 @@ import javafx.collections.ObservableList;
 
 import java.time.LocalDate;
 import java.util.Collection;
-import java.util.concurrent.Callable;
 
 /**
  * Roomix
@@ -45,8 +45,8 @@ public class ReservationUnitProvider extends AbstractProvider {
                     ReservationControllerFactory.getInstance();
             try {
                 Collection<RoomCategoryPojo> collection =
-                        instance.getSearchedCategory(LoginProvider.getSessionID(),
-                        from, till, contractingParty);
+                        instance.getRoomAllocation(LoginProvider.getSessionID(),
+                                from, till, contractingParty);
                 Platform.runLater(() -> {
                     possibleCategories.clear();
                     possibleCategories.addAll(collection);
@@ -82,6 +82,9 @@ public class ReservationUnitProvider extends AbstractProvider {
                 Platform.runLater(onSuccess::call);
             } catch (SessionFaultException e) {
                 LOG.debug(e.getMessage());
+            } catch (GetFault getFault) {
+                // TODO Fix exception Handling
+                getFault.printStackTrace();
             } finally {
                 Platform.runLater(() -> inLoadArrangements.setValue(false));
             }
@@ -95,11 +98,12 @@ public class ReservationUnitProvider extends AbstractProvider {
                     ReservationControllerFactory.getInstance();
             try {
                 PricePojo price =
-                        instance.getPrice(LoginProvider.getSessionID(), pojo, contractingParty);
+                        instance.calculatePrice(LoginProvider.getSessionID(), pojo, contractingParty);
                 Platform.runLater(() -> {
                     onSuccess.call(price);
                 });
             } catch (Exception e) {
+                // TODO Fix Error Handling
                 LOG.debug(e.getMessage());
             }
         });

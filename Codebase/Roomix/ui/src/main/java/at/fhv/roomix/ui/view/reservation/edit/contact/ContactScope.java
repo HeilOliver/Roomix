@@ -1,16 +1,10 @@
 package at.fhv.roomix.ui.view.reservation.edit.contact;
 
 import at.fhv.roomix.controller.contact.model.ContactPojo;
-import at.fhv.roomix.ui.common.ICallable;
 import at.fhv.roomix.ui.dataprovider.ReadOnlyContactProvider;
-import at.fhv.roomix.ui.view.contact.scopes.ContactViewScope;
 import de.saxsys.mvvmfx.Scope;
 import javafx.beans.property.*;
-import javafx.collections.ObservableArray;
-import javafx.collections.ObservableList;
 import javafx.collections.ObservableSet;
-
-import javax.swing.*;
 
 /**
  * Roomix

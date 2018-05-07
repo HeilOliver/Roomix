@@ -2,19 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/controller/common/common.iml" filepath="$PROJECT_DIR$/controller/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/controller/controller.iml" filepath="$PROJECT_DIR$/controller/controller.iml" />
       <module fileurl="file://$PROJECT_DIR$/domain/domain.iml" filepath="$PROJECT_DIR$/domain/domain.iml" />
-      <module fileurl="file://$PROJECT_DIR$/domain/guest-domain/guest-domain.iml" filepath="$PROJECT_DIR$/domain/guest-domain/guest-domain.iml" />
-      <module fileurl="file://$PROJECT_DIR$/controller/invoice-controller/invoice-controller.iml" filepath="$PROJECT_DIR$/controller/invoice-controller/invoice-controller.iml" />
       <module fileurl="file://$PROJECT_DIR$/persist/persist.iml" filepath="$PROJECT_DIR$/persist/persist.iml" />
-      <module fileurl="file://$PROJECT_DIR$/controller/report-controller/report-controller.iml" filepath="$PROJECT_DIR$/controller/report-controller/report-controller.iml" />
-      <module fileurl="file://$PROJECT_DIR$/controller/reservation-controller/reservation-controller.iml" filepath="$PROJECT_DIR$/controller/reservation-controller/reservation-controller.iml" />
-      <module fileurl="file://$PROJECT_DIR$/domain/reservation-domain/reservation-domain.iml" filepath="$PROJECT_DIR$/domain/reservation-domain/reservation-domain.iml" />
       <module fileurl="file://$PROJECT_DIR$/roomix.iml" filepath="$PROJECT_DIR$/roomix.iml" />
-      <module fileurl="file://$PROJECT_DIR$/controller/session-controller/session-controller.iml" filepath="$PROJECT_DIR$/controller/session-controller/session-controller.iml" />
-      <module fileurl="file://$PROJECT_DIR$/domain/session-domain/session-domain.iml" filepath="$PROJECT_DIR$/domain/session-domain/session-domain.iml" />
-      <module fileurl="file://$PROJECT_DIR$/controller/stay-controller/stay-controller.iml" filepath="$PROJECT_DIR$/controller/stay-controller/stay-controller.iml" />
       <module fileurl="file://$PROJECT_DIR$/ui/ui.iml" filepath="$PROJECT_DIR$/ui/ui.iml" />
     </modules>
   </component>

@@ -2,13 +2,9 @@ package at.fhv.roomix.ui.view.reservation.edit.unit;
 
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
-import de.saxsys.mvvmfx.utils.itemlist.ListTransformation;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import org.controlsfx.control.SegmentedBar;
-
-import java.util.List;
 
 /**
  * Roomix
@@ -41,7 +37,6 @@ public class CategoryItem implements FxmlView<CategoryItemViewModel> {
 
 
     }
-
 
 
     public class MySegment extends SegmentedBar.Segment {

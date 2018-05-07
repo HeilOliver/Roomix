@@ -17,6 +17,8 @@ import java.util.function.Supplier;
  * Enter Description here
  */
 public class ItemHandlerSingle<T> extends ItemHandler<T> {
+    private ObjectProperty<ItemControlViewModel<T>> item = new SimpleObjectProperty<>();
+
     public <ViewType extends FxmlView<? extends SubscribeAbleViewModel<T>>>
     ItemHandlerSingle(Class<? extends ViewType> viewType, IContentBuilder<T> contentBuilder,
                       ObjectProperty<ItemControlViewModel> currentSelection, ObjectProperty<Parent> currentView,
@@ -25,7 +27,6 @@ public class ItemHandlerSingle<T> extends ItemHandler<T> {
         item.addListener((observable, oldValue, newValue) ->
                 addAble.setValue(item.get() == null));
     }
-    private ObjectProperty<ItemControlViewModel<T>> item = new SimpleObjectProperty<>();
 
     @Override
     public void add() {
@@ -55,6 +56,12 @@ public class ItemHandlerSingle<T> extends ItemHandler<T> {
         return item;
     }
 
+    public T getObject() {
+        ItemControlViewModel<T> control = currentItem().get();
+        if (control == null) return null;
+        return control.getPojo();
+    }
+
     public void setObject(T object) {
         if (item.get() != null)
             throw new IllegalStateException("Item is already set");
@@ -64,11 +71,5 @@ public class ItemHandlerSingle<T> extends ItemHandler<T> {
         if (object != null)
             itemControl.setPojo(object);
         item.setValue(itemControl);
-    }
-
-    public T getObject() {
-        ItemControlViewModel<T> control = currentItem().get();
-        if (control == null) return null;
-        return control.getPojo();
     }
 }

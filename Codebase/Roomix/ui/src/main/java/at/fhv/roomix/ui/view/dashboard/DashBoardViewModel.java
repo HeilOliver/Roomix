@@ -17,7 +17,6 @@ public class DashBoardViewModel implements ViewModel {
     private StringProperty mysteriesText = new SimpleStringProperty();
 
 
-
     public DashBoardViewModel() {
         Thread thread = new Thread(() -> {
             String one = "HalloWelt";

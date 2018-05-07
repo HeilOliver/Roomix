@@ -1,6 +1,5 @@
 package at.fhv.roomix.ui.loader;
 
-import at.fhv.roomix.domain.session.configuration.Configuration;
 import at.fhv.roomix.domain.session.configuration.IUiConfiguration;
 import at.fhv.roomix.ui.common.CloseEvent;
 import at.fhv.roomix.ui.common.StartEvent;
