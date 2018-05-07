@@ -2,7 +2,6 @@ package at.fhv.roomix.domain.stay;
 
 import at.fhv.roomix.domain.common.ILazyLoader;
 import at.fhv.roomix.domain.common.ProxyLoadException;
-import at.fhv.roomix.domain.guest.contact.Contact;
 import at.fhv.roomix.domain.guest.contractingparty.Agreement;
 import at.fhv.roomix.domain.guest.contractingparty.ContractingParty;
 import at.fhv.roomix.domain.reservation.Reservation;
@@ -58,7 +57,7 @@ public class CategoryFinder {
 
             units.stream()
                     .filter((u) -> finalCurrDate.isAfter(u.getStartDate()) || finalCurrDate.isEqual(u.getStartDate()))
-                    .filter((u) -> finalCurrDate.isBefore(u.getEndDate())|| finalCurrDate.isEqual(u.getEndDate()))
+                    .filter((u) -> finalCurrDate.isBefore(u.getEndDate()) || finalCurrDate.isEqual(u.getEndDate()))
                     .filter((u) -> !u.isCanceled())
                     .filter((u) -> u.getCategory().equals(category))
                     .forEach((u) -> {

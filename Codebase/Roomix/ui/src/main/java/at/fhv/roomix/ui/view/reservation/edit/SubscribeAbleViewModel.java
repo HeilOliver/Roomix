@@ -1,6 +1,5 @@
 package at.fhv.roomix.ui.view.reservation.edit;
 
-import at.fhv.roomix.controller.reservation.model.ReservationOptionPojo;
 import de.saxsys.mvvmfx.ViewModel;
 import de.saxsys.mvvmfx.utils.mapping.ModelWrapper;
 import javafx.beans.property.*;
@@ -13,14 +12,13 @@ import java.util.function.Supplier;
  * SubscribeAbleViewModel
  * 20/04/2018 Oliver
  * <p>
- *
  */
 public abstract class SubscribeAbleViewModel<T> implements ViewModel {
     protected final ObjectProperty<T> currModel = new SimpleObjectProperty<>();
     protected final ModelWrapper<T> pojoWrapper = new ModelWrapper<>();
     protected ReadOnlyBooleanProperty isValid = new SimpleBooleanProperty();
-    private ObjectProperty<T> currPojoProperty;
     protected Supplier<T> emptyPojoSupplier;
+    private ObjectProperty<T> currPojoProperty;
     private BooleanProperty currIsValidProperty;
 
     protected SubscribeAbleViewModel() {
@@ -46,7 +44,8 @@ public abstract class SubscribeAbleViewModel<T> implements ViewModel {
         afterSubscribe(isNew);
     }
 
-    protected void afterSubscribe(boolean isNew) { }
+    protected void afterSubscribe(boolean isNew) {
+    }
 
     public final void unSubscribe() {
         currPojoProperty = null;
@@ -55,7 +54,8 @@ public abstract class SubscribeAbleViewModel<T> implements ViewModel {
         afterUnSubscribe();
     }
 
-    protected void afterUnSubscribe() { }
+    protected void afterUnSubscribe() {
+    }
 
     protected final void commit() {
         pojoWrapper.commit();
@@ -69,5 +69,8 @@ public abstract class SubscribeAbleViewModel<T> implements ViewModel {
         afterCommit();
     }
 
-    protected void afterCommit() {};
+    protected void afterCommit() {
+    }
+
+    ;
 }

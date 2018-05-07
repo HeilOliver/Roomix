@@ -1,7 +1,5 @@
 package at.fhv.roomix.persist;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 /**
  * Roomix
  * at.fhv.roomix.persist

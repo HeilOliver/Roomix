@@ -41,7 +41,8 @@ public class PaymentTypeBuilder {
         } catch (PersistLoadException e) {
             throw new BuilderLoadException(e.getMessage(), e);
         }
-        if (entity == null) throw new BuilderLoadException(String.format("No PaymentType with the given id (%d) found", id));
+        if (entity == null)
+            throw new BuilderLoadException(String.format("No PaymentType with the given id (%d) found", id));
         return mapper.map(entity, PaymentType.class);
     }
 }

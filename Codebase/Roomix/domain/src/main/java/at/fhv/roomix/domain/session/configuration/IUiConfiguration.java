@@ -2,7 +2,7 @@ package at.fhv.roomix.domain.session.configuration;
 
 import org.aeonbits.owner.Config;
 
-import static org.aeonbits.owner.Config.*;
+import static org.aeonbits.owner.Config.Sources;
 
 /**
  * Roomix
@@ -12,7 +12,7 @@ import static org.aeonbits.owner.Config.*;
  * <p>
  * Enter Description here
  */
-@Sources({ "file:~/.app.config",
+@Sources({"file:~/.app.config",
         "file:/etc/app.config"})
 public interface IUiConfiguration extends Config {
     @Key("ui.default.printpath")

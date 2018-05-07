@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            xmlns="http://javafx.com/javafx"
             fx:controller="at.fhv.roomix.ui.view.reservation.edit.contact.ContactView"
-            >
+>
     <AnchorPane AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
                 AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0"
                 minHeight="60" maxHeight="60" prefHeight="60">
@@ -42,8 +38,8 @@
         </HBox>
     </AnchorPane>
     <StackPane AnchorPane.topAnchor="60" AnchorPane.leftAnchor="0"
-                AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0"
-                >
+               AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0"
+    >
         <fx:include source="ContactTableView.fxml" fx:id="viewTable"/>
         <fx:include source="ContactEditView.fxml" fx:id="viewEdit"/>
     </StackPane>

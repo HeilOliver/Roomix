@@ -22,7 +22,7 @@ public class Validator {
     private Validator() {
     }
 
-    public static  <T> void validate(T object) throws ValidationFault {
+    public static <T> void validate(T object) throws ValidationFault {
         javax.validation.Validator validator = validatorFactory.getValidator();
         Set<ConstraintViolation<T>> violations = validator.validate(object);
 

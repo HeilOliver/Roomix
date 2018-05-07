@@ -61,15 +61,15 @@ public class ContactPojo {
     // 0 = none, 100 = private, 200 = company, 300 = travelAgent
     private int contractingPartyType;
 
+    public ContactPojo() {
+    }
+
     public int getContractingPartyType() {
         return contractingPartyType;
     }
 
     public void setContractingPartyType(int contractingPartyType) {
         this.contractingPartyType = contractingPartyType;
-    }
-
-    public ContactPojo() {
     }
 
     public int getContactId() {

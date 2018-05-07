@@ -2,9 +2,10 @@ package at.fhv.roomix.ui.view.reservation.content;
 
 
 import at.fhv.roomix.controller.reservation.model.ReservationPojo;
-import at.fhv.roomix.ui.common.AbstractMasterEditScope;
+import at.fhv.roomix.ui.view.reservation.scope.EDataProvider;
 import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
 import de.saxsys.mvvmfx.InjectScope;
+import de.saxsys.mvvmfx.ScopeProvider;
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -20,6 +21,7 @@ import javafx.collections.SetChangeListener;
  * <p>
  * Enter Description here
  */
+@ScopeProvider(scopes = ReservationViewScope.class)
 public class ReservationTableViewModel implements ViewModel {
 
     private final ObservableList<ReservationTableRowModel> contacts =
@@ -29,9 +31,10 @@ public class ReservationTableViewModel implements ViewModel {
             new SimpleObjectProperty<>();
 
     @InjectScope
-    private AbstractMasterEditScope<ReservationPojo> viewScope;
+    private ReservationViewScope viewScope;
 
     public void initialize() {
+        viewScope.init(EDataProvider.ReservationProvider);
         selectedTableRow.addListener(((observable, oldValue, newValue) -> {
             if (newValue == null) {
                 viewScope.selectedPojoProperty().setValue(null);

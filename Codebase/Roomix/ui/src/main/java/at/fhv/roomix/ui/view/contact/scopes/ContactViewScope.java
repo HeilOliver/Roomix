@@ -17,7 +17,6 @@ public class ContactViewScope extends AbstractMasterEditScope<ContactPojo> {
 
     public ContactViewScope() {
         super(ContactPojo::new, new ContactProvider());
-
     }
 
     public void setOnError(IErrorCall e) {

@@ -24,6 +24,25 @@ import java.time.LocalDate;
  */
 public class OptionView implements FxmlView<OptionViewModel> {
 
+    final Callback<DatePicker, DateCell> dateCellFactory =
+            new Callback<DatePicker, DateCell>() {
+                @Override
+                public DateCell call(final DatePicker datePicker) {
+                    return new DateCell() {
+                        @Override
+                        public void updateItem(LocalDate item, boolean empty) {
+                            super.updateItem(item, empty);
+
+                            if (item.isBefore(
+                                    LocalDate.now().plusDays(1))
+                                    ) {
+                                setDisable(true);
+                                setStyle("-fx-background-color: #ffc0cb;");
+                            }
+                        }
+                    };
+                }
+            };
     @InjectViewModel
     private OptionViewModel viewModel;
     @FXML
@@ -32,7 +51,6 @@ public class OptionView implements FxmlView<OptionViewModel> {
     private TextField txtDescriptionField;
     @FXML
     private DatePicker datePicker;
-
     private ValidationVisualizer validationVisualizer = new ControlsFxVisualizer();
     @FXML
     private TextField txtPrice;
@@ -60,26 +78,6 @@ public class OptionView implements FxmlView<OptionViewModel> {
     private void buttonCommit_Click(ActionEvent actionEvent) {
         viewModel.commitChange();
     }
-
-    final Callback<DatePicker, DateCell> dateCellFactory =
-            new Callback<DatePicker, DateCell>() {
-                @Override
-                public DateCell call(final DatePicker datePicker) {
-                    return new DateCell() {
-                        @Override
-                        public void updateItem(LocalDate item, boolean empty) {
-                            super.updateItem(item, empty);
-
-                            if (item.isBefore(
-                                    LocalDate.now().plusDays(1))
-                                    ) {
-                                setDisable(true);
-                                setStyle("-fx-background-color: #ffc0cb;");
-                            }
-                        }
-                    };
-                }
-            };
 
 }
 

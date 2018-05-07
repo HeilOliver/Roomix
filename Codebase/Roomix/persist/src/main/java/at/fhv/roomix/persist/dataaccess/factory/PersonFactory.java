@@ -1,10 +1,7 @@
 package at.fhv.roomix.persist.dataaccess.factory;
 
-import at.fhv.roomix.persist.dataaccess.IDao;
 import at.fhv.roomix.persist.dataaccess.dao.PersonDao;
 import at.fhv.roomix.persist.models.PersonEntity;
-
-import java.util.function.Supplier;
 
 /**
  * Roomix
@@ -19,9 +16,9 @@ public class PersonFactory extends EntityFactory<PersonEntity, Integer> {
     private static final Object lock = new Object();
     private static PersonFactory instance;
 
-        private PersonFactory() {
-            super(PersonDao::new, 20);
-        }
+    private PersonFactory() {
+        super(PersonDao::new, 20);
+    }
 
     public static PersonFactory getInstance() {
         if (instance != null) return instance;

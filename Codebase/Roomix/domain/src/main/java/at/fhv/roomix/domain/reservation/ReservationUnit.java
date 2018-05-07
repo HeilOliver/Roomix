@@ -40,12 +40,12 @@ public class ReservationUnit {
         return reservation.get();
     }
 
-    public int getId() {
-        return id;
-    }
-
     public void setReservation(Proxy<Reservation> reservation) {
         this.reservation = reservation;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void setId(int id) {

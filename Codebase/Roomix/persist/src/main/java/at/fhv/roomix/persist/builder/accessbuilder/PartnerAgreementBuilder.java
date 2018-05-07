@@ -2,7 +2,6 @@ package at.fhv.roomix.persist.builder.accessbuilder;
 
 import at.fhv.roomix.domain.guest.contractingparty.Agreement;
 import at.fhv.roomix.domain.guest.contractingparty.ContractingParty;
-import at.fhv.roomix.persist.dataaccess.factory.ContactFactory;
 import at.fhv.roomix.persist.dataaccess.factory.ContractingPartyFactory;
 import at.fhv.roomix.persist.exception.BuilderLoadException;
 import at.fhv.roomix.persist.exception.PersistLoadException;

@@ -2,9 +2,7 @@ package at.fhv.roomix.domain.session.configuration;
 
 import org.aeonbits.owner.Config;
 
-import java.awt.*;
-
-import static org.aeonbits.owner.Config.*;
+import static org.aeonbits.owner.Config.Sources;
 
 /**
  * Roomix
@@ -14,7 +12,7 @@ import static org.aeonbits.owner.Config.*;
  * <p>
  * Enter Description here
  */
-@Sources({ "file:~/.myapp.config",
+@Sources({"file:~/.myapp.config",
         "file:/etc/myapp.config"})
 public interface Configuration extends Config {
 

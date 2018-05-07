@@ -68,8 +68,8 @@ public class ContractingPartyBuilder {
     public static Company getCompany(int contactId) throws BuilderLoadException {
         if (contactId == 0) throw new BuilderLoadException("Cant load individual without contact");
 
-            Contact contact = ContactBuilder.getContact(contactId);
-            return new Company(contact);
+        Contact contact = ContactBuilder.getContact(contactId);
+        return new Company(contact);
 
     }
 
@@ -146,7 +146,7 @@ public class ContractingPartyBuilder {
         }
     }
 
-    public static ContractingParty getByContact(int contactId)throws BuilderLoadException {
+    public static ContractingParty getByContact(int contactId) throws BuilderLoadException {
         ContactEntity entity;
         try {
             entity = ContactFactory.getInstance().get(contactId);

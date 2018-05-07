@@ -23,8 +23,8 @@ public class PersonEntity {
 
     private Collection<ReservationEntity> reservations = new HashSet<>();
     private Collection<RoomAssignmentEntity> roomAssignments = new HashSet<>();
-    private Collection<TourGroupEntity> tourGroupsByPersonId= new HashSet<>();
-    private Collection<TourGroupMemberEntity> tourGroupMembersByPersonId= new HashSet<>();
+    private Collection<TourGroupEntity> tourGroupsByPersonId = new HashSet<>();
+    private Collection<TourGroupMemberEntity> tourGroupMembersByPersonId = new HashSet<>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -117,7 +117,7 @@ public class PersonEntity {
 
     @ManyToMany()
     @JoinTable(name = "PersonRoomAssignment", joinColumns = {@JoinColumn(name = "Person")},
-    inverseJoinColumns = {@JoinColumn(name = "RoomAssignment")})
+            inverseJoinColumns = {@JoinColumn(name = "RoomAssignment")})
     public Collection<RoomAssignmentEntity> getRoomAssignments() {
         return roomAssignments;
     }

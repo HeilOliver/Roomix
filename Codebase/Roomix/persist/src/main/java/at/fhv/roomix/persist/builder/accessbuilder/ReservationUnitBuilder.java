@@ -57,7 +57,7 @@ public class ReservationUnitBuilder {
         }
     }
 
-    public static Collection<ReservationUnit> getAll() throws BuilderLoadException{
+    public static Collection<ReservationUnit> getAll() throws BuilderLoadException {
         List<ReservationUnitEntity> all;
         try {
             all = ReservationUnitFactory.getInstance().getAll();

@@ -1,6 +1,5 @@
 package at.fhv.roomix.ui.view.reservation.edit.item;
 
-import at.fhv.roomix.ui.common.StringResourceResolver;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectResourceBundle;
 import de.saxsys.mvvmfx.InjectViewModel;
@@ -10,7 +9,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.scene.shape.Rectangle;
 
 import java.util.ResourceBundle;

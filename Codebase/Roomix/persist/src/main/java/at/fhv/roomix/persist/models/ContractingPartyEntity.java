@@ -66,6 +66,7 @@ public class ContractingPartyEntity {
     public ContactEntity getContact() {
         return contact;
     }
+
     public void setContact(ContactEntity contactByContact) {
         this.contact = contactByContact;
     }

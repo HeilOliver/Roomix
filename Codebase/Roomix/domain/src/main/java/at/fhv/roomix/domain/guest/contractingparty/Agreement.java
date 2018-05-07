@@ -19,7 +19,7 @@ public class Agreement {
     private LocalDate expiringDate;
     private RoomCategory category;
     private int discount;
-
+    private int roomCount;
 
     public int getId() {
         return id;
@@ -53,14 +53,12 @@ public class Agreement {
         this.category = category;
     }
 
-    private int roomCount;
+    public int getRoomCount() {
+        return roomCount;
+    }
 
     public void setRoomCount(int roomCount) {
         this.roomCount = roomCount;
-    }
-
-    public int getRoomCount() {
-        return roomCount;
     }
 
     public int getDiscount() {

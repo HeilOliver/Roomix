@@ -5,7 +5,6 @@ import de.saxsys.mvvmfx.InjectViewModel;
 import de.saxsys.mvvmfx.utils.validation.visualization.ControlsFxVisualizer;
 import de.saxsys.mvvmfx.utils.validation.visualization.ValidationVisualizer;
 import de.saxsys.mvvmfx.utils.viewlist.CachedViewModelCellFactory;
-import javafx.beans.InvalidationListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
@@ -25,9 +24,31 @@ import java.time.LocalDate;
  * Enter Description here
  */
 public class UnitView implements FxmlView<UnitViewModel> {
+    final Callback<DatePicker, DateCell> arrivalCellFactory =
+            new Callback<DatePicker, DateCell>() {
+                @Override
+                public DateCell call(final DatePicker datePicker) {
+                    return new DateCell() {
+                        @Override
+                        public void updateItem(LocalDate item, boolean empty) {
+                            super.updateItem(item, empty);
+
+                            if (item.isBefore(
+                                    LocalDate.now().plusDays(1))
+                                    ) {
+                                setDisable(true);
+                                setStyle("-fx-background-color: #ffc0cb;");
+                            }
+                        }
+                    };
+                }
+            };
+    @FXML
+    NumberAxis xAxis;
+    @FXML
+    CategoryAxis yAxis;
     @InjectViewModel
     private UnitViewModel viewModel;
-
     @FXML
     private Button btnCommit;
     @FXML
@@ -36,6 +57,29 @@ public class UnitView implements FxmlView<UnitViewModel> {
     private TextField arrivalTime;
     @FXML
     private DatePicker pickArrival;
+    final Callback<DatePicker, DateCell> depatureCellFactory =
+            new Callback<DatePicker, DateCell>() {
+                @Override
+                public DateCell call(final DatePicker datePicker) {
+                    return new DateCell() {
+                        @Override
+                        public void updateItem(LocalDate item, boolean empty) {
+                            super.updateItem(item, empty);
+                            if (pickArrival.getValue() == null) {
+                                setDisable(true);
+                                setStyle("-fx-background-color: #ffc0cb;");
+                                return;
+                            }
+                            if (item.isBefore(
+                                    pickArrival.getValue().plusDays(1))
+                                    ) {
+                                setDisable(true);
+                                setStyle("-fx-background-color: #ffc0cb;");
+                            }
+                        }
+                    };
+                }
+            };
     @FXML
     private DatePicker pickDeparture;
     @FXML
@@ -53,14 +97,8 @@ public class UnitView implements FxmlView<UnitViewModel> {
     @FXML
     private Label lblPricePerDay;
     @FXML
-    private BarChart<Number,String> chartSelectedCategorie;
-
+    private BarChart<Number, String> chartSelectedCategorie;
     private ValidationVisualizer validationVisualizer = new ControlsFxVisualizer();
-
-    @FXML
-    NumberAxis xAxis;
-    @FXML
-    CategoryAxis yAxis;
 
     public void initialize() {
         pickArrival.setDayCellFactory(arrivalCellFactory);
@@ -89,7 +127,7 @@ public class UnitView implements FxmlView<UnitViewModel> {
         chartSelectedCategorie.setData(viewModel.getAvailableRooms());
 
         listCategories.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue == null) {
+            if (newValue == null) {
                 viewModel.categoryProperty().setValue(null);
                 return;
             }
@@ -126,48 +164,4 @@ public class UnitView implements FxmlView<UnitViewModel> {
     private void buttonCommitClick(ActionEvent actionEvent) {
         viewModel.onCommit();
     }
-
-    final Callback<DatePicker, DateCell> depatureCellFactory =
-            new Callback<DatePicker, DateCell>() {
-                @Override
-                public DateCell call(final DatePicker datePicker) {
-                    return new DateCell() {
-                        @Override
-                        public void updateItem(LocalDate item, boolean empty) {
-                            super.updateItem(item, empty);
-                            if (pickArrival.getValue() == null) {
-                                setDisable(true);
-                                setStyle("-fx-background-color: #ffc0cb;");
-                                return;
-                            }
-                            if (item.isBefore(
-                                    pickArrival.getValue().plusDays(1))
-                                    ) {
-                                setDisable(true);
-                                setStyle("-fx-background-color: #ffc0cb;");
-                            }
-                        }
-                    };
-                }
-            };
-
-    final Callback<DatePicker, DateCell> arrivalCellFactory =
-            new Callback<DatePicker, DateCell>() {
-                @Override
-                public DateCell call(final DatePicker datePicker) {
-                    return new DateCell() {
-                        @Override
-                        public void updateItem(LocalDate item, boolean empty) {
-                            super.updateItem(item, empty);
-
-                            if (item.isBefore(
-                                    LocalDate.now().plusDays(1))
-                                    ) {
-                                setDisable(true);
-                                setStyle("-fx-background-color: #ffc0cb;");
-                            }
-                        }
-                    };
-                }
-            };
 }

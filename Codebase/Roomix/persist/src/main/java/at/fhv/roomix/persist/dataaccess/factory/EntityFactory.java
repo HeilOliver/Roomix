@@ -12,7 +12,6 @@ import java.io.Serializable;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.PriorityQueue;
 import java.util.function.Supplier;
 
 /**
@@ -64,15 +63,17 @@ public class EntityFactory<T, PK extends Serializable> {
         }
     }
 
+    public static void stashChanges() {
+    }
+
     public T getOrDefault(PK key, T _default) {
         try {
             T getObj = get(key);
             if (getObj != null) return getObj;
-        } catch (PersistLoadException ignore) { }
+        } catch (PersistLoadException ignore) {
+        }
         return _default;
     }
-
-    public static void stashChanges() { }
 
     public T get(PK key) throws PersistLoadException {
         IDao<T, PK> dao = daoSupplier.get();
@@ -84,7 +85,7 @@ public class EntityFactory<T, PK extends Serializable> {
         }
         if (load == null) throw new PersistLoadException(
                 String.format("No entity with the given Key found Key:%s Dao:%s",
-                        key.toString(),dao.getClass().toString()));
+                        key.toString(), dao.getClass().toString()));
         return load;
     }
 

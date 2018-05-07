@@ -32,16 +32,16 @@ public class Reservation {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public ReservationOption getOption() {
         return option;
     }
 
     public void setOption(ReservationOption option) {
         this.option = option;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public PaymentType getPaymentType() {

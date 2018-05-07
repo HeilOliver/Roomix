@@ -2,7 +2,6 @@ package at.fhv.roomix.ui.dataprovider;
 
 import at.fhv.roomix.controller.contact.ContactControllerFactory;
 import at.fhv.roomix.controller.contact.model.ContactPojo;
-import at.fhv.roomix.ui.common.ISearchAble;
 
 /**
  * Roomix

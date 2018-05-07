@@ -17,10 +17,10 @@ import javafx.scene.Parent;
  */
 public class DetailViewTuple<T> {
     private final Class<? extends FxmlView<? extends SubscribeAbleViewModel<T>>> type;
-    private Parent parent;
     private final Scope scope;
-    private SubscribeAbleViewModel<T> viewModel;
     private final Object lock = new Object();
+    private Parent parent;
+    private SubscribeAbleViewModel<T> viewModel;
     private boolean init = false;
 
     public <ViewType extends FxmlView<? extends SubscribeAbleViewModel<T>>>
@@ -47,19 +47,23 @@ public class DetailViewTuple<T> {
             viewStep.providedScopes(scope);
 
         ViewTuple<? extends FxmlView<? extends SubscribeAbleViewModel<T>>,
-                        ? extends SubscribeAbleViewModel<T>> viewTuple = viewStep.load();
+                ? extends SubscribeAbleViewModel<T>> viewTuple = viewStep.load();
 
         parent = viewTuple.getView();
         viewModel = viewTuple.getViewModel();
     }
 
     Parent getParent() {
-        if (!init) synchronized (lock) {create();}
+        if (!init) synchronized (lock) {
+            create();
+        }
         return parent;
     }
 
     public SubscribeAbleViewModel<T> getViewModel() {
-        if (!init) synchronized (lock) {create();}
+        if (!init) synchronized (lock) {
+            create();
+        }
         return viewModel;
     }
 

@@ -17,7 +17,8 @@ import at.fhv.roomix.persist.builder.accessbuilder.*;
 import at.fhv.roomix.persist.builder.dependencybuilder.CategoryFinderBuilder;
 import at.fhv.roomix.persist.builder.dependencybuilder.PriceCalculatorBuilder;
 import at.fhv.roomix.persist.dataaccess.factory.EntityFactory;
-import at.fhv.roomix.persist.exception.*;
+import at.fhv.roomix.persist.exception.BuilderLoadException;
+import at.fhv.roomix.persist.exception.PersistException;
 import org.modelmapper.MappingException;
 import org.modelmapper.ModelMapper;
 
@@ -25,7 +26,6 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static at.fhv.roomix.controller.common.validator.Validator.validate;
 /**
  * Roomix
  * at.fhv.roomix.controller.session
@@ -36,8 +36,8 @@ import static at.fhv.roomix.controller.common.validator.Validator.validate;
  */
 
 class ReservationController implements IReservationController {
-    private final ISessionDomain sessionHandler = SessionFactory.getInstance();
     private static final ModelMapper mapper = new ModelMapper();
+    private final ISessionDomain sessionHandler = SessionFactory.getInstance();
 
     @Override
     public Collection<ReservationPojo> getSearchedReservation(long sessionId, String query) throws SessionFaultException, GetFault {
@@ -170,7 +170,7 @@ class ReservationController implements IReservationController {
         if (reservationPojo == null) throw new ArgumentFaultException();
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
         Validator.validate(reservationPojo);
-        
+
         try {
             //TODO hier richtig Mappen
             Reservation reservation = mapper.map(reservationPojo, Reservation.class);

@@ -14,16 +14,16 @@ public abstract class ContractingParty {
     private Contact contact;
     private int id;
 
+    public ContractingParty(Contact contact) {
+        this.contact = contact;
+    }
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public ContractingParty(Contact contact) {
-        this.contact = contact;
     }
 
     public Contact getContact() {

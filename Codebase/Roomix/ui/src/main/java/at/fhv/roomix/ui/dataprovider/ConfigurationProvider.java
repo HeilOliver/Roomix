@@ -1,7 +1,7 @@
 package at.fhv.roomix.ui.dataprovider;
 
 import at.fhv.roomix.controller.session.SessionControllerFactory;
-
+import at.fhv.roomix.domain.session.configuration.IUiConfiguration;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -20,15 +20,15 @@ public class ConfigurationProvider extends AbstractProvider {
     }
 
     // Blocks until finish
-//    public static IUiConfiguration getConfiguration() {
-//        Future<IUiConfiguration> future = submit(() ->
-//                SessionControllerFactory.getInstance()
-//                        .getUiConfiguration());
-//
-//        try {
-//            return future.get();
-//        } catch (InterruptedException | ExecutionException e) {
-//            return null;
-//        }
-//    }
+    public static IUiConfiguration getConfiguration() {
+        Future<IUiConfiguration> future = submit(() ->
+                SessionControllerFactory.getInstance()
+                        .getUiConfiguration());
+
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            return null;
+        }
+    }
 }

@@ -1,10 +1,8 @@
 package at.fhv.roomix.ui.common;
 
-import de.saxsys.mvvmfx.ViewModel;
 import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 
 /**
  * Roomix
@@ -15,7 +13,7 @@ import javafx.scene.layout.Pane;
  * Enter Description here
  */
 public class ViewHelper {
-    private ViewHelper(){
+    private ViewHelper() {
     }
 
     public static void setChildren(AnchorPane pane, Parent parent) {

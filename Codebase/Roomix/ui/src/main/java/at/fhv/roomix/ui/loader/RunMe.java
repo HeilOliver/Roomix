@@ -1,5 +1,6 @@
 package at.fhv.roomix.ui.loader;
 
+import at.fhv.roomix.domain.session.configuration.IUiConfiguration;
 import at.fhv.roomix.ui.common.CloseEvent;
 import at.fhv.roomix.ui.common.StartEvent;
 import at.fhv.roomix.ui.dataprovider.ConfigurationProvider;
@@ -33,7 +34,7 @@ import java.util.ResourceBundle;
 public class RunMe extends MvvmfxCdiApplication {
     // Turn Debug to true if you want some awesome hacks
     private static final boolean DEBUG_INIT = true;
-    private static final boolean DEBUG_SUPPRESS_START_EVENT = false;
+    private static final boolean DEBUG_SUPPRESS_START_EVENT = true;
     private static final boolean DEBUG_SUPPRESS_STOP_EVENT = false;
 
     private static final Logger LOG = LoggerFactory.getLogger(RunMe.class);
@@ -46,15 +47,14 @@ public class RunMe extends MvvmfxCdiApplication {
     private Event<StartEvent> onStartEvent;
 
     public static void main(String... args) {
-        //IUiConfiguration configuration = ConfigurationProvider.getConfiguration();
-//        if (configuration == null) {
-//            Locale.setDefault(Locale.ENGLISH);
-//        } else {
-//            String language = configuration.language();
-//            Locale locale = Locale.forLanguageTag(language);
-//            Locale.setDefault(locale);
-//        }
-        Locale.setDefault(Locale.ENGLISH);
+        IUiConfiguration configuration = ConfigurationProvider.getConfiguration();
+        if (configuration == null) {
+            Locale.setDefault(Locale.ENGLISH);
+        } else {
+            String language = configuration.language();
+            Locale locale = Locale.forLanguageTag(language);
+            Locale.setDefault(locale);
+        }
         launch(args);
     }
 

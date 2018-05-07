@@ -32,7 +32,7 @@ public class RoomCategoryBuilder {
         });
     }
 
-    private static RoomCategory fromEntity(RoomCategoryEntity entity){
+    private static RoomCategory fromEntity(RoomCategoryEntity entity) {
         RoomCategory category = mapper.map(entity, RoomCategory.class);
         category.setRooms(entity.getRooms().size());
 

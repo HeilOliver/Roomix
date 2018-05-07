@@ -55,26 +55,26 @@ public class ReservationBuilder {
 
     private static Reservation fromEntity(ReservationEntity entity) throws BuilderLoadException {
         try {
-                Reservation reservation = mapper.map(entity, Reservation.class);
-                if (entity.getOption() != null)
-                    reservation.setOption(
-                            ReservationOptionBuilder.get(entity.getOption().getOptionId()));
-                reservation.setPaymentType(
-                        PaymentTypeBuilder.getPaymentType(entity.getPaymentType().getPaymentTypeId()));
-                reservation.setContractingParty(
-                        ContractingPartyBuilder.get(entity.getContractingParty().getContractingPartyId()));
-                reservation.setUnits(
-                        entity.getUnits()
-                                .stream()
-                                .map((e) -> ReservationUnitBuilder
-                                        .getUC(e.getReservationUnitId()))
-                                .collect(Collectors.toSet()));
+            Reservation reservation = mapper.map(entity, Reservation.class);
+            if (entity.getOption() != null)
+                reservation.setOption(
+                        ReservationOptionBuilder.get(entity.getOption().getOptionId()));
+            reservation.setPaymentType(
+                    PaymentTypeBuilder.getPaymentType(entity.getPaymentType().getPaymentTypeId()));
+            reservation.setContractingParty(
+                    ContractingPartyBuilder.get(entity.getContractingParty().getContractingPartyId()));
+            reservation.setUnits(
+                    entity.getUnits()
+                            .stream()
+                            .map((e) -> ReservationUnitBuilder
+                                    .getUC(e.getReservationUnitId()))
+                            .collect(Collectors.toSet()));
 
-                reservation.setGuests(entity.getGuests()
-                        .stream()
-                        .map((e) -> GuestBuilder.getPersonUC(e.getPersonId()))
-                        .collect(Collectors.toSet()));
-                return reservation;
+            reservation.setGuests(entity.getGuests()
+                    .stream()
+                    .map((e) -> GuestBuilder.getPersonUC(e.getPersonId()))
+                    .collect(Collectors.toSet()));
+            return reservation;
         } catch (RuntimeException e) {
             throw new BuilderLoadException(e.getCause().getMessage(), e.getCause());
         }
@@ -146,7 +146,7 @@ public class ReservationBuilder {
         return result;
     }
 
-    public static Reservation get(int reservationId) throws BuilderLoadException{
+    public static Reservation get(int reservationId) throws BuilderLoadException {
         ReservationEntity entity = null;
         try {
             entity = ReservationFactory.getInstance().get(reservationId);

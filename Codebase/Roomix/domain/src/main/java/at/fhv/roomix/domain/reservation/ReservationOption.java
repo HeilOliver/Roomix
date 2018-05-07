@@ -1,7 +1,5 @@
 package at.fhv.roomix.domain.reservation;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
-
 /**
  * Roomix
  * at.fhv.roomix.domain.reservation

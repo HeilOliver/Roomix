@@ -2,13 +2,11 @@ package at.fhv.roomix.ui.view.reservation.edit.contact;
 
 import at.fhv.roomix.controller.contact.model.ContactPojo;
 import at.fhv.roomix.ui.view.contact.content.ContactTableRowModel;
-import at.fhv.roomix.ui.view.contact.scopes.ContactViewScope;
 import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.SetChangeListener;
 

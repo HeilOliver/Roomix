@@ -33,6 +33,7 @@ public class ItemControlViewModel<T> implements ViewModel {
     @InjectResourceBundle
     private ResourceBundle resourceBundle;
 
+
     ItemControlViewModel(ItemHandler<T> scope, IContentBuilder<T> builder) {
         validationStatus.setValue(true);
         this.scope = scope;
@@ -64,7 +65,7 @@ public class ItemControlViewModel<T> implements ViewModel {
         return validationStatus;
     }
 
-    ValidationStatus getValidationStatus(){
+    ValidationStatus getValidationStatus() {
         FunctionBasedValidator<Boolean> validator = new FunctionBasedValidator<>(
                 isValidProperty(),
                 bool -> !bool,
@@ -81,6 +82,10 @@ public class ItemControlViewModel<T> implements ViewModel {
         return currentPojo.get();
     }
 
+    public void setPojo(T object) {
+        currentPojo.setValue(object);
+    }
+
     ObjectProperty<T> currentPojoProperty() {
         return currentPojo;
     }
@@ -92,9 +97,5 @@ public class ItemControlViewModel<T> implements ViewModel {
 
     void dispose() {
         isSelected.unbind();
-    }
-
-    public void setPojo(T object) {
-        currentPojo.setValue(object);
     }
 }

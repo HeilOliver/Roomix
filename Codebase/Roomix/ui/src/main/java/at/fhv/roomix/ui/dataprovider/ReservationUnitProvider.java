@@ -1,6 +1,7 @@
 package at.fhv.roomix.ui.dataprovider;
 
-import at.fhv.roomix.controller.common.exceptions.FaultException;
+import at.fhv.roomix.controller.common.exceptions.GetFault;
+import at.fhv.roomix.controller.common.exceptions.SessionFaultException;
 import at.fhv.roomix.controller.contact.model.ContactPojo;
 import at.fhv.roomix.controller.reservation.IReservationController;
 import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
@@ -45,7 +46,7 @@ public class ReservationUnitProvider extends AbstractProvider {
             try {
                 Collection<RoomCategoryPojo> collection =
                         instance.getRoomAllocation(LoginProvider.getSessionID(),
-                        from, till, contractingParty);
+                                from, till, contractingParty);
                 Platform.runLater(() -> {
                     possibleCategories.clear();
                     possibleCategories.addAll(collection);
@@ -79,8 +80,11 @@ public class ReservationUnitProvider extends AbstractProvider {
                     e.printStackTrace();
                 }
                 Platform.runLater(onSuccess::call);
-            } catch (FaultException e) {
+            } catch (SessionFaultException e) {
                 LOG.debug(e.getMessage());
+            } catch (GetFault getFault) {
+                // TODO Fix exception Handling
+                getFault.printStackTrace();
             } finally {
                 Platform.runLater(() -> inLoadArrangements.setValue(false));
             }
@@ -99,6 +103,7 @@ public class ReservationUnitProvider extends AbstractProvider {
                     onSuccess.call(price);
                 });
             } catch (Exception e) {
+                // TODO Fix Error Handling
                 LOG.debug(e.getMessage());
             }
         });

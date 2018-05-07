@@ -13,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
  * <p>
  * Enter Description here
  */
+
 public class ReservationView implements FxmlView<ReservationViewModel> {
     @InjectViewModel
     private ReservationViewModel viewModel;

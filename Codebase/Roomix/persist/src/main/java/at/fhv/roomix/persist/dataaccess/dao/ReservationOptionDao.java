@@ -1,9 +1,6 @@
 package at.fhv.roomix.persist.dataaccess.dao;
 
-import at.fhv.roomix.domain.reservation.ReservationOption;
 import at.fhv.roomix.persist.models.ReservationOptionEntity;
-
-import javax.persistence.criteria.CriteriaBuilder;
 
 /**
  * Roomix

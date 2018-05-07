@@ -8,15 +8,16 @@ import at.fhv.roomix.domain.session.ISessionDomain;
 import at.fhv.roomix.domain.session.SessionFactory;
 import at.fhv.roomix.persist.builder.accessbuilder.ContactBuilder;
 import at.fhv.roomix.persist.dataaccess.factory.EntityFactory;
-import at.fhv.roomix.persist.exception.*;
+import at.fhv.roomix.persist.exception.BuilderLoadException;
+import at.fhv.roomix.persist.exception.BuilderUpdateException;
+import at.fhv.roomix.persist.exception.PersistSaveException;
+import at.fhv.roomix.persist.exception.PersistStateException;
 import org.modelmapper.ModelMapper;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import static at.fhv.roomix.controller.common.validator.Validator.validate;
 
 /**
  * Roomix
@@ -27,12 +28,13 @@ import static at.fhv.roomix.controller.common.validator.Validator.validate;
  * The Implementation for the ContactController itself
  */
 class ContactController implements IContactController {
-    private final ISessionDomain sessionHandler = SessionFactory.getInstance();
     private static final ModelMapper mapper;
 
     static {
         mapper = new ModelMapper();
     }
+
+    private final ISessionDomain sessionHandler = SessionFactory.getInstance();
 
 //    public Collection<ContactPojo> getAllContacts(long sessionId) throws SessionFaultException, GetFault {
 //        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();

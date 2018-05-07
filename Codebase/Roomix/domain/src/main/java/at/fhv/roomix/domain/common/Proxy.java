@@ -4,11 +4,11 @@ public class Proxy<T> {
     private ILazySupplier<T> supplier;
     private T loadedData;
 
-    public Proxy(ILazySupplier<T> supplier){
+    public Proxy(ILazySupplier<T> supplier) {
         this.supplier = supplier;
     }
 
-    public T get(){
+    public T get() {
         if (loadedData == null) {
             try {
                 loadedData = supplier.get();

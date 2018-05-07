@@ -1,7 +1,6 @@
 package at.fhv.roomix.persist.builder.dependencybuilder;
 
 import at.fhv.roomix.domain.common.ProxyCollection;
-import at.fhv.roomix.domain.reservation.ReservationUnit;
 import at.fhv.roomix.domain.stay.CategoryFinder;
 import at.fhv.roomix.persist.builder.accessbuilder.PartnerAgreementBuilder;
 import at.fhv.roomix.persist.builder.accessbuilder.ReservationUnitBuilder;

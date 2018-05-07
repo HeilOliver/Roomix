@@ -2,8 +2,6 @@ package at.fhv.roomix.controller.reservation.model;
 
 import org.hibernate.validator.constraints.Range;
 
-import javax.validation.constraints.Size;
-
 /**
  * Roomix
  * at.fhv.roomix.controller.reservation.contact
