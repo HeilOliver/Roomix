@@ -7,8 +7,7 @@ import at.fhv.roomix.controller.reservation.model.*;
 import at.fhv.roomix.domain.guest.contractingparty.ContractingParty;
 import at.fhv.roomix.domain.payment.DayPrice;
 import at.fhv.roomix.domain.payment.PriceCalculator;
-import at.fhv.roomix.domain.reservation.Reservation;
-import at.fhv.roomix.domain.reservation.ReservationUnit;
+import at.fhv.roomix.domain.reservation.*;
 import at.fhv.roomix.domain.room.RoomCategory;
 import at.fhv.roomix.domain.session.ISessionDomain;
 import at.fhv.roomix.domain.session.SessionFactory;
@@ -16,7 +15,9 @@ import at.fhv.roomix.domain.stay.CategoryStatus;
 import at.fhv.roomix.persist.builder.accessbuilder.*;
 import at.fhv.roomix.persist.builder.dependencybuilder.CategoryFinderBuilder;
 import at.fhv.roomix.persist.builder.dependencybuilder.PriceCalculatorBuilder;
+import at.fhv.roomix.persist.dataaccess.dao.PersonDao;
 import at.fhv.roomix.persist.dataaccess.factory.EntityFactory;
+import at.fhv.roomix.persist.dataaccess.factory.PersonFactory;
 import at.fhv.roomix.persist.exception.BuilderLoadException;
 import at.fhv.roomix.persist.exception.PersistException;
 import org.modelmapper.MappingException;
@@ -63,9 +64,33 @@ class ReservationController implements IReservationController {
                                 Integer.toString(r.getContractingParty().getContact().getId()).contains(splicedQuery))
                         .collect(Collectors.toSet()));
             }
-            // TODO Hier richtig Mappen
-            Set<ReservationPojo> collect = resultSet.stream().map((res) -> mapper.map(res, ReservationPojo.class)).collect(Collectors.toSet());
-            return collect;
+            Set<ReservationPojo> reservationPojoSet = new HashSet<>();
+            for (Reservation reservation:resultSet) {
+                ReservationPojo reservationPojo = new ReservationPojo();
+                CommentPojo commentPojo = new CommentPojo();
+                commentPojo.setComment(reservation.getComment());
+                reservationPojo.setComment(commentPojo);
+                reservationPojo.setContractingParty(mapper.map(reservation.getContractingParty().getContact(), ContactPojo.class));
+                reservationPojo.setPaymentType(reservation.getPaymentType().getId());
+                reservationPojo.setReservationStatus(reservation.getStatus().toString());
+                Set<ReservationOption> reservationOptionSet = new HashSet<>();
+                Set<ReservationOptionPojo> reservationOptionPojoSet = new HashSet<>();
+                reservationOptionSet.add(reservation.getOption());
+                for (ReservationOption reservationOption:reservationOptionSet) {
+                    reservationOptionPojoSet.add(mapper.map(reservationOption,ReservationOptionPojo.class));
+                }
+                reservationPojo.setReservationOptionByReservationOption(reservationOptionPojoSet);
+                Set<ContactPojo> contactPojoSet = new HashSet<>();
+                Set<Person> personSet = new HashSet<>(reservation.getGuests());
+                for (Person person: personSet) {
+                    contactPojoSet.add(mapper.map(person.getContact(),ContactPojo.class));
+                }
+                reservationPojo.setPersonReservationsByReservationId(contactPojoSet);
+
+                reservationPojoSet.add(reservationPojo);
+            }
+            //Set<ReservationPojo> collect = resultSet.stream().map((res) -> mapper.map(res, ReservationPojo.class)).collect(Collectors.toSet());
+            return reservationPojoSet;
         } catch (BuilderLoadException | MappingException e) {
             throw new GetFault("Exception by loading data, see inner exception fore more details", e);
         }
@@ -116,6 +141,12 @@ class ReservationController implements IReservationController {
             }
 
             // TODO Map here to POJO
+            Set<RoomCategoryPojo> roomCategoryPojoSet = new HashSet<>();
+            for (RoomCategory roomCategory:result.keySet()) {
+                RoomCategoryPojo roomCategoryPojo = new RoomCategoryPojo();
+                roomCategoryPojo.setDescription(roomCategory.getDescription());
+                // Todo fehlende Attribute
+            }
             // mapper.map(result, something.class)
             return null;
         } catch (BuilderLoadException | MappingException e) {
@@ -172,8 +203,32 @@ class ReservationController implements IReservationController {
         Validator.validate(reservationPojo);
 
         try {
-            //TODO hier richtig Mappen
-            Reservation reservation = mapper.map(reservationPojo, Reservation.class);
+            Reservation reservation = new Reservation();
+            reservation.setComment(reservationPojo.getComment().getComment());
+            ContractingParty contractingParty = ContractingPartyBuilder.get(reservationPojo.getContractingParty().getContactId());
+            reservation.setContractingParty(contractingParty);
+            Reservation.Status status = Reservation.Status.valueOf(reservationPojo.getReservationStatus());
+            reservation.setStatus(status);
+
+            Set<Person> personSet = new HashSet<>();
+            Person person = new Person();
+            ContactPojo contactPojo = new ContactPojo();
+            // Todo Wie bekomme ich aus einem Kontakt die Person?
+            reservation.setGuests(null);
+            //Todo Oli du bekommst eine scheiß Collection und nicht eine einzelne Option!
+            reservation.setOption(null);
+
+            Set<ReservationUnit> reservationUnitSet = new HashSet<>();
+            Set<ReservationUnitPojo> reservationUnitPojoSet = new HashSet<>(reservationPojo.getReservationUnitsByReservationId());
+            for (ReservationUnitPojo reservationUnitPojo: reservationUnitPojoSet) {
+                reservationUnitSet.add(mapper.map(reservationUnitPojo,ReservationUnit.class));
+            }
+            reservation.setUnits(reservationUnitSet);
+
+            //Todo Payment ist jetzt komplett anders und stimmt somit mit der Gui nicht mehr überein!
+            reservation.setPaymentType(null);
+
+
             ReservationBuilder.update(reservation);
 
             EntityFactory.commitAll();
