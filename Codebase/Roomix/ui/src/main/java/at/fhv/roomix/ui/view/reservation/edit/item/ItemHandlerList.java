@@ -102,6 +102,21 @@ public class ItemHandlerList<T> extends ItemHandler<T> {
         return items;
     }
 
+    public void hideDeleteButton(){
+        if(items != null && !items.isEmpty()) {
+            for (ItemControlViewModel item : items) {
+                item.hideDeleteButton();
+            }
+        }
+    }
+    public void setCheckMarkVisible(boolean visible){
+        if(items != null && !items.isEmpty()) {
+            for (ItemControlViewModel item : items) {
+                item.setCheckMarkVisisble(visible);
+            }
+        }
+    }
+
 }
 
 

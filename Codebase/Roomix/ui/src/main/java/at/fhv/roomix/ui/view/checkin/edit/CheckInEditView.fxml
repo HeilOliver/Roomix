@@ -86,7 +86,7 @@
                     <Label text="%reservation.options"
                            HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
                 </HBox>
-                <ListView fx:id="listOptions" GridPane.rowIndex="10" GridPane.hgrow="ALWAYS"/>
+                <HBox fx:id="boxReservationOption" GridPane.rowIndex="10" GridPane.hgrow="ALWAYS"/>
 
                 <!-- Comment -->
                 <HBox maxWidth="Infinity" styleClass="headerBox" GridPane.rowIndex="12"

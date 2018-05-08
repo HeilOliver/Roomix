@@ -2,7 +2,9 @@ package at.fhv.roomix.ui.view.reservation.edit.item;
 
 
 import at.fhv.roomix.ui.common.StringResourceResolver;
+import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
 import de.saxsys.mvvmfx.InjectResourceBundle;
+import de.saxsys.mvvmfx.ScopeProvider;
 import de.saxsys.mvvmfx.ViewModel;
 import de.saxsys.mvvmfx.utils.validation.FunctionBasedValidator;
 import de.saxsys.mvvmfx.utils.validation.ValidationMessage;
@@ -28,7 +30,8 @@ public class ItemControlViewModel<T> implements ViewModel {
     private final BooleanProperty isSelected = new SimpleBooleanProperty();
     private final ObjectProperty<T> currentPojo = new SimpleObjectProperty<>();
 
-    private BooleanProperty showDeleteButton = new SimpleBooleanProperty();
+    private BooleanProperty showDeleteButton = new SimpleBooleanProperty(true);
+    private BooleanProperty checkInMarkProperty = new SimpleBooleanProperty(false);
 
     private BooleanProperty validationStatus = new SimpleBooleanProperty();
 
@@ -108,4 +111,13 @@ public class ItemControlViewModel<T> implements ViewModel {
     public BooleanProperty showDeleteButtonProperty() {
         return showDeleteButton;
     }
+
+    public BooleanProperty checkInMarkProperty() {
+        return checkInMarkProperty;
+    }
+
+    public void setCheckMarkVisisble(boolean visible){
+        checkInMarkProperty.setValue(visible);
+    }
+
 }

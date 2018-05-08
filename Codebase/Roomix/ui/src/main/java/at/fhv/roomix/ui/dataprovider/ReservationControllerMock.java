@@ -32,6 +32,21 @@ public class ReservationControllerMock implements IReservationController {
         persons.add(tempPerson);
         reservationPojo.setPersonReservationsByReservationId(persons);
 
+        Collection<ReservationOptionPojo> options = new LinkedList<>();
+        ReservationOptionPojo tempOption = new ReservationOptionPojo();
+        tempOption.setOptionDueDate(LocalDate.now());
+        tempOption.setOptionDescription("yo");
+        tempOption.setOptionFee(new PricePojo());
+        options.add(tempOption);
+        reservationPojo.setReservationOptionByReservationOption(options);
+
+        Collection<ArrangementPojo> arrangementPojos = new LinkedList<>();
+        ArrangementPojo arrangementPojo = new ArrangementPojo();
+        arrangementPojo.setDescription("irgendwas mit Wellness");
+        arrangementPojo.setName("Wellness Quatsch");
+        arrangementPojos.add(arrangementPojo);
+
+
         Collection<ReservationUnitPojo> units = new LinkedList<>();
         ReservationUnitPojo tempUnit = new ReservationUnitPojo();
         tempUnit.setStartDate(LocalDate.now());
@@ -39,6 +54,7 @@ public class ReservationControllerMock implements IReservationController {
         RoomCategoryPojo roomCategoryPojo = new RoomCategoryPojo();
         roomCategoryPojo.setDescription("Einzelzimmer");
         tempUnit.setRoomCategory(roomCategoryPojo);
+        tempUnit.setArrangements(arrangementPojos);
         units.add(tempUnit);
         reservationPojo.setReservationUnitsByReservationId(units);
 

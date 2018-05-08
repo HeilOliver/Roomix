@@ -1,5 +1,6 @@
 package at.fhv.roomix.ui.view.reservation.edit.item;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectResourceBundle;
 import de.saxsys.mvvmfx.InjectViewModel;
@@ -36,6 +37,8 @@ public class ItemControl implements FxmlView<ItemControlViewModel> {
     private Rectangle selected;
     @FXML
     private Button deleteEntryButton;
+    @FXML
+    private Label checkInCheckMark;
 
     private ValidationVisualizer validationVisualizer = new ControlsFxVisualizer();
 
@@ -44,6 +47,7 @@ public class ItemControl implements FxmlView<ItemControlViewModel> {
         lblContentBoxDescription.textProperty().bind(viewModel.contentTextProperty());
         selected.visibleProperty().bind(viewModel.isSelectedProperty());
         deleteEntryButton.visibleProperty().bind(viewModel.showDeleteButtonProperty());
+        checkInCheckMark.visibleProperty().bind(viewModel.checkInMarkProperty());
 
         validationVisualizer.initVisualization(
                 viewModel.getValidationStatus(),

@@ -10,6 +10,8 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import org.controlsfx.control.MasterDetailPane;
 
@@ -23,11 +25,19 @@ public class CheckInEditView implements FxmlView<CheckInEditViewModel> {
     @FXML
     private HBox boxContractingParty;
     @FXML
+    private ListView<ItemControlViewModel> listPersons;
+    @FXML
+    private ListView<ItemControlViewModel> listUnits;
+    @FXML
     private Button btnAddPerson;
     @FXML
     private HBox boxComment;
     @FXML
     private MasterDetailPane mdPane;
+    @FXML
+    private AnchorPane boxDetailPane;
+    @FXML
+    private HBox boxReservationOption;
 
     private CachedViewModelCellFactory<ItemControl, ItemControlViewModel> cellFactory
             = CachedViewModelCellFactory.createForFxmlView(ItemControl.class);
@@ -39,6 +49,10 @@ public class CheckInEditView implements FxmlView<CheckInEditViewModel> {
             Platform.runLater(() -> mdPane.setDividerPosition(MINIMAL_DIVIDER_POSITION));
         }));
 
+        viewModel.getCurrentDetailView().addListener(((observable, oldValue, newValue) -> {
+            ViewHelper.setChildren(boxDetailPane, newValue);
+        }));
+
         viewModel.getContractingPartyControl().addListener(((observable, oldValue, newValue) -> {
             if (newValue == null) {
                 boxContractingParty.getChildren().clear();
@@ -46,14 +60,37 @@ public class CheckInEditView implements FxmlView<CheckInEditViewModel> {
             }
             ViewHelper.setChildren(boxContractingParty, cellFactory.map(newValue).getView());
         }));
+
+        viewModel.getOptionControl().addListener((observable, oldValue, newValue) -> {
+            if (newValue == null) {
+                boxReservationOption.getChildren().clear();
+                return;
+            }
+            ViewHelper.setChildren(boxReservationOption, cellFactory.map(newValue).getView());
+        });
+
+        viewModel.getCommentControl().addListener((observable, oldValue, newValue) -> {
+            if (newValue == null) {
+                boxComment.getChildren().clear();
+                return;
+            }
+            ViewHelper.setChildren(boxComment, cellFactory.map(newValue).getView());
+        });
+
+        listPersons.setItems(viewModel.getPersonControls());
+        listPersons.setCellFactory(cellFactory);
+        btnAddPerson.disableProperty().bind(viewModel.isPersonAddAble().not());
+
+        listUnits.setItems(viewModel.getUnitControls());
+        listUnits.setCellFactory(cellFactory);
     }
 
     @FXML
-    private void addPersonClick(ActionEvent actionEvent) {
-
+    private void addPersonClick() {
+        viewModel.addPerson();
     }
     @FXML
-    private void addComment(ActionEvent actionEvent) {
-
+    private void addComment() {
+        viewModel.addComment();
     }
 }

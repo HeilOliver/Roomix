@@ -1,0 +1,9 @@
+.heading_subsection{
+    -fx-text-fill: dimgrey;
+    -fx-font-weight: bold;
+    -fx-font-size: 20;
+}
+.cell_heading{
+    -fx-font-weight:bold;
+    -fx-fill: dimgrey;
+}
