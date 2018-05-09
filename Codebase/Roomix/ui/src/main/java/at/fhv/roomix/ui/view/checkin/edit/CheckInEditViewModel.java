@@ -121,9 +121,7 @@ public class CheckInEditViewModel implements ViewModel {
         return sb.toString();
     });
 
-    private final ItemHandlerList<ReservationUnitPojo> unitHandler = new ItemHandlerList<>(
-            UnitView.class, unitBuilder, currentSelection, currentView, ReservationUnitPojo::new, editScope
-    );
+    private ItemHandlerList<ReservationUnitPojo> unitHandler;
 
     ObservableList<ItemControlViewModel> getUnitControls() {
         return unitHandler.currentItems();
@@ -202,7 +200,11 @@ public class CheckInEditViewModel implements ViewModel {
                 ContractingPartyView.class, contactBuilder, currentSelection, currentView, ContactPojo::new, viewScope);
 
         personHandler = new ItemHandlerList<>(
-                PersonView.class, contactBuilder, currentSelection, currentView, ContactPojo::new, editScope
+                PersonView.class, contactBuilder, currentSelection, currentView, ContactPojo::new, viewScope
+        );
+
+        unitHandler = new ItemHandlerList<>(
+                UnitView.class, unitBuilder, currentSelection, currentView, ReservationUnitPojo::new, viewScope
         );
 
         viewScope.selectedPojoProperty().addListener((observable, oldValue, newValue) -> {

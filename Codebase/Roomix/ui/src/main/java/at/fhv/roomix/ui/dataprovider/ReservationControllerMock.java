@@ -6,6 +6,7 @@ import at.fhv.roomix.controller.reservation.IReservationController;
 import at.fhv.roomix.controller.reservation.model.*;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -51,10 +52,12 @@ public class ReservationControllerMock implements IReservationController {
         ReservationUnitPojo tempUnit = new ReservationUnitPojo();
         tempUnit.setStartDate(LocalDate.now());
         tempUnit.setEndDate(LocalDate.now());
+        tempUnit.setArrivalTime(LocalTime.now());
         RoomCategoryPojo roomCategoryPojo = new RoomCategoryPojo();
         roomCategoryPojo.setDescription("Einzelzimmer");
         tempUnit.setRoomCategory(roomCategoryPojo);
         tempUnit.setArrangements(arrangementPojos);
+
         units.add(tempUnit);
         reservationPojo.setReservationUnitsByReservationId(units);
 

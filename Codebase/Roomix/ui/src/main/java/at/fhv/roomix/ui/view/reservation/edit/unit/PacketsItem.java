@@ -14,10 +14,10 @@ import javafx.scene.control.Label;
  * <p>
  * Enter Description here
  */
-public class PacketsItem implements FxmlView<PacketsItemViewModel> {
+public class PacketsItem<T> implements FxmlView<PacketsItemViewModel<T>> {
 
     @InjectViewModel
-    private PacketsItemViewModel viewModel;
+    private PacketsItemViewModel<T> viewModel;
 
     @FXML
     private Label lblContent;

@@ -1,5 +1,6 @@
 package at.fhv.roomix.ui.view.reservation.edit.unit;
 
+import at.fhv.roomix.controller.reservation.model.ArrangementPojo;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import de.saxsys.mvvmfx.utils.validation.visualization.ControlsFxVisualizer;
@@ -85,7 +86,7 @@ public class UnitView implements FxmlView<UnitViewModel> {
     @FXML
     private ListView<CategoryItemViewModel> listCategories;
     @FXML
-    private ListView<PacketsItemViewModel> listPackets;
+    private ListView<PacketsItemViewModel<ArrangementPojo>> listPackets;
     @FXML
     private Label lblSum;
     @FXML

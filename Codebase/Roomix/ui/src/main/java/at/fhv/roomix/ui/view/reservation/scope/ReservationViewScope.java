@@ -19,6 +19,7 @@ import java.util.function.Supplier;
  */
 public class ReservationViewScope extends AbstractMasterEditScope<ReservationPojo> {
     public static final String commandPrint = "Command_Print";
+    public static final String commandOnChange = "on_change";
 
     public ReservationViewScope() {
         super(ReservationPojo::new, null);
