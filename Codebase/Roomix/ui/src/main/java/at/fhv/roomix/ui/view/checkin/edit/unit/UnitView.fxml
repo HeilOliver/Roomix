@@ -50,6 +50,9 @@
                         <Label styleClass="cell_heading" text="%reservation.arrivaltime" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <Text fx:id="txtArrivalTime" GridPane.columnIndex="3" GridPane.rowIndex="1" />
 
+                        <Label styleClass="cell_heading" text="%checkin.information.roomnumber" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <Text fx:id="txtRoomNumber" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
                     </GridPane>
                 </content>
             </TitledPane>

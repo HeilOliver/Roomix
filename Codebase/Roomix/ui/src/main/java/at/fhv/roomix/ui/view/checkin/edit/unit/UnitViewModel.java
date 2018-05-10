@@ -32,6 +32,7 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
     private SimpleStringProperty endDate = new SimpleStringProperty();
     private SimpleStringProperty arrivalTime = new SimpleStringProperty();
     private SimpleStringProperty category = new SimpleStringProperty();
+    private SimpleStringProperty roomNumber = new SimpleStringProperty(); // TODO: get from pojo and add binding
 
 
     @InjectScope
@@ -87,6 +88,12 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
             arrivalTime.setValue(DateTimeFormatter.ISO_LOCAL_TIME.format(currModel.get().getArrivalTime()));
             category.setValue(currModel.get().getRoomCategory().getDescription());
         }
+    }
+
+    void onCommit(){
+        /* TODO: fill currModel Pojo with commited information */
+        scope.publish(ReservationViewScope.commandOnCommit);
+        commit();
     }
 
     public BooleanProperty listChangedProperty() {

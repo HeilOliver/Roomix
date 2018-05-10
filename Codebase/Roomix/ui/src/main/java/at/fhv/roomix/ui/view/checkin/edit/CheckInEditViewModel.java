@@ -207,6 +207,7 @@ public class CheckInEditViewModel implements ViewModel {
                 UnitView.class, unitBuilder, currentSelection, currentView, ReservationUnitPojo::new, viewScope
         );
 
+
         viewScope.selectedPojoProperty().addListener((observable, oldValue, newValue) -> {
             if(viewScope.selectedPojoProperty() != null) {
                 ReservationPojo reservationPojo = viewScope.selectedPojoProperty().get();
@@ -234,6 +235,10 @@ public class CheckInEditViewModel implements ViewModel {
                 }
 
             }
+        });
+
+        viewScope.subscribe(ReservationViewScope.commandOnCommit, (s, objects) -> {
+            unitHandler.setCheckMarkVisible(true);
         });
     }
     public ObjectProperty<ItemControlViewModel<ContactPojo>> contractingPartyPropertyProperty() {

@@ -33,6 +33,8 @@ public class UnitView implements FxmlView<UnitViewModel> {
     private Text txtCategory;
     @FXML
     private Text txtArrivalTime;
+    @FXML
+    private Text txtRoomNumber;
 
 
     public void initialize(){
@@ -53,6 +55,6 @@ public class UnitView implements FxmlView<UnitViewModel> {
     }
 
     public void btn_commit() {
-
+        viewModel.onCommit();
     }
 }

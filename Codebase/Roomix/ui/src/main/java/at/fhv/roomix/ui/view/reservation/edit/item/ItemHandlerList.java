@@ -110,10 +110,8 @@ public class ItemHandlerList<T> extends ItemHandler<T> {
         }
     }
     public void setCheckMarkVisible(boolean visible){
-        if(items != null && !items.isEmpty()) {
-            for (ItemControlViewModel item : items) {
-                item.setCheckMarkVisisble(visible);
-            }
+        if (currentSelectionProperty().get() != null) {
+            currentSelectionProperty().get().setCheckMarkVisisble(visible);
         }
     }
 
