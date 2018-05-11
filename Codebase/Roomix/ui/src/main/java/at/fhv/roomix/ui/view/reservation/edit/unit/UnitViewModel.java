@@ -4,6 +4,7 @@ import at.fhv.roomix.controller.reservation.model.ArrangementPojo;
 import at.fhv.roomix.controller.reservation.model.PricePojo;
 import at.fhv.roomix.controller.reservation.model.ReservationUnitPojo;
 import at.fhv.roomix.controller.reservation.model.RoomCategoryPojo;
+import at.fhv.roomix.ui.common.LabelBuilder;
 import at.fhv.roomix.ui.common.StringResourceResolver;
 import at.fhv.roomix.ui.common.validator.DateValidator;
 import at.fhv.roomix.ui.dataprovider.ReservationUnitProvider;
@@ -49,7 +50,7 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
     private StringProperty duration = new SimpleStringProperty();
     private CompositeValidator formValidator = new CompositeValidator();
     private StringProperty arrivalTime = new SimpleStringProperty();
-    private ObservableList<PacketsItemViewModel> arrangementList;
+    private ObservableList<PacketsItemViewModel<ArrangementPojo>> arrangementList;
     private ObservableList<XYChart.Series<Number, String>> availableRooms = FXCollections.observableArrayList();
     private StringProperty currCategoryPrice = new SimpleStringProperty();
     private StringProperty amountAsStringProperty = new SimpleStringProperty();
@@ -68,8 +69,8 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
 //        roomCategories = transRoomCategory.getTargetList();
         roomCategories = FXCollections.observableArrayList();
 
-        ListTransformation<ArrangementPojo, PacketsItemViewModel> transArticle
-                = new ListTransformation<>(provider.getPossibleArrangements(), PacketsItemViewModel::new);
+        ListTransformation<ArrangementPojo, PacketsItemViewModel<ArrangementPojo>> transArticle
+                = new ListTransformation<>(provider.getPossibleArrangements(), pojo -> new PacketsItemViewModel<>(pojo, LabelBuilder.getArrangementILabelBuilder()));
         arrangementList = transArticle.getTargetList();
     }
 
@@ -254,8 +255,8 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
         provider.loadArrangements(() -> {
             if (arrangementsProperty().get() == null) return;
             for (ArrangementPojo pojo : arrangementsProperty().get()) {
-                for (PacketsItemViewModel model : arrangementList) {
-                    if (model.getArrangement().getId() != pojo.getId()) continue;
+                for (PacketsItemViewModel<ArrangementPojo> model : arrangementList) {
+                    if (model.getPojo().getId() != pojo.getId()) continue;
                     model.checkedProperty().setValue(true);
                 }
             }
@@ -274,7 +275,7 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
         return provider.inLoadArrangementsProperty();
     }
 
-    ObservableList<PacketsItemViewModel> getArrangementList() {
+    ObservableList<PacketsItemViewModel<ArrangementPojo>> getArrangementList() {
         return arrangementList;
     }
 
@@ -292,9 +293,9 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
 
     void onCommit() {
         HashSet<ArrangementPojo> arrangementPojos = new HashSet<>();
-        for (PacketsItemViewModel viewModel : arrangementList) {
+        for (PacketsItemViewModel<ArrangementPojo> viewModel : arrangementList) {
             if (!viewModel.isChecked()) continue;
-            arrangementPojos.add(viewModel.getArrangement());
+            arrangementPojos.add(viewModel.getPojo());
         }
         arrangementsProperty().setValue(arrangementPojos);
         commit();

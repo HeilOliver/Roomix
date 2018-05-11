@@ -43,19 +43,19 @@ public abstract class AbstractToolbar<T extends AbstractMasterEditScope> {
     }
 
     public void onSave() {
-        viewScope.publish(ContactViewScope.commandSave);
+        viewScope.publish(AbstractMasterEditScope.commandSave);
     }
 
     public void onCancel() {
-        viewScope.publish(ContactViewScope.commandCancel);
+        viewScope.publish(AbstractMasterEditScope.commandCancel);
     }
 
     public void onEdit() {
-        viewScope.publish(ContactViewScope.commandEdit);
+        viewScope.publish(AbstractMasterEditScope.commandEdit);
     }
 
     public void onNew() {
-        viewScope.publish(ContactViewScope.commandNew);
+        viewScope.publish(AbstractMasterEditScope.commandNew);
     }
 
     public BooleanProperty inEditViewProperty() {

@@ -18,9 +18,14 @@
     <Region prefWidth="10" minWidth="10" maxWidth="10"/>
     <Label fx:id="lblContentBoxDescription" text="SampleTextHere"
            HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
-    <Button mnemonicParsing="false" onAction="#deleteClicked">
-        <graphic>
-            <FontAwesomeIconView glyphName="CLOSE" size="1.5em" styleClass="close_icon"/>
+    <Button mnemonicParsing="false" onAction="#deleteClicked" fx:id="deleteEntryButton" >
+        <graphic >
+            <FontAwesomeIconView glyphName="CLOSE" size="1.5em" styleClass="close_icon" />
         </graphic>
     </Button>
+    <Label fx:id="checkInCheckMark">
+        <graphic>
+            <FontAwesomeIconView glyphName="CHECK" size="1.5em" styleClass="check_icon" />
+        </graphic>
+    </Label>
 </HBox>

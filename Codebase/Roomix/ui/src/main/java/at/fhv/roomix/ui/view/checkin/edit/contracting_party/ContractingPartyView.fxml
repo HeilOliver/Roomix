@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@ContractingPartyView.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhv.roomix.ui.view.checkin.edit.contracting_party.ContractingPartyView">
+
+    <VBox spacing="10" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+        <padding><Insets bottom="10" left="10" right="10" top="10" /></padding>
+        <Label styleClass="heading_subsection" text="%checkin.information.heading.contactinfo" />
+        <TitledPane prefHeight="30.0" prefWidth="Infinity" text="%checkin.information.heading.contactinfo">
+            <content>
+                <GridPane fx:id="contactInformationContent" prefWidth="Infinity" vgap="17.0">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="25" />
+                        <ColumnConstraints percentWidth="25" />
+                        <ColumnConstraints percentWidth="25" />
+                        <ColumnConstraints percentWidth="25" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints prefHeight="30.0" />
+                        <RowConstraints prefHeight="30.0" />
+                        <RowConstraints prefHeight="30.0" />
+                        <RowConstraints prefHeight="30.0" />
+                        <RowConstraints prefHeight="30.0" />
+                        <RowConstraints prefHeight="30.0" />
+                    </rowConstraints>
+
+                    <Label styleClass="cell_heading" text="%contact.edit.firstname.prompt" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <Text fx:id="txtContractingPartyFname" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                    <Label styleClass="cell_heading" text="%contact.edit.lastname.prompt" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                    <Text fx:id="txtContractingPartyLname" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+
+                    <Label styleClass="cell_heading" text="%contact.edit.companyname.prompt" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <Text fx:id="txtCompanyName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                    <Label styleClass="cell_heading" text="%checkin.information.contactid" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                    <Text fx:id="txtContactID" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+
+                    <Label styleClass="cell_heading" text="%contact.edit.street.prompt" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                    <Text fx:id="txtContactStreet" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                    <Label styleClass="cell_heading" text="%contact.edit.houseNumber.prompt" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                    <Text fx:id="txtContactHouseNumber" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+
+                    <Label styleClass="cell_heading" text="%contact.edit.postalcode.prompt" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                    <Text fx:id="txtContactPostcode" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                    <Label styleClass="cell_heading" text="%contact.edit.city.prompt" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                    <Text fx:id="txtContactCity" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+
+                    <Label styleClass="cell_heading" text="%contact.edit.country.prompt" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                    <Text fx:id="txtContactCountry" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                    <Label styleClass="cell_heading" text="%checkin.information.contractingpartytype" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                    <Text fx:id="txtContractingPartyType" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+
+                    <Label styleClass="cell_heading" text="%contact.edit.phonenumber.prompt" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                    <Text fx:id="txtContactPhone" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+                    <Label styleClass="cell_heading" text="%contact.edit.email.prompt" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                    <Text fx:id="txtContactEmail" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+
+                </GridPane>
+            </content>
+        </TitledPane>
+        <Separator />
+    </VBox>
+</AnchorPane>

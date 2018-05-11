@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.text.Text?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="at.fhv.roomix.ui.view.checkin.edit.unit.UnitView"
+            stylesheets="@/at/fhv/roomix/ui/view/checkin/edit/contracting_party/ContractingPartyView.css"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <AnchorPane AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
+                AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="10"
+                minHeight="60" maxHeight="60" prefHeight="60">
+        <HBox AnchorPane.topAnchor="12" AnchorPane.rightAnchor="0" alignment="CENTER_RIGHT">
+            <Button fx:id="btnCommit" onAction="#btn_commit" text="%main.commit" prefWidth="120">
+                <graphic>
+                    <FontAwesomeIconView glyphName="ARROW_LEFT" size="2em"/>
+                </graphic>
+            </Button>
+        </HBox>
+    </AnchorPane>
+    <AnchorPane AnchorPane.topAnchor="50" AnchorPane.leftAnchor="10"
+                AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="10" prefWidth="Infinity">
+        <VBox spacing="20" AnchorPane.topAnchor="1" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="1" AnchorPane.rightAnchor="1">
+            <TitledPane text="%checkin.information.heading.unitinfo" >
+                <content>
+                    <GridPane fx:id="contactInformationForm" vgap="17.0" hgap="10">
+                        <columnConstraints>
+                            <ColumnConstraints percentWidth="10" />
+                            <ColumnConstraints percentWidth="40" />
+                            <ColumnConstraints percentWidth="10" />
+                            <ColumnConstraints percentWidth="40" />
+                        </columnConstraints>
+
+                        <Label styleClass="cell_heading" text="%reservation.arrivaldate" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <Text fx:id="txtArrivalDate" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                        <Label styleClass="cell_heading" text="%reservation.depaturedate" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                        <Text fx:id="txtEndDate" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+
+                        <Label styleClass="cell_heading" text="%reservation.edit.unit.categorie" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <Text fx:id="txtCategory" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                        <Label styleClass="cell_heading" text="%reservation.arrivaltime" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Text fx:id="txtArrivalTime" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+
+                        <Label styleClass="cell_heading" text="%checkin.information.roomnumber" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <Text fx:id="txtRoomNumber" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                    </GridPane>
+                </content>
+            </TitledPane>
+            <Separator/>
+            <TitledPane text="%checkin.information.heading.persons" >
+                <content>
+                    <ListView prefHeight="100" fx:id="listPersonAssignments"/>
+                </content>
+            </TitledPane>
+            <Separator/>
+            <TitledPane text="%checkin.information.heading.arrangements" >
+                <content>
+                    <ListView prefHeight="100" fx:id="listArrangements"/>
+                </content>
+            </TitledPane>
+
+        </VBox>
+    </AnchorPane>
+
+</AnchorPane>

@@ -35,8 +35,8 @@ public class CheckInToolbarView implements FxmlView<CheckInToolbarViewModel> {
         btnCancelCheckIn.visibleProperty().bind(checkInToolbarViewModel.inEditViewProperty());
         btnCancelCheckIn.managedProperty().bind(checkInToolbarViewModel.inEditViewProperty());
 
-        btnDoCheckIn.visibleProperty().bind(checkInToolbarViewModel.saveAbleProperty());
-        btnDoCheckIn.visibleProperty().bind(checkInToolbarViewModel.saveAbleProperty());
+        btnDoCheckIn.visibleProperty().bind(checkInToolbarViewModel.inEditViewProperty());
+        btnDoCheckIn.managedProperty().bind(checkInToolbarViewModel.inEditViewProperty());
     }
 
     @FXML

@@ -6,9 +6,113 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import org.controlsfx.control.MasterDetailPane?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
+            stylesheets="@/at/fhv/roomix/ui/view/reservation/edit/ReservationEditStyle.css"
             fx:controller="at.fhv.roomix.ui.view.checkin.edit.CheckInEditView"
             prefHeight="400.0" prefWidth="600.0">
+    <MasterDetailPane dividerPosition="0.3"
+                      AnchorPane.bottomAnchor="0.0"
+                      AnchorPane.leftAnchor="0.0"
+                      AnchorPane.rightAnchor="0.0"
+                      AnchorPane.topAnchor="0.0"
+                      detailSide="LEFT"
+                      fx:id="mdPane">
 
+        <detailNode>
+            <GridPane>
+                <rowConstraints>
+                    <!-- Contracting Party -->
+                    <RowConstraints prefHeight="60"/>
+                    <RowConstraints prefHeight="60"/>
+                    <RowConstraints prefHeight="10"/>
+
+                    <!-- Persons -->
+                    <RowConstraints prefHeight="60"/>
+                    <RowConstraints/>
+                    <RowConstraints prefHeight="10"/>
+
+                    <!-- Units -->
+                    <RowConstraints prefHeight="60"/>
+                    <RowConstraints/>
+                    <RowConstraints prefHeight="10"/>
+
+                    <!-- Options/Packets -->
+                    <RowConstraints prefHeight="60"/>
+                    <RowConstraints/>
+                    <RowConstraints prefHeight="10"/>
+
+                    <!-- Comment -->
+                    <RowConstraints prefHeight="60"/>
+                    <RowConstraints prefHeight="60"/>
+                    <RowConstraints prefHeight="10"/>
+                </rowConstraints>
+
+                <!-- Contracting Party -->
+                <HBox maxWidth="Infinity" styleClass="headerBox" GridPane.rowIndex="0"
+                      GridPane.halignment="LEFT" GridPane.valignment="CENTER" GridPane.hgrow="ALWAYS">
+                    <Label text="%reservation.contractingparty"
+                           HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                </HBox>
+                <HBox fx:id="boxContractingParty" GridPane.rowIndex="1" GridPane.hgrow="ALWAYS"/>
+
+                <!-- Persons -->
+                <HBox maxWidth="Infinity" styleClass="headerBox" GridPane.rowIndex="3"
+                      GridPane.halignment="LEFT" GridPane.valignment="CENTER" GridPane.hgrow="ALWAYS">
+                    <Label text="%reservation.persons"
+                           HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                    <Button fx:id="btnAddPerson" text="%main.add" mnemonicParsing="false"
+                            onAction="#addPersonClick" minWidth="60">
+                        <graphic>
+                            <FontAwesomeIconView glyphName="PLUS" size="1.5em" styleClass="new_icon"/>
+                        </graphic>
+                    </Button>
+                </HBox>
+                <ListView fx:id="listPersons" GridPane.rowIndex="4" GridPane.hgrow="ALWAYS"/>
+
+                <!-- Units -->
+                <HBox maxWidth="Infinity" styleClass="headerBox" GridPane.rowIndex="6"
+                      GridPane.halignment="LEFT" GridPane.valignment="CENTER" GridPane.hgrow="ALWAYS">
+                    <Label text="%reservation.unit"
+                           HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                </HBox>
+                <ListView fx:id="listUnits" GridPane.rowIndex="7" GridPane.hgrow="ALWAYS"/>
+
+                <!-- Options -->
+                <HBox maxWidth="Infinity" styleClass="headerBox" GridPane.rowIndex="9"
+                      GridPane.halignment="LEFT" GridPane.valignment="CENTER" GridPane.hgrow="ALWAYS">
+                    <Label text="%reservation.options"
+                           HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                </HBox>
+                <HBox fx:id="boxReservationOption" GridPane.rowIndex="10" GridPane.hgrow="ALWAYS"/>
+
+                <!-- Comment -->
+                <HBox maxWidth="Infinity" styleClass="headerBox" GridPane.rowIndex="12"
+                      GridPane.halignment="LEFT" GridPane.valignment="CENTER" GridPane.hgrow="ALWAYS">
+                    <Label text="%reservation.comment"
+                           HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                    <Button fx:id="btnAddComment" text="%main.add" mnemonicParsing="false"
+                            onAction="#addComment" minWidth="60">
+                        <graphic>
+                            <FontAwesomeIconView glyphName="PLUS" size="1.5em" styleClass="new_icon"/>
+                        </graphic>
+                    </Button>
+                </HBox>
+                <HBox fx:id="boxComment" GridPane.rowIndex="13" GridPane.hgrow="ALWAYS"/>
+
+                <!-- Separators -->
+                <Separator GridPane.rowIndex="2" GridPane.hgrow="ALWAYS"/>
+                <Separator GridPane.rowIndex="5" GridPane.hgrow="ALWAYS"/>
+                <Separator GridPane.rowIndex="8" GridPane.hgrow="ALWAYS"/>
+                <Separator GridPane.rowIndex="11" GridPane.hgrow="ALWAYS"/>
+                <Separator GridPane.rowIndex="14" GridPane.hgrow="ALWAYS"/>
+            </GridPane>
+        </detailNode>
+        <masterNode>
+            <AnchorPane fx:id="boxDetailPane"/>
+        </masterNode>
+
+    </MasterDetailPane>
 </AnchorPane>

@@ -1,0 +1,12 @@
+.detail_contact_name {
+    -fx-text-fill: dimgrey;
+    -fx-font-size: 35;
+}
+.detail_sub_section {
+    -fx-text-fill: dimgrey;
+    -fx-font-weight: bold;
+    -fx-font-size: 20;
+}
+.scroll-pane{
+    -fx-background-color:transparent;
+}

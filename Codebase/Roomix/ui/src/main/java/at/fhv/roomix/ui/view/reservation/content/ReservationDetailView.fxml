@@ -1,9 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ScrollPane?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             xmlns="http://javafx.com/javafx"
             fx:controller="at.fhv.roomix.ui.view.reservation.content.ReservationDetailView"
+            stylesheets="@ReservationContentStyle.css"
 >
+                <FlowPane AnchorPane.leftAnchor="0.0"
+                          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <Text fx:id="txtReservationID" styleClass="detail_contact_name"/>
+                    <Region prefWidth="10"/>
+                    <Text fx:id="txtContractingPartyName" styleClass="detail_contact_name"/>
+                </FlowPane>
+                <VBox AnchorPane.leftAnchor="0.0"
+                      AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95">
+                    <Separator/>
+                </VBox>
 
+                <GridPane fx:id="detailContent" AnchorPane.leftAnchor="6.0"
+                          AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="100" >
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="40.0" minWidth="100"/>
+                        <ColumnConstraints percentWidth="60.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="Infinity"/>
+                        <RowConstraints prefHeight="30.0"/>
+                        <RowConstraints prefHeight="30.0"/>
+                        <RowConstraints prefHeight="30.0"/>
+                        <RowConstraints prefHeight="30.0"/>
+                        <RowConstraints prefHeight="30.0"/>
+                        <RowConstraints prefHeight="30.0"/>
+                        <RowConstraints prefHeight="30.0"/>
+                        <RowConstraints prefHeight="30.0"/>
+                        <RowConstraints prefHeight="30.0"/>
+                        <RowConstraints prefHeight="30.0"/>
+                        <RowConstraints prefHeight="30.0"/>
+                        <RowConstraints maxHeight="100.0"/>
+                        <RowConstraints prefHeight="30.0"/>
+                        <RowConstraints prefHeight="30.0"/>
+                        <RowConstraints maxHeight="100.0"/>
+                    </rowConstraints>
+
+                    <Label text="%reservation.detail.reservationID" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <Text fx:id="txtReservationId" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                    <Label text="%reservation.detail.paymenttype" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <Text fx:id="txtPaymentType" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                    <Label text="%reservation.detail.status" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <Text fx:id="txtReservationStatus" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                    <Label text="%reservation.comment" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                    <Text fx:id="txtReservationComment" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                    <Separator GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2" />
+                    <Label text="%reservation.contractingparty" GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.columnSpan="2"  styleClass="detail_sub_section"/>
+
+                    <Label text="%contact.edit.firstname.prompt" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                    <Text fx:id="txtContractingPartyFname" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+                    <Label text="%contact.edit.lastname.prompt" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+                    <Text fx:id="txtContractingPartyLname" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+
+                    <Label text="%contact.edit.companyname.prompt" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+                    <Text fx:id="txtContractingCompany" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+
+                    <Label text="%contact.edit.phonenumber.prompt" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+                    <Text fx:id="txtContractingPartyPhone" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+
+                    <Separator GridPane.columnIndex="0" GridPane.rowIndex="10" GridPane.columnSpan="2" />
+                    <Label text="%reservation.persons" GridPane.columnIndex="0" GridPane.rowIndex="11" GridPane.columnSpan="2"  styleClass="detail_sub_section"/>
+
+                    <ListView fx:id="lstViewPersons" GridPane.columnSpan="2" GridPane.rowIndex="12" GridPane.columnIndex="0" mouseTransparent="true" focusTraversable="false"
+                     maxHeight="100.0"/>
+
+                    <Separator GridPane.columnIndex="0" GridPane.rowIndex="13" GridPane.columnSpan="2" />
+                    <Label text="%reservation.unit" GridPane.columnIndex="0" GridPane.rowIndex="14" GridPane.columnSpan="2"  styleClass="detail_sub_section"/>
+
+                    <ListView fx:id="lstViewUnits" GridPane.columnSpan="2" GridPane.rowIndex="15" GridPane.columnIndex="0" mouseTransparent="true" focusTraversable="false"
+                    maxHeight="100.0"/>
+
+                </GridPane>
+                <VBox fx:id="emptyContent">
+                    <Label text="%contact.table.detail.nothingSelected"/>
+                </VBox>
 </AnchorPane>
