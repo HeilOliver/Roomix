@@ -31,11 +31,14 @@ public class ReservationMapping implements MapType<Reservation, ReservationPojo>
     @Override
     public void map(Reservation source, ReservationPojo destination, Mapper mapper) throws MappingException {
 
+        destination.setId(source.getId());
+
         // Add Comment if Exist
         if (source.getComment() != null) {
             CommentPojo commentPojo = new CommentPojo();
             commentPojo.setComment(source.getComment());
-            destination.setComment(commentPojo);
+            destination.setComment(commentPojo); // TODO Remove Deprecated
+            destination.setReservationComment(source.getComment());
         }
 
         // Add Contracting Party

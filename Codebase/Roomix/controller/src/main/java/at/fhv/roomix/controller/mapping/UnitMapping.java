@@ -6,8 +6,10 @@ import at.fhv.roomix.common.MappingException;
 import at.fhv.roomix.controller.model.ArrangementPojo;
 import at.fhv.roomix.controller.model.PricePojo;
 import at.fhv.roomix.controller.model.ReservationUnitPojo;
+import at.fhv.roomix.controller.model.RoomCategoryPojo;
 import at.fhv.roomix.domain.reservation.Arrangement;
 import at.fhv.roomix.domain.reservation.ReservationUnit;
+import at.fhv.roomix.domain.room.RoomCategory;
 
 import java.util.HashSet;
 
@@ -20,15 +22,18 @@ import java.util.HashSet;
  *
  */
 public class UnitMapping implements MapType<ReservationUnit, ReservationUnitPojo> {
+
+    static {
+        Mapper.getInstance().addMapType(new CategoryMapping(), RoomCategory.class, RoomCategoryPojo.class);
+    }
+
     @Override
     public void map(ReservationUnit source, ReservationUnitPojo destination, Mapper mapper) throws MappingException {
         destination.setArrivalTime(source.getArrivalTime());
         destination.setEndDate(source.getEndDate());
         destination.setStartDate(source.getStartDate());
         destination.setId(source.getId());
-
-        // TODO was machen wir hier?
-        //destination.setRoomCategory();
+        destination.setRoomCategory(mapper.map(source.getCategory(), RoomCategoryPojo.class));
 
         destination.setArrangements(new HashSet<>());
         for (Arrangement arrangement : source.getArrangements()) {
@@ -39,6 +44,5 @@ public class UnitMapping implements MapType<ReservationUnit, ReservationUnitPojo
             pricePojo.setPrice(arrangement.getPrice());
             arrangementPojo.setPrice(pricePojo);
         }
-
     }
 }
