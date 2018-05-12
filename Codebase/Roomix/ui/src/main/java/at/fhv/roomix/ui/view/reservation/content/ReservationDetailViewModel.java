@@ -1,6 +1,6 @@
 package at.fhv.roomix.ui.view.reservation.content;
 
-import at.fhv.roomix.controller.contact.model.ContactPojo;
+import at.fhv.roomix.controller.model.ContactPojo;
 import at.fhv.roomix.ui.view.reservation.scope.EDataProvider;
 import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
 import de.saxsys.mvvmfx.InjectScope;
@@ -36,8 +36,6 @@ public class ReservationDetailViewModel implements ViewModel {
     private ObservableList<String> persons = FXCollections.observableArrayList();
     private ObservableList<String> units = FXCollections.observableArrayList();
 
-    private StringProperty reservationStatus = new SimpleStringProperty();
-
     @InjectScope
     private ReservationViewScope viewScope;
 
@@ -54,7 +52,6 @@ public class ReservationDetailViewModel implements ViewModel {
             reservationComment.setValue(newValue == null ? null :
                     (newValue.getComment() == null ? "..." : newValue.getComment().getComment()));
             // TODO: add payment type
-            reservationStatus.setValue(newValue == null ? null : newValue.getReservationStatus());
             contractingPartyFname.setValue(newValue == null ? null : newValue.getContractingParty().getFirstName());
             contractingPartyLname.setValue(newValue == null ? null : newValue.getContractingParty().getLastName());
             contractingPartyCompany.setValue(newValue == null ? null : newValue.getContractingParty().getCompanyName());
@@ -62,13 +59,17 @@ public class ReservationDetailViewModel implements ViewModel {
             Collection<String> personList = new LinkedList<>();
             Collection<String> unitList = new LinkedList<>();
             if (newValue != null) {
-                newValue.getPersonReservationsByReservationId().forEach(contactPojo -> {
-                    personList.add(contactPojo.getFirstName() + " " + contactPojo.getLastName());
-                });
-                newValue.getReservationUnitsByReservationId().forEach(reservationUnitPojo -> {
-                    unitList.add(reservationUnitPojo.getRoomCategory().getDescription() + ": " +
-                    reservationUnitPojo.getStartDate().toString() + " - " + reservationUnitPojo.getEndDate().toString());
-                });
+                if (newValue.getPersons() != null) {
+                    newValue.getPersons().forEach(contactPojo -> {
+                        personList.add(contactPojo.getForeName() + " " + contactPojo.getLastName());
+                    });
+                }
+                if (newValue.getUnits() != null) {
+                    newValue.getUnits().forEach(reservationUnitPojo -> {
+                        unitList.add(reservationUnitPojo.getRoomCategory().getDescription() + ": " +
+                                reservationUnitPojo.getStartDate().toString() + " - " + reservationUnitPojo.getEndDate().toString());
+                    });
+                }
             }
             persons.addAll(personList);
             units.addAll(unitList);
@@ -90,9 +91,6 @@ public class ReservationDetailViewModel implements ViewModel {
 
     public BooleanProperty detailAvailableProperty() {
         return detailAvailable;
-    }
-    public StringProperty reservationStatusProperty() {
-        return reservationStatus;
     }
 
     public StringProperty paymentTypeProperty() {

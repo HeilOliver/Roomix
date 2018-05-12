@@ -1,7 +1,8 @@
 package at.fhv.roomix.ui.view.checkin.edit.unit;
 
-import at.fhv.roomix.controller.contact.model.ContactPojo;
-import at.fhv.roomix.controller.reservation.model.ArrangementPojo;
+import at.fhv.roomix.controller.model.ContactPojo;
+import at.fhv.roomix.controller.model.ArrangementPojo;
+import at.fhv.roomix.controller.model.PersonPojo;
 import at.fhv.roomix.ui.view.reservation.edit.unit.PacketsItem;
 import at.fhv.roomix.ui.view.reservation.edit.unit.PacketsItemViewModel;
 import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
@@ -24,7 +25,7 @@ public class UnitView implements FxmlView<UnitViewModel> {
     @FXML
     private ListView<PacketsItemViewModel<ArrangementPojo>> listArrangements;
     @FXML
-    private ListView<PacketsItemViewModel<ContactPojo>> listPersonAssignments;
+    private ListView<PacketsItemViewModel<PersonPojo>> listPersonAssignments;
     @FXML
     private Text txtArrivalDate;
     @FXML

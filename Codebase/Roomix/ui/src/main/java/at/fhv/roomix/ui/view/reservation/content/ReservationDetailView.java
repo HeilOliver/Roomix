@@ -53,7 +53,6 @@ public class ReservationDetailView implements FxmlView<ReservationDetailViewMode
         txtReservationId.textProperty().bind(viewModel.reservationIDProperty());
         txtContractingPartyName.textProperty().bind(viewModel.contractingPartyNameProperty());
         txtReservationComment.textProperty().bind(viewModel.reservationCommentProperty());
-        txtReservationStatus.textProperty().bind(viewModel.reservationStatusProperty());
         txtContractingPartyFname.textProperty().bind(viewModel.contractingPartyFnameProperty());
         txtContractingPartyLname.textProperty().bind(viewModel.contractingPartyLnameProperty());
         txtContractingCompany.textProperty().bind(viewModel.contractingPartyCompanyProperty());

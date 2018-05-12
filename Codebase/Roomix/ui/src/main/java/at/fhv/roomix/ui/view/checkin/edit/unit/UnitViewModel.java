@@ -1,11 +1,10 @@
 package at.fhv.roomix.ui.view.checkin.edit.unit;
 
-import at.fhv.roomix.controller.contact.model.ContactPojo;
-import at.fhv.roomix.controller.reservation.model.ArrangementPojo;
-import at.fhv.roomix.controller.reservation.model.ReservationUnitPojo;
+import at.fhv.roomix.controller.model.ArrangementPojo;
+import at.fhv.roomix.controller.model.PersonPojo;
+import at.fhv.roomix.controller.model.ReservationUnitPojo;
 import at.fhv.roomix.ui.common.LabelBuilder;
 import at.fhv.roomix.ui.view.reservation.edit.SubscribeAbleViewModel;
-import at.fhv.roomix.ui.view.reservation.edit.unit.ILabelBuilder;
 import at.fhv.roomix.ui.view.reservation.edit.unit.PacketsItemViewModel;
 import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
 import de.saxsys.mvvmfx.InjectScope;
@@ -16,7 +15,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import javax.annotation.PostConstruct;
 import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -24,7 +22,7 @@ import java.util.LinkedList;
 public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
 
     private ObservableList<PacketsItemViewModel<ArrangementPojo>> arrangementList = FXCollections.emptyObservableList();
-    private ObservableList<PacketsItemViewModel<ContactPojo>> personList = FXCollections.emptyObservableList();
+    private ObservableList<PacketsItemViewModel<PersonPojo>> personList = FXCollections.emptyObservableList();
     private BooleanProperty listChanged = new SimpleBooleanProperty();
     private BooleanProperty personListChanged = new SimpleBooleanProperty();
 
@@ -46,19 +44,19 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
         return arrangementList;
     }
 
-    public ObservableList<PacketsItemViewModel<ContactPojo>> getPersonList() {
+    public ObservableList<PacketsItemViewModel<PersonPojo>> getPersonList() {
         return personList;
     }
 
     public void initialize(){
         scope.subscribe(ReservationViewScope.commandOnChange, (s, objects) -> {
-            Collection<ContactPojo> persons = scope.selectedPojoProperty().get().getPersonReservationsByReservationId();
+            Collection<PersonPojo> persons = scope.selectedPojoProperty().get().getPersons();
             if (persons != null) {
-                LinkedList<ContactPojo> personListL = new LinkedList<>(persons);
-                ObservableList<ContactPojo> list = FXCollections.observableList(personListL);
-                ListTransformation<ContactPojo, PacketsItemViewModel<ContactPojo>> transPersons
-                        = new ListTransformation<>(list, (ContactPojo pojo) -> new PacketsItemViewModel<>(pojo, LabelBuilder.getPersonILabelBuilder()));
-                ObservableList<PacketsItemViewModel<ContactPojo>> targetList = transPersons.getTargetList();
+                LinkedList<PersonPojo> personListL = new LinkedList<>(persons);
+                ObservableList<PersonPojo> list = FXCollections.observableList(personListL);
+                ListTransformation<PersonPojo, PacketsItemViewModel<PersonPojo>> transPersons
+                        = new ListTransformation<>(list, (PersonPojo pojo) -> new PacketsItemViewModel<>(pojo, LabelBuilder.getPersonILabelBuilder()));
+                ObservableList<PacketsItemViewModel<PersonPojo>> targetList = transPersons.getTargetList();
                 personList = targetList;
                 personListChanged.setValue(!personListChangedProperty().getValue());
             }

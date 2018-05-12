@@ -1,9 +1,9 @@
 package at.fhv.roomix.ui.view.reservation.edit.unit;
 
-import at.fhv.roomix.controller.reservation.model.ArrangementPojo;
-import at.fhv.roomix.controller.reservation.model.PricePojo;
-import at.fhv.roomix.controller.reservation.model.ReservationUnitPojo;
-import at.fhv.roomix.controller.reservation.model.RoomCategoryPojo;
+import at.fhv.roomix.controller.model.ArrangementPojo;
+import at.fhv.roomix.controller.model.PricePojo;
+import at.fhv.roomix.controller.model.ReservationUnitPojo;
+import at.fhv.roomix.controller.model.RoomCategoryPojo;
 import at.fhv.roomix.ui.common.LabelBuilder;
 import at.fhv.roomix.ui.common.StringResourceResolver;
 import at.fhv.roomix.ui.common.validator.DateValidator;
@@ -214,16 +214,17 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
             currCategoryPrice.setValue("?");
             if (newValue == null) return;
             XYChart.Series<Number, String> series = new XYChart.Series<>();
-            series.getData().add(new XYChart.Data<>(newValue.getFree(),
-                    StringResourceResolver.getStaticResolve(resourceBundle, "reservation.edit.unit.freerooms")));
-            series.getData().add(new XYChart.Data<>(newValue.getQuota(),
-                    StringResourceResolver.getStaticResolve(resourceBundle, "reservation.edit.unit.quotarooms")));
-            series.getData().add(new XYChart.Data<>(newValue.getOccupied(),
-                    StringResourceResolver.getStaticResolve(resourceBundle, "reservation.edit.unit.occupiedrooms")));
-            series.getData().add(new XYChart.Data<>(newValue.getUnconfirmedReservation(),
-                    StringResourceResolver.getStaticResolve(resourceBundle, "reservation.edit.unit.unconfirmedrooms")));
-            availableRooms.add(series);
-            currCategoryPrice.setValue(Float.toString(newValue.getPricePerDay() / 100F) + " €");
+            // TODO: Belegungsplan oder ähnliches einbauen
+//            series.getData().add(new XYChart.Data<>(newValue.getFree(),
+//                    StringResourceResolver.getStaticResolve(resourceBundle, "reservation.edit.unit.freerooms")));
+//            series.getData().add(new XYChart.Data<>(newValue.getQuota(),
+//                    StringResourceResolver.getStaticResolve(resourceBundle, "reservation.edit.unit.quotarooms")));
+//            series.getData().add(new XYChart.Data<>(newValue.getOccupied(),
+//                    StringResourceResolver.getStaticResolve(resourceBundle, "reservation.edit.unit.occupiedrooms")));
+//            series.getData().add(new XYChart.Data<>(newValue.getUnconfirmedReservation(),
+//                    StringResourceResolver.getStaticResolve(resourceBundle, "reservation.edit.unit.unconfirmedrooms")));
+//            availableRooms.add(series);
+//            currCategoryPrice.setValue(Float.toString(newValue.getPricePerDay() / 100F) + " €");
         }));
 
         amountAsStringProperty.addListener(((observable, oldValue, newValue) -> {

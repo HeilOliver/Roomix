@@ -1,10 +1,6 @@
 package at.fhv.roomix.ui.view.checkin.edit;
 
-import at.fhv.roomix.controller.contact.model.ContactPojo;
-import at.fhv.roomix.controller.reservation.model.CommentPojo;
-import at.fhv.roomix.controller.reservation.model.ReservationOptionPojo;
-import at.fhv.roomix.controller.reservation.model.ReservationPojo;
-import at.fhv.roomix.controller.reservation.model.ReservationUnitPojo;
+import at.fhv.roomix.controller.model.*;
 import at.fhv.roomix.ui.common.StringResourceResolver;
 import at.fhv.roomix.ui.view.checkin.edit.contracting_party.ContractingPartyView;
 import at.fhv.roomix.ui.view.checkin.edit.person.PersonView;
@@ -27,11 +23,8 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 
-import javax.annotation.PostConstruct;
 import java.time.format.DateTimeFormatter;
-import java.util.Collection;
 import java.util.ResourceBundle;
-import java.util.function.Supplier;
 
 public class CheckInEditViewModel implements ViewModel {
 
@@ -84,7 +77,21 @@ public class CheckInEditViewModel implements ViewModel {
     /**
      * Region Persons
      */
-    private ItemHandlerList<ContactPojo> personHandler;
+
+    private final IContentBuilder<PersonPojo> personBuilder = pojo -> {
+        StringBuilder sb = new StringBuilder();
+
+        if ((pojo.getForeName() == null || pojo.getLastName() == null)) {
+            sb.append(StringResourceResolver.getStaticResolve(bundle, "reservation.edit.contact.tag.noname"));
+        } else {
+            sb.append(pojo.getForeName());
+            sb.append(" ");
+            sb.append(pojo.getLastName());
+        }
+        return sb.toString();
+    };
+
+    private ItemHandlerList<PersonPojo> personHandler;
 
     ObservableList<ItemControlViewModel> getPersonControls() {
         return personHandler.currentItems();
@@ -200,7 +207,7 @@ public class CheckInEditViewModel implements ViewModel {
                 ContractingPartyView.class, contactBuilder, currentSelection, currentView, ContactPojo::new, viewScope);
 
         personHandler = new ItemHandlerList<>(
-                PersonView.class, contactBuilder, currentSelection, currentView, ContactPojo::new, viewScope
+                PersonView.class, personBuilder, currentSelection, currentView, PersonPojo::new, viewScope
         );
 
         unitHandler = new ItemHandlerList<>(
@@ -211,22 +218,20 @@ public class CheckInEditViewModel implements ViewModel {
         viewScope.selectedPojoProperty().addListener((observable, oldValue, newValue) -> {
             if(viewScope.selectedPojoProperty() != null) {
                 ReservationPojo reservationPojo = viewScope.selectedPojoProperty().get();
-                if(reservationPojo != null && reservationPojo.getPersonReservationsByReservationId() != null) {
-                    personHandler.setObjects(reservationPojo.getPersonReservationsByReservationId());
+                if(reservationPojo != null && reservationPojo.getPersons() != null) {
+                    personHandler.setObjects(reservationPojo.getPersons());
                     personHandler.hideDeleteButton();
                 }
-                if(reservationPojo != null && reservationPojo.getReservationUnitsByReservationId() != null) {
-                    unitHandler.setObjects(reservationPojo.getReservationUnitsByReservationId());
+                if(reservationPojo != null && reservationPojo.getUnits() != null) {
+                    unitHandler.setObjects(reservationPojo.getUnits());
                     unitHandler.hideDeleteButton();
                 }
                 if(reservationPojo != null && reservationPojo.getContractingParty() != null) {
                     contractingPartyHandler.setObject(reservationPojo.getContractingParty());
                     contractingPartyHandler.hideDeleteButton();
                 }
-                if(reservationPojo != null &&  reservationPojo.getReservationOptionByReservationOption() != null
-                        && !reservationPojo.getReservationOptionByReservationOption().isEmpty()) {
-                    /* TODO: replace collection with single object for reservation options */
-                    optionHandler.setObject(reservationPojo.getReservationOptionByReservationOption().iterator().next());
+                if(reservationPojo != null &&  reservationPojo.getOption() != null) {
+                    optionHandler.setObject(reservationPojo.getOption());
                     optionHandler.hideDeleteButton();
                 }
                 if(reservationPojo != null && reservationPojo.getComment() != null){

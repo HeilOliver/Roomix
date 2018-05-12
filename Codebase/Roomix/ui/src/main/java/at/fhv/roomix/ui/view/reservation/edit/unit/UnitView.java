@@ -1,6 +1,6 @@
 package at.fhv.roomix.ui.view.reservation.edit.unit;
 
-import at.fhv.roomix.controller.reservation.model.ArrangementPojo;
+import at.fhv.roomix.controller.model.ArrangementPojo;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import de.saxsys.mvvmfx.utils.validation.visualization.ControlsFxVisualizer;
