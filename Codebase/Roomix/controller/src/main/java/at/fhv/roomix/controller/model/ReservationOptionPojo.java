@@ -1,4 +1,4 @@
-package at.fhv.roomix.controller.reservation.model;
+package at.fhv.roomix.controller.model;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

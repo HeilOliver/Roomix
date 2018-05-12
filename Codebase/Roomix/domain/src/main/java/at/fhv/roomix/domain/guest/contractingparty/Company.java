@@ -12,6 +12,6 @@ import at.fhv.roomix.domain.guest.contact.Contact;
  */
 public class Company extends ContractingParty {
     public Company(Contact contact) {
-        super(contact);
+        super(contact, ContractingPartyType.COMPANY);
     }
 }

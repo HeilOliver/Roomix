@@ -1,6 +1,6 @@
 package at.fhv.roomix.ui.view.contact.content;
 
-import at.fhv.roomix.controller.contact.model.ContactPojo;
+import at.fhv.roomix.controller.model.ContactPojo;
 import at.fhv.roomix.ui.view.contact.scopes.ContactViewScope;
 import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ViewModel;

@@ -1,6 +1,6 @@
 package at.fhv.roomix.ui.view.reservation.edit.unit;
 
-import at.fhv.roomix.controller.reservation.model.RoomCategoryPojo;
+import at.fhv.roomix.controller.model.RoomCategoryPojo;
 import de.saxsys.mvvmfx.InjectResourceBundle;
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.SimpleStringProperty;

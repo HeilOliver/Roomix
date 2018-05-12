@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 public class ContactBuilder {
     private static TypeMap<ContactEntity, Contact> typeMap;
 
-    private static TypeMap<ContactEntity, Contact> converterFromEntity() {
+    public static TypeMap<ContactEntity, Contact> converterFromEntity() {
         if (typeMap != null) return typeMap;
         ModelMapper modelMapper = new ModelMapper();
         typeMap = modelMapper.createTypeMap(ContactEntity.class, Contact.class);
@@ -41,7 +41,7 @@ public class ContactBuilder {
     }
 
     public static Contact getContact(int id) throws BuilderLoadException {
-        if (id == 0) return new Contact();
+        if (id <= 0) return new Contact();
         ContactEntity entity = null;
         try {
             entity = ContactFactory.getInstance().get(id);

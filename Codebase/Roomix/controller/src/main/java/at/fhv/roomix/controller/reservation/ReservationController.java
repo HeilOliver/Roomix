@@ -1,9 +1,12 @@
 package at.fhv.roomix.controller.reservation;
 
+import at.fhv.roomix.common.Mapper;
 import at.fhv.roomix.controller.common.exceptions.*;
 import at.fhv.roomix.controller.common.validator.Validator;
-import at.fhv.roomix.controller.contact.model.ContactPojo;
-import at.fhv.roomix.controller.reservation.model.*;
+import at.fhv.roomix.controller.model.ContactPojo;
+import at.fhv.roomix.controller.model.PersonPojo;
+import at.fhv.roomix.controller.mapping.ReservationMapping;
+import at.fhv.roomix.controller.model.*;
 import at.fhv.roomix.domain.guest.contractingparty.ContractingParty;
 import at.fhv.roomix.domain.payment.DayPrice;
 import at.fhv.roomix.domain.payment.PriceCalculator;
@@ -15,13 +18,12 @@ import at.fhv.roomix.domain.stay.CategoryStatus;
 import at.fhv.roomix.persist.builder.accessbuilder.*;
 import at.fhv.roomix.persist.builder.dependencybuilder.CategoryFinderBuilder;
 import at.fhv.roomix.persist.builder.dependencybuilder.PriceCalculatorBuilder;
-import at.fhv.roomix.persist.dataaccess.dao.PersonDao;
 import at.fhv.roomix.persist.dataaccess.factory.EntityFactory;
-import at.fhv.roomix.persist.dataaccess.factory.PersonFactory;
 import at.fhv.roomix.persist.exception.BuilderLoadException;
 import at.fhv.roomix.persist.exception.PersistException;
 import org.modelmapper.MappingException;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -35,10 +37,20 @@ import java.util.stream.Collectors;
  * <p>
  * The Implementation for the ReservationController itself
  */
-
 class ReservationController implements IReservationController {
     private static final ModelMapper mapper = new ModelMapper();
+    private static final Mapper _mapper = Mapper.getInstance();
     private final ISessionDomain sessionHandler = SessionFactory.getInstance();
+
+    static {
+        mapper.addMappings(new PropertyMap<ReservationOption, ReservationOptionPojo>() {
+            @Override
+            protected void configure() {
+                skip().setOptionStatus((byte) 0);
+            }
+        });
+        _mapper.addMapType(new ReservationMapping(), Reservation.class, ReservationPojo.class);
+    }
 
     @Override
     public Collection<ReservationPojo> getSearchedReservation(long sessionId, String query) throws SessionFaultException, GetFault {
@@ -64,32 +76,12 @@ class ReservationController implements IReservationController {
                                 Integer.toString(r.getContractingParty().getContact().getId()).contains(splicedQuery))
                         .collect(Collectors.toSet()));
             }
-            Set<ReservationPojo> reservationPojoSet = new HashSet<>();
-            for (Reservation reservation:resultSet) {
-                ReservationPojo reservationPojo = new ReservationPojo();
-                CommentPojo commentPojo = new CommentPojo();
-                commentPojo.setComment(reservation.getComment());
-                reservationPojo.setComment(commentPojo);
-                reservationPojo.setContractingParty(mapper.map(reservation.getContractingParty().getContact(), ContactPojo.class));
-                reservationPojo.setPaymentType(reservation.getPaymentType().getId());
-                reservationPojo.setReservationStatus(reservation.getStatus().toString());
-                Set<ReservationOption> reservationOptionSet = new HashSet<>();
-                Set<ReservationOptionPojo> reservationOptionPojoSet = new HashSet<>();
-                reservationOptionSet.add(reservation.getOption());
-                for (ReservationOption reservationOption:reservationOptionSet) {
-                    reservationOptionPojoSet.add(mapper.map(reservationOption,ReservationOptionPojo.class));
-                }
-                reservationPojo.setReservationOptionByReservationOption(reservationOptionPojoSet);
-                Set<ContactPojo> contactPojoSet = new HashSet<>();
-                Set<Person> personSet = new HashSet<>(reservation.getGuests());
-                for (Person person: personSet) {
-                    contactPojoSet.add(mapper.map(person.getContact(),ContactPojo.class));
-                }
-                reservationPojo.setPersonReservationsByReservationId(contactPojoSet);
 
-                reservationPojoSet.add(reservationPojo);
+            Set<ReservationPojo> reservationPojoSet = new HashSet<>();
+
+            for (Reservation reservation : resultSet) {
+                reservationPojoSet.add(_mapper.map(reservation, ReservationPojo.class));
             }
-            //Set<ReservationPojo> collect = resultSet.stream().map((res) -> mapper.map(res, ReservationPojo.class)).collect(Collectors.toSet());
             return reservationPojoSet;
         } catch (BuilderLoadException | MappingException e) {
             throw new GetFault("Exception by loading data, see inner exception fore more details", e);
@@ -97,31 +89,37 @@ class ReservationController implements IReservationController {
     }
 
     @Override
-    public PricePojo calculatePrice(long sessionId, ReservationUnitPojo reservationUnit, ContactPojo contactPojo)
-            throws SessionFaultException, ArgumentFaultException, GetFault {
-        if (reservationUnit == null) throw new ArgumentFaultException("ReservationUnitPojo is not allowed to be null");
-        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
-
-        try {
-            ContractingParty party = null;
-            if (contactPojo != null && contactPojo.getContactId() > 0)
-                party = ContractingPartyBuilder.get(contactPojo.getContactId());
-
-            PriceCalculator calculator = PriceCalculatorBuilder.get(party);
-
-            //TODO Map here to DomainObj
-            ReservationUnit unit = mapper.map(reservationUnit, ReservationUnit.class);
-            Collection<DayPrice> priceFor = calculator.getPriceFor(unit);
-
-            // TODO Map here to POJO
-            // var a = mapper.map(priceFor, something.class)
-            return null;
-        } catch (BuilderLoadException | MappingException e) {
-            throw new GetFault("Cant load RoomCategories, see inner exception fore more details", e);
-        }
+    public Collection<PersonPojo> getSearchedPersons(long sessionId, String query) throws SessionFaultException, GetFault {
+        return null;
     }
 
     @Override
+    public Collection<CategoryDataPojo> calculateData(long sessionId, RoomCategoryPojo pojo, ContractingParty party)
+            throws SessionFaultException,ValidationFault, ArgumentFaultException, GetFault {
+//        if (reservationUnit == null) throw new ArgumentFaultException("ReservationUnitPojo is not allowed to be null");
+//        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
+//
+//        try {
+//            ContractingParty party = null;
+//            if (contactPojo != null && contactPojo.getContactId() > 0)
+//                party = ContractingPartyBuilder.get(contactPojo.getContactId());
+//
+//            PriceCalculator calculator = PriceCalculatorBuilder.get(party);
+//
+//            //TODO Map here to DomainObj
+//            ReservationUnit unit = mapper.map(reservationUnit, ReservationUnit.class);
+//            Collection<DayPrice> priceFor = calculator.getPriceFor(unit);
+//
+//            // TODO Map here to POJO
+//            // var a = mapper.map(priceFor, something.class)
+//            return null;
+//        } catch (BuilderLoadException | MappingException e) {
+//            throw new GetFault("Cant load RoomCategories, see inner exception fore more details", e);
+//        }
+        throw new GetFault();
+    }
+
+    /*@Override
     public Collection<RoomCategoryPojo> getRoomAllocation(long sessionId, LocalDate startDate, LocalDate endDate, ContactPojo contactPojo) throws SessionFaultException, ArgumentFaultException, GetFault {
         if (startDate == null) throw new ArgumentFaultException("Start Date is not allowed to be null");
         if (endDate == null) throw new ArgumentFaultException("End Date is not allowed to be null");
@@ -140,7 +138,6 @@ class ReservationController implements IReservationController {
                 result.put(category, categoryStatus);
             }
 
-            // TODO Map here to POJO
             Set<RoomCategoryPojo> roomCategoryPojoSet = new HashSet<>();
             for (RoomCategory roomCategory:result.keySet()) {
                 RoomCategoryPojo roomCategoryPojo = new RoomCategoryPojo();
@@ -152,7 +149,7 @@ class ReservationController implements IReservationController {
         } catch (BuilderLoadException | MappingException e) {
             throw new GetFault("Cant load RoomCategories, see inner exception fore more details", e);
         }
-    }
+    }*/
 
     @Override
     public Collection<RoomCategoryPojo> getAllCategory(long sessionId) throws SessionFaultException, GetFault {
@@ -203,34 +200,56 @@ class ReservationController implements IReservationController {
         Validator.validate(reservationPojo);
 
         try {
-            Reservation reservation = new Reservation();
-            reservation.setComment(reservationPojo.getComment().getComment());
-            ContractingParty contractingParty = ContractingPartyBuilder.get(reservationPojo.getContractingParty().getContactId());
-            reservation.setContractingParty(contractingParty);
-            Reservation.Status status = Reservation.Status.valueOf(reservationPojo.getReservationStatus());
-            reservation.setStatus(status);
-
-            Set<Person> personSet = new HashSet<>();
-            Person person = new Person();
-            ContactPojo contactPojo = new ContactPojo();
-            // Todo Wie bekomme ich aus einem Kontakt die Person?
-            reservation.setGuests(null);
-            //Todo Oli du bekommst eine scheiß Collection und nicht eine einzelne Option!
-            reservation.setOption(null);
-
-            Set<ReservationUnit> reservationUnitSet = new HashSet<>();
-            Set<ReservationUnitPojo> reservationUnitPojoSet = new HashSet<>(reservationPojo.getReservationUnitsByReservationId());
-            for (ReservationUnitPojo reservationUnitPojo: reservationUnitPojoSet) {
-                reservationUnitSet.add(mapper.map(reservationUnitPojo,ReservationUnit.class));
+            Reservation toUpdate;
+            // If Reservation already exist - Load again here
+            if (reservationPojo.getId() > 0) {
+                toUpdate = ReservationBuilder.get(reservationPojo.getId());
+            } else {
+                toUpdate = new Reservation();
             }
-            reservation.setUnits(reservationUnitSet);
 
-            //Todo Payment ist jetzt komplett anders und stimmt somit mit der Gui nicht mehr überein!
-            reservation.setPaymentType(null);
+            // If Commend exists
+            if (reservationPojo.getComment() != null) {
+                toUpdate.setComment(reservationPojo.getComment().getComment());
+            } else {
+                toUpdate.setComment(null);
+            }
+
+            // If ContractingParty is new
+            ContractingParty contractingParty
+                    = ContractingPartyBuilder.get(reservationPojo.getContractingParty().getContactId());
+            toUpdate.setContractingParty(contractingParty);
+
+            // Map / Update Persons
+            Collection<PersonPojo> persons = reservationPojo.getPersons();
+            toUpdate.setGuests(new HashSet<>());
+            for (PersonPojo person : persons) {
+                Person guest = GuestBuilder.getPerson(person.getId());
+                mapper.map(person, guest);
+                toUpdate.getGuests().add(guest);
+            }
+
+            // Add Option
+            ReservationOptionPojo option = reservationPojo.getOption();
+            if (option != null) {
+                ReservationOption reservationOption = ReservationOptionBuilder.get(option.getOptionId());
+                mapper.map(option, reservationOption);
+                toUpdate.setOption(reservationOption);
+            }
+
+            // Add Units
+            toUpdate.setUnits(new HashSet<>());
+            for (ReservationUnitPojo reservationUnitPojo: reservationPojo.getUnits()) {
+                ReservationUnit unit = ReservationUnitBuilder.get(reservationUnitPojo.getId());
+                mapper.map(reservationUnitPojo,unit);
+                toUpdate.getUnits().add(unit);
+            }
+
+            int paymentTypeId = reservationPojo.getPaymentType().getId();
+            toUpdate.setPaymentType(PaymentTypeBuilder.getPaymentType(paymentTypeId));
 
 
-            ReservationBuilder.update(reservation);
-
+            ReservationBuilder.update(toUpdate);
             EntityFactory.commitAll();
         } catch (MappingException | PersistException e) {
             throw new SaveFault(e.getMessage(), e);

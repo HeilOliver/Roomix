@@ -2,13 +2,13 @@ package at.fhv.roomix.ui.dataprovider;
 
 import at.fhv.roomix.controller.common.exceptions.GetFault;
 import at.fhv.roomix.controller.common.exceptions.SessionFaultException;
-import at.fhv.roomix.controller.contact.model.ContactPojo;
+import at.fhv.roomix.controller.model.ContactPojo;
 import at.fhv.roomix.controller.reservation.IReservationController;
 import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
-import at.fhv.roomix.controller.reservation.model.ArrangementPojo;
-import at.fhv.roomix.controller.reservation.model.PricePojo;
-import at.fhv.roomix.controller.reservation.model.ReservationUnitPojo;
-import at.fhv.roomix.controller.reservation.model.RoomCategoryPojo;
+import at.fhv.roomix.controller.model.ArrangementPojo;
+import at.fhv.roomix.controller.model.PricePojo;
+import at.fhv.roomix.controller.model.ReservationUnitPojo;
+import at.fhv.roomix.controller.model.RoomCategoryPojo;
 import at.fhv.roomix.ui.common.ICallable;
 import at.fhv.roomix.ui.common.ICallableWithParameter;
 import javafx.application.Platform;

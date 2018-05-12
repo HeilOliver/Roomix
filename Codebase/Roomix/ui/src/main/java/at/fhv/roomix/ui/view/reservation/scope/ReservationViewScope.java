@@ -1,13 +1,9 @@
 package at.fhv.roomix.ui.view.reservation.scope;
 
 
-import at.fhv.roomix.controller.reservation.model.ReservationPojo;
+import at.fhv.roomix.controller.model.ReservationPojo;
 import at.fhv.roomix.ui.common.AbstractMasterEditScope;
 import at.fhv.roomix.ui.common.IErrorCall;
-import at.fhv.roomix.ui.dataprovider.AbstractProvider;
-import at.fhv.roomix.ui.dataprovider.ReservationProvider;
-
-import java.util.function.Supplier;
 
 /**
  * Roomix

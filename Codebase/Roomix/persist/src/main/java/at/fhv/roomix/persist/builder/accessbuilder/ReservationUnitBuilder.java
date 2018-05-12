@@ -99,10 +99,15 @@ public class ReservationUnitBuilder {
         unit.setReservation(
                 new Proxy<>(() -> ReservationBuilder.get(entity.getReservation().getReservationId())));
 
+        if (!entity.getRoomAssignments().isEmpty()) {
+            // TODO Here Mapping
+        }
+
         return unit;
     }
 
-    private static ReservationUnit get(int id) throws BuilderLoadException {
+    public static ReservationUnit get(int id) throws BuilderLoadException {
+        if (id <= 0) return new ReservationUnit();
         ReservationUnitEntity entity;
         try {
             entity = ReservationUnitFactory.getInstance().get(id);
@@ -119,5 +124,9 @@ public class ReservationUnitBuilder {
         } catch (BuilderLoadException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static void update(ReservationUnit unit) {
+
     }
 }

@@ -86,7 +86,7 @@
                 </HBox>
                 <ListView fx:id="listUnits" GridPane.rowIndex="7" GridPane.hgrow="ALWAYS"/>
 
-                <!-- Units -->
+                <!-- Option -->
                 <HBox maxWidth="Infinity" styleClass="headerBox" GridPane.rowIndex="9"
                       GridPane.halignment="LEFT" GridPane.valignment="CENTER" GridPane.hgrow="ALWAYS">
                     <Label text="%reservation.options"
@@ -98,7 +98,7 @@
                         </graphic>
                     </Button>
                 </HBox>
-                <ListView fx:id="listOptions" GridPane.rowIndex="10" GridPane.hgrow="ALWAYS"/>
+                <HBox fx:id="boxOption" GridPane.rowIndex="10" GridPane.hgrow="ALWAYS"/>
 
                 <!-- Comment -->
                 <HBox maxWidth="Infinity" styleClass="headerBox" GridPane.rowIndex="12"

@@ -1,9 +1,11 @@
 package at.fhv.roomix.persist.builder.accessbuilder;
 
+import at.fhv.roomix.common.Mapper;
 import at.fhv.roomix.domain.reservation.Arrangement;
 import at.fhv.roomix.persist.dataaccess.factory.ArrangementFactory;
 import at.fhv.roomix.persist.exception.BuilderLoadException;
 import at.fhv.roomix.persist.exception.PersistLoadException;
+import at.fhv.roomix.persist.mappings.ArrangementMapping;
 import at.fhv.roomix.persist.models.ArticleEntity;
 import org.modelmapper.ModelMapper;
 
@@ -19,7 +21,11 @@ import java.util.HashSet;
  * Enter Description here
  */
 public class ArrangementBuilder {
-    private static final ModelMapper mapper = new ModelMapper();
+    private static final Mapper mapper = Mapper.getInstance();
+
+    static {
+        Mapper.getInstance().addMapType(new ArrangementMapping(), ArticleEntity.class, Arrangement.class);
+    }
 
     public static Collection<Arrangement> getArrangements() throws BuilderLoadException {
         Collection<ArticleEntity> all = null;

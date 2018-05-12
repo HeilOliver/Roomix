@@ -2,7 +2,7 @@ package at.fhv.roomix.controller.contact;
 
 import at.fhv.roomix.controller.common.exceptions.*;
 import at.fhv.roomix.controller.common.validator.Validator;
-import at.fhv.roomix.controller.contact.model.ContactPojo;
+import at.fhv.roomix.controller.model.ContactPojo;
 import at.fhv.roomix.domain.guest.contact.Contact;
 import at.fhv.roomix.domain.session.ISessionDomain;
 import at.fhv.roomix.domain.session.SessionFactory;
@@ -35,19 +35,6 @@ class ContactController implements IContactController {
     }
 
     private final ISessionDomain sessionHandler = SessionFactory.getInstance();
-
-//    public Collection<ContactPojo> getAllContacts(long sessionId) throws SessionFaultException, GetFault {
-//        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
-//
-//        try {
-//            HashSet<ContactPojo> resultSet = new HashSet<>();
-//            ContactBuilder.getContacts()
-//                    .forEach(contact -> resultSet.add(mapper.map(contact, ContactPojo.class)));
-//            return resultSet;
-//        } catch (PersistLoadException e) {
-//            throw new GetFault("Exception by loading data, see inner exception fore more details", e);
-//        }
-//    }
 
     @Override
     public void updateContact(long sessionId, ContactPojo contactPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException, SaveFault {

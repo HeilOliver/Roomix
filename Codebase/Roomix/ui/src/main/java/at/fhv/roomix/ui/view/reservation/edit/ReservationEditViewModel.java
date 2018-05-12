@@ -1,10 +1,11 @@
 package at.fhv.roomix.ui.view.reservation.edit;
 
-import at.fhv.roomix.controller.contact.model.ContactPojo;
-import at.fhv.roomix.controller.reservation.model.CommentPojo;
-import at.fhv.roomix.controller.reservation.model.ReservationOptionPojo;
-import at.fhv.roomix.controller.reservation.model.ReservationPojo;
-import at.fhv.roomix.controller.reservation.model.ReservationUnitPojo;
+import at.fhv.roomix.controller.model.ContactPojo;
+import at.fhv.roomix.controller.model.PersonPojo;
+import at.fhv.roomix.controller.model.CommentPojo;
+import at.fhv.roomix.controller.model.ReservationOptionPojo;
+import at.fhv.roomix.controller.model.ReservationPojo;
+import at.fhv.roomix.controller.model.ReservationUnitPojo;
 import at.fhv.roomix.ui.common.StringResourceResolver;
 import at.fhv.roomix.ui.view.reservation.edit.comment.CommentView;
 import at.fhv.roomix.ui.view.reservation.edit.contact.ContactView;
@@ -13,11 +14,11 @@ import at.fhv.roomix.ui.view.reservation.edit.item.ItemControlViewModel;
 import at.fhv.roomix.ui.view.reservation.edit.item.ItemHandlerList;
 import at.fhv.roomix.ui.view.reservation.edit.item.ItemHandlerSingle;
 import at.fhv.roomix.ui.view.reservation.edit.option.OptionView;
+import at.fhv.roomix.ui.view.reservation.edit.person.PersonView;
 import at.fhv.roomix.ui.view.reservation.edit.unit.UnitView;
 import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
 import de.saxsys.mvvmfx.InjectResourceBundle;
 import de.saxsys.mvvmfx.InjectScope;
-import de.saxsys.mvvmfx.ScopeProvider;
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.ReadOnlyBooleanProperty;
@@ -72,9 +73,9 @@ public class ReservationEditViewModel implements ViewModel {
             ReservationPojo pojo = new ReservationPojo();
             pojo.setContractingParty(contractingPartyHandler.getObject());
             pojo.setComment(commentHandler.getObject());
-            pojo.setReservationOptionByReservationOption(optionHandler.getObjects());
-            pojo.setReservationUnitsByReservationId(unitHandler.getObjects());
-            pojo.setPersonReservationsByReservationId(personHandler.getObjects());
+            pojo.setOption(optionHandler.getObject());
+            pojo.setUnits(unitHandler.getObjects());
+            pojo.setPersons(personHandler.getObjects());
             viewScope.inEditPojoProperty().setValue(pojo);
         });
 
@@ -127,8 +128,12 @@ public class ReservationEditViewModel implements ViewModel {
     //endregion
 
     //region Person
-    private final ItemHandlerList<ContactPojo> personHandler = new ItemHandlerList<>(
-            ContactView.class, contactBuilder, currentSelection, currentView, ContactPojo::new
+    private final IContentBuilder<PersonPojo> personBuilder = (pojo -> {
+        return "Nohing in Here";
+    });
+
+    private final ItemHandlerList<PersonPojo> personHandler = new ItemHandlerList<>(
+            PersonView.class, personBuilder, currentSelection, currentView, PersonPojo::new
     );
 
     ObservableList<ItemControlViewModel> getPersonControls() {
@@ -201,12 +206,12 @@ public class ReservationEditViewModel implements ViewModel {
         return sb.toString();
     });
 
-    private final ItemHandlerList<ReservationOptionPojo> optionHandler = new ItemHandlerList<>(
-            OptionView.class, optionBuilder, currentSelection, currentView, ReservationOptionPojo::new, 1
+    private final ItemHandlerSingle<ReservationOptionPojo> optionHandler = new ItemHandlerSingle<ReservationOptionPojo>(
+            OptionView.class, optionBuilder, currentSelection, currentView, ReservationOptionPojo::new
     );
 
-    ObservableList<ItemControlViewModel> getOptionControls() {
-        return optionHandler.currentItems();
+    ReadOnlyObjectProperty<ItemControlViewModel<ReservationOptionPojo>> getOptionControl() {
+        return optionHandler.currentItem();
     }
 
     ReadOnlyBooleanProperty isOptionAddAble() {

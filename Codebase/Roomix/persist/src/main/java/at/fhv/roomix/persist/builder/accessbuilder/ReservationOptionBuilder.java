@@ -30,7 +30,8 @@ public class ReservationOptionBuilder {
         });
     }
 
-    static ReservationOption get(int id) throws BuilderLoadException {
+    public static ReservationOption get(int id) throws BuilderLoadException {
+        if (id <= 0) return new ReservationOption();
         ReservationOptionEntity entity;
         try {
             entity = ReservationOptionFactory.getInstance().get(id);

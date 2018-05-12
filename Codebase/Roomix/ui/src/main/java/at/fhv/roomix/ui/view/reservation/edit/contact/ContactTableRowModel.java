@@ -1,6 +1,6 @@
 package at.fhv.roomix.ui.view.reservation.edit.contact;
 
-import at.fhv.roomix.controller.contact.model.ContactPojo;
+import at.fhv.roomix.controller.model.ContactPojo;
 import at.fhv.roomix.ui.common.AbstractTableRowModel;
 
 /**

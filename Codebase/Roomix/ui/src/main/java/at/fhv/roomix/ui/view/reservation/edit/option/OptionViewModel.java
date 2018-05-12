@@ -1,7 +1,7 @@
 package at.fhv.roomix.ui.view.reservation.edit.option;
 
-import at.fhv.roomix.controller.reservation.model.PricePojo;
-import at.fhv.roomix.controller.reservation.model.ReservationOptionPojo;
+import at.fhv.roomix.controller.model.PricePojo;
+import at.fhv.roomix.controller.model.ReservationOptionPojo;
 import at.fhv.roomix.ui.common.StringResourceResolver;
 import at.fhv.roomix.ui.view.reservation.edit.SubscribeAbleViewModel;
 import de.saxsys.mvvmfx.InjectResourceBundle;

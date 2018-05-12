@@ -1,6 +1,6 @@
 package at.fhv.roomix.ui.view.reservation.content;
 
-import at.fhv.roomix.controller.reservation.model.ReservationPojo;
+import at.fhv.roomix.controller.model.ReservationPojo;
 import at.fhv.roomix.ui.common.AbstractTableRowModel;
 
 /**

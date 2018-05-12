@@ -27,9 +27,9 @@ public class ContactEntity {
     private byte active;
     private ContractingPartyEntity contractingParty;
     private Collection<ContactNoteEntity> contactNotes = new HashSet<>();
-    private Collection<CreditCardEntity> creditCardsByContactId;
-    private Collection<InvoiceEntity> invoicesByContactId;
-    private Collection<PersonEntity> peopleByContactId;
+    private Collection<CreditCardEntity> creditCardsByContactId = new HashSet<>();
+    private Collection<InvoiceEntity> invoicesByContactId = new HashSet<>();
+    private Collection<PersonEntity> people = new HashSet<>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -217,11 +217,11 @@ public class ContactEntity {
 
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @OneToMany(mappedBy = "contact")
-    public Collection<PersonEntity> getPeopleByContactId() {
-        return peopleByContactId;
+    public Collection<PersonEntity> getPeople() {
+        return people;
     }
 
-    public void setPeopleByContactId(Collection<PersonEntity> peopleByContactId) {
-        this.peopleByContactId = peopleByContactId;
+    public void setPeople(Collection<PersonEntity> peopleByContactId) {
+        this.people = peopleByContactId;
     }
 }

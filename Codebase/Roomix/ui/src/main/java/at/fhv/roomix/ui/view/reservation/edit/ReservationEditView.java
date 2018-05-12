@@ -47,7 +47,7 @@ public class ReservationEditView implements FxmlView<ReservationEditViewModel> {
     @FXML
     private Button btnAddOption;
     @FXML
-    private ListView<ItemControlViewModel> listOptions;
+    private HBox boxOption;
     @FXML
     private Button btnAddComment;
     @FXML
@@ -57,6 +57,7 @@ public class ReservationEditView implements FxmlView<ReservationEditViewModel> {
     private AnchorPane boxDetailPane;
     @FXML
     private MasterDetailPane mdPane;
+
 
     public void initialize() {
         mdPane.dividerPositionProperty().addListener(((observable, oldValue, newValue) -> {
@@ -87,8 +88,13 @@ public class ReservationEditView implements FxmlView<ReservationEditViewModel> {
         }));
         btnAddContractingParty.disableProperty().bind(viewModel.isCommendAddAble().not());
 
-        listOptions.setItems(viewModel.getOptionControls());
-        listOptions.setCellFactory(cellFactory);
+        viewModel.getOptionControl().addListener(((observable, oldValue, newValue) -> {
+            if (newValue == null) {
+                boxOption.getChildren().clear();
+                return;
+            }
+            ViewHelper.setChildren(boxOption, cellFactory.map(newValue).getView());
+        }));
         btnAddOption.disableProperty().bind(viewModel.isOptionAddAble().not());
 
         listPersons.setItems(viewModel.getPersonControls());

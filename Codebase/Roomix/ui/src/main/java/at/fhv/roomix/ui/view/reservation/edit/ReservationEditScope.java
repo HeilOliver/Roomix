@@ -1,7 +1,7 @@
 package at.fhv.roomix.ui.view.reservation.edit;
 
 
-import at.fhv.roomix.controller.contact.model.ContactPojo;
+import at.fhv.roomix.controller.model.ContactPojo;
 import at.fhv.roomix.ui.view.reservation.edit.item.ItemControlViewModel;
 import de.saxsys.mvvmfx.Scope;
 import javafx.beans.property.ObjectProperty;

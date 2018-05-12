@@ -1,5 +1,6 @@
 package at.fhv.roomix.persist;
 
+import at.fhv.roomix.common.Mapper;
 import at.fhv.roomix.domain.guest.contact.Contact;
 import at.fhv.roomix.domain.guest.contractingparty.Individual;
 import at.fhv.roomix.domain.reservation.*;
@@ -9,6 +10,7 @@ import at.fhv.roomix.domain.stay.CategoryStatus;
 import at.fhv.roomix.persist.builder.accessbuilder.*;
 import at.fhv.roomix.persist.dataaccess.dao.HibernateSessionController;
 import at.fhv.roomix.persist.dataaccess.factory.EntityFactory;
+import at.fhv.roomix.persist.exception.BuilderLoadException;
 import at.fhv.roomix.persist.exception.PersistException;
 
 import java.time.LocalDate;
@@ -29,8 +31,15 @@ public class RunMe {
     public static void main(String[] args) throws PersistException {
         //loadAllReservations();
         //createReservationTest();
-        getCategoryStatus();
+        //getCategoryStatus();
+        getArrangements();
         HibernateSessionController.disposeHibernate();
+    }
+
+    private static void getArrangements() throws BuilderLoadException {
+        Collection<Arrangement> collection = ArrangementBuilder.getArrangements();
+
+        collection.forEach(System.out::println);
     }
 
     private static void getCategoryStatus() throws PersistException {

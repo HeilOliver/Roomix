@@ -1,4 +1,4 @@
-package at.fhv.roomix.controller.reservation.model;
+package at.fhv.roomix.controller.model;
 
 import org.hibernate.validator.constraints.Range;
 

@@ -48,6 +48,8 @@ public class ContractingPartyBuilder {
         }
     }
 
+
+
     public static void updateIndividual(Individual individual) throws BuilderUpdateException {
         if (individual == null) throw new IllegalArgumentException();
         if (individual.getContact() == null) throw new IllegalArgumentException();
@@ -167,13 +169,13 @@ public class ContractingPartyBuilder {
         }
         switch (entity.getContractingPartyType()) {
             case "INDIVIDUAL":
-                return getIndividual(id);
+                return getIndividual(entity.getContact().getContactId());
 
             case "COMPANY":
-                return getCompany(id);
+                return getCompany(entity.getContact().getContactId());
 
             case "TRAVEL_AGENCY":
-                return getTravelAgency(id);
+                return getTravelAgency(entity.getContact().getContactId());
 
             default:
                 throw new BuilderLoadException(String.format("Cant find contractingParty type: %s", entity.getContractingPartyType()));

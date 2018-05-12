@@ -1,4 +1,4 @@
-package at.fhv.roomix.controller.contact.model;
+package at.fhv.roomix.controller.model;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -54,9 +54,6 @@ public class ContactPojo {
     @Email(message = "Email should be valid")
     @Size(min = 1)
     private String email;
-
-    @NotNull(message = "Active cannot be null")
-    private byte active;
 
     // 0 = none, 100 = private, 200 = company, 300 = travelAgent
     private int contractingPartyType;
@@ -160,15 +157,6 @@ public class ContactPojo {
         this.email = email;
     }
 
-    public Byte getActive() {
-        return active;
-    }
-
-    public void setActive(Byte active) {
-        this.active = active;
-    }
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -185,8 +173,7 @@ public class ContactPojo {
                 Objects.equals(postcode, that.postcode) &&
                 Objects.equals(country, that.country) &&
                 Objects.equals(email, that.email) &&
-                Objects.equals(houseNumber, that.houseNumber) &&
-                Objects.equals(active, that.active);
+                Objects.equals(houseNumber, that.houseNumber);
     }
 
     @Override

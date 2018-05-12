@@ -13,9 +13,11 @@ import at.fhv.roomix.domain.guest.contact.Contact;
 public abstract class ContractingParty {
     private Contact contact;
     private int id;
+    private ContractingPartyType type;
 
-    public ContractingParty(Contact contact) {
+    public ContractingParty(Contact contact, ContractingPartyType type) {
         this.contact = contact;
+        this.type = type;
     }
 
     public int getId() {
@@ -32,5 +34,15 @@ public abstract class ContractingParty {
 
     public void setContact(Contact contact) {
         this.contact = contact;
+    }
+
+    public ContractingPartyType getType() {
+        return type;
+    }
+
+    public enum ContractingPartyType {
+        INDIVIDUAL,
+        TRAVEL_AGENT,
+        COMPANY
     }
 }

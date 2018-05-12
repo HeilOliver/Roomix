@@ -1,7 +1,7 @@
 package at.fhv.roomix.controller.contact;
 
 import at.fhv.roomix.controller.common.exceptions.*;
-import at.fhv.roomix.controller.contact.model.ContactPojo;
+import at.fhv.roomix.controller.model.ContactPojo;
 
 import java.util.Collection;
 
@@ -15,7 +15,13 @@ import java.util.Collection;
  */
 public interface IContactController {
 
+    /**
+     * Returns all Contacts for the given query string
+     */
     Collection<ContactPojo> getSearchedContacts(long sessionId, String query) throws SessionFaultException, GetFault;
 
+    /**
+     * Updates/Creates the given Contact
+     */
     void updateContact(long sessionId, ContactPojo contactPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException, SaveFault;
 }

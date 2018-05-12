@@ -1,6 +1,7 @@
 package at.fhv.roomix.domain.reservation;
 
 import at.fhv.roomix.domain.common.Proxy;
+import at.fhv.roomix.domain.room.Room;
 import at.fhv.roomix.domain.room.RoomCategory;
 
 import java.time.LocalDate;
@@ -40,6 +41,7 @@ public class ReservationUnit {
         return reservation.get();
     }
 
+    //region GetterSetter
     public void setReservation(Proxy<Reservation> reservation) {
         this.reservation = reservation;
     }
@@ -98,5 +100,37 @@ public class ReservationUnit {
 
     public void setCanceled(boolean canceled) {
         isCanceled = canceled;
+    }
+    //endregion
+
+    private UnitStatus status;
+    private Collection<Person> guests = new HashSet<>(); // May her Proxy Collection
+    private Room assignedRoom;
+
+    public boolean canCheckedIn() {
+        return status != UnitStatus.NEW
+                && hasRoom()
+                && assignedRoom.getRoomStatus() != Room.RoomStatus.OUT_OF_ORDER;
+    }
+
+    public void addGuest(Person person) {
+        guests.add(person);
+    }
+
+    public boolean hasRoom() {
+        return assignedRoom != null;
+    }
+
+    public void checkIn() {
+        if (status != UnitStatus.NEW) throw new IllegalStateException("Unit cant be CheckedIn");
+        status = UnitStatus.CHECKED_IN;
+        assignedRoom.checkIn();
+    }
+
+    public enum UnitStatus {
+        NEW,
+        CANCELED,
+        CHECKED_IN,
+        CHECKED_OUT
     }
 }
