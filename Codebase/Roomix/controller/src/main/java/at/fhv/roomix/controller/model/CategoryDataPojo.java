@@ -18,7 +18,6 @@ public class CategoryDataPojo {
     private int confirmedReservation;
     private int quota;
     private int pricePerDay;
-    private PricePojo calculatedPrice;
 
     public int getOccupied() {
         return occupied;
@@ -66,14 +65,6 @@ public class CategoryDataPojo {
 
     public void setPricePerDay(int pricePerDay) {
         this.pricePerDay = pricePerDay;
-    }
-
-    public PricePojo getCalculatedPrice() {
-        return calculatedPrice;
-    }
-
-    public void setCalculatedPrice(PricePojo calculatedPrice) {
-        this.calculatedPrice = calculatedPrice;
     }
 
     public LocalDate getDate() {
