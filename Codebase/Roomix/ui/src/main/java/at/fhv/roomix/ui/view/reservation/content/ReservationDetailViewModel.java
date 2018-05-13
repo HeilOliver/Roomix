@@ -50,7 +50,7 @@ public class ReservationDetailViewModel implements ViewModel {
                     " - " + newValue.getContractingParty().getFirstName() + " " +
                     newValue.getContractingParty().getLastName() );
             reservationComment.setValue(newValue == null ? null :
-                    (newValue.getComment() == null ? "..." : newValue.getComment().getComment()));
+                    (newValue.getReservationComment() == null ? "..." : newValue.getReservationComment()));
             // TODO: add payment type
             contractingPartyFname.setValue(newValue == null ? null : newValue.getContractingParty().getFirstName());
             contractingPartyLname.setValue(newValue == null ? null : newValue.getContractingParty().getLastName());

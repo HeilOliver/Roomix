@@ -6,6 +6,7 @@ import at.fhv.roomix.controller.model.ReservationOptionPojo;
 import at.fhv.roomix.controller.model.ReservationPojo;
 import at.fhv.roomix.controller.model.ReservationUnitPojo;
 import at.fhv.roomix.ui.common.StringResourceResolver;
+import at.fhv.roomix.ui.dataprovider.CommentPojo;
 import at.fhv.roomix.ui.view.reservation.edit.comment.CommentView;
 import at.fhv.roomix.ui.view.reservation.edit.contact.ContactView;
 import at.fhv.roomix.ui.view.reservation.edit.item.IContentBuilder;
@@ -71,7 +72,7 @@ public class ReservationEditViewModel implements ViewModel {
         viewScope.subscribe(ReservationViewScope.commandCommitEdit, (key, payload) -> {
             ReservationPojo pojo = new ReservationPojo();
             pojo.setContractingParty(contractingPartyHandler.getObject());
-            pojo.setComment(commentHandler.getObject());
+            pojo.setReservationComment(commentHandler.getObject().getComment());
             pojo.setOption(optionHandler.getObject());
             pojo.setUnits(unitHandler.getObjects());
             pojo.setPersons(personHandler.getObjects());

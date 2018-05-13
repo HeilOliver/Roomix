@@ -8,6 +8,7 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.text.Text?>
+
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="at.fhv.roomix.ui.view.checkin.edit.unit.UnitView"
@@ -15,17 +16,23 @@
             prefHeight="400.0" prefWidth="600.0">
 
     <AnchorPane AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
-                AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="10"
+                 AnchorPane.rightAnchor="10"
                 minHeight="60" maxHeight="60" prefHeight="60">
-        <HBox AnchorPane.topAnchor="12" AnchorPane.rightAnchor="0" alignment="CENTER_RIGHT">
-            <Button fx:id="btnCommit" onAction="#btn_commit" text="%main.commit" prefWidth="120">
-                <graphic>
-                    <FontAwesomeIconView glyphName="ARROW_LEFT" size="2em"/>
-                </graphic>
-            </Button>
-        </HBox>
+        <AnchorPane AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="15">
+            <HBox AnchorPane.bottomAnchor="0" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="10" alignment="CENTER_LEFT" spacing="7">
+                <Text fx:id="txtCheckInRoomNumber" styleClass="big-label"/>
+                <Text fx:id="txtRoomStatus" styleClass="medium-label"/>
+            </HBox>
+            <HBox AnchorPane.topAnchor="12" AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0" alignment="CENTER_RIGHT">
+                <Button fx:id="btnCommit" onAction="#btn_commit" text="%main.commit" prefWidth="120">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="ARROW_LEFT" size="2em"/>
+                    </graphic>
+                </Button>
+            </HBox>
+        </AnchorPane>
     </AnchorPane>
-    <AnchorPane AnchorPane.topAnchor="50" AnchorPane.leftAnchor="10"
+    <AnchorPane AnchorPane.topAnchor="60" AnchorPane.leftAnchor="10"
                 AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="10" prefWidth="Infinity">
         <VBox spacing="20" AnchorPane.topAnchor="1" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="1" AnchorPane.rightAnchor="1">
             <TitledPane text="%checkin.information.heading.unitinfo" >
@@ -68,6 +75,8 @@
                     <ListView prefHeight="100" fx:id="listArrangements"/>
                 </content>
             </TitledPane>
+            <Separator />
+            <!-- TODO: seperated bar dings -->
 
         </VBox>
     </AnchorPane>

@@ -2,6 +2,7 @@ package at.fhv.roomix.ui.view.checkin.edit;
 
 import at.fhv.roomix.controller.model.*;
 import at.fhv.roomix.ui.common.StringResourceResolver;
+import at.fhv.roomix.ui.dataprovider.CommentPojo;
 import at.fhv.roomix.ui.view.checkin.edit.contracting_party.ContractingPartyView;
 import at.fhv.roomix.ui.view.checkin.edit.person.PersonView;
 import at.fhv.roomix.ui.view.checkin.edit.unit.UnitView;
@@ -234,8 +235,10 @@ public class CheckInEditViewModel implements ViewModel {
                     optionHandler.setObject(reservationPojo.getOption());
                     optionHandler.hideDeleteButton();
                 }
-                if(reservationPojo != null && reservationPojo.getComment() != null){
-                    commentHandler.setObject(reservationPojo.getComment());
+                if(reservationPojo != null && reservationPojo.getReservationComment() != null){
+                    CommentPojo comment = new CommentPojo();
+                    comment.setComment(reservationPojo.getReservationComment());
+                    commentHandler.setObject(comment);
                     commentHandler.hideDeleteButton();
                 }
 

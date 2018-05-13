@@ -34,7 +34,7 @@ public class ReservationTableRowModel extends AbstractTableRowModel<ReservationP
     }
 
     public String getComment() {
-        return pojo.getComment() != null ?
-                pojo.getComment().getComment() : "-";
+        return pojo.getReservationComment() != null ?
+                pojo.getReservationComment() : "-";
     }
 }

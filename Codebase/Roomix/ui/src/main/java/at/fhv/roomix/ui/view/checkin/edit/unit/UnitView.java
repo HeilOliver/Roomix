@@ -1,20 +1,17 @@
 package at.fhv.roomix.ui.view.checkin.edit.unit;
 
-import at.fhv.roomix.controller.model.ContactPojo;
 import at.fhv.roomix.controller.model.ArrangementPojo;
 import at.fhv.roomix.controller.model.PersonPojo;
 import at.fhv.roomix.ui.view.reservation.edit.unit.PacketsItem;
 import at.fhv.roomix.ui.view.reservation.edit.unit.PacketsItemViewModel;
-import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import de.saxsys.mvvmfx.utils.viewlist.CachedViewModelCellFactory;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-
-import javax.annotation.PostConstruct;
+import org.controlsfx.control.SegmentedBar;
 
 
 public class UnitView implements FxmlView<UnitViewModel> {
@@ -36,6 +33,14 @@ public class UnitView implements FxmlView<UnitViewModel> {
     private Text txtArrivalTime;
     @FXML
     private Text txtRoomNumber;
+    @FXML
+    private Button btnCommit;
+    @FXML
+    private SegmentedBar<SegmentedBar.Segment> segmentedBar;
+    @FXML
+    private Text txtCheckInRoomNumber;
+    @FXML
+    private Text txtRoomStatus;
 
 
     public void initialize(){
@@ -51,6 +56,12 @@ public class UnitView implements FxmlView<UnitViewModel> {
         txtEndDate.textProperty().bind(viewModel.endDateProperty());
         txtArrivalTime.textProperty().bind(viewModel.arrivalTimeProperty());
         txtCategory.textProperty().bind(viewModel.categoryProperty());
+        btnCommit.disableProperty().bind(viewModel.commitButtonDisabledProperty());
+
+        txtCheckInRoomNumber.textProperty().bind(viewModel.checkInRoomNumberProperty());
+        txtRoomStatus.textProperty().bind(viewModel.statusTextProperty());
+        txtCheckInRoomNumber.visibleProperty().bind(viewModel.showCheckInInformationProperty());
+        txtRoomStatus.visibleProperty().bind(viewModel.showCheckInInformationProperty());
         /* Inital change event to display the person list. */
         viewModel.fireChange();
     }
