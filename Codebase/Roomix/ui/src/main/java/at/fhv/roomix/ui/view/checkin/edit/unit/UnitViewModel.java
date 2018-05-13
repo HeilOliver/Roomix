@@ -10,13 +10,12 @@ import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
 import de.saxsys.mvvmfx.InjectResourceBundle;
 import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.utils.itemlist.ListTransformation;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.time.Duration;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -33,11 +32,11 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
     private SimpleStringProperty endDate = new SimpleStringProperty();
     private SimpleStringProperty arrivalTime = new SimpleStringProperty();
     private SimpleStringProperty category = new SimpleStringProperty();
-    private SimpleStringProperty roomNumber = new SimpleStringProperty(); // TODO: get from pojo and add binding
     private SimpleBooleanProperty commitButtonDisabledProperty = new SimpleBooleanProperty(false);
     private SimpleBooleanProperty showCheckInInformation = new SimpleBooleanProperty(false);
     private SimpleStringProperty statusText = new SimpleStringProperty();
     private SimpleStringProperty checkInRoomNumber = new SimpleStringProperty();
+    private ObservableList<RoomSegment> roomSegments = FXCollections.observableArrayList();
 
 
     @InjectScope
@@ -90,16 +89,32 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
             listChanged.setValue(true);
         }
 
-        if(currModel.get() != null) {
-            arrivalDate.setValue(DateTimeFormatter.ISO_LOCAL_DATE.format(currModel.get().getStartDate()));
-            endDate.setValue(DateTimeFormatter.ISO_LOCAL_DATE.format(currModel.get().getEndDate()));
-            arrivalTime.setValue(DateTimeFormatter.ISO_LOCAL_TIME.format(currModel.get().getArrivalTime()));
-            category.setValue(currModel.get().getRoomCategory().getDescription());
+        arrivalDate.setValue(DateTimeFormatter.ISO_LOCAL_DATE.format(currModel.get().getStartDate()));
+        endDate.setValue(DateTimeFormatter.ISO_LOCAL_DATE.format(currModel.get().getEndDate()));
+        arrivalTime.setValue(DateTimeFormatter.ISO_LOCAL_TIME.format(currModel.get().getArrivalTime()));
+        category.setValue(currModel.get().getRoomCategory().getDescription());
+
+        //roomSegments.add(new RoomSegment(1, "None", "None"));
+        Collection<RoomPojo> assignedRooms = currModel.get().getAssignedRooms();
+        for (RoomPojo roomPojo : assignedRooms) {
+            if(roomPojo.getRoomNo() == null){
+                String notAssigned = StringResourceResolver.getStaticResolve(resourceBundle, "checkin.information.notassigned");
+                RoomSegment segment = new RoomSegment(1, notAssigned, "");
+                roomSegments.add(segment);
+            } else {
+                LocalDate startDate = roomPojo.getStartDate();
+                LocalDate endDate = roomPojo.getEndDate();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+                long daysBetween = Duration.between(startDate, endDate).toDays();
+                String dateString = startDate.format(formatter) + " - " + endDate.format(formatter);
+                RoomSegment segment = new RoomSegment(daysBetween, roomPojo.getRoomNo(), dateString);
+                roomSegments.add(segment);
+            }
         }
+
     }
 
     void onCommit(){
-        /* TODO: fill currModel Pojo with commited information */
         UnitCheckInProvider provider = new UnitCheckInProvider();
         CheckInPojo checkInPojo = new CheckInPojo();
         checkInPojo.setUnit(currModel.get());
@@ -159,5 +174,8 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
     }
     public SimpleStringProperty statusTextProperty() {
         return statusText;
+    }
+    public ObservableList<RoomSegment> roomSegmentsProperty() {
+        return roomSegments;
     }
 }

@@ -9,6 +9,7 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.text.Text?>
 
+<?import org.controlsfx.control.SegmentedBar?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="at.fhv.roomix.ui.view.checkin.edit.unit.UnitView"
@@ -57,12 +58,11 @@
                         <Label styleClass="cell_heading" text="%reservation.arrivaltime" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <Text fx:id="txtArrivalTime" GridPane.columnIndex="3" GridPane.rowIndex="1" />
 
-                        <Label styleClass="cell_heading" text="%checkin.information.roomnumber" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                        <Text fx:id="txtRoomNumber" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-
                     </GridPane>
                 </content>
             </TitledPane>
+            <Separator/>
+            <SegmentedBar fx:id="segmentedBar"/>
             <Separator/>
             <TitledPane text="%checkin.information.heading.persons" >
                 <content>
@@ -75,8 +75,6 @@
                     <ListView prefHeight="100" fx:id="listArrangements"/>
                 </content>
             </TitledPane>
-            <Separator />
-            <!-- TODO: seperated bar dings -->
 
         </VBox>
     </AnchorPane>

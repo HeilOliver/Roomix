@@ -7,7 +7,9 @@ import at.fhv.roomix.ui.view.reservation.edit.unit.PacketsItemViewModel;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import de.saxsys.mvvmfx.utils.viewlist.CachedViewModelCellFactory;
+import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
+import javafx.geometry.Orientation;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
@@ -32,11 +34,9 @@ public class UnitView implements FxmlView<UnitViewModel> {
     @FXML
     private Text txtArrivalTime;
     @FXML
-    private Text txtRoomNumber;
-    @FXML
     private Button btnCommit;
     @FXML
-    private SegmentedBar<SegmentedBar.Segment> segmentedBar;
+    private SegmentedBar<RoomSegment> segmentedBar;
     @FXML
     private Text txtCheckInRoomNumber;
     @FXML
@@ -62,6 +62,14 @@ public class UnitView implements FxmlView<UnitViewModel> {
         txtRoomStatus.textProperty().bind(viewModel.statusTextProperty());
         txtCheckInRoomNumber.visibleProperty().bind(viewModel.showCheckInInformationProperty());
         txtRoomStatus.visibleProperty().bind(viewModel.showCheckInInformationProperty());
+        segmentedBar.setInfoNodeFactory(param -> new InfoLabel(param.getDateRange()));
+        segmentedBar.setOrientation(Orientation.HORIZONTAL);
+        viewModel.roomSegmentsProperty().addListener(new ListChangeListener<RoomSegment>() {
+            @Override
+            public void onChanged(Change<? extends RoomSegment> c) {
+                segmentedBar.getSegments().addAll(c.getList());
+            }
+        });
         /* Inital change event to display the person list. */
         viewModel.fireChange();
     }
