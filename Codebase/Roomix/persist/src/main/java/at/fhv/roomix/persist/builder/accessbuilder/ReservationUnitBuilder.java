@@ -1,17 +1,23 @@
 package at.fhv.roomix.persist.builder.accessbuilder;
 
+import at.fhv.roomix.common.Mapper;
 import at.fhv.roomix.domain.common.Proxy;
+import at.fhv.roomix.domain.reservation.Person;
 import at.fhv.roomix.domain.reservation.ReservationUnit;
+import at.fhv.roomix.domain.room.Room;
+import at.fhv.roomix.persist.dataaccess.factory.PersonFactory;
 import at.fhv.roomix.persist.dataaccess.factory.ReservationUnitFactory;
 import at.fhv.roomix.persist.dataaccess.factory.RoomCategoryFactory;
 import at.fhv.roomix.persist.exception.BuilderLoadException;
 import at.fhv.roomix.persist.exception.BuilderUpdateException;
 import at.fhv.roomix.persist.exception.PersistLoadException;
-import at.fhv.roomix.persist.models.ReservationUnitEntity;
-import at.fhv.roomix.persist.models.RoomCategoryEntity;
+import at.fhv.roomix.persist.mappings.RoomMapping;
+import at.fhv.roomix.persist.mappings.UnitMapping;
+import at.fhv.roomix.persist.models.*;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -26,8 +32,11 @@ import java.util.List;
  */
 public class ReservationUnitBuilder {
     private static final ModelMapper mapper;
+    private static final Mapper _mapper = Mapper.getInstance();
 
     static {
+        _mapper.addMapType(new RoomMapping(), RoomEntity.class, Room.class);
+        _mapper.addMapType(new UnitMapping(), ReservationUnit.class, ReservationUnitEntity.class);
         mapper = new ModelMapper();
         mapper.addMappings(new PropertyMap<ReservationUnit, ReservationUnitEntity>() {
             @Override
@@ -52,7 +61,7 @@ public class ReservationUnitBuilder {
     static ReservationUnitEntity updateUnitUC(ReservationUnit unit) throws RuntimeException {
         try {
             return updateUnit(unit);
-        } catch (BuilderUpdateException | PersistLoadException e) {
+        } catch (BuilderUpdateException e) {
             throw new RuntimeException(e);
         }
     }
@@ -72,21 +81,38 @@ public class ReservationUnitBuilder {
         return result;
     }
 
-    private static ReservationUnitEntity updateUnit(ReservationUnit unit) throws BuilderUpdateException, PersistLoadException {
+    private static ReservationUnitEntity updateUnit(ReservationUnit unit) throws BuilderUpdateException {
         ReservationUnitEntity entity;
-        try {
-            entity = unit.getId() == 0 ? new ReservationUnitEntity() : ReservationUnitFactory.getInstance().get(unit.getId());
-        } catch (PersistLoadException e) {
+            try {
+                entity = unit.getId() == 0 ? new ReservationUnitEntity() : ReservationUnitFactory.getInstance().get(unit.getId());
+
+                RoomCategoryEntity roomCategoryEntity
+                        = RoomCategoryFactory.getInstance().get(unit.getCategory().getId());
+                entity.setRoomCategory(roomCategoryEntity);
+            } catch (PersistLoadException e) {
             throw new BuilderUpdateException("", e);
         }
 
-        RoomCategoryEntity roomCategoryEntity
-                = RoomCategoryFactory.getInstance().get(unit.getCategory().getId());
+        _mapper.map(unit, entity);
 
-        entity.setRoomCategory(roomCategoryEntity);
-        mapper.map(unit, entity);
+        Collection<Person> guests = unit.getGuests();
+        for (Person guest : guests) {
+            try {
+                PersonEntity personEntity = PersonFactory.getInstance().get(guest.getId());
+                personEntity.getGuestsAtUnit().add(entity);
+                entity.getPersons().add(personEntity);
+            } catch (PersistLoadException e) {
+                throw new BuilderUpdateException();
+            }
+        }
+
+        HashSet<Room> rooms = new HashSet<>(unit.getAssignedRooms().values());
+        for (Room room : rooms) {
+            RoomBuilder.updateRoom(room);
+        }
 
         ReservationUnitFactory.getInstance().saveOrUpdate(entity);
+
         return entity;
     }
 
@@ -100,9 +126,21 @@ public class ReservationUnitBuilder {
                 new Proxy<>(() -> ReservationBuilder.get(entity.getReservation().getReservationId())));
 
         if (!entity.getRoomAssignments().isEmpty()) {
-            // TODO Here Mapping
-        }
+            Collection<RoomAssignmentEntity> assignments = entity.getRoomAssignments();
+            for (RoomAssignmentEntity assignment : assignments) {
+                RoomEntity roomEntity = assignment.getRoom();
+                Room room = _mapper.map(roomEntity, Room.class);
 
+                LocalDate currDate = assignment.getArrivalDate().toLocalDate();
+                LocalDate endDate = assignment.getDepartureDate().toLocalDate();
+
+                do {
+                    unit.getAssignedRooms().put(currDate, room);
+                    currDate = currDate.plusDays(1);
+                } while (currDate.isBefore(endDate));
+            }
+        }
+        unit.setStatus(ReservationUnit.UnitStatus.valueOf(entity.getStatus()));
         return unit;
     }
 
@@ -126,7 +164,7 @@ public class ReservationUnitBuilder {
         }
     }
 
-    public static void update(ReservationUnit unit) {
-
+    public static void update(ReservationUnit unit) throws BuilderUpdateException {
+        updateUnit(unit);
     }
 }

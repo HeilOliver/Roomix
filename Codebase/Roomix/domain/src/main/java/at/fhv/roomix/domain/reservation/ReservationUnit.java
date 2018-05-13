@@ -4,10 +4,12 @@ import at.fhv.roomix.domain.common.Proxy;
 import at.fhv.roomix.domain.room.Room;
 import at.fhv.roomix.domain.room.RoomCategory;
 
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Collection;
-import java.util.HashSet;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
 
 /**
  * Roomix
@@ -42,6 +44,18 @@ public class ReservationUnit {
     }
 
     //region GetterSetter
+    public HashMap<LocalDate, Room> getAssignedRooms() {
+        return assignedRooms;
+    }
+
+    public UnitStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(UnitStatus status) {
+        this.status = status;
+    }
+
     public void setReservation(Proxy<Reservation> reservation) {
         this.reservation = reservation;
     }
@@ -105,26 +119,47 @@ public class ReservationUnit {
 
     private UnitStatus status;
     private Collection<Person> guests = new HashSet<>(); // May her Proxy Collection
-    private Room assignedRoom;
+    private HashMap<LocalDate, Room> assignedRooms = new HashMap<>();
 
     public boolean canCheckedIn() {
-        return status != UnitStatus.NEW
-                && hasRoom()
-                && assignedRoom.getRoomStatus() != Room.RoomStatus.OUT_OF_ORDER;
+        if (status != UnitStatus.NEW) return false;
+        if (assignedRooms == null || assignedRooms.isEmpty()) return false;
+        if (!assignedRooms.containsKey(startDate)) return false;
+
+        Duration days = Duration.ofDays(ChronoUnit.DAYS.between(startDate, endDate));
+        long neededDays = days.toDays();
+        if (assignedRooms.size() != neededDays) return false;
+
+        for (Room room : assignedRooms.values()) {
+            if (room.getRoomStatus() != Room.RoomStatus.OUT_OF_ORDER) continue;
+            return false;
+        }
+
+        return true;
     }
 
     public void addGuest(Person person) {
         guests.add(person);
     }
 
+    public Collection<Person> getGuests() {
+        return guests;
+    }
+
     public boolean hasRoom() {
-        return assignedRoom != null;
+        return assignedRooms != null;
     }
 
     public void checkIn() {
-        if (status != UnitStatus.NEW) throw new IllegalStateException("Unit cant be CheckedIn");
+        if (!canCheckedIn()) throw new IllegalStateException("Unit cant be CheckedIn");
+
+        // Add this to an HashCollection to Checkin a room only once
+        HashSet<Room> rooms = new HashSet<>(assignedRooms.values());
+        for (Room room : rooms) {
+            room.checkIn();
+        }
+
         status = UnitStatus.CHECKED_IN;
-        assignedRoom.checkIn();
     }
 
     public enum UnitStatus {

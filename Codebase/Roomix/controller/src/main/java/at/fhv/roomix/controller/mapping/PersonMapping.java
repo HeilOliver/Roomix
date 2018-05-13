@@ -7,6 +7,8 @@ import at.fhv.roomix.controller.model.ContactPojo;
 import at.fhv.roomix.controller.model.PersonPojo;
 import at.fhv.roomix.domain.guest.contact.Contact;
 import at.fhv.roomix.domain.reservation.Person;
+import at.fhv.roomix.persist.builder.accessbuilder.PersonBuilder;
+import at.fhv.roomix.persist.exception.BuilderLoadException;
 
 /**
  * Roomix
@@ -31,6 +33,20 @@ public class PersonMapping implements MapType<Person, PersonPojo> {
         if (source.getContact() != null) {
             ContactPojo contactPojo = mapper.map(source.getContact(), ContactPojo.class);
             destination.setContact(contactPojo);
+        }
+    }
+
+    @Override
+    public void mapReverse(PersonPojo source, Person destination, Mapper mapper) throws MappingException {
+        destination.setFirstName(source.getForeName());
+        destination.setLastName(source.getLastName());
+        destination.setVip(source.isVip());
+
+        if (source.getContact() != null) {
+            if (destination.getContact() == null)
+                destination.setContact(new Contact());
+
+            mapper.map(source.getContact(), destination.getContact());
         }
     }
 }

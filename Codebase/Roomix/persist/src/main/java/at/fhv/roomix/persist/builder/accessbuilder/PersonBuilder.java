@@ -65,6 +65,7 @@ public class PersonBuilder {
     }
 
     public static Person get(int personId) throws BuilderLoadException {
+        if (personId == 0) return new Person();
         PersonEntity entity;
         try {
             entity = PersonFactory.getInstance().get(personId);
