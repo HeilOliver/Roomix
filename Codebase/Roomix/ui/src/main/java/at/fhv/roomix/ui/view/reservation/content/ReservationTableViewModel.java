@@ -5,7 +5,6 @@ import at.fhv.roomix.controller.model.ReservationPojo;
 import at.fhv.roomix.ui.view.reservation.scope.EDataProvider;
 import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
 import de.saxsys.mvvmfx.InjectScope;
-import de.saxsys.mvvmfx.ScopeProvider;
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -33,7 +32,6 @@ public class ReservationTableViewModel implements ViewModel {
     private  ReservationViewScope viewScope;
 
     public void initialize() {
-        viewScope.init(EDataProvider.ReservationProvider);
         selectedTableRow.addListener(((observable, oldValue, newValue) -> {
             if (newValue == null) {
                 viewScope.selectedPojoProperty().setValue(null);

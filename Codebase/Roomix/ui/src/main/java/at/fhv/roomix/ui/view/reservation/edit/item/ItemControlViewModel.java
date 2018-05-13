@@ -2,9 +2,7 @@ package at.fhv.roomix.ui.view.reservation.edit.item;
 
 
 import at.fhv.roomix.ui.common.StringResourceResolver;
-import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
 import de.saxsys.mvvmfx.InjectResourceBundle;
-import de.saxsys.mvvmfx.ScopeProvider;
 import de.saxsys.mvvmfx.ViewModel;
 import de.saxsys.mvvmfx.utils.validation.FunctionBasedValidator;
 import de.saxsys.mvvmfx.utils.validation.ValidationMessage;

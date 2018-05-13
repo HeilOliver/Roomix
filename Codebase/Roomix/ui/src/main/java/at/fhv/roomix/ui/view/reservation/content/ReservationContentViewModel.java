@@ -4,7 +4,6 @@ import at.fhv.roomix.ui.common.AbstractMasterEditScope;
 import at.fhv.roomix.ui.view.reservation.scope.EDataProvider;
 import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
 import de.saxsys.mvvmfx.InjectScope;
-import de.saxsys.mvvmfx.ScopeProvider;
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ReadOnlyBooleanProperty;
@@ -26,7 +25,6 @@ public class ReservationContentViewModel implements ViewModel {
     private BooleanProperty detailOpenProperty = new SimpleBooleanProperty();
 
     public void initialize() {
-        viewScope.init(EDataProvider.ReservationProvider);
         viewScope.selectedPojoProperty().addListener(((observable, oldValue, newValue) -> {
             detailOpenProperty.setValue(newValue != null);
         }));

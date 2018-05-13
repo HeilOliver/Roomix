@@ -42,7 +42,6 @@ public class ReservationDetailViewModel implements ViewModel {
     private BooleanProperty detailAvailable = new SimpleBooleanProperty();
 
     public void initialize(){
-        viewScope.init(EDataProvider.ReservationProvider);
         viewScope.selectedPojoProperty().addListener((observable, oldValue, newValue) -> {
             detailAvailable.setValue(newValue != null);
             reservationID.setValue(String.valueOf(newValue == null ? null : newValue.getId()));

@@ -1,7 +1,6 @@
 package at.fhv.roomix.ui.view.checkin;
 
-import at.fhv.roomix.controller.model.ReservationPojo;
-import at.fhv.roomix.ui.view.checkin.scope.CheckInScope;
+import at.fhv.roomix.ui.common.AbstractMasterEditScope;
 import at.fhv.roomix.ui.view.reservation.scope.EDataProvider;
 import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
 import de.saxsys.mvvmfx.InjectScope;
@@ -25,8 +24,8 @@ public class CheckInViewModel implements ViewModel {
 
     public void initialize(){
         scope.init(EDataProvider.CheckInProvider);
-        scope.subscribe(CheckInScope.commandContentView, (key, payload) -> showContentView());
-        scope.subscribe(CheckInScope.commandEditView, (key, payload) -> showEditView());
+        scope.subscribe(AbstractMasterEditScope.commandContentView, (key, payload) -> showContentView());
+        scope.subscribe(AbstractMasterEditScope.commandEditView, (key, payload) -> showEditView());
         showContentView();
     }
 

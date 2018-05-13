@@ -1,7 +1,8 @@
 package at.fhv.roomix.ui.view.checkin.content;
 
 import at.fhv.roomix.controller.model.CheckInPojo;
-import at.fhv.roomix.ui.view.checkin.scope.CheckInScope;
+import at.fhv.roomix.controller.model.ReservationPojo;
+import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
 import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.ObjectProperty;
@@ -18,7 +19,7 @@ public class CheckInTableViewModel implements ViewModel {
             new SimpleObjectProperty<>();
 
     @InjectScope
-    private CheckInScope viewScope;
+    private ReservationViewScope viewScope;
 
     public void initialize(){
         selectedTableRow.addListener(((observable, oldValue, newValue) -> {
@@ -30,7 +31,7 @@ public class CheckInTableViewModel implements ViewModel {
         }));
 
         viewScope.getObservableSet().addListener(
-                (SetChangeListener<CheckInPojo>) c -> loadData());
+                (SetChangeListener<ReservationPojo>) c -> loadData());
     }
 
     private void loadData(){
