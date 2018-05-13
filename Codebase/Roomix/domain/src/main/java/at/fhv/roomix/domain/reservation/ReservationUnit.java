@@ -162,6 +162,10 @@ public class ReservationUnit {
         status = UnitStatus.CHECKED_IN;
     }
 
+    public boolean isEditAble() {
+        return status != UnitStatus.NEW;
+    }
+
     public enum UnitStatus {
         NEW,
         CANCELED,

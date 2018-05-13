@@ -28,6 +28,15 @@ public class ReservationUnitPojo {
 
     private Collection<ArrangementPojo> arrangements;
     private Collection<RoomPojo> assignedRooms;
+    private boolean isCheckedIn;
+
+    public boolean isCheckedIn() {
+        return isCheckedIn;
+    }
+
+    public void setCheckedIn(boolean checkedIn) {
+        isCheckedIn = checkedIn;
+    }
 
     public Collection<RoomPojo> getAssignedRooms() {
         return assignedRooms;
