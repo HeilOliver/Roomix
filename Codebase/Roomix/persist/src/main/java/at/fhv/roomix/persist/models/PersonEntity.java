@@ -115,15 +115,18 @@ public class PersonEntity {
         this.reservations = personReservationsByPersonId;
     }
 
+
+    private Collection<ReservationUnitEntity> guestsAtUnit = new HashSet<>();
+
     @ManyToMany()
     @JoinTable(name = "PersonRoomAssignment", joinColumns = {@JoinColumn(name = "Person")},
-            inverseJoinColumns = {@JoinColumn(name = "RoomAssignment")})
-    public Collection<RoomAssignmentEntity> getRoomAssignments() {
-        return roomAssignments;
+            inverseJoinColumns = {@JoinColumn(name = "Unit")})
+    public Collection<ReservationUnitEntity> getGuestsAtUnit() {
+        return guestsAtUnit;
     }
 
-    public void setRoomAssignments(Collection<RoomAssignmentEntity> personRoomAssignmentsByPersonId) {
-        this.roomAssignments = personRoomAssignmentsByPersonId;
+    public void setGuestsAtUnit(Collection<ReservationUnitEntity> guestsAtUnit) {
+        this.guestsAtUnit = guestsAtUnit;
     }
 
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)

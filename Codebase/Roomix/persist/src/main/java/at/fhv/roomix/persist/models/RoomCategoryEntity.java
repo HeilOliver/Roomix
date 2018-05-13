@@ -77,7 +77,7 @@ public class RoomCategoryEntity {
     }
 
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @OneToMany(mappedBy = "roomCategoryByRoomCategory")
+    @OneToMany(mappedBy = "roomCategory")
     public Collection<RoomEntity> getRooms() {
         return rooms;
     }

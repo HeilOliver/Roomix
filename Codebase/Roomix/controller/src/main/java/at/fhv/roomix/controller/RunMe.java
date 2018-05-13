@@ -5,6 +5,7 @@ import at.fhv.roomix.controller.model.PersonPojo;
 import at.fhv.roomix.controller.model.ReservationPojo;
 import at.fhv.roomix.controller.model.ReservationUnitPojo;
 import at.fhv.roomix.controller.common.exceptions.CheckInException;
+import at.fhv.roomix.controller.session.SessionControllerFactory;
 import at.fhv.roomix.controller.stay.IStayController;
 import at.fhv.roomix.controller.stay.StayControllerFactory;
 import at.fhv.roomix.controller.model.CheckInPojo;
@@ -33,10 +34,15 @@ public class RunMe {
         Collection<PersonPojo> persons = pojo.getPersons();
         ReservationUnitPojo unitPojo = pojo.getUnits().stream().findFirst().get();
 
+        PersonPojo personPojo = persons.stream().findFirst().get();
+        personPojo.setForeName("Test");
+
         CheckInPojo checkInPojo = new CheckInPojo();
         checkInPojo.setUnit(unitPojo);
         checkInPojo.setAssignedPerson(persons);
 
         stayController.setUnitsForCheckIn(session.getSessionId(), checkInPojo);
+
+        SessionControllerFactory.getInstance().dispose();
     }
 }

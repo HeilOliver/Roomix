@@ -1,5 +1,6 @@
 package at.fhv.roomix.controller.stay;
 
+import at.fhv.roomix.common.Mapper;
 import at.fhv.roomix.controller.common.exceptions.*;
 import at.fhv.roomix.controller.common.validator.Validator;
 import at.fhv.roomix.controller.model.PersonPojo;
@@ -13,10 +14,7 @@ import at.fhv.roomix.domain.session.SessionFactory;
 import at.fhv.roomix.persist.builder.accessbuilder.PersonBuilder;
 import at.fhv.roomix.persist.builder.accessbuilder.ReservationUnitBuilder;
 import at.fhv.roomix.persist.dataaccess.factory.EntityFactory;
-import at.fhv.roomix.persist.exception.BuilderLoadException;
-import at.fhv.roomix.persist.exception.BuilderUpdateException;
-import at.fhv.roomix.persist.exception.PersistSaveException;
-import at.fhv.roomix.persist.exception.PersistStateException;
+import at.fhv.roomix.persist.exception.*;
 import org.modelmapper.ModelMapper;
 
 import java.util.Collection;
@@ -29,7 +27,11 @@ import java.util.Collection;
  */
 class StayController implements IStayController{
     private final ISessionDomain sessionHandler = SessionFactory.getInstance();
-    private static final ModelMapper mapper = new ModelMapper();
+    private static final Mapper mapper = Mapper.getInstance();
+
+    static {
+
+    }
 
     @Override
     public void setUnitsForCheckIn(long sessionId, CheckInPojo checkInPojo)
@@ -44,7 +46,7 @@ class StayController implements IStayController{
 
             // Check if Unit is still be CheckIn able
             ReservationUnit unit = ReservationUnitBuilder.get(checkInPojo.getUnit().getId());
-            if(unit.canCheckedIn()) {
+            if(!unit.canCheckedIn()) {
                 throw new CheckInException("Unit is already CheckedIn");
             }
 
@@ -55,12 +57,6 @@ class StayController implements IStayController{
                 mapper.map(pojo, person);
                 PersonBuilder.update(person);
                 unit.addGuest(person);
-            }
-
-            // Room Is Assigned?
-            if(!unit.hasRoom()) {
-                // Maybe here add Daniels Method to find a room??
-                throw new CheckInException("Unit has no Room");
             }
 
             unit.checkIn();

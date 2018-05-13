@@ -18,9 +18,11 @@ public class ReservationUnitEntity {
     private LocalTime arrivalTime;
     private LocalDate startDate;
     private LocalDate endDate;
+    private String status;
 
     private Collection<InvoicePositionEntity> invoicePositions;
     private Collection<RoomAssignmentEntity> roomAssignments;
+    private Collection<PersonEntity> persons;
 
     private ReservationEntity reservation;
     private RoomCategoryEntity roomCategory;
@@ -65,6 +67,16 @@ public class ReservationUnitEntity {
 
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
+    }
+
+    @Basic
+    @Column(name = "Status")
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override
@@ -134,5 +146,12 @@ public class ReservationUnitEntity {
         this.cancellation = cancellationByCancellation;
     }
 
+    @ManyToMany(mappedBy = "guestsAtUnit")
+    public Collection<PersonEntity> getPersons() {
+        return persons;
+    }
 
+    public void setPersons(Collection<PersonEntity> persons) {
+        this.persons = persons;
+    }
 }

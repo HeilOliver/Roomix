@@ -9,6 +9,7 @@ import at.fhv.roomix.persist.exception.PersistLoadException;
 import at.fhv.roomix.persist.models.*;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
+import sun.util.resources.cldr.mas.CalendarData_mas_KE;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -50,7 +51,6 @@ public class ReservationBuilder {
                 skip().setOption(null);
             }
         });
-
     }
 
     private static Reservation fromEntity(ReservationEntity entity) throws BuilderLoadException {
@@ -76,7 +76,7 @@ public class ReservationBuilder {
                     .collect(Collectors.toSet()));
             return reservation;
         } catch (RuntimeException e) {
-            throw new BuilderLoadException(e.getCause().getMessage(), e.getCause());
+            throw new BuilderLoadException(e.getMessage(), e.getCause());
         }
     }
 

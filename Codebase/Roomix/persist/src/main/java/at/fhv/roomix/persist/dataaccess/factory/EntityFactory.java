@@ -64,6 +64,10 @@ public class EntityFactory<T, PK extends Serializable> {
     }
 
     public static void stashChanges() {
+        for (EntityFactory factory : commitment) {
+            factory.clear();
+        }
+        commitment.clear();
     }
 
     public T getOrDefault(PK key, T _default) {

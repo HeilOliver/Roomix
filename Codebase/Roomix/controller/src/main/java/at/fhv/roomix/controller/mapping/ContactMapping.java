@@ -27,5 +27,21 @@ public class ContactMapping implements MapType<Contact, ContactPojo> {
         destination.setPostcode(source.getPostcode());
         destination.setPlace(source.getPlace());
         destination.setStreet(source.getStreet());
+        destination.setPhoneNumber(source.getPhoneNumber());
+    }
+
+    @Override
+    public void mapReverse(ContactPojo source, Contact destination, Mapper mapper) throws MappingException {
+        destination.setCompanyName(source.getCompanyName());
+        destination.setId(source.getContactId());
+        destination.setCountry(source.getCountry());
+        destination.setEmail(source.getEmail());
+        destination.setFirstName(source.getFirstName());
+        destination.setLastName(source.getLastName());
+        destination.setHouseNumber(source.getHouseNumber());
+        destination.setPostcode(source.getPostcode());
+        destination.setPlace(source.getPlace());
+        destination.setStreet(source.getStreet());
+        destination.setPhoneNumber(source.getPhoneNumber());
     }
 }

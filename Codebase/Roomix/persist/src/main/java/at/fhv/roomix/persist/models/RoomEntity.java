@@ -12,9 +12,8 @@ import java.util.Objects;
 @Table(name = "Room", schema = "Roomix", catalog = "")
 public class RoomEntity {
     private int roomId;
-    private int roomCategory;
     private String status;
-    private RoomCategoryEntity roomCategoryByRoomCategory;
+    private RoomCategoryEntity roomCategory;
     private Collection<RoomAssignmentEntity> roomAssignmentsByRoomId;
     private Collection<RoomFacilityEntity> roomFacilitiesByRoomId;
 
@@ -27,16 +26,6 @@ public class RoomEntity {
 
     public void setRoomId(int roomId) {
         this.roomId = roomId;
-    }
-
-    @Basic
-    @Column(name = "RoomCategory", insertable = false, updatable = false)
-    public int getRoomCategory() {
-        return roomCategory;
-    }
-
-    public void setRoomCategory(int roomCategory) {
-        this.roomCategory = roomCategory;
     }
 
     @Basic
@@ -55,28 +44,26 @@ public class RoomEntity {
         if (o == null || getClass() != o.getClass()) return false;
         RoomEntity that = (RoomEntity) o;
         return roomId == that.roomId &&
-                roomCategory == that.roomCategory &&
                 Objects.equals(status, that.status);
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(roomId, roomCategory, status);
+        return Objects.hash(roomId, status);
     }
 
     @ManyToOne
-    @JoinColumn(name = "RoomCategory", referencedColumnName = "RoomCategoryID", nullable = false)
-    public RoomCategoryEntity getRoomCategoryByRoomCategory() {
-        return roomCategoryByRoomCategory;
+    @JoinColumn(name = "RoomCategory", referencedColumnName = "RoomCategoryID")
+    public RoomCategoryEntity getRoomCategory() {
+        return roomCategory;
     }
 
-    public void setRoomCategoryByRoomCategory(RoomCategoryEntity roomCategoryByRoomCategory) {
-        this.roomCategoryByRoomCategory = roomCategoryByRoomCategory;
+    public void setRoomCategory(RoomCategoryEntity roomCategoryByRoomCategory) {
+        this.roomCategory = roomCategoryByRoomCategory;
     }
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @OneToMany(mappedBy = "roomByRoom")
+    @OneToMany(mappedBy = "room")
     public Collection<RoomAssignmentEntity> getRoomAssignmentsByRoomId() {
         return roomAssignmentsByRoomId;
     }

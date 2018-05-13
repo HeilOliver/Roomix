@@ -10,4 +10,8 @@ package at.fhv.roomix.common;
  */
 public interface MapType<S, D> {
     void map(S source, D destination, Mapper mapper) throws MappingException;
+
+    default void mapReverse(D source, S destination, Mapper mapper) throws MappingException {
+        throw new MappingException("Reverse Mapping is not Implemented");
+    }
 }

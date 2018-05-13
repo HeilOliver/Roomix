@@ -29,15 +29,40 @@ public class Mapper {
         return instance;
     }
 
-    private HashMap<String, MapType> typeMap = new HashMap<>();
+    private HashMap<String, MapTypeTuple> typeMap = new HashMap<>();
+
+    private class MapTypeTuple<S, D>{
+        private MapType<S, D> mapType;
+        private MapTypeCall typeCall;
+
+        private MapTypeTuple(MapType<S, D> mapType, MapTypeCall typeCall) {
+            this.mapType = mapType;
+            this.typeCall = typeCall;
+        }
+    }
+
+    private enum MapTypeCall{
+        MAP,
+        REVERSE
+    }
 
     public <S, D> void addMapType(MapType<S, D> mapType, Class<S> sourceType, Class<D> destinationType) {
-        typeMap.put(sourceType.getName() + "|$|" + destinationType.getName(), mapType);
+        typeMap.put(sourceType.getName() + "|$|" + destinationType.getName(), new MapTypeTuple<>(mapType, MapTypeCall.MAP));
+        typeMap.put(destinationType.getName() + "|$|" + sourceType.getName(), new MapTypeTuple<>(mapType, MapTypeCall.REVERSE));
     }
 
     public <S, D> void map(S source, D destination) {
-        MapType<S, D> type = findTypeFor(source, destination);
-        type.map(source, destination, this);
+        MapTypeTuple<S, D> type = findTypeFor(source, destination);
+
+        switch (type.typeCall) {
+            case MAP:
+                type.mapType.map(source, destination, this);
+                break;
+            case REVERSE:
+                @SuppressWarnings("unchecked") MapType<D, S> mapType = (MapType<D, S>) type.mapType;
+                mapType.mapReverse(source, destination, this);
+                break;
+        }
     }
 
     public <S, D> D map(S source, Class<D> destination) {
@@ -55,7 +80,7 @@ public class Mapper {
     }
 
     @SuppressWarnings("unchecked")
-    private <S, D> MapType<S, D> findTypeFor(S source, D destination) {
+    private <S, D> MapTypeTuple<S, D> findTypeFor(S source, D destination) {
         String sourceType = source.getClass().getName();
         String destinationType = destination.getClass().getName();
 

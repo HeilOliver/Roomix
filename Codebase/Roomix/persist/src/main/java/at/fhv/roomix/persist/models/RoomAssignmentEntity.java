@@ -15,10 +15,9 @@ public class RoomAssignmentEntity {
     private int roomAssignmentId;
     private Date arrivalDate;
     private Date departureDate;
-    private int room;
     private Collection<InvoicePositionEntity> invoicePositionsByRoomAssignmentId;
-    private Collection<PersonEntity> persons;
-    private RoomEntity roomByRoom;
+
+    private RoomEntity room;
     private ReservationUnitEntity reservationUnit;
 
     @Id
@@ -52,15 +51,6 @@ public class RoomAssignmentEntity {
         this.departureDate = departureDate;
     }
 
-    @Basic
-    @Column(name = "Room", insertable = false, updatable = false)
-    public int getRoom() {
-        return room;
-    }
-
-    public void setRoom(int room) {
-        this.room = room;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -68,7 +58,6 @@ public class RoomAssignmentEntity {
         if (o == null || getClass() != o.getClass()) return false;
         RoomAssignmentEntity that = (RoomAssignmentEntity) o;
         return roomAssignmentId == that.roomAssignmentId &&
-                room == that.room &&
                 Objects.equals(arrivalDate, that.arrivalDate) &&
                 Objects.equals(departureDate, that.departureDate);
     }
@@ -92,12 +81,12 @@ public class RoomAssignmentEntity {
 
     @ManyToOne
     @JoinColumn(name = "Room", referencedColumnName = "RoomID", nullable = false)
-    public RoomEntity getRoomByRoom() {
-        return roomByRoom;
+    public RoomEntity getRoom() {
+        return room;
     }
 
-    public void setRoomByRoom(RoomEntity roomByRoom) {
-        this.roomByRoom = roomByRoom;
+    public void setRoom(RoomEntity roomByRoom) {
+        this.room = roomByRoom;
     }
 
     @ManyToOne
@@ -110,12 +99,5 @@ public class RoomAssignmentEntity {
         this.reservationUnit = reservationUnitByReservationUnit;
     }
 
-    @ManyToMany(mappedBy = "roomAssignments")
-    public Collection<PersonEntity> getPersons() {
-        return persons;
-    }
 
-    public void setPersons(Collection<PersonEntity> persons) {
-        this.persons = persons;
-    }
 }
