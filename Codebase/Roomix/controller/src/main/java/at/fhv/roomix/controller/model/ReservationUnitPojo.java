@@ -27,6 +27,15 @@ public class ReservationUnitPojo {
     private PricePojo price;
 
     private Collection<ArrangementPojo> arrangements;
+    private Collection<RoomPojo> assignedRooms;
+
+    public Collection<RoomPojo> getAssignedRooms() {
+        return assignedRooms;
+    }
+
+    public void setAssignedRooms(Collection<RoomPojo> assignedRooms) {
+        this.assignedRooms = assignedRooms;
+    }
 
     private LocalTime arrivalTime;
     private LocalDate startDate;
