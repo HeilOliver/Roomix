@@ -14,7 +14,6 @@ import java.util.HashSet;
  */
 public class ReservationPojo {
     private int id;
-    private CommentPojo comment;
     private String reservationComment;
 
     @NotNull(message = "contractingParty cannot be null")
@@ -42,14 +41,6 @@ public class ReservationPojo {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public CommentPojo getComment() {
-        return comment;
-    }
-
-    public void setComment(CommentPojo comment) {
-        this.comment = comment;
     }
 
     public ContactPojo getContractingParty() {
