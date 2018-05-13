@@ -2,7 +2,6 @@ package at.fhv.roomix.ui.view.reservation.edit;
 
 import at.fhv.roomix.controller.model.ContactPojo;
 import at.fhv.roomix.controller.model.PersonPojo;
-import at.fhv.roomix.controller.model.CommentPojo;
 import at.fhv.roomix.controller.model.ReservationOptionPojo;
 import at.fhv.roomix.controller.model.ReservationPojo;
 import at.fhv.roomix.controller.model.ReservationUnitPojo;

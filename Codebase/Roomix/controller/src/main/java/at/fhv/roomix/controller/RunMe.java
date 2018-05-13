@@ -1,14 +1,11 @@
 package at.fhv.roomix.controller;
 
 import at.fhv.roomix.controller.common.exceptions.*;
-import at.fhv.roomix.controller.model.PersonPojo;
-import at.fhv.roomix.controller.model.ReservationPojo;
-import at.fhv.roomix.controller.model.ReservationUnitPojo;
+import at.fhv.roomix.controller.model.*;
 import at.fhv.roomix.controller.common.exceptions.CheckInException;
 import at.fhv.roomix.controller.session.SessionControllerFactory;
 import at.fhv.roomix.controller.stay.IStayController;
 import at.fhv.roomix.controller.stay.StayControllerFactory;
-import at.fhv.roomix.controller.model.CheckInPojo;
 import at.fhv.roomix.domain.session.InvalidUserPasswordCombination;
 import at.fhv.roomix.domain.session.SessionFactory;
 import at.fhv.roomix.domain.session.model.RoomixSession;
@@ -41,7 +38,7 @@ public class RunMe {
         checkInPojo.setUnit(unitPojo);
         checkInPojo.setAssignedPerson(persons);
 
-        stayController.setUnitsForCheckIn(session.getSessionId(), checkInPojo);
+        CheckInReply checkInReply = stayController.setUnitsForCheckIn(session.getSessionId(), checkInPojo);
 
         SessionControllerFactory.getInstance().dispose();
     }

@@ -209,8 +209,8 @@ class ReservationController implements IReservationController {
             }
 
             // If Commend exists
-            if (reservationPojo.getComment() != null) {
-                toUpdate.setComment(reservationPojo.getComment().getComment());
+            if (reservationPojo.getReservationComment() != null) {
+                toUpdate.setComment(reservationPojo.getReservationComment());
             } else {
                 toUpdate.setComment(null);
             }

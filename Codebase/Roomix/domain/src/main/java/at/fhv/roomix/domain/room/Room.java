@@ -37,6 +37,15 @@ public class Room {
         this.roomStatus = roomStatus;
     }
 
+    public boolean isDirty() {
+        return roomStatus.isDirty;
+    }
+
+    public boolean isMultipleOccupied() {
+        return roomStatus == RoomStatus.MULTIPLE_OCCUPIED_CLEAN ||
+                roomStatus == RoomStatus.MULTIPLE_OCCUPIED_DIRTY;
+    }
+
     public void checkIn() {
         switch (roomStatus) {
             case FREE_CLEAN:
