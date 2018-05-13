@@ -16,6 +16,7 @@ import javafx.collections.ObservableList;
 
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -105,9 +106,9 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
                 LocalDate startDate = roomPojo.getStartDate();
                 LocalDate endDate = roomPojo.getEndDate();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-                long daysBetween = Duration.between(startDate, endDate).toDays();
+                long daysBetween = Period.between(startDate, endDate).getDays();
                 String dateString = startDate.format(formatter) + " - " + endDate.format(formatter);
-                RoomSegment segment = new RoomSegment(daysBetween, roomPojo.getRoomNo(), dateString);
+                RoomSegment segment = new RoomSegment(daysBetween < 1 ? 1 : daysBetween, roomPojo.getRoomNo(), dateString);
                 roomSegments.add(segment);
             }
         }
