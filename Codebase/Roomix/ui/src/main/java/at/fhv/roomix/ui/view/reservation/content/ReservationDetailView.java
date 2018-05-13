@@ -30,8 +30,6 @@ public class ReservationDetailView implements FxmlView<ReservationDetailViewMode
     @FXML
     private Text txtPaymentType;
     @FXML
-    private Text txtReservationStatus;
-    @FXML
     private Text txtContractingPartyFname;
     @FXML
     private Text txtContractingPartyLname;
