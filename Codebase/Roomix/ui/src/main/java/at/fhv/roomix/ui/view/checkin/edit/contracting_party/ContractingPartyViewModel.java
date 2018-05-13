@@ -1,7 +1,7 @@
 package at.fhv.roomix.ui.view.checkin.edit.contracting_party;
 
-import at.fhv.roomix.controller.contact.model.ContactPojo;
-import at.fhv.roomix.controller.reservation.model.ReservationPojo;
+import at.fhv.roomix.controller.model.ContactPojo;
+import at.fhv.roomix.controller.model.ReservationPojo;
 import at.fhv.roomix.domain.reservation.Reservation;
 import at.fhv.roomix.ui.view.checkin.edit.CheckInEditScope;
 import at.fhv.roomix.ui.view.reservation.edit.SubscribeAbleViewModel;

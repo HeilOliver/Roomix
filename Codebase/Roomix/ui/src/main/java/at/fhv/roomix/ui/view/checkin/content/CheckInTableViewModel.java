@@ -1,6 +1,6 @@
 package at.fhv.roomix.ui.view.checkin.content;
 
-import at.fhv.roomix.controller.stay.model.StayPojo;
+import at.fhv.roomix.controller.model.CheckInPojo;
 import at.fhv.roomix.ui.view.checkin.scope.CheckInScope;
 import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ViewModel;
@@ -30,7 +30,7 @@ public class CheckInTableViewModel implements ViewModel {
         }));
 
         viewScope.getObservableSet().addListener(
-                (SetChangeListener<StayPojo>) c -> loadData());
+                (SetChangeListener<CheckInPojo>) c -> loadData());
     }
 
     private void loadData(){

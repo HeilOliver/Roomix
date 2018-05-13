@@ -7,3 +7,11 @@
     -fx-font-weight:bold;
     -fx-fill: dimgrey;
 }
+
+.big-label {
+    -fx-font-size: 2em;
+    -fx-font-weight: bold;
+}
+.medium-label {
+    -fx-font-size: 1.5em;
+}

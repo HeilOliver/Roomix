@@ -1,6 +1,6 @@
 package at.fhv.roomix.ui.view.checkin;
 
-import at.fhv.roomix.controller.stay.model.ReservationPojo;
+import at.fhv.roomix.controller.model.ReservationPojo;
 import at.fhv.roomix.ui.view.checkin.scope.CheckInScope;
 import at.fhv.roomix.ui.view.reservation.scope.EDataProvider;
 import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;

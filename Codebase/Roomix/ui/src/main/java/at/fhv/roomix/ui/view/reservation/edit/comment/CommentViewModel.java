@@ -1,6 +1,7 @@
 package at.fhv.roomix.ui.view.reservation.edit.comment;
 
 import at.fhv.roomix.ui.common.StringResourceResolver;
+import at.fhv.roomix.ui.dataprovider.CommentPojo;
 import at.fhv.roomix.ui.view.reservation.edit.SubscribeAbleViewModel;
 import de.saxsys.mvvmfx.InjectResourceBundle;
 import de.saxsys.mvvmfx.utils.validation.FunctionBasedValidator;

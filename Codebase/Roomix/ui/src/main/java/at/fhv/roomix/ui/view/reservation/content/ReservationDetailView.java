@@ -30,8 +30,6 @@ public class ReservationDetailView implements FxmlView<ReservationDetailViewMode
     @FXML
     private Text txtPaymentType;
     @FXML
-    private Text txtReservationStatus;
-    @FXML
     private Text txtContractingPartyFname;
     @FXML
     private Text txtContractingPartyLname;
@@ -53,7 +51,6 @@ public class ReservationDetailView implements FxmlView<ReservationDetailViewMode
         txtReservationId.textProperty().bind(viewModel.reservationIDProperty());
         txtContractingPartyName.textProperty().bind(viewModel.contractingPartyNameProperty());
         txtReservationComment.textProperty().bind(viewModel.reservationCommentProperty());
-        txtReservationStatus.textProperty().bind(viewModel.reservationStatusProperty());
         txtContractingPartyFname.textProperty().bind(viewModel.contractingPartyFnameProperty());
         txtContractingPartyLname.textProperty().bind(viewModel.contractingPartyLnameProperty());
         txtContractingCompany.textProperty().bind(viewModel.contractingPartyCompanyProperty());

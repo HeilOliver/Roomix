@@ -1,7 +1,8 @@
 package at.fhv.roomix.ui.common;
 
-import at.fhv.roomix.controller.contact.model.ContactPojo;
-import at.fhv.roomix.controller.reservation.model.ArrangementPojo;
+import at.fhv.roomix.controller.model.ContactPojo;
+import at.fhv.roomix.controller.model.ArrangementPojo;
+import at.fhv.roomix.controller.model.PersonPojo;
 import at.fhv.roomix.ui.view.reservation.edit.unit.ILabelBuilder;
 
 public class LabelBuilder {
@@ -12,10 +13,7 @@ public class LabelBuilder {
             StringBuilder sb = new StringBuilder();
             sb.append(pojo.getDescription());
             sb.append(" - ");
-            if (pojo.getDiscount() != null) {
-                sb.append(pojo.getDiscount().getDiscount());
-                sb.append("%");
-            } else if (pojo.getPrice() != null) {
+            if (pojo.getPrice() != null) {
                 sb.append(pojo.getPrice().getPrice());
                 sb.append("€");
             } else {
@@ -24,16 +22,13 @@ public class LabelBuilder {
             return sb.toString();
         }
     };
-    private static ILabelBuilder<ContactPojo> personILabelBuilder = new ILabelBuilder<ContactPojo>() {
+    private static ILabelBuilder<PersonPojo> personILabelBuilder = new ILabelBuilder<PersonPojo>() {
         @Override
-        public String build(ContactPojo pojo) {
+        public String build(PersonPojo pojo) {
             StringBuilder sb = new StringBuilder();
-            sb.append(pojo.getFirstName());
+            sb.append(pojo.getForeName());
             sb.append(" ");
             sb.append(pojo.getLastName());
-            if(pojo.getCompanyName() != null){
-                sb.append(" - ").append(pojo.getCompanyName());
-            }
             return sb.toString();
         }
     };
@@ -42,7 +37,7 @@ public class LabelBuilder {
         return arrangementILabelBuilder;
     }
 
-    public static ILabelBuilder<ContactPojo> getPersonILabelBuilder() {
+    public static ILabelBuilder<PersonPojo> getPersonILabelBuilder() {
         return personILabelBuilder;
     }
 }

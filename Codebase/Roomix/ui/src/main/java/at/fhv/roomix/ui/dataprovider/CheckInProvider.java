@@ -1,10 +1,8 @@
 package at.fhv.roomix.ui.dataprovider;
 
-import at.fhv.roomix.controller.stay.model.StayPojo;
-import at.fhv.roomix.ui.common.ISearchAble;
-import at.fhv.roomix.ui.common.validator.IUpdateAble;
+import at.fhv.roomix.controller.model.CheckInPojo;
 
-public class CheckInProvider extends AbstractSearchEditProvider<StayPojo> {
+public class CheckInProvider extends AbstractSearchEditProvider<CheckInPojo> {
 
     public CheckInProvider() {
         super(query -> {

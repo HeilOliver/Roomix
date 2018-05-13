@@ -1,0 +1,36 @@
+package at.fhv.roomix.ui.dataprovider;
+
+import at.fhv.roomix.controller.common.exceptions.*;
+import at.fhv.roomix.controller.model.CheckInPojo;
+import at.fhv.roomix.controller.model.CheckInReply;
+import at.fhv.roomix.controller.stay.IStayController;
+import at.fhv.roomix.controller.stay.StayControllerFactory;
+import at.fhv.roomix.ui.common.ICallableWithParameter;
+import javafx.application.Platform;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+
+public class UnitCheckInProvider extends AbstractProvider {
+
+    private BooleanProperty inLoadCheckIn = new SimpleBooleanProperty();
+
+    public void doCheckIn(CheckInPojo pojo, ICallableWithParameter<CheckInReply> replyCallback){
+        submit(() -> {
+            Platform.runLater(() -> inLoadCheckIn.setValue(true));
+            IStayController controller = StayControllerFactory.getInstance();
+            try {
+                CheckInReply checkInReply = controller.setUnitsForCheckIn(LoginProvider.getSessionID(), pojo);
+                if(checkInReply != null){
+                    Platform.runLater(() -> replyCallback.call(checkInReply));
+                } else {
+                    // TODO: error callback
+                }
+            } catch (ArgumentFaultException | SessionFaultException | ValidationFault | CheckInException | SaveFault e) {
+                e.printStackTrace();
+                // TODO: error callback
+            } finally {
+                Platform.runLater(() -> inLoadCheckIn.setValue(true));
+            }
+        });
+    }
+}

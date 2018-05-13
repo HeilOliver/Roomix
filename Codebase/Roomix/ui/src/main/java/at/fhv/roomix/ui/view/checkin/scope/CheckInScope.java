@@ -1,17 +1,16 @@
 package at.fhv.roomix.ui.view.checkin.scope;
 
-import at.fhv.roomix.controller.stay.model.StayPojo;
+import at.fhv.roomix.controller.model.CheckInPojo;
 import at.fhv.roomix.ui.common.AbstractMasterEditScope;
 import at.fhv.roomix.ui.common.IErrorCall;
 import at.fhv.roomix.ui.dataprovider.CheckInProvider;
 
-public class CheckInScope extends AbstractMasterEditScope<StayPojo>{
+public class CheckInScope extends AbstractMasterEditScope<CheckInPojo>{
 
     public CheckInScope() {
-        super(StayPojo::new, new CheckInProvider());
+        super(CheckInPojo::new, new CheckInProvider());
     }
-
-        public void setOnError(IErrorCall onError) {
+    public void setOnError(IErrorCall onError) {
             onSaveUpdateError = onError;
         }
 }

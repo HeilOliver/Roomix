@@ -60,37 +60,34 @@
                     <Label text="%reservation.detail.paymenttype" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
                     <Text fx:id="txtPaymentType" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
-                    <Label text="%reservation.detail.status" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-                    <Text fx:id="txtReservationStatus" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    <Label text="%reservation.comment" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <Text fx:id="txtReservationComment" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 
-                    <Label text="%reservation.comment" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-                    <Text fx:id="txtReservationComment" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                    <Separator GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2" />
+                    <Label text="%reservation.contractingparty" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2"  styleClass="detail_sub_section"/>
 
-                    <Separator GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2" />
-                    <Label text="%reservation.contractingparty" GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.columnSpan="2"  styleClass="detail_sub_section"/>
+                    <Label text="%contact.edit.firstname.prompt" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                    <Text fx:id="txtContractingPartyFname" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
 
-                    <Label text="%contact.edit.firstname.prompt" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
-                    <Text fx:id="txtContractingPartyFname" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+                    <Label text="%contact.edit.lastname.prompt" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                    <Text fx:id="txtContractingPartyLname" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
 
-                    <Label text="%contact.edit.lastname.prompt" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
-                    <Text fx:id="txtContractingPartyLname" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+                    <Label text="%contact.edit.companyname.prompt" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+                    <Text fx:id="txtContractingCompany" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
 
-                    <Label text="%contact.edit.companyname.prompt" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
-                    <Text fx:id="txtContractingCompany" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+                    <Label text="%contact.edit.phonenumber.prompt" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+                    <Text fx:id="txtContractingPartyPhone" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
 
-                    <Label text="%contact.edit.phonenumber.prompt" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
-                    <Text fx:id="txtContractingPartyPhone" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+                    <Separator GridPane.columnIndex="0" GridPane.rowIndex="9" GridPane.columnSpan="2" />
+                    <Label text="%reservation.persons" GridPane.columnIndex="0" GridPane.rowIndex="10" GridPane.columnSpan="2"  styleClass="detail_sub_section"/>
 
-                    <Separator GridPane.columnIndex="0" GridPane.rowIndex="10" GridPane.columnSpan="2" />
-                    <Label text="%reservation.persons" GridPane.columnIndex="0" GridPane.rowIndex="11" GridPane.columnSpan="2"  styleClass="detail_sub_section"/>
-
-                    <ListView fx:id="lstViewPersons" GridPane.columnSpan="2" GridPane.rowIndex="12" GridPane.columnIndex="0" mouseTransparent="true" focusTraversable="false"
+                    <ListView fx:id="lstViewPersons" GridPane.columnSpan="2" GridPane.rowIndex="11" GridPane.columnIndex="0" mouseTransparent="true" focusTraversable="false"
                      maxHeight="100.0"/>
 
-                    <Separator GridPane.columnIndex="0" GridPane.rowIndex="13" GridPane.columnSpan="2" />
-                    <Label text="%reservation.unit" GridPane.columnIndex="0" GridPane.rowIndex="14" GridPane.columnSpan="2"  styleClass="detail_sub_section"/>
+                    <Separator GridPane.columnIndex="0" GridPane.rowIndex="12" GridPane.columnSpan="2" />
+                    <Label text="%reservation.unit" GridPane.columnIndex="0" GridPane.rowIndex="13" GridPane.columnSpan="2"  styleClass="detail_sub_section"/>
 
-                    <ListView fx:id="lstViewUnits" GridPane.columnSpan="2" GridPane.rowIndex="15" GridPane.columnIndex="0" mouseTransparent="true" focusTraversable="false"
+                    <ListView fx:id="lstViewUnits" GridPane.columnSpan="2" GridPane.rowIndex="14" GridPane.columnIndex="0" mouseTransparent="true" focusTraversable="false"
                     maxHeight="100.0"/>
 
                 </GridPane>

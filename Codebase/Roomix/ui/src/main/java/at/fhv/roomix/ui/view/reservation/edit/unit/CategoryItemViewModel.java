@@ -30,12 +30,12 @@ public class CategoryItemViewModel implements ViewModel {
 
         StringBuilder sb = new StringBuilder();
         sb.append(pojo.getDescription());
-
-        sb.append(pojo.getUnconfirmedReservation());
-        if (pojo.getQuota() > 0) {
-            sb.append(" Quota:");
-            sb.append(pojo.getQuota());
-        }
+        // TODO: pass correct pojo and collect information to string
+        //sb.append(pojo.getUnconfirmedReservation());
+//        if (pojo.getQuota() > 0) {
+//            sb.append(" Quota:");
+//            sb.append(pojo.getQuota());
+//        }
         content.setValue(sb.toString());
     }
 

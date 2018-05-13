@@ -44,12 +44,13 @@ public class ReservationUnitProvider extends AbstractProvider {
             IReservationController instance =
                     ReservationControllerFactory.getInstance();
             try {
-                Collection<RoomCategoryPojo> collection =
-                        instance.getRoomAllocation(LoginProvider.getSessionID(),
-                                from, till, contractingParty);
+                // TODO: get price and occupation data and send it to UI
+//                Collection<RoomCategoryPojo> collection =
+//                        instance.calculateData(LoginProvider.getSessionID(),
+//                                from, till, contractingParty);
                 Platform.runLater(() -> {
                     possibleCategories.clear();
-                    possibleCategories.addAll(collection);
+                    //possibleCategories.addAll(collection);
                     onSuccess.call();
                 });
             } catch (Exception e) {
@@ -97,10 +98,11 @@ public class ReservationUnitProvider extends AbstractProvider {
             IReservationController instance =
                     ReservationControllerFactory.getInstance();
             try {
-                PricePojo price =
-                        instance.calculatePrice(LoginProvider.getSessionID(), pojo, contractingParty);
+                //TODO: get Price data and send back to UI
+//                PricePojo price =
+//                        instance.calculateData(LoginProvider.getSessionID(), pojo, contractingParty);
                 Platform.runLater(() -> {
-                    onSuccess.call(price);
+                    //onSuccess.call(price);
                 });
             } catch (Exception e) {
                 // TODO Fix Error Handling

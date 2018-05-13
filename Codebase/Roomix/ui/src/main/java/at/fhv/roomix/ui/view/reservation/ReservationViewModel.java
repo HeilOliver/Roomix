@@ -1,7 +1,5 @@
 package at.fhv.roomix.ui.view.reservation;
 
-import at.fhv.roomix.controller.stay.model.ReservationPojo;
-import at.fhv.roomix.ui.common.AbstractMasterEditScope;
 import at.fhv.roomix.ui.view.contact.scopes.ContactViewScope;
 import at.fhv.roomix.ui.view.reservation.scope.EDataProvider;
 import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
