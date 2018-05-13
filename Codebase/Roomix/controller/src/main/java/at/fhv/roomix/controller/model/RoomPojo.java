@@ -15,9 +15,15 @@ public class RoomPojo {
     private LocalDate endDate;
     private String roomNo;
 
-    public RoomPojo(LocalDate startDate, LocalDate endDate, String roomNo) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
+    }
+
+    public void setRoomNo(String roomNo) {
         this.roomNo = roomNo;
     }
 
