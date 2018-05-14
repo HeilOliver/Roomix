@@ -95,9 +95,9 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
         arrivalTime.setValue(DateTimeFormatter.ISO_LOCAL_TIME.format(currModel.get().getArrivalTime()));
         category.setValue(currModel.get().getRoomCategory().getDescription());
 
-        //roomSegments.add(new RoomSegment(1, "None", "None"));
         Collection<RoomPojo> assignedRooms = currModel.get().getAssignedRooms();
         for (RoomPojo roomPojo : assignedRooms) {
+            roomSegments.clear();
             if(roomPojo.getRoomNo() == null){
                 String notAssigned = StringResourceResolver.getStaticResolve(resourceBundle, "checkin.information.notassigned");
                 RoomSegment segment = new RoomSegment(1, notAssigned, "");
