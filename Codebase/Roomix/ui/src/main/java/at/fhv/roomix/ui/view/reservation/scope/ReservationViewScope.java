@@ -1,9 +1,11 @@
 package at.fhv.roomix.ui.view.reservation.scope;
 
 
+import at.fhv.roomix.controller.model.PersonPojo;
 import at.fhv.roomix.controller.model.ReservationPojo;
 import at.fhv.roomix.ui.common.AbstractMasterEditScope;
 import at.fhv.roomix.ui.common.IErrorCall;
+import at.fhv.roomix.ui.view.reservation.edit.item.ItemHandlerList;
 
 /**
  * Roomix
@@ -18,6 +20,8 @@ public class ReservationViewScope extends AbstractMasterEditScope<ReservationPoj
     public static final String commandOnChange = "Command_on_change";
     public static final String commandOnCommit = "Command_commit";
 
+    private ItemHandlerList<PersonPojo> personHandler;
+
     public ReservationViewScope() {
         super(ReservationPojo::new, null);
     }
@@ -29,5 +33,13 @@ public class ReservationViewScope extends AbstractMasterEditScope<ReservationPoj
     public void init(EDataProvider providerType){
         assert providerType != null;
         provider = providerType.get();
+    }
+
+    public ItemHandlerList<PersonPojo> getPersonHandler() {
+        return personHandler;
+    }
+
+    public void setPersonHandler(ItemHandlerList<PersonPojo> personHandler) {
+        this.personHandler = personHandler;
     }
 }

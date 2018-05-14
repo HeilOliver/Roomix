@@ -98,6 +98,16 @@ public class ItemHandlerList<T> extends ItemHandler<T> {
         }
     }
 
+    public void addObject(T object){
+        if(items.size() >= maxSize){
+            throw new IllegalStateException("To much items in this list");
+        }
+        ItemControlViewModel<T> model =
+                new ItemControlViewModel<>(this, contentBuilder);
+        model.setPojo(object);
+        items.add(model);
+    }
+
     public ObservableList<ItemControlViewModel> currentItems() {
         return items;
     }

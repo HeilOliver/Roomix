@@ -242,6 +242,8 @@ public class CheckInEditViewModel implements ViewModel {
         viewScope.subscribe(ReservationViewScope.commandOnCommit, (s, objects) -> {
             unitHandler.setCheckMarkVisible(true);
         });
+
+        viewScope.setPersonHandler(personHandler);
     }
     public ObjectProperty<ItemControlViewModel<ContactPojo>> contractingPartyPropertyProperty() {
         return contractingPartyProperty;

@@ -14,7 +14,7 @@ public class UnitCheckInProvider extends AbstractProvider {
 
     private BooleanProperty inLoadCheckIn = new SimpleBooleanProperty();
 
-    public void doCheckIn(CheckInPojo pojo, ICallableWithParameter<CheckInReply> replyCallback){
+    public void doCheckIn(CheckInPojo pojo, ICallableWithParameter<CheckInReply> replyCallback, ICallableWithParameter<String> errorCallback){
         submit(() -> {
             Platform.runLater(() -> inLoadCheckIn.setValue(true));
             IStayController controller = StayControllerFactory.getInstance();
@@ -23,11 +23,11 @@ public class UnitCheckInProvider extends AbstractProvider {
                 if(checkInReply != null){
                     Platform.runLater(() -> replyCallback.call(checkInReply));
                 } else {
-                    // TODO: error callback
+                    errorCallback.call("Internal error");
                 }
             } catch (ArgumentFaultException | SessionFaultException | ValidationFault | CheckInException | SaveFault e) {
                 e.printStackTrace();
-                // TODO: error callback
+                errorCallback.call("Internal error");
             } finally {
                 Platform.runLater(() -> inLoadCheckIn.setValue(true));
             }
