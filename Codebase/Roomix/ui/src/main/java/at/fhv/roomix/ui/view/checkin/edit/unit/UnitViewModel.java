@@ -45,9 +45,6 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
     @InjectResourceBundle
     private ResourceBundle resourceBundle;
 
-    public UnitViewModel(){
-
-    }
 
     public ObservableList<PacketsItemViewModel<ArrangementPojo>> getArrangementList() {
         return arrangementList;

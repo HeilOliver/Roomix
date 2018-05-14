@@ -3,7 +3,6 @@ package at.fhv.roomix.ui.view.checkin.edit.contracting_party;
 import at.fhv.roomix.controller.model.ContactPojo;
 import at.fhv.roomix.controller.model.ReservationPojo;
 import at.fhv.roomix.domain.reservation.Reservation;
-import at.fhv.roomix.ui.view.checkin.edit.CheckInEditScope;
 import at.fhv.roomix.ui.view.reservation.edit.SubscribeAbleViewModel;
 import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
 import de.saxsys.mvvmfx.InjectScope;

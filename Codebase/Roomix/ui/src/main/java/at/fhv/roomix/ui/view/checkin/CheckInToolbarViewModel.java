@@ -12,7 +12,6 @@ public class CheckInToolbarViewModel extends AbstractToolbar<ReservationViewScop
     private ReservationViewScope scope;
 
     public void initialize() {
-        scope.init(EDataProvider.ReservationProvider);
         super.initialize(scope);
     }
 }

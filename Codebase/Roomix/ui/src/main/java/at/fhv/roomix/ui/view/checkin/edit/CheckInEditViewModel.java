@@ -39,9 +39,6 @@ public class CheckInEditViewModel implements ViewModel {
     @InjectResourceBundle
     private ResourceBundle bundle;
 
-    private final CheckInEditScope editScope = new CheckInEditScope();
-
-
     /**
      * Region Contracting Party
      */
@@ -78,7 +75,6 @@ public class CheckInEditViewModel implements ViewModel {
     /**
      * Region Persons
      */
-
     private final IContentBuilder<PersonPojo> personBuilder = pojo -> {
         StringBuilder sb = new StringBuilder();
 
@@ -196,8 +192,6 @@ public class CheckInEditViewModel implements ViewModel {
     /** End region */
 
     public void initialize(){
-        viewScope.init(EDataProvider.ReservationProvider);
-
         /*
            Due to the new view scope init method, the ItemHandler can only be created
            after initializing the correct view scope, otherwise the view scope would be null and

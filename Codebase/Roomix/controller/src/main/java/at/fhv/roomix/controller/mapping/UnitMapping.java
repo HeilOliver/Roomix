@@ -62,6 +62,13 @@ public class UnitMapping implements MapType<ReservationUnit, ReservationUnitPojo
                     }
                     last.setEndDate(entry.getKey());
                 });
+        if (rooms.isEmpty()) {
+            RoomPojo roomPojo = new RoomPojo();
+            roomPojo.setStartDate(source.getStartDate());
+            roomPojo.setEndDate(source.getEndDate());
+            rooms.add(roomPojo);
+        }
+
         destination.setAssignedRooms(rooms);
         destination.setCheckedIn(source.isEditAble());
     }

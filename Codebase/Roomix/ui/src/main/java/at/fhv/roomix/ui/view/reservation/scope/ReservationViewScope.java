@@ -27,6 +27,7 @@ public class ReservationViewScope extends AbstractMasterEditScope<ReservationPoj
     }
 
     public void init(EDataProvider providerType){
+        assert providerType != null;
         provider = providerType.get();
     }
 }

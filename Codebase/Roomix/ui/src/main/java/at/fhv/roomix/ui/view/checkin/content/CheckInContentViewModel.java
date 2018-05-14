@@ -1,6 +1,6 @@
 package at.fhv.roomix.ui.view.checkin.content;
 
-import at.fhv.roomix.ui.view.checkin.scope.CheckInScope;
+import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
 import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.BooleanProperty;
@@ -11,7 +11,7 @@ public class CheckInContentViewModel implements ViewModel {
     private BooleanProperty detailOpenProperty = new SimpleBooleanProperty();
 
     @InjectScope
-    private CheckInScope checkInScope;
+    private ReservationViewScope checkInScope;
 
     public void initialize() {
         checkInScope.selectedPojoProperty().addListener(((observable, oldValue, newValue) -> {
