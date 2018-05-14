@@ -26,6 +26,8 @@ import javafx.scene.Parent;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class CheckInEditViewModel implements ViewModel {
 
@@ -119,7 +121,7 @@ public class CheckInEditViewModel implements ViewModel {
         if (pojo.getPrice() == null || pojo.getPrice().getPrice() <= 0) {
             sb.append("? €");
         } else {
-            sb.append(pojo.getPrice().getPrice());
+            sb.append(pojo.getPrice().getPrice()/100);
             sb.append("€");
         }
         return sb.toString();
@@ -209,34 +211,36 @@ public class CheckInEditViewModel implements ViewModel {
                 UnitView.class, unitBuilder, currentSelection, currentView, ReservationUnitPojo::new, viewScope
         );
 
-
         viewScope.selectedPojoProperty().addListener((observable, oldValue, newValue) -> {
-            if(viewScope.selectedPojoProperty() != null) {
-                ReservationPojo reservationPojo = viewScope.selectedPojoProperty().get();
-                if(reservationPojo != null && reservationPojo.getPersons() != null) {
-                    personHandler.setObjects(reservationPojo.getPersons());
-                    personHandler.hideDeleteButton();
-                }
-                if(reservationPojo != null && reservationPojo.getUnits() != null) {
-                    unitHandler.setObjects(reservationPojo.getUnits());
-                    unitHandler.hideDeleteButton();
-                }
-                if(reservationPojo != null && reservationPojo.getContractingParty() != null) {
-                    contractingPartyHandler.setObject(reservationPojo.getContractingParty());
-                    contractingPartyHandler.hideDeleteButton();
-                }
-                if(reservationPojo != null &&  reservationPojo.getOption() != null) {
-                    optionHandler.setObject(reservationPojo.getOption());
-                    optionHandler.hideDeleteButton();
-                }
-                if(reservationPojo != null && reservationPojo.getReservationComment() != null){
-                    CommentPojo comment = new CommentPojo();
-                    comment.setComment(reservationPojo.getReservationComment());
-                    commentHandler.setObject(comment);
-                    commentHandler.hideDeleteButton();
-                }
+            currentView.setValue(null);
+            personHandler.clear();
+            unitHandler.clear();
+            contractingPartyHandler.clear();
+            optionHandler.clear();
+            commentHandler.clear();
 
-            }
+            if (newValue == null) return;
+
+            personHandler.setObjects(newValue.getPersons());
+            personHandler.hideDeleteButton();
+
+            Set<ReservationUnitPojo> set = newValue.getUnits().stream()
+                    .filter(u -> !u.isCheckedIn())
+                    .collect(Collectors.toSet());
+            unitHandler.setObjects(set);
+            unitHandler.hideDeleteButton();
+
+            contractingPartyHandler.setObject(newValue.getContractingParty());
+            contractingPartyHandler.hideDeleteButton();
+
+            optionHandler.setObject(newValue.getOption());
+            optionHandler.hideDeleteButton();
+
+            if (newValue.getReservationComment() == null) return;
+            CommentPojo comment = new CommentPojo();
+            comment.setComment(newValue.getReservationComment());
+            commentHandler.setObject(comment);
+            commentHandler.hideDeleteButton();
         });
 
         viewScope.subscribe(ReservationViewScope.commandOnCommit, (s, objects) -> {

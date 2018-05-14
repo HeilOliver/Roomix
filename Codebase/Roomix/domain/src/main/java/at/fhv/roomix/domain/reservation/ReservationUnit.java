@@ -138,6 +138,10 @@ public class ReservationUnit {
         return true;
     }
 
+    public boolean isUntouched() {
+        return status == UnitStatus.NEW;
+    }
+
     public void addGuest(Person person) {
         guests.add(person);
     }

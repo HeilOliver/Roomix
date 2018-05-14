@@ -42,6 +42,7 @@ public class UnitMapping implements MapType<ReservationUnit, ReservationUnitPojo
             PricePojo pricePojo = new PricePojo();
             pricePojo.setPrice(arrangement.getPrice());
             arrangementPojo.setPrice(pricePojo);
+            destination.getArrangements().add(arrangementPojo);
         }
 
         HashMap<LocalDate, Room> assignedRooms = source.getAssignedRooms();
@@ -71,5 +72,9 @@ public class UnitMapping implements MapType<ReservationUnit, ReservationUnitPojo
 
         destination.setAssignedRooms(rooms);
         destination.setCheckedIn(source.isEditAble());
+
+        PricePojo pricePojo = new PricePojo();
+        pricePojo.setPrice(source.getPrice());
+        destination.setPrice(pricePojo);
     }
 }

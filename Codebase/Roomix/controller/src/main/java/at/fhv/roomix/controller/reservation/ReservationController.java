@@ -83,7 +83,7 @@ class ReservationController implements IReservationController {
                 reservationPojoSet.add(_mapper.map(reservation, ReservationPojo.class));
             }
             return reservationPojoSet;
-        } catch (BuilderLoadException | MappingException e) {
+        } catch (BuilderLoadException | MappingException | IllegalStateException e) {
             throw new GetFault("Exception by loading data, see inner exception fore more details", e);
         }
     }

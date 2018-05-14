@@ -14,23 +14,19 @@
     <fx:include source="CheckInToolbarView.fxml" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
                 AnchorPane.rightAnchor="0" />
 
-    <StackPane fx:id="" AnchorPane.topAnchor="50" AnchorPane.bottomAnchor="0"
+    <StackPane fx:id="ParentPane" AnchorPane.topAnchor="50" AnchorPane.bottomAnchor="0"
                AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
 
         <AnchorPane fx:id="contentView" AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0"
                 AnchorPane.bottomAnchor="0" AnchorPane.topAnchor="0">
-
             <fx:include source="/at/fhv/roomix/ui/view/reservation/content/ReservationContentView.fxml" AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0"
                         AnchorPane.bottomAnchor="0" AnchorPane.topAnchor="0"/>
         </AnchorPane>
 
         <AnchorPane fx:id="editView" AnchorPane.topAnchor="50" AnchorPane.leftAnchor="0"
                     AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0">
-
             <fx:include source="edit/CheckInEditView.fxml" AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0"
                         AnchorPane.bottomAnchor="0" AnchorPane.topAnchor="0"/>
         </AnchorPane>
-        <!-- to be continued -->
     </StackPane>
-
 </AnchorPane>

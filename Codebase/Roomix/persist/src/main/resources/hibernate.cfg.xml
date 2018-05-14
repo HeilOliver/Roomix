@@ -11,7 +11,7 @@
         <property name="connection.username">root</property>
         <property name="connection.password">0000</property>
 
-        <property name="hibernate.cache.use_second_level_cache">true</property>
+        <property name="hibernate.cache.use_second_level_cache">false</property>
         <property name="hibernate.cache.use_query_cache">true</property>
         <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory
         </property>
