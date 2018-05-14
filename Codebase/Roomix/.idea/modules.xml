@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/roomix.iml" filepath="$PROJECT_DIR$/roomix.iml" />
       <module fileurl="file://$PROJECT_DIR$/ui/ui.iml" filepath="$PROJECT_DIR$/ui/ui.iml" />
       <module fileurl="file://$PROJECT_DIR$/webLogin/webLogin.iml" filepath="$PROJECT_DIR$/webLogin/webLogin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webLogin/webLogin.iml" filepath="$PROJECT_DIR$/webLogin/webLogin.iml" />
     </modules>
   </component>
 </project>

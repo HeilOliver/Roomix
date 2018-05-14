@@ -18,10 +18,7 @@ import java.util.function.Function;
 @Component
 public class JwtTokenUtil implements Serializable {
 
-    static final String CLAIM_KEY_USERNAME = "sub";
-    static final String CLAIM_KEY_CREATED = "iat";
     private static final long serialVersionUID = -3301605591108950415L;
-    // @SuppressFBWarnings(value = "SE_BAD_FIELD", justification = "It's okay here")
     private Clock clock = DefaultClock.INSTANCE;
 
     @Value("${jwt.secret}")
@@ -110,7 +107,6 @@ public class JwtTokenUtil implements Serializable {
         JwtUser user = (JwtUser) userDetails;
         final String username = getUsernameFromToken(token);
         final Date created = getIssuedAtDateFromToken(token);
-        //final Date expiration = getExpirationDateFromToken(token);
         return (
             username.equals(user.getUsername())
                 && !isTokenExpired(token)
