@@ -67,6 +67,7 @@ public class UnitView implements FxmlView<UnitViewModel> {
         viewModel.roomSegmentsProperty().addListener(new ListChangeListener<RoomSegment>() {
             @Override
             public void onChanged(Change<? extends RoomSegment> c) {
+                segmentedBar.getSegments().clear();
                 segmentedBar.getSegments().addAll(c.getList());
             }
         });

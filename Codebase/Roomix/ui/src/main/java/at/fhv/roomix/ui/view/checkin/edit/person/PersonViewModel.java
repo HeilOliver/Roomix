@@ -6,6 +6,8 @@ import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
 import de.saxsys.mvvmfx.InjectScope;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.util.Collection;
+
 public class PersonViewModel extends SubscribeAbleViewModel<PersonPojo> {
 
     @InjectScope
@@ -39,9 +41,12 @@ public class PersonViewModel extends SubscribeAbleViewModel<PersonPojo> {
         currModel.get().setForeName(personFirstName.get());
         currModel.get().setLastName(personLastname.get());
         if(isNew){
-            editScope.selectedPojoProperty().get().getPersons().add(currModel.get());
+            pojoWrapper.field("firstname", PersonPojo::getForeName, PersonPojo::setForeName);
+            pojoWrapper.field("lastname", PersonPojo::getLastName, PersonPojo::setLastName);
+        } else {
+            pojoWrapper.get().setForeName(personFirstName.get());
+            pojoWrapper.get().setLastName(personLastname.get());
         }
-        editScope.publish(ReservationViewScope.commandOnChange);
         commit();
     }
 }

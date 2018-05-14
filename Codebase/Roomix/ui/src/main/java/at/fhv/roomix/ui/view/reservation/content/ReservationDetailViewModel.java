@@ -46,7 +46,7 @@ public class ReservationDetailViewModel implements ViewModel {
             detailAvailable.setValue(newValue != null);
             reservationID.setValue(String.valueOf(newValue == null ? null : newValue.getId()));
             contractingPartyName.setValue(newValue == null ? null :
-                    " - " + newValue.getContractingParty().getFirstName() + " " +
+                    newValue.getContractingParty().getFirstName() + " " +
                     newValue.getContractingParty().getLastName() );
             reservationComment.setValue(newValue == null ? null :
                     (newValue.getReservationComment() == null ? "..." : newValue.getReservationComment()));

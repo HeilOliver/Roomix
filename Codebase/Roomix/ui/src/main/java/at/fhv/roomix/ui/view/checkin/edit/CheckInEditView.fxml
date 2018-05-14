@@ -93,12 +93,12 @@
                       GridPane.halignment="LEFT" GridPane.valignment="CENTER" GridPane.hgrow="ALWAYS">
                     <Label text="%reservation.comment"
                            HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
-                    <Button fx:id="btnAddComment" text="%main.add" mnemonicParsing="false"
-                            onAction="#addComment" minWidth="60">
-                        <graphic>
-                            <FontAwesomeIconView glyphName="PLUS" size="1.5em" styleClass="new_icon"/>
-                        </graphic>
-                    </Button>
+                    <!--<Button fx:id="btnAddComment" text="%main.add" mnemonicParsing="false"-->
+                            <!--onAction="#addComment" minWidth="60">-->
+                        <!--<graphic>-->
+                            <!--<FontAwesomeIconView glyphName="PLUS" size="1.5em" styleClass="new_icon"/>-->
+                        <!--</graphic>-->
+                    <!--</Button>-->
                 </HBox>
                 <HBox fx:id="boxComment" GridPane.rowIndex="13" GridPane.hgrow="ALWAYS"/>
 

@@ -22,7 +22,7 @@ public class ReservationDetailView implements FxmlView<ReservationDetailViewMode
     private ReservationDetailViewModel viewModel;
 
     @FXML
-    private Text txtReservationID, txtReservationId;
+    private Text txtReservationId;
     @FXML
     private Text txtContractingPartyName;
     @FXML
@@ -47,7 +47,6 @@ public class ReservationDetailView implements FxmlView<ReservationDetailViewMode
     private VBox emptyContent;
 
     public void initialize(){
-        txtReservationID.textProperty().bind(viewModel.reservationIDProperty());
         txtReservationId.textProperty().bind(viewModel.reservationIDProperty());
         txtContractingPartyName.textProperty().bind(viewModel.contractingPartyNameProperty());
         txtReservationComment.textProperty().bind(viewModel.reservationCommentProperty());

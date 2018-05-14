@@ -20,9 +20,8 @@
 >
                 <FlowPane AnchorPane.leftAnchor="0.0"
                           AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <Text fx:id="txtReservationID" styleClass="detail_contact_name"/>
-                    <Region prefWidth="10"/>
                     <Text fx:id="txtContractingPartyName" styleClass="detail_contact_name"/>
+                    <Region prefWidth="10"/>
                 </FlowPane>
                 <VBox AnchorPane.leftAnchor="0.0"
                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="95">
@@ -47,11 +46,10 @@
                         <RowConstraints prefHeight="30.0"/>
                         <RowConstraints prefHeight="30.0"/>
                         <RowConstraints prefHeight="30.0"/>
+                        <RowConstraints prefHeight="100.0"/>
                         <RowConstraints prefHeight="30.0"/>
-                        <RowConstraints maxHeight="100.0"/>
                         <RowConstraints prefHeight="30.0"/>
-                        <RowConstraints prefHeight="30.0"/>
-                        <RowConstraints maxHeight="100.0"/>
+                        <RowConstraints prefHeight="100.0"/>
                     </rowConstraints>
 
                     <Label text="%reservation.detail.reservationID" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
@@ -82,13 +80,13 @@
                     <Label text="%reservation.persons" GridPane.columnIndex="0" GridPane.rowIndex="10" GridPane.columnSpan="2"  styleClass="detail_sub_section"/>
 
                     <ListView fx:id="lstViewPersons" GridPane.columnSpan="2" GridPane.rowIndex="11" GridPane.columnIndex="0" mouseTransparent="true" focusTraversable="false"
-                     maxHeight="100.0"/>
+                     minHeight="100.0"/>
 
                     <Separator GridPane.columnIndex="0" GridPane.rowIndex="12" GridPane.columnSpan="2" />
                     <Label text="%reservation.unit" GridPane.columnIndex="0" GridPane.rowIndex="13" GridPane.columnSpan="2"  styleClass="detail_sub_section"/>
 
                     <ListView fx:id="lstViewUnits" GridPane.columnSpan="2" GridPane.rowIndex="14" GridPane.columnIndex="0" mouseTransparent="true" focusTraversable="false"
-                    maxHeight="100.0"/>
+                    minHeight="100.0"/>
 
                 </GridPane>
                 <VBox fx:id="emptyContent">

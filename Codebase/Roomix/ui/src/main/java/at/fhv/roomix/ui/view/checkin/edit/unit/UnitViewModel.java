@@ -13,6 +13,7 @@ import de.saxsys.mvvmfx.utils.itemlist.ListTransformation;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -55,18 +56,9 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
     }
 
     public void initialize(){
-        scope.subscribe(ReservationViewScope.commandOnChange, (s, objects) -> {
-            Collection<PersonPojo> persons = scope.selectedPojoProperty().get().getPersons();
-            if (persons != null) {
-                LinkedList<PersonPojo> personListL = new LinkedList<>(persons);
-                ObservableList<PersonPojo> list = FXCollections.observableList(personListL);
-                ListTransformation<PersonPojo, PacketsItemViewModel<PersonPojo>> transPersons
-                        = new ListTransformation<>(list, (PersonPojo pojo) -> new PacketsItemViewModel<>(pojo, LabelBuilder.getPersonILabelBuilder()));
-                ObservableList<PacketsItemViewModel<PersonPojo>> targetList = transPersons.getTargetList();
-                personList = targetList;
-                personListChanged.setValue(!personListChangedProperty().getValue());
-            }
-        });
+//        scope.subscribe(ReservationViewScope.commandOnChange, (s, objects) -> {
+//
+//        });
     }
 
     public void fireChange(){
@@ -76,6 +68,19 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
     // TODO: bereits eingecheckte Units anzeigen
     @Override
     protected void afterSubscribe(boolean isNew) {
+
+        Collection<PersonPojo> persons = scope.getPersonHandler().getObjects();
+        //Collection<PersonPojo> persons = scope.selectedPojoProperty().get().getPersons();
+        if (persons != null) {
+            LinkedList<PersonPojo> personListL = new LinkedList<>(persons);
+            ObservableList<PersonPojo> list = FXCollections.observableList(personListL);
+            ListTransformation<PersonPojo, PacketsItemViewModel<PersonPojo>> transPersons
+                    = new ListTransformation<>(list, (PersonPojo pojo) -> new PacketsItemViewModel<>(pojo, LabelBuilder.getPersonILabelBuilder()));
+            ObservableList<PacketsItemViewModel<PersonPojo>> targetList = transPersons.getTargetList();
+            personList = targetList;
+            personListChanged.setValue(!personListChangedProperty().getValue());
+        }
+
         Collection<ArrangementPojo> arrangementPojos = currModel.get().getArrangements();
         if(arrangementPojos != null) {
             LinkedList<ArrangementPojo> arrangements = new LinkedList<>(arrangementPojos);
@@ -92,9 +97,9 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
         arrivalTime.setValue(DateTimeFormatter.ISO_LOCAL_TIME.format(currModel.get().getArrivalTime()));
         category.setValue(currModel.get().getRoomCategory().getDescription());
 
-        //roomSegments.add(new RoomSegment(1, "None", "None"));
         Collection<RoomPojo> assignedRooms = currModel.get().getAssignedRooms();
         for (RoomPojo roomPojo : assignedRooms) {
+            roomSegments.clear();
             if(roomPojo.getRoomNo() == null){
                 String notAssigned = StringResourceResolver.getStaticResolve(resourceBundle, "checkin.information.notassigned");
                 RoomSegment segment = new RoomSegment(1, notAssigned, "");
@@ -140,6 +145,11 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
             commitButtonDisabledProperty.setValue(true);
             scope.publish(ReservationViewScope.commandOnCommit);
             commit();
+        }, errorMessage -> {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(errorMessage);
+            alert.showAndWait();
         });
     }
 
