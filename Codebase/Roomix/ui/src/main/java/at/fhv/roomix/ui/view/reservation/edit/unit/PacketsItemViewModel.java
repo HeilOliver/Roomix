@@ -18,6 +18,7 @@ public class PacketsItemViewModel<T> implements ViewModel {
     private final T pojo;
     private StringProperty content = new SimpleStringProperty();
     private BooleanProperty checked = new SimpleBooleanProperty();
+
     public PacketsItemViewModel(T pojo, ILabelBuilder<T> builder) {
         this.pojo = pojo;
         content.setValue(builder.build(pojo));
@@ -37,5 +38,9 @@ public class PacketsItemViewModel<T> implements ViewModel {
 
     public T getPojo() {
         return pojo;
+    }
+
+    public void check() {
+        checkedProperty().setValue(true);
     }
 }

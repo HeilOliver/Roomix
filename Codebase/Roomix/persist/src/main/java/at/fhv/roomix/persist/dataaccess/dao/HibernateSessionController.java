@@ -74,6 +74,8 @@ public class HibernateSessionController implements ISessionController {
             throw new IllegalStateException("No transaction open");
         currTransaction.commit();
         currTransaction = null;
+        currSession.close();
+        currSession = null;
     }
 
     @Override

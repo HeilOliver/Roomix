@@ -1,8 +1,10 @@
 package at.fhv.roomix.ui.view.reservation.content;
 
 import at.fhv.roomix.controller.model.ContactPojo;
+import at.fhv.roomix.ui.common.StringResourceResolver;
 import at.fhv.roomix.ui.view.reservation.scope.EDataProvider;
 import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
+import de.saxsys.mvvmfx.InjectResourceBundle;
 import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.BooleanProperty;
@@ -14,6 +16,7 @@ import javafx.collections.ObservableList;
 
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.ResourceBundle;
 
 /**
  * Roomix
@@ -39,6 +42,9 @@ public class ReservationDetailViewModel implements ViewModel {
     @InjectScope
     private ReservationViewScope viewScope;
 
+    @InjectResourceBundle
+    private ResourceBundle bundle;
+
     private BooleanProperty detailAvailable = new SimpleBooleanProperty();
 
     public void initialize(){
@@ -50,7 +56,9 @@ public class ReservationDetailViewModel implements ViewModel {
                     newValue.getContractingParty().getLastName() );
             reservationComment.setValue(newValue == null ? null :
                     (newValue.getReservationComment() == null ? "..." : newValue.getReservationComment()));
-            // TODO: add payment type
+
+            paymentType.setValue(newValue == null ? null :
+                    StringResourceResolver.getStaticResolve(bundle,"paymentType." + newValue.getPaymentType().getDescription()));
             contractingPartyFname.setValue(newValue == null ? null : newValue.getContractingParty().getFirstName());
             contractingPartyLname.setValue(newValue == null ? null : newValue.getContractingParty().getLastName());
             contractingPartyCompany.setValue(newValue == null ? null : newValue.getContractingParty().getCompanyName());
@@ -70,11 +78,12 @@ public class ReservationDetailViewModel implements ViewModel {
                     });
                 }
             }
+            persons.clear();
             persons.addAll(personList);
+            units.clear();
             units.addAll(unitList);
         });
     }
-
 
     public StringProperty reservationIDProperty() {
         return reservationID;
@@ -111,9 +120,11 @@ public class ReservationDetailViewModel implements ViewModel {
     public StringProperty contractingPartyPhoneProperty() {
         return contractingPartyPhone;
     }
+
     public ObservableList<String> getPersons() {
         return persons;
     }
+
     public ObservableList<String> getUnits() {
         return units;
     }

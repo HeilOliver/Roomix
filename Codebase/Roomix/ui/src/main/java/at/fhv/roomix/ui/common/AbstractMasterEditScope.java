@@ -27,7 +27,7 @@ public abstract class AbstractMasterEditScope<T> implements Scope {
     public static final String commandContentView = "Command_ContentView";
     public static final String commandCommitEdit = "Command_CommitEdit";
     protected static final Logger LOG = LoggerFactory.getLogger(AbstractMasterEditScope.class);
-    protected AbstractSearchEditProvider<T> provider;
+    private AbstractSearchEditProvider<T> provider;
     protected final ObjectProperty<T> selectedPojo = new SimpleObjectProperty<>();
     protected final ObjectProperty<T> inEditPojo = new SimpleObjectProperty<>();
     protected final BooleanProperty inEditPropertyValid = new SimpleBooleanProperty();
@@ -44,6 +44,11 @@ public abstract class AbstractMasterEditScope<T> implements Scope {
         subscribe(AbstractMasterEditScope.commandSave, (key, payload) -> saveCommand());
         subscribe(AbstractMasterEditScope.commandEdit, (key, payload) -> editCommand());
         subscribe(AbstractMasterEditScope.commandNew, (key, payload) -> newCommand());
+    }
+
+    protected void setProvider(AbstractSearchEditProvider<T> provider) {
+        this.provider = provider;
+        provider.addErrorCallBack(onSearchError);
     }
 
     private void closeCommand() {

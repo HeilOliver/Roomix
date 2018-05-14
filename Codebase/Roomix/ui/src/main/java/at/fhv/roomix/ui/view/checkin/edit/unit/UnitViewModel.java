@@ -56,16 +56,12 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
     }
 
     public void initialize(){
-//        scope.subscribe(ReservationViewScope.commandOnChange, (s, objects) -> {
-//
-//        });
     }
 
     public void fireChange(){
         scope.publish(ReservationViewScope.commandOnChange);
     }
 
-    // TODO: bereits eingecheckte Units anzeigen
     @Override
     protected void afterSubscribe(boolean isNew) {
 
@@ -89,6 +85,7 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
                     = new ListTransformation<>(list, pojo -> new PacketsItemViewModel<>(pojo, LabelBuilder.getArrangementILabelBuilder()));
             ObservableList<PacketsItemViewModel<ArrangementPojo>> targetList = transArticle.getTargetList();
             arrangementList = targetList;
+            targetList.forEach(PacketsItemViewModel::check);
             listChanged.setValue(true);
         }
 
@@ -96,15 +93,18 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
         endDate.setValue(DateTimeFormatter.ISO_LOCAL_DATE.format(currModel.get().getEndDate()));
         arrivalTime.setValue(DateTimeFormatter.ISO_LOCAL_TIME.format(currModel.get().getArrivalTime()));
         category.setValue(currModel.get().getRoomCategory().getDescription());
+        commitButtonDisabledProperty.setValue(currModel.get().isCheckedIn());
 
         Collection<RoomPojo> assignedRooms = currModel.get().getAssignedRooms();
+        roomSegments.clear();
         for (RoomPojo roomPojo : assignedRooms) {
-            roomSegments.clear();
             if(roomPojo.getRoomNo() == null){
                 String notAssigned = StringResourceResolver.getStaticResolve(resourceBundle, "checkin.information.notassigned");
                 RoomSegment segment = new RoomSegment(1, notAssigned, "");
                 roomSegments.add(segment);
-            } else {
+                continue;
+            }
+
                 LocalDate startDate = roomPojo.getStartDate();
                 LocalDate endDate = roomPojo.getEndDate();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
@@ -112,7 +112,7 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
                 String dateString = startDate.format(formatter) + " - " + endDate.format(formatter);
                 RoomSegment segment = new RoomSegment(daysBetween < 1 ? 1 : daysBetween, roomPojo.getRoomNo(), dateString);
                 roomSegments.add(segment);
-            }
+
         }
 
     }
@@ -127,6 +127,11 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
                 assignedPersons.add(personItem.getPojo());
             }
         }
+        if (assignedPersons.isEmpty()) {
+            scope.publish(ReservationViewScope.commandSaveUpdateError, new Error("You must assign at least one Person"));
+            return;
+        }
+
         checkInPojo.setAssignedPerson(assignedPersons);
         provider.doCheckIn(checkInPojo, reply -> {
             if(reply.getReplyMessage().equals(CheckInReply.Reply.OK)){
@@ -146,10 +151,7 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
             scope.publish(ReservationViewScope.commandOnCommit);
             commit();
         }, errorMessage -> {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(errorMessage);
-            alert.showAndWait();
+            scope.publish(ReservationViewScope.commandSaveUpdateError, new Error(errorMessage));
         });
     }
 

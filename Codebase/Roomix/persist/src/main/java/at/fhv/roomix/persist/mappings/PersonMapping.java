@@ -34,4 +34,11 @@ public class PersonMapping implements MapType<PersonEntity,Person> {
             destination.setContact(mapper.map(source.getContact(), Contact.class));
         }
     }
+
+    @Override
+    public void mapReverse(Person source, PersonEntity destination, Mapper mapper) throws MappingException {
+        destination.setFirstName(source.getFirstName());
+        destination.setLastName(source.getLastName());
+        destination.setIsVip((byte) (source.isVip() ? 1 : 0));
+    }
 }

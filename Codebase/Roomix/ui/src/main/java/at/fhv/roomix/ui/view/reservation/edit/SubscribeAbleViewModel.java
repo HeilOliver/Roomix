@@ -72,5 +72,4 @@ public abstract class SubscribeAbleViewModel<T> implements ViewModel {
     protected void afterCommit() {
     }
 
-    ;
 }

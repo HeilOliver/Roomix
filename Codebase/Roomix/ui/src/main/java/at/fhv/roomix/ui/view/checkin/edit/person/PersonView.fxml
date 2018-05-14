@@ -11,7 +11,7 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="at.fhv.roomix.ui.view.checkin.edit.person.PersonView"
             stylesheets="@/at/fhv/roomix/ui/view/checkin/edit/contracting_party/ContractingPartyView.css"
-            prefHeight="400.0" prefWidth="600.0">
+            >
 
     <AnchorPane AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
                 AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="10"
@@ -36,7 +36,7 @@
             </HBox>
             <TitledPane text="%checkin.information.heading.contactinfo" expanded="false">
                 <content>
-                    <GridPane fx:id="contactInformationForm" vgap="17.0" hgap="10">
+                    <GridPane vgap="17.0" hgap="10">
                         <columnConstraints>
                             <ColumnConstraints percentWidth="10" />
                             <ColumnConstraints percentWidth="40" />
@@ -61,9 +61,6 @@
                         <Label styleClass="cell_heading" text="%contact.edit.companyname.prompt" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                         <TextField fx:id="inputCompanyName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-                        <Label styleClass="cell_heading" text="%checkin.information.contactid" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <TextField fx:id="inputContactID" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-
                         <Label styleClass="cell_heading" text="%contact.edit.street.prompt" GridPane.columnIndex="0" GridPane.rowIndex="2" />
                         <TextField fx:id="inputContactStreet" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
@@ -78,9 +75,6 @@
 
                         <Label styleClass="cell_heading" text="%contact.edit.country.prompt" GridPane.columnIndex="0" GridPane.rowIndex="4" />
                         <TextField fx:id="inputContactCountry" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-
-                        <Label styleClass="cell_heading" text="%checkin.information.contractingpartytype" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                        <TextField fx:id="inputContractingPartyType" GridPane.columnIndex="3" GridPane.rowIndex="4" />
 
                         <Label styleClass="cell_heading" text="%contact.edit.phonenumber.prompt" GridPane.columnIndex="0" GridPane.rowIndex="5" />
                         <TextField fx:id="inputContactPhone" GridPane.columnIndex="1" GridPane.rowIndex="5" />

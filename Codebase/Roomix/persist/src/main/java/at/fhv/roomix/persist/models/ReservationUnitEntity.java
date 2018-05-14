@@ -19,6 +19,7 @@ public class ReservationUnitEntity {
     private LocalDate startDate;
     private LocalDate endDate;
     private String status;
+    private int price;
 
     private Collection<InvoicePositionEntity> invoicePositions;
     private Collection<RoomAssignmentEntity> roomAssignments;
@@ -77,6 +78,16 @@ public class ReservationUnitEntity {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Basic
+    @Column(name = "Price")
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     @Override
