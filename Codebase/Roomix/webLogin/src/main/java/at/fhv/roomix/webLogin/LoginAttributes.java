@@ -1,4 +1,4 @@
-package at.fhv.roomix.entity;
+package at.fhv.roomix.webLogin;
 
 import javax.persistence.*;
 
@@ -7,7 +7,7 @@ import javax.persistence.*;
  * These Attributes and the Table itself are not existing, so if we start the application, the H2 Database draws automaticly the missing table!
  */
 @Entity
-@Table(name = "Login")
+@Table(name = "Formular")
 public class LoginAttributes {
     private int id;
     private String pw;
@@ -22,7 +22,6 @@ public class LoginAttributes {
     public void setId(int id) {
         this.id = id;
     }
-
 
     @Basic
     @Column(name = "username")

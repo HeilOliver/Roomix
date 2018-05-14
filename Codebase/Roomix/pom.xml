@@ -39,7 +39,7 @@
         <module>/controller</module>
         <module>/domain</module>
         <module>/persist</module>
-        <module>/restService</module>
+        <module>/webLogin</module>
     </modules>
 
     <issueManagement>

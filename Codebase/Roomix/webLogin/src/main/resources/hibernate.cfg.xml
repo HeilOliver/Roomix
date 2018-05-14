@@ -6,8 +6,8 @@
     <session-factory>
         <!-- Database connection settings -->
         <property name="connection.driver_class">org.h2.Driver</property>
-        <property name="connection.url">jdbc:h2:database/roomix</property>
-        <property name="connection.username">sa</property>
+        <property name="connection.url">jdbc:h2:database/webLogin</property>
+        <property name="connection.username">rs</property>
         <property name="connection.password"/>
 
         <!-- JDBC connection pool (use the built-in) -->
@@ -25,8 +25,7 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">create</property>
 
-        <mapping class="at.fhv.roomix.entity.LoginAttributes"/>
-
+        <mapping class="at.fhv.roomix.webLogin.LoginAttributes"/>
 
     </session-factory>
 </hibernate-configuration>
