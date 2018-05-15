@@ -143,15 +143,44 @@ $(function () {
 
     $("#logoutButton").click(doLogout);
 
-    $("#exampleServiceBtn").click(function () {
+    $("#normalUserServiceBtn").click(function () {
         $.ajax({
             url: "/persons",
             type: "GET",
             contentType: "application/json; charset=utf-8",
-            dataType: "json",
             headers: createAuthorizationTokenHeader(),
             success: function (data, textStatus, jqXHR) {
-                showResponse(jqXHR.status, JSON.stringify(data));
+                showResponse(jqXHR.status, data);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                showResponse(jqXHR.status, errorThrown);
+            }
+        });
+    });
+
+    $("#frontOfficeServiceBtn").click(function () {
+        $.ajax({
+            url: "/protected",
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            headers: createAuthorizationTokenHeader(),
+            success: function (data, textStatus, jqXHR) {
+                showResponse(jqXHR.status, data);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                showResponse(jqXHR.status, errorThrown);
+            }
+        });
+    });
+
+    $("#backOfficeServiceBtn").click(function () {
+        $.ajax({
+            url: "/protected",
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            headers: createAuthorizationTokenHeader(),
+            success: function (data, textStatus, jqXHR) {
+                showResponse(jqXHR.status, data);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 showResponse(jqXHR.status, errorThrown);

@@ -1,7 +1,5 @@
 package at.fhv.roomix.webLogin.security.controller;
 
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,9 +28,7 @@ public class MethodProtectedRestController {
 
     @RequestMapping(method = RequestMethod.GET)
     @PreAuthorize("hasRole('ADMIN')")
-    public RedirectView getProtectedGreeting() {
-        return new RedirectView("/admin.html");
-        //return ResponseEntity.ok("Greetings from admin protected method!");
+    public ResponseEntity<?> getProtectedGreeting() {
+        return ResponseEntity.ok("Greetings from admin protected method!");
     }
-
 }

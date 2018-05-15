@@ -6,6 +6,4 @@
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
     </root>
-
-    <logger name="at.fhv.roomix" level="DEBUG"/>
 </configuration>
