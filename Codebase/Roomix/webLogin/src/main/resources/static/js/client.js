@@ -82,8 +82,6 @@ $(function () {
             success: function (data, textStatus, jqXHR) {
                 var $userInfoBody = $userInfo.find("#userInfoBody");
 
-                $userInfoBody.append($("<div>").text("Username: " + data.username));
-                $userInfoBody.append($("<div>").text("Email: " + data.email));
 
                 var $authorityList = $("<ul>");
                 data.authorities.forEach(function (authorityItem) {
