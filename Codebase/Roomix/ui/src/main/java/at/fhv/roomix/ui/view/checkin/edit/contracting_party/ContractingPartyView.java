@@ -39,7 +39,7 @@ public class ContractingPartyView implements FxmlView<ContractingPartyViewModel>
         txtContractingPartyFname.textProperty().bind(viewModel.firstNameProperty());
         txtContractingPartyLname.textProperty().bind(viewModel.contractingPartyLnameProperty());
         txtCompanyName.textProperty().bind(viewModel.companyNameProperty());
-        txtContactID.textProperty().bind(viewModel.contactIDProperty());
+        txtContactID.textProperty().bind(viewModel.contactIDProperty().asString());
         txtContactStreet.textProperty().bind(viewModel.contactStreetProperty());
         txtContactHouseNumber.textProperty().bind(viewModel.contactHouseNumberProperty());
         txtContactPostcode.textProperty().bind(viewModel.contactPostcodeProperty());

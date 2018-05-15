@@ -4,6 +4,7 @@ import at.fhv.roomix.controller.model.*;
 import at.fhv.roomix.ui.common.StringResourceResolver;
 import at.fhv.roomix.ui.dataprovider.CommentPojo;
 import at.fhv.roomix.ui.view.checkin.edit.contracting_party.ContractingPartyView;
+import at.fhv.roomix.ui.view.checkin.edit.option.OptionView;
 import at.fhv.roomix.ui.view.checkin.edit.person.PersonView;
 import at.fhv.roomix.ui.view.checkin.edit.unit.UnitView;
 import at.fhv.roomix.ui.view.reservation.edit.comment.CommentView;
@@ -11,8 +12,6 @@ import at.fhv.roomix.ui.view.reservation.edit.item.IContentBuilder;
 import at.fhv.roomix.ui.view.reservation.edit.item.ItemControlViewModel;
 import at.fhv.roomix.ui.view.reservation.edit.item.ItemHandlerList;
 import at.fhv.roomix.ui.view.reservation.edit.item.ItemHandlerSingle;
-import at.fhv.roomix.ui.view.reservation.edit.option.OptionView;
-import at.fhv.roomix.ui.view.reservation.scope.EDataProvider;
 import at.fhv.roomix.ui.view.reservation.scope.ReservationViewScope;
 import de.saxsys.mvvmfx.InjectResourceBundle;
 import de.saxsys.mvvmfx.InjectScope;
@@ -41,9 +40,7 @@ public class CheckInEditViewModel implements ViewModel {
     @InjectResourceBundle
     private ResourceBundle bundle;
 
-    /**
-     * Region Contracting Party
-     */
+    //region Contracting Party Handler
     private final IContentBuilder<ContactPojo> contactBuilder = (pojo -> {
         StringBuilder sb = new StringBuilder();
 
@@ -72,11 +69,9 @@ public class CheckInEditViewModel implements ViewModel {
     ReadOnlyBooleanProperty isContractingPartyAddAble() {
         return contractingPartyHandler.isAddAble();
     }
+    //endregion
 
-
-    /**
-     * Region Persons
-     */
+    //region Person Handler
     private final IContentBuilder<PersonPojo> personBuilder = pojo -> {
         StringBuilder sb = new StringBuilder();
 
@@ -103,10 +98,9 @@ public class CheckInEditViewModel implements ViewModel {
     void addPerson() {
         personHandler.add();
     }
+    //endregion
 
-    /**
-     * Region Unit
-     */
+    //region Unit Handler
     private final IContentBuilder<ReservationUnitPojo> unitBuilder = (pojo -> {
         StringBuilder sb = new StringBuilder();
 
@@ -124,6 +118,11 @@ public class CheckInEditViewModel implements ViewModel {
             sb.append(pojo.getPrice().getPrice()/100);
             sb.append("€");
         }
+        sb.append(" (");
+        if(pojo.getRoomCategory() != null){
+            sb.append(pojo.getRoomCategory().getDescription());
+        }
+        sb.append(")");
         return sb.toString();
     });
 
@@ -136,10 +135,9 @@ public class CheckInEditViewModel implements ViewModel {
     ReadOnlyBooleanProperty isUnitAddAble() {
         return unitHandler.isAddAble();
     }
+    //endregion
 
-    /**
-     * Region Option
-     */
+    //region Option Handler
     private final IContentBuilder<ReservationOptionPojo> optionBuilder = (pojo -> {
         StringBuilder sb = new StringBuilder();
 
@@ -158,17 +156,14 @@ public class CheckInEditViewModel implements ViewModel {
         return sb.toString();
     });
 
-    private final ItemHandlerSingle<ReservationOptionPojo> optionHandler = new ItemHandlerSingle<>(
-            OptionView.class, optionBuilder, currentSelection, currentView, ReservationOptionPojo::new
-    );
+    private ItemHandlerSingle<ReservationOptionPojo> optionHandler;
 
     ReadOnlyObjectProperty<ItemControlViewModel<ReservationOptionPojo>> getOptionControl(){
         return optionHandler.currentItem();
     }
+    //endregion
 
-    /**
-     * Region Comment
-     */
+    //region Comment Handler
     private static final IContentBuilder<CommentPojo> commentBuilder = (pojo -> {
         if (pojo.getComment() == null) return "-";
         if (pojo.getComment().length() >= 20)
@@ -190,8 +185,7 @@ public class CheckInEditViewModel implements ViewModel {
     void addComment() {
         commentHandler.add();
     }
-
-    /** End region */
+    //endregion
 
     public void initialize(){
         /*
@@ -201,14 +195,16 @@ public class CheckInEditViewModel implements ViewModel {
            Scope hierarchy exception
         */
         contractingPartyHandler = new ItemHandlerSingle<>(
-                ContractingPartyView.class, contactBuilder, currentSelection, currentView, ContactPojo::new, viewScope);
-
+                ContractingPartyView.class, contactBuilder, currentSelection, currentView, ContactPojo::new, viewScope
+        );
         personHandler = new ItemHandlerList<>(
                 PersonView.class, personBuilder, currentSelection, currentView, PersonPojo::new, viewScope
         );
-
         unitHandler = new ItemHandlerList<>(
                 UnitView.class, unitBuilder, currentSelection, currentView, ReservationUnitPojo::new, viewScope
+        );
+        optionHandler = new ItemHandlerSingle<>(
+                OptionView.class, optionBuilder, currentSelection, currentView, ReservationOptionPojo::new, viewScope
         );
 
         viewScope.selectedPojoProperty().addListener((observable, oldValue, newValue) -> {
@@ -224,11 +220,17 @@ public class CheckInEditViewModel implements ViewModel {
             personHandler.setObjects(newValue.getPersons());
             personHandler.hideDeleteButton();
 
-            Set<ReservationUnitPojo> set = newValue.getUnits().stream()
-                    .filter(u -> !u.isCheckedIn())
-                    .collect(Collectors.toSet());
-            unitHandler.setObjects(set);
+//            Set<ReservationUnitPojo> set = newValue.getUnits().stream()
+//                    .filter(u -> !u.isCheckedIn())
+//                    .collect(Collectors.toSet());
+            unitHandler.setObjects(newValue.getUnits());
             unitHandler.hideDeleteButton();
+            for (ItemControlViewModel itemControlViewModel : unitHandler.currentItems()) {
+                ReservationUnitPojo unit = (ReservationUnitPojo) itemControlViewModel.getPojo();
+                if(unit.isCheckedIn()){
+                    itemControlViewModel.setCheckMarkVisisble(true, "");
+                }
+            }
 
             contractingPartyHandler.setObject(newValue.getContractingParty());
             contractingPartyHandler.hideDeleteButton();
@@ -244,7 +246,7 @@ public class CheckInEditViewModel implements ViewModel {
         });
 
         viewScope.subscribe(ReservationViewScope.commandOnCommit, (s, objects) -> {
-            unitHandler.setCheckMarkVisible(true);
+            unitHandler.setCheckMarkVisible(true, (String) objects[0]);
         });
 
         viewScope.setPersonHandler(personHandler);
