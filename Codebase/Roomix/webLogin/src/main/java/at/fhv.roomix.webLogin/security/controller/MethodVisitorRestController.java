@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
-@RequestMapping("persons")
-public class MethodPersonsRestController {
+@RequestMapping("visitor")
+public class MethodVisitorRestController {
     @RequestMapping(method = RequestMethod.GET)
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> getProtectedGreeting() {

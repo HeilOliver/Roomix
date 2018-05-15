@@ -145,7 +145,7 @@ $(function () {
 
     $("#normalUserServiceBtn").click(function () {
         $.ajax({
-            url: "/persons",
+            url: "/visitor",
             type: "GET",
             contentType: "application/json; charset=utf-8",
             headers: createAuthorizationTokenHeader(),
@@ -160,7 +160,7 @@ $(function () {
 
     $("#frontOfficeServiceBtn").click(function () {
         $.ajax({
-            url: "/protected",
+            url: "/frontoffice",
             type: "GET",
             contentType: "application/json; charset=utf-8",
             headers: createAuthorizationTokenHeader(),
@@ -175,7 +175,7 @@ $(function () {
 
     $("#backOfficeServiceBtn").click(function () {
         $.ajax({
-            url: "/protected",
+            url: "/backoffice",
             type: "GET",
             contentType: "application/json; charset=utf-8",
             headers: createAuthorizationTokenHeader(),
@@ -190,7 +190,7 @@ $(function () {
 
     $("#adminServiceBtn").click(function () {
         $.ajax({
-            url: "/protected",
+            url: "/admin",
             type: "GET",
             contentType: "application/json; charset=utf-8",
             headers: createAuthorizationTokenHeader(),
