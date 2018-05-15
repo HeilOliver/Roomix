@@ -87,7 +87,7 @@ public class ItemHandlerSingle<T> extends ItemHandler<T> {
         if(item.get() != null) {item.get().hideDeleteButton(); }
     }
 
-    public void setCheckMarkVisible(boolean visible){
-        if(item.get() != null) {item.get().setCheckMarkVisisble(visible); }
+    public void setCheckMarkVisible(boolean visible, String additionalText){
+        if(item.get() != null) {item.get().setCheckMarkVisisble(visible, additionalText); }
     }
 }

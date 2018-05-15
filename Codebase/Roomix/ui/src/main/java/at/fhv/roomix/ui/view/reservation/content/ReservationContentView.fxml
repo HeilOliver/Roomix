@@ -2,17 +2,21 @@
 
 <?import javafx.scene.layout.*?>
 <?import org.controlsfx.control.MasterDetailPane?>
+<?import javafx.scene.control.ScrollPane?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             xmlns="http://javafx.com/javafx"
-            fx:controller="at.fhv.roomix.ui.view.reservation.content.ReservationContentView"
->
+            fx:controller="at.fhv.roomix.ui.view.reservation.content.ReservationContentView">
     <MasterDetailPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                       AnchorPane.topAnchor="0.0" fx:id="mdPane" dividerPosition="0.75">
         <masterNode>
             <fx:include source="ReservationTableView.fxml"/>
         </masterNode>
         <detailNode>
-            <fx:include source="ReservationDetailView.fxml"/>
+            <ScrollPane fitToWidth="true">
+                <content>
+                    <fx:include source="ReservationDetailView.fxml" />
+                </content>
+            </ScrollPane>
         </detailNode>
     </MasterDetailPane>
 </AnchorPane>

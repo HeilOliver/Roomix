@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane stylesheets="@OptionView.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhv.roomix.ui.view.checkin.edit.option.OptionView">
+
+    <VBox spacing="10" styleClass="basic-text" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+        <padding>
+            <Insets left="20.0" top="20.0" />
+        </padding>
+        <HBox spacing="10">
+            <Label prefWidth="150" text="%checkin.information.heading.option.status" />
+            <FontAwesomeIconView fx:id="paid" glyphName="CHECK" size="1.5em" style="-fx-fill: #1db954">
+                <HBox.margin>
+                   <Insets top="4.0" />
+                </HBox.margin>
+            </FontAwesomeIconView>
+            <Text text="%option.paidlabel" fx:id="txtPaid"/>
+            <FontAwesomeIconView fx:id="notpaid" glyphName="TIMES" size="1.5em" style="-fx-fill: #e81123" text="%option.notpaidlabel">
+                <HBox.margin>
+                    <Insets top="4.0" />
+                </HBox.margin>
+            </FontAwesomeIconView>
+            <Text text="%option.notpaidlabel" fx:id="txtNotPaid"/>
+        </HBox>
+        <HBox spacing="10">
+            <Label prefWidth="150" text="%option.description" />
+            <Text fx:id="txtOptionDescription" />
+        </HBox>
+        <HBox spacing="10">
+            <Label prefWidth="150" text="%option.fee" />
+            <Text fx:id="txtOptionFee" />
+        </HBox>
+        <HBox spacing="10">
+            <Label prefWidth="150" text="%option.duedate" />
+            <Text fx:id="txtOptionDueDate" />
+        </HBox>
+    </VBox>
+
+</AnchorPane>
