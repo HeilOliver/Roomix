@@ -1,5 +1,4 @@
 package at.fhv.roomix.webLogin.security;
-
 import at.fhv.roomix.webLogin.model.security.Authority;
 import at.fhv.roomix.webLogin.model.security.User;
 import org.springframework.security.core.GrantedAuthority;
