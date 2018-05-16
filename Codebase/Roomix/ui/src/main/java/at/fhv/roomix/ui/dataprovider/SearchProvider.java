@@ -36,8 +36,6 @@ public abstract class SearchProvider<T> extends AbstractProvider {
     private Thread addToSearchQuery;
 
     SearchProvider(ISearchAble<T> searchProvider) {
-        // TODO: remove mock
-        //ReservationControllerFactory.InjectDependency(ReservationControllerMock::new);
         inRun = true;
         this.searchProvider = searchProvider;
         this.onError = (e) -> {

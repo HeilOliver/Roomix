@@ -46,8 +46,8 @@ public class PersonView implements FxmlView<PersonViewModel> {
         personFirstNameInput.textProperty().bindBidirectional(viewModel.personFirstNameProperty());
         personLastNameInput.textProperty().bindBidirectional(viewModel.personLastNameProperty());
 
-        inputContractingPartyFname.textProperty().bindBidirectional(viewModel.firstNameProperty());
-        inputContractingPartyLname.textProperty().bindBidirectional(viewModel.lastNameProperty());
+        inputContractingPartyFname.textProperty().bindBidirectional(viewModel.personFirstNameProperty());
+        inputContractingPartyLname.textProperty().bindBidirectional(viewModel.personLastNameProperty());
         inputCompanyName.textProperty().bindBidirectional(viewModel.companyNameProperty());
         inputContactStreet.textProperty().bindBidirectional(viewModel.streetProperty());
         inputContactHouseNumber.textProperty().bindBidirectional(viewModel.houseNumberProperty());

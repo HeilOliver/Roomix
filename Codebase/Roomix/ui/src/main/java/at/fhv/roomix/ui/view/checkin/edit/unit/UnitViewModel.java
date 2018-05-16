@@ -66,7 +66,6 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
     protected void afterSubscribe(boolean isNew) {
 
         Collection<PersonPojo> persons = scope.getPersonHandler().getObjects();
-        //Collection<PersonPojo> persons = scope.selectedPojoProperty().get().getPersons();
         if (persons != null) {
             LinkedList<PersonPojo> personListL = new LinkedList<>(persons);
             ObservableList<PersonPojo> list = FXCollections.observableList(personListL);
@@ -104,7 +103,6 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
                 roomSegments.add(segment);
                 continue;
             }
-
                 LocalDate startDate = roomPojo.getStartDate();
                 LocalDate endDate = roomPojo.getEndDate();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
@@ -112,7 +110,6 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
                 String dateString = startDate.format(formatter) + " - " + endDate.format(formatter);
                 RoomSegment segment = new RoomSegment(daysBetween < 1 ? 1 : daysBetween, roomPojo.getRoomNo(), dateString);
                 roomSegments.add(segment);
-
         }
 
     }
@@ -131,7 +128,7 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
             scope.publish(ReservationViewScope.commandSaveUpdateError, new Error("You must assign at least one Person"));
             return;
         }
-
+        // TODO: can't save without assignedPersons
         checkInPojo.setAssignedPerson(assignedPersons);
         provider.doCheckIn(checkInPojo, reply -> {
             if(reply.getReplyMessage().equals(CheckInReply.Reply.OK)){
@@ -148,7 +145,7 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
             checkInRoomNumber.setValue(roomNoLabel + ": " + reply.getRoomNo());
             showCheckInInformation.setValue(true);
             commitButtonDisabledProperty.setValue(true);
-            scope.publish(ReservationViewScope.commandOnCommit);
+            scope.publish(ReservationViewScope.commandOnCommit, reply.getRoomNo());
             commit();
         }, errorMessage -> {
             scope.publish(ReservationViewScope.commandSaveUpdateError, new Error(errorMessage));

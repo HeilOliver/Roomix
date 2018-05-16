@@ -1,8 +1,11 @@
 package at.fhv.roomix.ui.view.contact.content;
 
+import at.fhv.roomix.controller.model.ContactPojo;
+import at.fhv.roomix.domain.guest.contact.Contact;
 import at.fhv.roomix.ui.view.contact.scopes.ContactViewScope;
 import de.saxsys.mvvmfx.InjectScope;
 import de.saxsys.mvvmfx.ViewModel;
+import de.saxsys.mvvmfx.utils.mapping.ModelWrapper;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -18,34 +21,19 @@ import javafx.beans.property.StringProperty;
  */
 public class ContactDetailViewModel implements ViewModel {
 
-    private StringProperty firstname = new SimpleStringProperty();
-    private StringProperty lastname = new SimpleStringProperty();
-    private StringProperty companyname = new SimpleStringProperty();
-    private StringProperty phonenumber = new SimpleStringProperty();
-    private StringProperty street = new SimpleStringProperty();
-    private StringProperty place = new SimpleStringProperty();
-    private StringProperty postcode = new SimpleStringProperty();
-    private StringProperty country = new SimpleStringProperty();
-    private StringProperty email = new SimpleStringProperty();
+    private ModelWrapper<ContactPojo> modelWrapper = new ModelWrapper<>();
+
     private BooleanProperty detailAvailable = new SimpleBooleanProperty();
 
     @InjectScope
     private ContactViewScope viewScope;
 
     public void initialize() {
-        // TODO To Wrapper
         viewScope.selectedPojoProperty()
                 .addListener(((observable, oldValue, newValue) -> {
                     detailAvailable.setValue(newValue != null);
-                    firstname.setValue(newValue == null ? null : newValue.getFirstName());
-                    lastname.setValue(newValue == null ? null : newValue.getLastName());
-                    companyname.setValue(newValue == null ? null : newValue.getCompanyName());
-                    phonenumber.setValue(newValue == null ? null : newValue.getPhoneNumber());
-                    street.setValue(newValue == null ? null : newValue.getStreet());
-                    place.setValue(newValue == null ? null : newValue.getPlace());
-                    postcode.setValue(newValue == null ? null : newValue.getPostcode());
-                    country.setValue(newValue == null ? null : newValue.getCountry());
-                    email.setValue(newValue == null ? null : newValue.getEmail());
+                    modelWrapper.set(newValue);
+                    modelWrapper.reload();
                 }));
     }
 
@@ -54,38 +42,38 @@ public class ContactDetailViewModel implements ViewModel {
     }
 
     StringProperty firstnameProperty() {
-        return firstname;
+        return modelWrapper.field("contactFirstName", ContactPojo::getFirstName, ContactPojo::setFirstName, "");
     }
 
     StringProperty lastnameProperty() {
-        return lastname;
+        return modelWrapper.field("contactLastName", ContactPojo::getLastName, ContactPojo::setLastName, "");
     }
 
     StringProperty companynameProperty() {
-        return companyname;
+        return modelWrapper.field("companyName", ContactPojo::getCompanyName, ContactPojo::setCompanyName, "");
     }
 
     StringProperty phonenumberProperty() {
-        return phonenumber;
+        return modelWrapper.field("contactPhoneNumber", ContactPojo::getPhoneNumber, ContactPojo::setPhoneNumber, "");
     }
 
     StringProperty streetProperty() {
-        return street;
+        return modelWrapper.field("contactStreet", ContactPojo::getStreet, ContactPojo::setStreet, "");
     }
 
     StringProperty placeProperty() {
-        return place;
+        return modelWrapper.field("contactPlace", ContactPojo::getPlace, ContactPojo::setPlace, "");
     }
 
     StringProperty postcodeProperty() {
-        return postcode;
+        return modelWrapper.field("contactPostCode", ContactPojo::getPostcode, ContactPojo::setPostcode, "");
     }
 
     StringProperty countryProperty() {
-        return country;
+        return modelWrapper.field("contactCountry", ContactPojo::getCountry, ContactPojo::setCountry);
     }
 
     StringProperty emailProperty() {
-        return email;
+        return modelWrapper.field("contactMail", ContactPojo::getEmail, ContactPojo::setEmail, "");
     }
 }

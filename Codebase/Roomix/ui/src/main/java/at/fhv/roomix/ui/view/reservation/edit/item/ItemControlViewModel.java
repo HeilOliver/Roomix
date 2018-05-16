@@ -30,6 +30,7 @@ public class ItemControlViewModel<T> implements ViewModel {
 
     private BooleanProperty showDeleteButton = new SimpleBooleanProperty(true);
     private BooleanProperty checkInMarkProperty = new SimpleBooleanProperty(false);
+    private StringProperty additionalLabelText = new SimpleStringProperty();
 
     private BooleanProperty validationStatus = new SimpleBooleanProperty();
 
@@ -114,8 +115,11 @@ public class ItemControlViewModel<T> implements ViewModel {
         return checkInMarkProperty;
     }
 
-    public void setCheckMarkVisisble(boolean visible){
+    public void setCheckMarkVisisble(boolean visible, String additionalText){
+        additionalLabelText.setValue(additionalText);
         checkInMarkProperty.setValue(visible);
     }
-
+    public StringProperty additionalLabelTextProperty() {
+        return additionalLabelText;
+    }
 }

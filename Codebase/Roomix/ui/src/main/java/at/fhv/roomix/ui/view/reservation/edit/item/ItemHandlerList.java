@@ -119,9 +119,9 @@ public class ItemHandlerList<T> extends ItemHandler<T> {
             }
         }
     }
-    public void setCheckMarkVisible(boolean visible){
+    public void setCheckMarkVisible(boolean visible, String additionalText){
         if (currentSelectionProperty().get() != null) {
-            currentSelectionProperty().get().setCheckMarkVisisble(visible);
+            currentSelectionProperty().get().setCheckMarkVisisble(visible, additionalText);
         }
     }
 

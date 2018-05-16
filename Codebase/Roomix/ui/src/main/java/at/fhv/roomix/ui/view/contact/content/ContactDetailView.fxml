@@ -3,10 +3,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             xmlns="http://javafx.com/javafx"
             fx:controller="at.fhv.roomix.ui.view.contact.content.ContactDetailView"
             stylesheets="@ContactContentStyle.css">
+    <padding>
+        <Insets left="5" top="5" right="5" bottom="5"/>
+    </padding>
     <FlowPane AnchorPane.leftAnchor="0.0"
               AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Text fx:id="txtFirstname" styleClass="detail_contact_name"/>
