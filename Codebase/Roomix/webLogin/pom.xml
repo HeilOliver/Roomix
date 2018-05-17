@@ -20,7 +20,7 @@
 
         <jjwt.version>0.9.0</jjwt.version>
         <jacoco.version>0.7.9</jacoco.version>
-
+        <aspectj.version>1.8.9</aspectj.version>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <findbugs-maven-plugin.version>3.0.5</findbugs-maven-plugin.version>
         <findbugs.version>3.0.1</findbugs.version>

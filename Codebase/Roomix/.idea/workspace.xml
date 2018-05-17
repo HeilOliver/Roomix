@@ -7,17 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc88055d-1879-4edc-9f9a-3902eec78626" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/config/ConnectorConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webLogin/src/main/resources/keystore.p12" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/controller.iml" beforeDir="false" afterPath="$PROJECT_DIR$/controller/controller.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/domain/domain.iml" beforeDir="false" afterPath="$PROJECT_DIR$/domain/domain.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persist/persist.iml" beforeDir="false" afterPath="$PROJECT_DIR$/persist/persist.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/ui.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/model/security/AuthorityName.java" beforeDir="false" afterPath="$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/model/security/AuthorityName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/security/JwtTokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/security/JwtTokenUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webLogin/src/main/resources/banner.txt" beforeDir="false" afterPath="$PROJECT_DIR$/webLogin/src/main/resources/banner.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webLogin/src/main/resources/logback-spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/webLogin/src/main/resources/logback-spring.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webLogin/src/main/resources/static/js/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/webLogin/src/main/resources/static/js/client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webLogin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/webLogin/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webLogin/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/webLogin/src/main/resources/application.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/controller/target/" />
     <ignored path="$PROJECT_DIR$/domain/reservation-domain/target/" />
@@ -65,6 +61,60 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webLogin/src/main/resources/application.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WebSecurityConfig.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/config/WebSecurityConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="344">
+              <caret line="124" column="4" selection-start-line="124" selection-start-column="4" selection-end-line="124" selection-end-column="4" />
+              <folding>
+                <element signature="e#2504#2519#1" expanded="true" />
+                <element signature="e#2565#2599#1" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConnectorConfig.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/config/ConnectorConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="477">
+              <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#265#806#0" expanded="true" />
+                <element signature="e#805#806#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webLogin/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="83">
+              <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JwtAuthenticationEntryPoint.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/security/JwtAuthenticationEntryPoint.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="14" column="61" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="JwtAuthenticationRequest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/security/JwtAuthenticationRequest.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -74,74 +124,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JwtAuthenticationResponse.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/security/service/JwtAuthenticationResponse.java">
+      <file leaf-file-name="JwtAuthorizationTokenFilter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/security/JwtAuthorizationTokenFilter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            <state relative-caret-position="340">
+              <caret line="34" column="66" selection-start-line="34" selection-start-column="66" selection-end-line="34" selection-end-column="66" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JwtUserDetailsService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/security/service/JwtUserDetailsService.java">
+      <file leaf-file-name="JwtTokenUtil.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/security/JwtTokenUtil.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserRestController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/security/controller/UserRestController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MethodProtectedRestController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/security/controller/MethodProtectedRestController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="20" column="20" lean-forward="true" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PersonRestService.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/rest/PersonRestService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Person.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/rest/Person.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AuthenticationRestController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/security/controller/AuthenticationRestController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-607">
-              <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webLogin/src/main/resources/application.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+              <folding>
+                <element signature="e#2007#2008#0" expanded="true" />
+                <element signature="e#2035#2036#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -151,6 +151,15 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
               <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JwtUserFactory.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/security/JwtUserFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -190,9 +199,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/domain/src/main/java/at/fhv/roomix/domain/guest/contractingparty/Individual.java" />
-        <option value="$PROJECT_DIR$/domain/src/main/java/at/fhv/roomix/domain/guest/contractingparty/Company.java" />
-        <option value="$PROJECT_DIR$/controller/src/main/java/at/fhv/roomix/controller/mapping/ContractingPartyMapping.java" />
         <option value="$PROJECT_DIR$/controller/src/main/java/at/fhv/roomix/controller/mapping/PaymentTypeMapping.java" />
         <option value="$PROJECT_DIR$/controller/src/main/java/at/fhv/roomix/controller/mapping/ReservationOptionMapping.java" />
         <option value="$PROJECT_DIR$/controller/src/main/java/at/fhv/roomix/controller/model/RoomCategoryPojo.java" />
@@ -233,7 +239,6 @@
         <option value="$PROJECT_DIR$/restService/src/main/resources/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/restService/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/webLogin/pom.xml" />
         <option value="$PROJECT_DIR$/webLogin/src/main/java/at/fhv/roomix/webLogin/LoginAttributes.java" />
         <option value="$PROJECT_DIR$/webLogin/src/main/resources/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/webLogin/src/main/resources/static/js/client.js" />
@@ -241,6 +246,10 @@
         <option value="$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/model/security/AuthorityName.java" />
         <option value="$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/security/JwtTokenUtil.java" />
         <option value="$PROJECT_DIR$/webLogin/src/main/resources/banner.txt" />
+        <option value="$PROJECT_DIR$/webLogin/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/webLogin/pom.xml" />
+        <option value="$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/config/WebSecurityConfig.java" />
+        <option value="$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/config/ConnectorConfig.java" />
       </list>
     </option>
   </component>
@@ -293,41 +302,38 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
+      <pane id="Scope">
+        <subPane subId="Default">
           <expand>
             <path>
-              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
-              <item name="reservation-controller" type="616d4139:PackageViewModuleNode" />
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="ui" type="cbb8eebc:String" user="ui" />
             </path>
             <path>
-              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
-              <item name="ui" type="616d4139:PackageViewModuleNode" />
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="ui" type="cbb8eebc:String" user="ui" />
+              <item name="ui" type="cbb8eebc:String" user="ui" />
             </path>
             <path>
-              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
-              <item name="ui" type="616d4139:PackageViewModuleNode" />
-              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="ui" type="cbb8eebc:String" user="ui" />
+              <item name="ui" type="cbb8eebc:String" user="ui" />
+              <item name="src/main/java" type="cbb8eebc:String" user="src/main/java" />
             </path>
             <path>
-              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
-              <item name="ui" type="616d4139:PackageViewModuleNode" />
-              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
-              <item name="view" type="1f31426a:PackageElementNode" />
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="ui" type="cbb8eebc:String" user="ui" />
+              <item name="ui" type="cbb8eebc:String" user="ui" />
+              <item name="src/main/java" type="cbb8eebc:String" user="src/main/java" />
+              <item name="at/fhv/roomix/ui" type="cbb8eebc:String" user="at/fhv/roomix/ui" />
             </path>
             <path>
-              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
-              <item name="ui" type="616d4139:PackageViewModuleNode" />
-              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
-              <item name="view" type="1f31426a:PackageElementNode" />
-              <item name="contact" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
-              <item name="ui" type="616d4139:PackageViewModuleNode" />
-              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
-              <item name="view" type="1f31426a:PackageElementNode" />
-              <item name="dashboard" type="1f31426a:PackageElementNode" />
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="ui" type="cbb8eebc:String" user="ui" />
+              <item name="ui" type="cbb8eebc:String" user="ui" />
+              <item name="src/main/java" type="cbb8eebc:String" user="src/main/java" />
+              <item name="at/fhv/roomix/ui" type="cbb8eebc:String" user="at/fhv/roomix/ui" />
+              <item name="view/reservation" type="cbb8eebc:String" user="view/reservation" />
             </path>
           </expand>
           <select />
@@ -383,7 +389,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="fhv.roomix.webLogin" type="462c0819:PsiDirectoryNode" />
-              <item name="security" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
@@ -393,7 +399,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="fhv.roomix.webLogin" type="462c0819:PsiDirectoryNode" />
-              <item name="rest" type="462c0819:PsiDirectoryNode" />
+              <item name="security" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
@@ -425,6 +431,17 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="fhv.roomix.webLogin" type="462c0819:PsiDirectoryNode" />
               <item name="security" type="462c0819:PsiDirectoryNode" />
+              <item name="repository" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
+              <item name="webLogin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fhv.roomix.webLogin" type="462c0819:PsiDirectoryNode" />
+              <item name="security" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -440,57 +457,48 @@
               <item name="Roomix" type="462c0819:PsiDirectoryNode" />
               <item name="webLogin" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Roomix" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Roomix" type="462c0819:PsiDirectoryNode" />
-              <item name="webLogin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="AndroidView" />
-      <pane id="Scope">
-        <subPane subId="Default">
+      <pane id="PackagesPane">
+        <subPane>
           <expand>
             <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="ui" type="cbb8eebc:String" user="ui" />
+              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
+              <item name="reservation-controller" type="616d4139:PackageViewModuleNode" />
             </path>
             <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="ui" type="cbb8eebc:String" user="ui" />
-              <item name="ui" type="cbb8eebc:String" user="ui" />
+              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ui" type="616d4139:PackageViewModuleNode" />
             </path>
             <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="ui" type="cbb8eebc:String" user="ui" />
-              <item name="ui" type="cbb8eebc:String" user="ui" />
-              <item name="src/main/java" type="cbb8eebc:String" user="src/main/java" />
+              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ui" type="616d4139:PackageViewModuleNode" />
+              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
             </path>
             <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="ui" type="cbb8eebc:String" user="ui" />
-              <item name="ui" type="cbb8eebc:String" user="ui" />
-              <item name="src/main/java" type="cbb8eebc:String" user="src/main/java" />
-              <item name="at/fhv/roomix/ui" type="cbb8eebc:String" user="at/fhv/roomix/ui" />
+              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ui" type="616d4139:PackageViewModuleNode" />
+              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
+              <item name="view" type="1f31426a:PackageElementNode" />
             </path>
             <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="ui" type="cbb8eebc:String" user="ui" />
-              <item name="ui" type="cbb8eebc:String" user="ui" />
-              <item name="src/main/java" type="cbb8eebc:String" user="src/main/java" />
-              <item name="at/fhv/roomix/ui" type="cbb8eebc:String" user="at/fhv/roomix/ui" />
-              <item name="view/reservation" type="cbb8eebc:String" user="view/reservation" />
+              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ui" type="616d4139:PackageViewModuleNode" />
+              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
+              <item name="view" type="1f31426a:PackageElementNode" />
+              <item name="contact" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="Roomix" type="58d84e3e:PackageViewProjectNode" />
+              <item name="ui" type="616d4139:PackageViewModuleNode" />
+              <item name="at.fhv.roomix.ui" type="1f31426a:PackageElementNode" />
+              <item name="view" type="1f31426a:PackageElementNode" />
+              <item name="dashboard" type="1f31426a:PackageElementNode" />
             </path>
           </expand>
           <select />
@@ -518,13 +526,6 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="at.fhv.roomix.persist.builder.accessbuilder" />
-      <recent name="at.fhv.roomix.ui.view.reservation.edit.person" />
-      <recent name="at.fhv.roomix.domain.common" />
-      <recent name="at.fhv.roomix.domain.stay" />
-      <recent name="at.fhv.roomix.domain.reservation" />
-    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="at.fhv.roomix.common" />
       <recent name="at.fhv.roomix.domain.session" />
@@ -541,19 +542,27 @@
       <recent name="at.fhv.roomix.controller.contact" />
       <recent name="at.fhv.roomix.controller.reservation" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Oliver\IdeaProjects\Roomix\Codebase\Roomix\controller\src\main" />
-      <recent name="C:\Users\Oliver\IdeaProjects\Roomix\Codebase\Roomix\persist\src\main\java\at\fhv\roomix\persistlayer\dao" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="at.fhv.roomix.ui.view.reservation.edit.contact" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Oliver\Desktop\Roomix-Database_update\Codebase\Roomix\controller\src\main\java\at\fhv\roomix\controller\stay" />
       <recent name="C:\Users\Oliver\IdeaProjects\Roomix\Codebase\Roomix\controller" />
       <recent name="C:\Users\Oliver\IdeaProjects\Roomix\Codebase\Roomix\domain\src\test\java\at\fhv\roomix\domain\session" />
       <recent name="C:\Users\Oliver\IdeaProjects\Roomix\Codebase\Roomix\domain\src\main\java\at\fhv\roomix\domain\session" />
       <recent name="C:\Users\Oliver\IdeaProjects\Roomix\Codebase\Roomix\domain" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Robert Schmitzer\Documents\GitHub\Roomanizer\Codebase\Roomix\webLogin\src\main\resources" />
+      <recent name="C:\Users\Oliver\IdeaProjects\Roomix\Codebase\Roomix\controller\src\main" />
+      <recent name="C:\Users\Oliver\IdeaProjects\Roomix\Codebase\Roomix\persist\src\main\java\at\fhv\roomix\persistlayer\dao" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="at.fhv.roomix.ui.view.reservation.edit.contact" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="at.fhv.roomix.persist.builder.accessbuilder" />
+      <recent name="at.fhv.roomix.ui.view.reservation.edit.person" />
+      <recent name="at.fhv.roomix.domain.common" />
+      <recent name="at.fhv.roomix.domain.stay" />
+      <recent name="at.fhv.roomix.domain.reservation" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -682,12 +691,12 @@
       <listeners />
     </configuration>
     <list>
+      <item itemvalue="Spring Boot.JwtDemoApplication" />
       <item itemvalue="Application.RunMe" />
       <item itemvalue="Application.RunMe (1)" />
       <item itemvalue="Application.RunMe (2)" />
       <item itemvalue="JUnit.MapperTest.addMapType" />
       <item itemvalue="Application.RunMe (3)" />
-      <item itemvalue="Spring Boot.JwtDemoApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -937,7 +946,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="321634000" />
+    <option name="totallyTimeSpent" value="323458000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -953,8 +962,8 @@
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="5" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5020243" side_tool="true" weight="0.5903399" />
-      <window_info anchor="right" id="Maven Projects" order="5" weight="0.20324714" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.502834" side_tool="true" weight="0.5903399" />
+      <window_info anchor="right" id="Maven Projects" order="5" weight="0.20242915" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="right" id="CDI" order="5" weight="0.32952496" />
       <window_info id="Capture Tool" order="8" />
@@ -972,27 +981,55 @@
       <window_info anchor="bottom" id="Java Enterprise" order="9" weight="0.32900432" />
       <window_info anchor="right" id="Capture Analysis" order="9" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3283582" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4979757" weight="0.5903399" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49716598" weight="0.5903399" />
       <window_info anchor="bottom" id="Spring" order="11" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32900432" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4979757" weight="0.32737032" />
       <window_info id="Persistence" order="4" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49842766" visible="true" weight="0.27935222" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49731663" visible="true" weight="0.28421053" />
       <window_info anchor="right" id="Bean Validation" order="5" />
-      <window_info id="Web" order="9" side_tool="true" />
+      <window_info id="Web" order="9" sideWeight="0.50268334" side_tool="true" weight="0.27935222" />
       <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Spring" order="11" />
       <window_info anchor="bottom" id="Statistic" order="9" weight="0.32900432" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4979757" weight="0.5903399" />
+      <window_info anchor="right" id="Database" order="5" weight="0.11174089" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32900432" />
+      <window_info id="UI Designer" order="4" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49842766" visible="true" weight="0.27935222" />
+      <window_info anchor="right" id="Palette&#9;" order="5" />
+      <window_info anchor="bottom" id="YouTrack" order="10" />
       <window_info anchor="bottom" id="Sequence" order="9" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Inspection Results" order="10" weight="0.329602" />
+      <window_info id="Structure" order="1" sideWeight="0.5015723" side_tool="true" weight="0.2281399" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49960256" weight="0.32900432" />
       <window_info anchor="bottom" id="Dependency Viewer" order="10" weight="0.32900432" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Code Iris" order="9" />
-      <window_info anchor="right" id="PlantUML" order="9" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32575756" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Maven Projects" order="5" weight="0.20324714" />
+      <window_info anchor="bottom" id="Inspection Results" order="10" weight="0.329602" />
+      <window_info anchor="right" id="Capture Analysis" order="9" />
+      <window_info anchor="right" id="Palette" order="5" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="CDI" order="5" weight="0.32952496" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
+      <window_info id="Image Layers" order="8" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32575756" />
+      <window_info id="Persistence" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5020243" side_tool="true" weight="0.5903399" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="PlantUML" order="9" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info id="Designer" order="4" />
+      <window_info anchor="bottom" id="Java Enterprise" order="9" weight="0.32900432" />
+      <window_info anchor="right" id="Bean Validation" order="5" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3283582" />
+      <window_info id="Web" order="9" side_tool="true" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Code Iris" order="9" />
+      <window_info id="Capture Tool" order="8" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.35930735" />
     </layout>
     <layout-to-restore>
       <window_info id="Persistence" order="2" side_tool="true" />
@@ -1075,7 +1112,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url />
+          <url>file://$PROJECT_DIR$/persist/src/main/java/at/fhv/roomix/persist/factory/ReservationUnitDomainBuilder.java</url>
           <line>69</line>
           <properties />
           <option name="timeStamp" value="143" />
@@ -1227,25 +1264,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webLogin/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webLogin/src/main/resources/hibernate.cfg.xml" />
     <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv/roomix/webLogin/LoginAttributes.java" />
-    <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/JwtDemoApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webLogin/src/main/resources/static/js/libs/jwt-decode.min.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/JwtDemoApplication.java" />
     <entry file="file://$PROJECT_DIR$/webLogin/src/main/resources/logback-spring.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1260,17 +1281,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/config/WebSecurityConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1131">
-          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/model/security/Authority.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-50">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state relative-caret-position="510">
+          <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
+          <folding>
+            <element signature="e#952#953#0" expanded="true" />
+            <element signature="e#980#981#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1290,15 +1308,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/security/JwtUserFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-16">
-          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+        <state relative-caret-position="51">
+          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/security/JwtAuthorizationTokenFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-452">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        <state relative-caret-position="340">
+          <caret line="34" column="66" selection-start-line="34" selection-start-column="66" selection-end-line="34" selection-end-column="66" />
         </state>
       </provider>
     </entry>
@@ -1325,15 +1343,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/security/JwtTokenUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1483">
-          <caret line="108" column="61" selection-start-line="108" selection-start-column="61" selection-end-line="108" selection-end-column="61" />
+        <state relative-caret-position="85">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding>
+            <element signature="e#2007#2008#0" expanded="true" />
+            <element signature="e#2035#2036#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/security/JwtAuthenticationEntryPoint.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        <state relative-caret-position="119">
+          <caret line="14" column="61" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
         </state>
       </provider>
     </entry>
@@ -1365,24 +1387,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/security/controller/MethodProtectedRestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="20" column="20" lean-forward="true" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/security/controller/MethodProtectedRestController.java" />
     <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/security/controller/AuthenticationRestController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-607">
           <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webLogin/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
     </entry>
@@ -1393,17 +1402,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/rest/Person.java">
+    <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/rest/Person.java" />
+    <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/rest/PersonRestService.java" />
+    <entry file="file://$PROJECT_DIR$/webLogin/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="44">
+          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/rest/PersonRestService.java">
+    <entry file="file://$PROJECT_DIR$/webLogin/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state relative-caret-position="83">
+          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/config/WebSecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="124" column="4" selection-start-line="124" selection-start-column="4" selection-end-line="124" selection-end-column="4" />
+          <folding>
+            <element signature="e#2504#2519#1" expanded="true" />
+            <element signature="e#2565#2599#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webLogin/src/main/java/at/fhv.roomix.webLogin/config/ConnectorConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#265#806#0" expanded="true" />
+            <element signature="e#805#806#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
