@@ -23,6 +23,9 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -73,11 +76,11 @@ public class UserRestControllerTest {
         user.setLastPasswordResetDate(new Date(System.currentTimeMillis() + 1000 * 1000));
 
         JwtUser jwtUser = JwtUserFactory.create(user);
-/*
+
         when(jwtTokenUtil.getUsernameFromToken(any())).thenReturn(user.getUsername());
 
         when(jwtUserDetailsService.loadUserByUsername(eq(user.getUsername()))).thenReturn(jwtUser);
-*/
+
         mvc.perform(get("/user").header("Authorization", "Bearer nsodunsodiuv"))
                 .andExpect(status().is2xxSuccessful());
     }

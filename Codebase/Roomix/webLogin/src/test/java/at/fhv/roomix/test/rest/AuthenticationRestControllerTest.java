@@ -28,6 +28,9 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -87,13 +90,13 @@ public class AuthenticationRestControllerTest {
         user.setLastPasswordResetDate(new Date(System.currentTimeMillis() + 1000 * 1000));
 
         JwtUser jwtUser = JwtUserFactory.create(user);
-/*
+
         when(jwtTokenUtil.getUsernameFromToken(any())).thenReturn(user.getUsername());
 
         when(jwtUserDetailsService.loadUserByUsername(eq(user.getUsername()))).thenReturn(jwtUser);
 
         when(jwtTokenUtil.canTokenBeRefreshed(any(), any())).thenReturn(true);
-*/
+
         mvc.perform(get("/refresh")
             .header("Authorization", "Bearer 5d1103e-b3e1-4ae9-b606-46c9c1bc915a"))
             .andExpect(status().is2xxSuccessful());
@@ -115,13 +118,13 @@ public class AuthenticationRestControllerTest {
         user.setLastPasswordResetDate(new Date(System.currentTimeMillis() + 1000 * 1000));
 
         JwtUser jwtUser = JwtUserFactory.create(user);
-/*
+
         when(jwtTokenUtil.getUsernameFromToken(any())).thenReturn(user.getUsername());
 
         when(jwtUserDetailsService.loadUserByUsername(eq(user.getUsername()))).thenReturn(jwtUser);
 
         when(jwtTokenUtil.canTokenBeRefreshed(any(), any())).thenReturn(true);
-*/
+
         mvc.perform(get("/refresh")
             .header("Authorization", "Bearer 5d1103e-b3e1-4ae9-b606-46c9c1bc915a"))
             .andExpect(status().is2xxSuccessful());
