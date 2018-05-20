@@ -6,9 +6,92 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="at.fhv.roomix.ui.view.reservation.edit.person.PersonView"
-            >
+            stylesheets="@/at/fhv/roomix/ui/view/checkin/edit/contracting_party/ContractingPartyView.css"
+            fx:controller="at.fhv.roomix.ui.view.reservation.edit.person.PersonView">
+
+    <AnchorPane AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
+                AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="10"
+                minHeight="60" maxHeight="60" prefHeight="60">
+        <HBox AnchorPane.topAnchor="12" AnchorPane.rightAnchor="0" alignment="CENTER_RIGHT">
+            <Button fx:id="btnCommit" onAction="#btn_commit" text="%main.commit" prefWidth="120">
+                <graphic>
+                    <FontAwesomeIconView glyphName="ARROW_LEFT" size="2em"/>
+                </graphic>
+            </Button>
+        </HBox>
+    </AnchorPane>
+
+    <AnchorPane AnchorPane.topAnchor="50" AnchorPane.leftAnchor="10"
+                AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="10" >
+        <VBox spacing="20" AnchorPane.topAnchor="1" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="1" AnchorPane.rightAnchor="1">
+            <HBox spacing="10">
+                <Label styleClass="cell_heading" text="%contact.edit.firstname.prompt" />
+                <TextField fx:id="personFirstNameInput" promptText="%contact.edit.firstname.prompt"/>
+                <Label styleClass="cell_heading" text="%contact.edit.lastname.prompt" />
+                <TextField fx:id="personLastNameInput" promptText="%contact.edit.lastname.prompt"/>
+            </HBox>
+            <HBox spacing="10">
+                <Label styleClass="cell_heading" text="VIP: "/>
+                <CheckBox fx:id="checkVip"/>
+                <Label styleClass="cell_heading" text="Archiv: "/>
+                <CheckBox fx:id="checkArchive"/>
+            </HBox>
+            <TitledPane text="%checkin.information.heading.contactinfo" expanded="false">
+                <content>
+                    <GridPane vgap="17.0" hgap="10">
+                        <columnConstraints>
+                            <ColumnConstraints percentWidth="15" />
+                            <ColumnConstraints percentWidth="35" />
+                            <ColumnConstraints percentWidth="15" />
+                            <ColumnConstraints percentWidth="35" />
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints prefHeight="30.0" />
+                            <RowConstraints prefHeight="30.0" />
+                            <RowConstraints prefHeight="30.0" />
+                            <RowConstraints prefHeight="30.0" />
+                            <RowConstraints prefHeight="30.0" />
+                            <RowConstraints prefHeight="30.0" />
+                        </rowConstraints>
+
+                        <Label styleClass="cell_heading" text="%contact.edit.firstname.prompt" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <TextField fx:id="inputContractingPartyFname" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                        <Label styleClass="cell_heading" text="%contact.edit.lastname.prompt" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                        <TextField fx:id="inputContractingPartyLname" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+
+                        <Label styleClass="cell_heading" text="%contact.edit.companyname.prompt" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <TextField fx:id="inputCompanyName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                        <Label styleClass="cell_heading" text="%contact.edit.street.prompt" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <TextField fx:id="inputContactStreet" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                        <Label styleClass="cell_heading" text="%contact.edit.houseNumber.prompt" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <TextField fx:id="inputContactHouseNumber" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+
+                        <Label styleClass="cell_heading" text="%contact.edit.postalcode.prompt" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                        <TextField fx:id="inputContactPostcode" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                        <Label styleClass="cell_heading" text="%contact.edit.city.prompt" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <TextField fx:id="inputContactCity" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+
+                        <Label styleClass="cell_heading" text="%contact.edit.country.prompt" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                        <TextField fx:id="inputContactCountry" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                        <Label styleClass="cell_heading" text="%contact.edit.phonenumber.prompt" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                        <TextField fx:id="inputContactPhone" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+                        <Label styleClass="cell_heading" text="%contact.edit.email.prompt" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                        <TextField fx:id="inputContactEmail" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+
+                    </GridPane>
+                </content>
+            </TitledPane>
+
+        </VBox>
+    </AnchorPane>
 
 </AnchorPane>

@@ -51,9 +51,8 @@ public class OptionView implements FxmlView<OptionViewModel> {
     private TextField txtDescriptionField;
     @FXML
     private DatePicker datePicker;
+
     private ValidationVisualizer validationVisualizer = new ControlsFxVisualizer();
-    @FXML
-    private TextField txtPrice;
 
     public void initialize() {
         txtDescriptionField.textProperty().bindBidirectional(viewModel.descriptionProperty());
@@ -66,10 +65,10 @@ public class OptionView implements FxmlView<OptionViewModel> {
 
         btnCommit.disableProperty().bind(viewModel.isCommitAble().not());
 
-        txtPrice.textProperty().bindBidirectional(viewModel.downPriceProperty());
-        validationVisualizer.initVisualization(
-                viewModel.priceValidation(), txtPrice
-        );
+//        txtPrice.textProperty().bindBidirectional(viewModel.downPriceProperty());
+//        validationVisualizer.initVisualization(
+//                viewModel.priceValidation(), txtPrice
+//        );
 
         datePicker.setDayCellFactory(dateCellFactory);
     }

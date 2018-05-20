@@ -12,7 +12,15 @@ public class PersonPojo {
     private int id;
     private String foreName;
     private String lastName;
-    private boolean isVip;
+    private boolean isVip, isArchive;
+
+    public boolean isArchive() {
+        return isArchive;
+    }
+
+    public void setArchive(boolean archive) {
+        isArchive = archive;
+    }
 
     private ContactPojo contact;
 
