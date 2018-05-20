@@ -16,14 +16,11 @@ import at.fhv.roomix.domain.session.ISessionDomain;
 import at.fhv.roomix.domain.session.SessionFactory;
 import at.fhv.roomix.domain.stay.CategoryStatus;
 import at.fhv.roomix.persist.builder.accessbuilder.*;
-import at.fhv.roomix.persist.builder.dependencybuilder.CategoryFinderBuilder;
 import at.fhv.roomix.persist.builder.dependencybuilder.PriceCalculatorBuilder;
 import at.fhv.roomix.persist.dataaccess.factory.EntityFactory;
 import at.fhv.roomix.persist.exception.BuilderLoadException;
 import at.fhv.roomix.persist.exception.PersistException;
 import org.modelmapper.MappingException;
-import org.modelmapper.ModelMapper;
-import org.modelmapper.PropertyMap;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -38,18 +35,11 @@ import java.util.stream.Collectors;
  * The Implementation for the ReservationController itself
  */
 class ReservationController implements IReservationController {
-    private static final ModelMapper mapper = new ModelMapper();
-    private static final Mapper _mapper = Mapper.getInstance();
+    private static final Mapper mapper = Mapper.getInstance();
     private final ISessionDomain sessionHandler = SessionFactory.getInstance();
 
     static {
-        mapper.addMappings(new PropertyMap<ReservationOption, ReservationOptionPojo>() {
-            @Override
-            protected void configure() {
-                skip().setOptionStatus((byte) 0);
-            }
-        });
-        _mapper.addMapType(new ReservationMapping(), Reservation.class, ReservationPojo.class);
+        mapper.addMapType(new ReservationMapping(), Reservation.class, ReservationPojo.class);
     }
 
     @Override
@@ -80,7 +70,7 @@ class ReservationController implements IReservationController {
             Set<ReservationPojo> reservationPojoSet = new HashSet<>();
 
             for (Reservation reservation : resultSet) {
-                reservationPojoSet.add(_mapper.map(reservation, ReservationPojo.class));
+                reservationPojoSet.add(mapper.map(reservation, ReservationPojo.class));
             }
             return reservationPojoSet;
         } catch (BuilderLoadException | MappingException | IllegalStateException e) {
@@ -90,66 +80,88 @@ class ReservationController implements IReservationController {
 
     @Override
     public Collection<PersonPojo> getSearchedPersons(long sessionId, String query) throws SessionFaultException, GetFault {
-        return null;
+        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
+        try {
+            String[] split = query.toLowerCase().split(" ");
+
+            Collection<Person> persons = PersonBuilder.getAll();
+            Set<Person> resultSet = new HashSet<>();
+            if (query.trim().isEmpty())
+                resultSet.addAll(persons);
+
+            for (String splicedQuery : split) {
+                if (splicedQuery.isEmpty()) continue;
+                resultSet.addAll(persons.stream()
+                        .filter((p) -> Integer.toString(p.getId()).contains(splicedQuery) ||
+                            p.getFirstName().contains(splicedQuery) ||
+                                p.getLastName().contains(splicedQuery))
+                        .collect(Collectors.toSet()));
+            }
+
+            Set<PersonPojo> pojos = new HashSet<>();
+
+            for (Person person : resultSet) {
+                pojos.add(mapper.map(person, PersonPojo.class));
+            }
+            return pojos;
+        } catch (BuilderLoadException | MappingException | IllegalStateException e) {
+            throw new GetFault("Exception by loading data, see inner exception fore more details", e);
+        }
     }
 
     @Override
-    public Collection<CategoryDataPojo> calculateData(long sessionId, RoomCategoryPojo pojo, ContractingParty party)
+    public Collection<CategoryDataPojo> calculateData(long sessionId, RoomCategoryPojo pojo, ContactPojo party, LocalDate startDate, LocalDate endDate)
             throws SessionFaultException,ValidationFault, ArgumentFaultException, GetFault {
-//        if (reservationUnit == null) throw new ArgumentFaultException("ReservationUnitPojo is not allowed to be null");
-//        if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
-//
-//        try {
-//            ContractingParty party = null;
-//            if (contactPojo != null && contactPojo.getContactId() > 0)
-//                party = ContractingPartyBuilder.get(contactPojo.getContactId());
-//
-//            PriceCalculator calculator = PriceCalculatorBuilder.get(party);
-//
-//            //TODO Map here to DomainObj
-//            ReservationUnit unit = mapper.map(reservationUnit, ReservationUnit.class);
-//            Collection<DayPrice> priceFor = calculator.getPriceFor(unit);
-//
-//            // TODO Map here to POJO
-//            // var a = mapper.map(priceFor, something.class)
-//            return null;
-//        } catch (BuilderLoadException | MappingException e) {
-//            throw new GetFault("Cant load RoomCategories, see inner exception fore more details", e);
-//        }
-        throw new GetFault();
-    }
-
-    /*@Override
-    public Collection<RoomCategoryPojo> getRoomAllocation(long sessionId, LocalDate startDate, LocalDate endDate, ContactPojo contactPojo) throws SessionFaultException, ArgumentFaultException, GetFault {
-        if (startDate == null) throw new ArgumentFaultException("Start Date is not allowed to be null");
-        if (endDate == null) throw new ArgumentFaultException("End Date is not allowed to be null");
+        if (pojo == null) throw new ArgumentFaultException("RoomCategoryPojo is not allowed to be null");
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
 
         try {
-            ContractingParty party = null;
-            if (contactPojo != null && contactPojo.getContactId() > 0)
-                party = ContractingPartyBuilder.get(contactPojo.getContactId());
+            ContractingParty contractingParty = null;
 
-            Collection<RoomCategory> categories = RoomCategoryBuilder.getRoomCategories();
+            if (party != null && party.getContactId() > 0)
+                contractingParty = ContractingPartyBuilder.get(party.getContactId());
 
-            Map<RoomCategory, List<CategoryStatus>> result = new HashMap<>();
-            for (RoomCategory category : categories) {
-                List<CategoryStatus> categoryStatus = CategoryFinderBuilder.create().calculateStatus(startDate, endDate, category, party);
-                result.put(category, categoryStatus);
-            }
+            RoomCategory roomCategory = RoomCategoryBuilder.getRoomCategory(pojo.getId());
+            LocalDate currDate = startDate;
+            HashSet<CategoryStatus> categoryStatus = new HashSet<>();
+            do {
+                CategoryStatus status = roomCategory.calculateStatus(contractingParty, currDate);
+                categoryStatus.add(status);
+                currDate = currDate.plusDays(1);
+            } while (currDate.isBefore(endDate));
 
-            Set<RoomCategoryPojo> roomCategoryPojoSet = new HashSet<>();
-            for (RoomCategory roomCategory:result.keySet()) {
-                RoomCategoryPojo roomCategoryPojo = new RoomCategoryPojo();
-                roomCategoryPojo.setDescription(roomCategory.getDescription());
-                // Todo fehlende Attribute
-            }
-            // mapper.map(result, something.class)
-            return null;
+            return categoryStatus.stream()
+                    .map((s)->mapper.map(s,CategoryDataPojo.class))
+                    .collect(Collectors.toSet());
         } catch (BuilderLoadException | MappingException e) {
             throw new GetFault("Cant load RoomCategories, see inner exception fore more details", e);
         }
-    }*/
+    }
+
+    public PricePojo calculatePrice(long sessionId, ReservationUnitPojo unit, ContactPojo contractingParty)
+            throws SessionFaultException,ValidationFault, ArgumentFaultException, GetFault{
+        if (unit == null || contractingParty == null)
+            throw new ArgumentFaultException("ReservationUnitPojo or ContactPojo is not allowed to be null");
+        if (!sessionHandler.isValidFor(sessionId, null))
+            throw new SessionFaultException();
+
+        try {
+            ContractingParty party = ContractingPartyBuilder.get(contractingParty.getContactId());
+            RoomCategory roomCategory = RoomCategoryBuilder.getRoomCategory(unit.getRoomCategory().getId());
+
+            LocalDate currDate = unit.getStartDate();
+            int price = 0;
+            do {
+                price += roomCategory.calculatePrice(party, currDate);
+            } while (currDate.isBefore(unit.getEndDate()));
+
+            PricePojo pricePojo = new PricePojo();
+            pricePojo.setPrice(price);
+            return pricePojo;
+        } catch (BuilderLoadException | MappingException e) {
+            throw new GetFault("Cant load RoomCategories, see inner exception fore more details", e);
+        }
+    }
 
     @Override
     public Collection<RoomCategoryPojo> getAllCategory(long sessionId) throws SessionFaultException, GetFault {
@@ -248,6 +260,7 @@ class ReservationController implements IReservationController {
             int paymentTypeId = reservationPojo.getPaymentType().getId();
             toUpdate.setPaymentType(PaymentTypeBuilder.getPaymentType(paymentTypeId));
 
+            toUpdate.calculate();
 
             ReservationBuilder.update(toUpdate);
             EntityFactory.commitAll();

@@ -69,9 +69,10 @@ public class ReservationControllerMock implements IReservationController {
     }
 
     @Override
-    public Collection<CategoryDataPojo> calculateData(long sessionId, RoomCategoryPojo pojo, ContractingParty party) throws SessionFaultException, ValidationFault, ArgumentFaultException, GetFault {
+    public Collection<CategoryDataPojo> calculateData(long sessionId, RoomCategoryPojo pojo, ContactPojo party, LocalDate startDate, LocalDate endDate) throws SessionFaultException, ValidationFault, ArgumentFaultException, GetFault {
         return null;
     }
+
 
     @Override
     public Collection<RoomCategoryPojo> getAllCategory(long sessionId) throws SessionFaultException, GetFault {

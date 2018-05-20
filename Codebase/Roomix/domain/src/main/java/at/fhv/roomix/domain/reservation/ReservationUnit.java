@@ -29,6 +29,9 @@ public class ReservationUnit {
     private boolean isCanceled;
     private Collection<Arrangement> arrangements = new HashSet<>();
     private Proxy<Reservation> reservation;
+    private UnitStatus status;
+    private Collection<Person> guests = new HashSet<>(); // May her Proxy Collection
+    private HashMap<LocalDate, Room> assignedRooms = new HashMap<>();
 
     public Collection<Arrangement> getArrangements() {
         return arrangements;
@@ -117,12 +120,8 @@ public class ReservationUnit {
     }
     //endregion
 
-    private UnitStatus status;
-    private Collection<Person> guests = new HashSet<>(); // May her Proxy Collection
-    private HashMap<LocalDate, Room> assignedRooms = new HashMap<>();
-
     public boolean canCheckedIn() {
-        if (status != UnitStatus.NEW) return false;
+        if (status!=UnitStatus.NEW && status!=UnitStatus.CONFIRMED) return false;
         if (assignedRooms == null || assignedRooms.isEmpty()) return false;
         if (!assignedRooms.containsKey(startDate)) return false;
 
@@ -170,8 +169,20 @@ public class ReservationUnit {
         return status != UnitStatus.NEW;
     }
 
+    public void calculatePrice() {
+        Reservation reservation = this.reservation.get();
+
+        LocalDate currDate = startDate;
+        int price = 0;
+        do {
+            price += category.calculatePrice(reservation.getContractingParty(), currDate);
+        } while (currDate.isBefore(endDate));
+        this.price = price;
+    }
+
     public enum UnitStatus {
         NEW,
+        CONFIRMED,
         CANCELED,
         CHECKED_IN,
         CHECKED_OUT

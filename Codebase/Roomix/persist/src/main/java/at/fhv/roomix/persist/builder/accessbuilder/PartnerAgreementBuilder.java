@@ -2,15 +2,21 @@ package at.fhv.roomix.persist.builder.accessbuilder;
 
 import at.fhv.roomix.domain.guest.contractingparty.Agreement;
 import at.fhv.roomix.domain.guest.contractingparty.ContractingParty;
+import at.fhv.roomix.domain.room.RoomCategory;
 import at.fhv.roomix.persist.dataaccess.factory.ContractingPartyFactory;
+import at.fhv.roomix.persist.dataaccess.factory.RoomCategoryFactory;
 import at.fhv.roomix.persist.exception.BuilderLoadException;
 import at.fhv.roomix.persist.exception.PersistLoadException;
 import at.fhv.roomix.persist.models.ContractingPartyEntity;
 import at.fhv.roomix.persist.models.PartnerAgreementEntity;
+import at.fhv.roomix.persist.models.RoomCategoryEntity;
+import at.fhv.roomix.persist.models.RoomCategoryPriceEntity;
 import org.modelmapper.ModelMapper;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Optional;
 
 /**
  * Roomix
@@ -42,4 +48,23 @@ public class PartnerAgreementBuilder {
 
         return resultSet;
     }
+
+    static Agreement getAgreement(LocalDate date, RoomCategory roomCategory, ContractingParty party) {
+        RoomCategoryEntity categoryEntity;
+        try {
+            categoryEntity = RoomCategoryFactory.getInstance().get(roomCategory.getId());
+        } catch (PersistLoadException e) {
+            throw new RuntimeException();
+        }
+        Optional<RoomCategoryPriceEntity> priceEntity = categoryEntity.getRoomCategoryPrices().stream()
+                .filter((p) -> p.getSeason().getStartDate().toLocalDate().isBefore(date))
+                .filter((p) -> p.getSeason().getEndDate().toLocalDate().isAfter(date))
+                .findFirst();
+
+        if (!priceEntity.isPresent()) return null;
+
+
+        return null;
+    }
+
 }

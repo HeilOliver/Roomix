@@ -15,7 +15,6 @@ public class CategoryDataPojo {
     private int occupied;
     private int unconfirmedReservation;
     private int free;
-    private int confirmedReservation;
     private int quota;
     private int pricePerDay;
 
@@ -41,14 +40,6 @@ public class CategoryDataPojo {
 
     public void setFree(int free) {
         this.free = free;
-    }
-
-    public int getConfirmedReservation() {
-        return confirmedReservation;
-    }
-
-    public void setConfirmedReservation(int confirmedReservation) {
-        this.confirmedReservation = confirmedReservation;
     }
 
     public int getQuota() {
