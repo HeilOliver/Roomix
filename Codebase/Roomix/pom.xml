@@ -39,6 +39,7 @@
         <module>/controller</module>
         <module>/domain</module>
         <module>/persist</module>
+        <module>/webLogin</module>
     </modules>
 
     <issueManagement>
