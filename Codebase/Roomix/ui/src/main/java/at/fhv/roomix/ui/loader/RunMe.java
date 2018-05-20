@@ -79,7 +79,7 @@ public class RunMe extends MvvmfxCdiApplication {
         stage.setMinHeight(400);
         stage.show();
 
-        Platform.setImplicitExit(false);
+        Platform.setImplicitExit(true);
 
         if (!DEBUG_INIT) return;
         LoginProvider
