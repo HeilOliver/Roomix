@@ -27,8 +27,9 @@ public class PageProvider {
                 //new DashBoardPage().getPage(),
                 new ContactPage().getPage(),
                 new ReservationPage().getPage(),
-                new CheckInPage().getPage(),
-                new RoomAssignmentPage().getPage()
+                new RoomAssignmentPage().getPage(),
+                new CheckInPage().getPage()
+
         );
 
         bottomItem = FXCollections.observableArrayList(
