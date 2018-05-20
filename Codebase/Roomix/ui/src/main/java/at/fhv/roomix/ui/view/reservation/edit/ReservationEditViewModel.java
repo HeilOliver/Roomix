@@ -127,7 +127,11 @@ public class ReservationEditViewModel implements ViewModel {
 
     //region Person
     private final IContentBuilder<PersonPojo> personBuilder = (pojo -> {
-        return "Nohing in Here";
+        StringBuilder stringBuilder = new StringBuilder();
+        if(pojo != null){
+            stringBuilder.append(pojo.getForeName()).append(" ").append(pojo.getLastName());
+        }
+        return stringBuilder.toString();
     });
 
     private final ItemHandlerList<PersonPojo> personHandler = new ItemHandlerList<>(

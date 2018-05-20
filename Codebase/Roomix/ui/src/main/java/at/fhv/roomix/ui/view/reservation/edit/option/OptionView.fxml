@@ -21,7 +21,7 @@
           AnchorPane.leftAnchor="10" AnchorPane.bottomAnchor="10" spacing="3">
         <HBox spacing="10">
             <DatePicker fx:id="datePicker" promptText="%reservation.options.duedate"/>
-            <TextField fx:id="txtPrice" promptText="%reservation.options.price"/>
+            <!--<TextField fx:id="txtPrice" promptText="%reservation.options.price"/>-->
         </HBox>
         <Separator/>
         <TextField fx:id="txtDescriptionField" AnchorPane.topAnchor="60"

@@ -12,8 +12,8 @@ import de.saxsys.mvvmfx.utils.validation.*;
 import javafx.beans.property.*;
 
 public class PersonViewModel extends SubscribeAbleViewModel<PersonPojo> {
-    private final Validator firstNameValidator;
     private final ModelWrapper<ContactPojo> contactWrapper = new ModelWrapper<>();
+    private final Validator firstNameValidator;
     private final Validator lastNameValidator;
     private final Validator phoneNumberValidator;
     private final Validator streetValidator;
