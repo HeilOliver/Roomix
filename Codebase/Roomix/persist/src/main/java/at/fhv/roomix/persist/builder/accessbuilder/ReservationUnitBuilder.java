@@ -6,6 +6,7 @@ import at.fhv.roomix.domain.reservation.Arrangement;
 import at.fhv.roomix.domain.reservation.Person;
 import at.fhv.roomix.domain.reservation.ReservationUnit;
 import at.fhv.roomix.domain.room.Room;
+import at.fhv.roomix.domain.room.RoomCategory;
 import at.fhv.roomix.persist.dataaccess.factory.PersonFactory;
 import at.fhv.roomix.persist.dataaccess.factory.ReservationUnitFactory;
 import at.fhv.roomix.persist.dataaccess.factory.RoomCategoryFactory;
@@ -22,6 +23,7 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -178,5 +180,20 @@ public class ReservationUnitBuilder {
 
     public static void update(ReservationUnit unit) throws BuilderUpdateException {
         updateUnit(unit);
+    }
+
+    public static Collection<ReservationUnit> getUnits(LocalDate date, RoomCategory roomCategory) {
+        Collection<ReservationUnit> all;
+        try {
+            all = getAll();
+        } catch (BuilderLoadException e) {
+            throw new RuntimeException();
+        }
+
+        return all.stream()
+                .filter((u) -> u.getCategory().equals(roomCategory))
+                .filter((u) -> u.getStartDate().isBefore(date))
+                .filter((u) -> u.getEndDate().isAfter(date))
+                .collect(Collectors.toSet());
     }
 }

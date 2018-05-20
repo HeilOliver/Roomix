@@ -1,9 +1,12 @@
 package at.fhv.roomix.domain.reservation;
 
 import at.fhv.roomix.domain.guest.contractingparty.ContractingParty;
+import at.fhv.roomix.domain.implement.IReservation;
+import at.fhv.roomix.domain.implement.IReservationUnit;
 
-import java.util.Collection;
-import java.util.HashSet;
+import java.time.ZoneId;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Roomix
@@ -90,6 +93,10 @@ public class Reservation {
 
     public void setUnits(Collection<ReservationUnit> units) {
         this.units = units;
+    }
+
+    public void calculate() {
+        units.forEach(u -> u.calculatePrice());
     }
 
     public enum Status {

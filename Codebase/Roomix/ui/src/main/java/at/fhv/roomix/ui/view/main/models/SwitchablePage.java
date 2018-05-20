@@ -5,7 +5,12 @@ import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.Scope;
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.*;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+
+import java.io.IOException;
+import java.net.URI;
+import java.net.URL;
 
 /**
  * Roomix
@@ -39,6 +44,26 @@ public class SwitchablePage implements Scope {
                 = FluentViewLoader.fxmlView(viewType);
         view.providedScopes(this);
         pane = view.load().getView();
+
+        glyph.setValue(glyphName);
+        enable.setValue(true);
+        selectedItem.addListener((observable, oldValue, newValue) -> {
+            selected.setValue(newValue == this);
+        });
+    }
+
+    public SwitchablePage(String menuEntryTag, String glyphName, String resource) {
+        tag.setValue(menuEntryTag);
+        header.setValue(menuEntryTag);
+
+        try {
+            URL url = getClass().getResource("/at/fhv/roomix/ui/controller/allReservation.fxml");
+
+            pane = FXMLLoader.load(url);
+
+        } catch (IOException e) {
+            throw new IllegalArgumentException();
+        }
 
         glyph.setValue(glyphName);
         enable.setValue(true);

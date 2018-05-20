@@ -5,6 +5,7 @@ import at.fhv.roomix.controller.model.*;
 import at.fhv.roomix.domain.guest.contractingparty.ContractingParty;
 import at.fhv.roomix.domain.reservation.Person;
 
+import java.time.LocalDate;
 import java.util.Collection;
 
 /**
@@ -36,7 +37,7 @@ public interface IReservationController {
      *  Contracting party is allowed to be null. If null normal prices are taken.
      *  Returns an Collection with an entry for each day
      */
-    Collection<CategoryDataPojo> calculateData(long sessionId, RoomCategoryPojo pojo, ContractingParty party)
+    Collection<CategoryDataPojo> calculateData(long sessionId, RoomCategoryPojo pojo, ContactPojo party, LocalDate startDate, LocalDate endDate)
             throws SessionFaultException,ValidationFault, ArgumentFaultException, GetFault;
 
     /**
@@ -56,6 +57,12 @@ public interface IReservationController {
      */
     Collection<PaymentTypePojo> getPaymentTypes(long sessionId)
             throws SessionFaultException, GetFault;
+
+    /**
+     * Calculates the Price from an given reservation Unit.
+     */
+    PricePojo calculatePrice(long sessionId, ReservationUnitPojo unit, ContactPojo contractingParty)
+            throws SessionFaultException,ValidationFault, ArgumentFaultException, GetFault;
 
     /**
      * Updates/Creates the given Reservation
