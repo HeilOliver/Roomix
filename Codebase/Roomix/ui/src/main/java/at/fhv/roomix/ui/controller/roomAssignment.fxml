@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="541.0" prefWidth="983.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhv.roomix.ui.controller.RoomAssignmentController">
+
+
+    <top>
+        <HBox fx:id="topbar" prefHeight="80.0" prefWidth="1531.0" BorderPane.alignment="CENTER">
+            <Label fx:id="logo" alignment="CENTER" prefHeight="80.0" prefWidth="150.0" text="Roomix"/>
+            <Label fx:id="sitedesp" prefHeight="80.0" text="Reservation/Room-Assignement">
+                <HBox.margin>
+                    <Insets left="5.0"/>
+                </HBox.margin>
+            </Label>
+            <VBox>
+                <children>
+                    <Button maxWidth="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#cancel"
+                            prefWidth="100.0" text="Cancel"/>
+                    <Button maxWidth="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#saveRoomAssignment"
+                            prefWidth="100.0" text="Finish">
+                        <VBox.margin>
+                            <Insets top="10.0"/>
+                        </VBox.margin>
+                    </Button>
+                </children>
+                <padding>
+                    <Insets left="50.0"/>
+                </padding>
+                <HBox.margin>
+                    <Insets top="5.0"/>
+                </HBox.margin>
+            </VBox>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox BorderPane.alignment="TOP_LEFT">
+            <children>
+                <HBox maxHeight="25.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label text="&lt;ReservationID&gt;">
+                            <font>
+                                <Font name="System Bold" size="16.0"/>
+                            </font>
+                        </Label>
+                        <Label text="&lt;Units&gt;">
+                            <font>
+                                <Font name="System Bold" size="16.0"/>
+                            </font>
+                        </Label>
+                        <Label text="&lt;IvoForName&gt;">
+                            <font>
+                                <Font name="System Bold" size="16.0"/>
+                            </font>
+                        </Label>
+                        <Label text="&lt;IvoLastName&gt;">
+                            <font>
+                                <Font name="System Bold" size="16.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox VBox.vgrow="ALWAYS">
+                    <children>
+                        <VBox HBox.hgrow="ALWAYS">
+                            <children>
+                                <HBox VBox.vgrow="ALWAYS">
+                                    <children>
+                                        <VBox>
+                                            <children>
+                                                <Label maxHeight="20.0" text="Reservation-Units" VBox.vgrow="ALWAYS"/>
+                                                <HBox maxHeight="30.0" VBox.vgrow="ALWAYS">
+                                                    <children>
+                                                        <TextField/>
+                                                        <Button mnemonicParsing="false" onAction="#assignAutomatically"
+                                                                text="Auto - Assign">
+                                                            <HBox.margin>
+                                                                <Insets left="15.0"/>
+                                                            </HBox.margin>
+                                                        </Button>
+                                                        <Button mnemonicParsing="false" onAction="#deleteAllAssignments" text="Delete All Assignments">
+                                                            <HBox.margin>
+                                                                <Insets left="5.0"/>
+                                                            </HBox.margin>
+                                                        </Button>
+                                                    </children>
+                                                    <VBox.margin>
+                                                        <Insets bottom="5.0"/>
+                                                    </VBox.margin>
+                                                </HBox>
+                                                <TableView fx:id="reservationUnits" minWidth="900.0"
+                                                           VBox.vgrow="ALWAYS">
+                                                    <columns>
+                                                        <TableColumn fx:id="categoryDescription" prefWidth="75.0"
+                                                                     text="Roomcategory">
+                                                            <cellValueFactory>
+                                                                <PropertyValueFactory
+                                                                        property="roomCategoryDescription"/>
+                                                            </cellValueFactory>
+                                                        </TableColumn>
+                                                        <TableColumn fx:id="arrivalTime" prefWidth="75.0"
+                                                                     text="Arrivaltime">
+                                                            <cellValueFactory>
+                                                                <PropertyValueFactory property="arrivalTime"/>
+                                                            </cellValueFactory>
+                                                        </TableColumn>
+                                                        <TableColumn fx:id="startDate" prefWidth="75.0"
+                                                                     text="Arrival Date">
+                                                            <cellValueFactory>
+                                                                <PropertyValueFactory property="startDate"/>
+                                                            </cellValueFactory>
+                                                        </TableColumn>
+                                                        <TableColumn fx:id="endDate" prefWidth="75.0"
+                                                                     text="Departure Date">
+                                                            <cellValueFactory>
+                                                                <PropertyValueFactory property="endDate"/>
+                                                            </cellValueFactory>
+                                                        </TableColumn>
+                                                        <TableColumn fx:id="roomID" prefWidth="75.0" text="Room Number">
+                                                            <cellValueFactory>
+                                                                <PropertyValueFactory property="roomID"/>
+                                                            </cellValueFactory>
+                                                        </TableColumn>
+                                                        <TableColumn fx:id="roomStatus" prefWidth="75.0"
+                                                                     text="Room Status">
+                                                            <cellValueFactory>
+                                                                <PropertyValueFactory property="roomStatus"/>
+                                                            </cellValueFactory>
+                                                        </TableColumn>
+                                                    </columns>
+                                                    <columnResizePolicy>
+                                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                                                    </columnResizePolicy>
+                                                </TableView>
+                                            </children>
+                                        </VBox>
+                                        <VBox alignment="CENTER" maxWidth="200.0" HBox.hgrow="ALWAYS">
+                                            <children>
+                                                <Button fx:id="deleteRoom" mnemonicParsing="false"
+                                                        onAction="#deleteRoom" prefWidth="150.0"
+                                                        text="Delete Assignment">
+                                                    <VBox.margin>
+                                                        <Insets left="10.0"/>
+                                                    </VBox.margin>
+                                                </Button>
+                                                <Button fx:id="assignRoom" mnemonicParsing="false"
+                                                        onAction="#assignRoom" prefWidth="150.0" text="Assign Room">
+                                                    <VBox.margin>
+                                                        <Insets left="10.0" top="10.0"/>
+                                                    </VBox.margin>
+                                                </Button>
+                                            </children>
+                                            <HBox.margin>
+                                                <Insets right="10.0"/>
+                                            </HBox.margin>
+                                        </VBox>
+                                        <VBox HBox.hgrow="ALWAYS">
+                                            <children>
+                                                <Label text="Rooms:"/>
+                                                <HBox>
+                                                    <children>
+                                                        <TextField/>
+                                                    </children>
+                                                </HBox>
+                                                <TableView fx:id="availableRooms" VBox.vgrow="ALWAYS">
+                                                    <columns>
+                                                        <TableColumn prefWidth="75.0" text="RoomNumber">
+                                                            <cellValueFactory>
+                                                                <PropertyValueFactory property="roomID"/>
+                                                            </cellValueFactory>
+                                                        </TableColumn>
+                                                        <TableColumn prefWidth="75.0" text="RoomCategory">
+                                                            <cellValueFactory>
+                                                                <PropertyValueFactory
+                                                                        property="roomCategoryDescription"/>
+                                                            </cellValueFactory>
+                                                        </TableColumn>
+                                                        <TableColumn prefWidth="75.0" text="RoomStatus">
+                                                            <cellValueFactory>
+                                                                <PropertyValueFactory property="status"/>
+                                                            </cellValueFactory>
+                                                        </TableColumn>
+                                                    </columns>
+                                                    <VBox.margin>
+                                                        <Insets top="5.0"/>
+                                                    </VBox.margin>
+                                                    <columnResizePolicy>
+                                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                                                    </columnResizePolicy>
+                                                </TableView>
+                                            </children>
+                                            <HBox.margin>
+                                                <Insets/>
+                                            </HBox.margin>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                            </children>
+                            <HBox.margin>
+                                <Insets top="10.0"/>
+                            </HBox.margin>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+            <BorderPane.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </BorderPane.margin>
+        </VBox>
+    </center>
+</BorderPane>

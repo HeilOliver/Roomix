@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 public class CheckInToolbarView implements FxmlView<CheckInToolbarViewModel> {
 
     @InjectViewModel
-    private CheckInToolbarViewModel checkInToolbarViewModel;
+    private CheckInToolbarViewModel viewModel;
 
     @FXML
     private Button btnStartCheckIn;
@@ -24,29 +24,30 @@ public class CheckInToolbarView implements FxmlView<CheckInToolbarViewModel> {
     private TextField reservationSearchInput;
 
     public void initialize(){
-        icoLoadProcess.visibleProperty().bind(checkInToolbarViewModel.getInProcessProperty());
+        icoLoadProcess.visibleProperty().bind(viewModel.getInProcessProperty());
 
-        reservationSearchInput.textProperty().bindBidirectional(checkInToolbarViewModel.getSearchQueryProperty());
-        reservationSearchInput.visibleProperty().bind(checkInToolbarViewModel.inContentViewProperty());
+        reservationSearchInput.textProperty().bindBidirectional(viewModel.getSearchQueryProperty());
+        reservationSearchInput.visibleProperty().bind(viewModel.inContentViewProperty());
 
-        btnStartCheckIn.visibleProperty().bind(checkInToolbarViewModel.inContentViewProperty());
-        btnStartCheckIn.managedProperty().bind(checkInToolbarViewModel.inContentViewProperty());
+        btnStartCheckIn.visibleProperty().bind(viewModel.inContentViewProperty());
+        btnStartCheckIn.disableProperty().bind(viewModel.editAbleProperty().not());
+        btnStartCheckIn.managedProperty().bind(viewModel.inContentViewProperty());
 
-        btnCancelCheckIn.visibleProperty().bind(checkInToolbarViewModel.inEditViewProperty());
-        btnCancelCheckIn.managedProperty().bind(checkInToolbarViewModel.inEditViewProperty());
+        btnCancelCheckIn.visibleProperty().bind(viewModel.inEditViewProperty());
+        btnCancelCheckIn.managedProperty().bind(viewModel.inEditViewProperty());
 
-        btnDoCheckIn.visibleProperty().bind(checkInToolbarViewModel.inEditViewProperty());
-        btnDoCheckIn.managedProperty().bind(checkInToolbarViewModel.inEditViewProperty());
+        btnDoCheckIn.visibleProperty().bind(viewModel.inEditViewProperty());
+        btnDoCheckIn.managedProperty().bind(viewModel.inEditViewProperty());
     }
 
     @FXML
     private void btnStartCheckIn_OnClick(){
-        checkInToolbarViewModel.onEdit();
+        viewModel.onEdit();
     }
 
     @FXML
-    private void btnDoCheckIn_OnClick() { checkInToolbarViewModel.onSave(); }
+    private void btnDoCheckIn_OnClick() { viewModel.onSave(); }
 
     @FXML
-    private void btnCancelCheckIn_OnClick() { checkInToolbarViewModel.onCancel(); }
+    private void btnCancelCheckIn_OnClick() { viewModel.onCancel(); }
 }

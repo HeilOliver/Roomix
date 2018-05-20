@@ -14,7 +14,7 @@ public class LabelBuilder {
             sb.append(pojo.getDescription());
             sb.append(" - ");
             if (pojo.getPrice() != null) {
-                sb.append(pojo.getPrice().getPrice());
+                sb.append(pojo.getPrice().getPrice()/100);
                 sb.append("€");
             } else {
                 sb.append("?");

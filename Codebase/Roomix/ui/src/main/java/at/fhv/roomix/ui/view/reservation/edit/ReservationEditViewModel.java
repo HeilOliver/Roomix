@@ -78,8 +78,6 @@ public class ReservationEditViewModel implements ViewModel {
             pojo.setPersons(personHandler.getObjects());
             viewScope.inEditPojoProperty().setValue(pojo);
         });
-
-        viewScope.setOnError(this::onError);
     }
 
     private void clear() {
@@ -129,7 +127,11 @@ public class ReservationEditViewModel implements ViewModel {
 
     //region Person
     private final IContentBuilder<PersonPojo> personBuilder = (pojo -> {
-        return "Nohing in Here";
+        StringBuilder stringBuilder = new StringBuilder();
+        if(pojo != null){
+            stringBuilder.append(pojo.getForeName()).append(" ").append(pojo.getLastName());
+        }
+        return stringBuilder.toString();
     });
 
     private final ItemHandlerList<PersonPojo> personHandler = new ItemHandlerList<>(
@@ -246,14 +248,6 @@ public class ReservationEditViewModel implements ViewModel {
         commentHandler.add();
     }
     //endregion
-
-    // TODO Das muss hier weg
-    private void onError(Error e) {
-        Notifications.create()
-                .title("Error")
-                .text("Unsuccessful Saving\nPlease Validate all Fields")
-                .showError();
-    }
 
     ReadOnlyObjectProperty<Parent> getCurrentDetailView() {
         return currentView;

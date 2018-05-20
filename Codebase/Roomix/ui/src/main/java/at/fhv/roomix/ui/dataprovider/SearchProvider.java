@@ -36,8 +36,6 @@ public abstract class SearchProvider<T> extends AbstractProvider {
     private Thread addToSearchQuery;
 
     SearchProvider(ISearchAble<T> searchProvider) {
-        // TODO: remove mock
-        //ReservationControllerFactory.InjectDependency(ReservationControllerMock::new);
         inRun = true;
         this.searchProvider = searchProvider;
         this.onError = (e) -> {
@@ -78,7 +76,7 @@ public abstract class SearchProvider<T> extends AbstractProvider {
         }
     }
 
-    protected void reSearch() {
+    public void reSearch() {
         synchronized (nextQuery) {
             nextQuery.set(lastQuery);
         }
@@ -111,17 +109,18 @@ public abstract class SearchProvider<T> extends AbstractProvider {
 
             try {
                 Collection<T> collection = future.get();
+                if (future.isCancelled()) {
+                    Platform.runLater(
+                            () -> onError.errorOccurred(new Error()));
+                    continue;
+                }
                 Platform.runLater(() -> {
                     if (collection == null) {
                         LOG.debug("Future returned empty collection");
+                        onError.errorOccurred(new Error());
                         return;
                     }
                     queryResultList.clear();
-                    // TODO Remove here
-//                    Object[] objects = queryResultList.toArray();
-//                    for (Object object : objects) {
-//                        queryResultList.remove(object);
-//                    }
                     queryResultList.addAll(collection);
                 });
             } catch (InterruptedException | ExecutionException e) {

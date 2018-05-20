@@ -32,6 +32,7 @@ import java.util.ResourceBundle;
  * The Main Class for starting the Application.
  */
 public class RunMe extends MvvmfxCdiApplication {
+    // Try to pass -Dprism.order=sw to jre in order to fix the "white box" javafx "bug"
     // Turn Debug to true if you want some awesome hacks
     private static final boolean DEBUG_INIT = true;
     private static final boolean DEBUG_SUPPRESS_START_EVENT = true;

@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 
-<?import javafx.scene.layout.Pane?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhv.roomix.ui.view.checkin.CheckInToolbarView">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhv.roomix.ui.view.checkin.CheckInToolbarView">
     <HBox alignment="CENTER_LEFT" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="12">
         <TextField fx:id="reservationSearchInput" minWidth="120" prefWidth="300" promptText="%contact.table.enterSearch" />
         <Region prefWidth="5" />

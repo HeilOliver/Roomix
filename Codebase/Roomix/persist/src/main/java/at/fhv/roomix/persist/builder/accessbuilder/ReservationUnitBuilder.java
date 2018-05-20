@@ -2,9 +2,11 @@ package at.fhv.roomix.persist.builder.accessbuilder;
 
 import at.fhv.roomix.common.Mapper;
 import at.fhv.roomix.domain.common.Proxy;
+import at.fhv.roomix.domain.reservation.Arrangement;
 import at.fhv.roomix.domain.reservation.Person;
 import at.fhv.roomix.domain.reservation.ReservationUnit;
 import at.fhv.roomix.domain.room.Room;
+import at.fhv.roomix.domain.room.RoomCategory;
 import at.fhv.roomix.persist.dataaccess.factory.PersonFactory;
 import at.fhv.roomix.persist.dataaccess.factory.ReservationUnitFactory;
 import at.fhv.roomix.persist.dataaccess.factory.RoomCategoryFactory;
@@ -21,6 +23,8 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Roomix
@@ -97,13 +101,10 @@ public class ReservationUnitBuilder {
 
         Collection<Person> guests = unit.getGuests();
         for (Person guest : guests) {
-            try {
-                PersonEntity personEntity = PersonFactory.getInstance().get(guest.getId());
-                personEntity.getGuestsAtUnit().add(entity);
-                entity.getPersons().add(personEntity);
-            } catch (PersistLoadException e) {
-                throw new BuilderUpdateException();
-            }
+            PersonEntity personEntity = PersonBuilder.updateEntity(guest);
+            personEntity.getGuestsAtUnit().add(entity);
+            entity.getPersons().add(personEntity);
+            entity.getReservation().getGuests().add(personEntity);
         }
 
         HashSet<Room> rooms = new HashSet<>(unit.getAssignedRooms().values());
@@ -141,6 +142,19 @@ public class ReservationUnitBuilder {
             }
         }
         unit.setStatus(ReservationUnit.UnitStatus.valueOf(entity.getStatus()));
+
+        HashSet<Arrangement> arrangements = new HashSet<>();
+        Collection<InvoicePositionEntity> invoicePositions = entity.getInvoicePositions();
+        for (InvoicePositionEntity position : invoicePositions) {
+            if (position.getArticle() == null) continue;
+            if (!position.getArticle().getArticleType().equals(ArticleEntity.ArticleType.ARRANGEMENT.toString())) continue;
+            arrangements.add(ArrangementBuilder.getArrangement(position.getArticle().getArticleId()));
+        }
+        unit.setArrangements(arrangements);
+
+        entity.getPersons().stream()
+                .map(p -> GuestBuilder.getPersonUC(p.getPersonId()))
+                .forEach(p -> unit.getGuests().add(p));
         return unit;
     }
 
@@ -166,5 +180,20 @@ public class ReservationUnitBuilder {
 
     public static void update(ReservationUnit unit) throws BuilderUpdateException {
         updateUnit(unit);
+    }
+
+    public static Collection<ReservationUnit> getUnits(LocalDate date, RoomCategory roomCategory) {
+        Collection<ReservationUnit> all;
+        try {
+            all = getAll();
+        } catch (BuilderLoadException e) {
+            throw new RuntimeException();
+        }
+
+        return all.stream()
+                .filter((u) -> u.getCategory().equals(roomCategory))
+                .filter((u) -> u.getStartDate().isBefore(date))
+                .filter((u) -> u.getEndDate().isAfter(date))
+                .collect(Collectors.toSet());
     }
 }

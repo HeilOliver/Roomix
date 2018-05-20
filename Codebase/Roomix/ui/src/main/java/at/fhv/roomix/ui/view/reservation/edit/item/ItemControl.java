@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 
 import java.util.ResourceBundle;
 
@@ -39,6 +40,8 @@ public class ItemControl implements FxmlView<ItemControlViewModel> {
     private Button deleteEntryButton;
     @FXML
     private Label checkInCheckMark;
+    @FXML
+    private Label additionalText;
 
     private ValidationVisualizer validationVisualizer = new ControlsFxVisualizer();
 
@@ -48,6 +51,8 @@ public class ItemControl implements FxmlView<ItemControlViewModel> {
         selected.visibleProperty().bind(viewModel.isSelectedProperty());
         deleteEntryButton.visibleProperty().bind(viewModel.showDeleteButtonProperty());
         checkInCheckMark.visibleProperty().bind(viewModel.checkInMarkProperty());
+        additionalText.visibleProperty().bind(viewModel.checkInMarkProperty());
+        additionalText.textProperty().bind(viewModel.additionalLabelTextProperty());
 
         validationVisualizer.initVisualization(
                 viewModel.getValidationStatus(),

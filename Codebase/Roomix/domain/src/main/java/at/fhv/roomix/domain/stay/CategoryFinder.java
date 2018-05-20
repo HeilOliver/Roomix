@@ -69,8 +69,8 @@ public class CategoryFinder {
                         if (u.getReservation().getContractingParty().equals(party))
                             quota.decrementAndGet();
                     });
-
-            statuses.add(new CategoryStatus(finalCurrDate, category, unconfirmed.get(), occupied.get(), quota.get()));
+            int price = category.calculatePrice(party, currDate);
+            statuses.add(new CategoryStatus(finalCurrDate, category, unconfirmed.get(), occupied.get(), quota.get(), price));
             currDate = startDate.plusDays(++dayCount);
         } while (!currDate.isAfter(endDate));
 

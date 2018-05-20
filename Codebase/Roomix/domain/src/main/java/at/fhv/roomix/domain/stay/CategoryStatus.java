@@ -19,14 +19,16 @@ public class CategoryStatus {
     private final int unconfirmed;
     private final int occupied;
     private final int quota;
+    private final int price;
 
-    CategoryStatus(LocalDate date, RoomCategory category, int unconfirmed, int occupied, int quota) {
+    public CategoryStatus(LocalDate date, RoomCategory category, int unconfirmed, int occupied, int quota, int price) {
         this.date = date;
         this.category = category;
         this.unconfirmed = unconfirmed;
         this.occupied = occupied;
         this.quota = quota;
-        free = category.getRooms() - unconfirmed - occupied;
+        this.price = price;
+        free = category.getRoomsCount() - unconfirmed - occupied;
     }
 
     public int getQuota() {

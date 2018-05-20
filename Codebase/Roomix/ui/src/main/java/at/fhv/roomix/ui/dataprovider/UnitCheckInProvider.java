@@ -9,27 +9,22 @@ import at.fhv.roomix.ui.common.ICallableWithParameter;
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class UnitCheckInProvider extends AbstractProvider {
+    protected static final Logger LOG = LoggerFactory.getLogger(UnitCheckInProvider.class);
 
-    private BooleanProperty inLoadCheckIn = new SimpleBooleanProperty();
 
     public void doCheckIn(CheckInPojo pojo, ICallableWithParameter<CheckInReply> replyCallback, ICallableWithParameter<String> errorCallback){
         submit(() -> {
-            Platform.runLater(() -> inLoadCheckIn.setValue(true));
             IStayController controller = StayControllerFactory.getInstance();
             try {
                 CheckInReply checkInReply = controller.setUnitsForCheckIn(LoginProvider.getSessionID(), pojo);
-                if(checkInReply != null){
-                    Platform.runLater(() -> replyCallback.call(checkInReply));
-                } else {
-                    errorCallback.call("Internal error");
-                }
+                Platform.runLater(() -> replyCallback.call(checkInReply));
             } catch (ArgumentFaultException | SessionFaultException | ValidationFault | CheckInException | SaveFault e) {
-                e.printStackTrace();
-                errorCallback.call("Internal error");
-            } finally {
-                Platform.runLater(() -> inLoadCheckIn.setValue(true));
+                LOG.debug(e.getMessage());
+                Platform.runLater(() -> errorCallback.call(e.getMessage()));
             }
         });
     }

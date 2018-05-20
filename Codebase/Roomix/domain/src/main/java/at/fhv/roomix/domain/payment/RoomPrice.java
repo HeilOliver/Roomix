@@ -11,11 +11,40 @@ import java.time.LocalDate;
  * Enter Description here
  */
 public class RoomPrice {
-    private LocalDate from;
-    private LocalDate till;
-
     private int listPrice;
     private int acquisitionPrice;
     private int minimumPrice;
     private int dayPrice;
+
+    public int getListPrice() {
+        return listPrice;
+    }
+
+    public void setListPrice(int listPrice) {
+        this.listPrice = listPrice;
+    }
+
+    public int getAcquisitionPrice() {
+        return acquisitionPrice;
+    }
+
+    public void setAcquisitionPrice(int acquisitionPrice) {
+        this.acquisitionPrice = acquisitionPrice;
+    }
+
+    public int getMinimumPrice() {
+        return minimumPrice;
+    }
+
+    public void setMinimumPrice(int minimumPrice) {
+        this.minimumPrice = minimumPrice;
+    }
+
+    public int getDayPrice() {
+        return dayPrice;
+    }
+
+    public void setDayPrice(int dayPrice) {
+        this.dayPrice = dayPrice;
+    }
 }

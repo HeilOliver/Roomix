@@ -2,13 +2,9 @@ package at.fhv.roomix.ui.dataprovider;
 
 import at.fhv.roomix.controller.common.exceptions.GetFault;
 import at.fhv.roomix.controller.common.exceptions.SessionFaultException;
-import at.fhv.roomix.controller.model.ContactPojo;
+import at.fhv.roomix.controller.model.*;
 import at.fhv.roomix.controller.reservation.IReservationController;
 import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
-import at.fhv.roomix.controller.model.ArrangementPojo;
-import at.fhv.roomix.controller.model.PricePojo;
-import at.fhv.roomix.controller.model.ReservationUnitPojo;
-import at.fhv.roomix.controller.model.RoomCategoryPojo;
 import at.fhv.roomix.ui.common.ICallable;
 import at.fhv.roomix.ui.common.ICallableWithParameter;
 import javafx.application.Platform;
@@ -45,9 +41,8 @@ public class ReservationUnitProvider extends AbstractProvider {
                     ReservationControllerFactory.getInstance();
             try {
                 // TODO: get price and occupation data and send it to UI
-//                Collection<RoomCategoryPojo> collection =
-//                        instance.calculateData(LoginProvider.getSessionID(),
-//                                from, till, contractingParty);
+//                Collection<CategoryDataPojo> collection =
+//                        instance.calculateData(LoginProvider.getSessionID(), null, contractingParty, from, till);
                 Platform.runLater(() -> {
                     possibleCategories.clear();
                     //possibleCategories.addAll(collection);

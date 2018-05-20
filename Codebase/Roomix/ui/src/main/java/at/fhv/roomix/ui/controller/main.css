@@ -1,0 +1,39 @@
+.root {
+    -fx-background-color: #fafafa;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-font-size: 14;
+    -fx-text-fill: #fafafa;
+}
+#logo{
+    -fx-background-color: #22313F;
+    -fx-text-fill: #fafafa;
+    -fx-font-size: 31;
+    -fx-font-weight: bold;
+}
+#sidebar .button {
+    -fx-background-radius: 0;
+    -fx-background-color: #34495E;
+    -fx-text-fill: #fafafa;
+}
+#sidebar .button:pressed{
+    -fx-background-color: #fafafa;
+    -fx-text-fill: #383838;
+}
+
+#sidebar .button:hover{
+    -fx-background-color: #fafafa;
+    -fx-text-fill: #383838;
+}
+#sidebar {
+    -fx-background-color: #34495E;
+}
+#topbar{
+    -fx-background-color: #59ABE3;
+    -fx-text-fill: #fafafa;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 3, 0, 0, 0);
+}
+#sitedesp {
+    -fx-text-fill: #fafafa;
+    -fx-font-size: 16;
+}

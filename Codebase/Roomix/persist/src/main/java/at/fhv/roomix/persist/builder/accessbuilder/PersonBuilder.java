@@ -76,6 +76,10 @@ public class PersonBuilder {
     }
 
     public static void update(Person person) throws BuilderUpdateException {
+        updateEntity(person);
+    }
+
+    static PersonEntity updateEntity(Person person) throws BuilderUpdateException {
         PersonEntity entity;
         try {
             entity = person.getId() == 0 ? new PersonEntity()
@@ -92,6 +96,9 @@ public class PersonBuilder {
         }
         entity.setContact(contactEntity);
 
+        mapper.map(person, entity);
+
         PersonFactory.getInstance().saveOrUpdate(entity);
+        return entity;
     }
 }
