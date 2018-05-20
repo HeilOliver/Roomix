@@ -35,7 +35,7 @@ public class UnitView implements FxmlView<UnitViewModel> {
                             super.updateItem(item, empty);
 
                             if (item.isBefore(
-                                    LocalDate.now().plusDays(1))
+                                    LocalDate.now().plusDays(0))
                                     ) {
                                 setDisable(true);
                                 setStyle("-fx-background-color: #ffc0cb;");
