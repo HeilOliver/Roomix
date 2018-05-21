@@ -29,7 +29,7 @@ public class ReservationUnit {
     private boolean isCanceled;
     private Collection<Arrangement> arrangements = new HashSet<>();
     private Proxy<Reservation> reservation;
-    private UnitStatus status;
+    private UnitStatus status = UnitStatus.NEW;
     private Collection<Person> guests = new HashSet<>(); // May her Proxy Collection
     private HashMap<LocalDate, Room> assignedRooms = new HashMap<>();
 
@@ -61,6 +61,10 @@ public class ReservationUnit {
 
     public void setReservation(Proxy<Reservation> reservation) {
         this.reservation = reservation;
+    }
+
+    public void setReservationDirect(Reservation reservation) {
+        this.reservation = new Proxy<>(() -> reservation);
     }
 
     public int getId() {
@@ -176,6 +180,7 @@ public class ReservationUnit {
         int price = 0;
         do {
             price += category.calculatePrice(reservation.getContractingParty(), currDate);
+            currDate = currDate.plusDays(1);
         } while (currDate.isBefore(endDate));
         this.price = price;
     }

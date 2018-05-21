@@ -156,7 +156,9 @@ public class ContractingPartyBuilder {
             throw new BuilderLoadException(e.getMessage(), e);
         }
         ContractingPartyEntity contractingParty = entity.getContractingParty();
-        if (contractingParty == null) return null;
+        if (contractingParty == null) {
+            return getIndividual(contactId);
+        }
         return get(entity.getContractingParty().getContractingPartyId());
     }
 

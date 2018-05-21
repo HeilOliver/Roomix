@@ -1,10 +1,6 @@
 package at.fhv.roomix.ui.view.reservation.edit;
 
-import at.fhv.roomix.controller.model.ContactPojo;
-import at.fhv.roomix.controller.model.PersonPojo;
-import at.fhv.roomix.controller.model.ReservationOptionPojo;
-import at.fhv.roomix.controller.model.ReservationPojo;
-import at.fhv.roomix.controller.model.ReservationUnitPojo;
+import at.fhv.roomix.controller.model.*;
 import at.fhv.roomix.ui.common.StringResourceResolver;
 import at.fhv.roomix.ui.dataprovider.CommentPojo;
 import at.fhv.roomix.ui.view.reservation.edit.comment.CommentView;
@@ -72,10 +68,18 @@ public class ReservationEditViewModel implements ViewModel {
         viewScope.subscribe(ReservationViewScope.commandCommitEdit, (key, payload) -> {
             ReservationPojo pojo = new ReservationPojo();
             pojo.setContractingParty(contractingPartyHandler.getObject());
-            pojo.setReservationComment(commentHandler.getObject().getComment());
+
+            if (commentHandler.getObject() != null) {
+                pojo.setReservationComment(commentHandler.getObject().getComment());
+            }
             pojo.setOption(optionHandler.getObject());
             pojo.setUnits(unitHandler.getObjects());
             pojo.setPersons(personHandler.getObjects());
+
+            // TODO Add View
+            PaymentTypePojo paymentTypePojo = new PaymentTypePojo();
+            paymentTypePojo.setId(1);
+            pojo.setPaymentType(paymentTypePojo);
             viewScope.inEditPojoProperty().setValue(pojo);
         });
     }
@@ -166,7 +170,7 @@ public class ReservationEditViewModel implements ViewModel {
         if (pojo.getPrice() == null || pojo.getPrice().getPrice() <= 0) {
             sb.append("? €");
         } else {
-            sb.append(pojo.getPrice().getPrice());
+            sb.append(pojo.getPrice().getPrice() / 100);
             sb.append("€");
         }
         return sb.toString();

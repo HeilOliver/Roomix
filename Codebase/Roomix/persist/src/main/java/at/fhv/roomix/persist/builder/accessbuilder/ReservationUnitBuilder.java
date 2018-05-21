@@ -55,6 +55,7 @@ public class ReservationUnitBuilder {
         mapper.addMappings(new PropertyMap<ReservationUnitEntity, ReservationUnit>() {
             @Override
             protected void configure() {
+                skip().setReservationDirect(null);
                 skip().setReservation(null);
                 skip().setCategory(null);
                 skip().setArrangements(null);

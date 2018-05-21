@@ -40,7 +40,7 @@ public class UnitMapping implements MapType<ReservationUnit, ReservationUnitEnti
         } catch (PersistLoadException e) {
             throw new MappingException("Mapping Error - " + e.getMessage(), e);
         }
-
+        destination.setPrice(source.getPrice());
         destination.setArrivalTime(source.getArrivalTime());
         destination.setStartDate(source.getStartDate());
         destination.setEndDate(source.getEndDate());

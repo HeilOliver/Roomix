@@ -14,6 +14,13 @@ public class PricePojo {
     @Range(min = 1)
     private int price;
 
+    public PricePojo(int price) {
+        this.price = price;
+    }
+
+    public PricePojo() {
+    }
+
     public int getPrice() {
         return price;
     }
