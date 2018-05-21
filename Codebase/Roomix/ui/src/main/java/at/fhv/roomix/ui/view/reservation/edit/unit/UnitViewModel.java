@@ -225,6 +225,7 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
                         new SegmentedBar.Segment(occupationData.getOccupied(), "Occupied"),
                         new SegmentedBar.Segment(occupationData.getUnconfirmedReservation(), "Unconfirmed")
                 );
+                currCategoryPrice.setValue(Float.toString(occupationData.getPricePerDay() / 100F) + " €");
             }, newValue, scope.getContractingParty(), arrivalDateProperty().get(), departureDateProperty().get());
 
             //XYChart.Series<Number, String> series = new XYChart.Series<>();
