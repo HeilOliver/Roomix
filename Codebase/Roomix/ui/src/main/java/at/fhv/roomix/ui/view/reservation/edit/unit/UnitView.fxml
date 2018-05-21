@@ -6,6 +6,7 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import org.controlsfx.control.SegmentedBar?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             xmlns="http://javafx.com/javafx"
             fx:controller="at.fhv.roomix.ui.view.reservation.edit.unit.UnitView"
@@ -57,16 +58,17 @@
                     <Label fx:id="lblPricePerDay"/>
                 </HBox>
                 <AnchorPane VBox.vgrow="ALWAYS" maxWidth="Infinity">
-                    <BarChart AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0"
-                              AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0"
-                              fx:id="chartSelectedCategorie" prefHeight="110" prefWidth="120">
-                        <xAxis>
-                            <NumberAxis side="TOP" fx:id="xAxis"/>
-                        </xAxis>
-                        <yAxis>
-                            <CategoryAxis fx:id="yAxis" side="LEFT"/>
-                        </yAxis>
-                    </BarChart>
+                    <SegmentedBar fx:id="occupationBar"/>
+                    <!--<BarChart AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0"-->
+                              <!--AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0"-->
+                              <!--fx:id="chartSelectedCategorie" prefHeight="110" prefWidth="120">-->
+                        <!--<xAxis>-->
+                            <!--<NumberAxis side="TOP" fx:id="xAxis"/>-->
+                        <!--</xAxis>-->
+                        <!--<yAxis>-->
+                            <!--<CategoryAxis fx:id="yAxis" side="LEFT"/>-->
+                        <!--</yAxis>-->
+                    <!--</BarChart>-->
                 </AnchorPane>
             </VBox>
         </HBox>

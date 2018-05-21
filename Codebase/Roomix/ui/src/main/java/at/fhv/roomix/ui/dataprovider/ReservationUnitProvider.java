@@ -15,6 +15,8 @@ import javafx.collections.ObservableList;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.Comparator;
+import java.util.Optional;
 
 /**
  * Roomix
@@ -32,8 +34,7 @@ public class ReservationUnitProvider extends AbstractProvider {
     private BooleanProperty inLoadCategories = new SimpleBooleanProperty();
     private BooleanProperty inLoadArrangements = new SimpleBooleanProperty();
 
-    public void loadCategories(LocalDate from, LocalDate till, ContactPojo contractingParty, ICallable onSuccess) {
-        if (from == null || till == null) return;
+    public void loadCategories(ContactPojo contractingParty, ICallable onSuccess) {
         // TODO Das ist nicht ThreadSave!
         submit(() -> {
             Platform.runLater(() -> inLoadCategories.setValue(true));
@@ -41,11 +42,12 @@ public class ReservationUnitProvider extends AbstractProvider {
                     ReservationControllerFactory.getInstance();
             try {
                 // TODO: get price and occupation data and send it to UI
+                Collection<RoomCategoryPojo> collection = instance.getAllCategory(LoginProvider.getSessionID());
 //                Collection<CategoryDataPojo> collection =
 //                        instance.calculateData(LoginProvider.getSessionID(), null, contractingParty, from, till);
                 Platform.runLater(() -> {
                     possibleCategories.clear();
-                    //possibleCategories.addAll(collection);
+                    possibleCategories.addAll(collection);
                     onSuccess.call();
                 });
             } catch (Exception e) {
@@ -94,11 +96,34 @@ public class ReservationUnitProvider extends AbstractProvider {
                     ReservationControllerFactory.getInstance();
             try {
                 //TODO: get Price data and send back to UI
-//                PricePojo price =
-//                        instance.calculateData(LoginProvider.getSessionID(), pojo, contractingParty);
+                PricePojo price =
+                        instance.calculatePrice(LoginProvider.getSessionID(), pojo, contractingParty);
                 Platform.runLater(() -> {
-                    //onSuccess.call(price);
+                    onSuccess.call(price);
                 });
+            } catch (Exception e) {
+                // TODO Fix Error Handling
+                LOG.debug(e.getMessage());
+            }
+        });
+    }
+
+    public void calculateOccupationForCategory(ICallableWithParameter<CategoryDataPojo> onSuccess, RoomCategoryPojo roomCategory,
+                                               ContactPojo contractingParty, LocalDate from, LocalDate till){
+        if(from == null || till == null) return;
+        submit(() -> {
+            IReservationController instance =
+                    ReservationControllerFactory.getInstance();
+            try {
+                //TODO: get Price data and send back to UI
+                Collection<CategoryDataPojo> categoryDataPojos = instance.calculateData(LoginProvider.getSessionID(), roomCategory, contractingParty, from, till);
+                Optional<CategoryDataPojo> optionalDataPojo = categoryDataPojos.stream().min(Comparator.comparingInt(CategoryDataPojo::getFree));
+                if(optionalDataPojo.isPresent()){
+                    CategoryDataPojo categoryDataPojo = optionalDataPojo.get();
+                    Platform.runLater(() -> {
+                        onSuccess.call(categoryDataPojo);
+                    });
+                }
             } catch (Exception e) {
                 // TODO Fix Error Handling
                 LOG.debug(e.getMessage());

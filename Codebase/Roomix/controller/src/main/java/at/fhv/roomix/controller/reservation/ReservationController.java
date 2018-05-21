@@ -119,7 +119,7 @@ class ReservationController implements IReservationController {
             ContractingParty contractingParty = null;
 
             if (party != null && party.getContactId() > 0)
-                contractingParty = ContractingPartyBuilder.get(party.getContactId());
+                contractingParty = ContractingPartyBuilder.getByContact(party.getContactId());
 
             RoomCategory roomCategory = RoomCategoryBuilder.getRoomCategory(pojo.getId());
             LocalDate currDate = startDate;

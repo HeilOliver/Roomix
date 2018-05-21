@@ -18,6 +18,7 @@ import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart;
+import org.controlsfx.control.SegmentedBar;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -52,6 +53,7 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
     private StringProperty arrivalTime = new SimpleStringProperty();
     private ObservableList<PacketsItemViewModel<ArrangementPojo>> arrangementList;
     private ObservableList<XYChart.Series<Number, String>> availableRooms = FXCollections.observableArrayList();
+    private ObservableList<SegmentedBar.Segment> occupationStatus = FXCollections.observableArrayList();
     private StringProperty currCategoryPrice = new SimpleStringProperty();
     private StringProperty amountAsStringProperty = new SimpleStringProperty();
 
@@ -130,7 +132,7 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
         Duration days = Duration.ofDays(ChronoUnit.DAYS.between(arrivalDateProperty().get(), departureDateProperty().get()));
         duration.setValue(days.toDays() + " " + StringResourceResolver.getStaticResolve(resourceBundle, "reservation.days"));
 
-        provider.loadCategories(arrivalDateProperty().get(), departureDateProperty().get(), scope.getContractingParty(), this::createVms);
+        provider.loadCategories(scope.getContractingParty(), this::createVms);
     }
 
     private void createVms() {
@@ -211,9 +213,22 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
 
         categoryProperty().addListener(((observable, oldValue, newValue) -> {
             availableRooms.clear();
+            occupationStatus.clear();
             currCategoryPrice.setValue("?");
             if (newValue == null) return;
-            XYChart.Series<Number, String> series = new XYChart.Series<>();
+
+            ReservationUnitProvider provider = new ReservationUnitProvider();
+
+            provider.calculateOccupationForCategory(occupationData -> {
+                occupationStatus.addAll(
+                        new SegmentedBar.Segment(occupationData.getFree(), "Free"),
+                        new SegmentedBar.Segment(occupationData.getOccupied(), "Occupied"),
+                        new SegmentedBar.Segment(occupationData.getUnconfirmedReservation(), "Unconfirmed")
+                );
+            }, newValue, scope.getContractingParty(), arrivalDateProperty().get(), departureDateProperty().get());
+
+            //XYChart.Series<Number, String> series = new XYChart.Series<>();
+
             // TODO: Belegungsplan oder ähnliches einbauen
 //            series.getData().add(new XYChart.Data<>(newValue.getFree(),
 //                    StringResourceResolver.getStaticResolve(resourceBundle, "reservation.edit.unit.freerooms")));
@@ -282,6 +297,10 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
 
     ObservableList<CategoryItemViewModel> getRoomCategories() {
         return roomCategories;
+    }
+
+    ObservableList<SegmentedBar.Segment> getOccupation(){
+        return occupationStatus;
     }
 
     ObservableList<XYChart.Series<Number, String>> getAvailableRooms() {

@@ -28,7 +28,21 @@ public class HibernateSessionController implements ISessionController {
         initTry = true;
         try {
             Configuration configuration = new Configuration();
-            configuration.configure();
+            //TODO: remove path to hibernate_h2 (only for deployment)
+            configuration.configure("/hibernate_h2.cfg.xml");
+
+            ourSessionFactory = configuration.buildSessionFactory();
+        } catch (Throwable ex) {
+            ex.printStackTrace();
+            logger.fatal(ex.getMessage());
+        }
+    }
+
+    private static void init(String configFile){
+        initTry = true;
+        try {
+            Configuration configuration = new Configuration();
+            configuration.configure(configFile);
 
             ourSessionFactory = configuration.buildSessionFactory();
         } catch (Throwable ex) {
@@ -53,6 +67,10 @@ public class HibernateSessionController implements ISessionController {
 
     public static void start() {
         init();
+    }
+
+    public static void startWithConfigFile(String configFile){
+        init(configFile);
     }
 
     public static void disposeHibernate() {
