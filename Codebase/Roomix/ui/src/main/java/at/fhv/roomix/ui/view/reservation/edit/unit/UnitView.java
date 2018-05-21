@@ -1,18 +1,22 @@
 package at.fhv.roomix.ui.view.reservation.edit.unit;
 
 import at.fhv.roomix.controller.model.ArrangementPojo;
+import at.fhv.roomix.ui.view.checkin.edit.unit.RoomSegment;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import de.saxsys.mvvmfx.utils.validation.visualization.ControlsFxVisualizer;
 import de.saxsys.mvvmfx.utils.validation.visualization.ValidationVisualizer;
 import de.saxsys.mvvmfx.utils.viewlist.CachedViewModelCellFactory;
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Orientation;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.*;
 import javafx.util.Callback;
+import org.controlsfx.control.SegmentedBar;
 
 import java.time.LocalDate;
 
@@ -44,10 +48,10 @@ public class UnitView implements FxmlView<UnitViewModel> {
                     };
                 }
             };
-    @FXML
-    NumberAxis xAxis;
-    @FXML
-    CategoryAxis yAxis;
+//    @FXML
+//    NumberAxis xAxis;
+//    @FXML
+//    CategoryAxis yAxis;
     @InjectViewModel
     private UnitViewModel viewModel;
     @FXML
@@ -98,7 +102,8 @@ public class UnitView implements FxmlView<UnitViewModel> {
     @FXML
     private Label lblPricePerDay;
     @FXML
-    private BarChart<Number, String> chartSelectedCategorie;
+    private SegmentedBar<SegmentedBar.Segment> occupationBar;
+//    private BarChart<Number, String> chartSelectedCategorie;
     private ValidationVisualizer validationVisualizer = new ControlsFxVisualizer();
 
     public void initialize() {
@@ -123,9 +128,18 @@ public class UnitView implements FxmlView<UnitViewModel> {
         listCategories.disableProperty().bind(viewModel.getContactInLoad());
 
         //yAxis.setTickLabelRotation(90);
-        xAxis.setLabel("Available Rooms");
+        //xAxis.setLabel("Available Rooms");
 
-        chartSelectedCategorie.setData(viewModel.getAvailableRooms());
+        occupationBar.setOrientation(Orientation.HORIZONTAL);
+        viewModel.getOccupation().addListener(new ListChangeListener<SegmentedBar.Segment>() {
+            @Override
+            public void onChanged(Change<? extends SegmentedBar.Segment> c) {
+                occupationBar.getSegments().clear();
+                occupationBar.getSegments().addAll(c.getList());
+            }
+        });
+
+        //chartSelectedCategorie.setData(viewModel.getAvailableRooms());
 
         listCategories.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue == null) {
