@@ -4,6 +4,7 @@ import at.fhv.roomix.controller.session.ISessionController;
 import at.fhv.roomix.controller.session.SessionControllerFactory;
 import at.fhv.roomix.controller.session.exception.AuthenticationFaultException;
 import at.fhv.roomix.controller.session.model.SessionPojo;
+import at.fhv.roomix.ui.common.DebugEvent;
 import at.fhv.roomix.ui.common.IErrorCall;
 import at.fhv.roomix.ui.common.StartEvent;
 import javafx.application.Platform;

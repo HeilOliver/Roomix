@@ -33,6 +33,7 @@ public class RunMe {
         //createReservationTest();
         //getCategoryStatus();
         getArrangements();
+        HibernateSessionController.start();
         HibernateSessionController.disposeHibernate();
     }
 
