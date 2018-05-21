@@ -3,6 +3,7 @@ package at.fhv.roomix.controller.reservation;
 import at.fhv.roomix.common.Mapper;
 import at.fhv.roomix.controller.common.exceptions.*;
 import at.fhv.roomix.controller.common.validator.Validator;
+import at.fhv.roomix.controller.mapping.CategoryDataMapping;
 import at.fhv.roomix.controller.model.ContactPojo;
 import at.fhv.roomix.controller.model.PersonPojo;
 import at.fhv.roomix.controller.mapping.ReservationMapping;
@@ -40,6 +41,7 @@ class ReservationController implements IReservationController {
 
     static {
         mapper.addMapType(new ReservationMapping(), Reservation.class, ReservationPojo.class);
+        mapper.addMapType(new CategoryDataMapping(), CategoryStatus.class,CategoryDataPojo.class );
     }
 
     @Override
