@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class RoomAssignmentPage extends AbstractPage {
     private static final String DEFAULT_TAG = "common.RoomAssignment";
-    private static final String DEFAULT_GLYPH = "FILE_TEXT";
+    private static final String DEFAULT_GLYPH = "BED";
 
     public RoomAssignmentPage() {
         super(new SwitchablePage(DEFAULT_TAG, DEFAULT_GLYPH, "/at/fhv/roomix/ui/controller/allReservation.fxml"));

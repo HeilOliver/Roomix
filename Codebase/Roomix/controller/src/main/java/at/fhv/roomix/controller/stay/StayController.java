@@ -115,22 +115,19 @@ class StayController implements IStayController{
                 if (splicedQuery.isEmpty()) continue;
                 resultSet.addAll(reservations.stream()
                         .filter((r) -> Integer.toString(r.getId()).contains(splicedQuery) ||
-                                r.getGuests().stream().anyMatch(
-                                        (g) -> g.getFirstName().contains(splicedQuery) ||
-                                                g.getLastName().contains(splicedQuery) ||
-                                                Integer.toString(g.getId()).contains(splicedQuery)) ||
-                                r.getContractingParty().getContact().getFirstName().contains(splicedQuery) ||
-                                r.getContractingParty().getContact().getLastName().contains(splicedQuery) ||
-                                Integer.toString(r.getContractingParty().getContact().getId()).contains(splicedQuery))
+                                r.getContractingParty().getContact().getFirstName().toLowerCase().contains(splicedQuery) ||
+                                r.getContractingParty().getContact().getLastName().toLowerCase().contains(splicedQuery) ||
+                                Integer.toString(r.getContractingParty().getContact().getId()).contains(splicedQuery) ||
+                        r.getGuests().stream().anyMatch(
+                                (g) -> g.getFirstName().toLowerCase().contains(splicedQuery) ||
+                                        g.getLastName().toLowerCase().contains(splicedQuery) ||
+                                        Integer.toString(g.getId()).contains(splicedQuery)))
                         .collect(Collectors.toSet()));
             }
 
-            Set<ReservationPojo> reservationPojoSet = new HashSet<>();
-
-            for (Reservation reservation : resultSet) {
-                reservationPojoSet.add(mapper.map(reservation, ReservationPojo.class));
-            }
-            return reservationPojoSet;
+            return resultSet.stream()
+                    .map((r) -> mapper.map(r, ReservationPojo.class))
+                    .collect(Collectors.toSet());
         } catch (BuilderLoadException | MappingException | IllegalStateException e) {
             throw new GetFault("Exception by loading data, see inner exception fore more details", e);
         }
