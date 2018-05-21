@@ -84,7 +84,7 @@ public class RoomCategory  {
         int unconfirmed = 0, occupied = 0, quota = 0;
         Collection<ReservationUnit> units = unitsLoader.getUnitsForDate(statusDate, this);
 
-        if (party.getType() == ContractingParty.ContractingPartyType.TRAVEL_AGENT) {
+        if (party != null && party.getType() == ContractingParty.ContractingPartyType.TRAVEL_AGENT) {
             quota = ((TravelAgency)party).getQuota(statusDate, this);
         } else {
             party = null;
