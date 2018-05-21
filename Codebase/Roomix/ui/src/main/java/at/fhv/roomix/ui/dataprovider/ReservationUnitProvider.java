@@ -1,5 +1,6 @@
 package at.fhv.roomix.ui.dataprovider;
 
+import at.fhv.roomix.controller.common.exceptions.FaultException;
 import at.fhv.roomix.controller.common.exceptions.GetFault;
 import at.fhv.roomix.controller.common.exceptions.SessionFaultException;
 import at.fhv.roomix.controller.model.*;

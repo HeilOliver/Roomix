@@ -11,7 +11,7 @@ INSERT INTO Roomix.Contact(ContactID, FirstName, LastName, CompanyName, PhoneNum
 
 INSERT INTO Roomix.RoomCategory(RoomCategoryID, CategoryDescription) VALUES (1,'Einzelbett'), (2,'Doppelbett'), (3,'Suite');
 
-INSERT INTO Roomix.Season(Description, AdditionalCharge, StartDate, EndDate) VALUES('Vorseason', 0, PARSEDATETIME('01-01-2018', 'dd-mm-yyyy'),PARSEDATETIME('01-05-2018', 'dd-mm-yyyy')), ('Hauptseason', 4500, PARSEDATETIME('02-05-2018', 'dd-mm-yyyy'), PARSEDATETIME('20-10-2018', 'dd-mm-yyyy'));
+INSERT INTO Roomix.Season(Description, AdditionalCharge, StartDate, EndDate) VALUES('Vorseason', 0, PARSEDATETIME('01-01-2018', 'dd-mm-yyyy'),PARSEDATETIME('01-05-2022', 'dd-mm-yyyy')), ('Hauptseason', 4500, PARSEDATETIME('02-05-2018', 'dd-mm-yyyy'), PARSEDATETIME('20-10-2018', 'dd-mm-yyyy'));
 
 INSERT INTO Roomix.RoomCategoryPrice(RoomCategory, Season, ListPrice, AcquisitionPrice, MinimumPrice, DayPrice) VALUES(1, 1, 5000, 2000, 2500, 4500), (2, 1, 8000, 2000, 3500, 7500), (3, 1, 25000, 4000, 4500, 15000);
 

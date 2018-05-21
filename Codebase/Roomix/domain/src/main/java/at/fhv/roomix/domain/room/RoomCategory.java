@@ -72,10 +72,12 @@ public class RoomCategory  {
         int calcPrice = price.getListPrice();
 
         Agreement agreement;
-        if (party != null) {
+        if (party != null && party.getId() > 0) {
             agreement = agreementFinder.getAgreement(statusDate, this, party);
-            int discount = agreement.getDiscount();
-            calcPrice -= discount;
+            if (agreement != null) {
+                int discount = agreement.getDiscount();
+                calcPrice -= discount;
+            }
         }
         return calcPrice;
     }

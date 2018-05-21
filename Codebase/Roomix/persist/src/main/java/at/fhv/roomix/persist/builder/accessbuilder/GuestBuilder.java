@@ -48,6 +48,7 @@ public class GuestBuilder {
     }
 
     public static Person getPerson(int id) throws BuilderLoadException {
+        if (id == 0) return new Person();
         PersonEntity entity = null;
         try {
             entity = PersonFactory.getInstance().get(id);

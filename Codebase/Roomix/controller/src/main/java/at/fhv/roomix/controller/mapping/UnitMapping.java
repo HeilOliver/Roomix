@@ -8,6 +8,9 @@ import at.fhv.roomix.domain.reservation.Arrangement;
 import at.fhv.roomix.domain.reservation.ReservationUnit;
 import at.fhv.roomix.domain.room.Room;
 import at.fhv.roomix.domain.room.RoomCategory;
+import at.fhv.roomix.persist.builder.accessbuilder.ArrangementBuilder;
+import at.fhv.roomix.persist.builder.accessbuilder.RoomCategoryBuilder;
+import at.fhv.roomix.persist.exception.BuilderLoadException;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -24,6 +27,26 @@ public class UnitMapping implements MapType<ReservationUnit, ReservationUnitPojo
 
     static {
         Mapper.getInstance().addMapType(new CategoryMapping(), RoomCategory.class, RoomCategoryPojo.class);
+    }
+
+    @Override
+    public void mapReverse(ReservationUnitPojo source, ReservationUnit destination, Mapper mapper) throws MappingException {
+        RoomCategory roomCategory = null;
+        try {
+            roomCategory = RoomCategoryBuilder.getRoomCategory(source.getRoomCategory().getId());
+            destination.setCategory(roomCategory);
+            destination.setStartDate(source.getStartDate());
+            destination.setEndDate(source.getEndDate());
+            destination.setPrice(source.getPrice() != null ? source.getPrice().getPrice() : 0);
+            destination.setArrivalTime(source.getArrivalTime());
+            destination.getArrangements().clear();
+            for (ArrangementPojo pojo : source.getArrangements()) {
+                Arrangement arrangement = ArrangementBuilder.getArrangement(pojo.getId());
+                destination.getArrangements().add(arrangement);
+            }
+        } catch (BuilderLoadException e) {
+            throw new MappingException("Cant Load:" + e.getMessage());
+        }
     }
 
     @Override

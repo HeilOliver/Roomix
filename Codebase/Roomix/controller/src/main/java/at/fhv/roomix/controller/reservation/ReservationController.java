@@ -3,6 +3,7 @@ package at.fhv.roomix.controller.reservation;
 import at.fhv.roomix.common.Mapper;
 import at.fhv.roomix.controller.common.exceptions.*;
 import at.fhv.roomix.controller.common.validator.Validator;
+import at.fhv.roomix.controller.mapping.ArrangementPojoMapping;
 import at.fhv.roomix.controller.mapping.CategoryDataMapping;
 import at.fhv.roomix.controller.model.ContactPojo;
 import at.fhv.roomix.controller.model.PersonPojo;
@@ -42,6 +43,7 @@ class ReservationController implements IReservationController {
     static {
         mapper.addMapType(new ReservationMapping(), Reservation.class, ReservationPojo.class);
         mapper.addMapType(new CategoryDataMapping(), CategoryStatus.class,CategoryDataPojo.class );
+        mapper.addMapType(new ArrangementPojoMapping(), Arrangement.class, ArrangementPojo.class);
     }
 
     @Override
@@ -148,15 +150,19 @@ class ReservationController implements IReservationController {
             throw new SessionFaultException();
 
         try {
-            ContractingParty party = ContractingPartyBuilder.get(contractingParty.getContactId());
+            ContractingParty party = ContractingPartyBuilder.getByContact(contractingParty.getContactId());
             RoomCategory roomCategory = RoomCategoryBuilder.getRoomCategory(unit.getRoomCategory().getId());
 
             LocalDate currDate = unit.getStartDate();
             int price = 0;
             do {
                 price += roomCategory.calculatePrice(party, currDate);
+                currDate = currDate.plusDays(1);
             } while (currDate.isBefore(unit.getEndDate()));
 
+            int amount = unit.getAmount();
+            if (amount < 1) amount = 1;
+            price *= amount;
             PricePojo pricePojo = new PricePojo();
             pricePojo.setPrice(price);
             return pricePojo;
@@ -231,7 +237,7 @@ class ReservationController implements IReservationController {
 
             // If ContractingParty is new
             ContractingParty contractingParty
-                    = ContractingPartyBuilder.get(reservationPojo.getContractingParty().getContactId());
+                    = ContractingPartyBuilder.getByContact(reservationPojo.getContractingParty().getContactId());
             toUpdate.setContractingParty(contractingParty);
 
             // Map / Update Persons
@@ -256,6 +262,7 @@ class ReservationController implements IReservationController {
             for (ReservationUnitPojo reservationUnitPojo: reservationPojo.getUnits()) {
                 ReservationUnit unit = ReservationUnitBuilder.get(reservationUnitPojo.getId());
                 mapper.map(reservationUnitPojo,unit);
+                unit.setReservationDirect(toUpdate);
                 toUpdate.getUnits().add(unit);
             }
 
