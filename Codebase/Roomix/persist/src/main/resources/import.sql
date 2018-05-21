@@ -1,6 +1,4 @@
 
-
-
 CREATE TABLE IF NOT EXISTS Roomix.PersonReservation( Reservation INTEGER NOT NULL, Person INTEGER NOT NULL, PRIMARY KEY (Reservation, Person), FOREIGN KEY (Reservation) REFERENCES Reservation(ReservationID), FOREIGN KEY (Person) REFERENCES Person(PersonID) );
 
 CREATE TABLE IF NOT EXISTS Roomix.PersonRoomAssignment( Unit INTEGER NOT NULL, Person INTEGER NOT NULL, PRIMARY KEY (Unit, Person), FOREIGN KEY (Unit) REFERENCES ReservationUnit(ReservationUnitID), FOREIGN KEY (Person) REFERENCES Person(PersonID) );
@@ -11,13 +9,13 @@ INSERT INTO Roomix.Contact(ContactID, FirstName, LastName, CompanyName, PhoneNum
 
 INSERT INTO Roomix.RoomCategory(RoomCategoryID, CategoryDescription) VALUES (1,'Einzelbett'), (2,'Doppelbett'), (3,'Suite');
 
-INSERT INTO Roomix.Season(Description, AdditionalCharge, StartDate, EndDate) VALUES('Vorseason', 0, PARSEDATETIME('01-01-2018', 'dd-mm-yyyy'),PARSEDATETIME('01-05-2018', 'dd-mm-yyyy')), ('Hauptseason', 4500, PARSEDATETIME('02-05-2018', 'dd-mm-yyyy'), PARSEDATETIME('20-10-2018', 'dd-mm-yyyy'));
+INSERT INTO Roomix.Season(Description, AdditionalCharge, StartDate, EndDate) VALUES('Vorseason', 0, PARSEDATETIME('01-01-2018', 'dd-mm-yyyy'),PARSEDATETIME('01-05-2022', 'dd-mm-yyyy')), ('Hauptseason', 4500, PARSEDATETIME('02-05-2018', 'dd-mm-yyyy'), PARSEDATETIME('20-10-2020', 'dd-mm-yyyy'));
 
 INSERT INTO Roomix.RoomCategoryPrice(RoomCategory, Season, ListPrice, AcquisitionPrice, MinimumPrice, DayPrice) VALUES(1, 1, 5000, 2000, 2500, 4500), (2, 1, 8000, 2000, 3500, 7500), (3, 1, 25000, 4000, 4500, 15000);
 
 INSERT INTO Roomix.Article(ArticleID, ArticleDescription, ArticleType, Price) VALUES (10,'Cola - 1,5L', 'ARTICLE', 500), (11,'Fanta - 1,5L', 'ARTICLE', 500), (12,'Sprite - 1,5L', 'ARTICLE', 500), (13,'Massage 1h', 'SERVICE', 5000), (14,'Massage 30min', 'SERVICE', 3000), (15,'Vollpension', 'ARRANGEMENT', 10000);
 
-INSERT INTO Roomix.PaymentType(PaymentTypeDescription) VALUES ('CASH'), ('DEBIT'), ('CREDIT');
+INSERT INTO Roomix.PaymentType(PaymentTypeID, PaymentTypeDescription) VALUES (1, 'CASH'), (2, 'DEBIT'), (3, 'CREDIT');
 
 INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (100, 1, 'FREE_CLEAN');
 INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (101, 1, 'FREE_CLEAN');
@@ -26,19 +24,19 @@ INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (103, 1, 'FREE_CLEA
 INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (104, 1, 'FREE_CLEAN');
 INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (105, 1, 'FREE_CLEAN');
 
-INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (200, 1, 'FREE_CLEAN');
-INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (201, 1, 'FREE_CLEAN');
-INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (202, 1, 'FREE_CLEAN');
-INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (203, 1, 'FREE_CLEAN');
-INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (204, 1, 'FREE_CLEAN');
-INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (205, 1, 'FREE_CLEAN');
+INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (200, 2, 'FREE_CLEAN');
+INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (201, 2, 'FREE_CLEAN');
+INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (202, 2, 'FREE_CLEAN');
+INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (203, 2, 'FREE_CLEAN');
+INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (204, 2, 'FREE_CLEAN');
+INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (205, 2, 'FREE_CLEAN');
 
-INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (300, 1, 'FREE_CLEAN');
-INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (301, 1, 'FREE_CLEAN');
-INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (302, 1, 'FREE_CLEAN');
-INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (303, 1, 'FREE_CLEAN');
-INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (304, 1, 'FREE_CLEAN');
-INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (305, 1, 'FREE_CLEAN');
+INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (300, 3, 'FREE_CLEAN');
+INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (301, 3, 'FREE_CLEAN');
+INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (302, 3, 'FREE_CLEAN');
+INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (303, 3, 'FREE_CLEAN');
+INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (304, 3, 'FREE_CLEAN');
+INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (305, 3, 'FREE_CLEAN');
 
 INSERT INTO Roomix.ContractingParty(ContractingPartyID, ContractingPartyType, Contact) VALUES (200, 'INDIVIDUAL', 3), (300, 'INDIVIDUAL', 4), (400, 'INDIVIDUAL', 5);
 
