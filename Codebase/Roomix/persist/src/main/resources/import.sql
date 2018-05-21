@@ -15,7 +15,7 @@ INSERT INTO Roomix.RoomCategoryPrice(RoomCategory, Season, ListPrice, Acquisitio
 
 INSERT INTO Roomix.Article(ArticleID, ArticleDescription, ArticleType, Price) VALUES (10,'Cola - 1,5L', 'ARTICLE', 500), (11,'Fanta - 1,5L', 'ARTICLE', 500), (12,'Sprite - 1,5L', 'ARTICLE', 500), (13,'Massage 1h', 'SERVICE', 5000), (14,'Massage 30min', 'SERVICE', 3000), (15,'Vollpension', 'ARRANGEMENT', 10000);
 
-INSERT INTO Roomix.PaymentType(PaymentTypeDescription) VALUES ('CASH'), ('DEBIT'), ('CREDIT');
+INSERT INTO Roomix.PaymentType(PaymentTypeID, PaymentTypeDescription) VALUES (1, 'CASH'), (2, 'DEBIT'), (3, 'CREDIT');
 
 INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (100, 1, 'FREE_CLEAN');
 INSERT INTO Roomix.Room(RoomID, RoomCategory, Status) VALUES (101, 1, 'FREE_CLEAN');
