@@ -58,7 +58,11 @@
                     <Label fx:id="lblPricePerDay"/>
                 </HBox>
                 <AnchorPane VBox.vgrow="ALWAYS" maxWidth="Infinity">
-                    <SegmentedBar fx:id="occupationBar"/>
+                    <VBox AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0"
+            AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" spacing="10">
+                        <Label text="%reservation.occupation"/>
+                        <SegmentedBar fx:id="occupationBar" VBox.vgrow="ALWAYS"/>
+                    </VBox>
                     <!--<BarChart AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0"-->
                               <!--AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0"-->
                               <!--fx:id="chartSelectedCategorie" prefHeight="110" prefWidth="120">-->
