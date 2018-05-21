@@ -5,6 +5,7 @@ import at.fhv.roomix.domain.payment.RoomPrice;
 import at.fhv.roomix.domain.room.RoomCategory;
 import at.fhv.roomix.persist.dataaccess.factory.RoomCategoryFactory;
 import at.fhv.roomix.persist.exception.PersistLoadException;
+import at.fhv.roomix.persist.mappings.PriceMapping;
 import at.fhv.roomix.persist.models.RoomCategoryEntity;
 import at.fhv.roomix.persist.models.RoomCategoryPriceEntity;
 
@@ -22,6 +23,10 @@ import java.util.Optional;
 public class PriceBuilder {
     private static Mapper mapper = Mapper.getInstance();
 
+    static {
+        mapper.addMapType(new PriceMapping(), RoomCategoryPriceEntity.class, RoomPrice.class);
+    }
+
 
     public static RoomPrice getPrice(LocalDate date, RoomCategory roomCategory) {
         RoomCategoryEntity categoryEntity;
@@ -35,8 +40,9 @@ public class PriceBuilder {
                 .filter((p) -> p.getSeason().getEndDate().toLocalDate().isAfter(date))
                 .findFirst();
 
-        if (!priceEntity.isPresent()) return null;
+        return priceEntity
+                .map(roomCategoryPriceEntity -> mapper.map(roomCategoryPriceEntity, RoomPrice.class))
+                .orElse(null);
 
-        return mapper.map(categoryEntity, RoomPrice.class);
     }
 }
