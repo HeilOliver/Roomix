@@ -1,10 +1,39 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <link href="main.css" rel="stylesheet">
+    <script type="text/javascript" src="calendarDateInput.js">
+    </script>
+
+</head>
 <body>
 
 <h1>Reservation</h1>
 
-<p>Make a reservation!</p>
+<div class="container">
+<form>
+    <p>Select StartDate!</p>
+    <script>DateInput('orderdate', true, 'DD-MON-YYYY')</script>
+    <input type="button" onClick="alert(this.form.orderdate.value)" value="Show StartDate!">
+</form>
+
+<form>
+    <p>Select EndDate!</p>
+    <script>DateInput('orderdate', true, 'DD-MON-YYYY')</script>
+    <input type="button" onClick="alert(this.form.orderdate.value)" value="Show EndDate">
+</form>
+
+<form>
+    <p>Select Category!</p>
+    <select id="Category">
+        <option value="Suite">Suite</option>
+        <option value="Doppelzimmer">Doppelzimmer</option>
+        <option value="Einzelzimmer">Einzelzimmer</option>
+    </select>
+</form>
+
+
+</div>
 
 </body>
 </html>
