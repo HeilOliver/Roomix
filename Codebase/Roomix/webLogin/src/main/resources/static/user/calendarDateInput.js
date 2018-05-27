@@ -1,7 +1,3 @@
-/***********************************************
- Fool-Proof Date Input Script with DHTML Calendar
- by Jason Moon - http://calendar.moonscript.com/dateinput.cfm
- ************************************************/
 
 // Customizable variables
 var DefaultDateFormat = 'MM/DD/YYYY'; // If no date format is supplied, this will be used instead
