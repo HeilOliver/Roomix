@@ -79,7 +79,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             // don't create session
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 
-            .authorizeRequests().antMatchers("/visitor/reservation").access("hasRole('USER')")
+            .authorizeRequests()
 
             // Un-secure H2 Database
             .antMatchers("/h2-console/**/**").permitAll()
@@ -109,13 +109,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 HttpMethod.POST,
                 authenticationPath
             )
-
             // allow anonymous resource requests
             .and()
             .ignoring()
             .antMatchers(
                 HttpMethod.GET,
-               "/", "/*.html", "/favicon.ico", "/**/*.css","/**/*.jpg","/visitor/form.html"
+               "/", "/*.html", "/favicon.ico", "/**/*.css","/**/*.jpg","/visitor/form.html","/**/*.js"
 
             )
             // Un-secure H2 Database (for testing purposes, H2 console shouldn't be unprotected in production)
