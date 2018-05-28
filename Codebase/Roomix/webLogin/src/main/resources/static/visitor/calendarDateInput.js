@@ -285,7 +285,7 @@ function CheckMonthChange(MonthList) {
     else {
         this.hideElements(false);
         if (this.isShowing()) {
-            this.resetTimer(); // Gives the user more time to view the calendar with the newly-selected month
+            this.resetTimer(); // Gives the visitor more time to view the calendar with the newly-selected month
             this.getCalendar().style.zIndex = ++ZCounter; // Make sure this calendar is on top of any other calendars
         }
         var DayPick = FixDayList(DayList, GetDayCount(this.picked.yearValue, MonthList.options[MonthList.selectedIndex].value));
@@ -303,7 +303,7 @@ function CheckDayChange(DayList) {
 function CheckYearInput(YearField) {
     if ((YearField.value.length == YearField.defaultValue.length) && (YearField.defaultValue != YearField.value)) {
         if (this.isShowing()) {
-            this.resetTimer(); // Gives the user more time to view the calendar with the newly-entered year
+            this.resetTimer(); // Gives the visitor more time to view the calendar with the newly-entered year
             this.getCalendar().style.zIndex = ++ZCounter; // Make sure this calendar is on top of any other calendars
         }
         var NewYear = GetGoodYear(YearField.value);
@@ -454,7 +454,7 @@ function calendarObject(DateName, DateFormat, DefaultDate) {
         }
         return MonPos;
     }
-    function SetGoodDate(CalObj, Notify) { // Notifies the user about their bad default date, and sets the current system date
+    function SetGoodDate(CalObj, Notify) { // Notifies the visitor about their bad default date, and sets the current system date
         CalObj.setPicked(Today.getFullYear(), Today.getMonth(), Today.getDate());
         if (Notify) alert('WARNING: The supplied date is not in valid \'' + DateFormat + '\' format: ' + DefaultDate + '.\nTherefore, the current system date will be used instead: ' + CalObj.picked.formatted);
     }
