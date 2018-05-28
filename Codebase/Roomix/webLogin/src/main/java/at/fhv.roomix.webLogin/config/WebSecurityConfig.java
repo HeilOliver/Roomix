@@ -71,15 +71,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
+
             // we don't need CSRF because our token is invulnerable
             .csrf().disable()
-
             .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 
             // don't create session
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 
-            .authorizeRequests()
+            .authorizeRequests().antMatchers("/visitor/reservation").access("hasRole('USER')")
 
             // Un-secure H2 Database
             .antMatchers("/h2-console/**/**").permitAll()
@@ -115,13 +115,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .ignoring()
             .antMatchers(
                 HttpMethod.GET,
-               "/", "/*.html", "/favicon.ico", "/**/*.html", "/**/*.css", "/**/*.js"
+               "/", "/*.html", "/favicon.ico", "/**/*.css","/**/*.jpg","/visitor/form.html"
+
             )
             // Un-secure H2 Database (for testing purposes, H2 console shouldn't be unprotected in production)
             .and()
             .ignoring()
             .antMatchers("/h2-console/**/**");
     }
+
 
 
 }
