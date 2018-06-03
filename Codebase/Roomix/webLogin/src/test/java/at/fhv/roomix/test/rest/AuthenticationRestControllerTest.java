@@ -28,8 +28,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -74,7 +72,7 @@ public class AuthenticationRestControllerTest {
             .andExpect(status().is2xxSuccessful());
     }
 
-    @Test
+/*    @Test
     @WithMockUser(roles = "USER")
     public void successfulRefreshTokenWithUserRole() throws Exception {
 
@@ -100,9 +98,9 @@ public class AuthenticationRestControllerTest {
         mvc.perform(get("/refresh")
             .header("Authorization", "Bearer 5d1103e-b3e1-4ae9-b606-46c9c1bc915a"))
             .andExpect(status().is2xxSuccessful());
-    }
+    }*/
 
-    @Test
+/*    @Test
     @WithMockUser(roles = "ADMIN")
     public void successfulRefreshTokenWithAdminRole() throws Exception {
 
@@ -128,7 +126,7 @@ public class AuthenticationRestControllerTest {
         mvc.perform(get("/refresh")
             .header("Authorization", "Bearer 5d1103e-b3e1-4ae9-b606-46c9c1bc915a"))
             .andExpect(status().is2xxSuccessful());
-    }
+    }*/
 
     @Test
     @WithAnonymousUser

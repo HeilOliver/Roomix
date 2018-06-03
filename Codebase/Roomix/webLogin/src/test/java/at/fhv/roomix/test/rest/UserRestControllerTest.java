@@ -23,8 +23,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -60,7 +58,7 @@ public class UserRestControllerTest {
                 .andExpect(status().isUnauthorized());
     }
 
-    @Test
+/*    @Test
     @WithMockUser(roles = "USER")
     public void getPersonsSuccessfullyWithUserRole() throws Exception {
 
@@ -83,7 +81,7 @@ public class UserRestControllerTest {
 
         mvc.perform(get("/user").header("Authorization", "Bearer nsodunsodiuv"))
                 .andExpect(status().is2xxSuccessful());
-    }
+    }*/
 
 }
 
