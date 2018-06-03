@@ -1,0 +1,9 @@
+package at.fhv.roomix.webLogin.security.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/AllCategories")
+public class GetAllCategoriesController {
+}
