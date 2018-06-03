@@ -1,6 +1,5 @@
 package at.fhv.roomix.webLogin.security.controller;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,7 +17,12 @@ public class ReservationCheckRestController {
         //convert String to LocalDate
         LocalDate startDate = LocalDate.parse(getStartDate, formatter);
         LocalDate endDate = LocalDate.parse(getEndDate, formatter);
+        
 
-    return "Test";
+
+
+
+
+        return "Hi";
     }
 }
