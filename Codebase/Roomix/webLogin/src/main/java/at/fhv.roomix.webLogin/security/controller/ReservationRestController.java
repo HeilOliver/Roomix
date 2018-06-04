@@ -7,7 +7,11 @@ import at.fhv.roomix.controller.common.exceptions.ValidationFault;
 import at.fhv.roomix.controller.model.ContactPojo;
 import at.fhv.roomix.controller.model.ReservationPojo;
 import at.fhv.roomix.controller.model.ReservationUnitPojo;
+import at.fhv.roomix.controller.model.RoomCategoryPojo;
 import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
+import at.fhv.roomix.domain.room.RoomCategory;
+import at.fhv.roomix.persist.builder.accessbuilder.RoomCategoryBuilder;
+import at.fhv.roomix.persist.exception.BuilderLoadException;
 import at.fhv.roomix.ui.dataprovider.LoginProvider;
 import at.fhv.roomix.webLogin.model.security.CreditcardPojo;
 
@@ -37,7 +41,7 @@ public class ReservationRestController {
                               @RequestParam(value="creditcard") String creditcard,
                               @RequestParam(value="categoryNumber") String[] categoryNumber,
                               @RequestParam(value="startDate") String getStartDate,
-                              @RequestParam(value="endDate") String getEndDate) {
+                              @RequestParam(value="endDate") String getEndDate) throws BuilderLoadException {
 
 
         //convert String to LocalDate
@@ -49,14 +53,29 @@ public class ReservationRestController {
         ContactPojo contactPojo = mapContact(fname,lname,eMail,postCode,place,country,
                 phoneNumber,street,housenumber,creditcard);
 
-
+        //Mapping Unit
         Collection<ReservationUnitPojo> reservationUnitPojoCollection = new HashSet<>();
-        ReservationUnitPojo reservationUnitPojo = new ReservationUnitPojo();
+
+        for (String categoryID:categoryNumber) {
+            int id = Integer.parseInt(categoryID);
+            RoomCategory roomCategory= RoomCategoryBuilder.getRoomCategory(id);
+
+            //Todo: Keine Ahnung ob das so geht!
+            RoomCategoryPojo roomCategoryPojo = new RoomCategoryPojo();
+            roomCategoryPojo.setId(roomCategory.getId());
+            roomCategoryPojo.setDescription(roomCategory.getDescription());
+            ReservationUnitPojo reservationUnitPojo = new ReservationUnitPojo();
+            reservationUnitPojo.setEndDate(endDate);
+            reservationUnitPojo.setStartDate(startDate);
+            reservationUnitPojo.setRoomCategory(roomCategoryPojo);
+            reservationUnitPojoCollection.add(reservationUnitPojo);
+        }
+
 
         //Mapping reservation
         ReservationPojo reservationPojo = new ReservationPojo();
         reservationPojo.setContractingParty(contactPojo);
-
+        reservationPojo.setUnits(reservationUnitPojoCollection);
         try {
             ReservationControllerFactory.getInstance().updateReservation(LoginProvider.getSessionID(),reservationPojo);
         } catch (SessionFaultException | ArgumentFaultException | SaveFault | ValidationFault e) {
