@@ -1,28 +1,91 @@
 package at.fhv.roomix.webLogin.security.controller;
 
+import at.fhv.roomix.controller.common.exceptions.ArgumentFaultException;
+import at.fhv.roomix.controller.common.exceptions.SaveFault;
+import at.fhv.roomix.controller.common.exceptions.SessionFaultException;
+import at.fhv.roomix.controller.common.exceptions.ValidationFault;
+import at.fhv.roomix.controller.model.ContactPojo;
+import at.fhv.roomix.controller.model.ReservationPojo;
+import at.fhv.roomix.controller.model.ReservationUnitPojo;
+import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
+import at.fhv.roomix.ui.dataprovider.LoginProvider;
 import at.fhv.roomix.webLogin.model.security.CreditcardPojo;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Collection;
+import java.util.HashSet;
+
 @RestController
 @RequestMapping("/DoReservation")
 public class ReservationRestController {
     @RequestMapping(method = RequestMethod.POST)
-    public void doReservation() {
+    public void doReservation(@RequestParam(value="fname") String fname,
+                              @RequestParam(value="lname") String lname,
+                              @RequestParam(value="eMail") String eMail,
+                              @RequestParam(value="postCode") String postCode,
+                              @RequestParam(value="place") String place,
+                              @RequestParam(value="country") String country,
+                              @RequestParam(value="phoneNumber") String phoneNumber,
+                              @RequestParam(value="street") String street,
+                              @RequestParam(value="houesnumber") String housenumber,
+                              @RequestParam(value="creditcard") String creditcard,
+                              @RequestParam(value="categoryNumber") String[] categoryNumber,
+                              @RequestParam(value="startDate") String getStartDate,
+                              @RequestParam(value="endDate") String getEndDate) {
 
+
+        //convert String to LocalDate
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-mm-yyyy");
+        LocalDate startDate = LocalDate.parse(getStartDate, formatter);
+        LocalDate endDate = LocalDate.parse(getEndDate, formatter);
+
+        //Getting ContactPojo
+        ContactPojo contactPojo = mapContact(fname,lname,eMail,postCode,place,country,
+                phoneNumber,street,housenumber,creditcard);
+
+
+        Collection<ReservationUnitPojo> reservationUnitPojoCollection = new HashSet<>();
+        ReservationUnitPojo reservationUnitPojo = new ReservationUnitPojo();
+
+        //Mapping reservation
+        ReservationPojo reservationPojo = new ReservationPojo();
+        reservationPojo.setContractingParty(contactPojo);
+
+        try {
+            ReservationControllerFactory.getInstance().updateReservation(LoginProvider.getSessionID(),reservationPojo);
+        } catch (SessionFaultException | ArgumentFaultException | SaveFault | ValidationFault e) {
+            e.printStackTrace();
+        }
 
     }
 
-    public void saveContact(String sex, String fname, String lname,String eMail,String street,String housenumber,String creditcard) {
-        if(checkCreditcardValidation(creditcard)== true){
+    public ContactPojo mapContact(String fname, String lname,String eMail,String postCode, String place, String country, String phoneNumber, String street,String housenumber,String creditcard) {
+
+        ContactPojo contactPojo = new ContactPojo();
+        //Todo: CreditcardPojo into Contact-Validation completed
+        if(checkCreditcardValidation(creditcard)){
             CreditcardPojo creditcardPojo = new CreditcardPojo(creditcard,checkCreditcardType(creditcard));
+            //contactPojo.setCreditCard(creditcardPojo);
         }
-        
-
-
-
+        //Mapping Contact
+        contactPojo.setFirstName(fname);
+        contactPojo.setLastName(lname);
+        contactPojo.setEmail(eMail);
+        contactPojo.setPhoneNumber(phoneNumber);
+        contactPojo.setCountry(country);
+        contactPojo.setPlace(place);
+        contactPojo.setPostcode(postCode);
+        //Todo: Check if it is possible (individual 0?)
+        contactPojo.setContractingPartyType(0);
+        contactPojo.setStreet(street);
+        contactPojo.setHouseNumber(housenumber);
+        return contactPojo;
     }
 
     public boolean checkCreditcardValidation(String creditcard){

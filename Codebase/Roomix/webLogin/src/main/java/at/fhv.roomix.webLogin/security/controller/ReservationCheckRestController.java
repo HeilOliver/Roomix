@@ -29,7 +29,6 @@ public class ReservationCheckRestController {
 
     @RequestMapping(method = RequestMethod.POST)
     public Collection<FreeRoomPojo> doReservationCheck(@RequestParam(value="startDate") String getStartDate,@RequestParam(value="endDate") String getEndDate) throws GetFault, SessionFaultException, ArgumentFaultException, ValidationFault {
-        final ISessionDomain sessionHandler = SessionFactory.getInstance();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-mm-yyyy");
         //convert String to LocalDate
         LocalDate startDate = LocalDate.parse(getStartDate, formatter);
