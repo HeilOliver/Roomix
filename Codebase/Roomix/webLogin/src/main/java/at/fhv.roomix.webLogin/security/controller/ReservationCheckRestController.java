@@ -26,6 +26,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/ReservationCheck")
 public class ReservationCheckRestController {
+
     @RequestMapping(method = RequestMethod.POST)
     public Collection<FreeRoomPojo> getSaveContact(@RequestParam(value="startDate") String getStartDate,@RequestParam(value="endDate") String getEndDate) throws GetFault, SessionFaultException, ArgumentFaultException, ValidationFault {
         final ISessionDomain sessionHandler = SessionFactory.getInstance();
@@ -34,16 +35,23 @@ public class ReservationCheckRestController {
         LocalDate startDate = LocalDate.parse(getStartDate, formatter);
         LocalDate endDate = LocalDate.parse(getEndDate, formatter);
 
-        Collection<RoomCategoryPojo> roomCategoryPojoCollection;
-        Collection<CategoryDataPojo>  categoryDataPojoCollection;
         Collection<FreeRoomPojo> freeRoomPojoCollection = new HashSet<>();
 
-        roomCategoryPojoCollection=ReservationControllerFactory.getInstance().getAllCategory(LoginProvider.getSessionID());
 
-        for (RoomCategoryPojo roomCategoryPojo:roomCategoryPojoCollection) {
-            categoryDataPojoCollection= ReservationControllerFactory.getInstance().calculateData(LoginProvider.getSessionID(),roomCategoryPojo,null,startDate,endDate);
-            Optional<CategoryDataPojo> optionalDataPojo = categoryDataPojoCollection.stream().min(Comparator.comparingInt(CategoryDataPojo::getFree));
-            FreeRoomPojo freeRoomPojo = new FreeRoomPojo(optionalDataPojo.get().getFree(),roomCategoryPojo.getDescription());
+        for (RoomCategoryPojo roomCategoryPojo : ReservationControllerFactory.getInstance()
+                .getAllCategory(LoginProvider.getSessionID())) {
+
+            Collection<CategoryDataPojo> categoryDataPojoCollection =
+                    ReservationControllerFactory.getInstance()
+                            .calculateData(LoginProvider.getSessionID(),roomCategoryPojo,null,startDate,endDate);
+
+            Optional<CategoryDataPojo> optionalDataPojo =
+                    categoryDataPojoCollection.stream().min(Comparator.comparingInt(CategoryDataPojo::getFree));
+
+            if (!optionalDataPojo.isPresent()) continue;
+            if (optionalDataPojo.get().getFree() == 0) continue;
+
+            FreeRoomPojo freeRoomPojo = new FreeRoomPojo(optionalDataPojo.get().getFree(),roomCategoryPojo.getDescription(),roomCategoryPojo.getId());
             freeRoomPojoCollection.add(freeRoomPojo);
         }
         return freeRoomPojoCollection;
