@@ -1,4 +1,4 @@
-package at.fhv.roomix.webLogin.model.security;
+package at.fhv.roomix.webLogin.model;
 
 public class CreditcardPojo {
     private String creditcardNumber;

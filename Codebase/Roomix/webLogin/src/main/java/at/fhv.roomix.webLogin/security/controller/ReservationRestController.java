@@ -12,9 +12,8 @@ import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
 import at.fhv.roomix.domain.room.RoomCategory;
 import at.fhv.roomix.persist.builder.accessbuilder.RoomCategoryBuilder;
 import at.fhv.roomix.persist.exception.BuilderLoadException;
-import at.fhv.roomix.ui.dataprovider.LoginProvider;
-import at.fhv.roomix.webLogin.model.security.CreditcardPojo;
 
+import at.fhv.roomix.webLogin.model.CreditcardPojo;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -77,7 +76,7 @@ public class ReservationRestController {
         reservationPojo.setContractingParty(contactPojo);
         reservationPojo.setUnits(reservationUnitPojoCollection);
         try {
-            ReservationControllerFactory.getInstance().updateReservation(LoginProvider.getSessionID(),reservationPojo);
+            ReservationControllerFactory.getInstance().updateReservation(-1000,reservationPojo);
         } catch (SessionFaultException | ArgumentFaultException | SaveFault | ValidationFault e) {
             e.printStackTrace();
         }
