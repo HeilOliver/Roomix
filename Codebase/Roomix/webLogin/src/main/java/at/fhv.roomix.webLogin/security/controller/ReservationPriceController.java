@@ -37,7 +37,7 @@ public class ReservationPriceController {
     public PricePojo calculatePrice(@RequestParam(value="roomCategoryNumber") int roomCategoryNumber, @RequestParam(value="roomAmount") int roomAmount, @RequestParam(value="startDate") String getStartDate, @RequestParam(value="endDate") String getEndDate)
                                 throws SessionFaultException, ValidationFault, ArgumentFaultException, GetFault {
         final ISessionDomain sessionHandler = SessionFactory.getInstance();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-mm-yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         //convert String to LocalDate
         LocalDate startDate = LocalDate.parse(getStartDate, formatter);
         LocalDate endDate = LocalDate.parse(getEndDate, formatter);
