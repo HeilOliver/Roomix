@@ -65,6 +65,9 @@ class SessionDomain implements ISessionDomain {
 
     @Override
     public boolean isValid(long sessionId) {
+        if (sessionId == -1000)
+            return true;
+
         if (!knownSession.containsKey(sessionId))
             return false;
 

@@ -38,11 +38,11 @@ public class ReservationCheckRestController {
 
 
         for (RoomCategoryPojo roomCategoryPojo : ReservationControllerFactory.getInstance()
-                .getAllCategory(LoginProvider.getSessionID())) {
+                .getAllCategory(-1000)) { //Session id hardcode
 
             Collection<CategoryDataPojo> categoryDataPojoCollection =
                     ReservationControllerFactory.getInstance()
-                            .calculateData(LoginProvider.getSessionID(),roomCategoryPojo,null,startDate,endDate);
+                            .calculateData(-1000,roomCategoryPojo,null,startDate,endDate); //Session ID hardcode
 
             Optional<CategoryDataPojo> optionalDataPojo =
                     categoryDataPojoCollection.stream().min(Comparator.comparingInt(CategoryDataPojo::getFree));

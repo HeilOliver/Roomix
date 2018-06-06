@@ -29,7 +29,8 @@ public class HibernateSessionController implements ISessionController {
         try {
             Configuration configuration = new Configuration();
             //TODO: remove path to hibernate_h2 (only for deployment)
-            configuration.configure("/hibernate_h2.cfg.xml");
+            //configuration.configure("/hibernate_h2.cfg.xml");
+            configuration.configure();
 
             ourSessionFactory = configuration.buildSessionFactory();
         } catch (Throwable ex) {
