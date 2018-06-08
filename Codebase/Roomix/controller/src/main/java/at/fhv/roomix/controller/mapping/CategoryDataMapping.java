@@ -25,5 +25,6 @@ public class CategoryDataMapping implements MapType<CategoryStatus, CategoryData
         destination.setOccupied(source.getOccupied());
         destination.setQuota(source.getQuota());
         destination.setUnconfirmedReservation(source.getUnconfirmed());
+        destination.setPricePerDay(source.getPrice());
     }
 }

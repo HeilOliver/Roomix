@@ -91,10 +91,10 @@ public class ReservationBuilder {
         entity.setContractingParty(party);
 
         try {
-            Set<ReservationUnitEntity> collect =
+            List<ReservationUnitEntity> collect =
                     obj.getUnits().stream()
                             .map(ReservationUnitBuilder::updateUnitUC)
-                            .collect(Collectors.toSet());
+                            .collect(Collectors.toList());
             entity.getUnits().clear();
             entity.getUnits().addAll(collect);
             collect.forEach((u) -> u.setReservation(entity));

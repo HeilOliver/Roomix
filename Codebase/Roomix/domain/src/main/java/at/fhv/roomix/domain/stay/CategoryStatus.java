@@ -54,4 +54,8 @@ public class CategoryStatus {
     public int getOccupied() {
         return occupied;
     }
+
+    public int getPrice() {
+        return price;
+    }
 }
