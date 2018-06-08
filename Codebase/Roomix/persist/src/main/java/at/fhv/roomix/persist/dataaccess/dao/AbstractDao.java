@@ -121,6 +121,6 @@ public abstract class AbstractDao<T, PK extends Serializable> implements IDao<T,
 
     @Override
     public void delete(T entity) throws IllegalArgumentException, PersistStateException, PersistSaveException {
-        throw new IllegalStateException("Not implemented");
+        session.delete(entity);
     }
 }

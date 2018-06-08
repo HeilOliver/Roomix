@@ -7,6 +7,7 @@ import at.fhv.roomix.domain.reservation.RoomAssignment;
 import at.fhv.roomix.domain.room.Room;
 
 import java.sql.Date;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 
@@ -57,12 +58,14 @@ public class RoomAssignmentAdapter implements IRoomAssignment {
 
     @Override
     public void setArrivalDate(Date date) {
-        assignment.setArrivalDate(date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        LocalDate localDate = Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+        assignment.setArrivalDate(localDate);
     }
 
     @Override
     public void setDepartureDate(Date date) {
-        assignment.setDepartureDate(date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        LocalDate localDate = Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+        assignment.setDepartureDate(localDate);
     }
 
     @Override

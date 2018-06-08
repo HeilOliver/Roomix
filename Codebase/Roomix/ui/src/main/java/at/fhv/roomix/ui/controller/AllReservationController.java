@@ -3,7 +3,8 @@ package at.fhv.roomix.ui.controller;
 import at.fhv.roomix.controller.implement.reservationcontroller.ControllerFactory;
 import at.fhv.roomix.controller.implement.reservationcontroller.IReservationController;
 import at.fhv.roomix.domain.implement.IReservation;
-import javafx.collections.ObservableList;
+import de.saxsys.mvvmfx.MvvmFX;
+import de.saxsys.mvvmfx.ViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -66,13 +67,14 @@ public class AllReservationController {
         IReservation selectedItem = (IReservation) reservations.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("roomAssignment.fxml"));
+            fxmlLoader.setControllerFactory(param -> new RoomAssignmentController(selectedItem));
             Parent root = fxmlLoader.load();
-            Scene startsite = new Scene(root, WindowSize.WIDTH, WindowSize.HEIGHT);
-            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            stage.setScene(startsite);
-            stage.show();
+            MvvmFX.getNotificationCenter().publish(ImplementViewModel.changeToAssignRoomCommand, root);
+//            Scene startsite = new Scene(root, WindowSize.WIDTH, WindowSize.HEIGHT);
+//            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+//            stage.setScene(startsite);
+//            stage.show();
         }
     }
-
 
 }

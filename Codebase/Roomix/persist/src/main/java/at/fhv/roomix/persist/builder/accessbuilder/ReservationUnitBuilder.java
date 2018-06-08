@@ -146,11 +146,13 @@ public class ReservationUnitBuilder {
 
         HashSet<Arrangement> arrangements = new HashSet<>();
         Collection<InvoicePositionEntity> invoicePositions = entity.getInvoicePositions();
+
         for (InvoicePositionEntity position : invoicePositions) {
             if (position.getArticle() == null) continue;
             if (!position.getArticle().getArticleType().equals(ArticleEntity.ArticleType.ARRANGEMENT.toString())) continue;
             arrangements.add(ArrangementBuilder.getArrangement(position.getArticle().getArticleId()));
         }
+
         unit.setArrangements(arrangements);
 
         entity.getPersons().stream()

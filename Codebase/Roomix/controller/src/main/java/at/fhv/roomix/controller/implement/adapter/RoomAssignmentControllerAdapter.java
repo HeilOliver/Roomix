@@ -96,8 +96,23 @@ public class RoomAssignmentControllerAdapter implements IRoomAssignmentCallback 
     }
 
     @Override
-    public List<IRoomAssignment> getRoomAssignmentsByRoomAndReservationUnit() {
-        return new ArrayList<>();
+    public List<IRoomAssignment> getRoomAssignmentsByRoomAndReservationUnit
+            (IRoom assignedRoom, IReservationUnit reservationUnit) {
+
+        Collection<RoomAssignment> all = null;
+        try {
+            all = RoomAssignmentBuilder.getAll();
+        } catch (BuilderLoadException e) {
+            // TODO LOG HERE
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+
+        assert all != null;
+        return all.stream()
+                .filter(a -> a.getUnit().getId() == reservationUnit.getReservationUnitID())
+                .map(RoomAssignmentAdapter::new)
+                .collect(Collectors.toList());
     }
 
     @Override

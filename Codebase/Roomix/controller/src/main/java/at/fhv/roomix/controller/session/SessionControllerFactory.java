@@ -30,7 +30,7 @@ public class SessionControllerFactory {
         return instance;
     }
 
-    static void InjectDependency(IInjectDependency injectInstance) {
+    public static void InjectDependency(IInjectDependency injectInstance) {
         injectDependency = injectInstance;
     }
 

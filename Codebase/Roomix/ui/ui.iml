@@ -36,6 +36,7 @@
     <orderEntry type="library" name="Maven: net.sf.ehcache:ehcache:2.10.3" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.11" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.google.protobuf:protobuf-java:2.6.0" level="project" />
+    <orderEntry type="library" name="Maven: com.h2database:h2:1.3.168" level="project" />
     <orderEntry type="library" name="Maven: de.saxsys:mvvmfx:1.7.0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.12" level="project" />
     <orderEntry type="library" name="Maven: net.jodah:typetools:0.4.1" level="project" />

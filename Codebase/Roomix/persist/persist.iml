@@ -4,7 +4,7 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" value="9182ec00-a47f-44e9-8653-e80808d32d96" />
+          <unit-entry name="hibernate.cfg.xml" value="4f06f8db-3017-45e6-9a38-cf691c110af6" />
         </datasource-map>
         <naming-strategy-map>
           <unit-entry name="hibernate.cfg.xml" />
@@ -46,7 +46,7 @@
     <orderEntry type="library" name="Maven: org.modelmapper:modelmapper:1.1.3" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.11" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.google.protobuf:protobuf-java:2.6.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: com.h2database:h2:1.3.168" level="project" />
+    <orderEntry type="library" name="Maven: com.h2database:h2:1.3.168" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-api:5.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apiguardian:apiguardian-api:1.0.0" level="project" />

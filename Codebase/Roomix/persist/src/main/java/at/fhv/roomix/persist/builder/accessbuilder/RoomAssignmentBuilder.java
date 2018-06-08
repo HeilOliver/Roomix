@@ -65,6 +65,8 @@ public class RoomAssignmentBuilder {
             throw new BuilderUpdateException("", e);
         }
 
+//        entity.getReservationUnit().getRoomAssignments().remove(entity);
+//        entity.getRoom().getRoomAssignmentsByRoomId().remove(entity);
         factory.delete(entity);
     }
 }

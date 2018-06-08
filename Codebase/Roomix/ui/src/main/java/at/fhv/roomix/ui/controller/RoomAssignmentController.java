@@ -4,6 +4,7 @@ import at.fhv.roomix.controller.implement.roomassignmentcontroller.RoomAssignmen
 import at.fhv.roomix.domain.implement.IReservation;
 import at.fhv.roomix.domain.implement.IReservationUnit;
 import at.fhv.roomix.domain.implement.IRoom;
+import de.saxsys.mvvmfx.MvvmFX;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,6 +24,10 @@ public class RoomAssignmentController implements Observer {
     public TableView availableRooms;
     public Button assignRoom;
     public Button deleteRoom;
+
+    RoomAssignmentController(IReservation reservation) {
+        this.reservation = reservation;
+    }
 
     @FXML
     protected void initialize() {
@@ -69,15 +74,16 @@ public class RoomAssignmentController implements Observer {
     @FXML
     private void saveRoomAssignment(ActionEvent actionEvent) throws IOException {
         at.fhv.roomix.controller.implement.roomassignmentcontroller.RoomAssignmentController roomAssignmentController = RoomAssignmentFactory.getInstance();
-
         roomAssignmentController.saveRoomAssignments();
+        MvvmFX.getNotificationCenter().publish(ImplementViewModel.changeToAllReservationCommand);
     }
 
     @FXML
     private void cancel(ActionEvent actionEvent) throws IOException {
         at.fhv.roomix.controller.implement.roomassignmentcontroller.RoomAssignmentController roomAssignmentController = RoomAssignmentFactory.getInstance();
-
         roomAssignmentController.rollback();
+        MvvmFX.getNotificationCenter().publish(ImplementViewModel.changeToAllReservationCommand);
+
     }
 
     public void setReservation(IReservation reservation) {
@@ -86,7 +92,6 @@ public class RoomAssignmentController implements Observer {
 
     @FXML
     private void assignRoom() {
-        // Todo: set application controller
         IRoom selectedRoom = (IRoom) availableRooms.getSelectionModel().getSelectedItem();
         IReservationUnit selectedReservationUnit = (IReservationUnit) reservationUnits.getSelectionModel().getSelectedItem();
         if (selectedRoom == null || selectedReservationUnit == null) return;
@@ -98,7 +103,6 @@ public class RoomAssignmentController implements Observer {
 
     @FXML
     private void deleteRoom() {
-        // Todo: set application controller
         IReservationUnit selectedItem = (IReservationUnit) reservationUnits.getSelectionModel().getSelectedItem();
         at.fhv.roomix.controller.implement.roomassignmentcontroller.RoomAssignmentController roomAssignmentController = RoomAssignmentFactory.getInstance();
 
@@ -132,4 +136,6 @@ public class RoomAssignmentController implements Observer {
         });
         loadRooms();
     }
+
+
 }

@@ -108,7 +108,10 @@ public class HibernateSessionController implements ISessionController {
     public void closeSession() {
         if (currTransaction != null)
             commitTransaction();
+        if (currSession == null)
+            return;
         currSession.close();
+        currSession = null;
     }
 
 }

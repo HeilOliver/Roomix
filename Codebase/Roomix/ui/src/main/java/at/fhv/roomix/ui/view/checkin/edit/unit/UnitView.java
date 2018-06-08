@@ -64,12 +64,9 @@ public class UnitView implements FxmlView<UnitViewModel> {
         txtRoomStatus.visibleProperty().bind(viewModel.showCheckInInformationProperty());
         segmentedBar.setInfoNodeFactory(param -> new InfoLabel(param.getDateRange()));
         segmentedBar.setOrientation(Orientation.HORIZONTAL);
-        viewModel.roomSegmentsProperty().addListener(new ListChangeListener<RoomSegment>() {
-            @Override
-            public void onChanged(Change<? extends RoomSegment> c) {
-                segmentedBar.getSegments().clear();
-                segmentedBar.getSegments().addAll(c.getList());
-            }
+        viewModel.roomSegmentsProperty().addListener((ListChangeListener<RoomSegment>) c -> {
+            segmentedBar.getSegments().clear();
+            segmentedBar.getSegments().addAll(c.getList());
         });
         /* Inital change event to display the person list. */
         viewModel.fireChange();
