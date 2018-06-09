@@ -115,12 +115,16 @@ public abstract class SearchProvider<T> extends AbstractProvider {
                     continue;
                 }
                 Platform.runLater(() -> {
+                    queryResultList.clear();
+                    // If no Session is started return directly.
+                    // if not we jump into error due to an null collection
+                    if (LoginProvider.getSessionID() == 0) return;
+
                     if (collection == null) {
                         LOG.debug("Future returned empty collection");
                         onError.errorOccurred(new Error());
                         return;
                     }
-                    queryResultList.clear();
                     queryResultList.addAll(collection);
                 });
             } catch (InterruptedException | ExecutionException e) {

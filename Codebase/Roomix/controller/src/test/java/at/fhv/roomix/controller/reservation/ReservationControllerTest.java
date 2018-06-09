@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.reservation
+ * at.fhv.roomix.implement.reservation
  * ${FILE_NAME}
  * 07/06/2018 OliverHeil
  * <p>

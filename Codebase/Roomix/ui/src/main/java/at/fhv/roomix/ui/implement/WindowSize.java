@@ -1,4 +1,4 @@
-package at.fhv.roomix.ui.controller;
+package at.fhv.roomix.ui.implement;
 
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;

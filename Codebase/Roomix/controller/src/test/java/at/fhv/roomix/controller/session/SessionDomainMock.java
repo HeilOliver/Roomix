@@ -7,7 +7,7 @@ import at.fhv.roomix.domain.session.roll.IRoomixRoll;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.session
+ * at.fhv.roomix.implement.session
  * SessionDomainMock
  * 07/04/2018 Oliver
  * <p>

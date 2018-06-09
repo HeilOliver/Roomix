@@ -2,7 +2,7 @@ package at.fhv.roomix.controller.session.model;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.session.contact
+ * at.fhv.roomix.implement.session.contact
  * SessionPojo
  * 22.03.2018 sge
  * <p>

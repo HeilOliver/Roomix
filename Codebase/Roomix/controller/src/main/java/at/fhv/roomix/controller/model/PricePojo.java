@@ -4,7 +4,7 @@ import org.hibernate.validator.constraints.Range;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.reservation.contact
+ * at.fhv.roomix.implement.reservation.contact
  * CommentPojo
  * 21/04/2018 Robert S.
  * <p>

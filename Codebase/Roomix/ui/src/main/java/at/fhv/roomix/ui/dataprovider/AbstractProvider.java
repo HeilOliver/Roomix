@@ -21,7 +21,7 @@ import java.util.concurrent.*;
  * 14/04/2018 Oliver
  * <p>
  * An Abstract Provider Class. It provides the {@code inProcess} Property and executes all outstanding tasks
- * to the controller level
+ * to the implement level
  */
 public abstract class AbstractProvider {
     protected static final Logger LOG = LoggerFactory.getLogger(AbstractProvider.class);

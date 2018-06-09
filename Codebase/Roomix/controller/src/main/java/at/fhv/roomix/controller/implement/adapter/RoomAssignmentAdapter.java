@@ -13,7 +13,7 @@ import java.time.ZoneId;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.implement.adapter
+ * at.fhv.roomix.implement.implement.adapter
  * ${FILE_NAME}
  * 19/05/2018 OliverHeil
  * <p>

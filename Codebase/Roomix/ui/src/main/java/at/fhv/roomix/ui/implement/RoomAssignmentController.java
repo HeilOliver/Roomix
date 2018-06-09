@@ -1,4 +1,4 @@
-package at.fhv.roomix.ui.controller;
+package at.fhv.roomix.ui.implement;
 
 import at.fhv.roomix.controller.implement.roomassignmentcontroller.RoomAssignmentFactory;
 import at.fhv.roomix.domain.implement.IReservation;
@@ -118,7 +118,7 @@ public class RoomAssignmentController implements Observer {
 
     @FXML
     private void assignAutomatically(ActionEvent actionEvent) {
-        // Todo: set application controller
+        // Todo: set application implement
         LinkedList<IReservation> reservations = new LinkedList<>();
         reservations.add(reservation);
         at.fhv.roomix.controller.implement.roomassignmentcontroller.RoomAssignmentController roomAssignmentController = RoomAssignmentFactory.getInstance();

@@ -10,15 +10,12 @@ import at.fhv.roomix.controller.model.PersonPojo;
 import at.fhv.roomix.controller.mapping.ReservationMapping;
 import at.fhv.roomix.controller.model.*;
 import at.fhv.roomix.domain.guest.contractingparty.ContractingParty;
-import at.fhv.roomix.domain.payment.DayPrice;
-import at.fhv.roomix.domain.payment.PriceCalculator;
 import at.fhv.roomix.domain.reservation.*;
 import at.fhv.roomix.domain.room.RoomCategory;
 import at.fhv.roomix.domain.session.ISessionDomain;
 import at.fhv.roomix.domain.session.SessionFactory;
 import at.fhv.roomix.domain.stay.CategoryStatus;
 import at.fhv.roomix.persist.builder.accessbuilder.*;
-import at.fhv.roomix.persist.builder.dependencybuilder.PriceCalculatorBuilder;
 import at.fhv.roomix.persist.dataaccess.factory.EntityFactory;
 import at.fhv.roomix.persist.exception.BuilderLoadException;
 import at.fhv.roomix.persist.exception.PersistException;
@@ -31,7 +28,7 @@ import java.util.stream.Collectors;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.session
+ * at.fhv.roomix.implement.session
  * ReservationController
  * 18.04.2018 Robert S.
  * <p>
@@ -225,7 +222,7 @@ class ReservationController implements IReservationController {
     }
 
     @Override
-    public void updateReservation(long sessionId, ReservationPojo reservationPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException, SaveFault {
+    public String updateReservation(long sessionId, ReservationPojo reservationPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException, SaveFault {
         if (reservationPojo == null) throw new ArgumentFaultException();
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
         Validator.validate(reservationPojo);
@@ -290,8 +287,12 @@ class ReservationController implements IReservationController {
 
             ReservationBuilder.update(toUpdate);
             EntityFactory.commitAll();
+
+            return ReservationPDFCreator.createPdf(toUpdate);
         } catch (MappingException | PersistException e) {
             throw new SaveFault(e.getMessage(), e);
+        } catch (PDFCreateException e) {
+            return null;
         } finally {
             EntityFactory.stashChanges();
         }

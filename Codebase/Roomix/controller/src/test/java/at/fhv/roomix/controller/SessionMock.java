@@ -11,7 +11,7 @@ import at.fhv.roomix.domain.session.roll.IRoomixRoll;
 
 /**
  * Roomix
- * at.fhv.roomix.controller
+ * at.fhv.roomix.implement
  * ${FILE_NAME}
  * 07/06/2018 OliverHeil
  * <p>

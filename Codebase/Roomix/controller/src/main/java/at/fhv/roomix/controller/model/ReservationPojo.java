@@ -6,7 +6,7 @@ import java.util.HashSet;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.reservation.contact
+ * at.fhv.roomix.implement.reservation.contact
  * ReservationPojo
  * 16/04/2018 Oliver
  * <p>

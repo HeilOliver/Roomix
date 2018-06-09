@@ -10,7 +10,7 @@ import java.util.Set;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.common.validator
+ * at.fhv.roomix.implement.common.validator
  * Validator
  * 21/04/2018 Oliver
  * <p>

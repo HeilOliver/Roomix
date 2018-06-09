@@ -2,15 +2,13 @@ package at.fhv.roomix.controller.reservation;
 
 import at.fhv.roomix.controller.common.exceptions.*;
 import at.fhv.roomix.controller.model.*;
-import at.fhv.roomix.domain.guest.contractingparty.ContractingParty;
-import at.fhv.roomix.domain.reservation.Person;
 
 import java.time.LocalDate;
 import java.util.Collection;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.reservation
+ * at.fhv.roomix.implement.reservation
  * IReservationController
  * 25/03/2018 OliverH
  * <p>
@@ -67,6 +65,6 @@ public interface IReservationController {
     /**
      * Updates/Creates the given Reservation
      */
-    void updateReservation(long sessionId, ReservationPojo reservationPojo)
+    String updateReservation(long sessionId, ReservationPojo reservationPojo)
             throws SessionFaultException, ValidationFault, ArgumentFaultException, SaveFault;
 }

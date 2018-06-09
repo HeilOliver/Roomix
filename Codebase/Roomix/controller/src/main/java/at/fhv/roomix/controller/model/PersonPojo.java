@@ -2,7 +2,7 @@ package at.fhv.roomix.controller.model;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.contact.model
+ * at.fhv.roomix.implement.contact.model
  * PersonPojo
  * 08/05/2018 Oliver
  * <p>

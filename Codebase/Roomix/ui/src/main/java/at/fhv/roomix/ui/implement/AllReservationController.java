@@ -1,20 +1,16 @@
-package at.fhv.roomix.ui.controller;
+package at.fhv.roomix.ui.implement;
 
 import at.fhv.roomix.controller.implement.reservationcontroller.ControllerFactory;
 import at.fhv.roomix.controller.implement.reservationcontroller.IReservationController;
 import at.fhv.roomix.domain.implement.IReservation;
 import de.saxsys.mvvmfx.MvvmFX;
-import de.saxsys.mvvmfx.ViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableView;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;

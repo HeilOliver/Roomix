@@ -4,7 +4,7 @@ import at.fhv.roomix.controller.common.exceptions.FaultException;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.stay
+ * at.fhv.roomix.implement.stay
  * CheckInException
  * 09/05/2018 Oliver
  * <p>

@@ -6,7 +6,7 @@ import at.fhv.roomix.domain.session.configuration.IUiConfiguration;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.session
+ * at.fhv.roomix.implement.session
  * ISessionController
  * 22.03.2018 sge
  * <p>

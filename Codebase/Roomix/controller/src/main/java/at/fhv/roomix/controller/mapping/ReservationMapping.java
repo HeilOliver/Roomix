@@ -14,7 +14,7 @@ import java.util.HashSet;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.mapping
+ * at.fhv.roomix.implement.mapping
  * ReservationMapping
  * 12/05/2018 Oliver
  * <p>

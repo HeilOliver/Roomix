@@ -9,7 +9,7 @@ import at.fhv.roomix.domain.guest.contractingparty.ContractingParty;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.mapping
+ * at.fhv.roomix.implement.mapping
  * ContractingPartyMapping
  * 12/05/2018 Oliver
  * <p>

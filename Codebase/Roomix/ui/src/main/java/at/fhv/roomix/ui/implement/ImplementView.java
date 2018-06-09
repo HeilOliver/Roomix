@@ -1,4 +1,4 @@
-package at.fhv.roomix.ui.controller;
+package at.fhv.roomix.ui.implement;
 
 import at.fhv.roomix.ui.common.ViewHelper;
 import de.saxsys.mvvmfx.FxmlView;
@@ -8,7 +8,7 @@ import javafx.scene.layout.AnchorPane;
 
 /**
  * Roomix
- * at.fhv.roomix.ui.controller
+ * at.fhv.roomix.ui.implement
  * ${FILE_NAME}
  * 07/06/2018 OliverHeil
  * <p>

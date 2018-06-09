@@ -1,4 +1,4 @@
-package at.fhv.roomix.ui.controller;
+package at.fhv.roomix.ui.implement;
 
 import de.saxsys.mvvmfx.MvvmFX;
 import de.saxsys.mvvmfx.ViewModel;
@@ -12,7 +12,7 @@ import java.net.URL;
 
 /**
  * Roomix
- * at.fhv.roomix.ui.controller
+ * at.fhv.roomix.ui.implement
  * ${FILE_NAME}
  * 07/06/2018 OliverHeil
  * <p>
@@ -28,7 +28,7 @@ public class ImplementViewModel implements ViewModel {
 
     public ImplementViewModel() {
         try {
-            URL url = getClass().getResource("/at/fhv/roomix/ui/controller/allReservation.fxml");
+            URL url = getClass().getResource("/at/fhv/roomix/ui/implement/allReservation.fxml");
 
             allReservationView = FXMLLoader.load(url);
         } catch (IOException e) {

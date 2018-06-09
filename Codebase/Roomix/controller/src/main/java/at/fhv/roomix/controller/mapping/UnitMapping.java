@@ -17,7 +17,7 @@ import java.util.*;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.mapping
+ * at.fhv.roomix.implement.mapping
  * UnitMapping
  * 12/05/2018 Oliver
  * <p>

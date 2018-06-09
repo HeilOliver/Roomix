@@ -7,7 +7,7 @@ import java.util.Collection;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.contact
+ * at.fhv.roomix.implement.contact
  * IContactController
  * 18/04/2018 sge
  * <p>

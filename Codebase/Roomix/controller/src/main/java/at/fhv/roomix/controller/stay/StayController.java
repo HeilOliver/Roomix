@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.session
+ * at.fhv.roomix.implement.session
  * StayController
  * 22.03.2018 OliverH
  */

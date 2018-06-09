@@ -9,7 +9,7 @@ import java.util.Collection;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.session
+ * at.fhv.roomix.implement.session
  * IStayController
  * 22.03.2018 OliverH
  * <p>

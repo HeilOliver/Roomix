@@ -7,7 +7,7 @@ import java.util.Objects;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.contact.contact
+ * at.fhv.roomix.implement.contact.contact
  * ContactPojo
  * 18.04.2018 sge
  * <p>

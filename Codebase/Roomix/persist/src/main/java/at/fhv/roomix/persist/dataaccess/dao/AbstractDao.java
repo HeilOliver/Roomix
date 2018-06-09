@@ -22,7 +22,7 @@ import java.util.List;
  * <p>
  * Abstract Data Access Object. Loads database "contents" over
  * a hibernate session. By inheriting from this class you can override
- * the methods with "internal" prefix so provide your own implementation of
+ * the methods with "internal" prefix so provide your own implement of
  * how to load the data.
  */
 public abstract class AbstractDao<T, PK extends Serializable> implements IDao<T, PK> {

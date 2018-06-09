@@ -8,7 +8,7 @@ import at.fhv.roomix.domain.reservation.PaymentType;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.mapping
+ * at.fhv.roomix.implement.mapping
  * PaymentTypeMapping
  * 12/05/2018 Oliver
  * <p>

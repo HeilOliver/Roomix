@@ -15,7 +15,7 @@
 
 
 <BorderPane minHeight="400.0" minWidth="700.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8.0.121"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhv.roomix.ui.controller.AllReservationController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhv.roomix.ui.implement.AllReservationController">
 
     <center>
         <HBox BorderPane.alignment="CENTER">

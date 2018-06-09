@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.model
+ * at.fhv.roomix.implement.model
  * RoomPojo
  * 13/05/2018 Oliver
  * <p>
