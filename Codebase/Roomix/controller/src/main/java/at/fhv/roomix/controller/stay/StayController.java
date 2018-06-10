@@ -55,7 +55,7 @@ class StayController implements IStayController{
             // Check if Unit is still be CheckIn able
             ReservationUnit unit = ReservationUnitBuilder.get(checkInPojo.getUnit().getId());
             if(!unit.canCheckedIn()) {
-                throw new CheckInException("Unit is already CheckedIn");
+                throw new CheckInException("You have to assign a room first!");
             }
 
             // Assign Person to Units
