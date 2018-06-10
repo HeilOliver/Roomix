@@ -44,7 +44,7 @@ public class ReservationRestController {
 
 
         //convert String to LocalDate
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-mm-yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate startDate = LocalDate.parse(getStartDate, formatter);
         LocalDate endDate = LocalDate.parse(getEndDate, formatter);
 
