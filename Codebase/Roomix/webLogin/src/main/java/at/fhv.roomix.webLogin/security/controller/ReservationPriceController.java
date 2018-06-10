@@ -34,7 +34,10 @@ import java.time.format.DateTimeFormatter;
 public class ReservationPriceController {
 
     @RequestMapping(method = RequestMethod.POST)
-    public PricePojo calculatePrice(@RequestParam(value="roomCategoryNumber") int roomCategoryNumber, @RequestParam(value="roomAmount") int roomAmount, @RequestParam(value="startDate") String getStartDate, @RequestParam(value="endDate") String getEndDate)
+    public PricePojo calculatePrice(@RequestParam(value="roomCategoryNumber") int roomCategoryNumber,
+                                    @RequestParam(value="roomAmount") int roomAmount,
+                                    @RequestParam(value="startDate") String getStartDate,
+                                    @RequestParam(value="endDate") String getEndDate)
                                 throws SessionFaultException, ValidationFault, ArgumentFaultException, GetFault {
         final ISessionDomain sessionHandler = SessionFactory.getInstance();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -58,7 +61,7 @@ public class ReservationPriceController {
             if (amount < 1) amount = 1;
             price *= amount;
             PricePojo pricePojo = new PricePojo();
-            pricePojo.setPrice(price);
+            pricePojo.setPrice(price/100);
             return pricePojo;
         } catch (BuilderLoadException | MappingException e) {
             throw new GetFault("Cant load RoomCategories, see inner exception fore more details", e);

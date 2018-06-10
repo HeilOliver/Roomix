@@ -41,7 +41,7 @@ public class ReservationRestController {
                               @RequestParam(value="country") String country,
                               @RequestParam(value="phoneNumber") String phoneNumber,
                               @RequestParam(value="street") String street,
-                              @RequestParam(value="houesnumber") String housenumber,
+                              @RequestParam(value="houseNumber") String housenumber,
                               @RequestParam(value="creditcard") String creditcard,
                               @RequestParam(value="categoryNumber") String[] categoryNumber,
                               @RequestParam(value="startDate") String getStartDate,
