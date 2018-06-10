@@ -10,7 +10,6 @@ import at.fhv.roomix.persist.builder.accessbuilder.ContractingPartyBuilder;
 import at.fhv.roomix.persist.builder.accessbuilder.RoomCategoryBuilder;
 import at.fhv.roomix.persist.exception.BuilderLoadException;
 import at.fhv.roomix.webLogin.model.request.PriceCalc;
-import at.fhv.roomix.webLogin.model.request.PriceRequest;
 import org.modelmapper.MappingException;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,13 +30,13 @@ public class ReservationPriceController {
 
     @CrossOrigin()
     @RequestMapping(method = RequestMethod.POST)
-    public PricePojo calculatePrice(@RequestBody PriceRequest priceRequest) throws GetFault {
+    public PricePojo calculatePrice(@RequestBody PriceCalc[] priceCalcs) throws GetFault {
         final ISessionDomain sessionHandler = SessionFactory.getInstance();
 
         int price = 0;
         PricePojo pricePojo = new PricePojo();
 
-        for (PriceCalc priceCalc : priceRequest.getPriceRequests()) {
+        for (PriceCalc priceCalc : priceCalcs) {
             int i = priceCalc.getAmount();
             while (i > 0) {
 
@@ -68,12 +67,5 @@ public class ReservationPriceController {
         // Gesamtpreis
         return pricePojo;
     }
-
-
-
-
-
-
-
 
 }
