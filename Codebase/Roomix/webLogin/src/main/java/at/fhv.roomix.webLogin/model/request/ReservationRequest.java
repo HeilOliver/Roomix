@@ -13,6 +13,15 @@ public class ReservationRequest {
     private String creditcard;
     private String getStartDate;
     private String getEndDate;
+    private CategoryRequest[] categoryRequests;
+
+    public CategoryRequest[] getCategoryRequests() {
+        return categoryRequests;
+    }
+
+    public void setCategoryRequests(CategoryRequest[] categoryRequests) {
+        this.categoryRequests = categoryRequests;
+    }
 
     public String getFname() {
         return fname;

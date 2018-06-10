@@ -33,7 +33,7 @@ import java.util.HashSet;
 public class ReservationRestController {
     @CrossOrigin()
     @RequestMapping(method = RequestMethod.POST)
-    public void doReservation(@RequestBody ReservationRequest reservationRequest,@RequestBody CategoryRequest categoryRequest) throws BuilderLoadException {
+    public void doReservation(@RequestBody ReservationRequest reservationRequest) throws BuilderLoadException {
 
 
         //convert String to LocalDate
@@ -42,27 +42,26 @@ public class ReservationRestController {
         LocalDate endDate = LocalDate.parse(reservationRequest.getGetEndDate(), formatter);
 
         //Getting ContactPojo
-        ContactPojo contactPojo = mapContact(reservationRequest.getFname(),reservationRequest.getLname(),reservationRequest.geteMail(),reservationRequest.getPostCode(),reservationRequest.getPlace(),reservationRequest.getCountry(),
-                reservationRequest.getPhoneNumber(),reservationRequest.getStreet(),reservationRequest.getHousenumber(),reservationRequest.getCreditcard());
+        ContactPojo contactPojo = mapContact(reservationRequest.getFname(), reservationRequest.getLname(), reservationRequest.geteMail(), reservationRequest.getPostCode(), reservationRequest.getPlace(), reservationRequest.getCountry(),
+                reservationRequest.getPhoneNumber(), reservationRequest.getStreet(), reservationRequest.getHousenumber(), reservationRequest.getCreditcard());
 
         //Mapping Unit
         Collection<ReservationUnitPojo> reservationUnitPojoCollection = new HashSet<>();
-        int i = categoryRequest.getAmount();
-       while(i>0) {
-            RoomCategory roomCategory= RoomCategoryBuilder.getRoomCategory(categoryRequest.getCategoryID());
-
-            //Todo: Keine Ahnung ob das so geht!
-            RoomCategoryPojo roomCategoryPojo = new RoomCategoryPojo();
-            roomCategoryPojo.setId(roomCategory.getId());
-            roomCategoryPojo.setDescription(roomCategory.getDescription());
-            ReservationUnitPojo reservationUnitPojo = new ReservationUnitPojo();
-            reservationUnitPojo.setEndDate(endDate);
-            reservationUnitPojo.setStartDate(startDate);
-            reservationUnitPojo.setRoomCategory(roomCategoryPojo);
-            reservationUnitPojoCollection.add(reservationUnitPojo);
-            i--;
+        for (CategoryRequest categoryRequest : reservationRequest.getCategoryRequests()) {
+            int i = categoryRequest.getAmount();
+            while (i > 0) {
+                RoomCategory roomCategory = RoomCategoryBuilder.getRoomCategory(categoryRequest.getCategoryID());
+                RoomCategoryPojo roomCategoryPojo = new RoomCategoryPojo();
+                roomCategoryPojo.setId(roomCategory.getId());
+                roomCategoryPojo.setDescription(roomCategory.getDescription());
+                ReservationUnitPojo reservationUnitPojo = new ReservationUnitPojo();
+                reservationUnitPojo.setEndDate(endDate);
+                reservationUnitPojo.setStartDate(startDate);
+                reservationUnitPojo.setRoomCategory(roomCategoryPojo);
+                reservationUnitPojoCollection.add(reservationUnitPojo);
+                i--;
+            }
         }
-
 
         //Mapping reservation
         ReservationPojo reservationPojo = new ReservationPojo();
