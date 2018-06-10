@@ -5,15 +5,15 @@ import at.fhv.roomix.controller.contact.ContactControllerFactory;
 import at.fhv.roomix.controller.contact.IContactController;
 import at.fhv.roomix.controller.model.*;
 import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
+import at.fhv.roomix.domain.guest.contractingparty.ContractingParty;
 import at.fhv.roomix.domain.reservation.PaymentType;
 import at.fhv.roomix.domain.room.RoomCategory;
-import at.fhv.roomix.persist.builder.accessbuilder.ContactBuilder;
-import at.fhv.roomix.persist.builder.accessbuilder.PaymentTypeBuilder;
-import at.fhv.roomix.persist.builder.accessbuilder.RoomCategoryBuilder;
+import at.fhv.roomix.persist.builder.accessbuilder.*;
 import at.fhv.roomix.persist.exception.BuilderLoadException;
 import at.fhv.roomix.webLogin.model.CreditcardPojo;
 import at.fhv.roomix.webLogin.model.request.CategoryRequest;
 import at.fhv.roomix.webLogin.model.request.ReservationRequest;
+import org.modelmapper.MappingException;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -50,7 +50,24 @@ public class ReservationRestController {
         for (CategoryRequest categoryRequest : reservationRequest.getCategoryRequests()) {
             int i = categoryRequest.getAmount();
             while (i > 0) {
+                int price = 0;
+                PricePojo pricePojo = new PricePojo();
                 RoomCategory roomCategory = RoomCategoryBuilder.getRoomCategory(categoryRequest.getCategoryID());
+                try {
+                    // website guest default contactId 1
+                    ContractingParty party = ContractingPartyBuilder.getByContact(1);
+
+                    LocalDate currDate = startDate;
+                    do {
+                        price += roomCategory.calculatePrice(party, currDate);
+                        currDate = currDate.plusDays(1);
+                    } while (currDate.isBefore(endDate));
+
+                    pricePojo.setPrice(price/100);
+                } catch (BuilderLoadException | MappingException e) {
+                    throw new GetFault("Cant load RoomCategories, see inner exception fore more details", e);
+                }
+
                 RoomCategoryPojo roomCategoryPojo = new RoomCategoryPojo();
                 roomCategoryPojo.setId(roomCategory.getId());
                 roomCategoryPojo.setDescription(roomCategory.getDescription());
@@ -59,6 +76,7 @@ public class ReservationRestController {
                 reservationUnitPojo.setStartDate(startDate);
                 reservationUnitPojo.setRoomCategory(roomCategoryPojo);
                 reservationUnitPojoCollection.add(reservationUnitPojo);
+                reservationUnitPojo.setPrice(pricePojo);
                 i--;
             }
         }
