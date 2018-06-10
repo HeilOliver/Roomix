@@ -1,5 +1,7 @@
 package at.fhv.roomix.webLogin.model.request;
 
+import java.util.LinkedList;
+
 public class ReservationRequest {
     private String fname;
     private String lname;
