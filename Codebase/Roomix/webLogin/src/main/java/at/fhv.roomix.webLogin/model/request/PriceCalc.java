@@ -6,6 +6,7 @@ public class PriceCalc {
     private String startDate;
     private String endDate;
 
+
     public int getCategoryID() {
         return categoryID;
     }
