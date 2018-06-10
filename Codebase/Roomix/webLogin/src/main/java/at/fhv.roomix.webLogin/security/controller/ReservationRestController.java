@@ -33,7 +33,7 @@ import java.util.List;
 public class ReservationRestController {
     @CrossOrigin()
     @RequestMapping(method = RequestMethod.POST)
-    public void doReservation(@RequestBody ReservationRequest reservationRequest) throws BuilderLoadException, ValidationFault, ArgumentFaultException, SessionFaultException, SaveFault, GetFault {
+    public void doReservation(@RequestBody ReservationRequest reservationRequest) throws BuilderLoadException, ValidationFault, ArgumentFaultException, SessionFaultException, SaveFault, GetFault, IOException {
 
 
         //convert String to LocalDate
@@ -84,8 +84,8 @@ public class ReservationRestController {
         } catch (SessionFaultException | ArgumentFaultException | SaveFault | ValidationFault e) {
             e.printStackTrace();
         }
-
     }
+
 
     public ContactPojo mapContact(String fname, String lname,String eMail,String postCode, String place, String country, String phoneNumber, String street,String housenumber,String creditcard) throws ArgumentFaultException, SessionFaultException, ValidationFault, SaveFault, GetFault {
 
@@ -107,6 +107,7 @@ public class ReservationRestController {
         contactPojo.setStreet(street);
         contactPojo.setHouseNumber(housenumber);
 
+        //Todo: Achtung Hardcoded aber anders funktioniert es nicht!
         Collection<ContactPojo> contactPojos = new HashSet<>();
         ContactPojo rightContactPojo = new ContactPojo();
         ContactControllerFactory.getInstance().updateContact(-1000,contactPojo);
