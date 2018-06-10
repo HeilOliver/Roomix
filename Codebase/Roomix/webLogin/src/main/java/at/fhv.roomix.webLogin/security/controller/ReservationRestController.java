@@ -17,11 +17,12 @@ import at.fhv.roomix.webLogin.model.request.ReservationRequest;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Collection;
@@ -31,11 +32,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/DoReservation")
 public class ReservationRestController {
+
     @CrossOrigin()
     @RequestMapping(method = RequestMethod.POST)
-    public void doReservation(@RequestBody ReservationRequest reservationRequest) throws BuilderLoadException, ValidationFault, ArgumentFaultException, SessionFaultException, SaveFault, GetFault, IOException {
-
-
+    public ResponseEntity<InputStreamResource> doReservation(@RequestBody ReservationRequest reservationRequest) throws BuilderLoadException, ValidationFault, ArgumentFaultException, SessionFaultException, SaveFault, GetFault, IOException {
         //convert String to LocalDate
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate startDate = LocalDate.parse(reservationRequest.getGetStartDate(), formatter);
@@ -70,9 +70,6 @@ public class ReservationRestController {
 
         Collection<PersonPojo> personPojos = new HashSet<>();
 
-
-
-
         //Mapping reservation
         ReservationPojo reservationPojo = new ReservationPojo();
         reservationPojo.setContractingParty(contactPojo);
@@ -80,21 +77,36 @@ public class ReservationRestController {
         reservationPojo.setPaymentType(paymentTypePojo);
         reservationPojo.setPersons(personPojos);
         try {
-            ReservationControllerFactory.getInstance().updateReservation(-1000,reservationPojo);
+            String pdfFilePath = ReservationControllerFactory.getInstance().updateReservation(-1000, reservationPojo);
+            // generate pdf out of reservation confirmation
+            File file = new File(pdfFilePath);
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.parseMediaType("application/pdf"));
+            headers.add("Access-Control-Allow-Origin", "*");
+            headers.add("Access-Control-Allow-Methods", "GET, POST, PUT");
+            headers.add("Access-Control-Allow-Headers", "Content-Type");
+            headers.add("Content-Disposition", "filename=" + file.getName());
+            headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
+            headers.add("Pragma", "no-cache");
+            headers.add("Expires", "0");
+
+            headers.setContentLength(file.length());
+            return new ResponseEntity<>(
+                    new InputStreamResource(new FileInputStream(file)), headers, HttpStatus.OK);
+
         } catch (SessionFaultException | ArgumentFaultException | SaveFault | ValidationFault e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         }
     }
-
 
     public ContactPojo mapContact(String fname, String lname,String eMail,String postCode, String place, String country, String phoneNumber, String street,String housenumber,String creditcard) throws ArgumentFaultException, SessionFaultException, ValidationFault, SaveFault, GetFault {
 
         ContactPojo contactPojo = new ContactPojo();
-        //Todo: CreditcardPojo into Contact-Validation completed
         if(checkCreditcardValidation(creditcard)){
             CreditcardPojo creditcardPojo = new CreditcardPojo(creditcard,checkCreditcardType(creditcard));
-            //contactPojo.setCreditCard(creditcardPojo);
         }
+
         //Mapping Contact
         contactPojo.setFirstName(fname);
         contactPojo.setLastName(lname);
@@ -106,14 +118,6 @@ public class ReservationRestController {
         contactPojo.setContractingPartyType(100);
         contactPojo.setStreet(street);
         contactPojo.setHouseNumber(housenumber);
-
-        //Todo: Achtung Hardcoded aber anders funktioniert es nicht!
-//        Collection<ContactPojo> contactPojos = new HashSet<>();
-//        ContactPojo rightContactPojo = new ContactPojo();
-//        ContactControllerFactory.getInstance().updateContact(-1000,contactPojo);
-//        contactPojos = ContactControllerFactory.getInstance().getSearchedContacts(-1000,lname + " " + fname);
-//        rightContactPojo = contactPojos.iterator().next();
-
 
         return contactPojo;
     }
@@ -183,23 +187,4 @@ public class ReservationRestController {
         return sum;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/pdf")
-    public ResponseEntity<InputStreamResource> downloadPDFFile() throws IOException {
-
-        // generate pdf out of reservation confirmation
-        ClassPathResource pdfFile = new ClassPathResource("pdf-sample.pdf");
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
-        headers.add("Pragma", "no-cache");
-        headers.add("Expires", "0");
-
-        return ResponseEntity
-                .ok()
-                .headers(headers)
-                .contentLength(pdfFile.contentLength())
-                .contentType(MediaType.parseMediaType("application/octet-stream"))
-                .body(new InputStreamResource(pdfFile.getInputStream()));
-    }
-    
 }
