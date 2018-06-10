@@ -31,6 +31,7 @@ import java.util.HashSet;
 @RestController
 @RequestMapping("/DoReservation")
 public class ReservationRestController {
+    @CrossOrigin()
     @RequestMapping(method = RequestMethod.POST)
     public void doReservation(@RequestBody ReservationRequest reservationRequest,@RequestBody CategoryRequest categoryRequest) throws BuilderLoadException {
 
