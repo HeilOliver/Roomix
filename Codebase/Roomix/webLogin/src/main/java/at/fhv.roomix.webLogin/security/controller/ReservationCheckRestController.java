@@ -8,10 +8,8 @@ import at.fhv.roomix.controller.model.CategoryDataPojo;
 import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
 import at.fhv.roomix.controller.model.RoomCategoryPojo;
 import at.fhv.roomix.webLogin.model.FreeRoomPojo;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import at.fhv.roomix.webLogin.model.request.TimeSpan;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -23,13 +21,14 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/ReservationCheck")
 public class ReservationCheckRestController {
-
+    
+    @CrossOrigin()
     @RequestMapping(method = RequestMethod.POST)
-    public Collection<FreeRoomPojo> doReservationCheck(@RequestParam(value="startDate") String getStartDate,@RequestParam(value="endDate") String getEndDate) throws GetFault, SessionFaultException, ArgumentFaultException, ValidationFault {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    public Collection<FreeRoomPojo> doReservationCheck(@RequestBody TimeSpan timeSpan) throws GetFault, SessionFaultException, ArgumentFaultException, ValidationFault {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         //convert String to LocalDate
-        LocalDate startDate = LocalDate.parse(getStartDate, formatter);
-        LocalDate endDate = LocalDate.parse(getEndDate, formatter);
+        LocalDate startDate = LocalDate.parse(timeSpan.getStartDate(), formatter);
+        LocalDate endDate = LocalDate.parse(timeSpan.getEndDate(), formatter);
 
         Collection<FreeRoomPojo> freeRoomPojoCollection = new HashSet<>();
 
