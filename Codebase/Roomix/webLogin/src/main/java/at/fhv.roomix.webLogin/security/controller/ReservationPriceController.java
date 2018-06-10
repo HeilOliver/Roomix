@@ -44,7 +44,8 @@ public class ReservationPriceController {
         try {
             // website guest default contactId 1
             ContractingParty party = ContractingPartyBuilder.getByContact(1);
-            RoomCategory roomCategory = RoomCategoryBuilder.getRoomCategory(priceCalc.getCategoryID());
+            int id = Integer.parseInt(priceCalc.getCategoryID());
+            RoomCategory roomCategory = RoomCategoryBuilder.getRoomCategory(id);
 
             LocalDate currDate = startDate;
             int price = 0;
@@ -53,7 +54,7 @@ public class ReservationPriceController {
                 currDate = currDate.plusDays(1);
             } while (currDate.isBefore(endDate));
 
-            int amount = priceCalc.getAmount();
+            int amount = Integer.parseInt(priceCalc.getAmount());
             if (amount < 1) amount = 1;
             price *= amount;
             PricePojo pricePojo = new PricePojo();

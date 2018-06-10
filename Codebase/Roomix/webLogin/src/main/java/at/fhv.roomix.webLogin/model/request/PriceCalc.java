@@ -1,24 +1,24 @@
 package at.fhv.roomix.webLogin.model.request;
 
 public class PriceCalc {
-    private int categoryID;
-    private int amount;
+    private String categoryID;
+    private String amount;
     private String startDate;
     private String endDate;
 
-    public int getCategoryID() {
+    public String getCategoryID() {
         return categoryID;
     }
 
-    public void setCategoryID(int categoryID) {
+    public void setCategoryID(String categoryID) {
         this.categoryID = categoryID;
     }
 
-    public int getAmount() {
+    public String getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(String amount) {
         this.amount = amount;
     }
 
