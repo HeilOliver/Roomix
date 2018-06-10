@@ -28,9 +28,9 @@ public class HibernateSessionController implements ISessionController {
         initTry = true;
         try {
             Configuration configuration = new Configuration();
-
-            configuration.configure("/hibernate_h2.cfg.xml");
-            //configuration.configure("/hibernate.cfg.xml");
+            // TODO: remove/add for deployment
+            //configuration.configure("/hibernate_h2.cfg.xml");
+            configuration.configure();
 
             ourSessionFactory = configuration.buildSessionFactory();
         } catch (Throwable ex) {
