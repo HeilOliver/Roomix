@@ -87,6 +87,7 @@ public class ReservationBuilder {
         } catch (PersistLoadException e) {
             throw new BuilderUpdateException("", e);
         }
+
         ContractingPartyEntity party = ContractingPartyBuilder.updateParty(obj.getContractingParty());
         entity.setContractingParty(party);
 

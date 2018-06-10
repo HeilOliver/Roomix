@@ -140,6 +140,7 @@ public class ContractingPartyBuilder {
 
             ContactEntity contactEntity = ContactBuilder.updateEntity(party.getContact());
             entity.setContact(contactEntity);
+            contactEntity.setContractingParty(entity);
 
             ContractingPartyFactory.getInstance().saveOrUpdate(entity);
             return entity;

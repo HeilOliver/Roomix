@@ -9,7 +9,9 @@ import at.fhv.roomix.controller.model.ContactPojo;
 import at.fhv.roomix.controller.model.PersonPojo;
 import at.fhv.roomix.controller.mapping.ReservationMapping;
 import at.fhv.roomix.controller.model.*;
+import at.fhv.roomix.domain.guest.contact.Contact;
 import at.fhv.roomix.domain.guest.contractingparty.ContractingParty;
+import at.fhv.roomix.domain.guest.contractingparty.Individual;
 import at.fhv.roomix.domain.reservation.*;
 import at.fhv.roomix.domain.room.RoomCategory;
 import at.fhv.roomix.domain.session.ISessionDomain;
@@ -243,9 +245,21 @@ class ReservationController implements IReservationController {
                 toUpdate.setComment(null);
             }
 
-            // If ContractingParty is new
-            ContractingParty contractingParty
-                    = ContractingPartyBuilder.getByContact(reservationPojo.getContractingParty().getContactId());
+
+
+            ContractingParty contractingParty = null;
+
+            // If Contact new
+            if (reservationPojo.getContractingParty().getContactId() == 0) {
+                Contact contact = ContactBuilder.getContact(reservationPojo.getContractingParty().getContactId());
+                mapper.map(reservationPojo.getContractingParty(), contact);
+                contractingParty = new Individual(contact);
+            }
+
+            // If ContractingParty is null
+            if (contractingParty == null)
+                contractingParty = ContractingPartyBuilder.getByContact(reservationPojo.getContractingParty().getContactId());
+
             toUpdate.setContractingParty(contractingParty);
 
             // Map / Update Persons
