@@ -13,15 +13,14 @@ import at.fhv.roomix.domain.room.RoomCategory;
 import at.fhv.roomix.persist.builder.accessbuilder.RoomCategoryBuilder;
 import at.fhv.roomix.persist.exception.BuilderLoadException;
 import at.fhv.roomix.webLogin.model.CreditcardPojo;
+import at.fhv.roomix.webLogin.model.request.CategoryRequest;
+import at.fhv.roomix.webLogin.model.request.ReservationRequest;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -33,36 +32,23 @@ import java.util.HashSet;
 @RequestMapping("/DoReservation")
 public class ReservationRestController {
     @RequestMapping(method = RequestMethod.POST)
-    public void doReservation(@RequestParam(value="fname") String fname,
-                              @RequestParam(value="lname") String lname,
-                              @RequestParam(value="eMail") String eMail,
-                              @RequestParam(value="postCode") String postCode,
-                              @RequestParam(value="place") String place,
-                              @RequestParam(value="country") String country,
-                              @RequestParam(value="phoneNumber") String phoneNumber,
-                              @RequestParam(value="street") String street,
-                              @RequestParam(value="houseNumber") String housenumber,
-                              @RequestParam(value="creditcard") String creditcard,
-                              @RequestParam(value="categoryNumber") String[] categoryNumber,
-                              @RequestParam(value="startDate") String getStartDate,
-                              @RequestParam(value="endDate") String getEndDate) throws BuilderLoadException {
+    public void doReservation(@RequestBody ReservationRequest reservationRequest,@RequestBody CategoryRequest categoryRequest) throws BuilderLoadException {
 
 
         //convert String to LocalDate
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDate startDate = LocalDate.parse(getStartDate, formatter);
-        LocalDate endDate = LocalDate.parse(getEndDate, formatter);
+        LocalDate startDate = LocalDate.parse(reservationRequest.getGetStartDate(), formatter);
+        LocalDate endDate = LocalDate.parse(reservationRequest.getGetEndDate(), formatter);
 
         //Getting ContactPojo
-        ContactPojo contactPojo = mapContact(fname,lname,eMail,postCode,place,country,
-                phoneNumber,street,housenumber,creditcard);
+        ContactPojo contactPojo = mapContact(reservationRequest.getFname(),reservationRequest.getLname(),reservationRequest.geteMail(),reservationRequest.getPostCode(),reservationRequest.getPlace(),reservationRequest.getCountry(),
+                reservationRequest.getPhoneNumber(),reservationRequest.getStreet(),reservationRequest.getHousenumber(),reservationRequest.getCreditcard());
 
         //Mapping Unit
         Collection<ReservationUnitPojo> reservationUnitPojoCollection = new HashSet<>();
-
-        for (String categoryID:categoryNumber) {
-            int id = Integer.parseInt(categoryID);
-            RoomCategory roomCategory= RoomCategoryBuilder.getRoomCategory(id);
+        int i = categoryRequest.getAmount();
+       while(i>0) {
+            RoomCategory roomCategory= RoomCategoryBuilder.getRoomCategory(categoryRequest.getCategoryID());
 
             //Todo: Keine Ahnung ob das so geht!
             RoomCategoryPojo roomCategoryPojo = new RoomCategoryPojo();
@@ -73,6 +59,7 @@ public class ReservationRestController {
             reservationUnitPojo.setStartDate(startDate);
             reservationUnitPojo.setRoomCategory(roomCategoryPojo);
             reservationUnitPojoCollection.add(reservationUnitPojo);
+            i--;
         }
 
 
