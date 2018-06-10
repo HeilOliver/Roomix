@@ -34,9 +34,9 @@ public class ReservationPriceController {
     @CrossOrigin()
     @RequestMapping(method = RequestMethod.POST)
     public PricePojo calculatePrice(@RequestBody PriceCalc priceCalc)
-                                throws SessionFaultException, ValidationFault, ArgumentFaultException, GetFault {
+                                throws GetFault {
         final ISessionDomain sessionHandler = SessionFactory.getInstance();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         //convert String to LocalDate
         LocalDate startDate = LocalDate.parse(priceCalc.getStartDate(), formatter);
         LocalDate endDate = LocalDate.parse(priceCalc.getEndDate(), formatter);
@@ -44,8 +44,7 @@ public class ReservationPriceController {
         try {
             // website guest default contactId 1
             ContractingParty party = ContractingPartyBuilder.getByContact(1);
-            int id = Integer.parseInt(priceCalc.getCategoryID());
-            RoomCategory roomCategory = RoomCategoryBuilder.getRoomCategory(id);
+            RoomCategory roomCategory = RoomCategoryBuilder.getRoomCategory(priceCalc.getCategoryID());
 
             LocalDate currDate = startDate;
             int price = 0;
@@ -54,7 +53,7 @@ public class ReservationPriceController {
                 currDate = currDate.plusDays(1);
             } while (currDate.isBefore(endDate));
 
-            int amount = Integer.parseInt(priceCalc.getAmount());
+            int amount = priceCalc.getAmount();
             if (amount < 1) amount = 1;
             price *= amount;
             PricePojo pricePojo = new PricePojo();
