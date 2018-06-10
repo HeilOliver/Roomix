@@ -68,7 +68,7 @@ public class LoginProvider extends AbstractProvider {
         return isLoggedIn;
     }
 
-    static long getSessionID() {
+    public static long getSessionID() {
         if (currentSessionProperty().get() == null) return 0;
         SessionPojo session = currentSessionProperty().get();
         return session.getSessionId();
