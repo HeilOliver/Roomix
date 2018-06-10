@@ -4,7 +4,7 @@ import org.hibernate.validator.constraints.Range;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.reservation.contact
+ * at.fhv.roomix.implement.reservation.contact
  * PaymentTypePojo
  * 01/05/2018 Oliver
  * <p>

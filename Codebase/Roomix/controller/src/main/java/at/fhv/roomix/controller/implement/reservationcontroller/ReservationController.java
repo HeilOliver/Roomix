@@ -5,7 +5,7 @@ import at.fhv.roomix.domain.implement.IReservation;
 import java.util.List;
 
 /**
- * THis controller is usecase based and used to control all methods specific for Reservations.
+ * THis implement is usecase based and used to control all methods specific for Reservations.
  */
 public class ReservationController implements IReservationController {
     IReservationControllerCallback reservationControllerCallback;

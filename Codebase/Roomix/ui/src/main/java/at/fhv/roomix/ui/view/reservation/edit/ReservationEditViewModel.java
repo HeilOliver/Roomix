@@ -96,7 +96,7 @@ public class ReservationEditViewModel implements ViewModel {
     private final IContentBuilder<ContactPojo> contactBuilder = (pojo -> {
         StringBuilder sb = new StringBuilder();
 
-        if ((pojo.getFirstName() == null || pojo.getLastName() == null) || pojo.getCompanyName() == null) {
+        if ((pojo.getFirstName() == null || pojo.getLastName() == null) && pojo.getCompanyName() == null) {
             sb.append(StringResourceResolver.getStaticResolve(bundle, "reservation.edit.contact.tag.noname"));
         } else {
             if (pojo.getCompanyName() == null) {

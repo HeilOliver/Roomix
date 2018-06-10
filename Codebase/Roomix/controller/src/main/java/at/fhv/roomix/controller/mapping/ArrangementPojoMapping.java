@@ -9,7 +9,7 @@ import at.fhv.roomix.domain.reservation.Arrangement;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.mapping
+ * at.fhv.roomix.implement.mapping
  * ${FILE_NAME}
  * 21/05/2018 OliverHeil
  * <p>

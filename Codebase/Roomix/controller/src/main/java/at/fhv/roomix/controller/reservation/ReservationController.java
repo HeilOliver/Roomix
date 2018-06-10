@@ -10,15 +10,12 @@ import at.fhv.roomix.controller.model.PersonPojo;
 import at.fhv.roomix.controller.mapping.ReservationMapping;
 import at.fhv.roomix.controller.model.*;
 import at.fhv.roomix.domain.guest.contractingparty.ContractingParty;
-import at.fhv.roomix.domain.payment.DayPrice;
-import at.fhv.roomix.domain.payment.PriceCalculator;
 import at.fhv.roomix.domain.reservation.*;
 import at.fhv.roomix.domain.room.RoomCategory;
 import at.fhv.roomix.domain.session.ISessionDomain;
 import at.fhv.roomix.domain.session.SessionFactory;
 import at.fhv.roomix.domain.stay.CategoryStatus;
 import at.fhv.roomix.persist.builder.accessbuilder.*;
-import at.fhv.roomix.persist.builder.dependencybuilder.PriceCalculatorBuilder;
 import at.fhv.roomix.persist.dataaccess.factory.EntityFactory;
 import at.fhv.roomix.persist.exception.BuilderLoadException;
 import at.fhv.roomix.persist.exception.PersistException;
@@ -26,11 +23,12 @@ import org.modelmapper.MappingException;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.session
+ * at.fhv.roomix.implement.session
  * ReservationController
  * 18.04.2018 Robert S.
  * <p>
@@ -152,19 +150,29 @@ class ReservationController implements IReservationController {
         try {
             ContractingParty party = ContractingPartyBuilder.getByContact(contractingParty.getContactId());
             RoomCategory roomCategory = RoomCategoryBuilder.getRoomCategory(unit.getRoomCategory().getId());
+            Set<Arrangement> arrangements = unit.getArrangements().stream().map((pojo) -> {
+                try {
+                    return ArrangementBuilder.getArrangement(pojo.getId());
+                } catch (BuilderLoadException e) {
+                }
+                return null;
+            }).filter(Objects::nonNull).collect(Collectors.toSet());
 
             LocalDate currDate = unit.getStartDate();
-            int price = 0;
+            final AtomicInteger price = new AtomicInteger(0);
             do {
-                price += roomCategory.calculatePrice(party, currDate);
+                price.addAndGet(roomCategory.calculatePrice(party, currDate));
+                arrangements.forEach(a -> price.addAndGet(a.getPrice()));
                 currDate = currDate.plusDays(1);
             } while (currDate.isBefore(unit.getEndDate()));
 
             int amount = unit.getAmount();
             if (amount < 1) amount = 1;
-            price *= amount;
+
+            price.accumulateAndGet(amount, (a, p) -> a*p);
+
             PricePojo pricePojo = new PricePojo();
-            pricePojo.setPrice(price);
+            pricePojo.setPrice(price.get());
             return pricePojo;
         } catch (BuilderLoadException | MappingException e) {
             throw new GetFault("Cant load RoomCategories, see inner exception fore more details", e);
@@ -214,7 +222,7 @@ class ReservationController implements IReservationController {
     }
 
     @Override
-    public void updateReservation(long sessionId, ReservationPojo reservationPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException, SaveFault {
+    public String updateReservation(long sessionId, ReservationPojo reservationPojo) throws SessionFaultException, ValidationFault, ArgumentFaultException, SaveFault {
         if (reservationPojo == null) throw new ArgumentFaultException();
         if (!sessionHandler.isValidFor(sessionId, null)) throw new SessionFaultException();
         Validator.validate(reservationPojo);
@@ -259,11 +267,17 @@ class ReservationController implements IReservationController {
 
             // Add Units
             toUpdate.setUnits(new HashSet<>());
+
             for (ReservationUnitPojo reservationUnitPojo: reservationPojo.getUnits()) {
-                ReservationUnit unit = ReservationUnitBuilder.get(reservationUnitPojo.getId());
-                mapper.map(reservationUnitPojo,unit);
-                unit.setReservationDirect(toUpdate);
-                toUpdate.getUnits().add(unit);
+                if (reservationUnitPojo.getAmount() <= 0)
+                    reservationUnitPojo.setAmount(1);
+
+                for (int i = 0; i < reservationUnitPojo.getAmount(); i++) {
+                    ReservationUnit unit = ReservationUnitBuilder.get(reservationUnitPojo.getId());
+                    mapper.map(reservationUnitPojo,unit);
+                    unit.setReservationDirect(toUpdate);
+                    toUpdate.getUnits().add(unit);
+                }
             }
 
             int paymentTypeId = reservationPojo.getPaymentType().getId();
@@ -273,8 +287,12 @@ class ReservationController implements IReservationController {
 
             ReservationBuilder.update(toUpdate);
             EntityFactory.commitAll();
+
+            return ReservationPDFCreator.createPdf(toUpdate);
         } catch (MappingException | PersistException e) {
             throw new SaveFault(e.getMessage(), e);
+        } catch (PDFCreateException e) {
+            return null;
         } finally {
             EntityFactory.stashChanges();
         }

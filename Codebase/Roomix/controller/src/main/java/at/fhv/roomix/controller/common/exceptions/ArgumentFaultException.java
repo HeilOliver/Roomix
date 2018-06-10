@@ -2,7 +2,7 @@ package at.fhv.roomix.controller.common.exceptions;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.exeption
+ * at.fhv.roomix.implement.exeption
  * ArgumentFaultException
  * 08.04.2018 sge
  * <p>

@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.mapping
+ * at.fhv.roomix.implement.mapping
  * ${FILE_NAME}
  * 20/05/2018 OliverHeil
  * <p>
@@ -25,5 +25,6 @@ public class CategoryDataMapping implements MapType<CategoryStatus, CategoryData
         destination.setOccupied(source.getOccupied());
         destination.setQuota(source.getQuota());
         destination.setUnconfirmedReservation(source.getUnconfirmed());
+        destination.setPricePerDay(source.getPrice());
     }
 }

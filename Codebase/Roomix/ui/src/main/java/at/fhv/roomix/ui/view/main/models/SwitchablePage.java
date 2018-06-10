@@ -9,7 +9,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
 import java.io.IOException;
-import java.net.URI;
 import java.net.URL;
 
 /**
@@ -57,7 +56,7 @@ public class SwitchablePage implements Scope {
         header.setValue(menuEntryTag);
 
         try {
-            URL url = getClass().getResource("/at/fhv/roomix/ui/controller/allReservation.fxml");
+            URL url = getClass().getResource("/at/fhv/roomix/ui/implement/allReservation.fxml");
 
             pane = FXMLLoader.load(url);
 

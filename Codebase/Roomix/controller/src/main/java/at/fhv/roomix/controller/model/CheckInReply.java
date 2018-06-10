@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.stay.model
+ * at.fhv.roomix.implement.stay.model
  * CheckInStatus
  * 09/05/2018 Oliver
  * <p>

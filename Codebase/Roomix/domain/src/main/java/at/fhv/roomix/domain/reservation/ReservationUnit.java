@@ -181,6 +181,9 @@ public class ReservationUnit {
         do {
             price += category.calculatePrice(reservation.getContractingParty(), currDate);
             currDate = currDate.plusDays(1);
+            for (Arrangement arrangement : getArrangements()) {
+                price += arrangement.getPrice();
+            }
         } while (currDate.isBefore(endDate));
         this.price = price;
     }

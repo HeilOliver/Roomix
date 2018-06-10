@@ -14,7 +14,7 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="at.fhv.roomix.ui.view.checkin.edit.unit.UnitView"
             stylesheets="@/at/fhv/roomix/ui/view/checkin/edit/contracting_party/ContractingPartyView.css"
-            prefHeight="400.0" prefWidth="600.0">
+            >
 
     <AnchorPane AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"
                  AnchorPane.rightAnchor="10"
@@ -36,45 +36,43 @@
     <AnchorPane AnchorPane.topAnchor="60" AnchorPane.leftAnchor="10"
                 AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="10" prefWidth="Infinity">
         <VBox spacing="20" AnchorPane.topAnchor="1" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="1" AnchorPane.rightAnchor="1">
-            <TitledPane text="%checkin.information.heading.unitinfo" >
-                <content>
-                    <GridPane fx:id="contactInformationForm" vgap="17.0" hgap="10">
-                        <columnConstraints>
-                            <ColumnConstraints percentWidth="10" />
-                            <ColumnConstraints percentWidth="40" />
-                            <ColumnConstraints percentWidth="10" />
-                            <ColumnConstraints percentWidth="40" />
-                        </columnConstraints>
+            <TitledPane text="%checkin.information.heading.unitinfo">
+                <GridPane fx:id="contactInformationForm" vgap="17.0" hgap="10">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="10"/>
+                        <ColumnConstraints percentWidth="40"/>
+                        <ColumnConstraints percentWidth="10"/>
+                        <ColumnConstraints percentWidth="40"/>
+                    </columnConstraints>
 
-                        <Label styleClass="cell_heading" text="%reservation.arrivaldate" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                        <Text fx:id="txtArrivalDate" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <Label styleClass="cell_heading" text="%reservation.arrivaldate" GridPane.columnIndex="0"
+                           GridPane.rowIndex="0"/>
+                    <Text fx:id="txtArrivalDate" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
-                        <Label styleClass="cell_heading" text="%reservation.depaturedate" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-                        <Text fx:id="txtEndDate" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                    <Label styleClass="cell_heading" text="%reservation.depaturedate" GridPane.columnIndex="2"
+                           GridPane.rowIndex="0"/>
+                    <Text fx:id="txtEndDate" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
 
-                        <Label styleClass="cell_heading" text="%reservation.edit.unit.categorie" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                        <Text fx:id="txtCategory" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <Label styleClass="cell_heading" text="%reservation.edit.unit.categorie" GridPane.columnIndex="0"
+                           GridPane.rowIndex="1"/>
+                    <Text fx:id="txtCategory" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
-                        <Label styleClass="cell_heading" text="%reservation.arrivaltime" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Text fx:id="txtArrivalTime" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                    <Label styleClass="cell_heading" text="%reservation.arrivaltime" GridPane.columnIndex="2"
+                           GridPane.rowIndex="1"/>
+                    <Text fx:id="txtArrivalTime" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
 
-                    </GridPane>
-                </content>
+                </GridPane>
             </TitledPane>
             <Separator/>
             <Label text="%checkin.information.roomnumber" styleClass="detail_sub_section"/>
             <SegmentedBar fx:id="segmentedBar"/>
             <Separator/>
-            <TitledPane text="%checkin.information.heading.persons" >
-                <content>
-                    <ListView prefHeight="100" fx:id="listPersonAssignments"/>
-                </content>
+            <TitledPane text="%checkin.information.heading.persons">
+                <ListView prefHeight="100" fx:id="listPersonAssignments"/>
             </TitledPane>
-            <Separator/>
-            <TitledPane text="%checkin.information.heading.arrangements" >
-                <content>
-                    <ListView prefHeight="100" fx:id="listArrangements"/>
-                </content>
+            <!-- <Separator/> -->
+            <TitledPane text="%checkin.information.heading.arrangements" visible="false" managed="false">
+                <ListView prefHeight="100" fx:id="listArrangements"/>
             </TitledPane>
 
         </VBox>

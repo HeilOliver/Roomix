@@ -3,6 +3,10 @@ package at.fhv.roomix.ui.dataprovider;
 import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
 import at.fhv.roomix.controller.model.ReservationPojo;
 
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+
 /**
  * Roomix
  * at.fhv.roomix.ui.dataprovider
@@ -16,8 +20,16 @@ public class ReservationProvider extends AbstractSearchEditProvider<ReservationP
     public ReservationProvider() {
         super(query -> ReservationControllerFactory.getInstance()
                         .getSearchedReservation(LoginProvider.getSessionID(), query),
-                update -> ReservationControllerFactory
-                        .getInstance().updateReservation(LoginProvider.getSessionID(), update)
+                update -> {
+                    String pdfPath = ReservationControllerFactory
+                            .getInstance().updateReservation(LoginProvider.getSessionID(), update);
+
+                    if (pdfPath == null) return;
+
+                    try {
+                        Desktop.getDesktop().open(new File(pdfPath));
+                    } catch (IOException ignored) { }
+                }
         );
     }
 

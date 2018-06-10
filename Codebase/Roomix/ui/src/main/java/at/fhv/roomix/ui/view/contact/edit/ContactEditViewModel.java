@@ -92,7 +92,8 @@ public class ContactEditViewModel implements ViewModel {
                 placeValidator,
                 postcodeValidator,
                 countryValidator,
-                emailValidator
+                emailValidator,
+                houseNumberValidator
         );
 
         viewScope.setOnError(this::onError);

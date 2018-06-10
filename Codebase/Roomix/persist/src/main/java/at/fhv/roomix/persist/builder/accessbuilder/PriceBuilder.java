@@ -42,7 +42,6 @@ public class PriceBuilder {
 
         return priceEntity
                 .map(roomCategoryPriceEntity -> mapper.map(roomCategoryPriceEntity, RoomPrice.class))
-                .orElse(null);
-
+                .orElse(new RoomPrice());
     }
 }

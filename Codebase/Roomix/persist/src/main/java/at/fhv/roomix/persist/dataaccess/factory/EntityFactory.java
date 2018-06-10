@@ -10,9 +10,11 @@ import at.fhv.roomix.persist.exception.PersistStateException;
 
 import java.io.Serializable;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 /**
  * UebungMapper
@@ -23,8 +25,8 @@ import java.util.function.Supplier;
  * Enter Description here
  */
 public class EntityFactory<T, PK extends Serializable> {
-    private static final LinkedList<EntityFactory> commitment
-            = new LinkedList<>();
+    private static final HashSet<EntityFactory> commitment
+            = new HashSet<>();
     private static ISessionController sessionController;
 
     static {
@@ -39,23 +41,23 @@ public class EntityFactory<T, PK extends Serializable> {
     public EntityFactory(Supplier<IDao<T, PK>> daoSupplier, int priority) {
         this.priority = priority;
         this.daoSupplier = daoSupplier;
-        commitment.add(this);
     }
 
     public static void commitAll() throws PersistStateException, PersistSaveException {
         try {
             sessionController.startTransaction();
-            commitment.sort(Comparator.comparingInt(o -> o.priority));
-            for (EntityFactory next : commitment) {
+            List<EntityFactory> entityFactories =
+                    commitment.stream().sorted(Comparator.comparingInt(o -> o.priority)).collect(Collectors.toList());
+
+            for (EntityFactory next : entityFactories) {
                 next.doSave();
             }
-            for (EntityFactory next : commitment) {
+            for (EntityFactory next : entityFactories) {
                 next.doDelete();
             }
-            for (EntityFactory next : commitment) {
+            for (EntityFactory next : entityFactories) {
                 next.clear();
             }
-            commitment.clear();
             sessionController.commitTransaction();
         } catch (PersistStateException | PersistSaveException e) {
             sessionController.rollBackTransaction();
@@ -68,6 +70,7 @@ public class EntityFactory<T, PK extends Serializable> {
             factory.clear();
         }
         commitment.clear();
+        sessionController.closeSession();
     }
 
     public T getOrDefault(PK key, T _default) {
@@ -106,10 +109,12 @@ public class EntityFactory<T, PK extends Serializable> {
 
     public void saveOrUpdate(T entity) {
         toSave.add(entity);
+        commitment.add(this);
     }
 
     public void delete(T entity) {
         toDelete.add(entity);
+        commitment.add(this);
     }
 
     private void doSave() throws PersistStateException, PersistSaveException {
@@ -131,5 +136,6 @@ public class EntityFactory<T, PK extends Serializable> {
     private void clear() {
         toDelete.clear();
         toSave.clear();
+        commitment.remove(this);
     }
 }

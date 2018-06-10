@@ -2,7 +2,7 @@ package at.fhv.roomix.controller.session.exception;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.session.exception
+ * at.fhv.roomix.implement.session.exception
  * AuthenticationFaultException
  * 07/04/2018 Oliver
  * <p>

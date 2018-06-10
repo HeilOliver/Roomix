@@ -8,7 +8,7 @@ import at.fhv.roomix.domain.guest.contact.Contact;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.mapping
+ * at.fhv.roomix.implement.mapping
  * ContactMapping
  * 12/05/2018 Oliver
  * <p>

@@ -2,7 +2,7 @@ package at.fhv.roomix.controller.common.exceptions;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.common.exceptions
+ * at.fhv.roomix.implement.common.exceptions
  * GetFault
  * 30/04/2018 Oliver
  * <p>

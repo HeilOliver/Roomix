@@ -177,7 +177,7 @@ public class ContactEntity {
     }
 
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "contact",  orphanRemoval = true)
     public Collection<ContactNoteEntity> getContactNotes() {
         return contactNotes;
     }

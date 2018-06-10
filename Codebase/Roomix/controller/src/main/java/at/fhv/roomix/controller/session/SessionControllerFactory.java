@@ -2,7 +2,7 @@ package at.fhv.roomix.controller.session;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.session
+ * at.fhv.roomix.implement.session
  * SessionControllerFactory
  * 22.03.2018 sge
  * <p>
@@ -30,7 +30,7 @@ public class SessionControllerFactory {
         return instance;
     }
 
-    static void InjectDependency(IInjectDependency injectInstance) {
+    public static void InjectDependency(IInjectDependency injectInstance) {
         injectDependency = injectInstance;
     }
 

@@ -28,9 +28,9 @@ public class HibernateSessionController implements ISessionController {
         initTry = true;
         try {
             Configuration configuration = new Configuration();
-            //TODO: remove path to hibernate_h2 (only for deployment)
-            //configuration.configure("/hibernate_h2.cfg.xml");
-            configuration.configure();
+
+            configuration.configure("/hibernate_h2.cfg.xml");
+            //configuration.configure("/hibernate.cfg.xml");
 
             ourSessionFactory = configuration.buildSessionFactory();
         } catch (Throwable ex) {
@@ -109,7 +109,10 @@ public class HibernateSessionController implements ISessionController {
     public void closeSession() {
         if (currTransaction != null)
             commitTransaction();
+        if (currSession == null)
+            return;
         currSession.close();
+        currSession = null;
     }
 
 }

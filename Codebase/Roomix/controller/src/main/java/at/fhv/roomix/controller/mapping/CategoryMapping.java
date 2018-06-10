@@ -9,7 +9,7 @@ import at.fhv.roomix.domain.room.RoomCategory;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.mapping
+ * at.fhv.roomix.implement.mapping
  * CategoryMapping
  * 12/05/2018 Oliver
  * <p>

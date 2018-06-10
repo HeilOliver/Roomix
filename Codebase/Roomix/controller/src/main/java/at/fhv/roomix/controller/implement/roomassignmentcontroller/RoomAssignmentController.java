@@ -81,7 +81,8 @@ public class RoomAssignmentController implements IRoomAssignmentController {
     public void deleteAssignment(IReservationUnit reservationUnit) {
         IRoom assignedRoom = reservationUnit.getAssignedRoom();
         if (assignedRoom == null) return;
-        List<IRoomAssignment> roomAssignment = roomAssignmentCallback.getRoomAssignmentsByRoomAndReservationUnit();
+        List<IRoomAssignment> roomAssignment =
+                roomAssignmentCallback.getRoomAssignmentsByRoomAndReservationUnit(assignedRoom, reservationUnit);
         if (roomAssignment == null || roomAssignment.size() == 0) return;
         roomAssignmentCallback.deleteRoomAssignment(roomAssignment.get(0));
     }

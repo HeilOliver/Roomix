@@ -21,7 +21,7 @@ public interface IRoomAssignmentCallback {
 
     List<IRoomAssignment> getRoomAssignmentsByDate(Date startDate, Date endDate);
 
-    List<IRoomAssignment> getRoomAssignmentsByRoomAndReservationUnit();
+    List<IRoomAssignment> getRoomAssignmentsByRoomAndReservationUnit(IRoom assignedRoom, IReservationUnit reservationUnit);
 
     void deleteRoomAssignment(IRoomAssignment roomAssignment);
 

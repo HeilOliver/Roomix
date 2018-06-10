@@ -93,6 +93,8 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
         arrivalTime.setValue(DateTimeFormatter.ISO_LOCAL_TIME.format(currModel.get().getArrivalTime()));
         category.setValue(currModel.get().getRoomCategory().getDescription());
         commitButtonDisabledProperty.setValue(currModel.get().isCheckedIn());
+        checkInRoomNumber.setValue("");
+        statusText.setValue("");
 
         Collection<RoomPojo> assignedRooms = currModel.get().getAssignedRooms();
         roomSegments.clear();

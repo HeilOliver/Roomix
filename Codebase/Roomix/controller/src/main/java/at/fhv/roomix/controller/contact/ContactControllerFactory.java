@@ -2,7 +2,7 @@ package at.fhv.roomix.controller.contact;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.contact
+ * at.fhv.roomix.implement.contact
  * SessionControllerFactory
  * 18.04.2018 sge
  * <p>

@@ -3,7 +3,7 @@ package at.fhv.roomix.controller.stay;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.session
+ * at.fhv.roomix.implement.session
  * StayControllerFactory
  * 22.03.2018 OliverH
  * <p>

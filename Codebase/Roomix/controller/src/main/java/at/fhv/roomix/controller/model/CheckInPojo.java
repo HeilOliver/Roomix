@@ -7,7 +7,7 @@ import java.util.Collection;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.stay.model
+ * at.fhv.roomix.implement.stay.model
  * CheckInPojo
  * 09/05/2018 Oliver
  * <p>

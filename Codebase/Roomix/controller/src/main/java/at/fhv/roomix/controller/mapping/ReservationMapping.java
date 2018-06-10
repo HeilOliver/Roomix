@@ -9,11 +9,12 @@ import at.fhv.roomix.controller.model.*;
 import at.fhv.roomix.domain.guest.contractingparty.ContractingParty;
 import at.fhv.roomix.domain.reservation.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.mapping
+ * at.fhv.roomix.implement.mapping
  * ReservationMapping
  * 12/05/2018 Oliver
  * <p>
@@ -61,7 +62,7 @@ public class ReservationMapping implements MapType<Reservation, ReservationPojo>
         }
 
         // ForEach Unit
-        destination.setUnits(new HashSet<>());
+        destination.setUnits(new ArrayList<>());
         for (ReservationUnit unit : source.getUnits()) {
             destination.getUnits().add(mapper.map(unit,ReservationUnitPojo.class));
         }

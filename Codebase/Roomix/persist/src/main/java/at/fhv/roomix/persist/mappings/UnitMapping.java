@@ -55,6 +55,7 @@ public class UnitMapping implements MapType<ReservationUnit, ReservationUnitEnti
         destination.setArrivalTime(source.getArrivalTime());
         destination.setStartDate(source.getStartDate());
         destination.setEndDate(source.getEndDate());
+        destination.setId(source.getReservationUnitId());
 
         try {
             RoomCategory category = RoomCategoryBuilder.getRoomCategory(source.getRoomCategory().getRoomCategoryId());

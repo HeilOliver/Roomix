@@ -5,7 +5,7 @@ import javax.validation.constraints.Size;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.reservation.contact
+ * at.fhv.roomix.implement.reservation.contact
  * RoomCategoryPojo
  * 20/04/2018 Robert Schmitzer
  * <p>

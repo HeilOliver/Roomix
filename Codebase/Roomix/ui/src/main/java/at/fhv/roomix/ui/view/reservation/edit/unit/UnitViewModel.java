@@ -196,7 +196,7 @@ public class UnitViewModel extends SubscribeAbleViewModel<ReservationUnitPojo> {
         arrivalTimeValidator = new FunctionBasedValidator<>(
                 arrivalTime(), Objects::nonNull, ValidationMessage.error(""));
         amountValidator = new FunctionBasedValidator<>(
-                amountProperty(), (i) -> i.intValue() <= 0, ValidationMessage.error("")
+                amountProperty(), (i) -> i.intValue() > 0, ValidationMessage.error("")
         );
         categoriesValidator = new FunctionBasedValidator<>(
                 categoryProperty(), Objects::nonNull, ValidationMessage.error(""));

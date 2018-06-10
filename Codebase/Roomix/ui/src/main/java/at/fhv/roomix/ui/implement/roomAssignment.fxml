@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="541.0" prefWidth="983.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8.0.121"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhv.roomix.ui.controller.RoomAssignmentController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhv.roomix.ui.implement.RoomAssignmentController">
 
 
     <top>

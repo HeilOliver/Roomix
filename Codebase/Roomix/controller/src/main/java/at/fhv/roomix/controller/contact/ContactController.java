@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.contact
+ * at.fhv.roomix.implement.contact
  * ReservationController
  * 22.03.2018 sge
  * <p>

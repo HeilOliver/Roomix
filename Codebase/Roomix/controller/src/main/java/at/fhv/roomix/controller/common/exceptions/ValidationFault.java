@@ -4,7 +4,7 @@ import java.util.Set;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.exeption
+ * at.fhv.roomix.implement.exeption
  * ValidationFault
  * 27/03/2018 OliverH
  * <p>

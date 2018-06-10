@@ -12,7 +12,7 @@ import at.fhv.roomix.persist.exception.BuilderLoadException;
 
 /**
  * Roomix
- * at.fhv.roomix.controller.mapping
+ * at.fhv.roomix.implement.mapping
  * PersonMapping
  * 12/05/2018 Oliver
  * <p>
