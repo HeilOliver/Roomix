@@ -108,14 +108,14 @@ public class ReservationRestController {
         contactPojo.setHouseNumber(housenumber);
 
         //Todo: Achtung Hardcoded aber anders funktioniert es nicht!
-        Collection<ContactPojo> contactPojos = new HashSet<>();
-        ContactPojo rightContactPojo = new ContactPojo();
-        ContactControllerFactory.getInstance().updateContact(-1000,contactPojo);
-        contactPojos = ContactControllerFactory.getInstance().getSearchedContacts(-1000,lname + " " + fname);
-        rightContactPojo = contactPojos.iterator().next();
+//        Collection<ContactPojo> contactPojos = new HashSet<>();
+//        ContactPojo rightContactPojo = new ContactPojo();
+//        ContactControllerFactory.getInstance().updateContact(-1000,contactPojo);
+//        contactPojos = ContactControllerFactory.getInstance().getSearchedContacts(-1000,lname + " " + fname);
+//        rightContactPojo = contactPojos.iterator().next();
 
 
-        return rightContactPojo;
+        return contactPojo;
     }
 
     public boolean checkCreditcardValidation(String creditcard){
