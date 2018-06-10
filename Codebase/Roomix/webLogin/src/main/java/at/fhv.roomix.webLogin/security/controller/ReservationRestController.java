@@ -1,15 +1,14 @@
 package at.fhv.roomix.webLogin.security.controller;
 
-import at.fhv.roomix.controller.common.exceptions.ArgumentFaultException;
-import at.fhv.roomix.controller.common.exceptions.SaveFault;
-import at.fhv.roomix.controller.common.exceptions.SessionFaultException;
-import at.fhv.roomix.controller.common.exceptions.ValidationFault;
-import at.fhv.roomix.controller.model.ContactPojo;
-import at.fhv.roomix.controller.model.ReservationPojo;
-import at.fhv.roomix.controller.model.ReservationUnitPojo;
-import at.fhv.roomix.controller.model.RoomCategoryPojo;
+import at.fhv.roomix.controller.common.exceptions.*;
+import at.fhv.roomix.controller.contact.ContactControllerFactory;
+import at.fhv.roomix.controller.contact.IContactController;
+import at.fhv.roomix.controller.model.*;
 import at.fhv.roomix.controller.reservation.ReservationControllerFactory;
+import at.fhv.roomix.domain.reservation.PaymentType;
 import at.fhv.roomix.domain.room.RoomCategory;
+import at.fhv.roomix.persist.builder.accessbuilder.ContactBuilder;
+import at.fhv.roomix.persist.builder.accessbuilder.PaymentTypeBuilder;
 import at.fhv.roomix.persist.builder.accessbuilder.RoomCategoryBuilder;
 import at.fhv.roomix.persist.exception.BuilderLoadException;
 import at.fhv.roomix.webLogin.model.CreditcardPojo;
@@ -34,7 +33,7 @@ import java.util.List;
 public class ReservationRestController {
     @CrossOrigin()
     @RequestMapping(method = RequestMethod.POST)
-    public void doReservation(@RequestBody ReservationRequest reservationRequest) throws BuilderLoadException {
+    public void doReservation(@RequestBody ReservationRequest reservationRequest) throws BuilderLoadException, ValidationFault, ArgumentFaultException, SessionFaultException, SaveFault, GetFault {
 
 
         //convert String to LocalDate
@@ -64,10 +63,22 @@ public class ReservationRestController {
             }
         }
 
+        PaymentTypePojo paymentTypePojo = new PaymentTypePojo();
+        PaymentType paymentType =  PaymentTypeBuilder.getPaymentType(1);
+        paymentTypePojo.setId(paymentType.getId());
+        paymentTypePojo.setDescription(paymentType.getDescription());
+
+        Collection<PersonPojo> personPojos = new HashSet<>();
+
+
+
+
         //Mapping reservation
         ReservationPojo reservationPojo = new ReservationPojo();
         reservationPojo.setContractingParty(contactPojo);
         reservationPojo.setUnits(reservationUnitPojoCollection);
+        reservationPojo.setPaymentType(paymentTypePojo);
+        reservationPojo.setPersons(personPojos);
         try {
             ReservationControllerFactory.getInstance().updateReservation(-1000,reservationPojo);
         } catch (SessionFaultException | ArgumentFaultException | SaveFault | ValidationFault e) {
@@ -76,7 +87,7 @@ public class ReservationRestController {
 
     }
 
-    public ContactPojo mapContact(String fname, String lname,String eMail,String postCode, String place, String country, String phoneNumber, String street,String housenumber,String creditcard) {
+    public ContactPojo mapContact(String fname, String lname,String eMail,String postCode, String place, String country, String phoneNumber, String street,String housenumber,String creditcard) throws ArgumentFaultException, SessionFaultException, ValidationFault, SaveFault, GetFault {
 
         ContactPojo contactPojo = new ContactPojo();
         //Todo: CreditcardPojo into Contact-Validation completed
@@ -92,11 +103,18 @@ public class ReservationRestController {
         contactPojo.setCountry(country);
         contactPojo.setPlace(place);
         contactPojo.setPostcode(postCode);
-        //Todo: Check if it is possible (individual 0?)
-        contactPojo.setContractingPartyType(0);
+        contactPojo.setContractingPartyType(100);
         contactPojo.setStreet(street);
         contactPojo.setHouseNumber(housenumber);
-        return contactPojo;
+
+        Collection<ContactPojo> contactPojos = new HashSet<>();
+        ContactPojo rightContactPojo = new ContactPojo();
+        ContactControllerFactory.getInstance().updateContact(-1000,contactPojo);
+        contactPojos = ContactControllerFactory.getInstance().getSearchedContacts(-1000,lname + " " + fname);
+        rightContactPojo = contactPojos.iterator().next();
+
+
+        return rightContactPojo;
     }
 
     public boolean checkCreditcardValidation(String creditcard){
